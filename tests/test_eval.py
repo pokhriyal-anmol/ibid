@@ -36,7 +36,7 @@ class EvalTest(unittest.TestCase):
         self.assertRegex(r["gold_sha256"], r"^[0-9a-f]{64}$")
         self.assertTrue(r["parser_version"])
         self.assertEqual(r["categories"]["subprovision_lookup"], {"passed": 8, "total": 8})
-        self.assertEqual(len(r["outcomes"]), 17)
+        self.assertEqual(len(r["outcomes"]), 21)
         self.assertEqual(r["categories"]["keyword"], {"passed": 3, "total": 3})
 
     def test_wrong_expected_text_fails_and_lowers_the_score(self):
@@ -110,6 +110,32 @@ class EvalTest(unittest.TestCase):
         self.assertEqual(a.read_bytes(), b.read_bytes())
         packet = next(o for o in json.loads(a.read_text())["outcomes"] if o["id"] == "keyword-dowry")["packet"]
         self.assertTrue(packet[3][1].startswith("80. "))
+
+    def test_chain_returns_provision_and_resolved_targets_in_fixed_order(self):
+        _, out, _ = self.run_eval()
+        r = json.loads(out.read_text())
+        self.assertEqual(r["categories"]["cross_reference_chain"], {"passed": 4, "total": 4})
+        packet = next(o for o in r["outcomes"] if o["id"] == "xref-bns-353-3")["packet"]
+        self.assertEqual([c for c, _ in packet], ["BNS 353(2)", "BNS 353"])  # sub-section (2), then "this section"
+        self.assertTrue(packet[0][1].startswith("(2) Whoever makes, publishes"))
+
+    def test_chain_with_a_wrong_target_order_or_missing_target_is_a_miss(self):
+        # known-bad: a deliberately wrong target, a swapped order, and a dropped target must each fail
+        def edit(g):
+            g["xref-bns-117-3"]["expected_refs"] = ["BNS 117(2)"]
+            g["xref-bns-353-3"]["expected_refs"].reverse()
+            g["xref-bns-66"]["expected_refs"].pop()
+        passed = self.run_bad_gold(edit)
+        self.assertFalse(passed["xref-bns-117-3"] or passed["xref-bns-353-3"] or passed["xref-bns-66"])
+        self.assertTrue(passed["xref-bns-117-2"])
+
+    def test_unresolved_references_are_listed_with_reason_and_counted_per_act(self):
+        _, out, _ = self.run_eval()
+        r = json.loads(out.read_text())
+        self.assertEqual(r["xref"], {"BNS": {"resolved": 315, "unresolved": 16}, "IPC": {"resolved": 271, "unresolved": 13}})
+        self.assertEqual(len(r["unresolved_xref"]), 29)
+        self.assertIn({"source": "BNS 5", "matched": "section 474", "reason": "other Act: of the Bharatiya Nagarik Suraksha Sanhita"}, r["unresolved_xref"])
+        self.assertIn({"source": "BNS 209", "matched": "sub-section (4)", "reason": "names an earlier section: of that section"}, r["unresolved_xref"])
 
     def test_truncated_source_drops_the_count_and_exits_nonzero(self):
         pages = self.tmp / "pages"

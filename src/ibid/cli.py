@@ -10,6 +10,7 @@ from pathlib import Path
 from ibid import index
 from ibid.ipc import IPC_TOTAL, parse_ipc
 from ibid.parse import BNS_TOTAL, PARSER_VERSION, parse_bns
+from ibid.xref import extract
 
 
 def run_eval(gold_path: str, bns_pdf: str, ipc_pdf: str, index_path: str, out_path: str) -> int:
@@ -24,7 +25,7 @@ def run_eval(gold_path: str, bns_pdf: str, ipc_pdf: str, index_path: str, out_pa
         provisions += parsed
         counts[act] = {"recovered": recovered, "expected": total}
     gold_bytes = Path(gold_path).read_bytes()
-    db = index.build(index_path, provisions)
+    db = index.build(index_path, provisions, extract(provisions))
     outcomes, cats = [], defaultdict(lambda: {"passed": 0, "total": 0})
     for item in json.loads(gold_bytes):
         outcome = {"id": item["id"], "category": item["category"]}
@@ -35,6 +36,9 @@ def run_eval(gold_path: str, bns_pdf: str, ipc_pdf: str, index_path: str, out_pa
         else:
             got = index.lookup(db, item["query"])
             ok = got is not None and got[0] == item["expected_text"] and got[1] == item.get("expected_children", got[1])
+            if item["category"] == "cross_reference_chain":
+                ok = ok and got[2] == item["expected_refs"]
+                outcome["packet"] = [(c, index.lookup(db, c)[0]) for c in got[2]]
         outcomes.append({**outcome, "pass": ok})
         cats[item["category"]]["total"] += 1
         cats[item["category"]]["passed"] += ok
@@ -44,6 +48,8 @@ def run_eval(gold_path: str, bns_pdf: str, ipc_pdf: str, index_path: str, out_pa
         "sections": counts,
         "categories": cats,
         "outcomes": outcomes,
+        "xref": {act: index.ref_counts(db, act) for act in ("BNS", "IPC")},
+        "unresolved_xref": index.unresolved(db),
     }
     with open(out_path, "w") as f:
         f.write(json.dumps(results, indent=2, sort_keys=True) + "\n")
