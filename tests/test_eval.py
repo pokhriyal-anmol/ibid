@@ -154,6 +154,7 @@ class EvalTest(unittest.TestCase):
         self.assertEqual(a.read_bytes(), b.read_bytes())
 
     def test_indexed_text_is_english_only_and_citations_are_unique(self):
+        # Explicit exception to the eval-seam rule: parser invariants read the index schema directly.
         _, _, idx = self.run_eval()
         rows = sqlite3.connect(idx).execute("SELECT citation, text FROM provision").fetchall()
         self.assertEqual(len({c for c, _ in rows}), len(rows))
@@ -166,6 +167,7 @@ class EvalTest(unittest.TestCase):
             self.assertIsNone(re.search(r"GAZETTE|EXTRAORDINARY|Sec\. \d|CHAPTER|(?:^|\. )Of [a-z]", text), citation)
 
     def test_every_child_address_exists_and_names_its_parent(self):
+        # Explicit exception to the eval-seam rule: reads the index schema directly.
         _, _, idx = self.run_eval()
         db = sqlite3.connect(idx)
         parent = dict(db.execute("SELECT citation, parent FROM provision"))

@@ -47,9 +47,8 @@ def ref_counts(db: sqlite3.Connection, act: str) -> dict[str, int]:
 def search(db: sqlite3.Connection, raw_query: str, limit: int = 10) -> list[tuple[str, str]]:
     """FTS5 keyword search on the raw query only (ADR 0001). Ties on score break by citation, so order is total."""
     try:
-        rows = db.execute(
+        return db.execute(
             "SELECT citation, text FROM fts WHERE fts MATCH ? ORDER BY rank, citation LIMIT ?", (raw_query, limit)
         ).fetchall()
     except sqlite3.OperationalError:  # query is not valid FTS5 syntax: no hits, never rewritten
         return []
-    return [(c, t) for c, t in rows]
