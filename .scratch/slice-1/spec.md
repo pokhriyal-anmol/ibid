@@ -1,6 +1,6 @@
 # Slice 1: Reproducible citation and cross-reference baseline
 
-Status: needs-triage (awaiting your approval before ticketing)
+Status: approved
 
 ## Problem Statement
 
@@ -43,7 +43,7 @@ One command parses the IPC and the BNS into section trees, resolves their intern
 - Retrieval takes the raw query only (see ADR 0001). No model is called anywhere in this slice.
 - The stack is Python, SQLite and `uv` (see ADR 0002). The index is one file that can be rebuilt from source.
 - The BNS source is the Gazette of India copy hosted by PRS (102 pages, English text extractable). Its section headings are irregular under a plain text pattern (a first attempt matched about 150 of 358 sections), so the parser must be layout-aware and is judged on recovering all 358.
-- The IPC source is the WIPO Lex HTML copy. It is a parsing source only until its reuse terms are read.
+- The IPC source is the WIPO Lex PDF (IN158, amended to Act 34 of 2019; see `data/SOURCES.md`). It is a parsing source only until its reuse terms are read.
 - The concordance is built from the gazette texts and checked by hand. Web conversion tables are used only to suggest candidates, never as truth.
 - Gold-set process: I draft the items with gazette page citations, you spot-check at least 10 (weighted to correspondence items), then the file is frozen and hash-pinned. Later edits create a new version.
 - Item categories: section lookup, subsection and proviso lookup, cross-reference chain, IPC-to-BNS and BNS-to-IPC concordance, and a small number of keyword questions.

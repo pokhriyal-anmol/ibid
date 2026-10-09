@@ -93,8 +93,11 @@
     "query": "conceal",
     "expected_citations": [
       "BNS 330(1)",
+      "IPC 443",
       "BNS 351(4)",
       "BNS 94",
+      "IPC 507",
+      "IPC 318",
       "BNS 113(6)",
       "BNS 351",
       "BNS 330",
@@ -107,9 +110,13 @@
     "query": "dowry",
     "expected_citations": [
       "BNS 80(1) explanation 1",
+      "IPC 304B",
+      "IPC 304B(1) explanation 1",
       "BNS 80",
       "BNS 80(1)",
-      "BNS 80(2)"
+      "IPC 304B(1)",
+      "BNS 80(2)",
+      "IPC 304B(2)"
     ]
   },
   {
@@ -117,6 +124,7 @@
     "category": "keyword",
     "query": "ransom",
     "expected_citations": [
+      "IPC 364A",
       "BNS 140(2)",
       "BNS 111(1)",
       "BNS 140",

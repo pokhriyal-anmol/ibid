@@ -96,7 +96,7 @@ class EvalTest(unittest.TestCase):
         # BNS 351(4) and BNS 94 tie on score; parse order puts 94 first, citation order puts 351(4) first
         def edit(g):
             c = g["keyword-conceal"]["expected_citations"]
-            c[1], c[2] = c[2], c[1]
+            c[2], c[3] = c[3], c[2]
         self.assertFalse(self.run_bad_gold(edit)["keyword-conceal"])
 
     def test_keyword_query_is_not_expanded_or_stemmed(self):
@@ -109,7 +109,7 @@ class EvalTest(unittest.TestCase):
         _, b, _ = self.run_eval("b")
         self.assertEqual(a.read_bytes(), b.read_bytes())
         packet = next(o for o in json.loads(a.read_text())["outcomes"] if o["id"] == "keyword-dowry")["packet"]
-        self.assertTrue(packet[1][1].startswith("80. "))
+        self.assertTrue(packet[3][1].startswith("80. "))
 
     def test_truncated_source_drops_the_count_and_exits_nonzero(self):
         pages = self.tmp / "pages"
