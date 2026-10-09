@@ -86,5 +86,41 @@
     "category": "subprovision_lookup",
     "query": "IPC 300 exception 1",
     "expected_text": "Exception 1.—When culpable homicide is not murder.—Culpable homicide is not murder if the offender, whilst deprived of the power of self-control by grave and sudden provocation, causes the death of the person who gave the provocation or causes the death of any other person by mistake or accident. The above exception is subject to the following provisos:— First.—That the provocation is not sought or voluntarily provoked by the offender as an excuse for killing or doing harm to any person. Secondly.—That the provocation is not given by anything done in obedience to the law, or by a public servant in the lawful exercise of the powers of such public servant. Thirdly.—That the provocation is not given by anything done in the lawful exercise of the right of private defence."
+  },
+  {
+    "id": "keyword-conceal",
+    "category": "keyword",
+    "query": "conceal",
+    "expected_citations": [
+      "BNS 330(1)",
+      "BNS 351(4)",
+      "BNS 94",
+      "BNS 113(6)",
+      "BNS 351",
+      "BNS 330",
+      "BNS 113"
+    ]
+  },
+  {
+    "id": "keyword-dowry",
+    "category": "keyword",
+    "query": "dowry",
+    "expected_citations": [
+      "BNS 80(1) explanation 1",
+      "BNS 80",
+      "BNS 80(1)",
+      "BNS 80(2)"
+    ]
+  },
+  {
+    "id": "keyword-ransom",
+    "category": "keyword",
+    "query": "ransom",
+    "expected_citations": [
+      "BNS 140(2)",
+      "BNS 111(1)",
+      "BNS 140",
+      "BNS 111"
+    ]
   }
 ]
