@@ -22,9 +22,15 @@ def run_eval(gold_path: str, bns_pdf: str, index_path: str, out_path: str) -> in
     db = index.build(index_path, provisions)
     outcomes, cats = [], defaultdict(lambda: {"passed": 0, "total": 0})
     for item in json.loads(gold_bytes):
-        got = index.lookup(db, item["query"])
-        ok = got is not None and got[0] == item["expected_text"] and got[1] == item.get("expected_children", got[1])
-        outcomes.append({"id": item["id"], "category": item["category"], "pass": ok})
+        outcome = {"id": item["id"], "category": item["category"]}
+        if item["category"] == "keyword":
+            packet = index.search(db, item["query"])
+            ok = [c for c, _ in packet] == item["expected_citations"]
+            outcome["packet"] = packet
+        else:
+            got = index.lookup(db, item["query"])
+            ok = got is not None and got[0] == item["expected_text"] and got[1] == item.get("expected_children", got[1])
+        outcomes.append({**outcome, "pass": ok})
         cats[item["category"]]["total"] += 1
         cats[item["category"]]["passed"] += ok
     results = {

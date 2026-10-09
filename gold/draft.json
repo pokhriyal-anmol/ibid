@@ -62,5 +62,41 @@
     "category": "subprovision_lookup",
     "query": "BNS 2(16) illustration 1",
     "expected_text": "Illustration. A Magistrate exercising jurisdiction in respect of a charge on which he has power to sentence to fine or imprisonment, with or without appeal, is a Judge;"
+  },
+  {
+    "id": "keyword-conceal",
+    "category": "keyword",
+    "query": "conceal",
+    "expected_citations": [
+      "BNS 330(1)",
+      "BNS 351(4)",
+      "BNS 94",
+      "BNS 113(6)",
+      "BNS 351",
+      "BNS 330",
+      "BNS 113"
+    ]
+  },
+  {
+    "id": "keyword-dowry",
+    "category": "keyword",
+    "query": "dowry",
+    "expected_citations": [
+      "BNS 80(1) explanation 1",
+      "BNS 80",
+      "BNS 80(1)",
+      "BNS 80(2)"
+    ]
+  },
+  {
+    "id": "keyword-ransom",
+    "category": "keyword",
+    "query": "ransom",
+    "expected_citations": [
+      "BNS 140(2)",
+      "BNS 111(1)",
+      "BNS 140",
+      "BNS 111"
+    ]
   }
 ]

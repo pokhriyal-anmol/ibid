@@ -34,7 +34,8 @@ class EvalTest(unittest.TestCase):
         self.assertRegex(r["gold_sha256"], r"^[0-9a-f]{64}$")
         self.assertTrue(r["parser_version"])
         self.assertEqual(r["categories"]["subprovision_lookup"], {"passed": 6, "total": 6})
-        self.assertEqual(len(r["outcomes"]), 10)
+        self.assertEqual(len(r["outcomes"]), 13)
+        self.assertEqual(r["categories"]["keyword"], {"passed": 3, "total": 3})
 
     def test_wrong_expected_text_fails_and_lowers_the_score(self):
         gold = json.loads(Path(GOLD).read_text())
@@ -66,6 +67,25 @@ class EvalTest(unittest.TestCase):
         def edit(g):
             g["lookup-103"]["expected_children"] = ["BNS 103(1)"]
         self.assertFalse(self.run_bad_gold(edit)["lookup-103"])
+
+    def test_keyword_ties_break_by_citation(self):
+        # BNS 351(4) and BNS 94 tie on score; parse order puts 94 first, citation order puts 351(4) first
+        def edit(g):
+            c = g["keyword-conceal"]["expected_citations"]
+            c[1], c[2] = c[2], c[1]
+        self.assertFalse(self.run_bad_gold(edit)["keyword-conceal"])
+
+    def test_keyword_query_is_not_expanded_or_stemmed(self):
+        def edit(g):
+            g["keyword-conceal"]["query"] = "concealed"
+        self.assertFalse(self.run_bad_gold(edit)["keyword-conceal"])
+
+    def test_keyword_results_carry_verbatim_text_and_are_byte_identical_across_rebuilds(self):
+        _, a, _ = self.run_eval("a")
+        _, b, _ = self.run_eval("b")
+        self.assertEqual(a.read_bytes(), b.read_bytes())
+        packet = next(o for o in json.loads(a.read_text())["outcomes"] if o["id"] == "keyword-dowry")["packet"]
+        self.assertTrue(packet[1][1].startswith("80. "))
 
     def test_truncated_source_drops_the_count_and_exits_nonzero(self):
         pages = self.tmp / "pages"
