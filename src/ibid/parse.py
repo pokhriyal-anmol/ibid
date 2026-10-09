@@ -8,7 +8,7 @@ import subprocess
 import xml.etree.ElementTree as ET
 from dataclasses import dataclass
 
-PARSER_VERSION = "2"
+PARSER_VERSION = "3"
 BNS_TOTAL = 358
 HEADER_Y = 80  # lines above this are the running page header
 WIDE = 250  # a body line wider than this (pt) fixes the page's body column
@@ -58,7 +58,7 @@ _ROMAN_SEQ = ["i", "ii", "iii", "iv", "v", "vi", "vii", "viii", "ix", "x"]
 _ROMAN = set(_ROMAN_SEQ)
 
 
-def _split(n: int, lines: list[tuple[str, bool]]) -> list[Provision]:
+def _split(act: str, n: int | str, lines: list[tuple[str, bool]], texts: list[str] | None = None) -> list[Provision]:
     """One section into its provisions.
 
     Citations: `BNS 103(1)`, clause `BNS 8(5)(a)`, and `<parent> proviso|explanation|exception|
@@ -66,8 +66,8 @@ def _split(n: int, lines: list[tuple[str, bool]]) -> list[Provision]:
     shortcut: clauses are only recognised when indented, so an inline `(6) (a) ...` clause stays
     in its subsection; upgrade when a ticket needs those clauses.
     """
-    texts = [re.sub(rf"^{n}\.\s*", "", ln) if i == 0 else ln for i, (ln, _) in enumerate(lines)]
-    nodes = [[f"BNS {n}", None, 0, "root", len(lines)]]  # citation, parent, start, kind, end
+    texts = texts or [re.sub(rf"^{n}\.\s*", "", ln) if i == 0 else ln for i, (ln, _) in enumerate(lines)]
+    nodes = [[f"{act} {n}", None, 0, "root", len(lines)]]  # citation, parent, start, kind, end
     stack, seen, last_sub = [0], {nodes[0][0]}, 0
 
     def nearest(*kinds: str) -> int:
@@ -135,4 +135,4 @@ def parse_bns(pdf_path: str) -> list[Provision]:
             if len(sections) == BNS_TOTAL and set(line) == {"—"}:  # rule after section 358
                 break
             sections[-1].append((line, indented))
-    return [p for i, s in enumerate(sections, 1) for p in _split(i, s)]
+    return [p for i, s in enumerate(sections, 1) for p in _split("BNS", i, s)]

@@ -1,4 +1,4 @@
-"""Tests go through the one seam: `ibid eval`. Needs IBID_BNS_PDF (the gitignored gazette PDF)."""
+"""Tests go through the one seam: `ibid eval`. Needs IBID_BNS_PDF and IBID_IPC_PDF (the gitignored source PDFs)."""
 import json
 import os
 import re
@@ -13,6 +13,7 @@ from ibid.cli import main
 
 GOLD = str(Path(__file__).parent.parent / "gold" / "draft.json")
 PDF = os.environ["IBID_BNS_PDF"]
+IPC_PDF = os.environ["IBID_IPC_PDF"]
 
 
 class EvalTest(unittest.TestCase):
@@ -20,21 +21,22 @@ class EvalTest(unittest.TestCase):
         self.tmp = Path(tempfile.mkdtemp())
         self.addCleanup(shutil.rmtree, self.tmp)
 
-    def run_eval(self, name="r", gold=GOLD, pdf=PDF):
+    def run_eval(self, name="r", gold=GOLD, pdf=PDF, ipc=IPC_PDF):
         out, idx = self.tmp / f"{name}.json", self.tmp / f"{name}.sqlite"
-        code = main(["eval", "--gold", gold, "--bns", pdf, "--index", str(idx), "--out", str(out)])
+        code = main(["eval", "--gold", gold, "--bns", pdf, "--ipc", ipc, "--index", str(idx), "--out", str(out)])
         return code, out, idx
 
     def test_all_section_lookups_pass_and_results_carry_provenance(self):
         code, out, _ = self.run_eval()
         self.assertEqual(code, 0)
         r = json.loads(out.read_text())
-        self.assertEqual(r["categories"]["section_lookup"], {"passed": 4, "total": 4})
+        self.assertEqual(r["categories"]["section_lookup"], {"passed": 6, "total": 6})
         self.assertEqual(r["sections"]["BNS"], {"recovered": 358, "expected": 358})
+        self.assertEqual(r["sections"]["IPC"], {"recovered": 575, "expected": 575})
         self.assertRegex(r["gold_sha256"], r"^[0-9a-f]{64}$")
         self.assertTrue(r["parser_version"])
-        self.assertEqual(r["categories"]["subprovision_lookup"], {"passed": 6, "total": 6})
-        self.assertEqual(len(r["outcomes"]), 10)
+        self.assertEqual(r["categories"]["subprovision_lookup"], {"passed": 8, "total": 8})
+        self.assertEqual(len(r["outcomes"]), 14)
 
     def test_wrong_expected_text_fails_and_lowers_the_score(self):
         gold = json.loads(Path(GOLD).read_text())
@@ -43,7 +45,7 @@ class EvalTest(unittest.TestCase):
         bad.write_text(json.dumps(gold))
         _, out, _ = self.run_eval(gold=str(bad))
         r = json.loads(out.read_text())
-        self.assertEqual(r["categories"]["section_lookup"], {"passed": 3, "total": 4})
+        self.assertEqual(r["categories"]["section_lookup"], {"passed": 5, "total": 6})
         self.assertFalse(r["outcomes"][0]["pass"])
 
     def run_bad_gold(self, edit):
@@ -67,6 +69,28 @@ class EvalTest(unittest.TestCase):
             g["lookup-103"]["expected_children"] = ["BNS 103(1)"]
         self.assertFalse(self.run_bad_gold(edit)["lookup-103"])
 
+    def test_ipc_citations_return_verbatim_text_and_do_not_collide_with_bns(self):
+        # known-bad: the IPC 103 text expected under the BNS 103 citation (and the reverse) must fail
+        def edit(g):
+            g["ipc-lookup-103"]["expected_text"] = g["lookup-103"]["expected_text"]
+            g["lookup-102"]["query"] = "IPC 102"
+        passed = self.run_bad_gold(edit)
+        self.assertFalse(passed["ipc-lookup-103"])
+        self.assertFalse(passed["lookup-102"])
+        self.assertTrue(passed["lookup-103"] and passed["ipc-lookup-302"])
+        self.assertTrue(passed["sub-ipc-304B-2"] and passed["exception-ipc-300-1"])
+
+    def test_missing_ipc_section_drops_the_count_and_exits_nonzero(self):
+        pages = self.tmp / "ipc-pages"
+        pages.mkdir()
+        subprocess.run(["pdfseparate", IPC_PDF, str(pages / "%d.pdf")], check=True)
+        files = [str(pages / f"{i}.pdf") for i in range(1, 120) if i != 75]  # page 75 holds 304A to 308
+        short = self.tmp / "short-ipc.pdf"
+        subprocess.run(["pdfunite", *files, str(short)], check=True)
+        code, out, _ = self.run_eval(ipc=str(short))
+        self.assertNotEqual(code, 0)
+        self.assertFalse(out.exists())
+
     def test_truncated_source_drops_the_count_and_exits_nonzero(self):
         pages = self.tmp / "pages"
         pages.mkdir()
@@ -88,8 +112,9 @@ class EvalTest(unittest.TestCase):
         rows = sqlite3.connect(idx).execute("SELECT citation, text FROM provision").fetchall()
         self.assertEqual(len({c for c, _ in rows}), len(rows))
         self.assertEqual(len([c for c, _ in rows if re.fullmatch(r"BNS [1-9][0-9]*", c)]), 358)
+        self.assertEqual(len([c for c, _ in rows if re.fullmatch(r"IPC [1-9][0-9]*[A-Z]{0,2}", c)]), 575)
         for citation, text in rows:
-            self.assertRegex(citation, r"^BNS [1-9][0-9]*(\([0-9A-Z]+\))?(\([a-z]+\))*( (proviso|explanation|exception|illustration) [1-9][0-9]*)*(\([a-z]+\))*$")
+            self.assertRegex(citation, r"^(BNS [1-9][0-9]*|IPC [1-9][0-9]*[A-Z]{0,2})(\([0-9A-Z]+\))?(\([a-z]+\))*( (proviso|explanation|exception|illustration) [1-9][0-9]*)*(\([a-z]+\))*$")
             self.assertIsNone(re.search("[^\x20-\x7e—–‘’“”]", text), citation)
             # page headers, chapter titles and group headings are not part of any section
             self.assertIsNone(re.search(r"GAZETTE|EXTRAORDINARY|Sec\. \d|CHAPTER|(?:^|\. )Of [a-z]", text), citation)
