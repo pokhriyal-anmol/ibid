@@ -9,7 +9,11 @@
     "id": "lookup-103",
     "category": "section_lookup",
     "query": "BNS 103",
-    "expected_text": "103. (1) Whoever commits murder shall be punished with death or imprisonment for life, and shall also be liable to fine. (2) When a group of five or more persons acting in concert commits murder on the ground of race, caste or community, sex, place of birth, language, personal belief or any other similar ground each member of such group shall be punished with death or with imprisonment for life, and shall also be liable to fine."
+    "expected_text": "103. (1) Whoever commits murder shall be punished with death or imprisonment for life, and shall also be liable to fine. (2) When a group of five or more persons acting in concert commits murder on the ground of race, caste or community, sex, place of birth, language, personal belief or any other similar ground each member of such group shall be punished with death or with imprisonment for life, and shall also be liable to fine.",
+    "expected_children": [
+      "BNS 103(1)",
+      "BNS 103(2)"
+    ]
   },
   {
     "id": "lookup-104",
@@ -22,5 +26,41 @@
     "category": "section_lookup",
     "query": "BNS 357",
     "expected_text": "357. Whoever, being bound by a lawful contract to attend on or to supply the wants of any person who, by reason of youth, or of unsoundness of mind, or of a disease or bodily weakness, is helpless or incapable of providing for his own safety or of supplying his own wants, voluntarily omits so to do, shall be punished with imprisonment of either description for a term which may extend to three months, or with fine which may extend to five thousand rupees, or with both."
+  },
+  {
+    "id": "sub-103-1",
+    "category": "subprovision_lookup",
+    "query": "BNS 103(1)",
+    "expected_text": "(1) Whoever commits murder shall be punished with death or imprisonment for life, and shall also be liable to fine."
+  },
+  {
+    "id": "clause-8-5-a",
+    "category": "subprovision_lookup",
+    "query": "BNS 8(5)(a)",
+    "expected_text": "(a) two months when the amount of the fine does not exceed five thousand rupees;"
+  },
+  {
+    "id": "proviso-173",
+    "category": "subprovision_lookup",
+    "query": "BNS 173 proviso 1",
+    "expected_text": "Provided that bribery by treating shall be punished with fine only."
+  },
+  {
+    "id": "explanation-2-4",
+    "category": "subprovision_lookup",
+    "query": "BNS 2(4) explanation 1",
+    "expected_text": "Explanation 1.—It is not essential to counterfeiting that the imitation should be exact."
+  },
+  {
+    "id": "exception-164",
+    "category": "subprovision_lookup",
+    "query": "BNS 164 exception 1",
+    "expected_text": "Exception.—This provision does not extend to the case in which the harbour is given by the spouse of the deserter."
+  },
+  {
+    "id": "illustration-2-16",
+    "category": "subprovision_lookup",
+    "query": "BNS 2(16) illustration 1",
+    "expected_text": "Illustration. A Magistrate exercising jurisdiction in respect of a charge on which he has power to sentence to fine or imprisonment, with or without appeal, is a Judge;"
   }
 ]

@@ -20,7 +20,7 @@ def build(path: str, provisions: list[Provision]) -> sqlite3.Connection:
     return db
 
 
-def lookup(db: sqlite3.Connection, citation: str) -> str | None:
-    """Verbatim text for a citation. TEXT equality is BINARY collation, i.e. a byte comparison."""
-    row = db.execute("SELECT text FROM provision WHERE citation = ?", (citation,)).fetchone()
-    return row[0] if row else None
+def lookup(db: sqlite3.Connection, citation: str) -> tuple[str, list[str]] | None:
+    """Verbatim text and child citations. TEXT equality is BINARY collation, i.e. a byte comparison."""
+    row = db.execute("SELECT text, children FROM provision WHERE citation = ?", (citation,)).fetchone()
+    return (row[0], json.loads(row[1])) if row else None

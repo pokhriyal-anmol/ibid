@@ -33,7 +33,8 @@ class EvalTest(unittest.TestCase):
         self.assertEqual(r["sections"]["BNS"], {"recovered": 358, "expected": 358})
         self.assertRegex(r["gold_sha256"], r"^[0-9a-f]{64}$")
         self.assertTrue(r["parser_version"])
-        self.assertEqual(len(r["outcomes"]), 4)
+        self.assertEqual(r["categories"]["subprovision_lookup"], {"passed": 6, "total": 6})
+        self.assertEqual(len(r["outcomes"]), 10)
 
     def test_wrong_expected_text_fails_and_lowers_the_score(self):
         gold = json.loads(Path(GOLD).read_text())
@@ -44,6 +45,27 @@ class EvalTest(unittest.TestCase):
         r = json.loads(out.read_text())
         self.assertEqual(r["categories"]["section_lookup"], {"passed": 3, "total": 4})
         self.assertFalse(r["outcomes"][0]["pass"])
+
+    def run_bad_gold(self, edit):
+        gold = json.loads(Path(GOLD).read_text())
+        edit({g["id"]: g for g in gold})
+        bad = self.tmp / "bad-gold.json"
+        bad.write_text(json.dumps(gold))
+        _, out, _ = self.run_eval(gold=str(bad))
+        return {o["id"]: o["pass"] for o in json.loads(out.read_text())["outcomes"]}
+
+    def test_subsection_lookup_returns_only_that_subsection(self):
+        # known-bad: expecting the whole section's text for a subsection citation must fail
+        def edit(g):
+            g["sub-103-1"]["expected_text"] = g["lookup-103"]["expected_text"]
+        passed = self.run_bad_gold(edit)
+        self.assertFalse(passed["sub-103-1"])
+        self.assertTrue(passed["lookup-103"])
+
+    def test_section_lookup_must_return_its_child_addresses(self):
+        def edit(g):
+            g["lookup-103"]["expected_children"] = ["BNS 103(1)"]
+        self.assertFalse(self.run_bad_gold(edit)["lookup-103"])
 
     def test_truncated_source_drops_the_count_and_exits_nonzero(self):
         pages = self.tmp / "pages"
@@ -64,12 +86,21 @@ class EvalTest(unittest.TestCase):
     def test_indexed_text_is_english_only_and_citations_are_unique(self):
         _, _, idx = self.run_eval()
         rows = sqlite3.connect(idx).execute("SELECT citation, text FROM provision").fetchall()
-        self.assertEqual(len({c for c, _ in rows}), 358)
+        self.assertEqual(len({c for c, _ in rows}), len(rows))
+        self.assertEqual(len([c for c, _ in rows if re.fullmatch(r"BNS [1-9][0-9]*", c)]), 358)
         for citation, text in rows:
-            self.assertRegex(citation, r"^BNS [1-9][0-9]*$")
+            self.assertRegex(citation, r"^BNS [1-9][0-9]*(\([0-9A-Z]+\))?(\([a-z]+\))*( (proviso|explanation|exception|illustration) [1-9][0-9]*)*(\([a-z]+\))*$")
             self.assertIsNone(re.search("[^\x20-\x7e—–‘’“”]", text), citation)
             # page headers, chapter titles and group headings are not part of any section
             self.assertIsNone(re.search(r"GAZETTE|EXTRAORDINARY|Sec\. \d|CHAPTER|(?:^|\. )Of [a-z]", text), citation)
+
+    def test_every_child_address_exists_and_names_its_parent(self):
+        _, _, idx = self.run_eval()
+        db = sqlite3.connect(idx)
+        parent = dict(db.execute("SELECT citation, parent FROM provision"))
+        for citation, children in db.execute("SELECT citation, children FROM provision"):
+            for child in json.loads(children):
+                self.assertEqual(parent[child], citation)
 
     def test_source_texts_are_not_tracked_by_git(self):
         for path in ("data/raw/bns-prs.pdf", "data/raw/ipc-wipo.pdf"):

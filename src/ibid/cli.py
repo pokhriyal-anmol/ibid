@@ -13,22 +13,24 @@ from ibid.parse import BNS_TOTAL, PARSER_VERSION, parse_bns
 
 def run_eval(gold_path: str, bns_pdf: str, index_path: str, out_path: str) -> int:
     provisions = parse_bns(bns_pdf)
-    print(f"BNS: {len(provisions)}/{BNS_TOTAL}")
-    if len(provisions) != BNS_TOTAL:
+    sections = sum(p.parent is None for p in provisions)
+    print(f"BNS: {sections}/{BNS_TOTAL}")
+    if sections != BNS_TOTAL:
         print("error: section count does not match the known total", file=sys.stderr)
         return 1
     gold_bytes = Path(gold_path).read_bytes()
     db = index.build(index_path, provisions)
     outcomes, cats = [], defaultdict(lambda: {"passed": 0, "total": 0})
     for item in json.loads(gold_bytes):
-        ok = index.lookup(db, item["query"]) == item["expected_text"]
+        got = index.lookup(db, item["query"])
+        ok = got is not None and got[0] == item["expected_text"] and got[1] == item.get("expected_children", got[1])
         outcomes.append({"id": item["id"], "category": item["category"], "pass": ok})
         cats[item["category"]]["total"] += 1
         cats[item["category"]]["passed"] += ok
     results = {
         "gold_sha256": hashlib.sha256(gold_bytes).hexdigest(),
         "parser_version": PARSER_VERSION,
-        "sections": {"BNS": {"recovered": len(provisions), "expected": BNS_TOTAL}},
+        "sections": {"BNS": {"recovered": sections, "expected": BNS_TOTAL}},
         "categories": cats,
         "outcomes": outcomes,
     }
