@@ -130,5 +130,43 @@
       "BNS 140",
       "BNS 111"
     ]
+  },
+  {
+    "id": "xref-bns-66",
+    "category": "cross_reference_chain",
+    "query": "BNS 66",
+    "expected_text": "66. Whoever, commits an offence punishable under sub-section (1) or sub-section (2) of section 64 and in the course of such commission inflicts an injury which causes the death of the woman or causes the woman to be in a persistent vegetative state, shall be punished with rigorous imprisonment for a term which shall not be less than twenty years, but which may extend to imprisonment for life, which shall mean imprisonment for the remainder of that person’s natural life, or with death.",
+    "expected_refs": [
+      "BNS 64(1)",
+      "BNS 64(2)"
+    ]
+  },
+  {
+    "id": "xref-bns-117-3",
+    "category": "cross_reference_chain",
+    "query": "BNS 117(3)",
+    "expected_text": "(3) Whoever commits an offence under sub-section (1) and in the course of such commission causes any hurt to a person which causes that person to be in permanent disability or in persistent vegetative state, shall be punished with rigorous imprisonment for a term which shall not be less than ten years but which may extend to imprisonment for life, which shall mean imprisonment for the remainder of that person’s natural life.",
+    "expected_refs": [
+      "BNS 117(1)"
+    ]
+  },
+  {
+    "id": "xref-bns-117-2",
+    "category": "cross_reference_chain",
+    "query": "BNS 117(2)",
+    "expected_text": "(2) Whoever, except in the case provided for by sub-section (2) of section 122, voluntarily causes grievous hurt, shall be punished with imprisonment of either description for a term which may extend to seven years, and shall also be liable to fine.",
+    "expected_refs": [
+      "BNS 122(2)"
+    ]
+  },
+  {
+    "id": "xref-bns-353-3",
+    "category": "cross_reference_chain",
+    "query": "BNS 353(3)",
+    "expected_text": "(3) Whoever commits an offence specified in sub-section (2) in any place of worship or in any assembly engaged in the performance of religious worship or religious ceremonies, shall be punished with imprisonment which may extend to five years and shall also be liable to fine. Exception.—It does not amount to an offence, within the meaning of this section, when the person making, publishing or circulating any such statement, false information, rumour or report, has reasonable grounds for believing that such statement, false information, rumour or report is true and makes, publishes or circulates it in good faith and without any such intent as aforesaid.",
+    "expected_refs": [
+      "BNS 353(2)",
+      "BNS 353"
+    ]
   }
 ]
