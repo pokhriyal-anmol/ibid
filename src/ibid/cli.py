@@ -16,7 +16,21 @@ from ibid.xref import extract
 DIRECTIONS = {"ipc_to_bns": ("ipc", "bns"), "bns_to_ipc": ("bns", "ipc")}
 
 
-def run_eval(gold_path: str, bns_pdf: str, ipc_pdf: str, index_path: str, out_path: str, concordance_path: str | None = None) -> int:
+def pin_error(gold_path: str, gold_bytes: bytes) -> str | None:
+    """Scored mode: the pin file `<gold>.sha256` beside the gold file must hold its SHA-256."""
+    pin = Path(gold_path).with_suffix(".sha256")
+    if not pin.is_file():
+        return f"no pin file {pin}"
+    if pin.read_text().strip() != hashlib.sha256(gold_bytes).hexdigest():
+        return f"{gold_path} does not match its pin {pin}"
+    return None
+
+
+def run_eval(gold_path: str, bns_pdf: str, ipc_pdf: str, index_path: str, out_path: str, concordance_path: str | None = None, mode: str = "scored") -> int:
+    gold_bytes = Path(gold_path).read_bytes()
+    if mode == "scored" and (err := pin_error(gold_path, gold_bytes)):
+        print(f"error: scored mode refused: {err}", file=sys.stderr)
+        return 1
     provisions, counts = [], {}
     for act, parse, total, pdf in (("BNS", parse_bns, BNS_TOTAL, bns_pdf), ("IPC", parse_ipc, IPC_TOTAL, ipc_pdf)):
         parsed = parse(pdf)
@@ -27,7 +41,6 @@ def run_eval(gold_path: str, bns_pdf: str, ipc_pdf: str, index_path: str, out_pa
             return 1
         provisions += parsed
         counts[act] = {"recovered": recovered, "expected": total}
-    gold_bytes = Path(gold_path).read_bytes()
     db = index.build(index_path, provisions, extract(provisions))
     try:
         entries = concordance.load(concordance_path, db) if concordance_path else []
@@ -55,6 +68,8 @@ def run_eval(gold_path: str, bns_pdf: str, ipc_pdf: str, index_path: str, out_pa
         cats[item["category"]]["total"] += 1
         cats[item["category"]]["passed"] += ok
     results = {
+        "mode": mode,
+        "gold_version": Path(gold_path).stem,
         "gold_sha256": hashlib.sha256(gold_bytes).hexdigest(),
         "parser_version": PARSER_VERSION,
         "sections": counts,
@@ -75,11 +90,12 @@ def main(argv: list[str] | None = None) -> int:
     ev.add_argument("--gold", default="gold/draft.json")
     ev.add_argument("--bns", default=os.environ.get("IBID_BNS_PDF", "data/raw/bns-prs.pdf"))
     ev.add_argument("--ipc", default=os.environ.get("IBID_IPC_PDF", "data/raw/ipc-wipo.pdf"))
+    ev.add_argument("--mode", choices=["scored", "draft"], default="scored")
     ev.add_argument("--index", default="data/index/ibid.sqlite")
     ev.add_argument("--out", default="results.json")
     ev.add_argument("--concordance", default=None)
     a = ap.parse_args(argv)
-    return run_eval(a.gold, a.bns, a.ipc, a.index, a.out, a.concordance)
+    return run_eval(a.gold, a.bns, a.ipc, a.index, a.out, a.concordance, a.mode)
 
 
 if __name__ == "__main__":
