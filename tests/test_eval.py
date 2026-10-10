@@ -1,4 +1,5 @@
 """Tests go through the one seam: `ibid eval`. Needs IBID_BNS_PDF and IBID_IPC_PDF (the gitignored source PDFs)."""
+import hashlib
 import json
 import os
 import re
@@ -21,9 +22,9 @@ class EvalTest(unittest.TestCase):
         self.tmp = Path(tempfile.mkdtemp())
         self.addCleanup(shutil.rmtree, self.tmp)
 
-    def run_eval(self, name="r", gold=GOLD, pdf=PDF, ipc=IPC_PDF):
+    def run_eval(self, name="r", gold=GOLD, pdf=PDF, ipc=IPC_PDF, mode="draft"):
         out, idx = self.tmp / f"{name}.json", self.tmp / f"{name}.sqlite"
-        code = main(["eval", "--gold", gold, "--bns", pdf, "--ipc", ipc, "--index", str(idx), "--out", str(out)])
+        code = main(["eval", "--gold", gold, "--bns", pdf, "--ipc", ipc, "--index", str(idx), "--out", str(out), "--mode", mode])
         return code, out, idx
 
     def test_all_section_lookups_pass_and_results_carry_provenance(self):
@@ -174,6 +175,50 @@ class EvalTest(unittest.TestCase):
         for citation, children in db.execute("SELECT citation, children FROM provision"):
             for child in json.loads(children):
                 self.assertEqual(parent[child], citation)
+
+    def pinned_gold(self, name, mutate=None):
+        """Copy the draft gold set to <name>.json beside its pin; optionally change the file after pinning."""
+        path = self.tmp / f"{name}.json"
+        path.write_bytes(Path(GOLD).read_bytes())
+        path.with_suffix(".sha256").write_text(hashlib.sha256(path.read_bytes()).hexdigest() + "\n")
+        if mutate:
+            path.write_bytes(mutate(path.read_bytes()))
+        return str(path)
+
+    def test_scored_mode_runs_pinned_gold_and_records_mode_version_and_hash(self):
+        gold = self.pinned_gold("v1")
+        code, a, _ = self.run_eval("a", gold=gold, mode="scored")
+        _, b, _ = self.run_eval("b", gold=gold, mode="scored")
+        self.assertEqual(code, 0)
+        self.assertEqual(a.read_bytes(), b.read_bytes())
+        r = json.loads(a.read_text())
+        self.assertEqual((r["mode"], r["gold_version"]), ("scored", "v1"))
+        self.assertEqual(r["gold_sha256"], hashlib.sha256(Path(gold).read_bytes()).hexdigest())
+
+    def test_scored_mode_refuses_one_changed_byte_and_an_unpinned_file(self):
+        # known-bad: one appended byte after pinning must refuse; an unpinned file must refuse
+        code, out, _ = self.run_eval(gold=self.pinned_gold("v1", lambda b: b + b" "), mode="scored")
+        self.assertNotEqual(code, 0)
+        self.assertFalse(out.exists())
+        code, out, _ = self.run_eval("u", gold=GOLD, mode="scored")
+        self.assertNotEqual(code, 0)
+        self.assertFalse(out.exists())
+
+    def test_draft_mode_runs_without_a_pin_and_says_so(self):
+        code, a, _ = self.run_eval("a")
+        self.assertEqual(code, 0)
+        self.assertEqual(json.loads(a.read_text())["mode"], "draft")
+
+    def test_a_new_version_sits_beside_the_old_one_without_touching_it(self):
+        v1 = self.pinned_gold("v1")
+        v2 = self.pinned_gold("v2")
+        Path(v2).write_text(json.dumps(json.loads(Path(v2).read_text())[:3]))
+        Path(v2).with_suffix(".sha256").write_text(hashlib.sha256(Path(v2).read_bytes()).hexdigest())
+        self.assertEqual(Path(v1).read_bytes(), Path(GOLD).read_bytes())
+        for name, path in (("v1", v1), ("v2", v2)):
+            code, out, _ = self.run_eval(name, gold=path, mode="scored")
+            self.assertEqual(code, 0)
+            self.assertEqual(json.loads(out.read_text())["gold_version"], name)
 
     def test_source_texts_are_not_tracked_by_git(self):
         for path in ("data/raw/bns-prs.pdf", "data/raw/ipc-wipo.pdf"):
