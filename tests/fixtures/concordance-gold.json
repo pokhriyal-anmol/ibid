@@ -1,0 +1,13 @@
+[
+  {"id": "c-one", "category": "ipc_to_bns", "query": "IPC 302", "expected": [{"type": "one-to-one", "citations": ["BNS 103"]}]},
+  {"id": "c-rev", "category": "bns_to_ipc", "query": "BNS 103", "expected": [{"type": "one-to-one", "citations": ["IPC 302"]}]},
+  {"id": "c-split", "category": "ipc_to_bns", "query": "IPC 376", "expected": [{"type": "split", "citations": ["BNS 63", "BNS 64"]}]},
+  {"id": "c-split-rev", "category": "bns_to_ipc", "query": "BNS 64", "expected": [{"type": "split", "citations": ["IPC 376"]}]},
+  {"id": "c-merged", "category": "ipc_to_bns", "query": "IPC 300", "expected": [{"type": "merged", "citations": ["BNS 100"]}]},
+  {"id": "c-merged-rev", "category": "bns_to_ipc", "query": "BNS 100", "expected": [{"type": "merged", "citations": ["IPC 299", "IPC 300"]}]},
+  {"id": "c-removed", "category": "ipc_to_bns", "query": "IPC 309", "expected": [{"type": "removed", "citations": []}]},
+  {"id": "c-new", "category": "bns_to_ipc", "query": "BNS 111", "expected": [{"type": "new", "citations": []}]},
+  {"id": "c-none", "category": "ipc_to_bns", "query": "IPC 420", "expected": "no verified concordance"},
+  {"id": "c-unverified", "category": "ipc_to_bns", "query": "IPC 304B", "expected": "no verified concordance"},
+  {"id": "c-unverified-rev", "category": "bns_to_ipc", "query": "BNS 80", "expected": "no verified concordance"}
+]

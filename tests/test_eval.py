@@ -14,6 +14,8 @@ from ibid.cli import main
 GOLD = str(Path(__file__).parent.parent / "gold" / "draft.json")
 PDF = os.environ["IBID_BNS_PDF"]
 IPC_PDF = os.environ["IBID_IPC_PDF"]
+FIX = Path(__file__).parent / "fixtures"
+CGOLD, CONC = str(FIX / "concordance-gold.json"), str(FIX / "concordance.json")
 
 
 class EvalTest(unittest.TestCase):
@@ -21,9 +23,10 @@ class EvalTest(unittest.TestCase):
         self.tmp = Path(tempfile.mkdtemp())
         self.addCleanup(shutil.rmtree, self.tmp)
 
-    def run_eval(self, name="r", gold=GOLD, pdf=PDF, ipc=IPC_PDF):
+    def run_eval(self, name="r", gold=GOLD, pdf=PDF, ipc=IPC_PDF, conc=None):
         out, idx = self.tmp / f"{name}.json", self.tmp / f"{name}.sqlite"
-        code = main(["eval", "--gold", gold, "--bns", pdf, "--ipc", ipc, "--index", str(idx), "--out", str(out)])
+        extra = ["--concordance", conc] if conc else []
+        code = main(["eval", "--gold", gold, "--bns", pdf, "--ipc", ipc, "--index", str(idx), "--out", str(out), *extra])
         return code, out, idx
 
     def test_all_section_lookups_pass_and_results_carry_provenance(self):
@@ -174,6 +177,61 @@ class EvalTest(unittest.TestCase):
         for citation, children in db.execute("SELECT citation, children FROM provision"):
             for child in json.loads(children):
                 self.assertEqual(parent[child], citation)
+
+    def run_conc(self, entries=None, edit=None, name="c"):
+        gold = json.loads(Path(CGOLD).read_text())
+        if edit:
+            edit({g["id"]: g for g in gold})
+        g = self.tmp / f"{name}-gold.json"
+        g.write_text(json.dumps(gold))
+        conc = CONC
+        if entries is not None:
+            conc = str(self.tmp / f"{name}-conc.json")
+            Path(conc).write_text(json.dumps(entries))
+        code, out, _ = self.run_eval(name, gold=str(g), conc=conc)
+        return code, out
+
+    def test_concordance_serves_both_directions_with_every_mapping_type(self):
+        code, out = self.run_conc()
+        self.assertEqual(code, 0)
+        r = json.loads(out.read_text())
+        self.assertTrue(all(o["pass"] for o in r["outcomes"]), r["outcomes"])
+        self.assertEqual(r["categories"]["ipc_to_bns"], {"passed": 6, "total": 6})
+        self.assertEqual(r["categories"]["bns_to_ipc"], {"passed": 5, "total": 5})
+        got = {o["id"]: o["packet"] for o in r["outcomes"]}
+        self.assertEqual(got["c-removed"][0]["type"], "removed")
+        self.assertEqual(got["c-unverified"], "no verified concordance")
+
+    def test_concordance_expectations_that_are_wrong_fail(self):
+        # known-bad: a wrong target, a wrong type, and a served unverified entry must each miss
+        def edit(g):
+            g["c-one"]["expected"][0]["citations"] = ["BNS 104"]
+            g["c-split"]["expected"][0]["type"] = "one-to-one"
+            g["c-unverified"]["expected"] = [{"type": "one-to-one", "citations": ["BNS 80"]}]
+        _, out = self.run_conc(edit=edit)
+        passed = {o["id"]: o["pass"] for o in json.loads(out.read_text())["outcomes"]}
+        self.assertFalse(passed["c-one"] or passed["c-split"] or passed["c-unverified"])
+        self.assertTrue(passed["c-rev"] and passed["c-none"])
+
+    def test_verified_flag_decides_what_is_served(self):
+        # known-bad: flipping the unverified fixture entry to verified must make it served
+        entries = json.loads(Path(CONC).read_text())
+        entries[-1]["verified"] = True
+        _, out = self.run_conc(entries=entries)
+        passed = {o["id"]: o["pass"] for o in json.loads(out.read_text())["outcomes"]}
+        self.assertFalse(passed["c-unverified"])
+
+    def test_entry_naming_a_citation_absent_from_the_index_fails_the_run(self):
+        entries = json.loads(Path(CONC).read_text())
+        entries.append({"ipc": ["IPC 9999"], "bns": ["BNS 1"], "type": "one-to-one", "verified": False})
+        code, out = self.run_conc(entries=entries)
+        self.assertNotEqual(code, 0)
+        self.assertFalse(out.exists())
+
+    def test_concordance_results_are_byte_identical_across_runs(self):
+        _, a = self.run_conc(name="a")
+        _, b = self.run_conc(name="b")
+        self.assertEqual(a.read_bytes(), b.read_bytes())
 
     def test_source_texts_are_not_tracked_by_git(self):
         for path in ("data/raw/bns-prs.pdf", "data/raw/ipc-wipo.pdf"):

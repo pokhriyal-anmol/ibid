@@ -7,13 +7,16 @@ import sys
 from collections import defaultdict
 from pathlib import Path
 
-from ibid import index
+from ibid import concordance, index
 from ibid.ipc import IPC_TOTAL, parse_ipc
 from ibid.parse import BNS_TOTAL, PARSER_VERSION, parse_bns
 from ibid.xref import extract
 
 
-def run_eval(gold_path: str, bns_pdf: str, ipc_pdf: str, index_path: str, out_path: str) -> int:
+DIRECTIONS = {"ipc_to_bns": ("ipc", "bns"), "bns_to_ipc": ("bns", "ipc")}
+
+
+def run_eval(gold_path: str, bns_pdf: str, ipc_pdf: str, index_path: str, out_path: str, concordance_path: str | None = None) -> int:
     provisions, counts = [], {}
     for act, parse, total, pdf in (("BNS", parse_bns, BNS_TOTAL, bns_pdf), ("IPC", parse_ipc, IPC_TOTAL, ipc_pdf)):
         parsed = parse(pdf)
@@ -26,6 +29,11 @@ def run_eval(gold_path: str, bns_pdf: str, ipc_pdf: str, index_path: str, out_pa
         counts[act] = {"recovered": recovered, "expected": total}
     gold_bytes = Path(gold_path).read_bytes()
     db = index.build(index_path, provisions, extract(provisions))
+    try:
+        entries = concordance.load(concordance_path, db) if concordance_path else []
+    except ValueError as e:
+        print(f"error: {e}", file=sys.stderr)
+        return 1
     outcomes, cats = [], defaultdict(lambda: {"passed": 0, "total": 0})
     for item in json.loads(gold_bytes):
         outcome = {"id": item["id"], "category": item["category"]}
@@ -33,6 +41,10 @@ def run_eval(gold_path: str, bns_pdf: str, ipc_pdf: str, index_path: str, out_pa
             packet = index.search(db, item["query"])
             ok = [c for c, _ in packet] == item["expected_citations"]
             outcome["packet"] = packet
+        elif item["category"] in DIRECTIONS:
+            got = concordance.lookup(entries, item["query"], *DIRECTIONS[item["category"]])
+            ok = got == item["expected"]
+            outcome["packet"] = got
         else:
             got = index.lookup(db, item["query"])
             ok = got is not None and got[0] == item["expected_text"] and got[1] == item.get("expected_children", got[1])
@@ -65,8 +77,9 @@ def main(argv: list[str] | None = None) -> int:
     ev.add_argument("--ipc", default=os.environ.get("IBID_IPC_PDF", "data/raw/ipc-wipo.pdf"))
     ev.add_argument("--index", default="data/index/ibid.sqlite")
     ev.add_argument("--out", default="results.json")
+    ev.add_argument("--concordance", default=None)
     a = ap.parse_args(argv)
-    return run_eval(a.gold, a.bns, a.ipc, a.index, a.out)
+    return run_eval(a.gold, a.bns, a.ipc, a.index, a.out, a.concordance)
 
 
 if __name__ == "__main__":
