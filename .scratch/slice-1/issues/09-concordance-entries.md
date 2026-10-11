@@ -1,6 +1,6 @@
 # Verified concordance entries (about 60)
 
-Status: ready-for-human
+Status: done
 Blocked by: 05
 
 ## What to build

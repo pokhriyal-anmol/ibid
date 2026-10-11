@@ -1,6 +1,6 @@
 # Draft, refute, spot-check and freeze the gold set (about 48 items)
 
-Status: ready-for-human
+Status: done
 Blocked by: 07, 09
 
 ## What to build

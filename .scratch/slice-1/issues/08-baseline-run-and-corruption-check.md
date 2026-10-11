@@ -1,6 +1,6 @@
 # First baseline run with determinism and corrupted-run checks
 
-Status: needs-triage
+Status: done
 Blocked by: 03, 04, 05, 06, 07, 09, 10
 
 ## What to build
