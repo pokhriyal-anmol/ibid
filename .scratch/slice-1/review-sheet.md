@@ -41,7 +41,7 @@ Check each item against the cited PDF page of the pinned file. Mark pass or fail
 - expected: ["BNS 2(19)","BNS 2(35)"]
 - type: split
 - page: IPC 15 and BNS 4
-- result: [ ] pass  [ ] fail
+- result: [x] pass  [ ] fail
 
 ## ipc_to_bns-2
 
@@ -50,7 +50,7 @@ Check each item against the cited PDF page of the pinned file. Mark pass or fail
 - expected: ["BNS 2(36)","BNS 2(37)","BNS 2(38)"]
 - type: split
 - page: IPC 18 and BNS 6
-- result: [ ] pass  [ ] fail
+- result: [x] pass  [ ] fail
 
 ## ipc_to_bns-3
 
@@ -59,7 +59,7 @@ Check each item against the cited PDF page of the pinned file. Mark pass or fail
 - expected: ["BNS 5"]
 - type: merged
 - page: IPC 21 and BNS 8
-- result: [ ] pass  [ ] fail
+- result: [x] pass  [ ] fail
 
 ## ipc_to_bns-4
 
@@ -68,7 +68,7 @@ Check each item against the cited PDF page of the pinned file. Mark pass or fail
 - expected: ["BNS 8"]
 - type: merged
 - page: IPC 22 and BNS 8
-- result: [ ] pass  [ ] fail
+- result: [x] pass  [ ] fail
 
 ## ipc_to_bns-5
 
@@ -77,7 +77,7 @@ Check each item against the cited PDF page of the pinned file. Mark pass or fail
 - expected: []
 - type: removed
 - page: IPC 16 and BNS ?
-- result: [ ] pass  [ ] fail
+- result: [x] pass  [ ] fail
 
 ## ipc_to_bns-6
 
@@ -86,7 +86,7 @@ Check each item against the cited PDF page of the pinned file. Mark pass or fail
 - expected: []
 - type: removed
 - page: IPC 15 and BNS ?
-- result: [ ] pass  [ ] fail
+- result: [x] pass  [ ] fail
 
 ## ipc_to_bns-7
 
@@ -95,7 +95,7 @@ Check each item against the cited PDF page of the pinned file. Mark pass or fail
 - expected: ["BNS 3(5)"]
 - type: one-to-one
 - page: IPC 19 and BNS 7
-- result: [ ] pass  [ ] fail
+- result: [x] pass  [ ] fail
 
 ## bns_to_ipc-1
 
@@ -104,7 +104,7 @@ Check each item against the cited PDF page of the pinned file. Mark pass or fail
 - expected: []
 - type: new
 - page: IPC ? and BNS 35
-- result: [ ] pass  [ ] fail
+- result: [x] pass  [ ] fail
 
 ## Contested or unjudged (dropped from the drafts)
 

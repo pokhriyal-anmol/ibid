@@ -49,7 +49,9 @@ def page_words(pages_dir: str, act: str, page: int) -> list[str]:
     for p in range(page, page + PAGE_SPAN):
         f = Path(pages_dir) / act.lower() / f"{p:03d}.txt"
         if f.is_file():
-            words += norm(f.read_text()).split()
+            # footnote numerals sit glued to the word they mark: `10[the`, `9***`
+            text = norm(re.sub(r"\d*\*\*\*|\d+(?=\[)", "", f.read_text()))
+            words += re.sub(r"\s+([,;.])", r"\1", text).split()  # no gap where a mark was removed
     return words
 
 
