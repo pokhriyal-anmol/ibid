@@ -6,7 +6,7 @@ Check each item against the cited PDF page of the pinned file. Mark pass or fail
 
 - category: section_lookup
 - query: IPC 171E
-- expected: "171E. Punishment for bribery.—Whoever commits the offence of bribery shall be punished with imprisonment of either description for a term which may extend to one year, or with fine, or with both: Provided that bribery by treating shall be punished with fine only. Explanation.—“Treating” means that form of bribery where the gratification consists in food, drink, entertainment, or provision.
+- expected: "171E. Punishment for bribery.—Whoever commits the offence of bribery shall be punished with imprisonment of either description for a term which may extend to one year, or with fine, or with both: Provided that bribery by treating shall be punished with fine only. Explanation.—“Treating” means that form of bribery where the gratification consists in food, drink, entertainment, or provision."
 - page: IPC 46
 - result: [ ] pass  [ ] fail
 
@@ -14,7 +14,7 @@ Check each item against the cited PDF page of the pinned file. Mark pass or fail
 
 - category: section_lookup
 - query: BNS 271
-- expected: "271. Whoever unlawfully or negligently does any act which is, and which he knows or has reason to believe to be, likely to spread the infection of any disease dangerous to life, shall be punished with imprisonment of either description for a term which may extend to six months, or with fine, or with both.
+- expected: "271. Whoever unlawfully or negligently does any act which is, and which he knows or has reason to believe to be, likely to spread the infection of any disease dangerous to life, shall be punished with imprisonment of either description for a term which may extend to six months, or with fine, or with both."
 - page: BNS 74
 - result: [ ] pass  [ ] fail
 
@@ -22,7 +22,7 @@ Check each item against the cited PDF page of the pinned file. Mark pass or fail
 
 - category: subprovision_lookup
 - query: IPC 120B(2)
-- expected: "(2) Whoever is a party to a criminal conspiracy other than a criminal conspiracy to commit an offence punishable as aforesaid shall be punished with imprisonment of either description for a term not exceeding six months, or with fine or with both.
+- expected: "(2) Whoever is a party to a criminal conspiracy other than a criminal conspiracy to commit an offence punishable as aforesaid shall be punished with imprisonment of either description for a term not exceeding six months, or with fine or with both."
 - page: IPC 35
 - result: [ ] pass  [ ] fail
 
@@ -30,7 +30,7 @@ Check each item against the cited PDF page of the pinned file. Mark pass or fail
 
 - category: cross_reference_chain
 - query: BNS 118(1)
-- expected: "118. (1) Whoever, except in the case provided for by sub-section (1) of section 122, voluntarily causes hurt by means of any instrument for shooting, stabbing or cutting, or any instrument which, used as a weapon of offence, is likely to cause death, or by means of fire or any heated substance, or by means of any poison or any corrosive substance, or by means of any explosive substance, or by means of any substance which it is deleterious to the human body to inhale, to swallow, or to receive into the blood, or by means of any animal, shall be punished with imprisonment of either description for a term which may extend to three years, or with fine which may extend to twenty thousand rupees, or with both.
+- expected: "(1) Whoever, except in the case provided for by sub-section (1) of section 122, voluntarily causes hurt by means of any instrument for shooting, stabbing or cutting, or any instrument which, used as a weapon of offence, is likely to cause death, or by means of fire or any heated substance, or by means of any poison or any corrosive substance, or by means of any explosive substance, or by means of any substance which it is deleterious to the human body to inhale, to swallow, or to receive into the blood, or by means of any animal, shall be punished with imprisonment of either description for a term which may extend to three years, or with fine which may extend to twenty thousand rupees, or with both."
 - page: BNS 39
 - result: [ ] pass  [ ] fail
 
