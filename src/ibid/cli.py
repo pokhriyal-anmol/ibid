@@ -128,6 +128,10 @@ def main(argv: list[str] | None = None) -> int:
     br.add_argument("--k", type=int, required=True)
     br.add_argument("--r", type=float, required=True, help="relative threshold in (0, 1]")
     br.add_argument("--rollup", choices=("max", "sum"), default="max")
+    br.add_argument("--bm25-k1", type=float, default=1.2)
+    br.add_argument("--bm25-b", type=float, default=0.75)
+    br.add_argument("--stem", default="none", help="none or suffix")
+    br.add_argument("--levels", default="all", help="all, top or leaf")
     br.add_argument("--out", required=True)
     br.add_argument("--sample", nargs="?", type=int, const=200, default=None, metavar="N")
     br.add_argument("--frozen-rule", default="results/frozen-rule.json")
@@ -163,7 +167,8 @@ def main(argv: list[str] | None = None) -> int:
     if a.cmd == "bench" and a.bench_cmd == "run":
         from ibid.bench import run_bench
         return run_bench(a.split, a.labels, a.index, a.k, a.r, a.rollup, a.out, a.manifest, a.sample,
-                         a.frozen_rule, a.ledger, a.rescore_test)
+                         a.frozen_rule, a.ledger, a.rescore_test,
+                         {"bm25_k1": a.bm25_k1, "bm25_b": a.bm25_b, "stem": a.stem, "levels": a.levels})
     if a.cmd == "bench" and a.bench_cmd == "freeze":
         from ibid.bench import freeze_rule
         return freeze_rule(a.log, a.round, a.out)
