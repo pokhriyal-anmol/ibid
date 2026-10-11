@@ -1,6 +1,6 @@
 # 200-item sample mode for fast iteration
 
-Status: ready-for-agent
+Status: done
 Blocked by: 02
 
 What to build: a `--sample N` option (default 200 when given without a value is fine) on the run command that selects a deterministic subset of a split (for example the first N by sorted `id`, or a fixed-seed draw recorded in the results file). The results file marks the run as a sample and records N and the selection rule so a sample score is never mistaken for a full-split score.
