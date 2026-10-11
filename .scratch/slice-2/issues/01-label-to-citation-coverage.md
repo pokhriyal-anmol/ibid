@@ -1,6 +1,6 @@
 # Map the 100 benchmark labels to IPC citations and check each exists in the index
 
-Status: needs-triage
+Status: ready-for-agent
 Blocked by: none
 
 What to build: a deterministic mapping from a LeSICiN label string (`Section N in The Indian Penal Code`) to an IPC citation (`IPC N`), and a command (for example `ibid bench check-labels --data data/raw/lesicin/label_vocab.json --index <index>`) that reports, for each of the 100 labels, whether its citation is a provision in Ibid's IPC section tree. Exit non-zero and list every missing or unparseable label. This is the first check the spec names under Data.

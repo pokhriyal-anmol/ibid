@@ -3,7 +3,7 @@
 Status: needs-triage
 Blocked by: 02, 06
 
-What to build: a frozen-rule record (rule version and hash) and a guard in the run command: the test split can be scored only against a frozen rule, and only once. A second test score is refused unless an explicit flag (for example `--rescore-test`) is passed; when it is, the first test score is kept and both are reported. The guard keys on the pinned test-file hash from ticket 6, not the path.
+What to build: a frozen-rule record (rule version and hash) and a guard in the run command: the test split can be scored only against a frozen rule, and only once. A second test score is refused unless an explicit flag (for example `--rescore-test`) is passed; when it is, the first test score is kept and both are reported. A `freeze` command writes the frozen-rule record to `results/frozen-rule.json`; every test score is appended to a committed ledger `results/test-ledger.json`, and the guard keys on the pinned test-file hash from ticket 06 in that ledger, not the path. Dev and train scoring never touch the ledger.
 
 User stories: 9.
 

@@ -3,7 +3,7 @@
 Status: needs-triage
 Blocked by: 03
 
-What to build: a way to record one optimisation round (for example `ibid bench round --change <knob>=<value>`): it scores train and dev with the new rule version, appends to `results/optimisation-log.json` the round number, the single declared knob changed, rule version, rule hash, train and dev scores, and the train/dev gap. It refuses a round that changes more than one knob or a knob outside the declared list (tokenisation, stop-word list, BM25 weighting parameters, indexed provision levels, roll-up, k, r). It reports whether saturation is reached: dev macro-F1 gain below 0.5 points absolute for 3 consecutive rounds, or 20 rounds, and flags when dev stops improving while train keeps rising. Round 0 is the unmodified rule v1.
+What to build: a way to record one optimisation round (for example `ibid bench round --change <knob>=<value>`): it scores train and dev with the new rule version, appends to `results/optimisation-log.json` the round number, the single declared knob changed, rule version, rule hash, train and dev scores, and the train/dev gap. One knob means one entry of the declared list changed in one way (for example adding one stop word, or changing one BM25 parameter); replacing the whole stop-word list is several changes. It refuses a round that changes more than one knob or a knob outside the declared list (tokenisation, stop-word list, BM25 weighting parameters, indexed provision levels, roll-up, k, r). It reports whether saturation is reached: dev macro-F1 gain below 0.5 points absolute for 3 consecutive rounds, or 20 rounds, and flags when dev stops improving while train keeps rising. Round 0 is the unmodified rule v1.
 
 User stories: 8.
 
