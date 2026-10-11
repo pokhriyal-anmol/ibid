@@ -45,14 +45,15 @@ STOP_WORDS = (
     "a an and are as at be been but by for from had has have he her his i in is it its of on or she so that the their "
     "them there they this to was were which who will with you your"
 ).split()
-SECTION_SCORE = "max"  # a section scores the max BM25 over its retrieved provisions
+ROLLUPS = {"max": max, "sum": sum}  # how a section scores from the BM25 of its retrieved provisions
 
 
 SAMPLE_RULE = "first N cases by sorted id"
 
 
-def rule_hash() -> str:
-    params = {"stop_words": sorted(STOP_WORDS), "split": "non-letters", "join": "OR", "section_score": SECTION_SCORE}
+def rule_hash(k: int, r: float, rollup: str) -> str:
+    params = {"stop_words": sorted(STOP_WORDS), "split": "non-letters", "join": "OR", "section_score": rollup,
+              "top_k": k, "relative_threshold": r}
     return hashlib.sha256(json.dumps(params, sort_keys=True).encode()).hexdigest()
 
 
@@ -61,19 +62,25 @@ def to_fts_query(raw: str) -> str:
     return " OR ".join(f'"{t}"' for t in seen)  # quoted so a word like "near" is never an FTS operator
 
 
-def predict(db: sqlite3.Connection, raw: str, space: set[str], k: int) -> list[str]:
-    """Top-k section citations inside the label space, best first, ties by citation string."""
+def rank_sections(db: sqlite3.Connection, raw: str, space: set[str], rollup: str) -> list[tuple[str, float]]:
+    """Section citations inside the label space with their roll-up score, best first, ties by citation string."""
     query = to_fts_query(raw)
     if not query:
         return []
     parent = dict(db.execute("SELECT citation, parent FROM provision WHERE citation LIKE 'IPC %'"))
-    best: dict[str, float] = {}
+    hits: dict[str, list[float]] = {}
     for cite, rank in db.execute("SELECT citation, rank FROM fts WHERE fts MATCH ? AND citation LIKE 'IPC %'", (query,)):
         while parent[cite] is not None:
             cite = parent[cite]
         if cite in space:
-            best[cite] = max(best.get(cite, float("-inf")), -rank)
-    return sorted(best, key=lambda c: (-best[c], c))[:k]
+            hits.setdefault(cite, []).append(-rank)
+    return sorted(((c, ROLLUPS[rollup](v)) for c, v in hits.items()), key=lambda cs: (-cs[1], cs[0]))
+
+
+def predict(ranked: list[tuple[str, float]], k: int, r: float) -> tuple[list[str], list[str]]:
+    """Top-k sections, and every section scoring at least r times the top score (scores are not comparable across queries)."""
+    top = [c for c, _ in ranked[:k]]
+    return top, [c for c, s in ranked if s >= r * ranked[0][1]]
 
 
 def f1(tp: int, fp: int, fn: int) -> float:
@@ -112,9 +119,10 @@ def verify_pinned(paths: list[str], manifest_path: str) -> int:
     return bad
 
 
-def run_bench(split_path: str, labels_path: str, index_path: str, k: int, out_path: str, manifest_path: str, sample: int | None = None) -> int:
-    if k < 1:
-        print("error: k must be at least 1", file=sys.stderr)
+def run_bench(split_path: str, labels_path: str, index_path: str, k: int, r: float, rollup: str, out_path: str,
+              manifest_path: str, sample: int | None = None) -> int:
+    if k < 1 or not 0 < r <= 1 or rollup not in ROLLUPS:
+        print("error: need k >= 1, 0 < r <= 1 and a known roll-up", file=sys.stderr)
         return 1
     if sample is not None and sample < 1:
         print("error: --sample must be at least 1", file=sys.stderr)
@@ -139,21 +147,28 @@ def run_bench(split_path: str, labels_path: str, index_path: str, k: int, out_pa
         print("error: empty split, or a case has a label outside the label vocabulary", file=sys.stderr)
         return 1
     db = sqlite3.connect(f"file:{index_path}?mode=ro", uri=True)
-    preds = [predict(db, " ".join(c["text"]), space, k) for c in cases]
+    ranked = [rank_sections(db, " ".join(c["text"]), space, rollup) for c in cases]
+    top_k, above_r = zip(*(predict(x, k, r) for x in ranked)) if ranked else ((), ())
     results = {
         "inputs": {"split_sha256": sha256(split_path), "labels_sha256": sha256(labels_path), "index_sha256": sha256(index_path)},
-        "rule": {"name": RULE_NAME, "version": RULE_VERSION, "params_sha256": rule_hash()},
+        "rule": {"name": RULE_NAME, "version": RULE_VERSION, "params_sha256": rule_hash(k, r, rollup)},
         "parser_version": PARSER_VERSION,
         "k": k,
         "cases": len(cases),
         **({"sample": sample, "sample_rule": SAMPLE_RULE} if sample is not None else {}),
-        "scores": score(gold, [set(p) for p in preds], space),
+        "section_score": rollup,
+        "scores": score(gold, [set(p) for p in top_k], space),
+        "threshold": {
+            "r": r,
+            "scores": score(gold, [set(p) for p in above_r], space),
+            "predictions": {c["id"]: p for c, p in zip(cases, above_r)},
+        },
         "conventions": {
             "label_space": f"{len(space)} labels",
             "macro_f1": "mean of per-label F1 over the whole label space; a label with no gold and no prediction scores 0",
             "jaccard": "mean over cases of |P and G| / |P or G|; an empty union scores 0",
         },
-        "predictions": {c["id"]: p for c, p in zip(cases, preds)},
+        "predictions": {c["id"]: p for c, p in zip(cases, top_k)},
     }
     with open(out_path, "w") as f:
         f.write(json.dumps(results, indent=2, sort_keys=True) + "\n")
