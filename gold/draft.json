@@ -1,0 +1,172 @@
+[
+  {
+    "id": "lookup-102",
+    "category": "section_lookup",
+    "query": "BNS 102",
+    "expected_text": "102. If a person, by doing anything which he intends or knows to be likely to cause death, commits culpable homicide by causing the death of any person, whose death he neither intends nor knows himself to be likely to cause, the culpable homicide committed by the offender is of the description of which it would have been if he had caused the death of the person whose death he intended or knew himself to be likely to cause."
+  },
+  {
+    "id": "lookup-103",
+    "category": "section_lookup",
+    "query": "BNS 103",
+    "expected_text": "103. (1) Whoever commits murder shall be punished with death or imprisonment for life, and shall also be liable to fine. (2) When a group of five or more persons acting in concert commits murder on the ground of race, caste or community, sex, place of birth, language, personal belief or any other similar ground each member of such group shall be punished with death or with imprisonment for life, and shall also be liable to fine.",
+    "expected_children": [
+      "BNS 103(1)",
+      "BNS 103(2)"
+    ]
+  },
+  {
+    "id": "lookup-104",
+    "category": "section_lookup",
+    "query": "BNS 104",
+    "expected_text": "104. Whoever, being under sentence of imprisonment for life, commits murder, shall be punished with death or with imprisonment for life, which shall mean the remainder of that person’s natural life."
+  },
+  {
+    "id": "lookup-357",
+    "category": "section_lookup",
+    "query": "BNS 357",
+    "expected_text": "357. Whoever, being bound by a lawful contract to attend on or to supply the wants of any person who, by reason of youth, or of unsoundness of mind, or of a disease or bodily weakness, is helpless or incapable of providing for his own safety or of supplying his own wants, voluntarily omits so to do, shall be punished with imprisonment of either description for a term which may extend to three months, or with fine which may extend to five thousand rupees, or with both."
+  },
+  {
+    "id": "ipc-lookup-302",
+    "category": "section_lookup",
+    "query": "IPC 302",
+    "expected_text": "302. Punishment for murder.—Whoever commits murder shall be punished with death or imprisonment for life, and shall also be liable to fine."
+  },
+  {
+    "id": "ipc-lookup-103",
+    "category": "section_lookup",
+    "query": "IPC 103",
+    "expected_text": "103. When the right of private defence of property extends to causing death.—The right of private defence of property extends, under the restrictions mentioned in section 99, to the voluntary causing of death or of any other harm to the wrong-doer, if the offence, the committing of which, or the attempting to commit which, occasions the exercise of the right, be an offence of any of the descriptions hereinafter enumerated, namely:— First.—Robbery; Secondly.—House-breaking by night; Thirdly.—Mischief by fire committed on any building, tent or vessel, which building, tent or vessel is used as a human dwelling, or as a place for the custody of property; Fourthly.—Theft, mischief, or house-trespass, under such circumstances as may reasonably cause apprehension that death or grievous hurt will be the consequence, if such right of private defence is not exercised."
+  },
+  {
+    "id": "sub-103-1",
+    "category": "subprovision_lookup",
+    "query": "BNS 103(1)",
+    "expected_text": "(1) Whoever commits murder shall be punished with death or imprisonment for life, and shall also be liable to fine."
+  },
+  {
+    "id": "clause-8-5-a",
+    "category": "subprovision_lookup",
+    "query": "BNS 8(5)(a)",
+    "expected_text": "(a) two months when the amount of the fine does not exceed five thousand rupees;"
+  },
+  {
+    "id": "proviso-173",
+    "category": "subprovision_lookup",
+    "query": "BNS 173 proviso 1",
+    "expected_text": "Provided that bribery by treating shall be punished with fine only."
+  },
+  {
+    "id": "explanation-2-4",
+    "category": "subprovision_lookup",
+    "query": "BNS 2(4) explanation 1",
+    "expected_text": "Explanation 1.—It is not essential to counterfeiting that the imitation should be exact."
+  },
+  {
+    "id": "exception-164",
+    "category": "subprovision_lookup",
+    "query": "BNS 164 exception 1",
+    "expected_text": "Exception.—This provision does not extend to the case in which the harbour is given by the spouse of the deserter."
+  },
+  {
+    "id": "illustration-2-16",
+    "category": "subprovision_lookup",
+    "query": "BNS 2(16) illustration 1",
+    "expected_text": "Illustration. A Magistrate exercising jurisdiction in respect of a charge on which he has power to sentence to fine or imprisonment, with or without appeal, is a Judge;"
+  },
+  {
+    "id": "sub-ipc-304B-2",
+    "category": "subprovision_lookup",
+    "query": "IPC 304B(2)",
+    "expected_text": "(2) Whoever commits dowry death shall be punished with imprisonment for a term which shall not be less than seven years but which may extend to imprisonment for life."
+  },
+  {
+    "id": "exception-ipc-300-1",
+    "category": "subprovision_lookup",
+    "query": "IPC 300 exception 1",
+    "expected_text": "Exception 1.—When culpable homicide is not murder.—Culpable homicide is not murder if the offender, whilst deprived of the power of self-control by grave and sudden provocation, causes the death of the person who gave the provocation or causes the death of any other person by mistake or accident. The above exception is subject to the following provisos:— First.—That the provocation is not sought or voluntarily provoked by the offender as an excuse for killing or doing harm to any person. Secondly.—That the provocation is not given by anything done in obedience to the law, or by a public servant in the lawful exercise of the powers of such public servant. Thirdly.—That the provocation is not given by anything done in the lawful exercise of the right of private defence."
+  },
+  {
+    "id": "keyword-conceal",
+    "category": "keyword",
+    "query": "conceal",
+    "expected_citations": [
+      "BNS 330(1)",
+      "IPC 443",
+      "BNS 351(4)",
+      "BNS 94",
+      "IPC 507",
+      "IPC 318",
+      "BNS 113(6)",
+      "BNS 351",
+      "BNS 330",
+      "BNS 113"
+    ]
+  },
+  {
+    "id": "keyword-dowry",
+    "category": "keyword",
+    "query": "dowry",
+    "expected_citations": [
+      "BNS 80(1) explanation 1",
+      "IPC 304B",
+      "IPC 304B(1) explanation 1",
+      "BNS 80",
+      "BNS 80(1)",
+      "IPC 304B(1)",
+      "BNS 80(2)",
+      "IPC 304B(2)"
+    ]
+  },
+  {
+    "id": "keyword-ransom",
+    "category": "keyword",
+    "query": "ransom",
+    "expected_citations": [
+      "IPC 364A",
+      "BNS 140(2)",
+      "BNS 111(1)",
+      "BNS 140",
+      "BNS 111"
+    ]
+  },
+  {
+    "id": "xref-bns-66",
+    "category": "cross_reference_chain",
+    "query": "BNS 66",
+    "expected_text": "66. Whoever, commits an offence punishable under sub-section (1) or sub-section (2) of section 64 and in the course of such commission inflicts an injury which causes the death of the woman or causes the woman to be in a persistent vegetative state, shall be punished with rigorous imprisonment for a term which shall not be less than twenty years, but which may extend to imprisonment for life, which shall mean imprisonment for the remainder of that person’s natural life, or with death.",
+    "expected_refs": [
+      "BNS 64(1)",
+      "BNS 64(2)"
+    ]
+  },
+  {
+    "id": "xref-bns-117-3",
+    "category": "cross_reference_chain",
+    "query": "BNS 117(3)",
+    "expected_text": "(3) Whoever commits an offence under sub-section (1) and in the course of such commission causes any hurt to a person which causes that person to be in permanent disability or in persistent vegetative state, shall be punished with rigorous imprisonment for a term which shall not be less than ten years but which may extend to imprisonment for life, which shall mean imprisonment for the remainder of that person’s natural life.",
+    "expected_refs": [
+      "BNS 117(1)"
+    ]
+  },
+  {
+    "id": "xref-bns-117-2",
+    "category": "cross_reference_chain",
+    "query": "BNS 117(2)",
+    "expected_text": "(2) Whoever, except in the case provided for by sub-section (2) of section 122, voluntarily causes grievous hurt, shall be punished with imprisonment of either description for a term which may extend to seven years, and shall also be liable to fine.",
+    "expected_refs": [
+      "BNS 122(2)"
+    ]
+  },
+  {
+    "id": "xref-bns-353-3",
+    "category": "cross_reference_chain",
+    "query": "BNS 353(3)",
+    "expected_text": "(3) Whoever commits an offence specified in sub-section (2) in any place of worship or in any assembly engaged in the performance of religious worship or religious ceremonies, shall be punished with imprisonment which may extend to five years and shall also be liable to fine. Exception.—It does not amount to an offence, within the meaning of this section, when the person making, publishing or circulating any such statement, false information, rumour or report, has reasonable grounds for believing that such statement, false information, rumour or report is true and makes, publishes or circulates it in good faith and without any such intent as aforesaid.",
+    "expected_refs": [
+      "BNS 353(2)",
+      "BNS 353"
+    ]
+  }
+]

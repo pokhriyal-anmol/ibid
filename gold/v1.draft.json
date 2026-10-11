@@ -1,0 +1,500 @@
+[
+  {
+    "id": "section_lookup-1",
+    "category": "section_lookup",
+    "query": "IPC 171E",
+    "act": "IPC",
+    "page": 46,
+    "expected_text": "171E. Punishment for bribery.—Whoever commits the offence of bribery shall be punished with imprisonment of either description for a term which may extend to one year, or with fine, or with both: Provided that bribery by treating shall be punished with fine only. Explanation.—“Treating” means that form of bribery where the gratification consists in food, drink, entertainment, or provision."
+  },
+  {
+    "id": "section_lookup-2",
+    "category": "section_lookup",
+    "query": "IPC 268",
+    "act": "IPC",
+    "page": 66,
+    "expected_text": "268. Public nuisance.—A person is guilty of a public nuisance who does any act or is guilty of an illegal omission which causes any common injury, danger or annoyance to the public or to the people in general who dwell or occupy property in the vicinity, or which must necessarily cause injury, obstruction, danger or annoyance to persons who may have occasion to use any public right. A common nuisance is not excused on the ground that it causes some convenience or advantage."
+  },
+  {
+    "id": "section_lookup-3",
+    "category": "section_lookup",
+    "query": "IPC 302",
+    "act": "IPC",
+    "page": 74,
+    "expected_text": "302. Punishment for murder.—Whoever commits murder shall be punished with death or [imprisonment for life], and shall also be liable to fine."
+  },
+  {
+    "id": "section_lookup-4",
+    "category": "section_lookup",
+    "query": "IPC 420",
+    "act": "IPC",
+    "page": 103,
+    "expected_text": "420. Cheating and dishonestly inducing delivery of property.—Whoever cheats and thereby dishonestly induces the person deceived to deliver any property to any person, or to make, alter or destroy the whole or any part of a valuable security, or anything which is signed or sealed, and which is capable of being converted into a valuable security, shall be punished with imprisonment of either description for a term which may extend to seven years, and shall also be liable to fine."
+  },
+  {
+    "id": "section_lookup-5",
+    "category": "section_lookup",
+    "query": "BNS 85",
+    "act": "BNS",
+    "page": 29,
+    "expected_text": "85. Whoever, being the husband or the relative of the husband of a woman, subjects such woman to cruelty shall be punished with imprisonment for a term which may extend to three years and shall also be liable to fine."
+  },
+  {
+    "id": "section_lookup-6",
+    "category": "section_lookup",
+    "query": "BNS 104",
+    "act": "BNS",
+    "page": 34,
+    "expected_text": "104. Whoever, being under sentence of imprisonment for life, commits murder, shall be punished with death or with imprisonment for life, which shall mean the remainder of that person’s natural life."
+  },
+  {
+    "id": "section_lookup-7",
+    "category": "section_lookup",
+    "query": "BNS 149",
+    "act": "BNS",
+    "page": 48,
+    "expected_text": "149. Whoever collects men, arms or ammunition or otherwise prepares to wage war with the intention of either waging or being prepared to wage war against the Government of India, shall be punished with imprisonment for life or imprisonment of either description for a term not exceeding ten years, and shall also be liable to fine."
+  },
+  {
+    "id": "section_lookup-8",
+    "category": "section_lookup",
+    "query": "BNS 271",
+    "act": "BNS",
+    "page": 74,
+    "expected_text": "271. Whoever unlawfully or negligently does any act which is, and which he knows or has reason to believe to be, likely to spread the infection of any disease dangerous to life, shall be punished with imprisonment of either description for a term which may extend to six months, or with fine, or with both."
+  },
+  {
+    "id": "subprovision_lookup-1",
+    "category": "subprovision_lookup",
+    "query": "BNS 61(2)(b)",
+    "act": "BNS",
+    "page": 22,
+    "expected_text": "(b) other than a criminal conspiracy to commit an offence punishable as aforesaid shall be punished with imprisonment of either description for a term not exceeding six months, or with fine or with both."
+  },
+  {
+    "id": "subprovision_lookup-2",
+    "category": "subprovision_lookup",
+    "query": "BNS 78(2)",
+    "act": "BNS",
+    "page": 28,
+    "expected_text": "(2) Whoever commits the offence of stalking shall be punished on first conviction with imprisonment of either description for a term which may extend to three years, and shall also be liable to fine; and be punished on a second or subsequent conviction, with imprisonment of either description for a term which may extend to five years, and shall also be liable to fine."
+  },
+  {
+    "id": "subprovision_lookup-3",
+    "category": "subprovision_lookup",
+    "query": "BNS 115(2)",
+    "act": "BNS",
+    "page": 38,
+    "expected_text": "(2) Whoever, except in the case provided for by sub-section (1) of section 122 voluntarily causes hurt, shall be punished with imprisonment of either description for a term which may extend to one year, or with fine which may extend to ten thousand rupees, or with both."
+  },
+  {
+    "id": "subprovision_lookup-4",
+    "category": "subprovision_lookup",
+    "query": "BNS 137(2)",
+    "act": "BNS",
+    "page": 45,
+    "expected_text": "(2) Whoever kidnaps any person from India or from lawful guardianship shall be punished with imprisonment of either description for a term which may extend to seven years, and shall also be liable to fine."
+  },
+  {
+    "id": "subprovision_lookup-5",
+    "category": "subprovision_lookup",
+    "query": "BNS 189(1)(c)",
+    "act": "BNS",
+    "page": 54,
+    "expected_text": "(c) to commit any mischief or criminal trespass, or other offence; or"
+  },
+  {
+    "id": "subprovision_lookup-6",
+    "category": "subprovision_lookup",
+    "query": "BNS 303(1)",
+    "act": "BNS",
+    "page": 78,
+    "expected_text": "(1) Whoever, intending to take dishonestly any movable property out of the possession of any person without that person’s consent, moves that property in order to such taking, is said to commit theft."
+  },
+  {
+    "id": "subprovision_lookup-7",
+    "category": "subprovision_lookup",
+    "query": "IPC 120B(2)",
+    "act": "IPC",
+    "page": 35,
+    "expected_text": "(2) Whoever is a party to a criminal conspiracy other than a criminal conspiracy to commit an offence punishable as aforesaid shall be punished with imprisonment of either description for a term not exceeding six months, or with fine or with both."
+  },
+  {
+    "id": "subprovision_lookup-8",
+    "category": "subprovision_lookup",
+    "query": "IPC 171B(2)",
+    "act": "IPC",
+    "page": 45,
+    "expected_text": "(2) A person who offers, or agrees to give, or offers or attempts to procure, a gratification shall be deemed to give a gratification."
+  },
+  {
+    "id": "subprovision_lookup-9",
+    "category": "subprovision_lookup",
+    "query": "IPC 304B(2)",
+    "act": "IPC",
+    "page": 75,
+    "expected_text": "(2) Whoever commits dowry death shall be punished with imprisonment for a term which shall not be less than seven years but which may extend to imprisonment for life."
+  },
+  {
+    "id": "subprovision_lookup-10",
+    "category": "subprovision_lookup",
+    "query": "IPC 375(a)",
+    "act": "IPC",
+    "page": 90,
+    "expected_text": "(a) penetrates his penis, to any extent, into the vagina, mouth, urethra or anus of a woman or makes her to do so with him or any other person; or"
+  },
+  {
+    "id": "cross_reference_chain-1",
+    "category": "cross_reference_chain",
+    "query": "BNS 29",
+    "act": "BNS",
+    "page": 13,
+    "expected_text": "29. The exceptions in sections 25, 26 and 27 do not extend to acts which are offences independently of any harm which they may cause, or be intended to cause, or be known to be likely to cause, to the person giving the consent, or on whose behalf the consent is given.",
+    "expected_targets": [
+      "BNS 25",
+      "BNS 26",
+      "BNS 27"
+    ]
+  },
+  {
+    "id": "cross_reference_chain-2",
+    "category": "cross_reference_chain",
+    "query": "BNS 52",
+    "act": "BNS",
+    "page": 19,
+    "expected_text": "52. If the act for which the abettor is liable under section 51 is committed in addition to the act abetted, and constitute a distinct offence, the abettor is liable to punishment for each of the offences.",
+    "expected_targets": [
+      "BNS 51"
+    ]
+  },
+  {
+    "id": "cross_reference_chain-3",
+    "category": "cross_reference_chain",
+    "query": "BNS 89",
+    "act": "BNS",
+    "page": 30,
+    "expected_text": "89. Whoever commits the offence under section 88 without the consent of the woman, whether the woman is quick with child or not, shall be punished with imprisonment for life, or with imprisonment of either description for a term which may extend to ten years, and shall",
+    "expected_targets": [
+      "BNS 88"
+    ]
+  },
+  {
+    "id": "cross_reference_chain-4",
+    "category": "cross_reference_chain",
+    "query": "BNS 118(1)",
+    "act": "BNS",
+    "page": 39,
+    "expected_text": "118. (1) Whoever, except in the case provided for by sub-section (1) of section 122, voluntarily causes hurt by means of any instrument for shooting, stabbing or cutting, or any instrument which, used as a weapon of offence, is likely to cause death, or by means of fire or any heated substance, or by means of any poison or any corrosive substance, or by means of any explosive substance, or by means of any substance which it is deleterious to the human body to inhale, to swallow, or to receive into the blood, or by means of any animal, shall be punished with imprisonment of either description for a term which may extend to three years, or with fine which may extend to twenty thousand rupees, or with both.",
+    "expected_targets": [
+      "BNS 122(1)"
+    ]
+  },
+  {
+    "id": "cross_reference_chain-5",
+    "category": "cross_reference_chain",
+    "query": "IPC 121A",
+    "act": "IPC",
+    "page": 35,
+    "expected_text": "121A. Conspiracy to commit offences punishable by section 121.—Whoever within or without [India] conspires to commit any of the offences punishable by section 121, or conspires to overawe, by means of criminal force or the show of criminal force, the Central Government or any State Government, shall be punished with imprisonment for life, or with imprisonment of either description which may extend to ten years, and shall also be liable to fine.",
+    "expected_targets": [
+      "IPC 121"
+    ]
+  },
+  {
+    "id": "cross_reference_chain-6",
+    "category": "cross_reference_chain",
+    "query": "IPC 151",
+    "act": "IPC",
+    "page": 40,
+    "expected_text": "Explanation.—If the assembly is an unlawful assembly within the meaning of section 141, the offender will be punishable under section 145.",
+    "expected_targets": [
+      "IPC 141",
+      "IPC 145"
+    ]
+  },
+  {
+    "id": "cross_reference_chain-7",
+    "category": "cross_reference_chain",
+    "query": "IPC 225A",
+    "act": "IPC",
+    "page": 60,
+    "expected_text": "225A. Omission to apprehend, or sufferance of escape, on part of public servant, in cases not otherwise, provided for.—Whoever, being a public servant legally bound as such public servant to apprehend, or to keep in confinement, any person in any case not provided for in section 221, section 222 or section 223, or in any other law for the time being in force, omits to apprehend that person or suffers him to escape from confinement, shall be punished—",
+    "expected_targets": [
+      "IPC 221",
+      "IPC 222",
+      "IPC 223"
+    ]
+  },
+  {
+    "id": "keyword-1",
+    "category": "keyword",
+    "query": "dowry",
+    "act": "BNS",
+    "page": 28,
+    "expected_citations": [
+      "BNS 80",
+      "BNS 80(1)",
+      "BNS 80(2)",
+      "IPC 304B",
+      "IPC 304B(1)",
+      "IPC 304B(2)"
+    ]
+  },
+  {
+    "id": "keyword-2",
+    "category": "keyword",
+    "query": "lottery",
+    "act": "BNS",
+    "page": 77,
+    "expected_citations": [
+      "BNS 297",
+      "BNS 297(1)",
+      "BNS 297(2)",
+      "IPC 294A"
+    ]
+  },
+  {
+    "id": "keyword-3",
+    "category": "keyword",
+    "query": "buoy",
+    "act": "BNS",
+    "page": 75,
+    "expected_citations": [
+      "BNS 283",
+      "IPC 281",
+      "IPC 433"
+    ]
+  },
+  {
+    "id": "keyword-4",
+    "category": "keyword",
+    "query": "acid",
+    "act": "BNS",
+    "page": 16,
+    "expected_citations": [
+      "BNS 38",
+      "BNS 124",
+      "BNS 124(1)",
+      "BNS 124(2)",
+      "IPC 100",
+      "IPC 326A",
+      "IPC 326B"
+    ]
+  },
+  {
+    "id": "ipc_to_bns-1",
+    "category": "ipc_to_bns",
+    "query": "IPC 10",
+    "expected_citations": [
+      "BNS 2(19)",
+      "BNS 2(35)"
+    ],
+    "expected_type": "split",
+    "ipcPage": 15,
+    "bnsPage": 4,
+    "correspondence": true
+  },
+  {
+    "id": "ipc_to_bns-2",
+    "category": "ipc_to_bns",
+    "query": "IPC 23",
+    "expected_citations": [
+      "BNS 2(36)",
+      "BNS 2(37)",
+      "BNS 2(38)"
+    ],
+    "expected_type": "split",
+    "ipcPage": 18,
+    "bnsPage": 6,
+    "correspondence": true
+  },
+  {
+    "id": "ipc_to_bns-3",
+    "category": "ipc_to_bns",
+    "query": "IPC 54",
+    "expected_citations": [
+      "BNS 5"
+    ],
+    "expected_type": "merged",
+    "ipcPage": 21,
+    "bnsPage": 8,
+    "correspondence": true
+  },
+  {
+    "id": "ipc_to_bns-4",
+    "category": "ipc_to_bns",
+    "query": "IPC 63",
+    "expected_citations": [
+      "BNS 8"
+    ],
+    "expected_type": "merged",
+    "ipcPage": 22,
+    "bnsPage": 8,
+    "correspondence": true
+  },
+  {
+    "id": "ipc_to_bns-5",
+    "category": "ipc_to_bns",
+    "query": "IPC 18",
+    "expected_citations": [],
+    "expected_type": "removed",
+    "ipcPage": 16,
+    "correspondence": true
+  },
+  {
+    "id": "ipc_to_bns-6",
+    "category": "ipc_to_bns",
+    "query": "IPC 14",
+    "expected_citations": [],
+    "expected_type": "removed",
+    "ipcPage": 15,
+    "correspondence": true
+  },
+  {
+    "id": "ipc_to_bns-7",
+    "category": "ipc_to_bns",
+    "query": "IPC 34",
+    "expected_citations": [
+      "BNS 3(5)"
+    ],
+    "expected_type": "one-to-one",
+    "ipcPage": 19,
+    "bnsPage": 7,
+    "correspondence": true
+  },
+  {
+    "id": "ipc_to_bns-8",
+    "category": "ipc_to_bns",
+    "query": "IPC 24",
+    "expected_citations": [
+      "BNS 2(7)"
+    ],
+    "expected_type": "one-to-one",
+    "ipcPage": 18,
+    "bnsPage": 2,
+    "correspondence": true
+  },
+  {
+    "id": "ipc_to_bns-9",
+    "category": "ipc_to_bns",
+    "query": "IPC 53",
+    "expected_citations": [
+      "BNS 4"
+    ],
+    "expected_type": "one-to-one",
+    "ipcPage": 21,
+    "bnsPage": 8,
+    "correspondence": true
+  },
+  {
+    "id": "ipc_to_bns-10",
+    "category": "ipc_to_bns",
+    "query": "IPC 75",
+    "expected_citations": [
+      "BNS 13"
+    ],
+    "expected_type": "one-to-one",
+    "ipcPage": 24,
+    "bnsPage": 10,
+    "correspondence": true
+  },
+  {
+    "id": "bns_to_ipc-1",
+    "category": "bns_to_ipc",
+    "query": "BNS 111",
+    "expected_citations": [],
+    "expected_type": "new",
+    "bnsPage": 35,
+    "correspondence": true
+  },
+  {
+    "id": "bns_to_ipc-2",
+    "category": "bns_to_ipc",
+    "query": "BNS 112",
+    "expected_citations": [],
+    "expected_type": "new",
+    "bnsPage": 36,
+    "correspondence": true
+  },
+  {
+    "id": "bns_to_ipc-3",
+    "category": "bns_to_ipc",
+    "query": "BNS 5",
+    "expected_citations": [
+      "IPC 54",
+      "IPC 55",
+      "IPC 55A"
+    ],
+    "expected_type": "merged",
+    "ipcPage": 21,
+    "bnsPage": 8,
+    "correspondence": true
+  },
+  {
+    "id": "bns_to_ipc-4",
+    "category": "bns_to_ipc",
+    "query": "BNS 8",
+    "expected_citations": [
+      "IPC 63",
+      "IPC 64",
+      "IPC 65",
+      "IPC 66",
+      "IPC 67",
+      "IPC 68",
+      "IPC 69",
+      "IPC 70"
+    ],
+    "expected_type": "merged",
+    "ipcPage": 22,
+    "bnsPage": 8,
+    "correspondence": true
+  },
+  {
+    "id": "bns_to_ipc-5",
+    "category": "bns_to_ipc",
+    "query": "BNS 2(19)",
+    "expected_citations": [
+      "IPC 10"
+    ],
+    "expected_type": "split",
+    "ipcPage": 15,
+    "bnsPage": 4,
+    "correspondence": true
+  },
+  {
+    "id": "bns_to_ipc-6",
+    "category": "bns_to_ipc",
+    "query": "BNS 2(36)",
+    "expected_citations": [
+      "IPC 23"
+    ],
+    "expected_type": "split",
+    "ipcPage": 18,
+    "bnsPage": 6,
+    "correspondence": true
+  },
+  {
+    "id": "bns_to_ipc-7",
+    "category": "bns_to_ipc",
+    "query": "BNS 3(5)",
+    "expected_citations": [
+      "IPC 34"
+    ],
+    "expected_type": "one-to-one",
+    "ipcPage": 19,
+    "bnsPage": 7,
+    "correspondence": true
+  },
+  {
+    "id": "bns_to_ipc-8",
+    "category": "bns_to_ipc",
+    "query": "BNS 2(7)",
+    "expected_citations": [
+      "IPC 24"
+    ],
+    "expected_type": "one-to-one",
+    "ipcPage": 18,
+    "bnsPage": 2,
+    "correspondence": true
+  }
+]

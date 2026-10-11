@@ -1,0 +1,741 @@
+{
+  "categories": {
+    "bns_to_ipc": {
+      "passed": 8,
+      "total": 8
+    },
+    "cross_reference_chain": {
+      "passed": 5,
+      "total": 5
+    },
+    "ipc_to_bns": {
+      "passed": 10,
+      "total": 10
+    },
+    "keyword": {
+      "passed": 4,
+      "total": 4
+    },
+    "section_lookup": {
+      "passed": 8,
+      "total": 8
+    },
+    "subprovision_lookup": {
+      "passed": 10,
+      "total": 10
+    }
+  },
+  "concordance": {
+    "file": "v2.json",
+    "sha256": "365d09d0144ab93e7f4fc03cb3b2baa3baaae10952d248894f2a867b32680322"
+  },
+  "gold_sha256": "1670c5a4a3783a3f37f12f5bcf46db4f9d8fb0b966b60c26e7c4da6429698f62",
+  "gold_version": "v2",
+  "mode": "scored",
+  "outcomes": [
+    {
+      "category": "section_lookup",
+      "id": "section_lookup-1",
+      "pass": true
+    },
+    {
+      "category": "section_lookup",
+      "id": "section_lookup-2",
+      "pass": true
+    },
+    {
+      "category": "section_lookup",
+      "id": "section_lookup-3",
+      "pass": true
+    },
+    {
+      "category": "section_lookup",
+      "id": "section_lookup-4",
+      "pass": true
+    },
+    {
+      "category": "section_lookup",
+      "id": "section_lookup-5",
+      "pass": true
+    },
+    {
+      "category": "section_lookup",
+      "id": "section_lookup-6",
+      "pass": true
+    },
+    {
+      "category": "section_lookup",
+      "id": "section_lookup-7",
+      "pass": true
+    },
+    {
+      "category": "section_lookup",
+      "id": "section_lookup-8",
+      "pass": true
+    },
+    {
+      "category": "subprovision_lookup",
+      "id": "subprovision_lookup-1",
+      "pass": true
+    },
+    {
+      "category": "subprovision_lookup",
+      "id": "subprovision_lookup-2",
+      "pass": true
+    },
+    {
+      "category": "subprovision_lookup",
+      "id": "subprovision_lookup-3",
+      "pass": true
+    },
+    {
+      "category": "subprovision_lookup",
+      "id": "subprovision_lookup-4",
+      "pass": true
+    },
+    {
+      "category": "subprovision_lookup",
+      "id": "subprovision_lookup-5",
+      "pass": true
+    },
+    {
+      "category": "subprovision_lookup",
+      "conformed": "extended",
+      "id": "subprovision_lookup-6",
+      "pass": true
+    },
+    {
+      "category": "subprovision_lookup",
+      "id": "subprovision_lookup-7",
+      "pass": true
+    },
+    {
+      "category": "subprovision_lookup",
+      "id": "subprovision_lookup-8",
+      "pass": true
+    },
+    {
+      "category": "subprovision_lookup",
+      "id": "subprovision_lookup-9",
+      "pass": true
+    },
+    {
+      "category": "subprovision_lookup",
+      "id": "subprovision_lookup-10",
+      "pass": true
+    },
+    {
+      "category": "cross_reference_chain",
+      "conformed": "extended",
+      "id": "cross_reference_chain-1",
+      "packet": [
+        [
+          "BNS 25",
+          "25. Nothing which is not intended to cause death, or grievous hurt, and which is not known by the doer to be likely to cause death or grievous hurt, is an offence by reason of any harm which it may cause, or be intended by the doer to cause, to any person, above eighteen years of age, who has given consent, whether express or implied, to suffer that harm; or by reason of any harm which it may be known by the doer to be likely to cause to any such person who has consented to take the risk of that harm. Illustration. A and Z agree to fence with each other for amusement. This agreement implies the consent of each to suffer any harm which, in the course of such fencing, may be caused without foul play; and if A, while playing fairly, hurts Z, A commits no offence."
+        ],
+        [
+          "BNS 26",
+          "26. Nothing, which is not intended to cause death, is an offence by reason of any harm which it may cause, or be intended by the doer to cause, or be known by the doer to be likely to cause, to any person for whose benefit it is done in good faith, and who has given a consent, whether express or implied, to suffer that harm, or to take the risk of that harm. Illustration. A, a surgeon, knowing that a particular operation is likely to cause the death of Z, who suffers under the painful complaint, but not intending to cause Z\u2019s death, and intending, in good faith, Z\u2019s benefit, performs that operation on Z, with Z\u2019s consent. A has committed no offence."
+        ],
+        [
+          "BNS 27",
+          "27. Nothing which is done in good faith for the benefit of a person under twelve years of age, or person of unsound mind, by, or by consent, either express or implied, of the guardian or other person having lawful charge of that person, is an offence by reason of any harm which it may cause, or be intended by the doer to cause or be known by the doer to be likely to cause to that person: Provided that this exception shall not extend to\u2013\u2013 (a) the intentional causing of death, or to the attempting to cause death; (b) the doing of anything which the person doing it knows to be likely to cause death, for any purpose other than the preventing of death or grievous hurt, or the curing of any grievous disease or infirmity; (c) the voluntary causing of grievous hurt, or to the attempting to cause grievous hurt, unless it be for the purpose of preventing death or grievous hurt, or the curing of any grievous disease or infirmity; (d) the abetment of any offence, to the committing of which offence it would not extend. Illustration. A, in good faith, for his child\u2019s benefit without his child\u2019s consent, has his child cut for the stone by a surgeon knowing it to be likely that the operation will cause the child\u2019s death, but not intending to cause the child\u2019s death. A is within the exception, in as much as his object was the cure of the child."
+        ]
+      ],
+      "pass": true
+    },
+    {
+      "category": "cross_reference_chain",
+      "conformed": "extended",
+      "id": "cross_reference_chain-2",
+      "packet": [
+        [
+          "BNS 51",
+          "51. When an act is abetted and a different act is done, the abettor is liable for the act done, in the same manner and to the same extent as if he had directly abetted it: Provided that the act done was a probable consequence of the abetment, and was committed under the influence of the instigation, or with the aid or in pursuance of the conspiracy which constituted the abetment. Illustrations. (a) A instigates a child to put poison into the food of Z, and gives him poison for that purpose. The child, in consequence of the instigation, by mistake puts the poison into the food of Y, which is by the side of that of Z. Here, if the child was acting under the influence of A\u2019s instigation, and the act done was under the circumstances a probable consequence of the abetment, A is liable in the same manner and to the same extent as if he had instigated the child to put the poison into the food of Y. (b) A instigates B to burn Z\u2019s house, B sets fire to the house and at the same time commits theft of property there. A, though guilty of abetting the burning of the house, is not guilty of abetting the theft; for the theft was a distinct act, and not a probable consequence of the burning. (c) A instigates B and C to break into an inhabited house at midnight for the purpose of robbery, and provides them with arms for that purpose. B and C break into the house, and being resisted by Z, one of the inmates, murder Z. Here, if that murder was the probable consequence of the abetment, A is liable to the punishment provided for murder."
+        ]
+      ],
+      "pass": true
+    },
+    {
+      "category": "cross_reference_chain",
+      "id": "cross_reference_chain-4",
+      "packet": [
+        [
+          "BNS 122(1)",
+          "(1) Whoever voluntarily causes hurt on grave and sudden provocation, if he neither intends nor knows himself to be likely to cause hurt to any person other than the person who gave the provocation, shall be punished with imprisonment of either description for a term which may extend to one month, or with fine which may extend to five thousand rupees, or with both."
+        ]
+      ],
+      "pass": true
+    },
+    {
+      "category": "cross_reference_chain",
+      "conformed": "extended",
+      "id": "cross_reference_chain-5",
+      "packet": [
+        [
+          "IPC 121",
+          "121. Waging, or attempting to wage war, or abetting waging of war, against the Government of India.\u2014Whoever wages war against the Government of India, or attempts to wage such war, or abets the waging of such war, shall be punished with death, or imprisonment for life and shall also be liable to fine. Illustrations A joins an insurrection against the Government of India. A has committed the offence defined in this section. * * * * *"
+        ]
+      ],
+      "pass": true
+    },
+    {
+      "category": "cross_reference_chain",
+      "conformed": "extended",
+      "id": "cross_reference_chain-7",
+      "packet": [
+        [
+          "IPC 221",
+          "221. Intentional omission to apprehend on the part of public servant bound to apprehend.\u2014 Whoever, being a public servant, legally bound as such public servant to apprehend or to keep in confinement any person charged with or liable to be apprehended for an offence, intentionally omits to apprehend such person, or intentionally suffers such person to escape, or intentionally aids such person in escaping or attempting to escape from such confinement, shall be punished as follows, that is to say:\u2014 with imprisonment of either description for a term which may extend to seven years, with or without fine, if the person in confinement, or who ought to have been apprehended, was charged with, or liable to be apprehended for, an offence punishable with death; or with imprisonment of either description for a term which may extend to three years, with or without fine, if the person in confinement, or who ought to have been apprehended, was charged with, or liable to be apprehended for, an offence punishable with imprisonment for life or imprisonment for a term which may extend to ten years; or with imprisonment of either description for a term which may extend to two years, with or without fine, if the person in confinement, or who ought to have been apprehended, was charged with, or liable to be apprehended for, an offence punishable with imprisonment for a term less than ten years."
+        ],
+        [
+          "IPC 222",
+          "222. Intentional omission to apprehend on the part of public servant bound to apprehend person under sentence or lawfully committed.\u2014Whoever, being a public servant, legally bound as such public servant to apprehend or to keep in confinement any person under sentence of a Court of Justice for any offence or lawfully committed to custody, intentionally omits to apprehend such person, or intentionally suffers such person to escape or intentionally aids such person in escaping or attempting to escape from such confinement, shall be punished as follows, that is to say:\u2014 with imprisonment for life or with imprisonment of either description for a term which may extend to fourteen years, with or without fine, if the person in confinement, or who ought to have been apprehended, is under sentence of death; or with imprisonment of either description for a term which may extend to seven years, with or without fine, if the person in confinement or who ought to have been apprehended, is subject, by a sentence of a Court of Justice, or by virtue of a commutation of such sentence, to imprisonment for life or imprisonment for a term of ten years, or upwards; or with imprisonment of either description for a term which may extend to three years, or with fine, or with both, if the person in confinement or who ought to have been apprehended is subject by a sentence of a Court of Justice, to imprisonment for a term not extending to ten years or if the person was lawfully committed to custody."
+        ],
+        [
+          "IPC 223",
+          "223. Escape from confinement or custody negligently suffered by public servant.\u2014Whoever, being a public servant legally bound as such public servant to keep in confinement any person charged with or convicted of any offence or lawfully committed to custody, negligently suffers such person to escape from confinement, shall be punished with simple imprisonment for a term which may extend to two years, or with fine, or with both."
+        ]
+      ],
+      "pass": true
+    },
+    {
+      "category": "keyword",
+      "conformed": "provision-level",
+      "id": "keyword-1",
+      "packet": [
+        [
+          "BNS 80(1) explanation 1",
+          "Explanation.\u2014For the purposes of this sub-section, \u201cdowry\u201d shall have the same meaning as in section 2 of the Dowry Prohibition Act, 1961."
+        ],
+        [
+          "IPC 304B",
+          "304B. Dowry death.\u2014(1) Where the death of a woman is caused by any burns or bodily injury or occurs otherwise than under normal circumstances within seven years of her marriage and it is shown that soon before her death she was subjected to cruelty or harassment by her husband or any relative of her husband for, or in connection with, any demand for dowry, such death shall be called \u201cdowry death\u201d, and such husband or relative shall be deemed to have caused her death. Explanation.\u2014For the purposes of this sub-section, \u201cdowry\u201d shall have the same meaning as in section 2 of the Dowry Prohibition Act, 1961 (28 of 1961). (2) Whoever commits dowry death shall be punished with imprisonment for a term which shall not be less than seven years but which may extend to imprisonment for life."
+        ],
+        [
+          "IPC 304B(1) explanation 1",
+          "Explanation.\u2014For the purposes of this sub-section, \u201cdowry\u201d shall have the same meaning as in section 2 of the Dowry Prohibition Act, 1961 (28 of 1961)."
+        ],
+        [
+          "BNS 80",
+          "80. (1) Where the death of a woman is caused by any burns or bodily injury or occurs otherwise than under normal circumstances within seven years of her marriage and it is shown that soon before her death she was subjected to cruelty or harassment by her husband or any relative of her husband for, or in connection with, any demand for dowry, such death shall be called \u201cdowry death\u201d, and such husband or relative shall be deemed to have caused her death. Explanation.\u2014For the purposes of this sub-section, \u201cdowry\u201d shall have the same meaning as in section 2 of the Dowry Prohibition Act, 1961. (2) Whoever commits dowry death shall be punished with imprisonment for a term which shall not be less than seven years but which may extend to imprisonment for life."
+        ],
+        [
+          "BNS 80(1)",
+          "(1) Where the death of a woman is caused by any burns or bodily injury or occurs otherwise than under normal circumstances within seven years of her marriage and it is shown that soon before her death she was subjected to cruelty or harassment by her husband or any relative of her husband for, or in connection with, any demand for dowry, such death shall be called \u201cdowry death\u201d, and such husband or relative shall be deemed to have caused her death. Explanation.\u2014For the purposes of this sub-section, \u201cdowry\u201d shall have the same meaning as in section 2 of the Dowry Prohibition Act, 1961."
+        ],
+        [
+          "IPC 304B(1)",
+          "(1) Where the death of a woman is caused by any burns or bodily injury or occurs otherwise than under normal circumstances within seven years of her marriage and it is shown that soon before her death she was subjected to cruelty or harassment by her husband or any relative of her husband for, or in connection with, any demand for dowry, such death shall be called \u201cdowry death\u201d, and such husband or relative shall be deemed to have caused her death. Explanation.\u2014For the purposes of this sub-section, \u201cdowry\u201d shall have the same meaning as in section 2 of the Dowry Prohibition Act, 1961 (28 of 1961)."
+        ],
+        [
+          "BNS 80(2)",
+          "(2) Whoever commits dowry death shall be punished with imprisonment for a term which shall not be less than seven years but which may extend to imprisonment for life."
+        ],
+        [
+          "IPC 304B(2)",
+          "(2) Whoever commits dowry death shall be punished with imprisonment for a term which shall not be less than seven years but which may extend to imprisonment for life."
+        ]
+      ],
+      "pass": true
+    },
+    {
+      "category": "keyword",
+      "conformed": "provision-level",
+      "id": "keyword-2",
+      "packet": [
+        [
+          "BNS 297(1)",
+          "(1) Whoever keeps any office or place for the purpose of drawing any lottery not being a State lottery or a lottery authorised by the State Government, shall be punished with imprisonment of either description for a term which may extend to six months, or with fine, or with both."
+        ],
+        [
+          "IPC 294A",
+          "294A. Keeping lottery office.\u2014Whoever keeps any office or place for the purpose of drawing any lottery not being a State lottery or a lottery authorised by the State Government, shall be punished with imprisonment of either description for a term which may extend to six months, or with fine, or with both. And whoever publishes any proposal to pay any sum, or to deliver any goods, or to do or forbear doing anything for the benefit of any person, on any event or contingency relative or applicable to the drawing of any ticket, lot, number or figure in any such lottery, shall be punished with fine which may extend to one thousand rupees."
+        ],
+        [
+          "BNS 297",
+          "297. (1) Whoever keeps any office or place for the purpose of drawing any lottery not being a State lottery or a lottery authorised by the State Government, shall be punished with imprisonment of either description for a term which may extend to six months, or with fine, or with both. (2) Whoever publishes any proposal to pay any sum, or to deliver any goods, or to do or forbear from doing anything for the benefit of any person, on any event or contingency relative or applicable to the drawing of any ticket, lot, number or figure in any such lottery, shall be punished with fine which may extend to five thousand rupees."
+        ],
+        [
+          "BNS 297(2)",
+          "(2) Whoever publishes any proposal to pay any sum, or to deliver any goods, or to do or forbear from doing anything for the benefit of any person, on any event or contingency relative or applicable to the drawing of any ticket, lot, number or figure in any such lottery, shall be punished with fine which may extend to five thousand rupees."
+        ]
+      ],
+      "pass": true
+    },
+    {
+      "category": "keyword",
+      "conformed": "provision-level",
+      "id": "keyword-3",
+      "packet": [
+        [
+          "IPC 281",
+          "281. Exhibition of false light, mark or buoy.\u2014Whoever exhibits any false light, mark or buoy, intending or knowing it to be likely that such exhibition will mislead any navigator, shall be punished with imprisonment of either description for a term which may extend to seven years, or with fine, or with both."
+        ],
+        [
+          "IPC 433",
+          "433. Mischief by destroying, moving or rendering less useful a light-house or sea-mark.\u2014 Whoever commits mischief by destroying or moving any light-house or other light used as a sea-mark, or any sea- mark or buoy or other thing placed as a guide for navigators, or by any act which renders any such light-house, sea-mark, buoy or other such thing as aforesaid less useful as a guide for navigators, shall be punished with imprisonment of either description for a term which may extend to seven years, or with fine, or with both."
+        ],
+        [
+          "BNS 283",
+          "283. Whoever exhibits any false light, mark or buoy, intending or knowing it to be likely that such exhibition will mislead any navigator, shall be punished with imprisonment of either description for a term which may extend to seven years, and with fine which shall not be less than ten thousand rupees."
+        ]
+      ],
+      "pass": true
+    },
+    {
+      "category": "keyword",
+      "conformed": "provision-level",
+      "id": "keyword-4",
+      "packet": [
+        [
+          "BNS 38(g)",
+          "(g) an act of throwing or administering acid or an attempt to throw or administer acid which may reasonably cause the apprehension that grievous hurt will otherwise be the consequence of such act."
+        ],
+        [
+          "IPC 326B",
+          "326B. Voluntarily throwing or attempting to throw acid.\u2014Whoever throws or attempts to throw acid on any person or attempts to administer acid to any person, or attempts to use any other means, with the intention of causing permanent or partial damage or deformity or burns or maiming or disfigurement or disability or grievous hurt to that person, shall be punished with imprisonment of either description for a term which shall not be less than five years but which may extend to seven years, and shall also be liable to fine. Explanation 1.\u2014For the purposes of section 326A and this section, \"acid\" includes any substance which has acidic or corrosive character or burning nature, that is capable of causing bodily injury leading to scars or disfigurement or temporary or permanent disability. Explanation 2.\u2014For the purposes of section 326A and this section, permanent or partial damage or deformity shall not be required to be irreversible."
+        ],
+        [
+          "IPC 326A",
+          "326A. Voluntarily causing grievous hurt by use of acid, etc.\u2014Whoever causes permanent or partial damage or deformity to, or burns or maims or disfigures or disables, any part or parts of the body of a person or causes grievous hurt by throwing acid on or by administering acid to that person, or by using any other means with the intention of causing or with the knowledge that he is likely to cause such injury or hurt, shall be punished with imprisonment of either description for a term which shall not be less than ten years but which may extend to imprisonment for life, and with fine: Provided that such fine shall be just and reasonable to meet the medical expenses of the treatment of the victim: Provided further that any fine imposed under this section shall be paid to the victim."
+        ],
+        [
+          "BNS 124(2)",
+          "(2) Whoever throws or attempts to throw acid on any person or attempts to administer acid to any person, or attempts to use any other means, with the intention of causing permanent or partial damage or deformity or burns or maiming or disfigurement or disability or grievous hurt to that person, shall be punished with imprisonment of either description for a term which shall not be less than five years but which may extend to seven years, and shall also be liable to fine. Explanation 1.\u2014For the purposes of this section, \u201cacid\u201d includes any substance which has acidic or corrosive character or burning nature, that is capable of causing bodily injury leading to scars or disfigurement or temporary or permanent disability. Explanation 2.\u2014For the purposes of this section, permanent or partial damage or deformity or permanent vegetative state shall not be required to be irreversible."
+        ],
+        [
+          "BNS 124",
+          "124. (1) Whoever causes permanent or partial damage or deformity to, or burns or maims or disfigures or disables, any part or parts of the body of a person or causes grievous hurt by throwing acid on or by administering acid to that person, or by using any other means with the intention of causing or with the knowledge that he is likely to cause such injury or hurt or causes a person to be in a permanent vegetative state shall be punished with imprisonment of either description for a term which shall not be less than ten years but which may extend to imprisonment for life, and with fine: Provided that such fine shall be just and reasonable to meet the medical expenses of the treatment of the victim: Provided further that any fine imposed under this sub-section shall be paid to the victim. (2) Whoever throws or attempts to throw acid on any person or attempts to administer acid to any person, or attempts to use any other means, with the intention of causing permanent or partial damage or deformity or burns or maiming or disfigurement or disability or grievous hurt to that person, shall be punished with imprisonment of either description for a term which shall not be less than five years but which may extend to seven years, and shall also be liable to fine. Explanation 1.\u2014For the purposes of this section, \u201cacid\u201d includes any substance which has acidic or corrosive character or burning nature, that is capable of causing bodily injury leading to scars or disfigurement or temporary or permanent disability. Explanation 2.\u2014For the purposes of this section, permanent or partial damage or deformity or permanent vegetative state shall not be required to be irreversible."
+        ],
+        [
+          "BNS 124(2) explanation 1",
+          "Explanation 1.\u2014For the purposes of this section, \u201cacid\u201d includes any substance which has acidic or corrosive character or burning nature, that is capable of causing bodily injury leading to scars or disfigurement or temporary or permanent disability."
+        ],
+        [
+          "IPC 326B explanation 1",
+          "Explanation 1.\u2014For the purposes of section 326A and this section, \"acid\" includes any substance which has acidic or corrosive character or burning nature, that is capable of causing bodily injury leading to scars or disfigurement or temporary or permanent disability."
+        ],
+        [
+          "BNS 124(1)",
+          "(1) Whoever causes permanent or partial damage or deformity to, or burns or maims or disfigures or disables, any part or parts of the body of a person or causes grievous hurt by throwing acid on or by administering acid to that person, or by using any other means with the intention of causing or with the knowledge that he is likely to cause such injury or hurt or causes a person to be in a permanent vegetative state shall be punished with imprisonment of either description for a term which shall not be less than ten years but which may extend to imprisonment for life, and with fine: Provided that such fine shall be just and reasonable to meet the medical expenses of the treatment of the victim: Provided further that any fine imposed under this sub-section shall be paid to the victim."
+        ],
+        [
+          "BNS 38",
+          "38. The right of private defence of the body extends, under the restrictions specified in section 37, to the voluntary causing of death or of any other harm to the assailant, if the offence which occasions the exercise of the right be of any of the descriptions hereinafter enumerated, namely:\u2014 (a) such an assault as may reasonably cause the apprehension that death will otherwise be the consequence of such assault; (b) such an assault as may reasonably cause the apprehension that grievous hurt will otherwise be the consequence of such assault; (c) an assault with the intention of committing rape; (d) an assault with the intention of gratifying unnatural lust; (e) an assault with the intention of kidnapping or abducting; (f) an assault with the intention of wrongfully confining a person, under circumstances which may reasonably cause him to apprehend that he will be unable to have recourse to the public authorities for his release; (g) an act of throwing or administering acid or an attempt to throw or administer acid which may reasonably cause the apprehension that grievous hurt will otherwise be the consequence of such act."
+        ],
+        [
+          "IPC 100",
+          "100. When the right of private defence of the body extends to causing death.\u2014The right of private defence of the body extends, under the restrictions mentioned in the last preceding section, to the voluntary causing of death or of any other harm to the assailant, if the offence which occasions the exercise of the right be of any of the descriptions hereinafter enumerated, namely:\u2014 First.\u2014Such an assault as may reasonably cause the apprehension that death will otherwise be the consequence of such assault; Secondly.\u2014Such an assault as may reasonably cause the apprehension that grievous hurt will otherwise be the consequence of such assault; Thirdly.\u2014An assault with the intention of committing rape; Fourthly.\u2014An assault with the intention of gratifying unnatural lust; Fifthly.\u2014An assault with the intention of kidnapping or abducting; Sixthly.\u2014An assault with the intention of wrongfully confining a person, under circumstances which may reasonably cause him to apprehend that he will be unable to have recourse to the public authorities for his release. Seventhly.\u2014An act of throwing or administering acid or an attempt to throw or administer acid which may reasonably cause the apprehension that grievous hurt will otherwise be the consequence of such act."
+        ]
+      ],
+      "pass": true
+    },
+    {
+      "category": "ipc_to_bns",
+      "id": "ipc_to_bns-1",
+      "packet": [
+        {
+          "citations": [
+            "BNS 2(19)",
+            "BNS 2(35)"
+          ],
+          "type": "split"
+        }
+      ],
+      "pass": true
+    },
+    {
+      "category": "ipc_to_bns",
+      "id": "ipc_to_bns-2",
+      "packet": [
+        {
+          "citations": [
+            "BNS 2(36)",
+            "BNS 2(37)",
+            "BNS 2(38)"
+          ],
+          "type": "split"
+        }
+      ],
+      "pass": true
+    },
+    {
+      "category": "ipc_to_bns",
+      "id": "ipc_to_bns-3",
+      "packet": [
+        {
+          "citations": [
+            "BNS 5"
+          ],
+          "type": "merged"
+        }
+      ],
+      "pass": true
+    },
+    {
+      "category": "ipc_to_bns",
+      "id": "ipc_to_bns-4",
+      "packet": [
+        {
+          "citations": [
+            "BNS 8"
+          ],
+          "type": "merged"
+        }
+      ],
+      "pass": true
+    },
+    {
+      "category": "ipc_to_bns",
+      "id": "ipc_to_bns-5",
+      "packet": [
+        {
+          "citations": [],
+          "type": "removed"
+        }
+      ],
+      "pass": true
+    },
+    {
+      "category": "ipc_to_bns",
+      "id": "ipc_to_bns-6",
+      "packet": [
+        {
+          "citations": [],
+          "type": "removed"
+        }
+      ],
+      "pass": true
+    },
+    {
+      "category": "ipc_to_bns",
+      "id": "ipc_to_bns-7",
+      "packet": [
+        {
+          "citations": [
+            "BNS 3(5)"
+          ],
+          "type": "one-to-one"
+        }
+      ],
+      "pass": true
+    },
+    {
+      "category": "ipc_to_bns",
+      "id": "ipc_to_bns-8",
+      "packet": [
+        {
+          "citations": [
+            "BNS 2(7)"
+          ],
+          "type": "one-to-one"
+        }
+      ],
+      "pass": true
+    },
+    {
+      "category": "ipc_to_bns",
+      "id": "ipc_to_bns-9",
+      "packet": [
+        {
+          "citations": [
+            "BNS 4"
+          ],
+          "type": "one-to-one"
+        }
+      ],
+      "pass": true
+    },
+    {
+      "category": "ipc_to_bns",
+      "id": "ipc_to_bns-10",
+      "packet": [
+        {
+          "citations": [
+            "BNS 13"
+          ],
+          "type": "one-to-one"
+        }
+      ],
+      "pass": true
+    },
+    {
+      "category": "bns_to_ipc",
+      "id": "bns_to_ipc-1",
+      "packet": [
+        {
+          "citations": [],
+          "type": "new"
+        }
+      ],
+      "pass": true
+    },
+    {
+      "category": "bns_to_ipc",
+      "id": "bns_to_ipc-2",
+      "packet": [
+        {
+          "citations": [],
+          "type": "new"
+        }
+      ],
+      "pass": true
+    },
+    {
+      "category": "bns_to_ipc",
+      "id": "bns_to_ipc-3",
+      "packet": [
+        {
+          "citations": [
+            "IPC 54",
+            "IPC 55",
+            "IPC 55A"
+          ],
+          "type": "merged"
+        }
+      ],
+      "pass": true
+    },
+    {
+      "category": "bns_to_ipc",
+      "id": "bns_to_ipc-4",
+      "packet": [
+        {
+          "citations": [
+            "IPC 63",
+            "IPC 64",
+            "IPC 65",
+            "IPC 66",
+            "IPC 67",
+            "IPC 68",
+            "IPC 69",
+            "IPC 70"
+          ],
+          "type": "merged"
+        }
+      ],
+      "pass": true
+    },
+    {
+      "category": "bns_to_ipc",
+      "id": "bns_to_ipc-5",
+      "packet": [
+        {
+          "citations": [
+            "IPC 10"
+          ],
+          "type": "split"
+        }
+      ],
+      "pass": true
+    },
+    {
+      "category": "bns_to_ipc",
+      "id": "bns_to_ipc-6",
+      "packet": [
+        {
+          "citations": [
+            "IPC 23"
+          ],
+          "type": "split"
+        }
+      ],
+      "pass": true
+    },
+    {
+      "category": "bns_to_ipc",
+      "id": "bns_to_ipc-7",
+      "packet": [
+        {
+          "citations": [
+            "IPC 34"
+          ],
+          "type": "one-to-one"
+        }
+      ],
+      "pass": true
+    },
+    {
+      "category": "bns_to_ipc",
+      "id": "bns_to_ipc-8",
+      "packet": [
+        {
+          "citations": [
+            "IPC 24"
+          ],
+          "type": "one-to-one"
+        }
+      ],
+      "pass": true
+    }
+  ],
+  "parser_version": "4",
+  "sections": {
+    "BNS": {
+      "expected": 358,
+      "recovered": 358
+    },
+    "IPC": {
+      "expected": 575,
+      "recovered": 575
+    }
+  },
+  "unresolved_xref": [
+    {
+      "matched": "clause (k) of section 2",
+      "reason": "other Act: of the Transgender Persons (Protection of Rights) Act",
+      "source": "BNS 2(10) explanation 1"
+    },
+    {
+      "matched": "clauses (a) and (b)",
+      "reason": "clause without a section",
+      "source": "BNS 2(24)"
+    },
+    {
+      "matched": "clause (31) of section 3",
+      "reason": "other Act: of the General Clauses Act",
+      "source": "BNS 2(28)(c)(ii)"
+    },
+    {
+      "matched": "clause (45) of section 2",
+      "reason": "other Act: of the Companies Act",
+      "source": "BNS 2(28)(c)(ii)"
+    },
+    {
+      "matched": "section 474",
+      "reason": "other Act: of the Bharatiya Nagarik Suraksha Sanhita",
+      "source": "BNS 5"
+    },
+    {
+      "matched": "clauses (b) and (d)",
+      "reason": "clause without a section",
+      "source": "BNS 68 explanation 4"
+    },
+    {
+      "matched": "section 2",
+      "reason": "other Act: of the Dowry Prohibition Act",
+      "source": "BNS 80(1) explanation 1"
+    },
+    {
+      "matched": "section 2",
+      "reason": "other Act: of the Coinage Act",
+      "source": "BNS 178(2)"
+    },
+    {
+      "matched": "sub-section (1) of section 173",
+      "reason": "other Act: of the Bharatiya Nagarik Suraksha Sanhita",
+      "source": "BNS 199(c)"
+    },
+    {
+      "matched": "section 397",
+      "reason": "other Act: of the Bharatiya Nagarik Suraksha Sanhita",
+      "source": "BNS 200"
+    },
+    {
+      "matched": "sub-section (1) of section 84",
+      "reason": "other Act: of the Bharatiya Nagarik Suraksha Sanhita",
+      "source": "BNS 209"
+    },
+    {
+      "matched": "sub-section (4)",
+      "reason": "names an earlier section: of that section",
+      "source": "BNS 209"
+    },
+    {
+      "matched": "section 394",
+      "reason": "other Act: of the Bharatiya Nagarik Suraksha Sanhita",
+      "source": "BNS 211(c)"
+    },
+    {
+      "matched": "clause (d) of sub-section (1) of section 2",
+      "reason": "other Act: of the Information Technology Act",
+      "source": "BNS 335 explanation 3"
+    },
+    {
+      "matched": "clause (r) of sub-section (1) of section 2",
+      "reason": "other Act: of the Information Technology Act",
+      "source": "BNS 337 explanation 1"
+    },
+    {
+      "matched": "section 6",
+      "reason": "other Act: of the General Clauses Act",
+      "source": "BNS 358(4)"
+    },
+    {
+      "matched": "clause (k) of sub-section (1) of section 2",
+      "reason": "other Act: of the Information Technology Act",
+      "source": "IPC 4(3) explanation 1(b)"
+    },
+    {
+      "matched": "section 617",
+      "reason": "other Act: of the Companies Act",
+      "source": "IPC 21(b)"
+    },
+    {
+      "matched": "clause (t) of sub-section (1) of section 2",
+      "reason": "other Act: of the Information Technology Act",
+      "source": "IPC 29A"
+    },
+    {
+      "matched": "section 144A",
+      "reason": "other Act: of the Code of Criminal Procedure",
+      "source": "IPC 153AA"
+    },
+    {
+      "matched": "sub-section (1) of section 154",
+      "reason": "other Act: of the Code of Criminal Procedure",
+      "source": "IPC 166A(c)"
+    },
+    {
+      "matched": "section 357C",
+      "reason": "other Act: of the Code of Criminal Procedure",
+      "source": "IPC 166B"
+    },
+    {
+      "matched": "sub-section (1) of section 82",
+      "reason": "other Act: of the Code of Criminal Procedure",
+      "source": "IPC 174A"
+    },
+    {
+      "matched": "sub-section (4)",
+      "reason": "names an earlier section: of that section",
+      "source": "IPC 174A"
+    },
+    {
+      "matched": "sub-section (1) of section 565",
+      "reason": "other Act: of the Code of Criminal Procedure",
+      "source": "IPC 176"
+    },
+    {
+      "matched": "section 2",
+      "reason": "other Act: of the Dowry Prohibition Act",
+      "source": "IPC 304B(1) explanation 1"
+    },
+    {
+      "matched": "clause (d)",
+      "reason": "clause without a section",
+      "source": "IPC 464 explanation 3"
+    },
+    {
+      "matched": "section 2",
+      "reason": "other Act: of the Information Technology Act",
+      "source": "IPC 464 explanation 3"
+    },
+    {
+      "matched": "clause (r) of sub-section (1) of section 2",
+      "reason": "other Act: of the Information Technology Act",
+      "source": "IPC 466 explanation 1"
+    }
+  ],
+  "xref": {
+    "BNS": {
+      "resolved": 315,
+      "unresolved": 16
+    },
+    "IPC": {
+      "resolved": 271,
+      "unresolved": 13
+    }
+  }
+}

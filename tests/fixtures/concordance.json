@@ -1,0 +1,8 @@
+[
+  {"ipc": ["IPC 302"], "bns": ["BNS 103"], "type": "one-to-one", "verified": true},
+  {"ipc": ["IPC 376"], "bns": ["BNS 63", "BNS 64"], "type": "split", "verified": true},
+  {"ipc": ["IPC 299", "IPC 300"], "bns": ["BNS 100"], "type": "merged", "verified": true},
+  {"ipc": ["IPC 309"], "bns": [], "type": "removed", "verified": true},
+  {"ipc": [], "bns": ["BNS 111"], "type": "new", "verified": true},
+  {"ipc": ["IPC 304B"], "bns": ["BNS 80"], "type": "one-to-one", "verified": false}
+]
