@@ -152,11 +152,12 @@ def main(argv: list[str] | None = None) -> int:
     rp.add_argument("--log", default="results/optimisation-log.json")
     rp.add_argument("--ledger", default="results/test-ledger.json")
     rp.add_argument("--results", required=True, help="the results file of the test run")
+    rp.add_argument("--frozen-rule", default="results/frozen-rule.json", help="the frozen-rule record, names the frozen round")
     rp.add_argument("--out", default="results/report.md")
     a = ap.parse_args(argv)
     if a.cmd == "bench" and a.bench_cmd == "report":
         from ibid.report import run_report
-        return run_report(a.log, a.ledger, a.results, a.out)
+        return run_report(a.log, a.ledger, a.results, a.out, a.frozen_rule)
     if a.cmd == "bench" and a.bench_cmd == "round":
         from ibid.optimise import run_round
         return run_round(a.train, a.dev, a.labels, a.index, a.manifest, a.log, a.change, a.k, a.r, a.rollup)

@@ -58,7 +58,8 @@ class ReportTest(unittest.TestCase):
 
     def report(self, out="report.md"):
         code = self.cli("report", "--log", str(self.log), "--ledger", str(self.ledger),
-                        "--results", str(self.results), "--out", str(self.tmp / out))
+                        "--results", str(self.results), "--frozen-rule", str(self.frozen),
+                        "--out", str(self.tmp / out))
         return code, (self.tmp / out)
 
     def test_report_numbers_are_read_from_the_files(self):
@@ -69,7 +70,7 @@ class ReportTest(unittest.TestCase):
         rounds = json.loads(self.log.read_text())["rounds"]
         d0 = rounds[0]["dev"]["top_k"]["scores"]
         self.assertIn(f"| top-k | round 0 dev | {d0['micro_f1'] * 100:.2f} / {d0['macro_f1'] * 100:.2f} /", text)
-        self.assertIn("final round (2) dev", text)
+        self.assertIn("frozen round (2) dev", text)
         test = json.loads(self.ledger.read_text())[0]["scores"]
         self.assertIn(f"| top-k | test score 1, k 1, r 0.5 | {test['micro_f1'] * 100:.2f}", text)
         # known-bad: a log whose dev macro F1 was edited must change the report (a hand-typed report would not)
@@ -94,7 +95,7 @@ class ReportTest(unittest.TestCase):
         for stratum in ("gold_label_count 1", "gold_label_count 2", "gold_label_count 3+", "words <=150", "words >500"):
             self.assertIn(f"| {stratum} |", text)
         self.assertIn("dev round 0", text)
-        self.assertIn("dev final", text)
+        self.assertIn("dev frozen", text)
         never = json.loads(self.results.read_text())["per_label"]["never_found"]
         self.assertIn(", ".join(never) if never else "none", text)
 
@@ -122,6 +123,29 @@ class ReportTest(unittest.TestCase):
         self.assertEqual(self.score_test(k="2"), 0)
         text = self.report()[1].read_text()
         self.assertIn("ledger rule matches the final logged round: NO", text)
+
+    def test_headline_is_the_frozen_round_not_the_last_logged_round(self):
+        self.assertEqual(self.round("--k", "1", "--r", "0.5"), 0)
+        self.assertEqual(self.round("--change", "k=2"), 0)
+        self.assertEqual(self.round("--change", "k=1"), 0)
+        self.assertEqual(self.round("--change", "k=2"), 0)  # round 3 is logged after the freeze point
+        self.assertEqual(self.cli("freeze", "--log", str(self.log), "--round", "2", "--out", str(self.frozen)), 0)
+        self.assertEqual(self.score_test(), 0)
+        text = self.report()[1].read_text()
+        rounds = json.loads(self.log.read_text())["rounds"]
+        for split in ("train", "dev"):
+            sc = rounds[2][split]["top_k"]["scores"]
+            self.assertIn(f"| top-k | frozen round (2) {split} | {sc['micro_f1'] * 100:.2f}", text)
+        self.assertIn("| top-k | test score 1, k 1, r 0.5 |", text)
+        self.assertIn("last logged round (3) dev", text)
+        self.assertNotIn("final round", text)
+
+    def test_last_round_frozen_has_one_row_and_no_duplicate(self):
+        self.build()
+        text = self.report()[1].read_text()
+        self.assertIn("frozen round (2) dev", text)
+        self.assertNotIn("last logged round", text)
+        self.assertEqual(text.count("| top-k | frozen round (2) dev |"), 1)
 
     def test_two_runs_are_byte_identical(self):
         self.build()
