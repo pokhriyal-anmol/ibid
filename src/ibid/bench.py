@@ -6,6 +6,7 @@ import sqlite3
 import sys
 from pathlib import Path
 
+from ibid import bm25
 from ibid.parse import PARSER_VERSION
 
 LABEL = re.compile(r"Section (\d+[A-Z]{0,2}(?:\([0-9a-z]+\))*) in The Indian Penal Code")
@@ -51,36 +52,43 @@ ROLLUPS = {"max": max, "sum": sum}  # how a section scores from the BM25 of its 
 SAMPLE_RULE = "first N cases by sorted id"
 
 
+DEFAULT_KNOBS = {"bm25_k1": 1.2, "bm25_b": 0.75, "stem": "none", "levels": "all"}  # FTS5's own k1 and b, no stemming, every provision
+
+
 def check_params(k: int, r: float, rollup: str) -> None:
     if k < 1 or not 0 < r <= 1 or rollup not in ROLLUPS:
         raise ValueError("need k >= 1, 0 < r <= 1 and a known roll-up")
 
 
-def rule_hash(k: int, r: float, rollup: str, stop_words=None) -> str:
+def knobs_of(params: dict | None) -> dict:
+    """The four ticket 11 knobs of a params dict or frozen record, defaults filling what an older log lacks."""
+    return {n: (params or {}).get(n, d) for n, d in DEFAULT_KNOBS.items()}
+
+
+def check_knobs(knobs: dict) -> None:
+    if not 0 < knobs["bm25_k1"] < float("inf") or not 0 <= knobs["bm25_b"] <= 1:
+        raise ValueError("need bm25_k1 > 0 and 0 <= bm25_b <= 1")
+    if knobs["stem"] not in ("none", "suffix") or knobs["levels"] not in ("all", "top", "leaf"):
+        raise ValueError("need stem none or suffix, and levels all, top or leaf")
+
+
+def rule_hash(k: int, r: float, rollup: str, stop_words=None, knobs: dict | None = None) -> str:
     params = {"stop_words": sorted(STOP_WORDS if stop_words is None else stop_words), "split": "non-letters", "join": "OR", "section_score": rollup,
-              "dedup": True, "quote": True, "top_k": k, "relative_threshold": r}
+              "dedup": True, "quote": True, "top_k": k, "relative_threshold": r, **knobs_of(knobs), "stem_rule": bm25.STEM_RULE}
     return hashlib.sha256(json.dumps(params, sort_keys=True).encode()).hexdigest()
 
 
-def to_fts_query(raw: str, stop_words=None) -> str:
-    stop = STOP_WORDS if stop_words is None else stop_words
-    seen = dict.fromkeys(t for t in re.findall(r"[^\W\d_]+", raw.lower()) if t not in stop)
-    return " OR ".join(f'"{t}"' for t in seen)  # quoted so a word like "near" is never an FTS operator
-
-
-def rank_sections(db: sqlite3.Connection, raw: str, space: set[str], rollup: str,
-                  stop_words=None) -> list[tuple[str, float]]:
+def rank_sections(ix: bm25.Index, raw: str, space: set[str], rollup: str, stop_words=None,
+                  knobs: dict | None = None) -> list[tuple[str, float]]:
     """Section citations inside the label space with their roll-up score, best first, ties by citation string."""
-    query = to_fts_query(raw, stop_words)
-    if not query:
-        return []
-    parent = dict(db.execute("SELECT citation, parent FROM provision WHERE citation LIKE 'IPC %'"))
+    kn = knobs_of(knobs)
+    terms = bm25.query_terms(raw, STOP_WORDS if stop_words is None else stop_words, kn["stem"])
     hits: dict[str, list[float]] = {}
-    for cite, rank in db.execute("SELECT citation, rank FROM fts WHERE fts MATCH ? AND citation LIKE 'IPC %'", (query,)):
-        while parent[cite] is not None:
-            cite = parent[cite]
+    for cite, score in ix.scores(terms, kn["bm25_k1"], kn["bm25_b"]).items():
+        while ix.parent[cite] is not None:
+            cite = ix.parent[cite]
         if cite in space:
-            hits.setdefault(cite, []).append(-rank)
+            hits.setdefault(cite, []).append(score)
     return sorted(((c, ROLLUPS[rollup](v)) for c, v in hits.items()), key=lambda cs: (-cs[1], cs[0]))
 
 
@@ -197,7 +205,7 @@ def freeze_rule(log_path: str, round_no: int | None, out_path: str) -> int:
         return 1
     p = entry["params"]
     rec = {"rule": entry["rule"], "round": entry["round"], "k": p["k"], "r": p["r"], "section_score": p["rollup"],
-           "stop_words": p["stop_words"]}
+           "stop_words": p["stop_words"], "knobs": knobs_of(p)}
     Path(out_path).write_text(json.dumps(rec, indent=2, sort_keys=True) + "\n")
     return 0
 
@@ -212,7 +220,7 @@ def test_guard(split_path: str, manifest_path: str, k: int, r: float, rollup: st
         return False, None, [], 0
     try:
         frozen = json.loads(Path(frozen_path).read_text())
-        held = frozen["rule"]["params_sha256"] == rule_hash(k, r, rollup, frozen["stop_words"])
+        held = frozen["rule"]["params_sha256"] == rule_hash(k, r, rollup, frozen["stop_words"], frozen.get("knobs"))
     except (OSError, KeyError, ValueError):
         held = False
     if not held:
@@ -228,9 +236,10 @@ def test_guard(split_path: str, manifest_path: str, k: int, r: float, rollup: st
 
 def run_bench(split_path: str, labels_path: str, index_path: str, k: int, r: float, rollup: str, out_path: str,
               manifest_path: str, sample: int | None = None, frozen_path: str = "results/frozen-rule.json",
-              ledger_path: str = "results/test-ledger.json", rescore: bool = False) -> int:
+              ledger_path: str = "results/test-ledger.json", rescore: bool = False, knobs: dict | None = None) -> int:
     try:
         check_params(k, r, rollup)
+        check_knobs(knobs_of(knobs))
         if sample is not None and sample < 1:
             raise ValueError("--sample must be at least 1")
         if verify_pinned([split_path, labels_path], manifest_path):
@@ -246,10 +255,12 @@ def run_bench(split_path: str, labels_path: str, index_path: str, k: int, r: flo
         print(f"error: {e}", file=sys.stderr)
         return 1
     stop_words = frozen["stop_words"] if frozen else None  # the test split is scored with the frozen round's rule
+    knobs = knobs_of(frozen.get("knobs") if frozen else knobs)
     rule = {"name": RULE_NAME, "version": frozen["rule"]["version"] if frozen else RULE_VERSION,
-            "params_sha256": rule_hash(k, r, rollup, stop_words)}
+            "params_sha256": rule_hash(k, r, rollup, stop_words, knobs)}
     db = sqlite3.connect(f"file:{index_path}?mode=ro", uri=True)
-    ranked = [rank_sections(db, " ".join(c["text"]), space, rollup, stop_words) for c in cases]
+    ix = bm25.Index(db, knobs["levels"], knobs["stem"])
+    ranked = [rank_sections(ix, " ".join(c["text"]), space, rollup, stop_words, knobs) for c in cases]
     top_k, above_r = zip(*(predict(x, k, r) for x in ranked))
     k_sets, r_sets = [set(p) for p in top_k], [set(p) for p in above_r]
     results = {
@@ -260,6 +271,7 @@ def run_bench(split_path: str, labels_path: str, index_path: str, k: int, r: flo
         "cases": len(cases),
         **({"sample": sample, "sample_rule": SAMPLE_RULE} if sample is not None else {}),
         "section_score": rollup,
+        "knobs": knobs,
         "scores": score(gold, k_sets, space),
         "per_label": per_label(gold, k_sets, space),
         "strata": strata(cases, gold, k_sets, space),

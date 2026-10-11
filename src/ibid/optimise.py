@@ -5,10 +5,9 @@ import sqlite3
 import sys
 from pathlib import Path
 
-from ibid import bench
+from ibid import bench, bm25
 
 GAIN_BAR, HURTS_BAR, STREAK, CAP = 0.005, 0.005, 3, 20  # 0.5 points on a 0-1 scale
-UNSUPPORTED = {"tokenisation", "bm25", "levels"}  # declared knobs this command cannot vary yet: refused, not ignored
 WORD = re.compile(r"[^\W\d_]+")
 
 
@@ -17,8 +16,7 @@ def apply_change(params: dict, change: str) -> dict:
     knob, _, value = change.partition("=")
     if not value:
         raise ValueError("a change looks like knob=value")
-    if knob in UNSUPPORTED:
-        raise ValueError(f"{knob} is declared but this command cannot vary it yet")
+    params = {**params, **bench.knobs_of(params)}
     new = dict(params)
     if knob == "stop_words":
         op, word = value[0], value[1:]
@@ -32,16 +30,19 @@ def apply_change(params: dict, change: str) -> dict:
         new["r"] = float(value)
     elif knob == "rollup":
         new["rollup"] = value
+    elif knob in bench.DEFAULT_KNOBS:
+        new[knob] = float(value) if knob.startswith("bm25_") else value
     else:
         raise ValueError(f"{knob} is not a declared knob")
     bench.check_params(new["k"], new["r"], new["rollup"])
+    bench.check_knobs(new)
     if new == params:
         raise ValueError("the change changes nothing")
     return new
 
 
-def evaluate(db: sqlite3.Connection, cases: list[dict], gold: list[set[str]], space: set[str], p: dict) -> dict:
-    ranked = [bench.rank_sections(db, " ".join(c["text"]), space, p["rollup"], p["stop_words"]) for c in cases]
+def evaluate(ix: bm25.Index, cases: list[dict], gold: list[set[str]], space: set[str], p: dict) -> dict:
+    ranked = [bench.rank_sections(ix, " ".join(c["text"]), space, p["rollup"], p["stop_words"], p) for c in cases]
     top_k, above_r = zip(*(bench.predict(x, p["k"], p["r"]) for x in ranked))
     out = {}
     for name, sets in (("top_k", top_k), ("threshold", above_r)):
@@ -87,7 +88,7 @@ def _next_params(rounds, changes, k, r, rollup):
         return (apply_change(rounds[-1]["params"], changes[0]), *changes[0].split("=", 1))
     if changes or k is None or r is None:
         raise ValueError("round 0 is the unmodified rule: give --k and --r, no --change")
-    params = {"stop_words": sorted(bench.STOP_WORDS), "k": k, "r": r, "rollup": rollup or "max"}
+    params = {"stop_words": sorted(bench.STOP_WORDS), "k": k, "r": r, "rollup": rollup or "max", **bench.DEFAULT_KNOBS}
     bench.check_params(k, r, params["rollup"])
     return params, None, None
 
@@ -103,16 +104,18 @@ def _round(train, dev, labels, index, manifest, log_path, changes, k, r, rollup)
     params, knob, change = _next_params(rounds, changes, k, r, rollup)
     space = bench.load_space(labels)
     db = sqlite3.connect(f"file:{index}?mode=ro", uri=True)
+    kn = bench.knobs_of(params)
+    ix = bm25.Index(db, kn["levels"], kn["stem"])
     n = len(rounds)
     entry = {"round": n, "knob": knob, "change": change, "params": params,
              "rule": {"name": bench.RULE_NAME, "version": bench.RULE_VERSION if n == 0 else f"{bench.RULE_VERSION}.{n}",
-                      "params_sha256": bench.rule_hash(params["k"], params["r"], params["rollup"], params["stop_words"])},
+                      "params_sha256": bench.rule_hash(params["k"], params["r"], params["rollup"], params["stop_words"], params)},
              "inputs": {name: bench.sha256(p) for name, p in
                         (("train_sha256", train), ("dev_sha256", dev), ("labels_sha256", labels), ("index_sha256", index))},
              "parser_version": bench.PARSER_VERSION}
     for name, path in (("train", train), ("dev", dev)):
         cases, gold = bench.load_cases(path, space)
-        entry[name] = {"cases": len(cases), **evaluate(db, cases, gold, space, params)}
+        entry[name] = {"cases": len(cases), **evaluate(ix, cases, gold, space, params)}
     entry["gap"] = {m: round(entry["train"]["top_k"]["scores"][m] - entry["dev"]["top_k"]["scores"][m], 6)
                     for m in ("micro_f1", "macro_f1")}
     drop = round(single_label_micro(rounds[-1]) - single_label_micro(entry), 6) if rounds else 0
