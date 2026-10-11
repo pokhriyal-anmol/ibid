@@ -8,7 +8,7 @@ import subprocess
 import xml.etree.ElementTree as ET
 from dataclasses import dataclass
 
-PARSER_VERSION = "3"
+PARSER_VERSION = "4"
 BNS_TOTAL = 358
 HEADER_Y = 80  # lines above this are the running page header
 WIDE = 250  # a body line wider than this (pt) fixes the page's body column

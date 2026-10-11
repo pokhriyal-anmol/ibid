@@ -97,11 +97,12 @@ class EvalTest(unittest.TestCase):
         self.assertFalse(out.exists())
 
     def test_keyword_ties_break_by_citation(self):
-        # BNS 351(4) and BNS 94 tie on score; parse order puts 94 first, citation order puts 351(4) first
-        def edit(g):
-            c = g["keyword-conceal"]["expected_citations"]
-            c[2], c[3] = c[3], c[2]
-        self.assertFalse(self.run_bad_gold(edit)["keyword-conceal"])
+        # BNS 351(4) and BNS 94 tie on score; parse order puts 94 first, citation order puts 351(4) first.
+        # Keyword items are scored as sets, so the order is asserted on the returned packet.
+        _, out, _ = self.run_eval()
+        packet = next(o for o in json.loads(out.read_text())["outcomes"] if o["id"] == "keyword-conceal")["packet"]
+        cites = [c for c, _ in packet]
+        self.assertLess(cites.index("BNS 351(4)"), cites.index("BNS 94"))
 
     def test_keyword_query_is_not_expanded_or_stemmed(self):
         def edit(g):
@@ -169,6 +170,8 @@ class EvalTest(unittest.TestCase):
             self.assertIsNone(re.search("[^\x20-\x7e—–‘’“”]", text), citation)
             # page headers, chapter titles and group headings are not part of any section
             self.assertIsNone(re.search(r"GAZETTE|EXTRAORDINARY|Sec\. \d|CHAPTER|(?:^|\. )Of [a-z]", text), citation)
+            # amendment marks (brackets, *** for omitted words) are not part of the provision text
+            self.assertNotRegex(text, r"[\[\]]|\*\*\*", citation)
 
     def test_every_child_address_exists_and_names_its_parent(self):
         # Explicit exception to the eval-seam rule: reads the index schema directly.

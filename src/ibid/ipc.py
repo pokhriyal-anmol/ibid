@@ -5,7 +5,7 @@ chapter and group headings are centred; state amendments run from a bold "STATE 
 line to the next real section. Only a heading that moves forward in the printed table of
 contents counts as a section, so quoted state-amendment headings cannot masquerade as one.
 
-shortcut: square brackets (amendment marks) and footnote numerals are dropped from the text;
+shortcut: square brackets and *** (amendment marks) and footnote numerals are dropped from the text;
 upgrade if a ticket needs amendment history.
 """
 import re
@@ -66,8 +66,8 @@ def parse_ipc(pdf_path: str) -> list[Provision]:
     in_body = skipping = False
     for _, lines in _pages(pdf_path):
         for ln in lines:
-            text = "".join(t for _, t, _ in ln).replace("[", "").replace("]", "")
-            text = " ".join(text.split())
+            text = "".join(t for _, t, _ in ln).replace("[", "").replace("]", "").replace("***", "")
+            text = re.sub(r"\s+([,;.])", r"\1", " ".join(text.split()))  # no gap left where a mark was removed
             if not in_body:
                 in_body = text.startswith("ACT NO. 45")
                 if (k := _key(text)) and re.match(r"\s*\d+-?[A-Z]{0,2}\.", text):

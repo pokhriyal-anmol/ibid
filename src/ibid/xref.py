@@ -85,4 +85,6 @@ def chains(provisions: list[Provision], edges: list[Edge]) -> dict[str, list[str
     def walk(c: str) -> list[str]:
         return own.get(c, []) + [t for k in kids[c] for t in walk(k)]
 
-    return {p.citation: list(dict.fromkeys(walk(p.citation))) for p in provisions}
+    # A cross-reference points at another provision (CONTEXT.md): "this section" inside an
+    # explanation must not make its own section list itself.
+    return {p.citation: [t for t in dict.fromkeys(walk(p.citation)) if t != p.citation] for p in provisions}
