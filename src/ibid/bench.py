@@ -40,8 +40,8 @@ def check_labels(vocab_path: str, index_path: str) -> int:
     return 1 if missing or unparseable else 0
 
 
-# Query rule v1 (ADR 0004). A change to any of these is a new rule version, never an edit.
-RULE_NAME, RULE_VERSION = "query-rule", "v1"
+# Query rule v2 (ADR 0004; v1 hashed fewer parameters, before the BM25 and stemming knobs). A change to any of these is a new rule version, never an edit.
+RULE_NAME, RULE_VERSION = "query-rule", "v2"
 STOP_WORDS = (
     "a an and are as at be been but by for from had has have he her his i in is it its of on or she so that the their "
     "them there they this to was were which who will with you your"

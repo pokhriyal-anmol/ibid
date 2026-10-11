@@ -119,7 +119,7 @@ class TestSplitOnceTest(unittest.TestCase):
         self.assertEqual(self.run_split(self.split_path()), 0)
         [e] = self.entries()
         stop = sorted(bench.STOP_WORDS + ["theft"])
-        self.assertEqual((e["rule"]["version"], e["rule"]["params_sha256"]), ("v1.1", bench.rule_hash(1, 0.5, "max", stop)))
+        self.assertEqual((e["rule"]["version"], e["rule"]["params_sha256"]), (f"{bench.RULE_VERSION}.1", bench.rule_hash(1, 0.5, "max", stop)))
         self.assertEqual(json.loads((self.tmp / "out.json").read_text())["rule"], e["rule"])
 
     def test_dev_scoring_never_touches_the_ledger_or_needs_a_freeze(self):

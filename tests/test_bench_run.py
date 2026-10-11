@@ -83,7 +83,7 @@ class BenchRunTest(unittest.TestCase):
     def test_records_inputs_rule_parser_k_and_conventions(self):
         r = self.run_bench(k=2)
         self.assertEqual(set(r["inputs"]), {"split_sha256", "labels_sha256", "index_sha256"})
-        self.assertEqual((r["rule"]["name"], r["rule"]["version"], r["k"], r["threshold"]["r"]), ("query-rule", "v1", 2, 0.5))
+        self.assertEqual((r["rule"]["name"], r["rule"]["version"], r["k"], r["threshold"]["r"]), ("query-rule", "v2", 2, 0.5))
         self.assertTrue(r["parser_version"])
         self.assertIn("scores 0", r["conventions"]["macro_f1"])
 
@@ -127,7 +127,7 @@ class BenchRunTest(unittest.TestCase):
         (self.tmp / "manifest.json").write_text(json.dumps({n: {"sha256": bench.sha256(str(self.tmp / n))}
                                                            for n in ("test.jsonl", "labels.json")}))
         frozen, ledger, out = self.tmp / "frozen.json", self.tmp / "ledger.json", self.tmp / "sampled.json"
-        frozen.write_text(json.dumps({"rule": {"version": "v1", "params_sha256": bench.rule_hash(1, 0.5, "max")},
+        frozen.write_text(json.dumps({"rule": {"version": "v2", "params_sha256": bench.rule_hash(1, 0.5, "max")},
                                       "stop_words": bench.STOP_WORDS}))  # the rule is frozen, so only --sample can refuse
         err = io.StringIO()
         with contextlib.redirect_stderr(err):

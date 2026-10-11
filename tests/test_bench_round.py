@@ -83,7 +83,7 @@ class RoundTest(unittest.TestCase):
         entries = self.rounds()
         self.assertEqual([e["round"] for e in entries], [0, 1, 2, 3])
         self.assertEqual([e["knob"] for e in entries], [None, "k", "r", "rollup"])
-        self.assertEqual([e["rule"]["version"] for e in entries], ["v1", "v1.1", "v1.2", "v1.3"])
+        self.assertEqual([e["rule"]["version"] for e in entries], ["v2", "v2.1", "v2.2", "v2.3"])
         for e in entries:
             p = e["params"]
             single = self.single_run(p["k"], p["r"], p["rollup"])
