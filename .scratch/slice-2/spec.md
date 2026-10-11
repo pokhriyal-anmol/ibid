@@ -1,6 +1,6 @@
 # Slice 2: Score the deterministic baseline on a public statute-identification benchmark
 
-Status: decisions recorded 2026-10-11, one question open (data download)
+Status: decisions recorded 2026-10-11, data in place, ready to ticket
 
 ## Problem Statement
 
@@ -87,8 +87,26 @@ flowchart LR
 - Submitting to a leaderboard.
 - Claiming a rank.
 
-## Open
+## Data (downloaded and verified 2026-10-11)
 
-- **Download.** The Zenodo files needed are `train.jsonl` (319,771,764 bytes), `dev.jsonl` (85,261,365), `test.jsonl` (106,092,603), `secs.jsonl` (46,219) and `label_vocab.json` (4,795), about 511 MB, from https://zenodo.org/records/6053791. The 2.25 GB sent2vec file and the model checkpoint are not needed. Waiting on the owner's yes.
-- **Whether test labels are present.** Neither the record nor the README says. Known after opening `test.jsonl`.
-- **Comparability.** The record does not mention IL-TUR. Split counts differ slightly between papers, so numbers may not be directly comparable until checked.
+Source: the LeSICiN Zenodo release, https://zenodo.org/records/6053791, CC BY 4.0. Stored under `data/raw/lesicin/`, gitignored. All five files match the MD5s published on the record.
+
+| File | Bytes | Rows | Notes |
+|---|---|---|---|
+| `train.jsonl` | 319,771,764 | 42,835 | all labelled |
+| `dev.jsonl` | 85,261,365 | 10,200 | all labelled |
+| `test.jsonl` | 106,092,603 | 13,039 | all labelled |
+| `secs.jsonl` | 46,219 | 100 | one document per label, IPC statute text |
+| `label_vocab.json` | 4,795 | 100 | label string to index |
+
+- Each case has `id`, `text` (a list of sentences) and `labels` (list of strings such as `Section 34 in The Indian Penal Code`).
+- 100 distinct labels, the same 100 in every split. Mean 3.7 to 3.9 labels per case. Median case 458 to 579 words, 95th percentile over 4,000.
+- The most frequent labels (Sections 34, 302, 506, 323, 307) cover many cases. Section 34 is about a quarter of train cases and is rarely named in the facts, so a keyword method will miss it. Expect that and report it.
+- The split counts equal the ILSI test-set description in arXiv 2512.21902 (42,835 / 10,200 / 13,039). The Zenodo record itself never mentions IL-TUR, so equivalence with the gated IL-TUR copy is likely, not confirmed.
+- Label to citation: `Section N in The Indian Penal Code` maps to `IPC N`. All 100 must exist in Ibid's IPC index; checking that is the first ticket.
+
+## Still open
+
+- **Metric protocol.** LeSICiN reports macro and micro P/R/F1 and Jaccard. The IL-TUR evaluation script is on OneDrive and has not been read. Until it is, our numbers are described as computed by our own implementation of those standard metrics.
+- **Comparability.** Published numbers (28.08 m-F1 on IL-TUR, 28.45 macro-F1 in LeSICiN's paper) are from trained classifiers on possibly different protocol details.
+- **IL-TUR access.** The dataset is manually gated. Requesting it is optional and the owner's decision.
