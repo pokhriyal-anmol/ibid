@@ -177,6 +177,14 @@ class RoundTest(unittest.TestCase):
         self.assertTrue(s["saturated"])
         self.assertFalse(optimise.stopping_status(rounds([0.2, 0.2, 0.3, 0.3], [0.2] * 4))["saturated"])  # streak broken
 
+    def test_threshold_only_gains_are_not_saturation(self):
+        def rounds(top, thr):
+            return [{s: {"top_k": {"scores": {"macro_f1": a}}, "threshold": {"scores": {"macro_f1": b}}} for s in ("dev", "train")}
+                    for a, b in zip(top, thr)]
+        flat_topk = [0.04] * 4
+        self.assertFalse(optimise.stopping_status(rounds(flat_topk, [0.03, 0.04, 0.05, 0.06]))["saturated"])
+        self.assertTrue(optimise.stopping_status(rounds(flat_topk, [0.03] * 4))["saturated"])  # both flat: still stops
+
     def test_round_that_hurts_single_label_cases_is_flagged(self):
         self.start(k=1)
         self.assertEqual(self.round("k=2")[0], 0)

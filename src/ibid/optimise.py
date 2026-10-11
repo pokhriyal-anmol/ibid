@@ -47,9 +47,11 @@ def evaluate(ix: bm25.Index, cases: list[dict], benchmark_labels: list[set[str]]
 
 
 def stopping_status(rounds: list[dict]) -> dict:
-    """Saturation, the cap and the overfit signal, all read from top-k macro F1 of the logged rounds."""
+    """Saturation, the cap and the overfit signal, read from the better of the top-k and threshold macro F1,
+    so progress on either output rule counts and tuning r is not mistaken for saturation."""
     def gains(split):
-        v = [r[split]["top_k"]["scores"]["macro_f1"] for r in rounds]
+        v = [max(r[split][rule]["scores"]["macro_f1"] for rule in ("top_k", "threshold") if rule in r[split])
+             for r in rounds]
         return [round(b - a, 6) for a, b in zip(v, v[1:])]
     dev, train = gains("dev"), gains("train")
     return {"saturated": len(dev) >= STREAK and all(g < GAIN_BAR for g in dev[-STREAK:]),
