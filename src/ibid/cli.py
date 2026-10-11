@@ -149,7 +149,15 @@ def main(argv: list[str] | None = None) -> int:
     ro.add_argument("--k", type=int, help="round 0 only")
     ro.add_argument("--r", type=float, help="round 0 only")
     ro.add_argument("--rollup", choices=("max", "sum"), help="round 0 only, default max")
+    rp = bsub.add_parser("report", help="write the report from the log, the test ledger and the test results file")
+    rp.add_argument("--log", default="results/optimisation-log.json")
+    rp.add_argument("--ledger", default="results/test-ledger.json")
+    rp.add_argument("--results", required=True, help="the results file of the test run")
+    rp.add_argument("--out", default="results/report.md")
     a = ap.parse_args(argv)
+    if a.cmd == "bench" and a.bench_cmd == "report":
+        from ibid.report import run_report
+        return run_report(a.log, a.ledger, a.results, a.out)
     if a.cmd == "bench" and a.bench_cmd == "round":
         from ibid.optimise import run_round
         return run_round(a.train, a.dev, a.labels, a.index, a.manifest, a.log, a.change, a.k, a.r, a.rollup)
