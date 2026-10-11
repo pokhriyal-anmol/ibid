@@ -94,7 +94,17 @@ def main(argv: list[str] | None = None) -> int:
     ev.add_argument("--index", default="data/index/ibid.sqlite")
     ev.add_argument("--out", default="results.json")
     ev.add_argument("--concordance", default=None)
+    fz = sub.add_parser("freeze")
+    fz.add_argument("--sheet", default=".scratch/slice-1/review-sheet.md")
+    fz.add_argument("--draft-gold", default="gold/v1.draft.json")
+    fz.add_argument("--draft-conc", default="concordance/draft.json")
+    fz.add_argument("--out-gold", default="gold/v1.json")
+    fz.add_argument("--out-conc", default="concordance/v1.json")
+    fz.add_argument("--drop-failed", action="store_true")
     a = ap.parse_args(argv)
+    if a.cmd == "freeze":
+        from ibid.freeze import freeze
+        return freeze(a.sheet, a.draft_gold, a.draft_conc, a.out_gold, a.out_conc, a.drop_failed)
     return run_eval(a.gold, a.bns, a.ipc, a.index, a.out, a.concordance, a.mode)
 
 
