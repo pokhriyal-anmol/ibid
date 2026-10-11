@@ -1,6 +1,6 @@
 # Report: round-0 baseline, final number and published scores with caveats
 
-Status: needs-triage
+Status: ready-for-agent
 Blocked by: 04, 07, 08
 
 What to build: a report command (or report section written by the run) that shows the round-0 baseline next to the final frozen-rule scores (micro F1, macro F1, Jaccard, for top-k and threshold), the train/dev gap, the per-label never-found list, and a table of published numbers with their source (28.08 m-F1 on IL-TUR, 28.45 macro-F1 in the LeSICiN paper) and the caveats: different models (trained classifiers), possibly different dataset copy, split counts and metric protocol, and that our metrics are our own implementation until the official evaluation script is read. It claims no rank.
