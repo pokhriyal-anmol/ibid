@@ -111,3 +111,60 @@ Check each item against the cited PDF page of the pinned file. Mark pass or fail
 - concordance IPC 124A-> (removed)
 - concordance ->BNS 152 (new)
 - gold cross_reference_chain-8: IPC 376C
+
+## Second round: correspondence items that rest on agent-only entries
+
+## ipc_to_bns-8
+
+- category: ipc_to_bns
+- query: IPC 24
+- expected: ["BNS 2(7)"]
+- type: one-to-one
+- page: IPC 18 and BNS 2
+- evidence quoted by the drafting agent: IPC 24: "“Dishonestly”.—Whoever does anything with the intention of causing wrongful gain to one person or..." / BNS 2(7): "“dishonestly” means doing anything with the intention of causing wrongful gain to one person or wrongful loss to another person"
+- checked by: agent, at the owner's instruction (2026-10-11). Evidence: IPC 24 and BNS 2(7) define "dishonestly" in identical words (IPC p18, BNS p2).
+- result: [x] pass  [ ] fail
+
+## ipc_to_bns-9
+
+- category: ipc_to_bns
+- query: IPC 53
+- expected: ["BNS 4"]
+- type: one-to-one
+- page: IPC 21 and BNS 8
+- evidence quoted by the drafting agent: IPC 53: "Punishments.—The punishments to which offenders are liable under the provisions of this Code are— First.—Death..." / BNS 4: "The punishments to which offenders are liable under the provisions of this Sanhita are— (a) Death..." (BNS adds (f) Community Service)
+- checked by: agent, at the owner's instruction (2026-10-11). Evidence: Same list of punishments; BNS 4 adds (f) Community Service. One section for one section (IPC p21, BNS p8).
+- result: [x] pass  [ ] fail
+
+## ipc_to_bns-10
+
+- category: ipc_to_bns
+- query: IPC 75
+- expected: ["BNS 13"]
+- type: one-to-one
+- page: IPC 24 and BNS 10
+- evidence quoted by the drafting agent: IPC 75: "Enhanced punishment for certain offences under Chapter XII or Chapter XVII after previous conviction.—Whoever, having been convicted,—" / BNS 13: "Whoever, having been convicted by a Court in India, of an offence punishable under Chapter X or Chapter XVII of this Sanhita..." (marginal note: Enhanced punishment for certain offences after previous conviction)
+- checked by: agent, at the owner's instruction (2026-10-11). Evidence: Same operative words; chapter references updated from XII to X, XVII unchanged (IPC p24, BNS p10).
+- result: [x] pass  [ ] fail
+
+## bns_to_ipc-2
+
+- category: bns_to_ipc
+- query: BNS 112
+- expected: []
+- type: new
+- page: IPC None and BNS 36
+- evidence quoted by the drafting agent: Petty organised crime at bns/036.txt; 'Petty organised' and 'organised crime' absent from every IPC page.
+- checked by: agent, at the owner's instruction (2026-10-11). Evidence: BNS 112 is a group-based petty-crime offence. No IPC page uses "organised". IPC 401 (gang of thieves) belongs to BNS 310, not here (BNS p36).
+- result: [x] pass  [ ] fail
+
+## bns_to_ipc-8
+
+- category: bns_to_ipc
+- query: BNS 2(7)
+- expected: ["IPC 24"]
+- type: one-to-one
+- page: IPC 18 and BNS 2
+- evidence quoted by the drafting agent: IPC 24: "“Dishonestly”.—Whoever does anything with the intention of causing wrongful gain to one person or..." / BNS 2(7): "“dishonestly” means doing anything with the intention of causing wrongful gain to one person or wrongful loss to another person"
+- checked by: agent, at the owner's instruction (2026-10-11). Evidence: Same claim as ipc_to_bns-8, read in the other direction.
+- result: [x] pass  [ ] fail

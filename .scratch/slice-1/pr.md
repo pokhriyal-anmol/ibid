@@ -1,31 +1,33 @@
-# Slice 1: reproducible citation and cross-reference baseline
-
 ## Summary
 
-This slice builds the measurement layer for Ibid: one `ibid eval` command that parses the IPC and the BNS into section trees, resolves cross-references by rule, answers a gold set of questions from a SQLite index, and writes a results file carrying the gold-set hash and parser version. No model is called anywhere, which matches ADR 0001 (retrieval depends only on the raw query). The stack is Python, SQLite and `uv`, per ADR 0002. The point is a baseline score that later layers must beat, with no quality target set here.
+Slice 1 builds the measurement layer for Ibid. One `ibid eval` command parses the IPC and the BNS into section trees, resolves cross-references by rule, serves a verified concordance, answers a frozen and hash-pinned gold set from a SQLite index, and writes a results file that carries the gold hash, the concordance hash and the parser version. No model is called anywhere (ADR 0001). The stack is Python, SQLite and `uv` (ADR 0002). The baseline is the number later layers must beat. No quality target is set.
 
-Built and marked done: tickets 01 (BNS section lookup tracer), 02 (BNS subsections, provisos, explanations, exceptions and illustrations as separate provisions), 03 (IPC parser into the same tree and citation format), 04 (rule-based cross-reference resolution and chain lookup) and 06 (deterministic FTS5 keyword search with a citation tie-break).
+What is in it:
 
-Also changed in the review fix pass:
-- `src/ibid/index.py` `search()` now returns `fetchall()` directly instead of copying the rows.
-- `docs/agents/triage-labels.md` now lists `approved` and `done` as repo-extension status labels, since the tickets already used them outside the default five-role vocabulary.
-- Two tests in `tests/test_eval.py` that read the schema are marked as explicit exceptions to the rule that tests go through the eval seam (the spec's single test seam).
+- Parsers for both Acts: BNS 358 of 358 sections, IPC 575 of 575, with sub-provisions as separate provisions.
+- Rule-based cross-references with chain lookup, and deterministic provision-level keyword search.
+- A concordance loader that validates every entry against the index and serves only verified entries.
+- Gold v2 (45 items) with its pin, and the `ibid conform` and `ibid freeze` steps that produced it with no model.
+- Baseline v2: 45 of 45, byte-identical across two runs.
+- Corruption tests: a scrambled section lowers its category, a wrong mapping lowers its category, swapped source pages refuse to score.
 
-Not built: tickets 05 (IPC-BNS concordance), 07 (frozen gold set) and 08 (baseline run and corruption check). See Known issues.
+Review round: `wf-review` found 14 issues and 11 were fixed in this branch. The notable ones: source-PDF hashes are now written into every gold item, the loader rejects malformed entries (a `removed` entry with a BNS citation, a `new` entry with an IPC citation, a wrong-act citation), and a concordance entry is served as verified only when a person or an agent acting on the owner's instruction passed it on the review sheet.
+
+Concordance provenance in v2: 66 entries, 12 served (8 `human-checked`, 4 `agent-checked-for-owner`), 54 not served and answering "no verified concordance".
 
 ## Test plan
 
-- [x] Full test suite run as documented in `CLAUDE.md`: 17 tests, OK.
-- [x] Review found 6 confirmed issues; 3 were fixed and 3 remain open (below).
-- [x] The ASCII and header regexes in the two schema-reading tests were checked against a Hindi string and a "GAZETTE" string, and both flagged them.
-- [ ] The dangling-child check was not run against a bad index, so it has not been seen failing.
-- [ ] Not run: two-run byte-identical comparison on a frozen gold set, and the corrupted-run check (both belong to ticket 08).
+- [x] `uv run python -m unittest discover -s tests`: 40 tests, OK
+- [x] Two scored runs of `gold/v2.json` with `concordance/v2.json` are byte-identical and equal `results/baseline-v2.json`
+- [x] `gold/v1.json`, its pin and `results/baseline-v1.json` are untouched
+- [x] `gold/v2.sha256` and `concordance/v2.sha256` match their files
+- [x] The scorer was mutated two ways and the matching corruption test failed each time; the delegated-check label was removed and its test failed
+- [x] No PDF or `data/raw/` file in any commit on any branch
 
 ## Known issues
 
-- Concordance missing (ticket 05). It needs a hand-checked IPC to BNS mapping from the gazette texts. The mapping will not be invented, so a human has to author the data first. Until then the concordance gold items (user stories 11, 12, 13, 22) cannot be answered.
-- Gold-set hash pin not enforced (ticket 07). The ticket needs a human to draft about 50 items with gazette page citations and spot-check at least 10. Enforcing a pin on the current 21-item draft would break the tests that deliberately edit the gold file. The pin should be added once the gold set is frozen.
-- Corrupted-run check for correspondence (ticket 08) is blocked by tickets 05 and 07.
-- Dangling-child check unverified against a bad index (see Test plan).
-
-Nothing here contradicts ADR 0001 or ADR 0002. The Act texts stay outside git until reuse terms are confirmed, as the spec requires.
+- Keyword gold is partly system-derived (ADR 0003, status proposed). A pass on those four items is not an independent measurement.
+- 54 concordance entries are not human-checked and are not served. Checking more of them is future work.
+- The concordance pin is recorded in results but not enforced at eval time, because the corruption test feeds an unpinned wrong file on purpose.
+- 45 of 45 is a ceiling, not a quality claim: the set is small and its conventions were settled with the system in view.
+- Correspondence is a legal judgement. A lawyer should review it before any score is published.
