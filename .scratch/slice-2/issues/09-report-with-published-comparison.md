@@ -10,6 +10,7 @@ User stories: 12, 7, 8.
 Acceptance criteria:
 - On fixture results and a fixture log, the report shows round 0 and the final round with the right numbers, re-derived from the files, not hand-typed.
 - The final numbers are read from the test ledger of ticket 07; if the ledger holds more than one test score, the report shows all of them.
+- The report shows round 0 and final scores by gold label count and by length, so a reader sees the effect on simple and on multi-section cases separately.
 - The comparison table names each source and lists every caveat above.
 - The report carries the data hashes, rule version and rule hash of the numbers it quotes.
 - Two report runs on the same inputs are byte-identical.

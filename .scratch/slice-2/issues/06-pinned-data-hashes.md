@@ -1,6 +1,6 @@
 # Refuse to score data whose bytes differ from the pinned hashes
 
-Status: needs-triage
+Status: ready-for-agent
 Blocked by: 02
 
 What to build: a committed manifest (no data, only names, byte counts and SHA-256 for `train.jsonl`, `dev.jsonl`, `test.jsonl`, `secs.jsonl`, `label_vocab.json`) and a check in the run command that refuses to score a file whose hash does not match its pinned entry, naming the file and both hashes. Fixtures use their own manifest.

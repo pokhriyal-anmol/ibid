@@ -1,6 +1,6 @@
 # Report the relative score threshold alongside top-k
 
-Status: needs-triage
+Status: ready-for-agent
 Blocked by: 02
 
 What to build: a second output rule in the run command: predict every section whose rolled-up score is at least a fraction r of that query's top section score (relative because BM25 scores are not comparable across queries). Each results file reports both rules side by side, with k and r recorded in the rule parameters and therefore in the rule hash. The roll-up score for a section (for example max over its provisions) is a declared parameter.
