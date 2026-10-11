@@ -1,7 +1,7 @@
 # Run the optimisation on LeSICiN, freeze the rule, score test once, cross-check metrics
 
 Status: needs-triage
-Blocked by: 01, 03, 04, 05, 06, 07, 08, 09
+Blocked by: 01, 03, 04, 05, 06, 07, 08, 09, 11, 12
 
 What to build: the actual measurement, run by the builder with the owner's sign-off on the protocol. Score round 0 on train and dev, run declared single-knob rounds until the saturation rule fires, freeze the rule, score the test split exactly once, and produce the report. Where the benchmark's own evaluation script can be obtained, run it once on the same predictions and record whether its F1 matches ours; otherwise record that the metric protocol is still our own implementation.
 
