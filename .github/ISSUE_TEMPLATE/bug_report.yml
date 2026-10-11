@@ -1,0 +1,31 @@
+name: Bug report
+description: Ibid returned the wrong text, citation, reference or mapping
+labels: ["needs-triage"]
+body:
+  - type: textarea
+    id: query
+    attributes:
+      label: Query or citation
+      description: The exact raw query, for example `BNS 103(1)` or `dowry`.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected
+      description: Cite the PDF page of the pinned source that shows it.
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: What Ibid returned
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Commit and parser version
+      description: Output of `git rev-parse --short HEAD` and the `parser_version` in your results file.
+    validations:
+      required: true

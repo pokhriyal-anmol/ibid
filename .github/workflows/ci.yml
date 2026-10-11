@@ -1,0 +1,38 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: No source texts in git
+        run: |
+          bad=$(git ls-files | grep -i -E '\.pdf$|^data/raw/' || true)
+          if [ -n "$bad" ]; then echo "Source texts must not be committed:"; echo "$bad"; exit 1; fi
+
+      - name: Frozen gold matches its pin
+        run: |
+          for pin in gold/v[0-9]*.sha256; do
+            file="${pin%.sha256}.json"
+            want=$(tr -d ' \n' < "$pin")
+            got=$(sha256sum "$file" | cut -d' ' -f1)
+            if [ "$want" != "$got" ]; then echo "$file does not match $pin"; exit 1; fi
+            echo "$file matches its pin"
+          done
+
+      - uses: astral-sh/setup-uv@v5
+
+      - name: Compile
+        run: uv run --python 3.12 python -m compileall -q src
+
+      - name: Tests that need no source PDFs
+        run: uv run --python 3.12 python -m unittest tests.test_freeze

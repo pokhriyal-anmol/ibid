@@ -1,0 +1,34 @@
+name: Gold set or concordance correction
+description: An answer in gold/ or concordance/ is wrong, or an entry should not be trusted
+labels: ["needs-triage"]
+body:
+  - type: input
+    id: item
+    attributes:
+      label: Item id or entry
+      description: For example `cross_reference_chain-5`, or `IPC 124A -> BNS 152` in the concordance.
+    validations:
+      required: true
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What is wrong
+      options:
+        - The expected text does not match the source
+        - The mapping or its type (one-to-one, split, merged, removed, new) is wrong
+        - The cited page is wrong
+        - The entry rests on an agent check and I disagree
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence from the source
+      description: PDF page of the pinned file and the words that show it. Web conversion tables do not count as evidence.
+    validations:
+      required: true
+  - type: textarea
+    id: fix
+    attributes:
+      label: Proposed correction
+      description: Frozen files get a new version, so say what the new value should be.
