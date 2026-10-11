@@ -124,12 +124,13 @@ def main(argv: list[str] | None = None) -> int:
     br.add_argument("--split", required=True)
     br.add_argument("--labels", default="data/raw/lesicin/label_vocab.json")
     br.add_argument("--index", default="data/index/ibid.sqlite")
+    br.add_argument("--manifest", default="data/lesicin.manifest.json")
     br.add_argument("--k", type=int, required=True)
     br.add_argument("--out", required=True)
     a = ap.parse_args(argv)
     if a.cmd == "bench" and a.bench_cmd == "run":
         from ibid.bench import run_bench
-        return run_bench(a.split, a.labels, a.index, a.k, a.out)
+        return run_bench(a.split, a.labels, a.index, a.k, a.out, a.manifest)
     if a.cmd == "bench":
         from ibid.bench import check_labels
         return check_labels(a.data, a.index)

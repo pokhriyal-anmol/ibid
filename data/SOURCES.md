@@ -14,3 +14,7 @@ Downloaded 2026-10-09.
 - BNS is the Gazette extraordinary of 25 Dec 2023 (CG-DL-E-25122023-250883). The Hindi text uses a legacy font and extracts as garbage.
 - IPC is a PDF, not HTML: the Code as amended up to Act 34 of 2019. It has an English text layer (section 511 found by pdftotext).
 - Alternative for BNS if PRS is unsuitable: India Code, https://www.indiacode.nic.in/bitstream/123456789/20062/1/a202345.pdf (consolidated, current to 6 Oct 2025, so it may differ from the gazette text).
+
+## LeSICiN benchmark data
+
+`data/lesicin.manifest.json` pins the name, byte count and SHA-256 of the five files in `data/raw/lesicin/`, taken on 2026-10-11 from files that matched the Zenodo MD5s (https://zenodo.org/records/6053791). `ibid bench run` refuses a split or label file whose SHA-256 differs.
