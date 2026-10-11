@@ -116,7 +116,13 @@ def main(argv: list[str] | None = None) -> int:
     cf.add_argument("--pages", default="data/raw/pages")
     cf.add_argument("--index", default="data/index/conform.sqlite")
     cf.add_argument("--drop", action="append", default=[], metavar="ID=REASON")
+    bn = sub.add_parser("bench").add_subparsers(dest="bench_cmd", required=True).add_parser("check-labels")
+    bn.add_argument("--data", default="data/raw/lesicin/label_vocab.json")
+    bn.add_argument("--index", default="data/index/ibid.sqlite")
     a = ap.parse_args(argv)
+    if a.cmd == "bench":
+        from ibid.bench import check_labels
+        return check_labels(a.data, a.index)
     if a.cmd == "conform":
         from ibid.conform import conform
         report = conform(a.gold, a.out, a.bns, a.ipc, a.pages, a.index, a.sheet, dict(d.split("=", 1) for d in a.drop))
