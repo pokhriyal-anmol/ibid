@@ -3012,6 +3012,1007 @@
           }
         }
       }
+    },
+    {
+      "change": "0.8",
+      "dev": {
+        "cases": 10200,
+        "threshold": {
+          "scores": {
+            "jaccard": 0.05411,
+            "macro_f1": 0.052688,
+            "micro_f1": 0.084833
+          },
+          "strata": {
+            "label_count": {
+              "1": {
+                "cases": 1551,
+                "scores": {
+                  "jaccard": 0.069191,
+                  "macro_f1": 0.034682,
+                  "micro_f1": 0.081823
+                }
+              },
+              "2": {
+                "cases": 1907,
+                "scores": {
+                  "jaccard": 0.056418,
+                  "macro_f1": 0.049389,
+                  "micro_f1": 0.085944
+                }
+              },
+              "3+": {
+                "cases": 6742,
+                "scores": {
+                  "jaccard": 0.049988,
+                  "macro_f1": 0.053484,
+                  "micro_f1": 0.08496
+                }
+              }
+            },
+            "words": {
+              "151-500": {
+                "cases": 3040,
+                "scores": {
+                  "jaccard": 0.038256,
+                  "macro_f1": 0.036345,
+                  "micro_f1": 0.052142
+                }
+              },
+              "<=150": {
+                "cases": 1674,
+                "scores": {
+                  "jaccard": 0.029533,
+                  "macro_f1": 0.014864,
+                  "micro_f1": 0.033289
+                }
+              },
+              ">500": {
+                "cases": 5486,
+                "scores": {
+                  "jaccard": 0.070395,
+                  "macro_f1": 0.067312,
+                  "micro_f1": 0.112663
+                }
+              }
+            }
+          }
+        },
+        "top_k": {
+          "scores": {
+            "jaccard": 0.054962,
+            "macro_f1": 0.060136,
+            "micro_f1": 0.093426
+          },
+          "strata": {
+            "label_count": {
+              "1": {
+                "cases": 1551,
+                "scores": {
+                  "jaccard": 0.03991,
+                  "macro_f1": 0.03304,
+                  "micro_f1": 0.065772
+                }
+              },
+              "2": {
+                "cases": 1907,
+                "scores": {
+                  "jaccard": 0.054108,
+                  "macro_f1": 0.0577,
+                  "micro_f1": 0.089987
+                }
+              },
+              "3+": {
+                "cases": 6742,
+                "scores": {
+                  "jaccard": 0.058666,
+                  "macro_f1": 0.062394,
+                  "micro_f1": 0.097849
+                }
+              }
+            },
+            "words": {
+              "151-500": {
+                "cases": 3040,
+                "scores": {
+                  "jaccard": 0.040331,
+                  "macro_f1": 0.048964,
+                  "micro_f1": 0.066629
+                }
+              },
+              "<=150": {
+                "cases": 1674,
+                "scores": {
+                  "jaccard": 0.027782,
+                  "macro_f1": 0.025595,
+                  "micro_f1": 0.046017
+                }
+              },
+              ">500": {
+                "cases": 5486,
+                "scores": {
+                  "jaccard": 0.071363,
+                  "macro_f1": 0.074623,
+                  "micro_f1": 0.122173
+                }
+              }
+            }
+          }
+        }
+      },
+      "flags": [],
+      "gap": {
+        "macro_f1": -0.001615,
+        "micro_f1": -0.003776
+      },
+      "inputs": {
+        "dev_sha256": "7a2b784aa79dd9148a686d53cadde5a9747e6ffc15a6a1a6c80359551b92bc12",
+        "index_sha256": "efaf6fe8b342f151ac02ed110027320f39b0d99287327eb7d206453537a0d408",
+        "labels_sha256": "a9d6221f39f35c8c89d8e5b03e77a8c5dd7aa97e095e895dbb40fc2e96d582df",
+        "train_sha256": "23a0aedcf52a08e22e064fdce78501698d33b576a1437e5a02ecdbb01b3a2da8"
+      },
+      "knob": "r",
+      "owner_approved": false,
+      "params": {
+        "bm25_b": 1.0,
+        "bm25_k1": 4.0,
+        "k": 5,
+        "levels": "all",
+        "r": 0.8,
+        "rollup": "max",
+        "stem": "none",
+        "stop_words": [
+          "a",
+          "an",
+          "and",
+          "are",
+          "as",
+          "at",
+          "be",
+          "been",
+          "but",
+          "by",
+          "for",
+          "from",
+          "had",
+          "has",
+          "have",
+          "he",
+          "her",
+          "his",
+          "i",
+          "in",
+          "is",
+          "it",
+          "its",
+          "of",
+          "on",
+          "or",
+          "she",
+          "so",
+          "that",
+          "the",
+          "their",
+          "them",
+          "there",
+          "they",
+          "this",
+          "to",
+          "was",
+          "were",
+          "which",
+          "who",
+          "will",
+          "with",
+          "you",
+          "your"
+        ]
+      },
+      "parser_version": "4",
+      "round": 9,
+      "rule": {
+        "name": "query-rule",
+        "params_sha256": "f10164656a1e6b3a1a597d1fc81c675dc27aa3deb10b1817d556e29de9657644",
+        "version": "v2.9"
+      },
+      "status": {
+        "cap_reached": false,
+        "overfitting": false,
+        "saturated": true
+      },
+      "train": {
+        "cases": 42835,
+        "threshold": {
+          "scores": {
+            "jaccard": 0.051708,
+            "macro_f1": 0.04879,
+            "micro_f1": 0.08061
+          },
+          "strata": {
+            "label_count": {
+              "1": {
+                "cases": 9173,
+                "scores": {
+                  "jaccard": 0.050066,
+                  "macro_f1": 0.037765,
+                  "micro_f1": 0.063051
+                }
+              },
+              "2": {
+                "cases": 7603,
+                "scores": {
+                  "jaccard": 0.073354,
+                  "macro_f1": 0.064064,
+                  "micro_f1": 0.107505
+                }
+              },
+              "3+": {
+                "cases": 26059,
+                "scores": {
+                  "jaccard": 0.04597,
+                  "macro_f1": 0.047557,
+                  "micro_f1": 0.078743
+                }
+              }
+            },
+            "words": {
+              "151-500": {
+                "cases": 15086,
+                "scores": {
+                  "jaccard": 0.037568,
+                  "macro_f1": 0.032109,
+                  "micro_f1": 0.050065
+                }
+              },
+              "<=150": {
+                "cases": 7306,
+                "scores": {
+                  "jaccard": 0.027671,
+                  "macro_f1": 0.018075,
+                  "micro_f1": 0.035901
+                }
+              },
+              ">500": {
+                "cases": 20443,
+                "scores": {
+                  "jaccard": 0.070732,
+                  "macro_f1": 0.063317,
+                  "micro_f1": 0.112211
+                }
+              }
+            }
+          }
+        },
+        "top_k": {
+          "scores": {
+            "jaccard": 0.052265,
+            "macro_f1": 0.058521,
+            "micro_f1": 0.08965
+          },
+          "strata": {
+            "label_count": {
+              "1": {
+                "cases": 9173,
+                "scores": {
+                  "jaccard": 0.032002,
+                  "macro_f1": 0.042137,
+                  "micro_f1": 0.05349
+                }
+              },
+              "2": {
+                "cases": 7603,
+                "scores": {
+                  "jaccard": 0.063052,
+                  "macro_f1": 0.069372,
+                  "micro_f1": 0.103543
+                }
+              },
+              "3+": {
+                "cases": 26059,
+                "scores": {
+                  "jaccard": 0.056251,
+                  "macro_f1": 0.059415,
+                  "micro_f1": 0.094368
+                }
+              }
+            },
+            "words": {
+              "151-500": {
+                "cases": 15086,
+                "scores": {
+                  "jaccard": 0.038622,
+                  "macro_f1": 0.046876,
+                  "micro_f1": 0.065009
+                }
+              },
+              "<=150": {
+                "cases": 7306,
+                "scores": {
+                  "jaccard": 0.026598,
+                  "macro_f1": 0.025879,
+                  "micro_f1": 0.045043
+                }
+              },
+              ">500": {
+                "cases": 20443,
+                "scores": {
+                  "jaccard": 0.071506,
+                  "macro_f1": 0.074193,
+                  "micro_f1": 0.122841
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "change": "0.6",
+      "dev": {
+        "cases": 10200,
+        "threshold": {
+          "scores": {
+            "jaccard": 0.055724,
+            "macro_f1": 0.072979,
+            "micro_f1": 0.103448
+          },
+          "strata": {
+            "label_count": {
+              "1": {
+                "cases": 1551,
+                "scores": {
+                  "jaccard": 0.047144,
+                  "macro_f1": 0.03947,
+                  "micro_f1": 0.061131
+                }
+              },
+              "2": {
+                "cases": 1907,
+                "scores": {
+                  "jaccard": 0.050668,
+                  "macro_f1": 0.059967,
+                  "micro_f1": 0.081186
+                }
+              },
+              "3+": {
+                "cases": 6742,
+                "scores": {
+                  "jaccard": 0.059128,
+                  "macro_f1": 0.077904,
+                  "micro_f1": 0.114204
+                }
+              }
+            },
+            "words": {
+              "151-500": {
+                "cases": 3040,
+                "scores": {
+                  "jaccard": 0.038467,
+                  "macro_f1": 0.050531,
+                  "micro_f1": 0.06489
+                }
+              },
+              "<=150": {
+                "cases": 1674,
+                "scores": {
+                  "jaccard": 0.028821,
+                  "macro_f1": 0.02511,
+                  "micro_f1": 0.04249
+                }
+              },
+              ">500": {
+                "cases": 5486,
+                "scores": {
+                  "jaccard": 0.073496,
+                  "macro_f1": 0.089672,
+                  "micro_f1": 0.128184
+                }
+              }
+            }
+          }
+        },
+        "top_k": {
+          "scores": {
+            "jaccard": 0.054962,
+            "macro_f1": 0.060136,
+            "micro_f1": 0.093426
+          },
+          "strata": {
+            "label_count": {
+              "1": {
+                "cases": 1551,
+                "scores": {
+                  "jaccard": 0.03991,
+                  "macro_f1": 0.03304,
+                  "micro_f1": 0.065772
+                }
+              },
+              "2": {
+                "cases": 1907,
+                "scores": {
+                  "jaccard": 0.054108,
+                  "macro_f1": 0.0577,
+                  "micro_f1": 0.089987
+                }
+              },
+              "3+": {
+                "cases": 6742,
+                "scores": {
+                  "jaccard": 0.058666,
+                  "macro_f1": 0.062394,
+                  "micro_f1": 0.097849
+                }
+              }
+            },
+            "words": {
+              "151-500": {
+                "cases": 3040,
+                "scores": {
+                  "jaccard": 0.040331,
+                  "macro_f1": 0.048964,
+                  "micro_f1": 0.066629
+                }
+              },
+              "<=150": {
+                "cases": 1674,
+                "scores": {
+                  "jaccard": 0.027782,
+                  "macro_f1": 0.025595,
+                  "micro_f1": 0.046017
+                }
+              },
+              ">500": {
+                "cases": 5486,
+                "scores": {
+                  "jaccard": 0.071363,
+                  "macro_f1": 0.074623,
+                  "micro_f1": 0.122173
+                }
+              }
+            }
+          }
+        }
+      },
+      "flags": [
+        "hurts-simple"
+      ],
+      "gap": {
+        "macro_f1": -0.001615,
+        "micro_f1": -0.003776
+      },
+      "inputs": {
+        "dev_sha256": "7a2b784aa79dd9148a686d53cadde5a9747e6ffc15a6a1a6c80359551b92bc12",
+        "index_sha256": "efaf6fe8b342f151ac02ed110027320f39b0d99287327eb7d206453537a0d408",
+        "labels_sha256": "a9d6221f39f35c8c89d8e5b03e77a8c5dd7aa97e095e895dbb40fc2e96d582df",
+        "train_sha256": "23a0aedcf52a08e22e064fdce78501698d33b576a1437e5a02ecdbb01b3a2da8"
+      },
+      "knob": "r",
+      "owner_approved": false,
+      "params": {
+        "bm25_b": 1.0,
+        "bm25_k1": 4.0,
+        "k": 5,
+        "levels": "all",
+        "r": 0.6,
+        "rollup": "max",
+        "stem": "none",
+        "stop_words": [
+          "a",
+          "an",
+          "and",
+          "are",
+          "as",
+          "at",
+          "be",
+          "been",
+          "but",
+          "by",
+          "for",
+          "from",
+          "had",
+          "has",
+          "have",
+          "he",
+          "her",
+          "his",
+          "i",
+          "in",
+          "is",
+          "it",
+          "its",
+          "of",
+          "on",
+          "or",
+          "she",
+          "so",
+          "that",
+          "the",
+          "their",
+          "them",
+          "there",
+          "they",
+          "this",
+          "to",
+          "was",
+          "were",
+          "which",
+          "who",
+          "will",
+          "with",
+          "you",
+          "your"
+        ]
+      },
+      "parser_version": "4",
+      "round": 10,
+      "rule": {
+        "name": "query-rule",
+        "params_sha256": "936a17c1b465d5e4c21fa748a4f4608dbfa34423bb2395e215428d392fa5d56d",
+        "version": "v2.10"
+      },
+      "status": {
+        "cap_reached": false,
+        "overfitting": false,
+        "saturated": false
+      },
+      "train": {
+        "cases": 42835,
+        "threshold": {
+          "scores": {
+            "jaccard": 0.053308,
+            "macro_f1": 0.07142,
+            "micro_f1": 0.098688
+          },
+          "strata": {
+            "label_count": {
+              "1": {
+                "cases": 9173,
+                "scores": {
+                  "jaccard": 0.035599,
+                  "macro_f1": 0.046272,
+                  "micro_f1": 0.052208
+                }
+              },
+              "2": {
+                "cases": 7603,
+                "scores": {
+                  "jaccard": 0.06347,
+                  "macro_f1": 0.071273,
+                  "micro_f1": 0.095736
+                }
+              },
+              "3+": {
+                "cases": 26059,
+                "scores": {
+                  "jaccard": 0.056577,
+                  "macro_f1": 0.074636,
+                  "micro_f1": 0.109229
+                }
+              }
+            },
+            "words": {
+              "151-500": {
+                "cases": 15086,
+                "scores": {
+                  "jaccard": 0.0393,
+                  "macro_f1": 0.050505,
+                  "micro_f1": 0.065083
+                }
+              },
+              "<=150": {
+                "cases": 7306,
+                "scores": {
+                  "jaccard": 0.027912,
+                  "macro_f1": 0.026315,
+                  "micro_f1": 0.045119
+                }
+              },
+              ">500": {
+                "cases": 20443,
+                "scores": {
+                  "jaccard": 0.072721,
+                  "macro_f1": 0.09008,
+                  "micro_f1": 0.126291
+                }
+              }
+            }
+          }
+        },
+        "top_k": {
+          "scores": {
+            "jaccard": 0.052265,
+            "macro_f1": 0.058521,
+            "micro_f1": 0.08965
+          },
+          "strata": {
+            "label_count": {
+              "1": {
+                "cases": 9173,
+                "scores": {
+                  "jaccard": 0.032002,
+                  "macro_f1": 0.042137,
+                  "micro_f1": 0.05349
+                }
+              },
+              "2": {
+                "cases": 7603,
+                "scores": {
+                  "jaccard": 0.063052,
+                  "macro_f1": 0.069372,
+                  "micro_f1": 0.103543
+                }
+              },
+              "3+": {
+                "cases": 26059,
+                "scores": {
+                  "jaccard": 0.056251,
+                  "macro_f1": 0.059415,
+                  "micro_f1": 0.094368
+                }
+              }
+            },
+            "words": {
+              "151-500": {
+                "cases": 15086,
+                "scores": {
+                  "jaccard": 0.038622,
+                  "macro_f1": 0.046876,
+                  "micro_f1": 0.065009
+                }
+              },
+              "<=150": {
+                "cases": 7306,
+                "scores": {
+                  "jaccard": 0.026598,
+                  "macro_f1": 0.025879,
+                  "micro_f1": 0.045043
+                }
+              },
+              ">500": {
+                "cases": 20443,
+                "scores": {
+                  "jaccard": 0.071506,
+                  "macro_f1": 0.074193,
+                  "micro_f1": 0.122841
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "change": "0.7",
+      "dev": {
+        "cases": 10200,
+        "threshold": {
+          "scores": {
+            "jaccard": 0.056183,
+            "macro_f1": 0.06216,
+            "micro_f1": 0.097104
+          },
+          "strata": {
+            "label_count": {
+              "1": {
+                "cases": 1551,
+                "scores": {
+                  "jaccard": 0.05555,
+                  "macro_f1": 0.035749,
+                  "micro_f1": 0.070645
+                }
+              },
+              "2": {
+                "cases": 1907,
+                "scores": {
+                  "jaccard": 0.056443,
+                  "macro_f1": 0.057315,
+                  "micro_f1": 0.086964
+                }
+              },
+              "3+": {
+                "cases": 6742,
+                "scores": {
+                  "jaccard": 0.056256,
+                  "macro_f1": 0.065248,
+                  "micro_f1": 0.102275
+                }
+              }
+            },
+            "words": {
+              "151-500": {
+                "cases": 3040,
+                "scores": {
+                  "jaccard": 0.038065,
+                  "macro_f1": 0.040404,
+                  "micro_f1": 0.058518
+                }
+              },
+              "<=150": {
+                "cases": 1674,
+                "scores": {
+                  "jaccard": 0.02763,
+                  "macro_f1": 0.017914,
+                  "micro_f1": 0.036563
+                }
+              },
+              ">500": {
+                "cases": 5486,
+                "scores": {
+                  "jaccard": 0.074936,
+                  "macro_f1": 0.079498,
+                  "micro_f1": 0.125826
+                }
+              }
+            }
+          }
+        },
+        "top_k": {
+          "scores": {
+            "jaccard": 0.054962,
+            "macro_f1": 0.060136,
+            "micro_f1": 0.093426
+          },
+          "strata": {
+            "label_count": {
+              "1": {
+                "cases": 1551,
+                "scores": {
+                  "jaccard": 0.03991,
+                  "macro_f1": 0.03304,
+                  "micro_f1": 0.065772
+                }
+              },
+              "2": {
+                "cases": 1907,
+                "scores": {
+                  "jaccard": 0.054108,
+                  "macro_f1": 0.0577,
+                  "micro_f1": 0.089987
+                }
+              },
+              "3+": {
+                "cases": 6742,
+                "scores": {
+                  "jaccard": 0.058666,
+                  "macro_f1": 0.062394,
+                  "micro_f1": 0.097849
+                }
+              }
+            },
+            "words": {
+              "151-500": {
+                "cases": 3040,
+                "scores": {
+                  "jaccard": 0.040331,
+                  "macro_f1": 0.048964,
+                  "micro_f1": 0.066629
+                }
+              },
+              "<=150": {
+                "cases": 1674,
+                "scores": {
+                  "jaccard": 0.027782,
+                  "macro_f1": 0.025595,
+                  "micro_f1": 0.046017
+                }
+              },
+              ">500": {
+                "cases": 5486,
+                "scores": {
+                  "jaccard": 0.071363,
+                  "macro_f1": 0.074623,
+                  "micro_f1": 0.122173
+                }
+              }
+            }
+          }
+        }
+      },
+      "flags": [],
+      "gap": {
+        "macro_f1": -0.001615,
+        "micro_f1": -0.003776
+      },
+      "inputs": {
+        "dev_sha256": "7a2b784aa79dd9148a686d53cadde5a9747e6ffc15a6a1a6c80359551b92bc12",
+        "index_sha256": "efaf6fe8b342f151ac02ed110027320f39b0d99287327eb7d206453537a0d408",
+        "labels_sha256": "a9d6221f39f35c8c89d8e5b03e77a8c5dd7aa97e095e895dbb40fc2e96d582df",
+        "train_sha256": "23a0aedcf52a08e22e064fdce78501698d33b576a1437e5a02ecdbb01b3a2da8"
+      },
+      "knob": "r",
+      "owner_approved": false,
+      "params": {
+        "bm25_b": 1.0,
+        "bm25_k1": 4.0,
+        "k": 5,
+        "levels": "all",
+        "r": 0.7,
+        "rollup": "max",
+        "stem": "none",
+        "stop_words": [
+          "a",
+          "an",
+          "and",
+          "are",
+          "as",
+          "at",
+          "be",
+          "been",
+          "but",
+          "by",
+          "for",
+          "from",
+          "had",
+          "has",
+          "have",
+          "he",
+          "her",
+          "his",
+          "i",
+          "in",
+          "is",
+          "it",
+          "its",
+          "of",
+          "on",
+          "or",
+          "she",
+          "so",
+          "that",
+          "the",
+          "their",
+          "them",
+          "there",
+          "they",
+          "this",
+          "to",
+          "was",
+          "were",
+          "which",
+          "who",
+          "will",
+          "with",
+          "you",
+          "your"
+        ]
+      },
+      "parser_version": "4",
+      "round": 11,
+      "rule": {
+        "name": "query-rule",
+        "params_sha256": "250c53f85b3dcaa5c370dcc7a0cbf8a6da7579bc0f398ea9be2341b4750a90bf",
+        "version": "v2.11"
+      },
+      "status": {
+        "cap_reached": false,
+        "overfitting": false,
+        "saturated": false
+      },
+      "train": {
+        "cases": 42835,
+        "threshold": {
+          "scores": {
+            "jaccard": 0.053641,
+            "macro_f1": 0.059182,
+            "micro_f1": 0.091954
+          },
+          "strata": {
+            "label_count": {
+              "1": {
+                "cases": 9173,
+                "scores": {
+                  "jaccard": 0.043436,
+                  "macro_f1": 0.0437,
+                  "micro_f1": 0.058976
+                }
+              },
+              "2": {
+                "cases": 7603,
+                "scores": {
+                  "jaccard": 0.070804,
+                  "macro_f1": 0.068703,
+                  "micro_f1": 0.104941
+                }
+              },
+              "3+": {
+                "cases": 26059,
+                "scores": {
+                  "jaccard": 0.052226,
+                  "macro_f1": 0.059591,
+                  "micro_f1": 0.09554
+                }
+              }
+            },
+            "words": {
+              "151-500": {
+                "cases": 15086,
+                "scores": {
+                  "jaccard": 0.038747,
+                  "macro_f1": 0.040257,
+                  "micro_f1": 0.057852
+                }
+              },
+              "<=150": {
+                "cases": 7306,
+                "scores": {
+                  "jaccard": 0.027939,
+                  "macro_f1": 0.022272,
+                  "micro_f1": 0.040507
+                }
+              },
+              ">500": {
+                "cases": 20443,
+                "scores": {
+                  "jaccard": 0.073817,
+                  "macro_f1": 0.075787,
+                  "micro_f1": 0.123446
+                }
+              }
+            }
+          }
+        },
+        "top_k": {
+          "scores": {
+            "jaccard": 0.052265,
+            "macro_f1": 0.058521,
+            "micro_f1": 0.08965
+          },
+          "strata": {
+            "label_count": {
+              "1": {
+                "cases": 9173,
+                "scores": {
+                  "jaccard": 0.032002,
+                  "macro_f1": 0.042137,
+                  "micro_f1": 0.05349
+                }
+              },
+              "2": {
+                "cases": 7603,
+                "scores": {
+                  "jaccard": 0.063052,
+                  "macro_f1": 0.069372,
+                  "micro_f1": 0.103543
+                }
+              },
+              "3+": {
+                "cases": 26059,
+                "scores": {
+                  "jaccard": 0.056251,
+                  "macro_f1": 0.059415,
+                  "micro_f1": 0.094368
+                }
+              }
+            },
+            "words": {
+              "151-500": {
+                "cases": 15086,
+                "scores": {
+                  "jaccard": 0.038622,
+                  "macro_f1": 0.046876,
+                  "micro_f1": 0.065009
+                }
+              },
+              "<=150": {
+                "cases": 7306,
+                "scores": {
+                  "jaccard": 0.026598,
+                  "macro_f1": 0.025879,
+                  "micro_f1": 0.045043
+                }
+              },
+              ">500": {
+                "cases": 20443,
+                "scores": {
+                  "jaccard": 0.071506,
+                  "macro_f1": 0.074193,
+                  "micro_f1": 0.122841
+                }
+              }
+            }
+          }
+        }
+      }
     }
   ]
 }
