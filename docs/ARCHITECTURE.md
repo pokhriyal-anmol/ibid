@@ -30,7 +30,7 @@ flowchart TB
   end
 
   subgraph Measure["Measuring"]
-    GO[("gold/v1.json plus pin")]
+    GO[("gold/v2.json plus pin")]
     EV["ibid eval: score by category"]
     RS[("results file: gold hash, parser version, outcomes")]
   end

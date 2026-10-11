@@ -57,8 +57,8 @@ What slice 1 measured on 2026-10-11:
 |---|---|
 | BNS sections recovered | 358 of 358 |
 | IPC sections recovered | 575 of 575 |
-| Gold set | 45 items, pinned by SHA-256 |
-| Concordance | 66 entries: 8 human-checked, 58 refuted by an agent |
+| Gold set | 45 items (version 2), pinned by SHA-256. Version 1 is kept for history |
+| Concordance | 66 entries. 12 are served as verified (8 human-checked, 4 agent-checked at the owner's request). The other 54 answer "no verified concordance" |
 | Baseline score | 45 of 45 |
 | Two scored runs | byte-identical |
 
@@ -73,27 +73,27 @@ uv sync
 export IBID_BNS_PDF=$PWD/data/raw/bns-prs.pdf IBID_IPC_PDF=$PWD/data/raw/ipc-wipo.pdf
 
 # Run the frozen evaluation (scored mode refuses a gold file that fails its pin)
-uv run ibid eval --gold gold/v1.json --concordance concordance/v1.json --out results/run.json
+uv run ibid eval --gold gold/v2.json --concordance concordance/v2.json --out results/run.json
 
 # Run the test suite (about 30 seconds)
 uv run python -m unittest discover -s tests
 ```
 
-`results/run.json` should be byte-identical to [results/baseline-v1.json](results/baseline-v1.json).
+`results/run.json` should be byte-identical to [results/baseline-v2.json](results/baseline-v2.json).
 
 ## How we know it works
 
-- **A frozen answer key.** [gold/v1.json](gold/v1.json) carries its SHA-256 in [gold/v1.sha256](gold/v1.sha256). One changed byte and scored mode refuses to run. Edits make a new version.
+- **A frozen answer key.** [gold/v2.json](gold/v2.json) carries its SHA-256 in [gold/v2.sha256](gold/v2.sha256). One changed byte and scored mode refuses to run. Edits make a new version.
 - **Independent of the system.** Gold answers were drafted from the PDF page text, never from the index, and each cites its page. A second pass tried to refute every item.
 - **The harness can fail.** A scrambled section lowers its category, a wrong concordance mapping lowers its category, and swapped source pages refuse to score. See [tests/test_baseline.py](tests/test_baseline.py).
-- **Provenance in the data.** Every concordance entry says whether a person or only an agent checked it.
+- **Provenance in the data.** Every concordance entry carries a `basis`: `human-checked`, `agent-checked-for-owner` or `refuted-by-agent`. Only the first two are served.
 
 ## Repository map
 
 | Path | What is there |
 |---|---|
 | `src/ibid/` | Parsers, index, cross-references, concordance, the `ibid` command |
-| `gold/`, `concordance/` | Frozen v1 data, its pin and review record, plus earlier drafts |
+| `gold/`, `concordance/` | Frozen v1 and v2 data with pins and review records, plus drafts |
 | `results/` | The committed baseline |
 | `tests/` | Tests, all through the `ibid eval` command |
 | `docs/adr/` | Decisions and why |

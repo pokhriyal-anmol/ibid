@@ -27,7 +27,7 @@ Specs and tickets are local markdown under `.scratch/<slice>/`, one ticket per f
 
 These are data, and the rules are stricter than for code.
 
-- Never edit `gold/v1.json` or its pin in place. Add a new version and a new pin.
+- Never edit a frozen `gold/vN.json` or its pin in place. Add a new version and a new pin.
 - Every item needs a PDF page citation of the pinned source file.
 - Do not change an answer to make the system pass. If the system is wrong, fix the system. If the item is wrong, drop or correct it with a reason that someone can check at the source.
 - A concordance entry is `verified: true` only after a person has looked at the source pages, and its `basis` says who.

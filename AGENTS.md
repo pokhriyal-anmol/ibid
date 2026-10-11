@@ -15,7 +15,7 @@ uv sync
 export IBID_BNS_PDF=<root>/data/raw/bns-prs.pdf IBID_IPC_PDF=<root>/data/raw/ipc-wipo.pdf
 
 uv run python -m unittest discover -s tests                 # all tests, about 30 s
-uv run ibid eval --gold gold/v1.json --concordance concordance/v1.json --out results/run.json
+uv run ibid eval --gold gold/v2.json --concordance concordance/v2.json --out results/run.json
 uv run ibid eval --mode draft --gold <file>                 # unpinned gold, experiments only
 uv run ibid conform ...                                     # apply text conventions to drafted gold
 uv run ibid freeze ...                                      # apply a review sheet, write pinned v1
@@ -26,7 +26,7 @@ Tests are `unittest`. There is no pytest. Needs `pdftotext`, `pdftohtml`, `pdfse
 ## Rules
 
 1. **No model in retrieval.** Retrieval takes the raw query only ([ADR 0001](docs/adr/0001-retrieval-independent-of-the-model.md)). Do not add a model call, a query rewrite or an embedding step to the baseline path.
-2. **Frozen gold is never edited in place.** Make a new version file and a new pin. `gold/v1.json` must match `gold/v1.sha256`.
+2. **Frozen gold is never edited in place.** Make a new version file and a new pin. `gold/v2.json` must match `gold/v2.sha256`, and `concordance/v2.json` its pin.
 3. **Do not tune to the gold set.** Fixing a parser bug is fine. Editing an answer so the system passes is not. Drop a defective item by name with a reason, as `ibid conform --drop` does.
 4. **Never commit the source PDFs** or anything under `data/raw/`. CI fails if a PDF is tracked.
 5. **Test through one seam**: the `ibid eval` command. Test behaviour, not internals.
