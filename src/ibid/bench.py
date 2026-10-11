@@ -147,8 +147,45 @@ def verify_pinned(paths: list[str], manifest_path: str) -> int:
     return bad
 
 
+def freeze_rule(k: int, r: float, rollup: str, out_path: str) -> int:
+    """Record the rule that the test split may be scored against."""
+    if k < 1 or not 0 < r <= 1 or rollup not in ROLLUPS:
+        print("error: need k >= 1, 0 < r <= 1 and a known roll-up", file=sys.stderr)
+        return 1
+    rec = {"rule": {"name": RULE_NAME, "version": RULE_VERSION, "params_sha256": rule_hash(k, r, rollup)},
+           "k": k, "r": r, "section_score": rollup}
+    Path(out_path).write_text(json.dumps(rec, indent=2, sort_keys=True) + "\n")
+    return 0
+
+
+def test_guard(split_path: str, manifest_path: str, rule: str, frozen_path: str, ledger_path: str, rescore: bool) -> tuple[bool, list, int]:
+    """Whether this is the test split (by pinned hash, or by name), its prior ledger entries, and 1 if refused.
+
+    Keyed on the file hash so a copy at another path is still the test split."""
+    with open(manifest_path) as f:
+        pinned = json.load(f).get("test.jsonl", {}).get("sha256")
+    sha = sha256(split_path)
+    if Path(split_path).stem != "test" and sha != pinned:
+        return False, [], 0
+    try:
+        frozen = json.loads(Path(frozen_path).read_text())["rule"]["params_sha256"]
+    except (OSError, KeyError, ValueError):
+        frozen = None
+    if frozen != rule:
+        print(f"error: the test split is scored only against a frozen rule; {frozen_path} is missing or holds another rule",
+              file=sys.stderr)
+        return True, [], 1
+    ledger = json.loads(Path(ledger_path).read_text()) if Path(ledger_path).is_file() else []
+    prior = [e for e in ledger if e["split_sha256"] == sha]
+    if prior and not rescore:
+        print("error: the test split was already scored; pass --rescore-test to score it again", file=sys.stderr)
+        return True, prior, 1
+    return True, prior, 0
+
+
 def run_bench(split_path: str, labels_path: str, index_path: str, k: int, r: float, rollup: str, out_path: str,
-              manifest_path: str, sample: int | None = None) -> int:
+              manifest_path: str, sample: int | None = None, frozen_path: str = "results/frozen-rule.json",
+              ledger_path: str = "results/test-ledger.json", rescore: bool = False) -> int:
     if k < 1 or not 0 < r <= 1 or rollup not in ROLLUPS:
         print("error: need k >= 1, 0 < r <= 1 and a known roll-up", file=sys.stderr)
         return 1
@@ -159,6 +196,12 @@ def run_bench(split_path: str, labels_path: str, index_path: str, k: int, r: flo
         print("error: --sample is refused on the test split; it is scored once, in full", file=sys.stderr)
         return 1
     if verify_pinned([split_path, labels_path], manifest_path):
+        return 1
+    on_test, prior, refused = test_guard(split_path, manifest_path, rule_hash(k, r, rollup), frozen_path, ledger_path, rescore)
+    if refused:
+        return 1
+    if on_test and sample is not None:
+        print("error: --sample is refused on the test split; it is scored once, in full", file=sys.stderr)
         return 1
     with open(labels_path) as f:
         cites = [to_citation(label) for label in json.load(f)]
@@ -208,6 +251,13 @@ def run_bench(split_path: str, labels_path: str, index_path: str, k: int, r: flo
         },
         "predictions": {c["id"]: p for c, p in zip(cases, top_k)},
     }
+    if on_test:  # dev and train never reach the ledger; the first score stays, and is reported beside the new one
+        entry = {"split_sha256": results["inputs"]["split_sha256"], "rule": results["rule"], "k": k, "r": r,
+                 "section_score": rollup, "cases": len(cases), "scores": results["scores"],
+                 "threshold_scores": results["threshold"]["scores"]}
+        ledger = json.loads(Path(ledger_path).read_text()) if Path(ledger_path).is_file() else []
+        Path(ledger_path).write_text(json.dumps(ledger + [entry], indent=2, sort_keys=True) + "\n")
+        results["test_scores"] = prior + [entry]
     with open(out_path, "w") as f:
         f.write(json.dumps(results, indent=2, sort_keys=True) + "\n")
     return 0

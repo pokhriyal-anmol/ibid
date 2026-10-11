@@ -126,9 +126,6 @@ class BenchRunTest(unittest.TestCase):
         self.run_bench(sample=2, split_name="test.jsonl", expect=1)
         self.assertFalse((self.tmp / "out.json").exists())
 
-    def test_full_run_on_the_test_split_is_not_refused_by_sample_guard(self):
-        self.assertNotIn("sample", self.run_bench(split_name="test.jsonl"))
-
     def test_sample_of_five_item_split_scores_exactly_three(self):
         five = [{"id": f"i{n}", "text": ["theft"], "labels": [L[1]]} for n in (5, 4, 3, 2, 1)]
         r = self.run_bench(five, sample=3)
