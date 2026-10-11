@@ -1,6 +1,6 @@
 # Make BM25 parameters, stemming and indexed levels variable by an optimisation round
 
-Status: ready-for-agent
+Status: done
 Blocked by: none (08 is done)
 
 What to build: the three knobs that ticket 08 refuses today as deferred, so the owner-approved protocol is fully available to the optimisation. SQLite FTS5's `bm25()` fixes k1 = 1.2 and b = 0.75, so scoring moves into Python (standard library only, ADR 0002): tokenise provision text with the same lower-case, letters-only rule as the query, build term statistics once per index, and score with the BM25 formula FTS5 documents. Retrieval stays a deterministic function of the raw query (ADR 0001, ADR 0004); no model, no learned weight, nothing derived from labels.
