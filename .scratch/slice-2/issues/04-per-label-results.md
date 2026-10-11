@@ -1,6 +1,6 @@
 # Per-label precision, recall and F1 in the results file
 
-Status: ready-for-agent
+Status: done
 Blocked by: 02
 
 What to build: the run command writes, for each of the 100 labels, its support, true positives, false positives, false negatives, precision, recall and F1, and lists labels never predicted correctly. Sorted by citation so output is stable. It also writes the same three scores for strata, so a change that helps multi-section cases can be seen not to hurt simple ones: by gold label count (1, 2, 3 or more) and by fact-paragraph length in words (up to 150, 151 to 500, over 500).
