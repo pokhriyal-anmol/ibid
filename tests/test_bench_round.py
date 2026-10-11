@@ -96,18 +96,40 @@ class RoundTest(unittest.TestCase):
         self.assertEqual(len({e["rule"]["params_sha256"] for e in entries}), 4)
         self.assertEqual(entries[1]["dev"]["top_k"]["scores"]["macro_f1"], round(11 / 12, 6))  # hand-computed: k=2 adds one false IPC 2 for s1
 
-    def test_one_stop_word_change_alters_query_and_hash(self):
+    def use(self, provisions, cases):
+        (self.tmp / "i.sqlite").unlink()
+        index.build(str(self.tmp / "i.sqlite"), provisions, []).close()
+        self.write("train.jsonl", cases)
+        self.write("dev.jsonl", cases)
+
+    def test_one_stop_word_change_alters_query_score_and_hash(self):
+        self.use(PROVISIONS, [{"id": "t", "text": ["theft"], "labels": [L[1]]}])
         self.start(k=1)
         before = self.rounds()[0]
-        self.assertEqual(self.round("stop_words=+murder")[0], 0)
+        self.assertEqual(before["dev"]["top_k"]["scores"]["micro_f1"], 1.0)
+        self.assertEqual(self.round("stop_words=+theft")[0], 0)
         after = self.rounds()[1]
-        self.assertIn("murder", after["params"]["stop_words"])
+        self.assertEqual(after["dev"]["top_k"]["scores"]["micro_f1"], 0.0)  # the query is now empty
+        self.assertIn("theft", after["params"]["stop_words"])
         self.assertEqual(len(after["params"]["stop_words"]), len(before["params"]["stop_words"]) + 1)
-        self.assertEqual(after["rule"]["params_sha256"],
-                         bench.rule_hash(1, 0.5, "max", after["params"]["stop_words"]))
-        self.assertNotEqual(after["rule"]["params_sha256"], before["rule"]["params_sha256"])
-        self.assertEqual(self.round("stop_words=-murder")[0], 0)
-        self.assertEqual(self.rounds()[2]["rule"]["params_sha256"], before["rule"]["params_sha256"])
+        self.assertEqual(after["rule"]["params_sha256"], bench.rule_hash(1, 0.5, "max", after["params"]["stop_words"]))
+        self.assertEqual(self.round("stop_words=-theft")[0], 0)
+        back = self.rounds()[2]
+        self.assertEqual(back["rule"]["params_sha256"], before["rule"]["params_sha256"])
+        self.assertEqual(back["dev"]["top_k"]["scores"], before["dev"]["top_k"]["scores"])
+
+    def test_rollup_round_changes_the_logged_score(self):
+        # sections 6 and 7 tie under max (top-1 is the lowest citation, 6); under sum 7 scores twice 6
+        provisions = [prov("IPC 6", "robbery violence"), Provision("IPC 7", "violence", None, ("IPC 7(a)", "IPC 7(b)")),
+                      Provision("IPC 7(a)", "robbery violence", "IPC 7", ()),
+                      Provision("IPC 7(b)", "robbery violence", "IPC 7", ())]
+        labels = {f"Section {n} in The Indian Penal Code": n for n in (6, 7)}
+        (self.tmp / "labels.json").write_text(json.dumps(labels))
+        self.use(provisions, [{"id": "t", "text": ["robbery"], "labels": ["Section 7 in The Indian Penal Code"]}])
+        self.start(k=1)
+        self.assertEqual(self.round("rollup=sum")[0], 0)
+        r0, r1 = self.rounds()
+        self.assertEqual((r0["dev"]["top_k"]["scores"]["micro_f1"], r1["dev"]["top_k"]["scores"]["micro_f1"]), (0.0, 1.0))
 
     def test_refused_rounds_leave_the_log_untouched(self):
         self.start()
@@ -118,6 +140,8 @@ class RoundTest(unittest.TestCase):
             code, _, err = self.round(*changes)
             self.assertEqual((changes, code), (changes, 1))
             self.assertIn("error:", err)
+            if changes == ("label_prior=on",):
+                self.assertIn("not a declared knob", err)
             self.assertEqual(self.log.read_bytes(), raw, changes)
         self.assertEqual(self.round()[0], 1)  # a later round with no change at all
 
