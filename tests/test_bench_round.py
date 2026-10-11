@@ -185,6 +185,16 @@ class RoundTest(unittest.TestCase):
         self.assertFalse(optimise.stopping_status(rounds(flat_topk, [0.03, 0.04, 0.05, 0.06]))["saturated"])
         self.assertTrue(optimise.stopping_status(rounds(flat_topk, [0.03] * 4))["saturated"])  # both flat: still stops
 
+    def test_hurts_simple_reads_both_rules_and_compares_to_round_zero(self):
+        def entry(top, thr):
+            return {"dev": {rule: {"strata": {"label_count": {"1": {"scores": {"micro_f1": v}}}}}
+                            for rule, v in (("top_k", top), ("threshold", thr))}}
+        r0 = entry(0.07, 0.07)
+        self.assertFalse(optimise.hurts_simple(r0, entry(0.07, 0.07)))
+        self.assertTrue(optimise.hurts_simple(r0, entry(0.07, 0.06)))  # the threshold rule alone
+        self.assertTrue(optimise.hurts_simple(r0, entry(0.06, 0.07)))  # the top-k rule alone
+        self.assertFalse(optimise.hurts_simple(r0, entry(0.066, 0.066)))  # 0.4 point, under the bar
+
     def test_round_that_hurts_single_label_cases_is_flagged(self):
         self.start(k=1)
         self.assertEqual(self.round("k=2")[0], 0)

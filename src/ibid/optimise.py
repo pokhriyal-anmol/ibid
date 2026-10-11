@@ -64,8 +64,15 @@ def freezable(entry: dict) -> bool:
     return not entry["flags"] or entry["owner_approved"]
 
 
-def single_label_micro(entry: dict) -> float:
-    return entry["dev"]["top_k"]["strata"]["label_count"]["1"]["scores"]["micro_f1"]
+def single_label_micro(entry: dict, rule: str) -> float:
+    return entry["dev"][rule]["strata"]["label_count"]["1"]["scores"]["micro_f1"]
+
+
+def hurts_simple(round0: dict, entry: dict) -> bool:
+    """Either output rule scores more than HURTS_BAR below the unmodified rule on single-label dev cases.
+    Against round 0, not the previous round, so a run of small drops cannot add up unseen."""
+    return any(single_label_micro(round0, rule) - single_label_micro(entry, rule) > HURTS_BAR
+               for rule in ("top_k", "threshold"))
 
 
 def run_round(train: str, dev: str, labels: str, index: str, manifest: str, log_path: str, changes: list[str],
@@ -115,8 +122,7 @@ def _round(train, dev, labels, index, manifest, log_path, changes, k, r, rollup)
         entry[name] = {"cases": len(cases), **evaluate(ix, cases, benchmark_labels, space, params)}
     entry["gap"] = {m: round(entry["train"]["top_k"]["scores"][m] - entry["dev"]["top_k"]["scores"][m], 6)
                     for m in ("micro_f1", "macro_f1")}
-    drop = round(single_label_micro(rounds[-1]) - single_label_micro(entry), 6) if rounds else 0
-    entry["flags"] = ["hurts-simple"] if drop > HURTS_BAR else []
+    entry["flags"] = ["hurts-simple"] if rounds and hurts_simple(rounds[0], entry) else []
     entry["owner_approved"] = False  # the owner sets this to true in the log to let a flagged round become the frozen rule
     entry["status"] = stopping_status(rounds + [entry])
     Path(log_path).parent.mkdir(parents=True, exist_ok=True)
