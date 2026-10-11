@@ -116,10 +116,20 @@ def main(argv: list[str] | None = None) -> int:
     cf.add_argument("--pages", default="data/raw/pages")
     cf.add_argument("--index", default="data/index/conform.sqlite")
     cf.add_argument("--drop", action="append", default=[], metavar="ID=REASON")
-    bn = sub.add_parser("bench").add_subparsers(dest="bench_cmd", required=True).add_parser("check-labels")
+    bsub = sub.add_parser("bench").add_subparsers(dest="bench_cmd", required=True)
+    bn = bsub.add_parser("check-labels")
     bn.add_argument("--data", default="data/raw/lesicin/label_vocab.json")
     bn.add_argument("--index", default="data/index/ibid.sqlite")
+    br = bsub.add_parser("run")
+    br.add_argument("--split", required=True)
+    br.add_argument("--labels", default="data/raw/lesicin/label_vocab.json")
+    br.add_argument("--index", default="data/index/ibid.sqlite")
+    br.add_argument("--k", type=int, required=True)
+    br.add_argument("--out", required=True)
     a = ap.parse_args(argv)
+    if a.cmd == "bench" and a.bench_cmd == "run":
+        from ibid.bench import run_bench
+        return run_bench(a.split, a.labels, a.index, a.k, a.out)
     if a.cmd == "bench":
         from ibid.bench import check_labels
         return check_labels(a.data, a.index)
