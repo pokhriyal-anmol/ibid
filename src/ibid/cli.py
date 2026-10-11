@@ -138,7 +138,21 @@ def main(argv: list[str] | None = None) -> int:
     bf.add_argument("--r", type=float, required=True)
     bf.add_argument("--rollup", choices=("max", "sum"), default="max")
     bf.add_argument("--out", default="results/frozen-rule.json")
+    ro = bsub.add_parser("round", help="score train and dev with one declared change and append to the log")
+    ro.add_argument("--train", required=True)
+    ro.add_argument("--dev", required=True)
+    ro.add_argument("--labels", default="data/raw/lesicin/label_vocab.json")
+    ro.add_argument("--index", default="data/index/ibid.sqlite")
+    ro.add_argument("--manifest", default="data/lesicin.manifest.json")
+    ro.add_argument("--log", default="results/optimisation-log.json")
+    ro.add_argument("--change", action="append", default=[], metavar="KNOB=VALUE")
+    ro.add_argument("--k", type=int, help="round 0 only")
+    ro.add_argument("--r", type=float, help="round 0 only")
+    ro.add_argument("--rollup", choices=("max", "sum"), help="round 0 only, default max")
     a = ap.parse_args(argv)
+    if a.cmd == "bench" and a.bench_cmd == "round":
+        from ibid.optimise import run_round
+        return run_round(a.train, a.dev, a.labels, a.index, a.manifest, a.log, a.change, a.k, a.r, a.rollup)
     if a.cmd == "bench" and a.bench_cmd == "run":
         from ibid.bench import run_bench
         return run_bench(a.split, a.labels, a.index, a.k, a.r, a.rollup, a.out, a.manifest, a.sample,

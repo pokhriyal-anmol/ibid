@@ -51,20 +51,22 @@ ROLLUPS = {"max": max, "sum": sum}  # how a section scores from the BM25 of its 
 SAMPLE_RULE = "first N cases by sorted id"
 
 
-def rule_hash(k: int, r: float, rollup: str) -> str:
-    params = {"stop_words": sorted(STOP_WORDS), "split": "non-letters", "join": "OR", "section_score": rollup,
+def rule_hash(k: int, r: float, rollup: str, stop_words=None) -> str:
+    params = {"stop_words": sorted(STOP_WORDS if stop_words is None else stop_words), "split": "non-letters", "join": "OR", "section_score": rollup,
               "top_k": k, "relative_threshold": r}
     return hashlib.sha256(json.dumps(params, sort_keys=True).encode()).hexdigest()
 
 
-def to_fts_query(raw: str) -> str:
-    seen = dict.fromkeys(t for t in re.findall(r"[^\W\d_]+", raw.lower()) if t not in STOP_WORDS)
+def to_fts_query(raw: str, stop_words=None) -> str:
+    stop = STOP_WORDS if stop_words is None else stop_words
+    seen = dict.fromkeys(t for t in re.findall(r"[^\W\d_]+", raw.lower()) if t not in stop)
     return " OR ".join(f'"{t}"' for t in seen)  # quoted so a word like "near" is never an FTS operator
 
 
-def rank_sections(db: sqlite3.Connection, raw: str, space: set[str], rollup: str) -> list[tuple[str, float]]:
+def rank_sections(db: sqlite3.Connection, raw: str, space: set[str], rollup: str,
+                  stop_words=None) -> list[tuple[str, float]]:
     """Section citations inside the label space with their roll-up score, best first, ties by citation string."""
-    query = to_fts_query(raw)
+    query = to_fts_query(raw, stop_words)
     if not query:
         return []
     parent = dict(db.execute("SELECT citation, parent FROM provision WHERE citation LIKE 'IPC %'"))
