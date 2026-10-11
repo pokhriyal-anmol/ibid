@@ -4,7 +4,7 @@ import sys
 from pathlib import Path
 
 PUBLISHED = (
-    ("micro-F1", "28.08", "IL-TUR benchmark, statute identification (arXiv 2512.21902 describes its splits)"),
+    ("m-F1 (micro or macro not confirmed)", "28.08", "IL-TUR benchmark, statute identification (arXiv 2512.21902 describes its splits)"),
     ("macro-F1", "28.45", "LeSICiN paper, Zenodo record 6053791"),
 )
 CAVEATS = (

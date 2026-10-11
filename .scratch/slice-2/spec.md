@@ -52,7 +52,7 @@ flowchart LR
 ## Optimisation protocol (proposed, for the owner to veto)
 
 - **Splits.** Train is the tuning set, dev is the stopping and sanity check, test is scored once at the end.
-- **Declared knobs only.** Tokenisation choices, the fixed stop-word list, term weighting parameters of the index's ranking function, which provision levels are indexed, the roll-up to sections, k and the threshold r. Nothing learned from labels. A label-frequency prior is out of scope unless the owner approves it, since it would be learning from the training labels.
+- **Declared knobs only.** Tokenisation choices, the fixed stop-word list, term weighting parameters of the index's ranking function, which provision levels are indexed, the roll-up to sections, k and the threshold r. Nothing learned from labels. `ibid bench round` varies only stop words, k, r and the roll-up; tokenisation choices, BM25 parameters and indexed levels are declared but deferred, and a round that names them is refused. A label-frequency prior is out of scope unless the owner approves it, since it would be learning from the training labels.
 - **One change per round**, each recorded with its rule version, parameters and scores in `results/optimisation-log.json`.
 - **Saturation.** Stop when dev macro-F1 gains less than 0.5 points absolute for 3 consecutive rounds, or after 20 rounds, whichever comes first.
 - **Overfit check.** Report the train and dev gap. If dev stops improving while train keeps rising, stop and say so.

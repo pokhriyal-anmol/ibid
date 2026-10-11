@@ -51,9 +51,14 @@ ROLLUPS = {"max": max, "sum": sum}  # how a section scores from the BM25 of its 
 SAMPLE_RULE = "first N cases by sorted id"
 
 
+def check_params(k: int, r: float, rollup: str) -> None:
+    if k < 1 or not 0 < r <= 1 or rollup not in ROLLUPS:
+        raise ValueError("need k >= 1, 0 < r <= 1 and a known roll-up")
+
+
 def rule_hash(k: int, r: float, rollup: str, stop_words=None) -> str:
     params = {"stop_words": sorted(STOP_WORDS if stop_words is None else stop_words), "split": "non-letters", "join": "OR", "section_score": rollup,
-              "top_k": k, "relative_threshold": r}
+              "dedup": True, "quote": True, "top_k": k, "relative_threshold": r}
     return hashlib.sha256(json.dumps(params, sort_keys=True).encode()).hexdigest()
 
 
@@ -149,83 +154,107 @@ def verify_pinned(paths: list[str], manifest_path: str) -> int:
     return bad
 
 
-def freeze_rule(k: int, r: float, rollup: str, out_path: str) -> int:
-    """Record the rule that the test split may be scored against."""
-    if k < 1 or not 0 < r <= 1 or rollup not in ROLLUPS:
-        print("error: need k >= 1, 0 < r <= 1 and a known roll-up", file=sys.stderr)
-        return 1
-    rec = {"rule": {"name": RULE_NAME, "version": RULE_VERSION, "params_sha256": rule_hash(k, r, rollup)},
-           "k": k, "r": r, "section_score": rollup}
-    Path(out_path).write_text(json.dumps(rec, indent=2, sort_keys=True) + "\n")
-    return 0
-
-
-def test_guard(split_path: str, manifest_path: str, rule: str, frozen_path: str, ledger_path: str, rescore: bool) -> tuple[bool, list, int]:
-    """Whether this is the test split (by pinned hash, or by name), its prior ledger entries, and 1 if refused.
-
-    Keyed on the file hash so a copy at another path is still the test split."""
+def pinned_test_hash(manifest_path: str) -> str | None:
     with open(manifest_path) as f:
-        pinned = json.load(f).get("test.jsonl", {}).get("sha256")
-    sha = sha256(split_path)
-    if Path(split_path).stem != "test" and sha != pinned:
-        return False, [], 0
-    try:
-        frozen = json.loads(Path(frozen_path).read_text())["rule"]["params_sha256"]
-    except (OSError, KeyError, ValueError):
-        frozen = None
-    if frozen != rule:
-        print(f"error: the test split is scored only against a frozen rule; {frozen_path} is missing or holds another rule",
-              file=sys.stderr)
-        return True, [], 1
-    ledger = json.loads(Path(ledger_path).read_text()) if Path(ledger_path).is_file() else []
-    prior = [e for e in ledger if e["split_sha256"] == sha]
-    if prior and not rescore:
-        print("error: the test split was already scored; pass --rescore-test to score it again", file=sys.stderr)
-        return True, prior, 1
-    return True, prior, 0
+        return json.load(f).get("test.jsonl", {}).get("sha256")
 
 
-def run_bench(split_path: str, labels_path: str, index_path: str, k: int, r: float, rollup: str, out_path: str,
-              manifest_path: str, sample: int | None = None, frozen_path: str = "results/frozen-rule.json",
-              ledger_path: str = "results/test-ledger.json", rescore: bool = False) -> int:
-    if k < 1 or not 0 < r <= 1 or rollup not in ROLLUPS:
-        print("error: need k >= 1, 0 < r <= 1 and a known roll-up", file=sys.stderr)
-        return 1
-    if sample is not None and sample < 1:
-        print("error: --sample must be at least 1", file=sys.stderr)
-        return 1
-    if sample is not None and Path(split_path).stem == "test":  # shortcut: by file name, ticket 06/07 pin the hash
-        print("error: --sample is refused on the test split; it is scored once, in full", file=sys.stderr)
-        return 1
-    if verify_pinned([split_path, labels_path], manifest_path):
-        return 1
-    on_test, prior, refused = test_guard(split_path, manifest_path, rule_hash(k, r, rollup), frozen_path, ledger_path, rescore)
-    if refused:
-        return 1
-    if on_test and sample is not None:
-        print("error: --sample is refused on the test split; it is scored once, in full", file=sys.stderr)
-        return 1
+def load_space(labels_path: str) -> set[str]:
     with open(labels_path) as f:
         cites = [to_citation(label) for label in json.load(f)]
     if not cites or None in cites:
-        print("error: label vocabulary is empty or has an unparseable label", file=sys.stderr)
-        return 1
-    space = set(cites)
-    with open(split_path) as f:
+        raise ValueError("label vocabulary is empty or has an unparseable label")
+    return set(cites)
+
+
+def load_cases(path: str, space: set[str], sample: int | None = None) -> tuple[list[dict], list[set[str]]]:
+    with open(path) as f:
         cases = [json.loads(line) for line in f if line.strip()]
     if sample is not None:
         cases = sorted(cases, key=lambda c: c["id"])[:sample]
     gold = [{to_citation(label) for label in c["labels"]} for c in cases]
     if not cases or any(not g <= space for g in gold):
-        print("error: empty split, or a case has a label outside the label vocabulary", file=sys.stderr)
+        raise ValueError(f"{Path(path).name}: empty split, or a label outside the label vocabulary")
+    return cases, gold
+
+
+def read_ledger(path: str) -> list:
+    return json.loads(Path(path).read_text()) if Path(path).is_file() else []
+
+
+def freeze_rule(log_path: str, round_no: int | None, out_path: str) -> int:
+    """Record, from a logged round (default the last), the rule that the test split may be scored against."""
+    from ibid.optimise import freezable  # optimise imports this module
+    try:
+        rounds = json.loads(Path(log_path).read_text())["rounds"]
+        entry = rounds[-1 if round_no is None else round_no]
+    except (OSError, KeyError, ValueError, IndexError):
+        print(f"error: {log_path} is missing or has no such round", file=sys.stderr)
         return 1
+    if not freezable(entry):
+        print(f"error: round {entry['round']} is flagged {entry['flags']}; the owner must set owner_approved in the log",
+              file=sys.stderr)
+        return 1
+    p = entry["params"]
+    rec = {"rule": entry["rule"], "round": entry["round"], "k": p["k"], "r": p["r"], "section_score": p["rollup"],
+           "stop_words": p["stop_words"]}
+    Path(out_path).write_text(json.dumps(rec, indent=2, sort_keys=True) + "\n")
+    return 0
+
+
+def test_guard(split_path: str, manifest_path: str, k: int, r: float, rollup: str, frozen_path: str, ledger_path: str,
+               rescore: bool) -> tuple[bool, dict | None, list, int]:
+    """(is the test split, its frozen record, prior ledger entries, 1 if refused).
+
+    Keyed on the file hash so a copy at another path is still the test split."""
+    sha = sha256(split_path)
+    if Path(split_path).stem != "test" and sha != pinned_test_hash(manifest_path):
+        return False, None, [], 0
+    try:
+        frozen = json.loads(Path(frozen_path).read_text())
+        held = frozen["rule"]["params_sha256"] == rule_hash(k, r, rollup, frozen["stop_words"])
+    except (OSError, KeyError, ValueError):
+        held = False
+    if not held:
+        print(f"error: the test split is scored only against a frozen rule; {frozen_path} is missing or holds another rule",
+              file=sys.stderr)
+        return True, None, [], 1
+    prior = [e for e in read_ledger(ledger_path) if e["split_sha256"] == sha]
+    if prior and not rescore:
+        print("error: the test split was already scored; pass --rescore-test to score it again", file=sys.stderr)
+        return True, None, prior, 1
+    return True, frozen, prior, 0
+
+
+def run_bench(split_path: str, labels_path: str, index_path: str, k: int, r: float, rollup: str, out_path: str,
+              manifest_path: str, sample: int | None = None, frozen_path: str = "results/frozen-rule.json",
+              ledger_path: str = "results/test-ledger.json", rescore: bool = False) -> int:
+    try:
+        check_params(k, r, rollup)
+        if sample is not None and sample < 1:
+            raise ValueError("--sample must be at least 1")
+        if verify_pinned([split_path, labels_path], manifest_path):
+            return 1
+        on_test, frozen, prior, refused = test_guard(split_path, manifest_path, k, r, rollup, frozen_path, ledger_path, rescore)
+        if refused:
+            return 1
+        if on_test and sample is not None:
+            raise ValueError("--sample is refused on the test split; it is scored once, in full")
+        space = load_space(labels_path)
+        cases, gold = load_cases(split_path, space, sample)
+    except ValueError as e:
+        print(f"error: {e}", file=sys.stderr)
+        return 1
+    stop_words = frozen["stop_words"] if frozen else None  # the test split is scored with the frozen round's rule
+    rule = {"name": RULE_NAME, "version": frozen["rule"]["version"] if frozen else RULE_VERSION,
+            "params_sha256": rule_hash(k, r, rollup, stop_words)}
     db = sqlite3.connect(f"file:{index_path}?mode=ro", uri=True)
-    ranked = [rank_sections(db, " ".join(c["text"]), space, rollup) for c in cases]
-    top_k, above_r = zip(*(predict(x, k, r) for x in ranked)) if ranked else ((), ())
+    ranked = [rank_sections(db, " ".join(c["text"]), space, rollup, stop_words) for c in cases]
+    top_k, above_r = zip(*(predict(x, k, r) for x in ranked))
     k_sets, r_sets = [set(p) for p in top_k], [set(p) for p in above_r]
     results = {
         "inputs": {"split_sha256": sha256(split_path), "labels_sha256": sha256(labels_path), "index_sha256": sha256(index_path)},
-        "rule": {"name": RULE_NAME, "version": RULE_VERSION, "params_sha256": rule_hash(k, r, rollup)},
+        "rule": rule,
         "parser_version": PARSER_VERSION,
         "k": k,
         "cases": len(cases),
@@ -257,8 +286,7 @@ def run_bench(split_path: str, labels_path: str, index_path: str, k: int, r: flo
         entry = {"split_sha256": results["inputs"]["split_sha256"], "rule": results["rule"], "k": k, "r": r,
                  "section_score": rollup, "cases": len(cases), "scores": results["scores"],
                  "threshold_scores": results["threshold"]["scores"]}
-        ledger = json.loads(Path(ledger_path).read_text()) if Path(ledger_path).is_file() else []
-        Path(ledger_path).write_text(json.dumps(ledger + [entry], indent=2, sort_keys=True) + "\n")
+        Path(ledger_path).write_text(json.dumps(read_ledger(ledger_path) + [entry], indent=2, sort_keys=True) + "\n")
         results["test_scores"] = prior + [entry]
     with open(out_path, "w") as f:
         f.write(json.dumps(results, indent=2, sort_keys=True) + "\n")

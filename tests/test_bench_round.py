@@ -185,14 +185,23 @@ class RoundTest(unittest.TestCase):
         single = lambda e: e["dev"]["top_k"]["strata"]["gold_label_count"]["1"]["scores"]["micro_f1"]
         self.assertGreater(single(r0) - single(r1), 0.005)
         self.assertEqual((r0["flags"], r1["flags"]), ([], ["hurts-simple"]))
-        self.assertFalse(optimise.freezable(r1))
-        self.assertTrue(optimise.freezable({**r1, "owner_approved": True}))
-        self.assertTrue(optimise.freezable(r0))
+        frozen = self.tmp / "frozen.json"
+        freeze = lambda n: quiet(["bench", "freeze", "--log", str(self.log), "--round", str(n), "--out", str(frozen)])
+        code, _, err = freeze(1)
+        self.assertEqual(code, 1)
+        self.assertIn("owner_approved", err)
+        self.assertFalse(frozen.exists())
+        self.assertEqual(freeze(0)[0], 0)
+        log = json.loads(self.log.read_text())
+        log["rounds"][1]["owner_approved"] = True
+        self.log.write_text(json.dumps(log))
+        self.assertEqual(freeze(1)[0], 0)
+        self.assertEqual(json.loads(frozen.read_text())["rule"], r1["rule"])
+        self.assertEqual(freeze(9)[0], 1)  # a round that was never logged
 
     def test_test_split_is_never_read(self):
         self.write("test.jsonl", CASES)
-        self.write("heldout.jsonl", [{"id": "t", "text": ["murder"], "labels": [L[2]]}])
-        by_name = self.round(k=1, r=0.5, dev="test.jsonl", manifest=self.manifest(("test.jsonl",)))
+        by_name = self.round(k=1, r=0.5, dev="test.jsonl")  # not pinned in the manifest: only the name can refuse it
         self.assertEqual(by_name[0], 1)
         self.assertIn("never read", by_name[2])
         # renamed copy of the pinned test file is caught by its hash

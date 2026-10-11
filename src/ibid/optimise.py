@@ -34,18 +34,10 @@ def apply_change(params: dict, change: str) -> dict:
         new["rollup"] = value
     else:
         raise ValueError(f"{knob} is not a declared knob")
-    if new["k"] < 1 or not 0 < new["r"] <= 1 or new["rollup"] not in bench.ROLLUPS or new == params:
-        raise ValueError("the change is out of range or changes nothing")
+    bench.check_params(new["k"], new["r"], new["rollup"])
+    if new == params:
+        raise ValueError("the change changes nothing")
     return new
-
-
-def load_split(path: str, space: set[str]) -> tuple[list[dict], list[set[str]]]:
-    with open(path) as f:
-        cases = [json.loads(line) for line in f if line.strip()]
-    gold = [{bench.to_citation(label) for label in c["labels"]} for c in cases]
-    if not cases or any(not g <= space for g in gold):
-        raise ValueError(f"{Path(path).name}: empty split, or a label outside the label vocabulary")
-    return cases, gold
 
 
 def evaluate(db: sqlite3.Connection, cases: list[dict], gold: list[set[str]], space: set[str], p: dict) -> dict:
@@ -96,14 +88,12 @@ def _next_params(rounds, changes, k, r, rollup):
     if changes or k is None or r is None:
         raise ValueError("round 0 is the unmodified rule: give --k and --r, no --change")
     params = {"stop_words": sorted(bench.STOP_WORDS), "k": k, "r": r, "rollup": rollup or "max"}
-    if k < 1 or not 0 < r <= 1 or params["rollup"] not in bench.ROLLUPS:
-        raise ValueError("need k >= 1, 0 < r <= 1 and a known roll-up")
+    bench.check_params(k, r, params["rollup"])
     return params, None, None
 
 
 def _round(train, dev, labels, index, manifest, log_path, changes, k, r, rollup) -> int:
-    with open(manifest) as f:
-        test_hash = json.load(f).get("test.jsonl", {}).get("sha256")
+    test_hash = bench.pinned_test_hash(manifest)
     for p in (train, dev):  # shortcut: by name and by pinned hash; ticket 07 owns the once-only guard
         if Path(p).stem == "test" or bench.sha256(p) == test_hash:
             raise ValueError("the test split is never read by an optimisation round")
@@ -111,11 +101,7 @@ def _round(train, dev, labels, index, manifest, log_path, changes, k, r, rollup)
         return 1
     rounds = json.loads(Path(log_path).read_text())["rounds"] if Path(log_path).exists() else []
     params, knob, change = _next_params(rounds, changes, k, r, rollup)
-    with open(labels) as f:
-        cites = [bench.to_citation(label) for label in json.load(f)]
-    if not cites or None in cites:
-        raise ValueError("label vocabulary is empty or has an unparseable label")
-    space = set(cites)
+    space = bench.load_space(labels)
     db = sqlite3.connect(f"file:{index}?mode=ro", uri=True)
     n = len(rounds)
     entry = {"round": n, "knob": knob, "change": change, "params": params,
@@ -125,7 +111,7 @@ def _round(train, dev, labels, index, manifest, log_path, changes, k, r, rollup)
                         (("train_sha256", train), ("dev_sha256", dev), ("labels_sha256", labels), ("index_sha256", index))},
              "parser_version": bench.PARSER_VERSION}
     for name, path in (("train", train), ("dev", dev)):
-        cases, gold = load_split(path, space)
+        cases, gold = bench.load_cases(path, space)
         entry[name] = {"cases": len(cases), **evaluate(db, cases, gold, space, params)}
     entry["gap"] = {m: round(entry["train"]["top_k"]["scores"][m] - entry["dev"]["top_k"]["scores"][m], 6)
                     for m in ("micro_f1", "macro_f1")}

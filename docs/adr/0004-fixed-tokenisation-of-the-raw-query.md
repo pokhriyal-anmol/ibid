@@ -8,7 +8,7 @@ Slice 1's keyword search passes the raw string to SQLite FTS5. A case-facts para
 
 **Rule of the allowance.** The step is deterministic code. It is named and versioned, and its version and a hash of its parameters are written into every results file. It uses no model and no learned weights. Changing it makes a new rule version, never an edit.
 
-**What it may do:** lower-case, split on non-letters, drop words from a fixed list, join the rest with OR. **What it may not do:** call a model, expand synonyms from a model, or use the gold labels.
+**What it may do:** lower-case, split on non-letters, drop words from a fixed list, drop repeated terms, quote each term so no word is read as an FTS operator, join the rest with OR. The stop-word list, dedup and quoting are all in the recorded parameter hash. **What it may not do:** call a model, expand synonyms from a model, or use the gold labels.
 
 **Cost:** the string the index sees is no longer byte-for-byte the string the user typed. The raw query is still the only input, and the rule is public, but a reader must trust the rule version recorded beside every score.
 

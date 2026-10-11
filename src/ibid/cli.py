@@ -134,9 +134,8 @@ def main(argv: list[str] | None = None) -> int:
     br.add_argument("--ledger", default="results/test-ledger.json")
     br.add_argument("--rescore-test", action="store_true")
     bf = bsub.add_parser("freeze")
-    bf.add_argument("--k", type=int, required=True)
-    bf.add_argument("--r", type=float, required=True)
-    bf.add_argument("--rollup", choices=("max", "sum"), default="max")
+    bf.add_argument("--log", default="results/optimisation-log.json")
+    bf.add_argument("--round", type=int, default=None, help="logged round to freeze, default the last")
     bf.add_argument("--out", default="results/frozen-rule.json")
     ro = bsub.add_parser("round", help="score train and dev with one declared change and append to the log")
     ro.add_argument("--train", required=True)
@@ -167,7 +166,7 @@ def main(argv: list[str] | None = None) -> int:
                          a.frozen_rule, a.ledger, a.rescore_test)
     if a.cmd == "bench" and a.bench_cmd == "freeze":
         from ibid.bench import freeze_rule
-        return freeze_rule(a.k, a.r, a.rollup, a.out)
+        return freeze_rule(a.log, a.round, a.out)
     if a.cmd == "bench":
         from ibid.bench import check_labels
         return check_labels(a.data, a.index)

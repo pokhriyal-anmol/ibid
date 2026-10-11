@@ -123,8 +123,20 @@ class BenchRunTest(unittest.TestCase):
         self.assertEqual((self.tmp / "a.json").read_bytes(), (self.tmp / "b.json").read_bytes())
 
     def test_sample_on_the_test_split_is_refused_and_writes_nothing(self):
-        self.run_bench(sample=2, split_name="test.jsonl", expect=1)
-        self.assertFalse((self.tmp / "out.json").exists())
+        (self.tmp / "test.jsonl").write_text("".join(json.dumps(c) + "\n" for c in CASES))
+        (self.tmp / "manifest.json").write_text(json.dumps({n: {"sha256": bench.sha256(str(self.tmp / n))}
+                                                           for n in ("test.jsonl", "labels.json")}))
+        frozen, ledger, out = self.tmp / "frozen.json", self.tmp / "ledger.json", self.tmp / "sampled.json"
+        frozen.write_text(json.dumps({"rule": {"version": "v1", "params_sha256": bench.rule_hash(1, 0.5, "max")},
+                                      "stop_words": bench.STOP_WORDS}))  # the rule is frozen, so only --sample can refuse
+        err = io.StringIO()
+        with contextlib.redirect_stderr(err):
+            code = main(["bench", "run", "--split", str(self.tmp / "test.jsonl"), "--labels", str(self.tmp / "labels.json"),
+                         "--index", str(self.tmp / "i.sqlite"), "--k", "1", "--r", "0.5", "--out", str(out), "--sample", "2",
+                         "--manifest", str(self.tmp / "manifest.json"), "--frozen-rule", str(frozen), "--ledger", str(ledger)])
+        self.assertEqual(code, 1)
+        self.assertIn("--sample is refused", err.getvalue())
+        self.assertFalse(out.exists() or ledger.exists())
 
     def test_sample_of_five_item_split_scores_exactly_three(self):
         five = [{"id": f"i{n}", "text": ["theft"], "labels": [L[1]]} for n in (5, 4, 3, 2, 1)]

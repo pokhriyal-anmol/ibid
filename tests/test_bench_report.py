@@ -41,9 +41,9 @@ class ReportTest(unittest.TestCase):
                         "--labels", str(self.tmp / "labels.json"), "--index", str(self.tmp / "i.sqlite"),
                         "--manifest", str(self.manifest), "--log", str(self.log), *extra)
 
-    def score_test(self, *extra):
+    def score_test(self, *extra, k="1"):
         return self.cli("run", "--split", str(self.tmp / "test.jsonl"), "--labels", str(self.tmp / "labels.json"),
-                        "--index", str(self.tmp / "i.sqlite"), "--k", "1", "--r", "0.5", "--out", str(self.results),
+                        "--index", str(self.tmp / "i.sqlite"), "--k", k, "--r", "0.5", "--out", str(self.results),
                         "--manifest", str(self.manifest), "--frozen-rule", str(self.frozen),
                         "--ledger", str(self.ledger), *extra)
 
@@ -51,7 +51,7 @@ class ReportTest(unittest.TestCase):
         self.assertEqual(self.round("--k", "1", "--r", "0.5"), 0)
         self.assertEqual(self.round("--change", "k=2"), 0)
         self.assertEqual(self.round("--change", "k=1"), 0)  # final round runs the round-0 rule again
-        self.assertEqual(self.cli("freeze", "--k", "1", "--r", "0.5", "--out", str(self.frozen)), 0)
+        self.assertEqual(self.cli("freeze", "--log", str(self.log), "--out", str(self.frozen)), 0)
         self.assertEqual(self.score_test(), 0)
         if rescore:
             self.assertEqual(self.score_test("--rescore-test"), 0)
@@ -113,6 +113,15 @@ class ReportTest(unittest.TestCase):
                        bench.sha256(str(self.tmp / "test.jsonl"))):
             self.assertIn(needle, text)
         self.assertIn("ledger rule matches the final logged round: yes", text)
+
+    def test_ledger_rule_other_than_the_final_round_is_reported(self):
+        self.assertEqual(self.round("--k", "1", "--r", "0.5"), 0)
+        self.assertEqual(self.round("--change", "k=2"), 0)
+        self.assertEqual(self.round("--change", "k=1"), 0)
+        self.assertEqual(self.cli("freeze", "--log", str(self.log), "--round", "1", "--out", str(self.frozen)), 0)
+        self.assertEqual(self.score_test(k="2"), 0)
+        text = self.report()[1].read_text()
+        self.assertIn("ledger rule matches the final logged round: NO", text)
 
     def test_two_runs_are_byte_identical(self):
         self.build()
