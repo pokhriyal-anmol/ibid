@@ -1,0 +1,873 @@
+[
+  {
+    "ipc": [
+      "IPC 34"
+    ],
+    "bns": [
+      "BNS 3(5)"
+    ],
+    "type": "one-to-one",
+    "verified": false,
+    "ipcPage": 19,
+    "bnsPage": 7,
+    "evidence": "IPC 34: \"Acts done by several persons in furtherance of common intention.—When a criminal act is done by several persons in furtherance of the common intention of all...\" / BNS 3(5): \"When a criminal act is done by several persons in furtherance of the common intention of all, each of such persons is liable...\""
+  },
+  {
+    "ipc": [
+      "IPC 24"
+    ],
+    "bns": [
+      "BNS 2(7)"
+    ],
+    "type": "one-to-one",
+    "verified": false,
+    "ipcPage": 18,
+    "bnsPage": 2,
+    "evidence": "IPC 24: \"“Dishonestly”.—Whoever does anything with the intention of causing wrongful gain to one person or...\" / BNS 2(7): \"“dishonestly” means doing anything with the intention of causing wrongful gain to one person or wrongful loss to another person\""
+  },
+  {
+    "ipc": [
+      "IPC 53"
+    ],
+    "bns": [
+      "BNS 4"
+    ],
+    "type": "one-to-one",
+    "verified": false,
+    "ipcPage": 21,
+    "bnsPage": 8,
+    "evidence": "IPC 53: \"Punishments.—The punishments to which offenders are liable under the provisions of this Code are— First.—Death...\" / BNS 4: \"The punishments to which offenders are liable under the provisions of this Sanhita are— (a) Death...\" (BNS adds (f) Community Service)"
+  },
+  {
+    "ipc": [
+      "IPC 75"
+    ],
+    "bns": [
+      "BNS 13"
+    ],
+    "type": "one-to-one",
+    "verified": false,
+    "ipcPage": 24,
+    "bnsPage": 10,
+    "evidence": "IPC 75: \"Enhanced punishment for certain offences under Chapter XII or Chapter XVII after previous conviction.—Whoever, having been convicted,—\" / BNS 13: \"Whoever, having been convicted by a Court in India, of an offence punishable under Chapter X or Chapter XVII of this Sanhita...\" (marginal note: Enhanced punishment for certain offences after previous conviction)"
+  },
+  {
+    "ipc": [
+      "IPC 10"
+    ],
+    "bns": [
+      "BNS 2(19)",
+      "BNS 2(35)"
+    ],
+    "type": "split",
+    "verified": false,
+    "ipcPage": 15,
+    "bnsPage": 4,
+    "evidence": "IPC 10: \"“Man”. “Woman”.—The word “man” denotes a male human being of any age; the word “woman” denotes a female human being...\" / BNS 2(19) (p.4): \"“man” means male human being of any age\"; BNS 2(35) (p.6): \"“woman” means a female human being of any age\""
+  },
+  {
+    "ipc": [
+      "IPC 23"
+    ],
+    "bns": [
+      "BNS 2(36)",
+      "BNS 2(37)",
+      "BNS 2(38)"
+    ],
+    "type": "split",
+    "verified": false,
+    "ipcPage": 18,
+    "bnsPage": 6,
+    "evidence": "IPC 23: \"“Wrongful gain”.—“Wrongful gain” is gain by unlawful means of property...\" with \"Wrongful loss\" and \"Gaining wrongfully/Losing wrongfully\" in the same section / BNS 2(36): \"“wrongful gain” means gain by unlawful means...\"; 2(37): \"“wrongful loss” means the loss by unlawful means...\"; 2(38): \"“gaining wrongfully” and “losing wrongfully”.—A person is said to gain wrongfully...\""
+  },
+  {
+    "ipc": [
+      "IPC 54",
+      "IPC 55",
+      "IPC 55A"
+    ],
+    "bns": [
+      "BNS 5"
+    ],
+    "type": "merged",
+    "verified": false,
+    "ipcPage": 21,
+    "bnsPage": 8,
+    "evidence": "IPC 54: \"Commutation of sentence of death.—In every case in which sentence of death shall have been passed...\"; IPC 55: \"Commutation of sentence of imprisonment for life.—In every case in which sentence of imprisonment for life...\"; IPC 55A (p.22): \"Definition of “appropriate Government”.—In sections fifty-four and fifty-five...\" / BNS 5: \"The appropriate Government may, without the consent of the offender, commute any punishment under this Sanhita...\" with Explanation defining \"appropriate Government\""
+  },
+  {
+    "ipc": [
+      "IPC 63",
+      "IPC 64",
+      "IPC 65",
+      "IPC 66",
+      "IPC 67",
+      "IPC 68",
+      "IPC 69",
+      "IPC 70"
+    ],
+    "bns": [
+      "BNS 8"
+    ],
+    "type": "merged",
+    "verified": false,
+    "ipcPage": 22,
+    "bnsPage": 8,
+    "evidence": "IPC 63: \"Amount of fine.—Where no sum is expressed to which a fine may extend...\"; IPC 64: \"Sentence of imprisonment for non-payment of fine...\"; through IPC 70 (p.23): \"Fine leviable within six years...\" / BNS 8 (pp.8-9, \"Amount of fine, liability in default of payment of fine, etc.\"): \"(1) Where no sum is expressed to which a fine may extend...\" through \"(7) The fine, or any part thereof which remains unpaid, may be levied at any time within six years...\""
+  },
+  {
+    "ipc": [
+      "IPC 18"
+    ],
+    "bns": [],
+    "type": "removed",
+    "verified": false,
+    "ipcPage": 16,
+    "evidence": "IPC 18: \"“India”.—“India” means the territory of India excluding the State of Jammu and Kashmir.\" / Checked BNS 2 definitions (1)-(39) on BNS pp.2-6 and grepped all 102 BNS pages for a quoted “India” definition: none found. No BNS counterpart."
+  },
+  {
+    "ipc": [
+      "IPC 14"
+    ],
+    "bns": [],
+    "type": "removed",
+    "verified": false,
+    "ipcPage": 15,
+    "evidence": "IPC 14: \"“Servant of Government”.—The words “servant of Government” denote any officer or servant continued, appointed or employed in India...\" / Checked BNS 2 definitions (1)-(39) on BNS pp.2-6 and grepped all 102 BNS pages for \"servant of Government\": no match (positive control: \"Public servant\" does match). No BNS counterpart."
+  },
+  {
+    "ipc": [
+      "IPC 121"
+    ],
+    "bns": [
+      "BNS 147"
+    ],
+    "type": "one-to-one",
+    "verified": false,
+    "ipcPage": 35,
+    "bnsPage": 48,
+    "evidence": "IPC 121: \"Whoever wages war against the Government of India, or attempts to wage such war, or abets...\" BNS 147: \"Whoever wages war against the Government of India, or attempts to wage such war, or abets the waging of such war...\" Same punishment (death or imprisonment for life, and fine)."
+  },
+  {
+    "ipc": [
+      "IPC 121A"
+    ],
+    "bns": [
+      "BNS 148"
+    ],
+    "type": "one-to-one",
+    "verified": false,
+    "ipcPage": 35,
+    "bnsPage": 48,
+    "evidence": "IPC 121A: \"Conspiracy to commit offences punishable by section 121.—Whoever within or without...\" BNS 148: \"Whoever within or without and beyond India conspires to commit any of the offences punishable by section 147, or conspires to overawe...\" (side note: Conspiracy to commit offences punishable by section 147)."
+  },
+  {
+    "ipc": [
+      "IPC 146",
+      "IPC 147",
+      "IPC 148"
+    ],
+    "bns": [
+      "BNS 191"
+    ],
+    "type": "merged",
+    "verified": false,
+    "ipcPage": 40,
+    "bnsPage": 55,
+    "evidence": "IPC 146: \"Rioting.—Whenever force or violence is used by an unlawful assembly...\"; IPC 147: \"Punishment for rioting.—Whoever is guilty of rioting...\"; IPC 148: \"Rioting, armed with deadly weapon.—Whoever is guilty of rioting, being armed with a deadly weapon...\". BNS 191: \"(1) Whenever force or violence is used by an unlawful assembly... (2) Whoever is guilty of rioting... (3) Whoever is guilty of rioting, being armed with a deadly weapon...\". Armed rioting maximum rises from three years (IPC 148) to five years (BNS 191(3))."
+  },
+  {
+    "ipc": [
+      "IPC 159",
+      "IPC 160"
+    ],
+    "bns": [
+      "BNS 194"
+    ],
+    "type": "merged",
+    "verified": false,
+    "ipcPage": 42,
+    "bnsPage": 56,
+    "evidence": "IPC 159: \"Affray.—When two or more persons, by fighting in a public place, disturb the public peace...\"; IPC 160: \"Punishment for committing affray.—Whoever commits an affray...\". BNS 194: \"(1) When two or more persons, by fighting in a public place, disturb the public peace, they are said to commit an affray. (2) Whoever commits an affray...\". Fine cap rises from one hundred to one thousand rupees."
+  },
+  {
+    "ipc": [
+      "IPC 171E"
+    ],
+    "bns": [
+      "BNS 173"
+    ],
+    "type": "one-to-one",
+    "verified": false,
+    "ipcPage": 46,
+    "bnsPage": 51,
+    "evidence": "IPC 171E: \"Punishment for bribery.—Whoever commits the offence of bribery shall be punished with imprisonment of either description for a term which may extend to one year...\" BNS 173: \"Whoever commits the offence of bribery shall be punished with imprisonment of either description for a term which may extend to one year, or with fine, or with both:\"."
+  },
+  {
+    "ipc": [
+      "IPC 201"
+    ],
+    "bns": [
+      "BNS 238"
+    ],
+    "type": "one-to-one",
+    "verified": false,
+    "ipcPage": 53,
+    "bnsPage": 66,
+    "evidence": "IPC 201: \"Causing disappearance of evidence of offence, or giving false information to screen offender.—Whoever, knowing or having reason to believe that an offence has been committed, causes any evidence...\" BNS 238: \"Whoever, knowing or having reason to believe that an offence has been committed, causes any evidence of the commission of that offence to disappear...\"."
+  },
+  {
+    "ipc": [
+      "IPC 212"
+    ],
+    "bns": [
+      "BNS 249"
+    ],
+    "type": "one-to-one",
+    "verified": false,
+    "ipcPage": 55,
+    "bnsPage": 68,
+    "evidence": "IPC 212: \"Harbouring offender.—Whenever an offence has been committed, whoever harbours or conceals a person whom he knows or has reason to believe to be the offender...\" BNS 249: \"Whenever an offence has been committed, whoever harbours or conceals a person whom he knows or has reason to believe to be the offender, with the intention of screening him from legal punishment shall,—\"."
+  },
+  {
+    "ipc": [
+      "IPC 228A"
+    ],
+    "bns": [
+      "BNS 72",
+      "BNS 73"
+    ],
+    "type": "split",
+    "verified": false,
+    "ipcPage": 60,
+    "bnsPage": 26,
+    "evidence": "IPC 228A: \"Disclosure of identity of the victim of certain offences, etc.—(1) Whoever prints or publishes the name or any matter which may make known the identity...\" with (3) \"Whoever prints or publishes any matter in relation to any proceeding before a court...\" (p.60-61). BNS 72 (p.26): \"(1) Whoever prints or publishes the name or any matter which may make known the identity of any person against whom an offence under section 64...\" covers 228A(1)-(2); BNS 73 (p.27): \"Whoever prints or publishes any matter in relation to any proceeding before a Court with respect to an offence referred to in section 72...\" covers 228A(3)."
+  },
+  {
+    "ipc": [
+      "IPC 229"
+    ],
+    "bns": [
+      "BNS 268"
+    ],
+    "type": "one-to-one",
+    "verified": false,
+    "ipcPage": 61,
+    "bnsPage": 73,
+    "evidence": "IPC 229: \"Personation of a juror or assessor.—Whoever, by personation or otherwise, shall intentionally cause, or knowingly suffer himself to be returned, empanelled or sworn as a juryman or assessor...\" BNS 268: \"Whoever, by personation or otherwise, shall intentionally cause, or knowingly suffer himself to be returned, empanelled or sworn as an assessor...\" (side note: Personation of assessor). Juror/jury limb dropped; same two-year maximum."
+  },
+  {
+    "ipc": [
+      "IPC 231",
+      "IPC 232",
+      "IPC 255"
+    ],
+    "bns": [
+      "BNS 178"
+    ],
+    "type": "merged",
+    "verified": false,
+    "ipcPage": 62,
+    "bnsPage": 52,
+    "evidence": "IPC 231 (p62): \"Counterfeiting coin.—Whoever counterfeits or knowingly performs any part of the process of counterfeiting coin\"; IPC 232 (p62): \"Counterfeiting Indian coin.—Whoever counterfeits, or knowingly performs any part of the process of counterfeiting Indian coin\"; IPC 255 (p64): \"Counterfeiting Government stamp.—Whoever counterfeits, or knowingly performs any part of the process of counterfeiting, any stamp issued by Government for the purpose of revenue\". BNS 178 (p52): \"Whoever counterfeits, or knowingly performs any part of the process of counterfeiting, any coin, stamp issued by Government for the purpose of revenue, currency-note or bank-note\". BNS 178 Explanation (3) and (4) carry the IPC 255 and IPC 231 Explanations. BNS 178 also absorbs IPC 489A, which is outside the 230-300 range."
+  },
+  {
+    "ipc": [
+      "IPC 233",
+      "IPC 234",
+      "IPC 235",
+      "IPC 256",
+      "IPC 257"
+    ],
+    "bns": [
+      "BNS 181"
+    ],
+    "type": "merged",
+    "verified": false,
+    "ipcPage": 62,
+    "bnsPage": 53,
+    "evidence": "IPC 233 (p62): \"Making or selling instrument for counterfeiting coin.—Whoever makes or mends, or performs any part of the process of making or mending, or buys, sells or disposes of, any die or instrument\"; IPC 234/235 (p62) and IPC 256/257 (p64) are the matching instrument offences for Indian coin, coin possession and Government stamps. BNS 181 (p53): \"Whoever makes or mends, or performs any part of the process of making or mending, or buys or sells or disposes of, or has in his possession, any machinery, die, or instrument or material ... for forging or counterfeiting any coin, stamp issued by Government for the purpose of revenue, currency-note or bank-note\". I matched IPC 234, 235, 256 and 257 to BNS 181 using their IPC headings on p7 and their opening lines on p62/p64. I did not read their full bodies."
+  },
+  {
+    "ipc": [
+      "IPC 263A"
+    ],
+    "bns": [
+      "BNS 186"
+    ],
+    "type": "one-to-one",
+    "verified": false,
+    "ipcPage": 65,
+    "bnsPage": 53,
+    "evidence": "IPC 263A (p65): \"Prohibition of fictitious stamps.—(1) Whoever— (a) makes, knowingly utters, deals in or sells any fictitious stamp, or knowingly uses for any postal purpose any fictitious stamp\". BNS 186 (p53-54): \"(1) Whoever— (a) makes, knowingly utters, deals in or sells any fictitious stamp, or knowingly uses for any postal purpose any fictitious stamp\" (marginal heading: Prohibition of fictitious stamps)."
+  },
+  {
+    "ipc": [
+      "IPC 264",
+      "IPC 265",
+      "IPC 266",
+      "IPC 267"
+    ],
+    "bns": [],
+    "type": "removed",
+    "verified": false,
+    "ipcPage": 66,
+    "evidence": "IPC 264 (p66): \"Fraudulent use of false instrument for weighing.—Whoever, fraudulently uses any instrument for weighing which he knows to be false\"; IPC 265-267 (p66) cover false weights or measures. No BNS counterpart: I grepped all 102 BNS pages for \"weigh\" and \"measure\". The only weight hits are about coin, in BNS 178 Explanation (5) and BNS 187 (mint). BNS Chapter X (p52-54) runs from 178 to 188 and has no weights-and-measures section. Chapter XV begins at BNS 270 with public nuisance."
+  },
+  {
+    "ipc": [
+      "IPC 268"
+    ],
+    "bns": [
+      "BNS 270"
+    ],
+    "type": "one-to-one",
+    "verified": false,
+    "ipcPage": 66,
+    "bnsPage": 73,
+    "evidence": "IPC 268 (p66): \"Public nuisance.—A person is guilty of a public nuisance who does any act or is guilty of an\". BNS 270 (p73): \"A person is guilty of a public nuisance who does any act or is guilty of an illegal\"."
+  },
+  {
+    "ipc": [
+      "IPC 279"
+    ],
+    "bns": [
+      "BNS 281"
+    ],
+    "type": "one-to-one",
+    "verified": false,
+    "ipcPage": 67,
+    "bnsPage": 74,
+    "evidence": "IPC 279 (p67): \"Rash driving or riding on a public way.—Whoever drives any vehicle, or rides, on any public way in a manner so rash or negligent as to endanger human life\". BNS 281 (p74): \"Whoever drives any vehicle, or rides, on any public way in a manner so rash or\"."
+  },
+  {
+    "ipc": [
+      "IPC 292"
+    ],
+    "bns": [
+      "BNS 294"
+    ],
+    "type": "one-to-one",
+    "verified": false,
+    "ipcPage": 69,
+    "bnsPage": 76,
+    "evidence": "IPC 292 (p69): \"Sale, etc., of obscene books, etc.—(1) For the purposes of sub-section (2), a book, pamphlet, paper, writing, drawing, painting, representation, figure or any other object, shall be deemed to be obscene\". BNS 294 (p76): \"(1) For the purposes of sub-section (2), a book, pamphlet, paper, writing, drawing, painting, representation, figure or any other object, including display of any content in electronic form shall be deemed to be obscene\"."
+  },
+  {
+    "ipc": [
+      "IPC 294A"
+    ],
+    "bns": [
+      "BNS 297"
+    ],
+    "type": "one-to-one",
+    "verified": false,
+    "ipcPage": 71,
+    "bnsPage": 77,
+    "evidence": "IPC 294A (p71): \"Keeping lottery office.—Whoever keeps any office or place for the purpose of drawing any lottery not being a State lottery or a lottery authorised by the State Government\". BNS 297 (p77): \"(1) Whoever keeps any office or place for the purpose of drawing any lottery not being a State lottery or a lottery authorised by the State Government\". IPC 294A's second paragraph, on publishing proposals, is BNS 297(2)."
+  },
+  {
+    "ipc": [
+      "IPC 299"
+    ],
+    "bns": [
+      "BNS 100"
+    ],
+    "type": "one-to-one",
+    "verified": false,
+    "ipcPage": 72,
+    "bnsPage": 31,
+    "evidence": "IPC 299 (p72): \"Culpable homicide.—Whoever causes death by doing an act with the intention of causing death\". BNS 100 (p31): \"Whoever causes death by doing an act with the intention of causing death,\"."
+  },
+  {
+    "ipc": [
+      "IPC 300"
+    ],
+    "bns": [
+      "BNS 101"
+    ],
+    "type": "one-to-one",
+    "verified": false,
+    "ipcPage": 73,
+    "bnsPage": 32,
+    "evidence": "IPC 300 (p73): \"Murder.—Except in the cases hereinafter excepted, culpable homicide is murder, if the act by which the death is caused\". BNS 101 (p32): \"Except in the cases hereinafter excepted, culpable homicide is murder,––\"."
+  },
+  {
+    "ipc": [
+      "IPC 302"
+    ],
+    "bns": [
+      "BNS 103(1)"
+    ],
+    "type": "one-to-one",
+    "verified": false,
+    "ipcPage": 74,
+    "bnsPage": 34,
+    "evidence": "IPC 302: \"Punishment for murder.—Whoever commits murder shall be punished with death or [imprisonment for life]\". BNS 103(1): \"Whoever commits murder shall be punished with death or imprisonment for life\"."
+  },
+  {
+    "ipc": [
+      "IPC 304A"
+    ],
+    "bns": [
+      "BNS 106(1)"
+    ],
+    "type": "one-to-one",
+    "verified": false,
+    "ipcPage": 75,
+    "bnsPage": 34,
+    "evidence": "IPC 304A: \"Causing death by negligence.—Whoever causes the death of any person by doing any rash or negligent act not amounting to culpable homicide\". BNS 106(1): \"Whoever causes death of any person by doing any rash or negligent act not amounting to culpable homicide\" (maximum raised from two to five years)."
+  },
+  {
+    "ipc": [
+      "IPC 304B"
+    ],
+    "bns": [
+      "BNS 80(1)"
+    ],
+    "type": "one-to-one",
+    "verified": false,
+    "ipcPage": 75,
+    "bnsPage": 28,
+    "evidence": "IPC 304B: \"Dowry death.—(1) Where the death of a woman is caused by any burns or bodily injury or occurs otherwise than under normal circumstances\". BNS 80(1): \"Where the death of a woman is caused by any burns or bodily injury or occurs\"."
+  },
+  {
+    "ipc": [
+      "IPC 306"
+    ],
+    "bns": [
+      "BNS 108"
+    ],
+    "type": "one-to-one",
+    "verified": false,
+    "ipcPage": 76,
+    "bnsPage": 34,
+    "evidence": "IPC 306: \"Abetment of suicide.—If any person commits suicide, whoever abets the commission of such\". BNS 108: \"If any person commits suicide, whoever abets the commission of such suicide\"."
+  },
+  {
+    "ipc": [
+      "IPC 312"
+    ],
+    "bns": [
+      "BNS 88"
+    ],
+    "type": "one-to-one",
+    "verified": false,
+    "ipcPage": 76,
+    "bnsPage": 29,
+    "evidence": "IPC 312: \"Causing miscarraige.—Whoever voluntarily causes a woman with child to miscarry, shall, if such miscarriage be not caused in good faith\". BNS 88: \"Whoever voluntarily causes a woman with child to miscarry, shall, if such miscarriage be not caused in good faith\"."
+  },
+  {
+    "ipc": [
+      "IPC 354"
+    ],
+    "bns": [
+      "BNS 74"
+    ],
+    "type": "one-to-one",
+    "verified": false,
+    "ipcPage": 83,
+    "bnsPage": 27,
+    "evidence": "IPC 354: \"Assault or criminal force to woman with intent to outrage her modesty.—Whoever assaults\". BNS 74: \"Whoever assaults or uses criminal force to any woman, intending to outrage\"."
+  },
+  {
+    "ipc": [
+      "IPC 376"
+    ],
+    "bns": [
+      "BNS 64",
+      "BNS 65(1)"
+    ],
+    "type": "split",
+    "verified": false,
+    "ipcPage": 90,
+    "bnsPage": 23,
+    "evidence": "IPC 376(1): \"Punishment for rape.—(1) Whoever, except in the cases provided for in sub-section (2), commits\" rape (p.90); IPC 376(3): \"Whoever, commits rape on a woman under sixteen years of age\" (p.91). BNS 64(1): \"Whoever, except in the cases provided for in sub-section (2), commits rape\" (p.23); BNS 65(1): \"Whoever, commits rape on a woman under sixteen years of age shall be\" (p.25). Sub-section (3) moved out of the rape punishment section into BNS 65."
+  },
+  {
+    "ipc": [
+      "IPC 376DA",
+      "IPC 376DB"
+    ],
+    "bns": [
+      "BNS 70(2)"
+    ],
+    "type": "merged",
+    "verified": false,
+    "ipcPage": 93,
+    "bnsPage": 26,
+    "evidence": "IPC 376DA: \"Punishment for gang rape on woman under sixteen years of age.—Where a woman under sixteen years of age is raped by one or more persons\"; IPC 376DB: \"Punishment for gang rape on woman under twelve years of age.—Where a woman under twelve years of age\". BNS 70(2): \"Where a woman under eighteen years of age is raped by one or more persons constituting a group\" with life for remainder of natural life or death. Both age bands fold into one under-eighteen provision."
+  },
+  {
+    "ipc": [
+      "IPC 310"
+    ],
+    "bns": [],
+    "type": "removed",
+    "verified": false,
+    "ipcPage": 76,
+    "evidence": "IPC 310: \"Thug.—Whoever, at any time after the passing of this Act, shall have been habitually associated\". Searched all 102 BNS page files for \"thug\": zero hits. BNS 111 (organised crime, p.35) covers continuing unlawful activity but has no thug definition; no counterpart found."
+  },
+  {
+    "ipc": [
+      "IPC 311"
+    ],
+    "bns": [],
+    "type": "removed",
+    "verified": false,
+    "ipcPage": 76,
+    "evidence": "IPC 311: \"Punishment.—Whoever is a thug, shall be punished with [imprisonment for life]\". Searched all BNS page files for \"thug\": zero hits. No counterpart found."
+  },
+  {
+    "ipc": [
+      "IPC 377"
+    ],
+    "bns": [],
+    "type": "removed",
+    "verified": false,
+    "ipcPage": 94,
+    "evidence": "IPC 377 (p.94): \"Unnatural offences.—Whoever voluntarily has carnal intercourse against the order of nature...\". Searched every BNS page text for \"carnal\", \"against the order of nature\" and \"unnatural\": no carnal-intercourse offence found; only hits are \"unnatural lust\" in BNS p.15 (assault context) and p.46 (trafficking/slavery context), neither a counterpart. Treated as no BNS successor."
+  },
+  {
+    "ipc": [
+      "IPC 381"
+    ],
+    "bns": [
+      "BNS 306"
+    ],
+    "type": "one-to-one",
+    "verified": false,
+    "ipcPage": 96,
+    "bnsPage": 80,
+    "evidence": "IPC 381: \"Theft by clerk or servant of property in possession of master.—Whoever, being a clerk or servant...\" / BNS 306: \"Whoever, being a clerk or servant, or being employed in the capacity of a clerk or servant, commits theft...\""
+  },
+  {
+    "ipc": [
+      "IPC 461"
+    ],
+    "bns": [
+      "BNS 334(1)"
+    ],
+    "type": "one-to-one",
+    "verified": false,
+    "ipcPage": 108,
+    "bnsPage": 92,
+    "evidence": "IPC 461: \"Dishonestly breaking open receptacle containing property.—Whoever dishonestly or with intent to commit mischief, breaks open...\" / BNS 334(1): \"Whoever dishonestly or with intent to commit mischief, breaks open or unfastens any closed receptacle...\""
+  },
+  {
+    "ipc": [
+      "IPC 462"
+    ],
+    "bns": [
+      "BNS 334(2)"
+    ],
+    "type": "one-to-one",
+    "verified": false,
+    "ipcPage": 108,
+    "bnsPage": 92,
+    "evidence": "IPC 462: \"Punishment for same offence when committed by person entrusted with custody.—Whoever, being entrusted with any closed receptacle...\" / BNS 334(2): \"Whoever, being entrusted with any closed receptacle which contains or which he believes to contain property...\""
+  },
+  {
+    "ipc": [
+      "IPC 427"
+    ],
+    "bns": [
+      "BNS 324(3)",
+      "BNS 324(4)",
+      "BNS 324(5)"
+    ],
+    "type": "split",
+    "verified": false,
+    "ipcPage": 104,
+    "bnsPage": 88,
+    "evidence": "IPC 427: \"Whoever commits mischief and thereby causes loss or damage to the amount of fifty rupees or upwards...\" (single 2-year band) / BNS 324(3): \"Whoever commits mischief and thereby causes loss or damage to any property...\"; 324(4): \"...to the amount of twenty thousand rupees and more but less than one lakh rupees...\"; 324(5): \"...to the amount of one lakh rupees or upwards...\". Split by value band is an inference from the text, not stated in either Act."
+  },
+  {
+    "ipc": [
+      "IPC 428",
+      "IPC 429"
+    ],
+    "bns": [
+      "BNS 325"
+    ],
+    "type": "merged",
+    "verified": false,
+    "ipcPage": 104,
+    "bnsPage": 89,
+    "evidence": "IPC 428: \"Whoever commits mischief by killing, poisoning, maiming or rendering useless any animal or animals of the value of the ten rupees...\"; IPC 429: \"Whoever commits mischief by killing, poisoning, maiming or rendering useless, any elephant, camel...\" / BNS 325: \"Whoever commits mischief by killing, poisoning, maiming or rendering useless any animal...\" (no value threshold)."
+  },
+  {
+    "ipc": [
+      "IPC 406",
+      "IPC 407",
+      "IPC 408",
+      "IPC 409"
+    ],
+    "bns": [
+      "BNS 316"
+    ],
+    "type": "merged",
+    "verified": false,
+    "ipcPage": 101,
+    "bnsPage": 85,
+    "evidence": "IPC 406: \"Whoever commits criminal breach of trust shall be punished...\"; 407: \"Whoever, being entrusted with property as a carrier, wharfinger...\"; 408: \"Whoever, being a clerk or servant...\"; 409: \"Whoever, being in any manner entrusted with property... in his capacity of a public servant...\" / BNS 316(2): \"Whoever commits criminal breach of trust shall be punished...\", 316(3) carrier, 316(4) clerk or servant, 316(5) public servant/banker, all in one section (definition at 316(1), p.84)."
+  },
+  {
+    "ipc": [
+      "IPC 392",
+      "IPC 393",
+      "IPC 394"
+    ],
+    "bns": [
+      "BNS 309"
+    ],
+    "type": "merged",
+    "verified": false,
+    "ipcPage": 98,
+    "bnsPage": 82,
+    "evidence": "IPC 392: \"Whoever commits robbery shall be punished with rigorous imprisonment...\"; 393: \"Whoever attempts to commit robbery...\"; 394: \"If any person, in committing or in attempting to commit robbery, voluntarily causes hurt...\" / BNS 309(4): \"Whoever commits robbery shall be punished...\", 309(5): \"Whoever attempts to commit robbery...\", 309(6): \"If any person, in committing or in attempting to commit robbery, voluntarily causes hurt...\" (309 opens p.81)."
+  },
+  {
+    "ipc": [
+      "IPC 391",
+      "IPC 395",
+      "IPC 396",
+      "IPC 399",
+      "IPC 400",
+      "IPC 402"
+    ],
+    "bns": [
+      "BNS 310"
+    ],
+    "type": "merged",
+    "verified": false,
+    "ipcPage": 98,
+    "bnsPage": 82,
+    "evidence": "IPC 391: \"When five or more persons conjointly commit...\"; 395: \"Whoever commits dacoity shall be punished...\"; 396: \"If any one of five or more persons...\"; 399/400/402 (p.99): preparation, belonging to gang of dacoits, assembling / BNS 310(1): \"When five or more persons conjointly commit or attempt to commit a robbery...\", (2) punishment, (3) murder, (4) \"Whoever makes any preparation for committing dacoity\", (5) assembled, (6) \"Whoever belongs to a gang of persons associated for the purpose of habitually committing dacoity\"."
+  },
+  {
+    "ipc": [
+      "IPC 383",
+      "IPC 384",
+      "IPC 385",
+      "IPC 386",
+      "IPC 387",
+      "IPC 388",
+      "IPC 389"
+    ],
+    "bns": [
+      "BNS 308"
+    ],
+    "type": "merged",
+    "verified": false,
+    "ipcPage": 97,
+    "bnsPage": 80,
+    "evidence": "IPC 383: \"Extortion.—Whoever intentionally puts any person in fear of any injury...\"; 384: \"Whoever commits extortion shall be punished...\"; 385-389 fear/accusation variants / BNS 308(1): \"Whoever intentionally puts any person in fear of any injury to that person, or to any other...\"; 308(2)-(7) on p.81 carry punishment, fear of injury, fear of death or grievous hurt, and accusation variants."
+  },
+  {
+    "ipc": [
+      "IPC 463",
+      "IPC 465",
+      "IPC 468",
+      "IPC 469"
+    ],
+    "bns": [
+      "BNS 336(1)",
+      "BNS 336(2)",
+      "BNS 336(3)",
+      "BNS 336(4)"
+    ],
+    "type": "merged",
+    "verified": false,
+    "ipcPage": 108,
+    "bnsPage": 94,
+    "evidence": "IPC 463 (p.108): \"Forgery.—Whoever makes any false document or false electronic record or part of a document\"; IPC 465 (p.109): \"Whoever commits forgery shall be punished\"; IPC 468 (p.110): \"Whoever commits forgery, intending that the document or electronic record\" [for cheating]; IPC 469 (p.110): \"Whoever commits forgery, intending that the document\" [to harm reputation]. BNS 336 (p.94-95): (1) \"Whoever makes any false document or false electronic record or part of a document or electronic record...commits forgery\"; (2) \"Whoever commits forgery shall be punished with imprisonment...two years\"; (3) \"...shall be used for the purpose of cheating\"; (4) (p.95) \"...shall harm the reputation of any party\"."
+  },
+  {
+    "ipc": [
+      "IPC 464"
+    ],
+    "bns": [
+      "BNS 335"
+    ],
+    "type": "one-to-one",
+    "verified": false,
+    "ipcPage": 108,
+    "bnsPage": 92,
+    "evidence": "IPC 464 (p.108): \"Making a false document.—A person is said to make a false document or false electronic record\". BNS 335 (p.92): \"A person is said to make a false document or false electronic record—(A) Who dishonestly or fraudulently—\"."
+  },
+  {
+    "ipc": [
+      "IPC 494"
+    ],
+    "bns": [
+      "BNS 82(1)"
+    ],
+    "type": "one-to-one",
+    "verified": false,
+    "ipcPage": 113,
+    "bnsPage": 28,
+    "evidence": "IPC 494 (p.113): \"Marrying again during lifetime of husband or wife.—Whoever, having a husband or wife\". BNS 82(1) (p.28): \"Whoever, having a husband or wife living, marries in any case in which such marriage is void\"."
+  },
+  {
+    "ipc": [
+      "IPC 497"
+    ],
+    "bns": [],
+    "type": "removed",
+    "verified": false,
+    "ipcPage": 114,
+    "evidence": "IPC 497 (p.114): \"Adultery.—Whoever has sexual intercourse with a person who is and whom he knows\". No BNS counterpart found: searched all 102 BNS pages for \"adulter\" (hits only adulteration of food/drugs, BNS 274-277, p.74) and for the IPC 497 operative phrase \"sexual intercourse with a person who is and whom\" (no hit). Marriage-offence sections BNS 80-88 (p.28-29) checked; none is adultery."
+  },
+  {
+    "ipc": [
+      "IPC 498"
+    ],
+    "bns": [
+      "BNS 84"
+    ],
+    "type": "one-to-one",
+    "verified": false,
+    "ipcPage": 114,
+    "bnsPage": 29,
+    "evidence": "IPC 498 (p.114): \"Enticing or taking away or detaining with criminal intent a married woman.—Whoever takes\". BNS 84 (p.29): \"Whoever takes or entices away any woman who is and whom he knows or has reason to believe to be the wife of any other man\"."
+  },
+  {
+    "ipc": [
+      "IPC 499",
+      "IPC 500"
+    ],
+    "bns": [
+      "BNS 356(1)",
+      "BNS 356(2)"
+    ],
+    "type": "merged",
+    "verified": false,
+    "ipcPage": 114,
+    "bnsPage": 99,
+    "evidence": "IPC 499 (p.114): \"Defamation.—Whoever, by words either spoken or intended to be read, or by signs or by visible\"; IPC 500 (p.116): \"Punishment for defamation.—Whoever defames another shall be punished with simple\". BNS 356(1) (p.99): \"Whoever, by words either spoken or intended to be read, or by signs or by visible representations\"; 356(2) (p.101): \"Whoever defames another shall be punished with simple imprisonment...or with community service\"."
+  },
+  {
+    "ipc": [
+      "IPC 503"
+    ],
+    "bns": [
+      "BNS 351(1)"
+    ],
+    "type": "one-to-one",
+    "verified": false,
+    "ipcPage": 117,
+    "bnsPage": 97,
+    "evidence": "IPC 503 (p.117): \"Criminal intimidation.—Whoever threatens another with any injury to his person, reputation or\". BNS 351(1) (p.97): \"Whoever threatens another by any means, with any injury to his person, reputation or property\"."
+  },
+  {
+    "ipc": [
+      "IPC 506"
+    ],
+    "bns": [
+      "BNS 351(2)",
+      "BNS 351(3)"
+    ],
+    "type": "split",
+    "verified": false,
+    "ipcPage": 118,
+    "bnsPage": 98,
+    "evidence": "IPC 506 (p.118): \"Punishment for criminal intimidation.—Whoever commits the offence of criminal intimidation\" (base punishment plus aggravated threats). BNS 351(2) (p.98): \"Whoever commits the offence of criminal intimidation shall be punished...two years\"; 351(3) (p.98): \"Whoever commits the offence of criminal intimidation by threatening to cause death or grievous hurt\"."
+  },
+  {
+    "ipc": [
+      "IPC 510"
+    ],
+    "bns": [
+      "BNS 355"
+    ],
+    "type": "one-to-one",
+    "verified": false,
+    "ipcPage": 119,
+    "bnsPage": 99,
+    "evidence": "IPC 510 (p.119): \"Misconduct in public by a drunken person.—Whoever, in a state of intoxication, appears in any\". BNS 355 (p.99): \"Whoever, in a state of intoxication, appears in any public place\" (adds community service)."
+  },
+  {
+    "ipc": [
+      "IPC 511"
+    ],
+    "bns": [
+      "BNS 62"
+    ],
+    "type": "one-to-one",
+    "verified": false,
+    "ipcPage": 119,
+    "bnsPage": 22,
+    "evidence": "IPC 511 (p.119): \"Whoever attempts to commit an offence punishable by this Code with [imprisonment for life] or imprisonment\". BNS 62 (p.22): \"Whoever attempts to commit an offence punishable by this Sanhita with imprisonment for life or imprisonment\"."
+  },
+  {
+    "ipc": [],
+    "bns": [
+      "BNS 111"
+    ],
+    "type": "new",
+    "verified": false,
+    "bnsPage": 35,
+    "evidence": "Organised crime defined at bns/035.txt; grep for 'organised crime' across all 119 IPC page files returned no hits."
+  },
+  {
+    "ipc": [],
+    "bns": [
+      "BNS 112"
+    ],
+    "type": "new",
+    "verified": false,
+    "bnsPage": 36,
+    "evidence": "Petty organised crime at bns/036.txt; 'Petty organised' and 'organised crime' absent from every IPC page."
+  },
+  {
+    "ipc": [],
+    "bns": [
+      "BNS 113"
+    ],
+    "type": "new",
+    "verified": false,
+    "bnsPage": 37,
+    "evidence": "Terrorist act at bns/037.txt; 'terrorist act' absent from all IPC pages."
+  },
+  {
+    "ipc": [],
+    "bns": [
+      "BNS 103(2)"
+    ],
+    "type": "new",
+    "verified": false,
+    "bnsPage": 34,
+    "evidence": "Mob lynching (murder by five or more persons acting in concert on grounds of race, caste or community) at bns/034.txt; IPC pages have no hits for 'race, caste or community' or 'in concert'."
+  },
+  {
+    "ipc": [],
+    "bns": [
+      "BNS 117(4)"
+    ],
+    "type": "new",
+    "verified": false,
+    "bnsPage": 39,
+    "evidence": "Grievous hurt by group of five or more acting in concert on grounds of race, caste etc. at bns/039.txt; no matching phrase in any IPC page."
+  },
+  {
+    "ipc": [],
+    "bns": [
+      "BNS 95"
+    ],
+    "type": "new",
+    "verified": false,
+    "bnsPage": 30,
+    "evidence": "Hiring, employing or engaging a child to commit an offence at bns/030.txt; 'child to commit' and 'Hiring, employing' absent from all IPC pages."
+  },
+  {
+    "ipc": [],
+    "bns": [
+      "BNS 69"
+    ],
+    "type": "new",
+    "verified": false,
+    "bnsPage": 26,
+    "evidence": "Sexual intercourse by deceitful means or false promise to marry at bns/026.txt; 'promise to marry' absent from all IPC pages."
+  }
+]
