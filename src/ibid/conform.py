@@ -15,6 +15,7 @@ from pathlib import Path
 from ibid import index
 from ibid.ipc import parse_ipc
 from ibid.parse import parse_bns
+from ibid.xref import extract
 
 REMAINDER_START = re.compile(r"(?:Illustrations?|Explanations?|Exceptions?|Provided)\b|\(\w+\)")
 NEXT_SECTION = re.compile(r"\s\d{1,3}[A-Z]{0,2}\.\s+[A-Z]")
@@ -61,7 +62,6 @@ def top(citation: str) -> str:
 
 def conform(gold_path: str, out_path: str, bns_pdf: str, ipc_pdf: str, pages_dir: str, index_path: str, sheet_path: str | None = None, drop: dict[str, str] | None = None) -> list[str]:
     provisions = parse_bns(bns_pdf) + parse_ipc(ipc_pdf)
-    from ibid.xref import extract
     db = index.build(index_path, provisions, extract(provisions))
     # Dropped by name, with a reason a reader can check at the source; never by "the system fails it".
     drop = drop or {}
@@ -79,7 +79,7 @@ def conform(gold_path: str, out_path: str, bns_pdf: str, ipc_pdf: str, pages_dir
             else:
                 report.append(f"{item['id']} {item['query']}: not conformed (drafted {len(drafted)} chars, system {len(system)})")
         elif item["category"] == "keyword":
-            found = {c: t for c, t in index.search(db, item["query"], 100)}
+            found = {c: t for c, t in index.search(db, item["query"], index.KEYWORD_LIMIT)}
             gold = set(item["expected_citations"])
             word = re.compile(rf"\b{re.escape(item['query'])}\b", re.I)
             extras = sorted(set(found) - gold)

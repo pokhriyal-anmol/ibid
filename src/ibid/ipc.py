@@ -25,7 +25,7 @@ ILLUSTRATION = re.compile(r"^\[?I+l+ustrations?\]?\.?$")
 STATE = re.compile(r"^STATE AMENDMENTS?$")
 
 
-def _pages(pdf_path: str) -> list[tuple[int, list[list[tuple[int, str, bool]]]]]:
+def _pages(pdf_path: str) -> list[list[list[tuple[int, str, bool]]]]:
     """Per page, its body lines; each line is (left, text, bold) elements left to right."""
     xml = subprocess.run(["pdftohtml", "-xml", "-i", "-stdout", pdf_path], check=True, capture_output=True).stdout
     sizes: dict[str, int] = {}  # font ids are numbered across the whole file
@@ -42,7 +42,7 @@ def _pages(pdf_path: str) -> list[tuple[int, list[list[tuple[int, str, bool]]]]]
                 lines[-1].append(e)
             else:
                 lines.append([e])
-        pages.append((int(page.get("number")), [[(x[1], x[2], x[3]) for x in sorted(ln, key=lambda x: x[1])] for ln in lines]))
+        pages.append([[(x[1], x[2], x[3]) for x in sorted(ln, key=lambda x: x[1])] for ln in lines])
     return pages
 
 
@@ -64,7 +64,7 @@ def parse_ipc(pdf_path: str) -> list[Provision]:
     toc: list[str] = []
     sections: list[tuple[str, list[tuple[str, bool]]]] = []
     in_body = skipping = False
-    for _, lines in _pages(pdf_path):
+    for lines in _pages(pdf_path):
         for ln in lines:
             text = "".join(t for _, t, _ in ln).replace("[", "").replace("]", "").replace("***", "")
             text = re.sub(r"\s+([,;.])", r"\1", " ".join(text.split()))  # no gap left where a mark was removed

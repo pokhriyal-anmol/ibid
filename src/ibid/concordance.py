@@ -18,6 +18,10 @@ def load(path: str, db: sqlite3.Connection) -> list[dict]:
     for i, e in enumerate(entries):
         if e.get("type") not in TYPES or not isinstance(e.get("verified"), bool):
             raise ValueError(f"concordance entry {i}: bad type or verified flag")
+        if (e["type"] == "removed" and e["bns"]) or (e["type"] == "new" and e["ipc"]):
+            raise ValueError(f"concordance entry {i}: {e['type']} entry names a successor or ancestor")
+        if not all(c.startswith("IPC ") for c in e["ipc"]) or not all(c.startswith("BNS ") for c in e["bns"]):
+            raise ValueError(f"concordance entry {i}: citation on the wrong side")
         for c in e["ipc"] + e["bns"]:
             if c not in known:
                 raise ValueError(f"concordance entry {i}: {c!r} is not in the index")

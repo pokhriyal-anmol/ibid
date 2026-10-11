@@ -29,7 +29,7 @@ The directed graph of resolved cross-references across both Acts, built by deter
 _Avoid_: Knowledge graph, GraphRAG graph
 
 **Concordance**:
-The mapping between an IPC provision and the BNS provision that replaced it. One IPC provision may map to several BNS provisions, and the reverse. Each entry has a type: one-to-one, split, merged, removed (an IPC provision with no BNS successor) or new (a BNS provision with no IPC ancestor). Only verified entries are served; any other IPC provision answers "no verified concordance".
+The mapping between an IPC provision and the BNS provision that replaced it. One IPC provision may map to several BNS provisions, and the reverse. Each entry has a type: one-to-one, split, merged, removed (an IPC provision with no BNS successor) or new (a BNS provision with no IPC ancestor). Where several IPC provisions were regrouped into several BNS provisions (many-to-many), the entry is typed merged and lists all of both. Only verified entries are served; any other IPC provision answers "no verified concordance".
 _Avoid_: Conversion table, converter
 
 ## Retrieval

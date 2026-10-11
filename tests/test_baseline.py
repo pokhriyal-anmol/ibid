@@ -1,7 +1,7 @@
 """Ticket 08: the baseline is reproducible and the harness can fail. Scored mode, pinned gold."""
-import dataclasses
 import json
 import os
+import re
 import shutil
 import subprocess
 import tempfile
@@ -9,12 +9,11 @@ import unittest
 from pathlib import Path
 from unittest import mock
 
-from ibid import cli
+from ibid import parse
 from ibid.cli import main
-from ibid.parse import parse_bns
 
 ROOT = Path(__file__).parent.parent
-GOLD, CONC, BASELINE = ROOT / "gold" / "v1.json", ROOT / "concordance" / "v1.json", ROOT / "results" / "baseline-v1.json"
+GOLD, CONC, BASELINE = ROOT / "gold" / "v2.json", ROOT / "concordance" / "v2.json", ROOT / "results" / "baseline-v2.json"
 PDF, IPC_PDF = os.environ["IBID_BNS_PDF"], os.environ["IBID_IPC_PDF"]
 
 
@@ -36,14 +35,24 @@ class BaselineTest(unittest.TestCase):
         self.assertEqual(out.read_bytes(), BASELINE.read_bytes())
 
     def test_scrambled_section_text_lowers_the_affected_category(self):
-        def scrambled(path):
-            ps = parse_bns(path)
-            return [dataclasses.replace(p, text=" ".join(reversed(p.text.split()))) if p.citation == "BNS 85" else p for p in ps]
-        with mock.patch.object(cli, "parse_bns", scrambled):
+        real = parse.body_lines
+
+        def scrambled(path):  # words reversed inside BNS 85 only; its heading and the section count stay intact
+            out, inside = [], False
+            for line, indented in real(path):
+                m = re.match(r"(\d+)\.", line)
+                inside = m[1] == "85" if m else inside
+                if inside:
+                    head, _, rest = line.partition(" ") if m else ("", "", line)
+                    line = f"{head} {' '.join(reversed(rest.split()))}".strip()
+                out.append((line, indented))
+            return out
+        with mock.patch.object(parse, "body_lines", scrambled):
             code, out = self.run_scored()
         self.assertEqual(code, 0)
-        got = json.loads(out.read_text())["categories"]
-        self.assertLess(got["section_lookup"]["passed"], self.base["section_lookup"]["passed"])
+        passed = {o["id"]: o["pass"] for o in json.loads(out.read_text())["outcomes"]}
+        self.assertFalse(passed["section_lookup-5"])  # BNS 85
+        self.assertTrue(passed["section_lookup-1"])
 
     def test_wrong_concordance_mapping_lowers_the_correspondence_category(self):
         entries = json.loads(CONC.read_text())
@@ -68,10 +77,26 @@ class BaselineTest(unittest.TestCase):
         self.assertEqual(code, 1)
         self.assertFalse(out.exists())
 
-    def test_no_model_is_a_dependency(self):
-        deps = (ROOT / "pyproject.toml").read_text()
-        for name in ("anthropic", "openai", "transformers", "sentence-transformers", "langchain"):
-            self.assertNotIn(name, deps)
+    MODEL_PACKAGES = ("anthropic", "openai", "transformers", "sentence_transformers", "langchain", "requests", "httpx")
+
+    @classmethod
+    def model_uses(cls, lock: str, sources: dict[str, str]) -> list[str]:
+        """Model or network packages in the resolved lock, or imported by any source file."""
+        norm = lambda s: s.replace("-", "_")
+        found = [f"uv.lock: {n}" for n in re.findall(r'^name = "([^"]+)"', lock, re.M) if norm(n) in cls.MODEL_PACKAGES]
+        for path, src in sources.items():
+            for mod in re.findall(r"^\s*(?:import|from)\s+([\w]+)", src, re.M):
+                if norm(mod) in cls.MODEL_PACKAGES or mod in ("urllib", "socket", "http"):
+                    found.append(f"{path}: {mod}")
+        return found
+
+    def test_no_model_is_a_dependency_or_an_import(self):
+        sources = {str(p): p.read_text() for p in (ROOT / "src" / "ibid").glob("*.py")}
+        self.assertEqual(self.model_uses((ROOT / "uv.lock").read_text(), sources), [])
+
+    def test_the_model_check_fails_on_a_known_bad_lock_and_import(self):
+        bad = self.model_uses('name = "anthropic"\n', {"x.py": "def f():\n    import openai\n"})
+        self.assertEqual(bad, ["uv.lock: anthropic", "x.py: openai"])
 
 
 if __name__ == "__main__":

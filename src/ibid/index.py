@@ -7,6 +7,9 @@ from ibid.parse import Provision
 from ibid.xref import Edge, chains
 
 
+KEYWORD_LIMIT = 100  # the result size a keyword item is judged on, shared by eval and conform
+
+
 def build(path: str, provisions: list[Provision], edges: list[Edge]) -> sqlite3.Connection:
     if os.path.exists(path):
         os.remove(path)

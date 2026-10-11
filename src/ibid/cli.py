@@ -14,7 +14,6 @@ from ibid.xref import extract
 
 
 DIRECTIONS = {"ipc_to_bns": ("ipc", "bns"), "bns_to_ipc": ("bns", "ipc")}
-KEYWORD_LIMIT = 100
 
 
 def pin_error(gold_path: str, gold_bytes: bytes) -> str | None:
@@ -52,7 +51,7 @@ def run_eval(gold_path: str, bns_pdf: str, ipc_pdf: str, index_path: str, out_pa
     for item in json.loads(gold_bytes):
         outcome = {"id": item["id"], "category": item["category"]}
         if item["category"] == "keyword":
-            packet = index.search(db, item["query"], KEYWORD_LIMIT)
+            packet = index.search(db, item["query"], index.KEYWORD_LIMIT)
             # Scored as a set: the order is BM25 rank and cannot be authored independently of the system.
             ok = {c for c, _ in packet} == set(item["expected_citations"])
             outcome["packet"] = packet
@@ -66,6 +65,8 @@ def run_eval(gold_path: str, bns_pdf: str, ipc_pdf: str, index_path: str, out_pa
             if item["category"] == "cross_reference_chain":
                 ok = ok and got[2] == item["expected_refs"]
                 outcome["packet"] = [(c, index.lookup(db, c)[0]) for c in got[2]]
+        if "conformed" in item:  # system-conformed, not independently authored
+            outcome["conformed"] = item["conformed"]
         outcomes.append({**outcome, "pass": ok})
         cats[item["category"]]["total"] += 1
         cats[item["category"]]["passed"] += ok
@@ -73,6 +74,7 @@ def run_eval(gold_path: str, bns_pdf: str, ipc_pdf: str, index_path: str, out_pa
         "mode": mode,
         "gold_version": Path(gold_path).stem,
         "gold_sha256": hashlib.sha256(gold_bytes).hexdigest(),
+        "concordance": {"file": Path(concordance_path).name, "sha256": hashlib.sha256(Path(concordance_path).read_bytes()).hexdigest()} if concordance_path else None,
         "parser_version": PARSER_VERSION,
         "sections": counts,
         "categories": cats,
@@ -89,7 +91,7 @@ def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(prog="ibid")
     sub = ap.add_subparsers(dest="cmd", required=True)
     ev = sub.add_parser("eval")
-    ev.add_argument("--gold", default="gold/draft.json")
+    ev.add_argument("--gold", default="gold/v2.json")
     ev.add_argument("--bns", default=os.environ.get("IBID_BNS_PDF", "data/raw/bns-prs.pdf"))
     ev.add_argument("--ipc", default=os.environ.get("IBID_IPC_PDF", "data/raw/ipc-wipo.pdf"))
     ev.add_argument("--mode", choices=["scored", "draft"], default="scored")
@@ -100,8 +102,10 @@ def main(argv: list[str] | None = None) -> int:
     fz.add_argument("--sheet", default=".scratch/slice-1/review-sheet.md")
     fz.add_argument("--draft-gold", default="gold/v1.conformed.json")
     fz.add_argument("--draft-conc", default="concordance/draft.json")
-    fz.add_argument("--out-gold", default="gold/v1.json")
-    fz.add_argument("--out-conc", default="concordance/v1.json")
+    fz.add_argument("--out-gold", default="gold/v2.json")
+    fz.add_argument("--out-conc", default="concordance/v2.json")
+    fz.add_argument("--bns", default=os.environ.get("IBID_BNS_PDF", "data/raw/bns-prs.pdf"))
+    fz.add_argument("--ipc", default=os.environ.get("IBID_IPC_PDF", "data/raw/ipc-wipo.pdf"))
     fz.add_argument("--drop-failed", action="store_true")
     cf = sub.add_parser("conform")
     cf.add_argument("--gold", default="gold/v1.draft.json")
@@ -120,7 +124,8 @@ def main(argv: list[str] | None = None) -> int:
         return 1 if report else 0
     if a.cmd == "freeze":
         from ibid.freeze import freeze
-        return freeze(a.sheet, a.draft_gold, a.draft_conc, a.out_gold, a.out_conc, a.drop_failed)
+        sources = {act: hashlib.sha256(Path(p).read_bytes()).hexdigest() for act, p in (("BNS", a.bns), ("IPC", a.ipc))}
+        return freeze(a.sheet, a.draft_gold, a.draft_conc, a.out_gold, a.out_conc, a.drop_failed, sources)
     return run_eval(a.gold, a.bns, a.ipc, a.index, a.out, a.concordance, a.mode)
 
 

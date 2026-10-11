@@ -233,6 +233,20 @@ class EvalTest(unittest.TestCase):
         self.assertNotEqual(code, 0)
         self.assertFalse(out.exists())
 
+    def test_entries_must_fit_their_type_and_cite_the_right_act_on_each_side(self):
+        base = json.loads(Path(CONC).read_text())[0]
+        ipc, bns = base["ipc"], base["bns"]
+        bad = [{**base, "type": "removed"}, {**base, "type": "new"}, {**base, "ipc": bns, "bns": ipc}]
+        for entry in bad:
+            code, out = self.run_conc(entries=[entry])
+            self.assertNotEqual(code, 0, entry)
+            self.assertFalse(out.exists())
+
+    def test_results_name_the_concordance_that_produced_the_score(self):
+        _, out = self.run_conc()
+        got = json.loads(out.read_text())["concordance"]
+        self.assertEqual(got["sha256"], hashlib.sha256(Path(CONC).read_bytes()).hexdigest())
+
     def test_concordance_results_are_byte_identical_across_runs(self):
         _, a = self.run_conc(name="a")
         _, b = self.run_conc(name="b")
