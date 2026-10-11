@@ -182,7 +182,7 @@ class RoundTest(unittest.TestCase):
         self.assertEqual(self.round("k=2")[0], 0)
         r0, r1 = self.rounds()
         self.assertGreater(r1["dev"]["top_k"]["scores"]["macro_f1"], r0["dev"]["top_k"]["scores"]["macro_f1"])
-        single = lambda e: e["dev"]["top_k"]["strata"]["gold_label_count"]["1"]["scores"]["micro_f1"]
+        single = lambda e: e["dev"]["top_k"]["strata"]["label_count"]["1"]["scores"]["micro_f1"]
         self.assertGreater(single(r0) - single(r1), 0.005)
         self.assertEqual((r0["flags"], r1["flags"]), ([], ["hurts-simple"]))
         frozen = self.tmp / "frozen.json"

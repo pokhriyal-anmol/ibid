@@ -78,7 +78,7 @@ class PerLabelTest(unittest.TestCase):
         view = {a: {b: (v["cases"], v["scores"]["micro_f1"], v["scores"]["macro_f1"], v["scores"]["jaccard"])
                     for b, v in d.items()} for a, d in s.items()}
         self.assertEqual(view, {
-            "gold_label_count": {"1": (3, 1.0, 0.5, 1.0), "2": (1, round(2 / 3, 6), 0.25, 0.5), "3+": (1, 0.0, 0.0, 0.0)},
+            "label_count": {"1": (3, 1.0, 0.5, 1.0), "2": (1, round(2 / 3, 6), 0.25, 0.5), "3+": (1, 0.0, 0.0, 0.0)},
             "words": {"<=150": (3, round(6 / 7, 6), round(2 / 3, 6), round(5 / 6, 6)), "151-500": (1, 0.0, 0.0, 0.0),
                       ">500": (1, 1.0, 0.25, 1.0)},
         })

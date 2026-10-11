@@ -24,3 +24,12 @@ Acceptance criteria (fixture tests through `ibid bench run` and `ibid bench roun
 - Two identical runs are byte-identical, ties still break by citation string.
 - Speed is measured and reported, not assumed: seconds to score the full dev split and the first 5,000 train cases by sorted id, on the real data. If a train plus dev round would take more than 10 minutes, report the number and propose a declared train subsample for the owner to approve. Do not subsample silently.
 - No file under `data/raw/` is added to git, and the existing suite still passes.
+
+## Notes
+
+Real-data checks, run on 2026-10-12 with the Python scorer at the defaults (`--k 3 --r 0.8`):
+
+- `dev --sample 200`: micro F1 0.065667, macro F1 0.031081, Jaccard 0.039742. Identical to the FTS5 values above, no difference.
+- Speed, wall clock including start-up: full dev (10,200 cases) 20.4 s; the first 5,000 train cases by sorted id 10.5 s. A train plus dev round is about 31 s on those 5,000 cases, far under the 10 minute bar, so no train subsample is proposed.
+- Corpus statistics (N, document frequency, average length) are computed over every IPC and BNS provision in the index, as the FTS5 path did, and only afterwards are hits restricted to the IPC label space. This is deliberate for parity with the FTS5 scores in the criterion above. Restricting the statistics to IPC would change scores and is a new rule version, not an edit.
+

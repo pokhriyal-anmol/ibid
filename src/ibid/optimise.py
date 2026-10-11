@@ -41,14 +41,9 @@ def apply_change(params: dict, change: str) -> dict:
     return new
 
 
-def evaluate(ix: bm25.Index, cases: list[dict], gold: list[set[str]], space: set[str], p: dict) -> dict:
-    ranked = [bench.rank_sections(ix, " ".join(c["text"]), space, p["rollup"], p["stop_words"], p) for c in cases]
-    top_k, above_r = zip(*(bench.predict(x, p["k"], p["r"]) for x in ranked))
-    out = {}
-    for name, sets in (("top_k", top_k), ("threshold", above_r)):
-        sets = [set(s) for s in sets]
-        out[name] = {"scores": bench.score(gold, sets, space), "strata": bench.strata(cases, gold, sets, space)}
-    return out
+def evaluate(ix: bm25.Index, cases: list[dict], benchmark_labels: list[set[str]], space: set[str], p: dict) -> dict:
+    out = bench.evaluate_rule(ix, cases, benchmark_labels, space, p)
+    return {n: {"scores": o["scores"], "strata": o["strata"]} for n, o in out.items()}
 
 
 def stopping_status(rounds: list[dict]) -> dict:
@@ -68,7 +63,7 @@ def freezable(entry: dict) -> bool:
 
 
 def single_label_micro(entry: dict) -> float:
-    return entry["dev"]["top_k"]["strata"]["gold_label_count"]["1"]["scores"]["micro_f1"]
+    return entry["dev"]["top_k"]["strata"]["label_count"]["1"]["scores"]["micro_f1"]
 
 
 def run_round(train: str, dev: str, labels: str, index: str, manifest: str, log_path: str, changes: list[str],
@@ -114,8 +109,8 @@ def _round(train, dev, labels, index, manifest, log_path, changes, k, r, rollup)
                         (("train_sha256", train), ("dev_sha256", dev), ("labels_sha256", labels), ("index_sha256", index))},
              "parser_version": bench.PARSER_VERSION}
     for name, path in (("train", train), ("dev", dev)):
-        cases, gold = bench.load_cases(path, space)
-        entry[name] = {"cases": len(cases), **evaluate(ix, cases, gold, space, params)}
+        cases, benchmark_labels = bench.load_cases(path, space)
+        entry[name] = {"cases": len(cases), **evaluate(ix, cases, benchmark_labels, space, params)}
     entry["gap"] = {m: round(entry["train"]["top_k"]["scores"][m] - entry["dev"]["top_k"]["scores"][m], 6)
                     for m in ("micro_f1", "macro_f1")}
     drop = round(single_label_micro(rounds[-1]) - single_label_micro(entry), 6) if rounds else 0

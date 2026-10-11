@@ -92,7 +92,7 @@ class ReportTest(unittest.TestCase):
     def test_strata_for_round_0_and_final_and_never_found(self):
         self.build()
         text = self.report()[1].read_text()
-        for stratum in ("gold_label_count 1", "gold_label_count 2", "gold_label_count 3+", "words <=150", "words >500"):
+        for stratum in ("label_count 1", "label_count 2", "label_count 3+", "words <=150", "words >500"):
             self.assertIn(f"| {stratum} |", text)
         self.assertIn("dev round 0", text)
         self.assertIn("dev frozen", text)
@@ -113,16 +113,19 @@ class ReportTest(unittest.TestCase):
         for needle in (*entry["inputs"].values(), entry["rule"]["params_sha256"], entry["rule"]["version"],
                        bench.sha256(str(self.tmp / "test.jsonl"))):
             self.assertIn(needle, text)
-        self.assertIn("ledger rule matches the final logged round: yes", text)
+        self.assertIn("ledger rule matches the frozen round (2): yes", text)
 
-    def test_ledger_rule_other_than_the_final_round_is_reported(self):
+    def test_ledger_rule_is_checked_against_the_frozen_round_not_the_last(self):
         self.assertEqual(self.round("--k", "1", "--r", "0.5"), 0)
         self.assertEqual(self.round("--change", "k=2"), 0)
         self.assertEqual(self.round("--change", "k=1"), 0)
         self.assertEqual(self.cli("freeze", "--log", str(self.log), "--round", "1", "--out", str(self.frozen)), 0)
         self.assertEqual(self.score_test(k="2"), 0)
-        text = self.report()[1].read_text()
-        self.assertIn("ledger rule matches the final logged round: NO", text)
+        self.assertIn("ledger rule matches the frozen round (1): yes", self.report()[1].read_text())
+        ledger = json.loads(self.ledger.read_text())  # known-bad: a ledger scored under another rule
+        ledger[0]["rule"]["params_sha256"] = "0" * 64
+        self.ledger.write_text(json.dumps(ledger))
+        self.assertIn("ledger rule matches the frozen round (1): NO", self.report("bad.md")[1].read_text())
 
     def test_headline_is_the_frozen_round_not_the_last_logged_round(self):
         self.assertEqual(self.round("--k", "1", "--r", "0.5"), 0)

@@ -99,19 +99,19 @@ def predict(ranked: list[tuple[str, float]], k: int, r: float) -> tuple[list[str
 
 
 def f1(tp: int, fp: int, fn: int) -> float:
-    return 2 * tp / (2 * tp + fp + fn) if tp else 0.0  # no gold and no prediction scores 0
+    return 2 * tp / (2 * tp + fp + fn) if tp else 0.0  # no support and no prediction scores 0
 
 
-def label_counts(gold: list[set[str]], pred: list[set[str]], space: set[str]) -> dict[str, tuple[int, int, int]]:
+def label_counts(benchmark_labels: list[set[str]], pred: list[set[str]], space: set[str]) -> dict[str, tuple[int, int, int]]:
     """Per label (tp, fp, fn) over the cases."""
-    return {c: (sum(c in g and c in p for g, p in zip(gold, pred)),
-                sum(c in p and c not in g for g, p in zip(gold, pred)),
-                sum(c in g and c not in p for g, p in zip(gold, pred))) for c in space}
+    return {c: (sum(c in g and c in p for g, p in zip(benchmark_labels, pred)),
+                sum(c in p and c not in g for g, p in zip(benchmark_labels, pred)),
+                sum(c in g and c not in p for g, p in zip(benchmark_labels, pred))) for c in space}
 
 
-def score(gold: list[set[str]], pred: list[set[str]], space: set[str]) -> dict[str, float]:
-    counts = label_counts(gold, pred, space).values()
-    jac = [len(g & p) / len(g | p) if g | p else 0.0 for g, p in zip(gold, pred)]
+def score(benchmark_labels: list[set[str]], pred: list[set[str]], space: set[str]) -> dict[str, float]:
+    counts = label_counts(benchmark_labels, pred, space).values()
+    jac = [len(g & p) / len(g | p) if g | p else 0.0 for g, p in zip(benchmark_labels, pred)]
     return {
         "micro_f1": round(f1(*(sum(col) for col in zip(*counts))), 6),
         "macro_f1": round(sum(f1(*c) for c in counts) / len(space), 6),
@@ -119,28 +119,28 @@ def score(gold: list[set[str]], pred: list[set[str]], space: set[str]) -> dict[s
     }
 
 
-def per_label(gold: list[set[str]], pred: list[set[str]], space: set[str]) -> dict:
+def per_label(benchmark_labels: list[set[str]], pred: list[set[str]], space: set[str]) -> dict:
     rows = []
-    for c, (tp, fp, fn) in sorted(label_counts(gold, pred, space).items()):
+    for c, (tp, fp, fn) in sorted(label_counts(benchmark_labels, pred, space).items()):
         rows.append({"citation": c, "support": tp + fn, "tp": tp, "fp": fp, "fn": fn,
                      "precision": round(tp / (tp + fp), 6) if tp + fp else 0.0,  # nothing predicted scores 0
-                     "recall": round(tp / (tp + fn), 6) if tp + fn else 0.0,  # no gold scores 0
+                     "recall": round(tp / (tp + fn), 6) if tp + fn else 0.0,  # no support scores 0
                      "f1": round(f1(tp, fp, fn), 6)})
     return {"labels": rows, "never_found": [r["citation"] for r in rows if r["support"] and not r["tp"]]}
 
 
-GOLD_BUCKETS = (("1", lambda n: n == 1), ("2", lambda n: n == 2), ("3+", lambda n: n >= 3))
+LABEL_BUCKETS = (("1", lambda n: n == 1), ("2", lambda n: n == 2), ("3+", lambda n: n >= 3))
 WORD_BUCKETS = (("<=150", lambda n: n <= 150), ("151-500", lambda n: 151 <= n <= 500), (">500", lambda n: n > 500))
 
 
-def strata(cases: list[dict], gold: list[set[str]], pred: list[set[str]], space: set[str]) -> dict:
+def strata(cases: list[dict], benchmark_labels: list[set[str]], pred: list[set[str]], space: set[str]) -> dict:
     words = [len(" ".join(c["text"]).split()) for c in cases]
     out = {}
-    for name, sizes, buckets in (("gold_label_count", [len(g) for g in gold], GOLD_BUCKETS), ("words", words, WORD_BUCKETS)):
+    for name, sizes, buckets in (("label_count", [len(g) for g in benchmark_labels], LABEL_BUCKETS), ("words", words, WORD_BUCKETS)):
         out[name] = {}
         for label, test in buckets:
             idx = [i for i, n in enumerate(sizes) if test(n)]
-            out[name][label] = {"cases": len(idx), "scores": score([gold[i] for i in idx], [pred[i] for i in idx], space)}
+            out[name][label] = {"cases": len(idx), "scores": score([benchmark_labels[i] for i in idx], [pred[i] for i in idx], space)}
     return out
 
 
@@ -180,10 +180,24 @@ def load_cases(path: str, space: set[str], sample: int | None = None) -> tuple[l
         cases = [json.loads(line) for line in f if line.strip()]
     if sample is not None:
         cases = sorted(cases, key=lambda c: c["id"])[:sample]
-    gold = [{to_citation(label) for label in c["labels"]} for c in cases]
-    if not cases or any(not g <= space for g in gold):
+    benchmark_labels = [{to_citation(label) for label in c["labels"]} for c in cases]
+    if not cases or any(not g <= space for g in benchmark_labels):
         raise ValueError(f"{Path(path).name}: empty split, or a label outside the label vocabulary")
-    return cases, gold
+    return cases, benchmark_labels
+
+
+def evaluate_rule(ix: bm25.Index, cases: list[dict], benchmark_labels: list[set[str]], space: set[str], p: dict) -> dict:
+    """Rank, predict and score every case once; the one path under both `bench run` and an optimisation round.
+
+    p holds rollup, stop_words, k, r and the four knobs. Returns predictions, their sets, scores and strata per output."""
+    ranked = [rank_sections(ix, " ".join(c["text"]), space, p["rollup"], p["stop_words"], p) for c in cases]
+    top_k, above_r = zip(*(predict(x, p["k"], p["r"]) for x in ranked))
+    out = {}
+    for name, preds in (("top_k", top_k), ("threshold", above_r)):
+        sets = [set(x) for x in preds]
+        out[name] = {"predictions": preds, "sets": sets, "scores": score(benchmark_labels, sets, space),
+                     "strata": strata(cases, benchmark_labels, sets, space)}
+    return out
 
 
 def read_ledger(path: str) -> list:
@@ -250,7 +264,7 @@ def run_bench(split_path: str, labels_path: str, index_path: str, k: int, r: flo
         if on_test and sample is not None:
             raise ValueError("--sample is refused on the test split; it is scored once, in full")
         space = load_space(labels_path)
-        cases, gold = load_cases(split_path, space, sample)
+        cases, benchmark_labels = load_cases(split_path, space, sample)
     except ValueError as e:
         print(f"error: {e}", file=sys.stderr)
         return 1
@@ -260,9 +274,8 @@ def run_bench(split_path: str, labels_path: str, index_path: str, k: int, r: flo
             "params_sha256": rule_hash(k, r, rollup, stop_words, knobs)}
     db = sqlite3.connect(f"file:{index_path}?mode=ro", uri=True)
     ix = bm25.Index(db, knobs["levels"], knobs["stem"])
-    ranked = [rank_sections(ix, " ".join(c["text"]), space, rollup, stop_words, knobs) for c in cases]
-    top_k, above_r = zip(*(predict(x, k, r) for x in ranked))
-    k_sets, r_sets = [set(p) for p in top_k], [set(p) for p in above_r]
+    out = evaluate_rule(ix, cases, benchmark_labels, space, {"rollup": rollup, "stop_words": stop_words, "k": k, "r": r, **knobs})
+    k_out, r_out = out["top_k"], out["threshold"]
     results = {
         "inputs": {"split_sha256": sha256(split_path), "labels_sha256": sha256(labels_path), "index_sha256": sha256(index_path)},
         "rule": rule,
@@ -272,27 +285,27 @@ def run_bench(split_path: str, labels_path: str, index_path: str, k: int, r: flo
         **({"sample": sample, "sample_rule": SAMPLE_RULE} if sample is not None else {}),
         "section_score": rollup,
         "knobs": knobs,
-        "scores": score(gold, k_sets, space),
-        "per_label": per_label(gold, k_sets, space),
-        "strata": strata(cases, gold, k_sets, space),
+        "scores": k_out["scores"],
+        "per_label": per_label(benchmark_labels, k_out["sets"], space),
+        "strata": k_out["strata"],
         "threshold": {
             "r": r,
-            "scores": score(gold, r_sets, space),
-            "per_label": per_label(gold, r_sets, space),
-            "strata": strata(cases, gold, r_sets, space),
-            "predictions": {c["id"]: p for c, p in zip(cases, above_r)},
+            "scores": r_out["scores"],
+            "per_label": per_label(benchmark_labels, r_out["sets"], space),
+            "strata": r_out["strata"],
+            "predictions": {c["id"]: p for c, p in zip(cases, r_out["predictions"])},
         },
         "conventions": {
             "label_space": f"{len(space)} labels",
-            "macro_f1": "mean of per-label F1 over the whole label space; a label with no gold and no prediction scores 0",
-            "per_label": "precision is 0 when nothing is predicted for the label, recall is 0 when it has no gold, so "
+            "macro_f1": "mean of per-label F1 over the whole label space; a label with no support and no prediction scores 0",
+            "per_label": "precision is 0 when nothing is predicted for the label, recall is 0 when it has no support, so "
                          "zero support and zero predictions gives 0 for all three; never_found lists labels with support "
                          "and no true positive; labels are sorted by citation string",
             "strata": "same three scores per stratum, macro F1 over the whole label space; words are whitespace tokens "
                       "of the joined sentences; an empty stratum scores 0",
             "jaccard": "mean over cases of |P and G| / |P or G|; an empty union scores 0",
         },
-        "predictions": {c["id"]: p for c, p in zip(cases, top_k)},
+        "predictions": {c["id"]: p for c, p in zip(cases, k_out["predictions"])},
     }
     if on_test:  # dev and train never reach the ledger; the first score stays, and is reported beside the new one
         entry = {"split_sha256": results["inputs"]["split_sha256"], "rule": results["rule"], "k": k, "r": r,

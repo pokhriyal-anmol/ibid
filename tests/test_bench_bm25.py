@@ -9,7 +9,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from ibid import bench, bm25, index
+from ibid import bench, index
 from ibid.cli import main
 from ibid.parse import Provision
 
@@ -31,6 +31,7 @@ PROVISIONS = [
 ]
 L = {n: f"Section {n} in The Indian Penal Code" for n in (1, 2, 3, 4, 5)}
 SPACE = {f"IPC {n}" for n in (1, 2, 3, 4, 5)}
+LENGTH_SENSITIVE = [prov("IPC 1", "theft"), prov("IPC 2", "theft theft a b c d e f g h")] + [prov(f"IPC {n}", "zebra") for n in (3, 4, 5)]
 QUERIES = ["theft of property", "murder, property and cheating dishonestly", "kidnapping 378 zebra", "nothing here at all",
            "the property of movable theft; dishonestly"]
 
@@ -74,27 +75,32 @@ class EquivalenceTest(Base):
                 hits.setdefault(cite, []).append(-rank)
         return sorted(((c, bench.ROLLUPS[rollup](v)) for c, v in hits.items()), key=lambda cs: (-cs[1], cs[0]))
 
-    def test_defaults_reproduce_fts5_scores_and_predictions(self):
-        self.build(PROVISIONS)
-        db = sqlite3.connect(self.tmp / "i.sqlite")
-        ix = bm25.Index(db, bench.DEFAULT_KNOBS["levels"], bench.DEFAULT_KNOBS["stem"])
-        for raw in QUERIES:
-            for rollup in ("max", "sum"):
-                want = self.fts5_sections(db, raw, rollup)
-                got = bench.rank_sections(ix, raw, SPACE, rollup)
-                self.assertEqual([c for c, _ in got], [c for c, _ in want], raw)
-                for (_, a), (_, b) in zip(got, want):
-                    self.assertAlmostEqual(a, b, delta=1e-9, msg=raw)
-                self.assertEqual(bench.predict(got, 2, 0.5)[0], bench.predict(want, 2, 0.5)[0])
-                self.assertEqual(bench.predict(got, 2, 0.5)[1], bench.predict(want, 2, 0.5)[1])
-        self.assertTrue(self.fts5_sections(db, QUERIES[0]))  # the reference is not vacuously empty
+    def test_defaults_reproduce_fts5_predictions(self):
+        # LENGTH_SENSITIVE: at the defaults IPC 2 scores 0.59 of IPC 1, so r 0.7 separates the default b from b 0.5.
+        for provs, queries in ((PROVISIONS, QUERIES), (LENGTH_SENSITIVE, ["theft"])):
+            self.build(provs, space_ns=(1, 2, 3, 4, 5))  # IPC 9 is outside the label space
+            db = sqlite3.connect(self.tmp / "i.sqlite")
+            cases = [{"id": str(i), "text": [q], "labels": [L[1]]} for i, q in enumerate(queries)]
+            for rollup, r in (("max", 0.5), ("sum", 0.5), ("max", 0.7)):
+                got = self.run_bench(cases, k=2, r=r, extra=["--rollup", rollup])
+                for c in cases:
+                    ranked = self.fts5_sections(db, c["text"][0], rollup)
+                    above = [x for x, s in ranked if s >= r * ranked[0][1]] if ranked else []
+                    self.assertEqual(got["predictions"][c["id"]], [x for x, _ in ranked[:2]], (rollup, c["text"]))
+                    self.assertEqual(got["threshold"]["predictions"][c["id"]], above, (rollup, r, c["text"]))
+            self.assertTrue(self.fts5_sections(db, queries[0]))  # the reference is not vacuously empty
 
-    def test_a_changed_k1_or_b_moves_the_scores(self):
-        self.build(PROVISIONS)
-        ix = bm25.Index(sqlite3.connect(self.tmp / "i.sqlite"), "all", "none")
-        base = bench.rank_sections(ix, "theft of property", SPACE, "max")
-        for knobs in ({"bm25_k1": 2.0}, {"bm25_b": 0.3}):
-            self.assertNotEqual(bench.rank_sections(ix, "theft of property", SPACE, "max", knobs=knobs), base)
+    def test_a_changed_k1_or_b_moves_the_predictions(self):
+        # IPC 1 is one word long with tf 1; IPC 2 has tf 2 in ten words. Length normalisation (b) favours IPC 1,
+        # ignoring length (b 0) favours IPC 2. At b 0, IPC 1 scores within 0.9 of IPC 2 only when k1 saturates tf.
+        self.build(LENGTH_SENSITIVE)
+        cases = [{"id": "a", "text": ["theft"], "labels": [L[1]]}]
+        top = lambda *extra: self.run_bench(cases, k=1, extra=extra)["predictions"]["a"]
+        self.assertEqual(top("--bm25-b", "1"), ["IPC 1"])
+        self.assertEqual(top("--bm25-b", "0"), ["IPC 2"])
+        above = lambda k1: self.run_bench(cases, r=0.9, extra=["--bm25-b", "0", "--bm25-k1", k1])["threshold"]["predictions"]["a"]
+        self.assertEqual(above("100"), ["IPC 2"])
+        self.assertEqual(above("0.01"), ["IPC 2", "IPC 1"])
 
 
 class KnobTest(Base):
@@ -125,9 +131,17 @@ class KnobTest(Base):
         self.assertEqual(self.run_bench(cases)["predictions"], {"a": []})
         self.assertEqual(self.run_bench(cases, extra=["--stem", "suffix"])["predictions"], {"a": ["IPC 2"]})
 
-    def test_stem_table_examples(self):
-        got = [bm25.stem_word(w) for w in ("murders", "murdered", "murdering", "stabbing", "causes", "cause", "injuries", "class", "was")]
-        self.assertEqual(got, ["murder", "murder", "murder", "stab", "caus", "caus", "injury", "class", "was"])
+    def test_each_stem_rule_applies_to_query_and_indexed_text(self):
+        provs = [prov("IPC 1", "murder"), prov("IPC 2", "stab"), prov("IPC 3", "injury"), prov("IPC 4", "kidnapped"),
+                 prov("IPC 5", "clas cause")]
+        self.build(provs)
+        # (query, section found under suffix): -ed, -ing, doubled consonant, -ies, indexed -ed, -s, and the -ss exception
+        table = [("murdered", "IPC 1"), ("murdering", "IPC 1"), ("stabbing", "IPC 2"), ("injuries", "IPC 3"),
+                 ("kidnap", "IPC 4"), ("causes", "IPC 5"), ("class", None)]
+        cases = [{"id": q, "text": [q], "labels": [L[1]]} for q, _ in table]
+        self.assertEqual(self.run_bench(cases)["predictions"], {q: [] for q, _ in table})
+        got = self.run_bench(cases, extra=["--stem", "suffix"])["predictions"]
+        self.assertEqual(got, {q: [c] if c else [] for q, c in table})
 
     def test_levels_all_leaf_and_top(self):
         # "lantern" is only in IPC 6(a); the section text holds its children, as the parser's does. "preamble" is only
@@ -139,10 +153,15 @@ class KnobTest(Base):
                                                    extra=["--levels", levels])["predictions"]["q"]
         self.assertEqual([pred("lantern", lv) for lv in ("all", "leaf", "top")], [["IPC 6"]] * 3)
         self.assertEqual([pred("preamble", lv) for lv in ("all", "leaf", "top")], [["IPC 6"], [], ["IPC 6"]])
-        # under top the section is retrieved by its own text; under leaf by its child's, so the scores differ
-        db = sqlite3.connect(self.tmp / "i.sqlite")
-        s = lambda lv: bench.rank_sections(bm25.Index(db, lv, "none"), "lantern", {"IPC 6"}, "max")[0][1]
-        self.assertEqual(len({s("all"), s("leaf"), s("top")}), 3)
+
+    def test_levels_change_which_section_ranks_first(self):
+        # IPC 6(a) is one word, so it outscores IPC 7 when it is indexed; IPC 6 itself (3 words) loses to IPC 7.
+        provs = [prov("IPC 6", "preamble then lantern", children=["IPC 6(a)"]), prov("IPC 6(a)", "lantern", "IPC 6"),
+                 prov("IPC 7", "lantern filler")] + [prov(f"IPC {n}", "more words") for n in range(8, 13)]
+        self.build(provs)
+        cases = [{"id": "q", "text": ["lantern"], "labels": ["Section 6 in The Indian Penal Code"]}]
+        first = lambda lv: self.run_bench(cases, k=1, extra=["--levels", lv])["predictions"]["q"]
+        self.assertEqual([first(lv) for lv in ("all", "leaf", "top")], [["IPC 6"], ["IPC 6"], ["IPC 7"]])
 
     def test_identical_runs_are_byte_identical_and_ties_break_by_citation(self):
         provs = [prov(f"IPC {n}", "theft") for n in (1, 2, 3)] + [prov("IPC 4", "zebra"), prov("IPC 5", "cheating")]

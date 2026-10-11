@@ -61,7 +61,7 @@ def build(rounds: list[dict], ledger: list[dict], results: dict, frozen_round: i
                 ("dev frozen", frozen["dev"][key]["strata"]),
                 ("test", results["strata"] if key == "top_k" else results["threshold"]["strata"])]
         srows = [[f"{dim} {b}", *(f"{s[dim][b]['cases']} cases: {cell(s[dim][b]['scores'])}" for _, s in cols)]
-                 for dim in ("gold_label_count", "words") for b in cols[0][1][dim]]
+                 for dim in ("label_count", "words") for b in cols[0][1][dim]]
         out += table(["stratum", *(c for c, _ in cols)], srows)
     never = results["per_label"]["never_found"]
     out += ["## Labels never found (test, top-k)", "", ", ".join(never) if never else "none", "",
@@ -74,8 +74,8 @@ def build(rounds: list[dict], ledger: list[dict], results: dict, frozen_round: i
         out.append(provenance(f"test score on split {t['split_sha256']}", t["rule"], {}))
     out.append(f"- test results file: split {results['inputs']['split_sha256']}, labels {results['inputs']['labels_sha256']}, "
                f"index {results['inputs']['index_sha256']}, rule hash {results['rule']['params_sha256']}")
-    match = all(t["rule"]["params_sha256"] == last["rule"]["params_sha256"] for t in ledger)
-    out.append(f"- ledger rule matches the final logged round: {'yes' if match else 'NO'}")
+    match = all(t["rule"]["params_sha256"] == frozen["rule"]["params_sha256"] for t in ledger)
+    out.append(f"- ledger rule matches the frozen round ({frozen['round']}): {'yes' if match else 'NO'}")
     return "\n".join(out) + "\n"
 
 
