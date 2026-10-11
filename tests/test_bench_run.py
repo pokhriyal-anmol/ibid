@@ -41,12 +41,12 @@ class BenchRunTest(unittest.TestCase):
         index.build(str(self.tmp / "i.sqlite"), PROVISIONS, []).close()
         (self.tmp / "labels.json").write_text(json.dumps({label: i for i, label in enumerate(L.values())}))
 
-    def run_bench(self, cases=CASES, k=1, out="out.json"):
+    def run_bench(self, cases=CASES, k=1, out="out.json", r=0.5, rollup="max"):
         split = self.tmp / "split.jsonl"
         split.write_text("".join(json.dumps(c) + "\n" for c in cases))
         out_path = self.tmp / out
         code = main(["bench", "run", "--split", str(split), "--labels", str(self.tmp / "labels.json"),
-                     "--index", str(self.tmp / "i.sqlite"), "--k", str(k), "--out", str(out_path)])
+                     "--index", str(self.tmp / "i.sqlite"), "--k", str(k), "--r", str(r), "--rollup", rollup, "--out", str(out_path)])
         self.assertEqual(code, 0)
         return json.loads(out_path.read_text())
 
@@ -74,7 +74,7 @@ class BenchRunTest(unittest.TestCase):
     def test_records_inputs_rule_parser_k_and_conventions(self):
         r = self.run_bench(k=2)
         self.assertEqual(set(r["inputs"]), {"split_sha256", "labels_sha256", "index_sha256"})
-        self.assertEqual((r["rule"]["name"], r["rule"]["version"], r["k"]), ("query-rule", "v1", 2))
+        self.assertEqual((r["rule"]["name"], r["rule"]["version"], r["k"], r["threshold"]["r"]), ("query-rule", "v1", 2, 0.5))
         self.assertTrue(r["parser_version"])
         self.assertIn("scores 0", r["conventions"]["macro_f1"])
 
@@ -91,6 +91,80 @@ class BenchRunTest(unittest.TestCase):
     def test_case_with_no_usable_terms_predicts_nothing(self):
         r = self.run_bench([{"id": "x", "text": ["the of and"], "labels": [L[1]]}])
         self.assertEqual((r["predictions"], r["scores"]["micro_f1"]), ({"x": []}, 0.0))
+
+
+def tied(n, text):
+    return prov(f"IPC {n}", text)
+
+
+# "theft" hits IPC 1 and 2 with equal score and IPC 3 lower (longer text). IPC 4-7 are fillers so idf stays positive.
+THEFT = [tied(1, "theft"), tied(2, "theft"), tied(3, "theft of movable property dishonestly with force"),
+         tied(4, "kidnapping"), tied(5, "murder"), tied(6, "cheating"), tied(7, "zebra")]
+# Section 8 is hit by three provisions and section 9 by one, all the same length, so only the roll-up separates them.
+ROBBERY = [tied(8, "robbery"), prov("IPC 8(1)", "robbery", "IPC 8"), prov("IPC 8(2)", "robbery", "IPC 8"),
+           tied(9, "robbery"), tied(10, "kidnapping"), tied(11, "murder"), tied(12, "cheating"), tied(13, "zebra"),
+           tied(14, "forgery"), tied(15, "perjury")]
+
+
+class ThresholdRuleTest(unittest.TestCase):
+    def setUp(self):
+        self.tmp = Path(tempfile.mkdtemp())
+        self.addCleanup(shutil.rmtree, self.tmp)
+
+    def run_bench(self, provisions, text, labels, r, k=1, rollup="max", out="out.json", expect=0):
+        index.build(str(self.tmp / "i.sqlite"), provisions, []).close()
+        space = sorted({p.citation.split("(")[0] for p in provisions}, key=lambda c: int(c.split()[1]))
+        (self.tmp / "labels.json").write_text(json.dumps({f"Section {c.split()[1]} in The Indian Penal Code": i for i, c in enumerate(space)}))
+        gold = [f"Section {n} in The Indian Penal Code" for n in labels]
+        (self.tmp / "split.jsonl").write_text(json.dumps({"id": "q", "text": [text], "labels": gold}) + "\n")
+        out_path = self.tmp / out
+        with contextlib.redirect_stderr(io.StringIO()):
+            code = main(["bench", "run", "--split", str(self.tmp / "split.jsonl"), "--labels", str(self.tmp / "labels.json"),
+                         "--index", str(self.tmp / "i.sqlite"), "--k", str(k), "--r", str(r), "--rollup", rollup, "--out", str(out_path)])
+        self.assertEqual(code, expect)
+        return json.loads(out_path.read_text()) if expect == 0 else out_path
+
+    def threshold(self, r, **kw):
+        return self.run_bench(THEFT, "theft", [1, 2], r, **kw)["threshold"]["predictions"]["q"]
+
+    def test_r_one_predicts_only_the_top_sections(self):
+        self.assertEqual(self.threshold(1.0), ["IPC 1", "IPC 2"])  # tied top sections, ordered by citation
+
+    def test_small_r_predicts_every_retrieved_section(self):
+        self.assertEqual(self.threshold(0.001), ["IPC 1", "IPC 2", "IPC 3"])
+
+    def test_r_cuts_between_the_hand_computed_ratio(self):
+        # BM25 k1=1.2 b=0.75, avgdl 13/7: IPC 3 / IPC 1 = (1+1.2*0.6538)/(1+1.2*3.0769) = 0.38.
+        self.assertEqual(self.threshold(0.5), ["IPC 1", "IPC 2"])
+        self.assertEqual(self.threshold(0.35), ["IPC 1", "IPC 2", "IPC 3"])
+
+    def test_one_run_holds_scores_for_both_rules(self):
+        r = self.run_bench(THEFT, "theft", [1, 2], 1.0, k=1)
+        # 7 labels; top-k=1 gives {1}: micro 2/3. threshold gives {1,2}: micro 1, per-label F1 1 for 2 labels of 7.
+        self.assertEqual(r["scores"]["micro_f1"], round(2 / 3, 6))
+        self.assertEqual(r["threshold"]["scores"], {"micro_f1": 1.0, "macro_f1": round(2 / 7, 6), "jaccard": 1.0})
+
+    def test_k_r_and_rollup_each_change_the_rule_hash(self):
+        h = lambda **kw: self.run_bench(ROBBERY, "robbery", [8], **{"r": 0.5, **kw})["rule"]["params_sha256"]
+        base = h()
+        self.assertEqual(h(), base)
+        self.assertEqual(len({base, h(r=0.6), h(k=2), h(rollup="sum")}), 4)
+
+    def test_rollup_choice_changes_predictions(self):
+        # max: sections 8 and 9 tie. sum: section 8 scores 3x section 9.
+        pick = lambda rollup: self.run_bench(ROBBERY, "robbery", [8], 1.0, rollup=rollup)["threshold"]["predictions"]["q"]
+        self.assertEqual(pick("max"), ["IPC 8", "IPC 9"])
+        self.assertEqual(pick("sum"), ["IPC 8"])
+
+    def test_ties_are_deterministic(self):
+        a = self.run_bench(THEFT, "theft", [1], 1.0, out="a.json")
+        self.run_bench(THEFT, "theft", [1], 1.0, out="b.json")
+        self.assertEqual((self.tmp / "a.json").read_bytes(), (self.tmp / "b.json").read_bytes())
+        self.assertEqual(a["predictions"]["q"], ["IPC 1"])  # top-1 of a tie is the lowest citation string
+
+    def test_r_outside_zero_one_is_refused_without_a_results_file(self):
+        for r in (0, -0.5, 1.5):
+            self.assertFalse(self.run_bench(THEFT, "theft", [1], r, expect=1).exists())
 
 
 if __name__ == "__main__":
