@@ -16,10 +16,10 @@ Single-context: one `CONTEXT.md` and `docs/adr/` at the repo root. See `docs/age
 
 ## Tests
 
-The tests are `unittest`, not pytest, and read the source PDFs from two env vars. The PDFs are gitignored (see `data/SOURCES.md`), so a git worktree does not have them: point the vars at the root checkout's `data/raw/` by absolute path.
+The tests are `unittest`, not pytest. They read the gitignored source PDFs from `IBID_BNS_PDF` and `IBID_IPC_PDF` if set, and otherwise from the main checkout's `data/raw/` (found through `git rev-parse --git-common-dir`, so a git worktree works with no setup).
 
 ```bash
-IBID_BNS_PDF=<root>/data/raw/bns-prs.pdf IBID_IPC_PDF=<root>/data/raw/ipc-wipo.pdf uv run python -m unittest discover -s tests
+uv run python -m unittest discover -s tests
 ```
 
-In the root checkout, `<root>` is `$PWD`. The run takes about 15 seconds.
+The run takes about 15 seconds.

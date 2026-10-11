@@ -1,7 +1,6 @@
 """Tests go through the one seam: `ibid eval`. Needs IBID_BNS_PDF and IBID_IPC_PDF (the gitignored source PDFs)."""
 import hashlib
 import json
-import os
 import re
 import shutil
 import sqlite3
@@ -13,8 +12,7 @@ from pathlib import Path
 from ibid.cli import main
 
 GOLD = str(Path(__file__).parent.parent / "gold" / "draft.json")
-PDF = os.environ["IBID_BNS_PDF"]
-IPC_PDF = os.environ["IBID_IPC_PDF"]
+from pdfs import BNS_PDF as PDF, IPC_PDF
 FIX = Path(__file__).parent / "fixtures"
 CGOLD, CONC = str(FIX / "concordance-gold.json"), str(FIX / "concordance.json")
 
