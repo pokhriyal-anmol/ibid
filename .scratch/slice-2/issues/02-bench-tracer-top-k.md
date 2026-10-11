@@ -1,6 +1,6 @@
 # Tracer: one bench run command scores a split with query rule v1 and top-k
 
-Status: ready-for-agent
+Status: done
 Blocked by: 01
 
 What to build: the end-to-end path through one run command (for example `ibid bench run --split <path> --index <index> --k <k> --out <results.json>`). It loads a split JSONL from a local path (`id`, `text` as a list of sentences, `labels`), joins the sentences into the raw query, applies query rule v1 (ADR 0004: lower-case, split on non-letters, drop a fixed stop-word list, join with OR), retrieves IPC provisions with the existing FTS5 index, searches IPC provisions only (the index also holds BNS), rolls each retrieved provision up to its top-level IPC section citation scoring a section by the max over its provisions (a declared parameter, ticket 03 may add others), drops any section outside the 100 benchmark labels, keeps the top k sections (ties broken by citation string), and scores micro F1, macro F1 and Jaccard over the 100-label space with our own implementation. The results file records each input file's SHA-256, the rule name and version, a hash of the rule's parameters, the parser version, k, and the scores.
