@@ -4,7 +4,7 @@
 
 Slice 1 showed the harness is reproducible on 45 items written in this repo. It gave no number comparable with anything outside it. This slice adds `ibid bench`, which loads a local, gitignored copy of the LeSICiN splits, turns each fact paragraph into a query with a fixed, versioned query rule (ADR 0004), retrieves IPC provisions with the existing index, rolls them up to section labels and scores micro F1, macro F1 and Jaccard with our own implementation. No model, embedding or label-derived weight is in the path.
 
-What is built, by ticket (01 to 09, 11 and 12 are done; 10 is not started):
+What is built, by ticket (01 to 12 are done):
 
 - 01: maps the 100 benchmark labels to IPC citations and checks each exists in the index, exiting non-zero on a missing or unparseable label.
 - 02, 03: `ibid bench run` scores a split with query rule v1 under both a fixed top-k and a relative threshold r, with the section roll-up as a declared parameter. Results record data hashes, rule name and version, rule hash and parser version. Two identical runs are byte-identical.
@@ -28,7 +28,7 @@ Changes made while closing review findings:
 - CONTEXT.md gains Benchmark label, Query rule, Optimisation round and Frozen rule.
 - `check_params` is shared by `run_bench` and `optimise`, as are `load_space`, `load_cases`, `pinned_test_hash` and `read_ledger`. A redundant stem-based `--sample` check and a dead empty-cases fallback were removed from `run_bench`.
 
-Contradictions with the spec and ADRs: none remain. Tokenisation, BM25 parameters and indexed levels are built as knobs by ticket 11. Ticket 10 (run the optimisation on the real data, freeze, score test once) is not started, so no benchmark number is reported here.
+Contradictions with the spec and ADRs: none remain. Tokenisation, BM25 parameters and indexed levels are built as knobs by ticket 11. Ticket 10 ran on 2026-10-12: see Results.
 
 ## Test plan
 
@@ -42,4 +42,26 @@ Contradictions with the spec and ADRs: none remain. Tokenisation, BM25 parameter
 - [x] Report ledger check says "ledger rule matches the frozen round (N)", with a non-last frozen round case and an edited-ledger known-bad case.
 - [x] Real data: dev `--sample 200` matches FTS5 exactly (micro 0.065667, macro 0.031081, Jaccard 0.039742).
 - [ ] Not run: the benchmark's own evaluation script. Metrics are our own implementation until it is read.
-- [ ] Not run: the real-data optimisation and the single test scoring (ticket 10).
+- [x] Real-data optimisation (rounds 0 to 11), one frozen rule and one test scoring. See Results.
+
+## Results (ticket 10, 2026-10-12)
+
+Rule `query-rule v2.11`: k=5, r=0.7, BM25 k1=4.0, b=1.0, max roll-up, no stemming, all levels. Test split scored once, 13,039 cases, against the frozen rule committed first (42e8a67).
+
+| output | micro-F1 | macro-F1 | Jaccard |
+|---|---|---|---|
+| threshold, test | 9.64 | 6.21 | 5.52 |
+| top-k, test | 9.37 | 6.07 | 5.43 |
+| threshold, dev | 9.71 | 6.22 | 5.62 |
+| round 0 (k=3, r=0.8), dev | 6.37 | 3.66 | 4.45 |
+
+The published scores are 28.08 and 28.45 from trained classifiers, so Ibid's deterministic text matching is about a fifth of those on macro-F1. This is not a comparison like for like (see the caveats in `results/report.md`).
+
+- **Protocol.** Saturation fired at round 8. The owner extended the protocol with a 3-round settle phase on r (rounds 9 to 11). Round 11 is the best unflagged round on train. Every round from 1 to 8 was flagged `hurts-simple` because lowering r cut single-label cases.
+- **Overfit check.** Train minus dev macro-F1 is about -0.2 points in every round, and test is within 0.1 point of dev: no overfitting to dev.
+- **Section 34.** The spec expected a miss. Recall on test is 0.30 (1,107 of 3,734 cases), F1 0.32, one of the best labels.
+- **Murder.** IPC 302 is found in 4 of 3,246 cases. The query matches the definition (IPC 300), not the punishment section.
+- **IPC 376.** Predicted on about three quarters of cases (8,756 false positives), a length effect of the b and k1 settings. Per-label results on test were read after scoring and must not steer further tuning.
+- **Metric cross-check.** Could not run. The benchmark's evaluation script is on OneDrive and was not read, so the metrics are our own implementation of micro and macro F1 and Jaccard.
+- **Guard history.** The first `hurts-simple` guard read only top-k and only the previous round, and missed a 3.8 point fall. It was fixed after round 3 and rounds 0 to 3 were regenerated. The stopping metric was changed from top-k to the better of the two rules after round 2. Both changes are dated in the spec.
+
