@@ -48,6 +48,9 @@ STOP_WORDS = (
 SECTION_SCORE = "max"  # a section scores the max BM25 over its retrieved provisions
 
 
+SAMPLE_RULE = "first N cases by sorted id"
+
+
 def rule_hash() -> str:
     params = {"stop_words": sorted(STOP_WORDS), "split": "non-letters", "join": "OR", "section_score": SECTION_SCORE}
     return hashlib.sha256(json.dumps(params, sort_keys=True).encode()).hexdigest()
@@ -95,9 +98,15 @@ def sha256(path: str) -> str:
     return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 
 
-def run_bench(split_path: str, labels_path: str, index_path: str, k: int, out_path: str) -> int:
+def run_bench(split_path: str, labels_path: str, index_path: str, k: int, out_path: str, sample: int | None = None) -> int:
     if k < 1:
         print("error: k must be at least 1", file=sys.stderr)
+        return 1
+    if sample is not None and sample < 1:
+        print("error: --sample must be at least 1", file=sys.stderr)
+        return 1
+    if sample is not None and Path(split_path).stem == "test":  # shortcut: by file name, ticket 06/07 pin the hash
+        print("error: --sample is refused on the test split; it is scored once, in full", file=sys.stderr)
         return 1
     with open(labels_path) as f:
         cites = [to_citation(label) for label in json.load(f)]
@@ -107,6 +116,8 @@ def run_bench(split_path: str, labels_path: str, index_path: str, k: int, out_pa
     space = set(cites)
     with open(split_path) as f:
         cases = [json.loads(line) for line in f if line.strip()]
+    if sample is not None:
+        cases = sorted(cases, key=lambda c: c["id"])[:sample]
     gold = [{to_citation(label) for label in c["labels"]} for c in cases]
     if not cases or any(not g <= space for g in gold):
         print("error: empty split, or a case has a label outside the label vocabulary", file=sys.stderr)
@@ -119,6 +130,7 @@ def run_bench(split_path: str, labels_path: str, index_path: str, k: int, out_pa
         "parser_version": PARSER_VERSION,
         "k": k,
         "cases": len(cases),
+        **({"sample": sample, "sample_rule": SAMPLE_RULE} if sample is not None else {}),
         "scores": score(gold, [set(p) for p in preds], space),
         "conventions": {
             "label_space": f"{len(space)} labels",

@@ -41,14 +41,16 @@ class BenchRunTest(unittest.TestCase):
         index.build(str(self.tmp / "i.sqlite"), PROVISIONS, []).close()
         (self.tmp / "labels.json").write_text(json.dumps({label: i for i, label in enumerate(L.values())}))
 
-    def run_bench(self, cases=CASES, k=1, out="out.json"):
-        split = self.tmp / "split.jsonl"
+    def run_bench(self, cases=CASES, k=1, out="out.json", sample=None, split_name="split.jsonl", expect=0):
+        split = self.tmp / split_name
         split.write_text("".join(json.dumps(c) + "\n" for c in cases))
         out_path = self.tmp / out
-        code = main(["bench", "run", "--split", str(split), "--labels", str(self.tmp / "labels.json"),
-                     "--index", str(self.tmp / "i.sqlite"), "--k", str(k), "--out", str(out_path)])
-        self.assertEqual(code, 0)
-        return json.loads(out_path.read_text())
+        extra = [] if sample is None else ["--sample"] + ([str(sample)] if sample else [])
+        with contextlib.redirect_stderr(io.StringIO()):
+            code = main(["bench", "run", "--split", str(split), "--labels", str(self.tmp / "labels.json"),
+                         "--index", str(self.tmp / "i.sqlite"), "--k", str(k), "--out", str(out_path)] + extra)
+        self.assertEqual(code, expect)
+        return json.loads(out_path.read_text()) if expect == 0 else None
 
     def test_scores_match_hand_computed(self):
         # preds c1 {1}, c2 {3}, c3 {2}. micro tp3 fp0 fn1 = 6/7; per-label F1 1, 2/3, 1, 0 so macro 2/3; jaccard 1, 1/2, 1.
@@ -91,6 +93,42 @@ class BenchRunTest(unittest.TestCase):
     def test_case_with_no_usable_terms_predicts_nothing(self):
         r = self.run_bench([{"id": "x", "text": ["the of and"], "labels": [L[1]]}])
         self.assertEqual((r["predictions"], r["scores"]["micro_f1"]), ({"x": []}, 0.0))
+
+    def test_sample_scores_the_first_n_by_sorted_id_and_says_so(self):
+        # file order is c3, c1, c2 on purpose: the rule is sorted id, not file order.
+        shuffled = [CASES[2], CASES[0], CASES[1]]
+        r = self.run_bench(shuffled, sample=2)
+        self.assertEqual((r["cases"], sorted(r["predictions"])), (2, ["c1", "c2"]))
+        self.assertEqual((r["sample"], r["sample_rule"]), (2, "first N cases by sorted id"))
+
+    def test_full_run_states_no_sample(self):
+        r = self.run_bench()
+        self.assertNotIn("sample", r)
+        self.assertNotIn("sample_rule", r)
+
+    def test_sample_without_a_value_means_200(self):
+        r = self.run_bench(sample=0)
+        self.assertEqual((r["sample"], r["cases"]), (200, 3))  # fewer cases than N: all of them
+
+    def test_two_sample_runs_are_byte_identical(self):
+        self.run_bench(sample=2, out="a.json")
+        self.run_bench(sample=2, out="b.json")
+        self.assertEqual((self.tmp / "a.json").read_bytes(), (self.tmp / "b.json").read_bytes())
+
+    def test_sample_on_the_test_split_is_refused_and_writes_nothing(self):
+        self.run_bench(sample=2, split_name="test.jsonl", expect=1)
+        self.assertFalse((self.tmp / "out.json").exists())
+
+    def test_full_run_on_the_test_split_is_not_refused_by_sample_guard(self):
+        self.assertNotIn("sample", self.run_bench(split_name="test.jsonl"))
+
+    def test_sample_of_five_item_split_scores_exactly_three(self):
+        five = [{"id": f"i{n}", "text": ["theft"], "labels": [L[1]]} for n in (5, 4, 3, 2, 1)]
+        r = self.run_bench(five, sample=3)
+        self.assertEqual((r["cases"], sorted(r["predictions"])), (3, ["i1", "i2", "i3"]))
+
+    def test_sample_below_one_is_refused(self):
+        self.run_bench(sample=-1, expect=1)
 
 
 if __name__ == "__main__":
