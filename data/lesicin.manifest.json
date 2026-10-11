@@ -1,0 +1,22 @@
+{
+  "dev.jsonl": {
+    "bytes": 85261365,
+    "sha256": "7a2b784aa79dd9148a686d53cadde5a9747e6ffc15a6a1a6c80359551b92bc12"
+  },
+  "label_vocab.json": {
+    "bytes": 4795,
+    "sha256": "a9d6221f39f35c8c89d8e5b03e77a8c5dd7aa97e095e895dbb40fc2e96d582df"
+  },
+  "secs.jsonl": {
+    "bytes": 46219,
+    "sha256": "9133abfa66bdd189a9ff3b31dcebe5d055bb32d1e16dc7966eacef99e3615958"
+  },
+  "test.jsonl": {
+    "bytes": 106092603,
+    "sha256": "9fc141a94b51febe3e3cd06494f13c587098afcda175fc2e3e4d6213a88b60d1"
+  },
+  "train.jsonl": {
+    "bytes": 319771764,
+    "sha256": "23a0aedcf52a08e22e064fdce78501698d33b576a1437e5a02ecdbb01b3a2da8"
+  }
+}

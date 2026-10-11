@@ -41,14 +41,19 @@ class BenchRunTest(unittest.TestCase):
         index.build(str(self.tmp / "i.sqlite"), PROVISIONS, []).close()
         (self.tmp / "labels.json").write_text(json.dumps({label: i for i, label in enumerate(L.values())}))
 
-    def run_bench(self, cases=CASES, k=1, out="out.json", sample=None, split_name="split.jsonl", expect=0):
+    def run_bench(self, cases=CASES, k=1, out="out.json", sample=None, split_name="split.jsonl", expect=0, pin=True):
         split = self.tmp / split_name
         split.write_text("".join(json.dumps(c) + "\n" for c in cases))
         out_path = self.tmp / out
+        manifest = self.tmp / "manifest.json"
+        if pin:  # the fixture's own manifest, written from the bytes on disk just now
+            manifest.write_text(json.dumps({n: {"bytes": (self.tmp / n).stat().st_size, "sha256": bench.sha256(str(self.tmp / n))}
+                                            for n in (split_name, "labels.json")}))
         extra = [] if sample is None else ["--sample"] + ([str(sample)] if sample else [])
         with contextlib.redirect_stderr(io.StringIO()):
             code = main(["bench", "run", "--split", str(split), "--labels", str(self.tmp / "labels.json"),
-                         "--index", str(self.tmp / "i.sqlite"), "--k", str(k), "--out", str(out_path)] + extra)
+                         "--index", str(self.tmp / "i.sqlite"), "--k", str(k), "--out", str(out_path),
+                         "--manifest", str(manifest)] + extra)
         self.assertEqual(code, expect)
         return json.loads(out_path.read_text()) if expect == 0 else None
 
@@ -129,6 +134,34 @@ class BenchRunTest(unittest.TestCase):
 
     def test_sample_below_one_is_refused(self):
         self.run_bench(sample=-1, expect=1)
+
+    def test_changed_split_byte_is_refused_naming_the_file_and_writes_no_results(self):
+        self.run_bench()  # writes split.jsonl and the manifest pinned to it
+        split = self.tmp / "split.jsonl"
+        split.write_bytes(split.read_bytes().replace(b"committed", b"commited"))  # still valid JSON, one byte shorter
+        err = io.StringIO()
+        with contextlib.redirect_stderr(err):
+            code = main(["bench", "run", "--split", str(split), "--labels", str(self.tmp / "labels.json"),
+                         "--index", str(self.tmp / "i.sqlite"), "--k", "1", "--out", str(self.tmp / "bad.json"),
+                         "--manifest", str(self.tmp / "manifest.json")])
+        self.assertNotEqual(code, 0)
+        pinned = json.loads((self.tmp / "manifest.json").read_text())["split.jsonl"]["sha256"]
+        self.assertIn("split.jsonl", err.getvalue())
+        self.assertIn(pinned, err.getvalue())
+        self.assertIn(bench.sha256(str(split)), err.getvalue())
+        self.assertFalse((self.tmp / "bad.json").exists())
+
+    def test_results_hashes_equal_the_manifest(self):
+        r = self.run_bench()
+        pinned = json.loads((self.tmp / "manifest.json").read_text())
+        self.assertEqual(r["inputs"]["split_sha256"], pinned["split.jsonl"]["sha256"])
+        self.assertEqual(r["inputs"]["labels_sha256"], pinned["labels.json"]["sha256"])
+
+    def test_file_missing_from_the_manifest_is_refused(self):
+        self.run_bench()
+        (self.tmp / "manifest.json").write_text("{}")
+        self.run_bench(pin=False, out="no.json", expect=1)
+        self.assertFalse((self.tmp / "no.json").exists())
 
 
 if __name__ == "__main__":

@@ -98,7 +98,21 @@ def sha256(path: str) -> str:
     return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 
 
-def run_bench(split_path: str, labels_path: str, index_path: str, k: int, out_path: str, sample: int | None = None) -> int:
+def verify_pinned(paths: list[str], manifest_path: str) -> int:
+    """Refuse (return 1) unless every file's SHA-256 equals its manifest entry, keyed by file name."""
+    with open(manifest_path) as f:
+        pinned = json.load(f)
+    bad = 0
+    for p in paths:
+        name, got = Path(p).name, sha256(p)
+        want = pinned.get(name, {}).get("sha256")
+        if got != want:
+            print(f"error: {name} does not match the manifest: pinned {want}, found {got}", file=sys.stderr)
+            bad = 1
+    return bad
+
+
+def run_bench(split_path: str, labels_path: str, index_path: str, k: int, out_path: str, manifest_path: str, sample: int | None = None) -> int:
     if k < 1:
         print("error: k must be at least 1", file=sys.stderr)
         return 1
@@ -107,6 +121,8 @@ def run_bench(split_path: str, labels_path: str, index_path: str, k: int, out_pa
         return 1
     if sample is not None and Path(split_path).stem == "test":  # shortcut: by file name, ticket 06/07 pin the hash
         print("error: --sample is refused on the test split; it is scored once, in full", file=sys.stderr)
+        return 1
+    if verify_pinned([split_path, labels_path], manifest_path):
         return 1
     with open(labels_path) as f:
         cites = [to_citation(label) for label in json.load(f)]
