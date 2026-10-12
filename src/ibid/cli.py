@@ -124,9 +124,15 @@ def main(argv: list[str] | None = None) -> int:
     chc.add_argument("--set", required=True)
     chc.add_argument("--index", default="data/index/ibid.sqlite")
     chc.add_argument("--frozen-rule", default="results/frozen-rule.json")
+    chc.add_argument("--predictions", default=None, help="a layer's predictions file, scored in place of --frozen-rule")
     chc.add_argument("--act", choices=("ipc", "bns"), required=True)
     chc.add_argument("--out", required=True)
     chc.add_argument("--ledger", default=None, help="default: <set>.ledger.json beside the set")
+    che = chs.add_parser("export-baseline", help="write the frozen rule's two output rules as predictions files")
+    che.add_argument("--set", required=True)
+    che.add_argument("--index", default="data/index/ibid.sqlite")
+    che.add_argument("--frozen-rule", default="results/frozen-rule.json")
+    che.add_argument("--out", required=True, help="writes <stem>.baseline-topk<suffix> and <stem>.baseline-threshold<suffix>")
     bsub = sub.add_parser("bench").add_subparsers(dest="bench_cmd", required=True)
     bn = bsub.add_parser("check-labels")
     bn.add_argument("--data", default="data/raw/lesicin/label_vocab.json")
@@ -182,6 +188,10 @@ def main(argv: list[str] | None = None) -> int:
     a = ap.parse_args(argv)
     if a.cmd == "charges":
         from ibid import charges
+        if a.charges_cmd == "export-baseline":
+            return charges.export_baseline(a.set, a.index, a.frozen_rule, a.out)
+        if a.charges_cmd == "score" and a.predictions:
+            return charges.score_predictions(a.set, a.index, a.predictions, a.act, a.out, a.ledger)
         if a.charges_cmd == "score":
             return charges.score(a.set, a.index, a.frozen_rule, a.act, a.out, a.ledger)
         return charges.validate(a.set, a.index)

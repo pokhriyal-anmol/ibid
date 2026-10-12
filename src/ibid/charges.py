@@ -105,80 +105,191 @@ def _summary(rows: list[tuple[list[bool], int]]) -> dict:
             "mean_predictions": round(sum(p for _, p in rows) / n, 6) if n else 0.0}
 
 
-def score(set_path: str, index_path: str, frozen_path: str, act: str, out_path: str, ledger_path: str | None = None) -> int:
-    """`ibid charges score`: the frozen rule, by charge, over one Act's sections (any index section can be predicted)."""
+def _load_set(set_path: str, index_path: str) -> tuple[bytes, list, sqlite3.Connection]:
+    """The pinned set's bytes and items, and a read-only index; every item is checked against the format rules."""
     raw = Path(set_path).read_bytes()
     if err := pin_error(set_path, raw):
-        print(f"error: {err}", file=sys.stderr)
-        return 1
-    try:
-        if not Path(index_path).is_file():
-            raise ValueError(f"no index {index_path}")
-        items = json.loads(raw)["items"]
-        fz = json.loads(Path(frozen_path).read_text())
-        k, r, rollup, stop, knobs = fz["k"], fz["r"], fz["section_score"], fz["stop_words"], bench.knobs_of(fz.get("knobs"))
-        bench.check_params(k, r, rollup)
-        bench.check_knobs(knobs)
-        if fz["rule"]["params_sha256"] != bench.rule_hash(k, r, rollup, stop, knobs):
-            raise ValueError(f"{frozen_path} does not hold the rule it names")
-        db = sqlite3.connect(f"file:{index_path}?mode=ro", uri=True)
-        problems = [(i.get("id"), f, m) for i in items for f, m in _item_errors(i, db)]
-    except (OSError, KeyError, ValueError, TypeError, AttributeError) as e:
-        print(f"error: {e}", file=sys.stderr)
-        return 1
+        raise ValueError(err)
+    if not Path(index_path).is_file():
+        raise ValueError(f"no index {index_path}")
+    items = json.loads(raw)["items"]
+    db = sqlite3.connect(f"file:{index_path}?mode=ro", uri=True)
+    problems = [f"item {i.get('id')} field {f}: {m}" for i in items for f, m in _item_errors(i, db)]
     if problems:
-        for iid, field, msg in problems:
-            print(f"item {iid} field {field}: {msg}", file=sys.stderr)
-        return 1
-    ix = bm25.Index(db, knobs["levels"], knobs["stem"])
-    space = {c for c, p in ix.parent.items() if p is None and c.startswith(act.upper() + " ")}  # every section of the Act
+        raise ValueError("\n".join(problems))
+    return raw, items, db
 
+
+def _load_rule(frozen_path: str) -> tuple[dict, dict]:
+    fz = json.loads(Path(frozen_path).read_text())
+    k, r, rollup, stop, knobs = fz["k"], fz["r"], fz["section_score"], fz["stop_words"], bench.knobs_of(fz.get("knobs"))
+    bench.check_params(k, r, rollup)
+    bench.check_knobs(knobs)
+    if fz["rule"]["params_sha256"] != bench.rule_hash(k, r, rollup, stop, knobs):
+        raise ValueError(f"{frozen_path} does not hold the rule it names")
+    return fz, {"k": k, "r": r, "rollup": rollup, "stop": stop, "knobs": knobs}
+
+
+def _space(ix: bm25.Index, act: str) -> set[str]:
+    return {c for c, p in ix.parent.items() if p is None and c.startswith(act.upper() + " ")}  # every section of the Act
+
+
+def _frozen_predict(ix: bm25.Index, rule: dict, space: set[str], query: str) -> dict[str, list[str]]:
+    top_k, above = bench.predict(bench.rank_sections(ix, query, space, rule["rollup"], rule["stop"], rule["knobs"]), rule["k"], rule["r"])
+    return {"top_k": top_k, "threshold": above}
+
+
+def _score_output(items: list, act: str, preds: dict[str, list[str]], ix: bm25.Index) -> tuple[dict, int]:
+    """The one scorer: figures for one output over one Act, and the charges left out. A missing item has no predictions."""
     def section(c: str) -> str:  # an accepted sub-provision is found when its section is predicted
         while ix.parent[c] is not None:
             c = ix.parent[c]
         return c
 
-    excluded, rows, missed, preds = 0, {"top_k": [], "threshold": []}, {"top_k": [], "threshold": []}, {"top_k": {}, "threshold": {}}
+    excluded, rows, missed, kept = 0, [], [], {}
     for item in items:
         counted = [ch for ch in item["charges"] if ch["sections"][act]]
         excluded += len(item["charges"]) - len(counted)
         if not counted:
             continue
-        top_k, above = bench.predict(bench.rank_sections(ix, item["query"], space, rollup, stop, knobs), k, r)
-        for name, pred in (("top_k", top_k), ("threshold", above)):
-            preds[name][item["id"]] = pred
-            flags = [any(section(c) in pred for c in ch["sections"][act]) for ch in counted]
-            rows[name].append((flags, len(pred)))
-            missed[name] += [{"id": item["id"], "charge": ch["charge"], "top_predicted": pred[:3]}
-                             for ch, f in zip(counted, flags) if not f]
-    outputs = {}
-    for name in rows:
-        by_n = {lbl: _summary([x for x in rows[name] if min(len(x[0]), 3) == n]) for lbl, n in (("1", 1), ("2", 2), ("3+", 3))}
-        outputs[name] = {**_summary(rows[name]), "by_charges_per_item": by_n, "missed": missed[name], "predictions": preds[name]}
-    version = fz["rule"]["version"]
-    entry = {"set_sha256": hashlib.sha256(raw).hexdigest(), "act": act.upper(), "index_sha256": bench.sha256(index_path),
-             "rule": {"name": fz["rule"]["name"], "version": version, "params_sha256": fz["rule"]["params_sha256"]},
-             "scores": {n: {m: outputs[n][m] for m in ("recall", "all_charges_hit", "mean_predictions")} for n in outputs}}
-    ledger_file = ledger_path or str(Path(set_path).with_suffix(".ledger.json"))
+        pred = preds.get(item["id"], [])
+        kept[item["id"]] = pred
+        found = {section(c) for c in pred}
+        flags = [any(section(c) in found for c in ch["sections"][act]) for ch in counted]
+        rows.append((flags, len(pred)))
+        missed += [{"id": item["id"], "charge": ch["charge"], "top_predicted": pred[:3]} for ch, f in zip(counted, flags) if not f]
+    by_n = {lbl: _summary([x for x in rows if min(len(x[0]), 3) == n]) for lbl, n in (("1", 1), ("2", 2), ("3+", 3))}
+    return {**_summary(rows), "by_charges_per_item": by_n, "missed": missed, "predictions": kept}, excluded
+
+
+def _predictions_error(path: str, data: object, set_sha: str, item_ids: set, db: sqlite3.Connection) -> list[str]:
+    """Each rule the predictions file breaks, naming the item and field."""
+    if not isinstance(data, dict):
+        return [f"{path} field <file>: not an object"]
+    bad = [f"{path} field {f}: missing or empty" for f in ("layer", "layer_version") if not _text(data.get(f))]
+    if data.get("set_sha256") != set_sha:
+        bad.append(f"{path} field set_sha256: {data.get('set_sha256')!r} is not the hash of the set file")
+    if not isinstance(data.get("inputs"), dict):
+        bad.append(f"{path} field inputs: must be an object of name to sha256")
+    items = data.get("items")
+    if not isinstance(items, dict):
+        return bad + [f"{path} field items: must be an object"]
+    for iid, entry in items.items():
+        if iid not in item_ids:
+            bad.append(f"item {iid} field id: not in the set")
+            continue
+        for act in ACTS:
+            cites = entry.get(act) if isinstance(entry, dict) else None
+            if not isinstance(cites, list):
+                bad.append(f"item {iid} field {act}: must be a list of citations")
+                continue
+            for c in cites:
+                if not isinstance(c, str) or not c.startswith(act.upper() + " "):
+                    bad.append(f"item {iid} field {act}: {c!r} is not an {act.upper()} citation")
+                elif index.lookup(db, c) is None:
+                    bad.append(f"item {iid} field {act}: {c!r} is not in the index")
+    return bad
+
+
+def _write_ledger(ledger_file: str, entry: dict) -> list:
     ledger = bench.read_ledger(ledger_file)
     if entry not in ledger:  # an identical rescoring adds nothing, so two identical runs write identical files
         ledger.append(entry)
         Path(ledger_file).write_text(json.dumps(ledger, indent=2, sort_keys=True) + "\n")
+    return ledger
+
+
+CONVENTIONS = {
+    "found": "a charge is found when any accepted section of the Act, rolled up to its section, is predicted",
+    "excluded": "a charge with an empty list for the Act is left out; an item with none left is not scored",
+    "by_charges_per_item": "grouped by the number of charges counted for the Act, not the total in the item",
+    "mean_predictions": "mean number of predicted sections per scored item",
+}
+FIGURES = ("recall", "all_charges_hit", "mean_predictions")
+
+
+def score_predictions(set_path: str, index_path: str, predictions_path: str, act: str, out_path: str, ledger_path: str | None = None) -> int:
+    """`ibid charges score --predictions`: any layer's predictions file, scored by the same function as the frozen rule."""
+    try:
+        raw, items, db = _load_set(set_path, index_path)
+        data = json.loads(Path(predictions_path).read_text())
+        set_sha = hashlib.sha256(raw).hexdigest()
+        if bad := _predictions_error(predictions_path, data, set_sha, {i["id"] for i in items}, db):
+            raise ValueError("\n".join(bad))
+    except (OSError, KeyError, ValueError, TypeError, AttributeError) as e:
+        print(f"error: {e}", file=sys.stderr)
+        return 1
+    ix = bm25.Index(db, bench.DEFAULT_KNOBS["levels"], bench.DEFAULT_KNOBS["stem"])
+    out, excluded = _score_output(items, act, {i: e[act] for i, e in data["items"].items()}, ix)
+    layer, version = data["layer"], data["layer_version"]
+    entry = {"set_sha256": set_sha, "act": act.upper(), "index_sha256": bench.sha256(index_path), "layer": layer,
+             "layer_version": version, "inputs": data["inputs"], "scores": {"output": {m: out[m] for m in FIGURES}}}
+    ledger = _write_ledger(ledger_path or str(Path(set_path).with_suffix(".ledger.json")), entry)
+    results = {
+        "inputs": {"set_sha256": set_sha, "index_sha256": entry["index_sha256"], "layer": data["inputs"]},
+        "act": act.upper(), "layer": layer, "layer_version": version, "parser_version": bench.PARSER_VERSION,
+        "items_in_set": len(items), "items_scored": out["items"], "charges_excluded_no_counterpart": excluded,
+        "label_basis": dict(sorted(Counter(i["label_basis"] for i in items).items())),
+        "output": out,
+        "scorings_of_this_layer_version": [e for e in ledger if e.get("layer") == layer and e.get("layer_version") == version
+                                           and e["set_sha256"] == set_sha and e["act"] == entry["act"]],
+        "conventions": CONVENTIONS,
+    }
+    Path(out_path).write_text(json.dumps(results, indent=2, sort_keys=True) + "\n")
+    return 0
+
+
+def export_baseline(set_path: str, index_path: str, frozen_path: str, out_path: str) -> int:
+    """`ibid charges export-baseline`: the frozen rule's two output rules as two predictions files, <out stem>.<layer><suffix>."""
+    try:
+        raw, items, db = _load_set(set_path, index_path)
+        fz, rule = _load_rule(frozen_path)
+    except (OSError, KeyError, ValueError, TypeError, AttributeError) as e:
+        print(f"error: {e}", file=sys.stderr)
+        return 1
+    ix = bm25.Index(db, rule["knobs"]["levels"], rule["knobs"]["stem"])
+    spaces = {a: _space(ix, a) for a in ACTS}
+    out = {"top_k": {}, "threshold": {}}
+    for item in items:
+        for a in ACTS:
+            for name, pred in _frozen_predict(ix, rule, spaces[a], item["query"]).items():
+                out[name].setdefault(item["id"], {})[a] = pred
+    o = Path(out_path)
+    for name, layer in (("top_k", "baseline-topk"), ("threshold", "baseline-threshold")):
+        doc = {"layer": layer, "layer_version": fz["rule"]["version"], "set_sha256": hashlib.sha256(raw).hexdigest(),
+               "inputs": {"frozen_rule_params": fz["rule"]["params_sha256"], "index": bench.sha256(index_path)}, "items": out[name]}
+        o.with_name(f"{o.stem}.{layer}{o.suffix}").write_text(json.dumps(doc, indent=2, sort_keys=True) + "\n")
+    return 0
+
+
+def score(set_path: str, index_path: str, frozen_path: str, act: str, out_path: str, ledger_path: str | None = None) -> int:
+    """`ibid charges score`: the frozen rule, by charge, over one Act's sections (any index section can be predicted)."""
+    try:
+        raw, items, db = _load_set(set_path, index_path)
+        fz, rule = _load_rule(frozen_path)
+    except (OSError, KeyError, ValueError, TypeError, AttributeError) as e:
+        print(f"error: {e}", file=sys.stderr)
+        return 1
+    ix = bm25.Index(db, rule["knobs"]["levels"], rule["knobs"]["stem"])
+    space = _space(ix, act)
+    per_item = {i["id"]: _frozen_predict(ix, rule, space, i["query"]) for i in items if any(c["sections"][act] for c in i["charges"])}
+    scored = {name: _score_output(items, act, {i: p[name] for i, p in per_item.items()}, ix) for name in ("top_k", "threshold")}
+    outputs, excluded = {n: o for n, (o, _) in scored.items()}, scored["top_k"][1]
+    version = fz["rule"]["version"]
+    entry = {"set_sha256": hashlib.sha256(raw).hexdigest(), "act": act.upper(), "index_sha256": bench.sha256(index_path),
+             "rule": {"name": fz["rule"]["name"], "version": version, "params_sha256": fz["rule"]["params_sha256"]},
+             "scores": {n: {m: outputs[n][m] for m in FIGURES} for n in outputs}}
+    ledger = _write_ledger(ledger_path or str(Path(set_path).with_suffix(".ledger.json")), entry)
     results = {
         "inputs": {k_: entry[k_] for k_ in ("set_sha256", "index_sha256")},
-        "act": act.upper(), "rule": entry["rule"], "k": k, "r": r, "section_score": rollup, "knobs": knobs,
+        "act": act.upper(), "rule": entry["rule"], "k": rule["k"], "r": rule["r"], "section_score": rule["rollup"], "knobs": rule["knobs"],
         "parser_version": bench.PARSER_VERSION,
-        "items_in_set": len(items), "items_scored": len(rows["top_k"]), "charges_excluded_no_counterpart": excluded,
+        "items_in_set": len(items), "items_scored": outputs["top_k"]["items"], "charges_excluded_no_counterpart": excluded,
         "label_basis": dict(sorted(Counter(i["label_basis"] for i in items).items())),
         "top_k": outputs["top_k"], "threshold": outputs["threshold"],
-        "scorings_of_this_rule_version": [e for e in ledger if e["set_sha256"] == entry["set_sha256"]
-                                          and e["act"] == entry["act"] and e["rule"]["version"] == version],
-        "conventions": {
-            "found": "a charge is found when any accepted section of the Act, rolled up to its section, is predicted",
-            "excluded": "a charge with an empty list for the Act is left out; an item with none left is not scored",
-            "by_charges_per_item": "grouped by the number of charges counted for the Act, not the total in the item",
-            "mean_predictions": "mean number of predicted sections per scored item",
-        },
+        "scorings_of_this_rule_version": [e for e in ledger if e.get("rule", {}).get("version") == version
+                                          and e["set_sha256"] == entry["set_sha256"] and e["act"] == entry["act"]],
+        "conventions": CONVENTIONS,
     }
     Path(out_path).write_text(json.dumps(results, indent=2, sort_keys=True) + "\n")
     return 0
