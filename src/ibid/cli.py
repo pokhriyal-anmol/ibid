@@ -144,6 +144,25 @@ def main(argv: list[str] | None = None) -> int:
     ci.add_argument("--index", default="data/index/ibid.sqlite")
     ci.add_argument("--concordance", required=True)
     ci.add_argument("--out", required=True)
+    asc = sub.add_parser("assoc").add_subparsers(dest="assoc_cmd", required=True)
+    af = asc.add_parser("fit", help="route B: fit the naive-Bayes layer on a train split minus the held-out set's ids")
+    af.add_argument("--train", required=True)
+    af.add_argument("--holdout-set", required=True)
+    af.add_argument("--labels", default="data/raw/lesicin/label_vocab.json")
+    af.add_argument("--out", required=True)
+    apr = asc.add_parser("predict", help="write the layer's predictions file for a multi-charge set")
+    apr.add_argument("--model", required=True)
+    apr.add_argument("--set", required=True)
+    apr.add_argument("--concordance", required=True)
+    apr.add_argument("--index", default="data/index/ibid.sqlite")
+    apr.add_argument("--out", required=True)
+    ae = asc.add_parser("eval", help="score a split with the benchmark's micro-F1, macro-F1 and Jaccard")
+    ae.add_argument("--model", required=True)
+    ae.add_argument("--split", required=True)
+    ae.add_argument("--manifest", default="data/lesicin.manifest.json")
+    ae.add_argument("--ledger", default="results/test-ledger-assoc.json")
+    ae.add_argument("--rescore-test", action="store_true")
+    ae.add_argument("--out", default=None)
     bsub = sub.add_parser("bench").add_subparsers(dest="bench_cmd", required=True)
     bn = bsub.add_parser("check-labels")
     bn.add_argument("--data", default="data/raw/lesicin/label_vocab.json")
@@ -211,6 +230,13 @@ def main(argv: list[str] | None = None) -> int:
         if a.charges_cmd == "intake":
             return charges.intake(a.queries, a.author_type, a.author, a.out)
         return charges.validate(a.set, a.index)
+    if a.cmd == "assoc":
+        from ibid import assoc
+        if a.assoc_cmd == "fit":
+            return assoc.fit(a.train, a.holdout_set, a.labels, a.out)
+        if a.assoc_cmd == "predict":
+            return assoc.predict(a.model, a.set, a.concordance, a.index, a.out)
+        return assoc.evaluate(a.model, a.split, a.manifest, a.ledger, a.rescore_test, a.out)
     if a.cmd == "bench" and a.bench_cmd == "report":
         from ibid.report import run_report
         return run_report(a.log, a.ledger, a.results, a.out, a.frozen_rule)
