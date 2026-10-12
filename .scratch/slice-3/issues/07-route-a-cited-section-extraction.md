@@ -1,6 +1,6 @@
 # Route A: find the sections a query cites, and map them to the other Act
 
-Status: ready-for-agent
+Status: done
 Blocked by: 06
 
 What to build: `ibid cited extract --set <file> --index <index> --concordance <file> --out <predictions.json>`. For each item's raw query it finds explicit statute citations written in the text, resolves them to citations in the index, and writes a predictions file (ticket 06 format, layer `cited`). Code only. No model, no label, no retrieval score (ADR 0001).

@@ -1,6 +1,6 @@
 # Route C: retrieve per charge from a pinned file of sub-queries
 
-Status: ready-for-agent
+Status: done
 Blocked by: 06
 
 What to build: `ibid charges subquery --set <file> --subqueries <file> --index <index> --frozen-rule <file> --per-subquery 2 --out <predictions.json>`. A model splits each query into per-charge sub-queries, written in statute-like words. The sub-queries are stored in a pinned file. Code then retrieves for each sub-query with the frozen baseline rule and unions the results. This is the decomposition-and-rewriting idea from the research note, built as an opt-in layer under ADR 0001: the model's output is an input file with a recorded hash, retrieval is code, and the layer reports its own predictions file (ticket 06 format, layer `decomposed`).

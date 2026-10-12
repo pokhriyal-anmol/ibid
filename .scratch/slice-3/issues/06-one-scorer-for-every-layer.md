@@ -1,6 +1,6 @@
 # One scorer for every layer: score a predictions file
 
-Status: ready-for-agent
+Status: done
 Blocked by: 02
 
 What to build: `ibid charges score --set <file> --predictions <file> --act ipc|bns --out <results.json>`, which scores any layer's predictions file with exactly the figures `ibid charges score --frozen-rule` produces today, and a way to export the baseline in the same format so there is one scoring path.

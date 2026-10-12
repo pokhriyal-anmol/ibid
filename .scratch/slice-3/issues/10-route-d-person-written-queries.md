@@ -1,6 +1,6 @@
 # Route D: a kit for collecting queries that a person writes in their own words
 
-Status: ready-for-agent
+Status: done
 Blocked by: none
 
 Note: the builder does the kit, the template and the intake command only. Writing the queries is the owner's step and the ticket is not closed until they exist.

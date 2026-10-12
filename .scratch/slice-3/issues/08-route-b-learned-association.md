@@ -1,6 +1,6 @@
 # Route B: a learned term-to-section association as an opt-in layer
 
-Status: ready-for-agent
+Status: done
 Blocked by: 06
 
 What to build: a multinomial naive-Bayes classifier over the 100 ILSI labels, fitted from the train split with the standard library only (ADR 0002), as an opt-in layer that reports its own predictions file (ticket 06 format, layer `assoc-nb`). It is the first thing in Ibid that uses learned weights. It is not part of the baseline, and ADR 0001 requires it to beat the baseline on the gold set and report its own evidence packet separately.
