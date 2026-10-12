@@ -138,6 +138,11 @@ def main(argv: list[str] | None = None) -> int:
     che.add_argument("--index", default="data/index/ibid.sqlite")
     che.add_argument("--frozen-rule", default="results/frozen-rule.json")
     che.add_argument("--out", required=True, help="writes <stem>.baseline-topk<suffix> and <stem>.baseline-threshold<suffix>")
+    cmp_ = chs.add_parser("compare", help="one report across layers and sets, from results files")
+    cmp_.add_argument("--results", action="append", required=True)
+    cmp_.add_argument("--set", action="append", required=True, help="every set the results files name, matched by hash")
+    cmp_.add_argument("--ilsi", action="append", default=[], help="an ILSI test result, reported as a separate task")
+    cmp_.add_argument("--out", required=True)
     ci = sub.add_parser("cited").add_subparsers(dest="cited_cmd", required=True).add_parser(
         "extract", help="route A: sections a query names, mapped to the other Act through verified concordance")
     ci.add_argument("--set", required=True)
@@ -236,6 +241,9 @@ def main(argv: list[str] | None = None) -> int:
             return charges.score_predictions(a.set, a.index, a.predictions, a.act, a.out, a.ledger)
         if a.charges_cmd == "score":
             return charges.score(a.set, a.index, a.frozen_rule, a.act, a.out, a.ledger)
+        if a.charges_cmd == "compare":
+            from ibid import compare
+            return compare.compare(a.results, a.set, a.ilsi, a.out)
         if a.charges_cmd == "intake":
             return charges.intake(a.queries, a.author_type, a.author, a.out)
         return charges.validate(a.set, a.index)
