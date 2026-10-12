@@ -15,3 +15,5 @@ Slice 1's keyword search passes the raw string to SQLite FTS5. A case-facts para
 **Check:** two runs with the same rule version and data are byte-identical, and a changed rule changes the recorded hash.
 
 **Rule versions.** v1 (2026-10-11) hashed the stop words, tokenisation, roll-up, k and r. v2 (2026-10-12) also hashes BM25 k1 and b, the stemming rule and the indexed level, and scores with a Python BM25 that reproduces the FTS5 scores at the defaults to 1e-9. No result file carries a v1 hash. Optimisation rounds are v2.1, v2.2 and so on.
+
+**v3 (2026-10-12, slice 3 ticket 05).** v3 is the frozen v2.11 with a corpus-frequency stop list added: every term that occurs in at least 5 percent of the fact paragraphs of the ILSI `train` split (`data/df-stopwords-v1.json`, made by `ibid bench df-stopwords`). The list is derived from `train` text only, with no labels and no model, and `min-df` 0.05 was declared before any multi-charge result was seen. k, r, BM25 k1 and b, stemming, levels and roll-up are copied from v2.11 unchanged, and `ibid bench derive-rule` records the source rule hash and the list's SHA-256 in `derived_from`.

@@ -148,6 +148,16 @@ def main(argv: list[str] | None = None) -> int:
     br.add_argument("--frozen-rule", default="results/frozen-rule.json")
     br.add_argument("--ledger", default="results/test-ledger.json")
     br.add_argument("--rescore-test", action="store_true")
+    br.add_argument("--extra-stop-words", default=None, help="a df-stopwords file; its terms join the stop words (changes the rule hash)")
+    bd = bsub.add_parser("df-stopwords", help="terms in at least --min-df of a split's fact paragraphs, from text only")
+    bd.add_argument("--split", required=True)
+    bd.add_argument("--min-df", type=float, required=True)
+    bd.add_argument("--out", required=True)
+    bv = bsub.add_parser("derive-rule", help="a frozen-rule record with a stop list added, under a new version")
+    bv.add_argument("--from", dest="src", default="results/frozen-rule.json")
+    bv.add_argument("--stopwords", required=True)
+    bv.add_argument("--version", required=True)
+    bv.add_argument("--out", required=True)
     bf = bsub.add_parser("freeze")
     bf.add_argument("--log", default="results/optimisation-log.json")
     bf.add_argument("--round", type=int, default=None, help="logged round to freeze, default the last")
@@ -181,11 +191,17 @@ def main(argv: list[str] | None = None) -> int:
     if a.cmd == "bench" and a.bench_cmd == "round":
         from ibid.optimise import run_round
         return run_round(a.train, a.dev, a.labels, a.index, a.manifest, a.log, a.change, a.k, a.r, a.rollup)
+    if a.cmd == "bench" and a.bench_cmd == "df-stopwords":
+        from ibid.bench import df_stopwords
+        return df_stopwords(a.split, a.min_df, a.out)
+    if a.cmd == "bench" and a.bench_cmd == "derive-rule":
+        from ibid.bench import derive_rule
+        return derive_rule(a.src, a.stopwords, a.version, a.out)
     if a.cmd == "bench" and a.bench_cmd == "run":
         from ibid.bench import run_bench
         return run_bench(a.split, a.labels, a.index, a.k, a.r, a.rollup, a.out, a.manifest, a.sample,
                          a.frozen_rule, a.ledger, a.rescore_test,
-                         {"bm25_k1": a.bm25_k1, "bm25_b": a.bm25_b, "stem": a.stem, "levels": a.levels})
+                         {"bm25_k1": a.bm25_k1, "bm25_b": a.bm25_b, "stem": a.stem, "levels": a.levels}, a.extra_stop_words)
     if a.cmd == "bench" and a.bench_cmd == "freeze":
         from ibid.bench import freeze_rule
         return freeze_rule(a.log, a.round, a.out)
