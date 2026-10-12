@@ -1,6 +1,6 @@
 # Score the frozen baseline on the first 30 items, on the IPC and on the BNS
 
-Status: needs-triage
+Status: done
 Blocked by: 02, 03
 
 What to build: run `ibid charges score` with the frozen rule v2.11 (`results/frozen-rule.json`) on `gold/multicharge/v1.json`, once per Act, and publish the results and a short report. This is the number every later layer in slice 3 must beat.

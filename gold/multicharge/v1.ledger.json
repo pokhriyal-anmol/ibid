@@ -1,0 +1,90 @@
+[
+  {
+    "act": "IPC",
+    "index_sha256": "efaf6fe8b342f151ac02ed110027320f39b0d99287327eb7d206453537a0d408",
+    "rule": {
+      "name": "query-rule",
+      "params_sha256": "250c53f85b3dcaa5c370dcc7a0cbf8a6da7579bc0f398ea9be2341b4750a90bf",
+      "version": "v2.11"
+    },
+    "scores": {
+      "threshold": {
+        "all_charges_hit": 0.0,
+        "mean_predictions": 8.666667,
+        "recall": 0.05102
+      },
+      "top_k": {
+        "all_charges_hit": 0.0,
+        "mean_predictions": 5.0,
+        "recall": 0.030612
+      }
+    },
+    "set_sha256": "9b77ae213e7a7a9614606c9fc6396a0a323e155630f491bb3a3b0295ca9f2fd2"
+  },
+  {
+    "act": "BNS",
+    "index_sha256": "efaf6fe8b342f151ac02ed110027320f39b0d99287327eb7d206453537a0d408",
+    "rule": {
+      "name": "query-rule",
+      "params_sha256": "250c53f85b3dcaa5c370dcc7a0cbf8a6da7579bc0f398ea9be2341b4750a90bf",
+      "version": "v2.11"
+    },
+    "scores": {
+      "threshold": {
+        "all_charges_hit": 0.0,
+        "mean_predictions": 7.533333,
+        "recall": 0.05102
+      },
+      "top_k": {
+        "all_charges_hit": 0.0,
+        "mean_predictions": 5.0,
+        "recall": 0.040816
+      }
+    },
+    "set_sha256": "9b77ae213e7a7a9614606c9fc6396a0a323e155630f491bb3a3b0295ca9f2fd2"
+  },
+  {
+    "act": "IPC",
+    "index_sha256": "efaf6fe8b342f151ac02ed110027320f39b0d99287327eb7d206453537a0d408",
+    "rule": {
+      "name": "query-rule",
+      "params_sha256": "84d62cc13314d641ea3f5265fde5908bccc6f0cbe8a2e68b7659c39b49882eaa",
+      "version": "v2"
+    },
+    "scores": {
+      "threshold": {
+        "all_charges_hit": 0.0,
+        "mean_predictions": 4.633333,
+        "recall": 0.020408
+      },
+      "top_k": {
+        "all_charges_hit": 0.0,
+        "mean_predictions": 3.0,
+        "recall": 0.030612
+      }
+    },
+    "set_sha256": "9b77ae213e7a7a9614606c9fc6396a0a323e155630f491bb3a3b0295ca9f2fd2"
+  },
+  {
+    "act": "BNS",
+    "index_sha256": "efaf6fe8b342f151ac02ed110027320f39b0d99287327eb7d206453537a0d408",
+    "rule": {
+      "name": "query-rule",
+      "params_sha256": "84d62cc13314d641ea3f5265fde5908bccc6f0cbe8a2e68b7659c39b49882eaa",
+      "version": "v2"
+    },
+    "scores": {
+      "threshold": {
+        "all_charges_hit": 0.0,
+        "mean_predictions": 5.9,
+        "recall": 0.040816
+      },
+      "top_k": {
+        "all_charges_hit": 0.0,
+        "mean_predictions": 3.0,
+        "recall": 0.030612
+      }
+    },
+    "set_sha256": "9b77ae213e7a7a9614606c9fc6396a0a323e155630f491bb3a3b0295ca9f2fd2"
+  }
+]

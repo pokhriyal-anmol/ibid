@@ -1,6 +1,6 @@
 # Score a rule by charge, on the IPC and on the BNS
 
-Status: ready-for-agent
+Status: done
 Blocked by: 01
 
 What to build: `ibid charges score --set <file> --index <index> --frozen-rule <file> --act ipc|bns --out <results.json>`. For each item it takes the raw `query`, runs the frozen rule (tokenisation, stop words, BM25 k1 and b, stemming, levels, roll-up, k and r) over the provisions of the chosen Act only, rolls hits up to section citations, and produces the top-k set and the above-threshold set exactly as `ibid bench run` does. It does not restrict predictions to the 100 benchmark labels, because the set is not tied to them. It reuses the same scorer code as `bench run`, not a copy.
