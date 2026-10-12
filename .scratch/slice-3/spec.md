@@ -77,7 +77,7 @@ Only ticket 01 is written. The rest are titles, to be written when the owner has
 | 02 | Score a rule by charge, on the IPC and on the BNS | code | 01 |
 | 03 | Collect the first 30 items from real judgment text | agents, by workflow | 01 |
 | 04 | Score the frozen baseline on the first 30 items, on both Acts | run | 02, 03 |
-| 05 | Corpus-frequency stop words (label-free), derived rule v3, scored once per Act | code, then run | 04 |
+| 05 | Corpus-frequency stop words (label-free), derived rule v3. Built, then rejected on inspection of its list before any score. See the ticket's outcome | code, closed | 04 |
 | 06 | Link a punishment section to its definition section by shared heading (IPC only, the BNS text in the index has no headings), conditional on definition sections ranking after 05 | code, to be written | 05 |
 
 A model layer (decompose, rewrite, rerank) is not in this slice. It needs the number from ticket 04, a model choice and a cost estimate, and it would be an opt-in layer under ADR 0001.

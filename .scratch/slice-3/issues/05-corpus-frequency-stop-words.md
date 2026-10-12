@@ -1,6 +1,6 @@
 # Corpus-frequency stop words: drop query terms that occur in a fixed share of ILSI train fact paragraphs
 
-Status: ready-for-agent
+Status: done
 Blocked by: none (02 and 04 are done)
 
 What to build: a deterministic, label-free stop list made from the ILSI train fact text, and a derived rule `v3` that is the frozen v2.11 with that list added to its stop words. Ticket 04 showed that the frozen rule's top predictions are sections about courts, evidence and definitions (IPC 228A, 19, 193; BNS 358, 2), because court orders are full of words that those sections share. A term that occurs in a large share of fact paragraphs says little about which offence is described, so it is dropped from the query. This is a standard document-frequency stop list. It uses no labels and no model (ADR 0001, ADR 0004).
@@ -26,3 +26,13 @@ Acceptance criteria:
 - Dev guard, reported and not enforced: the full ILSI dev split is scored with v2.11 and with v3 through `bench run`, and the report shows micro-F1, macro-F1, Jaccard and single-label micro-F1 for both output rules, with any drop of more than 0.5 point called out. The test split is not scored.
 - The multi-charge set is then scored once per Act with `results/frozen-rule-v3.json` through `ibid charges score`, and the results are reported next to v2.11's. No parameter is changed after seeing them.
 - The existing suite still passes, and nothing under `data/raw/` is added to git.
+
+## Outcome (2026-10-12)
+
+The code was built and its tests pass. The real list was generated and read before anything was scored, and the rule was rejected on inspection. No v3 score was computed on the multi-charge set or on the ILSI dev split, and no list was committed.
+
+- A document-frequency cut of 0.05 over ILSI train text selects 1,126 terms. They include the words that name offences: murder, rape, assault, dowry, kill, killed, death, dead, weapon, knife, arms, sexual, attempt, threatened, injury. Dropping them would remove the signal the query most needs.
+- A second, label-free criterion was checked as a repair: keep a term if it is rare across the statute's own sections. It does not separate them. `murder` occurs in 4.3 percent of IPC sections and 5.9 percent of BNS sections, between `evidence` (3.0 and 4.7) and `court` (6.4 and 8.7), while `accused`, `judge` and `witness` occur in under 1.5 percent and are still generic in judgments.
+- Conclusion: a frequency rule cannot tell `murder` from `court` in a corpus of criminal judgments, because both are common there. Telling them apart needs the labels, which would be a learned weight and is not the baseline (ADR 0001, slice 2 protocol).
+
+The commands `df-stopwords`, `derive-rule` and `--extra-stop-words` remain in the code. They are generic and may be useful to a later rule.
