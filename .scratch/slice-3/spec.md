@@ -1,6 +1,6 @@
 # Slice 3: A real multi-charge test set and a per-charge score for the baseline
 
-Status: decisions recorded 2026-10-12. Tickets 01 to 05 are written, 01 to 04 are done. Ticket 06 is a proposed title.
+Status: decisions recorded 2026-10-12. Tickets 01 to 11 are written. 01 to 05 are closed.
 
 ## Problem Statement
 
@@ -56,6 +56,57 @@ Consequences the owner should know:
 - Agent-drafted labels share the blind spots of the model that drafted them. The skeptic pass reduces this and does not remove it. Scores on this set measure agreement with the drafted labels, and the legal judgment still needs a lawyer before any claim is published.
 - The BNS side is judged against labels from the BNS text, with no check from a second Act expert.
 
+## Revision, 2026-10-12 (owner: "A, B, C and D")
+
+The baseline finds 3 to 5 percent of charges on the first 30 items, and a label-free stop list did not fix it (ticket 05 outcome). The owner asked for four further routes. Each is a separate layer, and none of them replaces the baseline.
+
+| Route | What it is | Needs a model at run time | Ticket |
+|---|---|---|---|
+| A | Cited-section extraction: sections a query names are looked up directly and mapped to the other Act through verified concordance entries | no | 07 |
+| B | Learned association from ILSI train labels: a naive-Bayes style term-to-section model, an opt-in layer under a new ADR | no, but learned weights | 08 |
+| C | Decomposition into per-charge sub-queries by a model, then baseline retrieval per sub-query | yes, recorded as a pinned file | 09 |
+| D | Queries written by a person in their own words, then labelled the same way as v1 | no | 10 |
+
+```mermaid
+flowchart LR
+  Q["Raw query"] --> BL["Baseline v2.11"]
+  Q --> A["A: cited sections"]
+  Q --> B["B: learned association<br/>trained on ILSI train<br/>minus the 30 set items"]
+  Q --> C["C: sub-queries recorded<br/>in a pinned file"]
+  C --> BL2["Baseline per sub-query"]
+  BL --> P["predictions file"]
+  A --> P
+  B --> P
+  BL2 --> P
+  P --> S["charges score --predictions<br/>one scorer, ticket 06"]
+  S --> R["comparison report, ticket 11"]
+  subgraph Sets["Evaluation sets"]
+    V1["v1: 30 items from judgments<br/>28 name their sections"]
+    V2["D: person-written queries"]
+  end
+  Sets --> S
+```
+
+### The layer seam
+
+Every layer writes a predictions file and nothing else is scored:
+
+```json
+{"layer": "cited", "layer_version": "v1", "set_sha256": "...",
+ "inputs": {"concordance": "sha256", "model": "sha256"},
+ "items": {"<item id>": {"ipc": ["IPC 302"], "bns": ["BNS 103"]}}}
+```
+
+Order is not scored. The scorer reports the same figures for every layer (per-charge recall, all-charges-hit, mean predictions, by charges per item) and records which layer version scored which set. A second scoring of the same layer version on the same set is reported beside the first.
+
+### Rules that keep the numbers honest
+
+- Set v1 comes from the ILSI train split, so layer B is trained on train minus the 30 item ids, and a test asserts none of them is in its training data.
+- Set v1 has 28 of 30 queries naming their sections, and some of its labels were drafted from those mentions. Layer A is scored on it and the report calls the result what it is: how well code reads sections a document states, not a measure of reading facts.
+- Layer C's sub-queries are written by agents that see only the query, never a label or a retrieval result, and are stored in a pinned file. Retrieval from them is code.
+- Each layer is scored once per layer version on set v1. Nothing is tuned against it. Any parameter is declared in its ticket before a score exists. Layer B may use ILSI dev for its single declared choice and is scored once on ILSI test.
+- Layers A to C are opt-in under ADR 0001. Each reports its own evidence packet and is compared with the baseline on the same set. None changes the baseline path.
+
 ## User Stories
 
 1. As the owner, I want the multi-charge set in a versioned, hash-pinned file, so every score traces to exact data.
@@ -73,12 +124,17 @@ Only ticket 01 is written. The rest are titles, to be written when the owner has
 
 | # | Title | Kind | Blocked by |
 |---|---|---|---|
-| 01 | Define the multi-charge set file and refuse any file that breaks its rules | code | none |
-| 02 | Score a rule by charge, on the IPC and on the BNS | code | 01 |
-| 03 | Collect the first 30 items from real judgment text | agents, by workflow | 01 |
-| 04 | Score the frozen baseline on the first 30 items, on both Acts | run | 02, 03 |
-| 05 | Corpus-frequency stop words (label-free), derived rule v3. Built, then rejected on inspection of its list before any score. See the ticket's outcome | code, closed | 04 |
-| 06 | Link a punishment section to its definition section by shared heading (IPC only, the BNS text in the index has no headings), conditional on definition sections ranking after 05 | code, to be written | 05 |
+| 01 | Define the multi-charge set file and refuse any file that breaks its rules | code, done | none |
+| 02 | Score a rule by charge, on the IPC and on the BNS | code, done | 01 |
+| 03 | Collect the first 30 items from real judgment text | agents, done | 01 |
+| 04 | Score the frozen baseline on the first 30 items, on both Acts | run, done | 02, 03 |
+| 05 | Corpus-frequency stop words | code, closed, rejected before scoring | 04 |
+| 06 | One scorer for every layer: score a predictions file, and export the baseline in that format | code | 02 |
+| 07 | Route A: cited-section extraction with verified-concordance mapping | code, then run | 06 |
+| 08 | Route B: learned term-to-section association, opt-in layer, ADR 0005 | code, then run | 06 |
+| 09 | Route C: per-charge sub-queries from a pinned file, baseline retrieval per sub-query | code, agents, then run | 06 |
+| 10 | Route D: collection kit for person-written queries | human, then agents label | none |
+| 11 | Comparison report across layers and sets | code, then run | 07, 08, 09 |
 
 A model layer (decompose, rewrite, rerank) is not in this slice. It needs the number from ticket 04, a model choice and a cost estimate, and it would be an opt-in layer under ADR 0001.
 
