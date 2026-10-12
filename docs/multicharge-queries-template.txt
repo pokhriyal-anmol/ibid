@@ -1,0 +1,9 @@
+# Multi-charge queries, one per block.
+# Separate blocks with a line that holds only three dashes: ---
+# Each block is one query: three to eight sentences, in your own words, at least 20 words.
+# No names, places, dates or phone numbers. No section numbers. Do not ask an AI to write it.
+# Lines starting with # at the top of the file are ignored. Delete these lines or keep them.
+
+Replace this block with your first query.
+---
+Replace this block with your second query.
