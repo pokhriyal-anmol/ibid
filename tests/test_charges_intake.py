@@ -42,7 +42,9 @@ class IntakeTest(unittest.TestCase):
     def test_each_known_bad_block_is_refused_with_its_reason(self):
         cases = {"empty": ("", "block 2: empty"), "short": ("too few words here", "block 2: 4 words"),
                  "section": (BLOCKS[1] + " under Section 302", "block 2: contains what looks like a section number"),
-                 "u/s": (BLOCKS[1] + " u/s 420", "section number"), "duplicate": ("  " + BLOCKS[0].upper(), "block 2: duplicate")}
+                 "u/s": (BLOCKS[1] + " u/s 420", "section number"),
+                 "plural": (BLOCKS[1] + " under Sections 302 and 307", "block 2: contains what looks like a section number"),
+                 "slash list": (BLOCKS[1] + " charged under Sections 302/201", "section number"), "duplicate": ("  " + BLOCKS[0].upper(), "block 2: duplicate")}
         for name, (bad, msg) in cases.items():
             with self.subTest(name):
                 code, err, data = self.intake([BLOCKS[0], bad, BLOCKS[2]])

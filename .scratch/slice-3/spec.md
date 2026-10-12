@@ -102,7 +102,7 @@ Order is not scored. The scorer reports the same figures for every layer (per-ch
 ### Rules that keep the numbers honest
 
 - Set v1 comes from the ILSI train split, so layer B is trained on train minus the 30 item ids, and a test asserts none of them is in its training data.
-- Set v1 has 28 of 30 queries naming their sections, and some of its labels were drafted from those mentions. Layer A is scored on it and the report calls the result what it is: how well code reads sections a document states, not a measure of reading facts.
+- Set v1 has 29 of 30 queries naming their sections (a keyword-led section number such as "Section 302", "Sections 302/201" or "u/s 420"), and some of its labels were drafted from those mentions. Layer A is scored on it and the report calls the result what it is: how well code reads sections a document states, not a measure of reading facts.
 - Layer C's sub-queries are written by agents that see only the query, never a label or a retrieval result, and are stored in a pinned file. Retrieval from them is code.
 - Each layer is scored once per layer version on set v1. Nothing is tuned against it. Any parameter is declared in its ticket before a score exists. Layer B may use ILSI dev for its single declared choice and is scored once on ILSI test.
 - Layers A to C are opt-in under ADR 0001. Each reports its own evidence packet and is compared with the baseline on the same set. None changes the baseline path.

@@ -19,4 +19,4 @@ Acceptance criteria:
 - A section with no verified concordance entry gives no prediction for the other Act.
 - Two identical runs are byte-identical.
 - No label from any set, and no retrieval output, is read (stated in the module docstring and checked by a test that runs it with the labels removed).
-- Run by the orchestrator after the merge: the real set v1 is extracted once, scored through ticket 06's command on both Acts, and the results report the counts of ambiguous mentions and unmapped citations. The report states that 28 of 30 queries name their sections and that some labels were drafted from those mentions.
+- Run by the orchestrator after the merge: the real set v1 is extracted once, scored through ticket 06's command on both Acts, and the results report the counts of ambiguous mentions and unmapped citations. The report states that 29 of 30 queries name their sections and that some labels were drafted from those mentions.

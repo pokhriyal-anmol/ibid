@@ -335,7 +335,7 @@ def subquery(set_path: str, subq_path: str, index_path: str, frozen_path: str, p
 
 
 MIN_WORDS = 20
-SECTION_NUMBER = re.compile(r"(\b(section|sec|s|u/s|ipc|bns)\.?\s*\d+)|(\b\d+\s*(ipc|bns)\b)", re.I)  # shortcut: keyword-led numbers only, a bare "302" passes
+SECTION_NUMBER = re.compile(r"(\b(sections?|secs?|s|u/s|ipc|bns)\.?\s*\d+)|(\b\d+\s*(ipc|bns)\b)", re.I)  # shortcut: keyword-led numbers only, a bare "302" passes
 
 
 def intake(queries_path: str, author_type: str, author: str, out_path: str) -> int:

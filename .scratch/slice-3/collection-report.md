@@ -23,7 +23,7 @@ After the first 30 candidates were labelled, 13 had lost every charge. The inclu
 
 ## Things a reader must know
 
-- 28 of the 30 queries name sections outright ("registered under Sections 302/201"). The text is often a bail order or an FIR summary. Retrieval's tokeniser drops digits, so the numbers do not leak the answer, but the queries are not what a person with a fresh case types, and for many items the charges restate what the text names. Treat the score as how well text matching finds the charges a document states, not as a measure of reading bare facts.
+- 29 of the 30 queries name sections outright ("registered under Sections 302/201"). The text is often a bail order or an FIR summary. Retrieval's tokeniser drops digits, so the numbers do not leak the answer, but the queries are not what a person with a fresh case types, and for many items the charges restate what the text names. Treat the score as how well text matching finds the charges a document states, not as a measure of reading bare facts.
 - The ILSI facts were used in aggregate to tune the baseline (train split). Thirty items have a negligible effect on any tuned value, but the set is not an unseen sample in the strict sense.
 - Agent labels share the blind spots of the model that drafted them. The skeptic reduces this and does not remove it. The BNS side was labelled from the BNS text with no second Act expert. A cross-check of all 50 distinct IPC to BNS pairings against my own knowledge of the correspondence found no pair I would call wrong, which is a weak check.
 - 10 charges were dropped inside included items, and skeptics flagged 2 further charges the first reader missed. The missed ones are in `draft/assembly-report.json` and were not added.

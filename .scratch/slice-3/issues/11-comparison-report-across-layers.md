@@ -1,6 +1,6 @@
 # One comparison report across layers and sets
 
-Status: ready-for-agent
+Status: done
 Blocked by: 07, 08, 09
 
 What to build: `ibid charges compare --results <file> ... --out results/layer-comparison.md`, which reads the results files of ticket 06's scorer for several layers and sets and writes one report. It is a table, and a short list of what each number is and is not, generated from the files and not typed.

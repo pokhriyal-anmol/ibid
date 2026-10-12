@@ -33,6 +33,6 @@ A diagnostic outside the scorer confirms the harness: restricted to the 100 benc
 
 - 30 items cannot separate rules that differ by a few points. A difference of a few charges out of 98 is noise.
 - Labels were drafted by agents and refuted by a second agent. No lawyer has reviewed them. The BNS side has no second Act expert. See `.scratch/slice-3/collection-report.md`.
-- 28 of the 30 queries name sections outright and are often a bail order or an FIR summary. The score says how well text matching finds the charges a legal document states. It is not a measure of reading bare facts told by a person.
+- 29 of the 30 queries name sections outright and are often a bail order or an FIR summary. The score says how well text matching finds the charges a legal document states. It is not a measure of reading bare facts told by a person.
 - The 30 items come from the ILSI train split, which the frozen rule was tuned on in aggregate. The rule has no memory of 30 specific cases, but the set is not an unseen sample in the strict sense.
 - The recall of 3 to 5 percent is the number every later layer in slice 3 must beat. It is a low bar, and a code-only layer that links definitions to punishments, or one that discounts sections with generic court vocabulary, could clear it. Whether to build those is the owner's call.
