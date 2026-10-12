@@ -116,9 +116,17 @@ def main(argv: list[str] | None = None) -> int:
     cf.add_argument("--pages", default="data/raw/pages")
     cf.add_argument("--index", default="data/index/conform.sqlite")
     cf.add_argument("--drop", action="append", default=[], metavar="ID=REASON")
-    chv = sub.add_parser("charges").add_subparsers(dest="charges_cmd", required=True).add_parser("validate")
+    chs = sub.add_parser("charges").add_subparsers(dest="charges_cmd", required=True)
+    chv = chs.add_parser("validate")
     chv.add_argument("--set", required=True)
     chv.add_argument("--index", default="data/index/ibid.sqlite")
+    chc = chs.add_parser("score", help="score the frozen rule by charge on one Act")
+    chc.add_argument("--set", required=True)
+    chc.add_argument("--index", default="data/index/ibid.sqlite")
+    chc.add_argument("--frozen-rule", default="results/frozen-rule.json")
+    chc.add_argument("--act", choices=("ipc", "bns"), required=True)
+    chc.add_argument("--out", required=True)
+    chc.add_argument("--ledger", default=None, help="default: <set>.ledger.json beside the set")
     bsub = sub.add_parser("bench").add_subparsers(dest="bench_cmd", required=True)
     bn = bsub.add_parser("check-labels")
     bn.add_argument("--data", default="data/raw/lesicin/label_vocab.json")
@@ -163,8 +171,10 @@ def main(argv: list[str] | None = None) -> int:
     rp.add_argument("--out", default="results/report.md")
     a = ap.parse_args(argv)
     if a.cmd == "charges":
-        from ibid.charges import validate
-        return validate(a.set, a.index)
+        from ibid import charges
+        if a.charges_cmd == "score":
+            return charges.score(a.set, a.index, a.frozen_rule, a.act, a.out, a.ledger)
+        return charges.validate(a.set, a.index)
     if a.cmd == "bench" and a.bench_cmd == "report":
         from ibid.report import run_report
         return run_report(a.log, a.ledger, a.results, a.out, a.frozen_rule)
