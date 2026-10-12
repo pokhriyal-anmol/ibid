@@ -1,6 +1,6 @@
 # Slice 3: A real multi-charge test set and a per-charge score for the baseline
 
-Status: decisions recorded 2026-10-12. Tickets 01 to 04 are written. Tickets 05 and 06 are proposed titles.
+Status: decisions recorded 2026-10-12. Tickets 01 to 05 are written, 01 to 04 are done. Ticket 06 is a proposed title.
 
 ## Problem Statement
 
@@ -77,8 +77,8 @@ Only ticket 01 is written. The rest are titles, to be written when the owner has
 | 02 | Score a rule by charge, on the IPC and on the BNS | code | 01 |
 | 03 | Collect the first 30 items from real judgment text | agents, by workflow | 01 |
 | 04 | Score the frozen baseline on the first 30 items, on both Acts | run | 02, 03 |
-| 05 | Code-only link expansion after ranking, along definition and punishment edges | code, to be written | 04 |
-| 06 | Untried baseline knobs under the slice 2 protocol | code, to be written | 04 |
+| 05 | Corpus-frequency stop words (label-free), derived rule v3, scored once per Act | code, then run | 04 |
+| 06 | Link a punishment section to its definition section by shared heading (IPC only, the BNS text in the index has no headings), conditional on definition sections ranking after 05 | code, to be written | 05 |
 
 A model layer (decompose, rewrite, rerank) is not in this slice. It needs the number from ticket 04, a model choice and a cost estimate, and it would be an opt-in layer under ADR 0001.
 
