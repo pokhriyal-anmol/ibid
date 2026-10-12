@@ -1,6 +1,6 @@
 # Slice 3: A real multi-charge test set and a per-charge score for the baseline
 
-Status: decisions recorded 2026-10-12. Tickets 01 to 11 are written. 01 to 09 and 11 are done, 05 closed as rejected before scoring. 10 is built and waits on the owner's queries, so route D has no set yet.
+Status: decisions recorded 2026-10-12. Tickets 01 to 14 are written. 01 to 09 and 11 are done, 05 closed as rejected before scoring. 10 is built and waits on queries the owner cannot write, so route D now goes through published sources (12 to 14), which wait on download approval.
 
 ## Problem Statement
 
@@ -136,7 +136,34 @@ Only ticket 01 is written. The rest are titles, to be written when the owner has
 | 10 | Route D: collection kit for person-written queries | human, then agents label | none |
 | 11 | Comparison report across layers and sets | code, then run | 07, 08, 09 |
 
+| 12 | Route D without writing queries: a layperson set from ILSIC-Lay (real forum posts, labels from lawyers' replies) | data, then run | approval to download |
+| 13 | Verify more concordance entries against a published correspondence table | code, agents, then run | approval to use the table |
+| 14 | Audit the labels of set v1 against a published table and an independent second panel | agents, then report | 13 |
+
 A model layer (decompose, rewrite, rerank) is not in this slice. It needs the number from ticket 04, a model choice and a cost estimate, and it would be an opt-in layer under ADR 0001.
+
+## Decision, 2026-10-12 (owner): route D by published sources
+
+The owner cannot write 20 to 30 queries in their own words and asked for a workaround and for the concordance and lawyer-review items to proceed from academic sources. The result is tickets 12 to 14. Queries now come from the ILSIC-Lay corpus of real forum posts. Concordance entries are checked against a published correspondence table. Labels are audited against that table and an independent panel. Ticket 10's kit stays available for a person who can write.
+
+### Sources and what each can and cannot support
+
+| Source | Supports | Does not support |
+|---|---|---|
+| ILSIC-Lay, EACL Findings 2026, CC BY-NC-SA 4.0 | Realistic layperson wording. Statute labels from lawyers' replies. | Complete labels (an LL.M. annotator found 5.46 statutes per query against 2.40). The BNS. Commercial use. |
+| AILA 2019, Zenodo 4063986, CC BY 4.0 | 50 expert-written situations over 197 statutes. Optional set v3. | A large sample. A statement of who judged relevance, which the record does not give. |
+| CAPT correspondence table, June 2024 | A second, independent mapping from BNS to IPC with comparison notes, for verifying the concordance and the BNS labels. | An official status. It is one director's compilation, not an MHA document. |
+
+### Downloads awaiting approval
+
+Nothing below is fetched until the owner approves it.
+
+| File | Source | Size | Licence |
+|---|---|---|---|
+| ILSIC data folder (`dataset`) | Google Drive link in https://github.com/Law-AI/ilsic README | not shown on the page | CC BY-NC-SA 4.0 for the data (the repository's code is MIT) |
+| `AILA_2019_dataset.zip` | https://zenodo.org/records/4063986 | 20.7 MB, md5 07f9621e385ff0d4540ce8dfd76b0c21 | CC BY 4.0 |
+| `comparison_summary_BNS_to_IPC.pdf` | https://www.keralaprisons.gov.in/userfiles/act-and-rules/comparison_summary_BNS_to_IPC.pdf | 716,640 bytes (already saved by a read of its first rows) | not stated, copyright line names the author |
+| `IPC vis-a-vis BNS.pdf` (second table, optional) | uppolice.gov.in, "Three New Major Acts" folder | not checked | not stated |
 
 ## Testing Decisions
 
