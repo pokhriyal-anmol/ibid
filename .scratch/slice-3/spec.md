@@ -1,6 +1,6 @@
 # Slice 3: A real multi-charge test set and a per-charge score for the baseline
 
-Status: decisions recorded 2026-10-12. Tickets 01 to 11 are written. 01 to 05 are closed.
+Status: decisions recorded 2026-10-12. Tickets 01 to 11 are written. 01 to 09 and 11 are done, 05 closed as rejected before scoring. 10 is built and waits on the owner's queries, so route D has no set yet.
 
 ## Problem Statement
 

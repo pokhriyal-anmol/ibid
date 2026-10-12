@@ -42,6 +42,10 @@ class PredictionsTest(_Base):
         self.assertEqual((b["items"], b["charges"], b["recall"], b["all_charges_hit"], b["mean_predictions"]),
                          (4, 6, round(4 / 6, 6), 0.5, 1.25))
 
+    def test_layer_counts_are_carried_into_the_results_file(self):
+        self.assertEqual(self.run_pred(self.preds(counts={"unmapped_citations": 3}))["layer_counts"], {"unmapped_citations": 3})
+        self.assertEqual(self.run_pred(self.preds(), out="n.json")["layer_counts"], {})
+
     def test_order_is_not_scored(self):
         items = self.preds()["items"]
         items["m2"]["ipc"].reverse()

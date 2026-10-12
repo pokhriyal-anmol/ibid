@@ -21,6 +21,12 @@ def _text(v: object) -> bool:
     return isinstance(v, str) and bool(v.strip())
 
 
+def _citation_error(db: sqlite3.Connection, act: str, c: object) -> str | None:
+    if not isinstance(c, str) or not c.startswith(act.upper() + " "):
+        return f"{c!r} is not an {act.upper()} citation"
+    return f"{c!r} is not in the index" if index.lookup(db, c) is None else None
+
+
 def _item_errors(item: dict, db: sqlite3.Connection) -> list[tuple[str, str]]:
     """(field, message) for each rule the item breaks."""
     bad = []
@@ -47,43 +53,25 @@ def _item_errors(item: dict, db: sqlite3.Connection) -> list[tuple[str, str]]:
         if not secs["ipc"] and not secs["bns"]:
             bad.append((f"{where}.sections", "no accepted section in either Act"))
         for act in ACTS:
-            for c in secs[act]:
-                if not isinstance(c, str) or not c.startswith(act.upper() + " "):
-                    bad.append((f"{where}.sections.{act}", f"{c!r} is not an {act.upper()} citation"))
-                elif index.lookup(db, c) is None:
-                    bad.append((f"{where}.sections.{act}", f"{c!r} is not in the index"))
+            bad += [(f"{where}.sections.{act}", m) for c in secs[act] if (m := _citation_error(db, act, c))]
     return bad
 
 
 def validate(set_path: str, index_path: str) -> int:
-    raw = Path(set_path).read_bytes()
-    if err := pin_error(set_path, raw):
-        print(f"error: {err}", file=sys.stderr)
-        return 1
-    if not Path(index_path).is_file():
-        print(f"error: no index {index_path}", file=sys.stderr)
-        return 1
     try:
-        data = json.loads(raw)
-        items = data["items"]
-        assert isinstance(items, list) and items
-    except (ValueError, KeyError, TypeError, AssertionError):
-        print("error: file is not an object with a non-empty `items` list", file=sys.stderr)
+        raw, items, _ = _load_set(set_path, index_path)
+    except (OSError, ValueError) as e:
+        print(f"error: {e}", file=sys.stderr)
         return 1
-    db = sqlite3.connect(f"file:{index_path}?mode=ro", uri=True)  # read-only: validate never writes
+    data = json.loads(raw)
     problems = [("<file>", f, "missing or empty") for f in TOP_FIELDS if not _text(data.get(f))]
-    seen = Counter(i.get("id") if isinstance(i, dict) else None for i in items)
+    seen = Counter(i.get("id") for i in items)
     for n, item in enumerate(items):
-        if not isinstance(item, dict):
-            problems.append((f"#{n}", "<item>", "not an object"))
-            continue
         iid = item.get("id")
-        name = iid if _text(iid) else f"#{n}"
         if not _text(iid):
-            problems.append((name, "id", "missing or empty"))
+            problems.append((f"#{n}", "id", "missing or empty"))
         elif seen[iid] > 1:
-            problems.append((name, "id", "duplicate"))
-        problems += [(name, f, m) for f, m in _item_errors(item, db)]
+            problems.append((iid, "id", "duplicate"))
     if problems:
         for iid, field, msg in problems:
             print(f"item {iid} field {field}: {msg}", file=sys.stderr)
@@ -114,8 +102,13 @@ def _load_set(set_path: str, index_path: str) -> tuple[bytes, list, sqlite3.Conn
         raise ValueError(err)
     if not Path(index_path).is_file():
         raise ValueError(f"no index {index_path}")
-    items = json.loads(raw)["items"]
-    db = sqlite3.connect(f"file:{index_path}?mode=ro", uri=True)
+    try:
+        items = json.loads(raw)["items"]
+        if not (isinstance(items, list) and items and all(isinstance(i, dict) for i in items)):
+            raise TypeError
+    except (ValueError, KeyError, TypeError):
+        raise ValueError("file is not an object with a non-empty `items` list of objects") from None
+    db = sqlite3.connect(f"file:{index_path}?mode=ro", uri=True)  # read-only: nothing here writes
     problems = [f"item {i.get('id')} field {f}: {m}" for i in items for f, m in _item_errors(i, db)]
     if problems:
         raise ValueError("\n".join(problems))
@@ -185,11 +178,7 @@ def _predictions_error(path: str, data: object, set_sha: str, item_ids: set, db:
             if not isinstance(cites, list):
                 bad.append(f"item {iid} field {act}: must be a list of citations")
                 continue
-            for c in cites:
-                if not isinstance(c, str) or not c.startswith(act.upper() + " "):
-                    bad.append(f"item {iid} field {act}: {c!r} is not an {act.upper()} citation")
-                elif index.lookup(db, c) is None:
-                    bad.append(f"item {iid} field {act}: {c!r} is not in the index")
+            bad += [f"item {iid} field {act}: {m}" for c in cites if (m := _citation_error(db, act, c))]
     return bad
 
 
@@ -232,7 +221,7 @@ def score_predictions(set_path: str, index_path: str, predictions_path: str, act
         "act": act.upper(), "layer": layer, "layer_version": version, "parser_version": bench.PARSER_VERSION,
         "items_in_set": len(items), "items_scored": out["items"], "charges_excluded_no_counterpart": excluded,
         "label_basis": dict(sorted(Counter(i["label_basis"] for i in items).items())),
-        "output": out,
+        "output": out, "layer_counts": data["counts"] if isinstance(data.get("counts"), dict) else {},
         "scorings_of_this_layer_version": [e for e in ledger if e.get("layer") == layer and e.get("layer_version") == version
                                            and e["set_sha256"] == set_sha and e["act"] == entry["act"]],
         "conventions": CONVENTIONS,
@@ -329,7 +318,9 @@ def subquery(set_path: str, subq_path: str, index_path: str, frozen_path: str, p
                  for a in ACTS} for iid, qs in data["items"].items()}  # no sub-queries, no predictions
     doc = {"layer": "decomposed", "layer_version": "v1", "set_sha256": set_sha,
            "inputs": {"producer": data["producer"], "subqueries_sha256": hashlib.sha256(sraw).hexdigest(), "per_subquery": per_subquery,
-                      "frozen_rule_params": fz["rule"]["params_sha256"], "index": bench.sha256(index_path)}, "items": out}
+                      "frozen_rule_params": fz["rule"]["params_sha256"], "index": bench.sha256(index_path)},
+           "counts": {"subqueries_per_item_mean": round(sum(map(len, data["items"].values())) / len(data["items"]), 2) if data["items"] else 0.0},
+           "items": out}
     Path(out_path).write_text(json.dumps(doc, indent=2, sort_keys=True) + "\n")
     return 0
 

@@ -21,6 +21,12 @@
     "agent-drafted-skeptic-refuted": 30
   },
   "layer": "cited",
+  "layer_counts": {
+    "ambiguous_mentions": 16,
+    "not_in_act_dropped": 2,
+    "other_act_dropped": 34,
+    "unmapped_citations": 183
+  },
   "layer_version": "v1",
   "output": {
     "all_charges_hit": 0.733333,

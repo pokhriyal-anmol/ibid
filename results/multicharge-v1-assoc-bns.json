@@ -21,6 +21,7 @@
     "agent-drafted-skeptic-refuted": 30
   },
   "layer": "assoc-nb",
+  "layer_counts": {},
   "layer_version": "v1",
   "output": {
     "all_charges_hit": 0.0,

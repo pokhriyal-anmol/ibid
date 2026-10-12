@@ -14,6 +14,9 @@ Date: 2026-10-12. File: `gold/multicharge/v1.json`, pin `gold/multicharge/v1.sha
 | distinct sections | 45 IPC, 42 BNS |
 | query length, words | 160 to 600, median 355 |
 | label basis | 30 of 30 `agent-drafted-skeptic-refuted` |
+| charges drafted in the 30 included items | 108 (98 kept, 10 refuted or dropped by the skeptic) |
+| charges with no BNS counterpart (empty `bns` list) | 0 of 98 |
+| charges with no IPC counterpart (empty `ipc` list) | 0 of 98 |
 
 ## How items were chosen
 
@@ -22,6 +25,8 @@ Rule fixed before any case text was read (`draft/selection.json`, rule sha256 `b
 After the first 30 candidates were labelled, 13 had lost every charge. The inclusion rule was then fixed as "at least 2 charges must survive the skeptic", before the next candidates were read, and each group walked its hash order until it held 10. 51 candidates were read in total: 16 lost every charge, 5 kept a single charge, 30 were included.
 
 ## Things a reader must know
+
+- No charge has an empty list in either Act, so `charges_excluded_no_counterpart` is 0 in every results file. The 12 verified concordance entries are not what made the counterparts: the agents drafted both Acts' sections from the text. Charges drafted in the 21 candidates that were not included are not counted above, because the draft files are not kept in the repository.
 
 - 29 of the 30 queries name sections outright ("registered under Sections 302/201"). The text is often a bail order or an FIR summary. Retrieval's tokeniser drops digits, so the numbers do not leak the answer, but the queries are not what a person with a fresh case types, and for many items the charges restate what the text names. Treat the score as how well text matching finds the charges a document states, not as a measure of reading bare facts.
 - The ILSI facts were used in aggregate to tune the baseline (train split). Thirty items have a negligible effect on any tuned value, but the set is not an unseen sample in the strict sense.

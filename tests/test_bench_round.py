@@ -7,7 +7,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from ibid import bench, index, optimise
+from ibid import bench, index
 from ibid.cli import main
 from ibid.parse import Provision
 
@@ -159,41 +159,62 @@ class RoundTest(unittest.TestCase):
         self.assertEqual(flags, [False, False, True])
         self.assertIn("'saturated': True", self.round("stop_words=+qux")[1])
 
-    def test_stopping_status_cap_and_overfit_on_synthetic_logs(self):
-        def rounds(dev, train):
-            return [{"dev": {"top_k": {"scores": {"macro_f1": d}}}, "train": {"top_k": {"scores": {"macro_f1": t}}}}
-                    for d, t in zip(dev, train)]
-        climbing = [round(0.1 + 0.01 * i, 6) for i in range(21)]  # every gain is 1 point: not saturated
-        s = optimise.stopping_status(rounds(climbing[:20], climbing[:20]))
-        self.assertEqual((s["cap_reached"], s["saturated"]), (False, False))  # 19 rounds after round 0
-        s = optimise.stopping_status(rounds(climbing, climbing))
-        self.assertEqual((s["cap_reached"], s["saturated"], s["overfitting"]), (True, False, False))
-        dev = [0.2, 0.25, 0.24, 0.23]
-        train = [0.2, 0.3, 0.35, 0.4]
-        self.assertTrue(optimise.stopping_status(rounds(dev, train))["overfitting"])
-        self.assertFalse(optimise.stopping_status(rounds(dev, [0.2, 0.3, 0.35, 0.35]))["overfitting"])  # train flat
-        self.assertFalse(optimise.stopping_status(rounds([0.2, 0.25, 0.3, 0.35], train))["overfitting"])  # dev rising
-        s = optimise.stopping_status(rounds([0.2, 0.2, 0.2, 0.2], [0.2] * 4))
-        self.assertTrue(s["saturated"])
-        self.assertFalse(optimise.stopping_status(rounds([0.2, 0.2, 0.3, 0.3], [0.2] * 4))["saturated"])  # streak broken
+    def test_cap_is_reached_after_twenty_rounds_beyond_round_zero(self):
+        self.start()
+        words = [a + b for a in "xy" for b in "abcdefghij"]  # 20 distinct lower-case stop words
+        for word in words:
+            self.assertEqual(self.round(f"stop_words=+{word}")[0], 0)
+        caps = [e["status"]["cap_reached"] for e in self.rounds()]
+        self.assertEqual((len(caps), caps.count(True), caps[19], caps[20]), (21, 1, False, True))
+
+    def test_overfitting_needs_dev_to_stop_while_train_keeps_rising(self):
+        case = lambda i, text, label: {"id": i, "text": [text], "labels": [L[label]]}  # noqa: E731
+        rising = [case("t1", "murder theft movable", 2), case("t2", "murder cheating deceiving", 2), case("t3", "murder kidnapping lawful", 2)]
+        falling = [case("d1", "theft", 1), case("d2", "cheating", 3), case("d3", "kidnapping", 4)]  # each stop word empties one query
+        flat = [case("f", "murder", 2)]
+        cases = {"train rises, dev falls": (rising, falling, True), "train flat": (flat, falling, False), "dev rises": (falling, rising, False)}
+        for name, (train, dev, expected) in cases.items():
+            with self.subTest(name):
+                self.log.unlink(missing_ok=True)
+                self.use(PROVISIONS, train)
+                self.write("dev.jsonl", dev)
+                self.start(k=1, r=1.0)
+                for word in ("theft", "cheating", "kidnapping"):
+                    self.assertEqual(self.round(f"stop_words=+{word}")[0], 0)
+                flags = [e["status"]["overfitting"] for e in self.rounds()]
+                self.assertEqual(flags, [False, False, expected, expected])  # needs two rounds of dev change to be read
 
     def test_threshold_only_gains_are_not_saturation(self):
-        def rounds(top, thr):
-            return [{s: {"top_k": {"scores": {"macro_f1": a}}, "threshold": {"scores": {"macro_f1": b}}} for s in ("dev", "train")}
-                    for a, b in zip(top, thr)]
-        flat_topk = [0.04] * 4
-        self.assertFalse(optimise.stopping_status(rounds(flat_topk, [0.03, 0.04, 0.05, 0.06]))["saturated"])
-        self.assertTrue(optimise.stopping_status(rounds(flat_topk, [0.03] * 4))["saturated"])  # both flat: still stops
+        both = lambda i, text: {"id": i, "text": [text], "labels": [L[1], L[2]]}  # noqa: E731
+        # second-section scores are 0.89, 0.56 and 0.45 of the top one, so each lower r lets one more case add a true section
+        cases = [both("a", "theft murder"), both("b", "theft movable murder"), both("c", "theft murder causing")]
+        for name, rs, expected in (("r reaches a new section each round", ("0.85", "0.5", "0.4"), False),
+                                   ("r changes nothing", ("0.95", "0.93", "0.91"), True)):
+            with self.subTest(name):
+                self.log.unlink(missing_ok=True)
+                self.use(PROVISIONS, cases)
+                self.start(k=1, r=1.0)
+                for r in rs:
+                    self.assertEqual(self.round(f"r={r}")[0], 0)
+                rounds = self.rounds()
+                top = [e["dev"]["top_k"]["scores"]["macro_f1"] for e in rounds]
+                thr = [e["dev"]["threshold"]["scores"]["macro_f1"] for e in rounds]
+                self.assertEqual(len(set(top)), 1)  # the top-k output is flat in both
+                self.assertEqual(thr[-1] > thr[0], not expected)
+                self.assertEqual(rounds[-1]["status"]["saturated"], expected)
 
-    def test_hurts_simple_reads_both_rules_and_compares_to_round_zero(self):
-        def entry(top, thr):
-            return {"dev": {rule: {"strata": {"label_count": {"1": {"scores": {"micro_f1": v}}}}}
-                            for rule, v in (("top_k", top), ("threshold", thr))}}
-        r0 = entry(0.07, 0.07)
-        self.assertFalse(optimise.hurts_simple(r0, entry(0.07, 0.07)))
-        self.assertTrue(optimise.hurts_simple(r0, entry(0.07, 0.06)))  # the threshold rule alone
-        self.assertTrue(optimise.hurts_simple(r0, entry(0.06, 0.07)))  # the top-k rule alone
-        self.assertFalse(optimise.hurts_simple(r0, entry(0.066, 0.066)))  # 0.4 point, under the bar
+    def test_threshold_rule_alone_hurting_single_label_cases_is_flagged_over_the_bar(self):
+        for clean, noisy, flags in ((98, 2, ["hurts-simple"]), (99, 1, [])):  # one false section in 100 is a 0.5 point drop, just under the bar
+            with self.subTest(noisy=noisy):
+                self.log.unlink(missing_ok=True)
+                cases = [{"id": f"c{i}", "text": ["murder"], "labels": [L[2]]} for i in range(clean)]
+                cases += [{"id": f"n{i}", "text": ["theft murder"], "labels": [L[2]]} for i in range(noisy)]
+                self.use(PROVISIONS, cases)
+                self.start(k=1, r=1.0)
+                self.assertEqual(self.round("r=0.85")[0], 0)  # lets IPC 1 into the threshold output of "theft murder" only
+                r0, r1 = self.rounds()
+                self.assertEqual(r0["dev"]["top_k"]["strata"], r1["dev"]["top_k"]["strata"])  # only the threshold rule moved
+                self.assertEqual(r1["flags"], flags)
 
     def test_round_that_hurts_single_label_cases_is_flagged(self):
         self.start(k=1)

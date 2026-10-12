@@ -5,7 +5,6 @@ retrieval output is read. A number is returned only when the text names its Act 
 otherwise it is counted as ambiguous and dropped. Mapping to the other Act uses verified concordance
 entries only, and a citation with none is counted as unmapped and gives no prediction.
 """
-import hashlib
 import json
 import re
 import sqlite3
@@ -13,7 +12,7 @@ import sys
 from collections import Counter
 from pathlib import Path
 
-from ibid import concordance, index
+from ibid import bench, concordance, index
 
 _KEYWORD = r"(?:sections?|secs?\.?|ss\.?|s\.|u/ss?\.?)\s*"
 _NUM = r"\d{1,3}(?:-?[A-Za-z](?![A-Za-z0-9]))?(?:\(\w{1,4}\))*(?![\d])"
@@ -30,10 +29,6 @@ SENTENCE = re.compile(r"[.;]\s+(?=[A-Z])")
 NUM_PART = re.compile(r"(\d{1,3})(?:-?([A-Za-z]))?")
 
 
-def _kind(m: re.Match) -> str:
-    return m.lastgroup
-
-
 def _numbers(nums: str) -> list[str]:
     return [a + (b.upper() if b else "") for a, b in NUM_PART.findall(re.sub(r"\(\w+\)", "", nums))]
 
@@ -46,7 +41,7 @@ def _sentence_mentions(s: str) -> list[tuple[str, list[str]]]:
     taken = set()
     for n, g in enumerate(groups):
         if d := DIRECT.match(s, g.end()):
-            kinds[n] = _kind(d)
+            kinds[n] = d.lastgroup
             taken.update(a.start() for a in acts if g.end() <= a.start() < d.end())  # that Act belongs to this group
     for n in range(len(groups) - 2, -1, -1):  # "Section 420 read with Section 34 IPC": the chain shares the last Act
         if kinds[n] is None and JOIN.fullmatch(s[groups[n].end():groups[n + 1].start()]):
@@ -55,7 +50,7 @@ def _sentence_mentions(s: str) -> list[tuple[str, list[str]]]:
         if kinds[n] is None:
             free = [a for a in acts if a.start() not in taken]
             if free:
-                kinds[n] = _kind(min(free, key=lambda a: min(abs(a.start() - g.end()), abs(g.start() - a.end()))))
+                kinds[n] = min(free, key=lambda a: min(abs(a.start() - g.end()), abs(g.start() - a.end()))).lastgroup
     return [(k, _numbers(g.group("nums"))) for k, g in zip(kinds, groups)]
 
 
@@ -78,7 +73,6 @@ def extract(set_path: str, index_path: str, concordance_path: str, out_path: str
         items = [(i["id"], i["query"]) for i in json.loads(raw)["items"]]
         db = sqlite3.connect(f"file:{index_path}?mode=ro", uri=True)
         entries = concordance.load(concordance_path, db)
-        cp = Path(concordance_path).read_bytes()
     except (OSError, KeyError, ValueError, TypeError, sqlite3.Error) as e:
         print(f"error: {e}", file=sys.stderr)
         return 1
@@ -100,8 +94,8 @@ def extract(set_path: str, index_path: str, concordance_path: str, out_path: str
                 else:
                     counts["unmapped_citations"] += 1
         out[iid] = {a: sorted(v) for a, v in got.items()}
-    doc = {"layer": "cited", "layer_version": "v1", "set_sha256": hashlib.sha256(raw).hexdigest(),
-           "inputs": {"concordance": hashlib.sha256(cp).hexdigest(), "index": hashlib.sha256(Path(index_path).read_bytes()).hexdigest()},
+    doc = {"layer": "cited", "layer_version": "v1", "set_sha256": bench.sha256(set_path),
+           "inputs": {"concordance": bench.sha256(concordance_path), "index": bench.sha256(index_path)},
            "items": out,
            "counts": {k: counts[k] for k in ("ambiguous_mentions", "other_act_dropped", "not_in_act_dropped", "unmapped_citations")}}
     Path(out_path).write_text(json.dumps(doc, indent=2, sort_keys=True) + "\n")

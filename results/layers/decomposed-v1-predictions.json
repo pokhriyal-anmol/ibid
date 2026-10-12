@@ -1,4 +1,7 @@
 {
+  "counts": {
+    "subqueries_per_item_mean": 4.37
+  },
   "inputs": {
     "frozen_rule_params": "250c53f85b3dcaa5c370dcc7a0cbf8a6da7579bc0f398ea9be2341b4750a90bf",
     "index": "efaf6fe8b342f151ac02ed110027320f39b0d99287327eb7d206453537a0d408",

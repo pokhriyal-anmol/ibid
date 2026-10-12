@@ -18,8 +18,8 @@ def _fig(f: dict) -> str:
     return f"recall {_pct(f['recall'])}, all-charges-hit {_pct(f['all_charges_hit'])}, {f['mean_predictions']:.2f} predictions"
 
 
-def _rows(d: dict) -> tuple[str, str, list[dict], list[dict], dict]:
-    """(layer, version, one row per scored output, scorings of this version as {output: figures}, layer inputs)."""
+def _rows(d: dict) -> tuple[str, str, list[dict], list[dict], dict, dict]:
+    """(layer, version, one row per scored output, scorings of this version as {output: figures}, layer inputs, layer counts)."""
     base = {"set": d["inputs"]["set_sha256"], "act": d["act"], "basis": d["label_basis"]}
     if "rule" in d:  # a frozen-rule results file: two output rules
         outs = {label: d[key] for key, label in OUTPUTS}
@@ -30,7 +30,7 @@ def _rows(d: dict) -> tuple[str, str, list[dict], list[dict], dict]:
         scorings = [{"output": s["scores"]["output"]} for s in d["scorings_of_this_layer_version"]]
         layer, version, inputs = d["layer"], d["layer_version"], d["inputs"]["layer"]
     rows = [{**base, "output": o, **f} for o, f in outs.items()]
-    return layer, version, rows, scorings, {**inputs, "index_sha256": d["inputs"]["index_sha256"]}
+    return layer, version, rows, scorings, {**inputs, "index_sha256": d["inputs"]["index_sha256"]}, d.get("layer_counts", {})
 
 
 def _row_cells(r: dict, base: dict | None) -> list[str]:
@@ -42,7 +42,7 @@ def _row_cells(r: dict, base: dict | None) -> list[str]:
     return cells + [f"{r['mean_predictions']:.2f}"]
 
 
-def _caveats(layer: str, version: str, rows: list[dict], scorings: dict, inputs: dict, named: dict) -> list[str]:
+def _caveats(layer: str, version: str, rows: list[dict], scorings: dict, inputs: dict, named: dict, counts: dict) -> list[str]:
     out = [f"### {layer} {version}", ""]
     for r in sorted({x["set"]: x for x in rows}.values(), key=lambda x: x["set_name"]):
         n, total = named[r["set"]]
@@ -51,21 +51,33 @@ def _caveats(layer: str, version: str, rows: list[dict], scorings: dict, inputs:
     if "model" in inputs:
         out.append(f"- Learned weights: fitted model {inputs['model']}. The score measures agreement with labels the weights were fitted toward.")
     if "producer" in inputs:
-        out.append(f"- A model produced an input: {inputs['producer']}. Retrieval from that input is code.")
+        out.append(f"- A model produced an input: {inputs['producer']}. Retrieval from that input is code. The sub-queries are the model's "
+                   "paraphrase of the query and can carry section numbers or legal terms the model knows, so the score measures the model plus the baseline.")
+    if layer == "cited":
+        out.append("- Some labels were drafted from the sections the queries name, so this layer is scored against answers drafted from the same mentions. "
+                   "A citation with no verified concordance entry gives no prediction in the other Act, which is why the BNS figure is low.")
+    if counts:
+        out.append("- Counts recorded by the layer: " + ", ".join(f"{k} {v}" for k, v in sorted(counts.items())) + ".")
     for (s, act), sc in sorted(scorings.items()):
         out.append(f"- {len(sc)} scoring{'s' if len(sc) != 1 else ''} of this layer version on set {s}, {act}:")
         out += [f"  - {'; '.join(f'{o}: {_fig(f)}' for o, f in x.items())}" for x in sc]
     return out + [""]
 
 
-def _ilsi(d: dict) -> list[str]:
+def _ilsi(d: dict) -> list[list[str]]:
+    """Rows of (layer, version, split, split hash, output, rule or model hash, cases, scores). The baseline has a top-k and a threshold row."""
+    split = "test" if "test_scores" in d else "dev"
     if "rule" in d:
-        layer, version, ident = BASELINE, d["rule"]["version"], d["rule"]["params_sha256"]
-        split = d["inputs"]["split_sha256"]
+        layer, version, ident, sha = BASELINE, d["rule"]["version"], d["rule"]["params_sha256"], d["inputs"]["split_sha256"]
+        outs = {"top-k": d["scores"]}
+        for e in d.get("test_scores", []):  # the threshold output of this rule on this split, scored in the same run
+            if e["split_sha256"] == sha and e["rule"]["version"] == version and "threshold_scores" in e:
+                outs["threshold"] = e["threshold_scores"]
     else:
-        layer, version, ident, split = d["layer"], d["layer_version"], d["model_sha256"], d["split_sha256"]
-    s = d["scores"]
-    return [layer, version, split, ident, str(d["cases"]), _pct(s["micro_f1"]), _pct(s["macro_f1"]), _pct(s["jaccard"])]
+        layer, version, ident, sha = d["layer"], d["layer_version"], d["model_sha256"], d["split_sha256"]
+        outs = {f"top-{d['k']}" if "k" in d else "output": d["scores"]}
+    return [[layer, version, split, sha, o, ident, str(d["cases"]), _pct(f["micro_f1"]), _pct(f["macro_f1"]), _pct(f["jaccard"])]
+            for o, f in outs.items()]
 
 
 def _table(head: list[str], rows: list[list[str]]) -> list[str]:
@@ -81,7 +93,7 @@ def compare(results: list[str], sets: list[str], ilsi: list[str], out_path: str)
             set_info[hashlib.sha256(raw).hexdigest()] = (Path(p).stem, (sum(bool(SECTION_NUMBER.search(q)) for q in qs), len(qs)))
         rows, layers = [], {}
         for p in results:
-            layer, version, rs, scorings, inputs = _rows(json.loads(Path(p).read_text()))
+            layer, version, rs, scorings, inputs, counts = _rows(json.loads(Path(p).read_text()))
             if not rs:
                 raise ValueError(f"{p}: no scored output")
             for r in rs:
@@ -89,11 +101,12 @@ def compare(results: list[str], sets: list[str], ilsi: list[str], out_path: str)
                     raise ValueError(f"{p}: set {r['set']} is not among the --set files")
                 r.update(layer=layer, layer_version=version, set_name=set_info[r["set"]][0], index=inputs["index_sha256"], inputs=inputs)
             rows += rs
-            rec = layers.setdefault((layer, version), {"rows": [], "scorings": {}, "inputs": {}})
+            rec = layers.setdefault((layer, version), {"rows": [], "scorings": {}, "inputs": {}, "counts": {}})
             rec["rows"] += rs
             rec["inputs"].update(inputs)
+            rec["counts"].update(counts)
             rec["scorings"][(rs[0]["set_name"], rs[0]["act"])] = scorings
-        ilsi_rows = [_ilsi(json.loads(Path(p).read_text())) for p in ilsi]
+        ilsi_rows = [r for p in ilsi for r in _ilsi(json.loads(Path(p).read_text()))]
     except (OSError, KeyError, ValueError, TypeError) as e:
         print(f"error: {e}", file=sys.stderr)
         return 1
@@ -118,12 +131,12 @@ def compare(results: list[str], sets: list[str], ilsi: list[str], out_path: str)
                     "`" + json.dumps(r["inputs"], sort_keys=True) + "`"] for r in order])
     doc += ["## What each number is and is not", ""]
     for (layer, version), rec in sorted(layers.items(), key=lambda kv: (kv[0][0] != BASELINE, kv[0])):
-        doc += _caveats(layer, version, rec["rows"], rec["scorings"], rec["inputs"], {s: v[1] for s, v in set_info.items()})
+        doc += _caveats(layer, version, rec["rows"], rec["scorings"], rec["inputs"], {s: v[1] for s, v in set_info.items()}, rec["counts"])
     if ilsi_rows:
-        doc += ["## ILSI test split, a different task", "",
+        doc += ["## ILSI splits, a different task", "",
                 "Judgment-level section prediction over 100 labels, scored by micro-F1, macro-F1 and Jaccard. "
                 "It is not comparable with the per-charge figures above.", ""]
-        doc += _table(["layer", "version", "split sha256", "model or rule sha256", "cases", "micro-F1 %", "macro-F1 %", "Jaccard %"],
+        doc += _table(["layer", "version", "split", "split sha256", "output", "model or rule sha256", "cases", "micro-F1 %", "macro-F1 %", "Jaccard %"],
                       sorted(ilsi_rows))
     Path(out_path).write_text("\n".join(doc))
     return 0

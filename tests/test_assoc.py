@@ -12,7 +12,7 @@ from pathlib import Path
 
 from ibid import assoc, bench, index
 from ibid.cli import main
-from test_charges_score import ITEMS, PROVS
+from test_charges_score import ITEMS, PROVS, charge, item
 
 LABELS = {n: f"Section {n} in The Indian Penal Code" for n in range(100, 106)}
 # a3 and m1 are the interesting rows: a3 has two labels; m1 is a held-out set id and must never be counted.
@@ -75,11 +75,17 @@ class AssocTest(unittest.TestCase):
         self.assertEqual(h["holdout_ids_sha256"], hashlib.sha256(json.dumps(sorted(i["id"] for i in ITEMS)).encode()).hexdigest())
 
     def test_distinctive_words_rank_their_label_first_and_k_is_five(self):
-        model = assoc.Model(str(self.fit()))
-        for words, label in (("knife", "IPC 100"), ("purse", "IPC 101"), ("cheating", "IPC 102"), ("robber", "IPC 104")):
-            top = model.predict(words)
-            self.assertEqual(top[0], label, words)
-            self.assertEqual(len(top), 5)  # 6 labels in the fixture, top 5 returned
+        words = (("knife", "IPC 100"), ("purse", "IPC 101"), ("cheating", "IPC 102"), ("robber", "IPC 104"))
+        probe = self.tmp / "probe.json"
+        items = [item(f"w{n}", w, [charge("any", [label], [])]) for n, (w, label) in enumerate(words)]
+        probe.write_text(json.dumps({"version": "t", "created": "2026-10-12", "licence_note": "invented", "label_policy": "invented", "items": items}))
+        probe.with_suffix(".sha256").write_text(hashlib.sha256(probe.read_bytes()).hexdigest() + "\n")
+        self.cli("assoc", "predict", "--model", str(self.fit()), "--set", str(probe), "--concordance", str(self.tmp / "conc.json"),
+                 "--index", str(self.tmp / "i.sqlite"), "--out", str(self.tmp / "probe-p.json"))
+        got = json.loads((self.tmp / "probe-p.json").read_text())["items"]
+        for n, (w, label) in enumerate(words):
+            self.assertEqual(got[f"w{n}"]["ipc"][0], label, w)
+            self.assertEqual(len(got[f"w{n}"]["ipc"]), 5, w)  # 6 labels in the fixture, top 5 returned
 
     def test_fit_is_byte_identical_and_a_changed_training_byte_changes_the_hash(self):
         a, b = self.fit("a.json"), self.fit("b.json")

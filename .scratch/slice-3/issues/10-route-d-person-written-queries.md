@@ -1,9 +1,9 @@
 # Route D: a kit for collecting queries that a person writes in their own words
 
-Status: done
+Status: ready-for-human
 Blocked by: none
 
-Note: the builder does the kit, the template and the intake command only. Writing the queries is the owner's step and the ticket is not closed until they exist.
+Note: the builder did the kit, the template and the intake command, and they are built. Writing the queries is the owner's step and the ticket is not closed until they exist and are labelled into `gold/multicharge/v2.json`. User stories 1 to 3 are unmet for route D until then.
 
 What to build: the instructions and the template that let a lawyer, or the owner, write 20 to 30 realistic multi-charge queries, and the intake step that turns them into a set file. The point of this route is a measure that is not made of court orders: the text a person with a fresh case types. Every earlier number in slice 3 comes from judgment text.
 

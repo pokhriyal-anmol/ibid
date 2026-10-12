@@ -35,6 +35,9 @@ class SubqueryTest(_Base):
         self.assertEqual(code, expect, err)
         return json.loads((self.tmp / out).read_text()) if expect == 0 else err
 
+    def test_mean_subqueries_per_item_is_recorded_for_the_report(self):
+        self.assertEqual(self.run_sub(self.subq())["counts"], {"subqueries_per_item_mean": 1.33})  # (2 + 2 + 0) / 3
+
     def test_union_of_each_subquerys_top_sections_matches_hand_values(self):
         r = self.run_sub(self.subq(), per=1)
         self.assertEqual(r["items"]["m2"], {"ipc": ["IPC 101", "IPC 102"], "bns": ["BNS 201", "BNS 202"]})

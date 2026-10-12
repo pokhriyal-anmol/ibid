@@ -24,6 +24,9 @@
     "agent-drafted-skeptic-refuted": 30
   },
   "layer": "decomposed",
+  "layer_counts": {
+    "subqueries_per_item_mean": 4.37
+  },
   "layer_version": "v1",
   "output": {
     "all_charges_hit": 0.5,

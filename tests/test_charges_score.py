@@ -156,7 +156,7 @@ class ChargesScoreTest(unittest.TestCase):
         self.assertEqual(len(self.score("bns", out="3.json")["scorings_of_this_rule_version"]), 1)  # each Act has its own list
 
     def test_unpinned_or_changed_set_is_refused_and_writes_nothing(self):
-        self.score(set_path=self.write(pin=False), expect=1, out="x.json")
+        self.assertIn("no pin file", self.score(set_path=self.write(pin=False), expect=1, out="x.json"))
         p = self.write()
         p.write_bytes(p.read_bytes().replace(b"murder", b"mudder", 1))
         self.assertIn("does not match its pin", self.score(set_path=p, expect=1, out="y.json"))
@@ -166,7 +166,7 @@ class ChargesScoreTest(unittest.TestCase):
         bad = frozen_record()
         bad["r"] = 0.9
         self.frozen.write_text(json.dumps(bad))
-        self.score(expect=1)
+        self.assertIn("does not hold the rule it names", self.score(expect=1))
 
     def test_invalid_item_is_refused(self):
         items = copy.deepcopy(ITEMS)

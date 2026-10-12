@@ -1,6 +1,5 @@
 """Slice 2 ticket 08: one logged optimisation round and the declared stopping rule. Reads train and dev, never test."""
 import json
-import re
 import sqlite3
 import sys
 from pathlib import Path
@@ -8,7 +7,6 @@ from pathlib import Path
 from ibid import bench, bm25
 
 GAIN_BAR, HURTS_BAR, STREAK, CAP = 0.005, 0.005, 3, 20  # 0.5 points on a 0-1 scale
-WORD = re.compile(r"[^\W\d_]+")
 
 
 def apply_change(params: dict, change: str) -> dict:
@@ -20,7 +18,7 @@ def apply_change(params: dict, change: str) -> dict:
     new = dict(params)
     if knob == "stop_words":
         op, word = value[0], value[1:]
-        if op not in "+-" or not WORD.fullmatch(word) or word != word.lower():
+        if op not in "+-" or not bm25.QUERY_TOKEN.fullmatch(word) or word != word.lower():
             raise ValueError("stop_words changes one word at a time: +word or -word")
         words = set(params["stop_words"])
         new["stop_words"] = sorted(words | {word} if op == "+" else words - {word})
