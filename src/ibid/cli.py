@@ -116,6 +116,9 @@ def main(argv: list[str] | None = None) -> int:
     cf.add_argument("--pages", default="data/raw/pages")
     cf.add_argument("--index", default="data/index/conform.sqlite")
     cf.add_argument("--drop", action="append", default=[], metavar="ID=REASON")
+    chv = sub.add_parser("charges").add_subparsers(dest="charges_cmd", required=True).add_parser("validate")
+    chv.add_argument("--set", required=True)
+    chv.add_argument("--index", default="data/index/ibid.sqlite")
     bsub = sub.add_parser("bench").add_subparsers(dest="bench_cmd", required=True)
     bn = bsub.add_parser("check-labels")
     bn.add_argument("--data", default="data/raw/lesicin/label_vocab.json")
@@ -159,6 +162,9 @@ def main(argv: list[str] | None = None) -> int:
     rp.add_argument("--frozen-rule", default="results/frozen-rule.json", help="the frozen-rule record, names the frozen round")
     rp.add_argument("--out", default="results/report.md")
     a = ap.parse_args(argv)
+    if a.cmd == "charges":
+        from ibid.charges import validate
+        return validate(a.set, a.index)
     if a.cmd == "bench" and a.bench_cmd == "report":
         from ibid.report import run_report
         return run_report(a.log, a.ledger, a.results, a.out, a.frozen_rule)
