@@ -103,7 +103,7 @@ class ReportTest(unittest.TestCase):
         self.build()
         text = self.report()[1].read_text()
         for needle in ("28.08", "IL-TUR", "28.45", "LeSICiN paper", "Different models", "different dataset copy",
-                       "Split counts", "Metric protocol", "our own implementation", "No rank is claimed"):
+                       "Split counts", "NyayGraph", "Llama 3.1 8B", "Metric protocol", "our own implementation", "No rank is claimed"):
             self.assertIn(needle, text)
 
     def test_hashes_rule_version_and_rule_hash_are_carried(self):

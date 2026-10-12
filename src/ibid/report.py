@@ -6,11 +6,15 @@ from pathlib import Path
 PUBLISHED = (
     ("m-F1 (micro or macro not confirmed)", "28.08", "IL-TUR benchmark, statute identification (arXiv 2512.21902 describes its splits)"),
     ("macro-F1", "28.45", "LeSICiN paper, Zenodo record 6053791"),
+    ("micro-F1 7.2, macro-F1 4.8: Llama 3.1 8B, plain prompt, no retrieval", "7.2 / 4.8",
+     "NyayGraph (NLLP 2025), Table 7, IL-TUR statute identification test split, 100 labels"),
+    ("micro-F1 5.9, macro-F1 3.5: the same LLM with IPC knowledge-graph context", "5.9 / 3.5",
+     "NyayGraph (NLLP 2025), Table 7"),
 )
 CAVEATS = (
     "Different models: the published scores come from trained classifiers, Ibid is deterministic retrieval with no training.",
     "Possibly a different dataset copy: Ibid uses the LeSICiN Zenodo release, the IL-TUR copy is gated and was not obtained.",
-    "Split counts may differ from the published setup.",
+    "Split counts may differ from the published setup. The NyayGraph rows state the same 42,835, 10,200 and 13,039 split and 100 labels as the LeSICiN release, so they are the closest reference, but their prompt, sampling and metric code were not reproduced here.",
     "Metric protocol may differ: our metrics are our own implementation until the official evaluation script is read.",
     "No rank is claimed.",
 )
