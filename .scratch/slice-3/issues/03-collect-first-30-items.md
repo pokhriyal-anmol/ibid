@@ -1,6 +1,6 @@
 # Collect the first 30 multi-charge items from real judgment text
 
-Status: needs-triage
+Status: done
 Blocked by: 01
 
 Note: this is data work. It is run by a dedicated workflow of agents after ticket 01 is built, not by `wf-build`, which would treat it as code.

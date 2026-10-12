@@ -1,0 +1,1458 @@
+{
+ "created": "2026-10-12",
+ "items": [
+  {
+   "anonymised": true,
+   "author": "LeSICiN ILSI train, fact text as released",
+   "author_type": "judgment-excerpt",
+   "charges": [
+    {
+     "charge": "Attempt to murder",
+     "sections": {
+      "bns": [
+       "BNS 109"
+      ],
+      "ipc": [
+       "IPC 307"
+      ]
+     }
+    },
+    {
+     "charge": "Dacoity",
+     "sections": {
+      "bns": [
+       "BNS 310"
+      ],
+      "ipc": [
+       "IPC 395"
+      ]
+     }
+    }
+   ],
+   "id": "43946072",
+   "label_basis": "agent-drafted-skeptic-refuted",
+   "query": "The applicants herein have approached this Court apprehending arrest in connection with FIR dated 13.05.2019 whereby offences against the applicants and 17 others were registered under provisions of the Indian Penal Code including Sections 307 and 395 thereof. While issuing notices in these applications, this Court had taken note of the fact that there were counter FIRs in the present case and that the complainant in the present case had himself later sworn an affidavit stating that when the incident occurred on 13.05.2019, some unknown persons had assaulted him and due to injury on his head, he had fallen unconscious. It is further stated in the said affidavit that he had named the accused persons on the basis of what he was told by other persons. Therefore, it becomes clear that the accused persons, including the applicants herein, have been named in the FIR based on hearsay information ::: Uploaded on - 11/07/2019 ::: Downloaded on - 12/07/2019 06:31:36 ::: 2 ABA363&364-19.odt received by the complainant. In the said affidavit, it has also stated by the complainant that his gold ornaments and other valuable material which were missing, were later found in his own car. This affidavit was filed before the Sessions Court. ::: Uploaded on - 11/07/2019 ::: Downloaded on - 12/07/2019 06:31:36 ::: Considering the aforesaid material, this Court is of the opinion that the present applications deserve to be allowed. ::: Uploaded on - 11/07/2019 ::: Downloaded on - 12/07/2019 06:31:36 ::: JUDGE halwai::: Uploaded on - 11/07/2019 ::: Downloaded on - 12/07/2019 06:31:36 ::: ::: Uploaded on - 11/07/2019 ::: Downloaded on - 12/07/2019 06:31:36 :::",
+   "reviewed_by": "skeptic pass wf_87b6af80-0ae",
+   "source": "LeSICiN release, Zenodo record 6053791, train split, case id 43946072"
+  },
+  {
+   "anonymised": true,
+   "author": "LeSICiN ILSI train, fact text as released",
+   "author_type": "judgment-excerpt",
+   "charges": [
+    {
+     "charge": "Cheating",
+     "sections": {
+      "bns": [
+       "BNS 318"
+      ],
+      "ipc": [
+       "IPC 420"
+      ]
+     }
+    },
+    {
+     "charge": "Criminal intimidation",
+     "sections": {
+      "bns": [
+       "BNS 351"
+      ],
+      "ipc": [
+       "IPC 506"
+      ]
+     }
+    }
+   ],
+   "id": "153470110",
+   "label_basis": "agent-drafted-skeptic-refuted",
+   "query": "This petition has been filed to quash the F.I.R. in Crime No.12 of 2016 registered by the first respondent police for offences under Sections 420 & 506(i) of IPC, as against the petitioner.http://www.judis.nic.in 1/7 CRL.O.P.No.4032 of 2016 The learned Counsel appearing for the petitioner would submit that the petitioner is an innocent person and he has not committed any offence as alleged by the prosecution. Without any base, the first respondent police registered a case in Crime No.12 of 2016 for the offences under Sections 420 and 506(i) of IPC, as against the petitioner. Hence he prayed to quash the same. The learned Additional Public Prosecutor would submit that the investigation is almost completed and the respondent police have only to file final report. Accordingly, this Criminal Original Petition stands dismissed. However, considering the crime is of the year 2016, the second respondent is directed to complete the investigation in Crime No.12 of 2016 and file a final report within a period of four weeks from the date of receipt of copy of this Order, before the jurisdiction Magistrate, if not already filed. Consequently, connected miscellaneous petition is closed. 11.03.2020 Internet : Yes / No Index : Yes / No Speaking / Non Speaking orderhttp://www.judis.nic.in 5/7 CRL.O.P.No.4032 of 2016 lokhttp://www.judis.nic.in 6/7 CRL.O.P.No.4032 of 2016 G.K.ILANTHIRAIYAN, J. 1.The Inspector of Police, Tittakudi Taluk Police Station, Tittakudi, Cuddalore District 2.The Deputy Superintendent of Police, District Crime Branch, Cuddalore District The Public Prosecutor, High Court, Madras. Crl.O.P.No.4032 of 2016 11.03.2020http://www.judis.nic.in 7/7",
+   "reviewed_by": "skeptic pass wf_87b6af80-0ae",
+   "source": "LeSICiN release, Zenodo record 6053791, train split, case id 153470110"
+  },
+  {
+   "anonymised": true,
+   "author": "LeSICiN ILSI train, fact text as released",
+   "author_type": "judgment-excerpt",
+   "charges": [
+    {
+     "charge": "Murder",
+     "sections": {
+      "bns": [
+       "BNS 103"
+      ],
+      "ipc": [
+       "IPC 302"
+      ]
+     }
+    },
+    {
+     "charge": "Causing disappearance of evidence",
+     "sections": {
+      "bns": [
+       "BNS 238"
+      ],
+      "ipc": [
+       "IPC 201"
+      ]
+     }
+    }
+   ],
+   "id": "871051",
+   "label_basis": "agent-drafted-skeptic-refuted",
+   "query": "JUDGMENT Arun Kumar Bhattacharya, J. The present revisional application under Section 401 read with Section 482 Cr. PC is directed, against the order dated 23.03.94 passed by the ld. SDJM, Diamond Harbour, South 24-Parganas in G.R. Case No. 430/90 arising out of Pathar Pratima P.S. Case No. 15/90 under Sections 302/201 IPC. The circumstances leading to the above application are that on the basis of a complaint that on 16.04.90 at about 2.00 hrs. Bhabani Parua, wife of present petitioner No. 1 was missing from her matrimonial home and subsequently her deadbody was found on 17.04.90 at about 8.40 hrs. floating in the adjoining pond in decomposed condition with throat-cut injury, Pathar Pratima P.S. Case No. 15/90 under Sections 302/201 IPC was started. Petitioner No. 1 on being arrested was produced on 20.04.90 while petitioner No. 2 surrendered before the ld. Being aggrieved by, and dissatisfied with, the said order, the petitioners have come up before this Court for revision.",
+   "reviewed_by": "skeptic pass wf_87b6af80-0ae",
+   "source": "LeSICiN release, Zenodo record 6053791, train split, case id 871051"
+  },
+  {
+   "anonymised": true,
+   "author": "LeSICiN ILSI train, fact text as released",
+   "author_type": "judgment-excerpt",
+   "charges": [
+    {
+     "charge": "Sexual harassment",
+     "sections": {
+      "bns": [
+       "BNS 75"
+      ],
+      "ipc": [
+       "IPC 354A"
+      ]
+     }
+    },
+    {
+     "charge": "Stalking",
+     "sections": {
+      "bns": [
+       "BNS 78"
+      ],
+      "ipc": [
+       "IPC 354D"
+      ]
+     }
+    },
+    {
+     "charge": "Criminal intimidation (appellant no.2 only)",
+     "sections": {
+      "bns": [
+       "BNS 351"
+      ],
+      "ipc": [
+       "IPC 506"
+      ]
+     }
+    }
+   ],
+   "id": "107892742",
+   "label_basis": "agent-drafted-skeptic-refuted",
+   "query": "Shri L.N.Sakle, Advocate for appellants. Shri Vijay Kumar Pandey, PL for the State. Heard on admission. Call for the record of the trial Court. Also heard on I.A. No. 3917/15, which is an application under section 389(1) of Cr.P.C. for suspension of jail sentence and grant of bail to the appellants. The appellants have been convicted by the trial Court under Sections 354-A(2), 354(D) of IPC and Section 12 of Protection of Children from Sexual offences Act, 2012 and sentenced to R.I. for one year, R.I. for one year and fine of Rs.1,000/-, and R.I. for one year and fine of Rs.1,000/- respectively with default stipulations. In addition appellant no.2 Om has been convicted under Section 506 Part II of IPC and sentenced to R.I. for six months. The appeal would take considerable time to dispose of finally, hence awarded jail sentence of appellants be suspended and they be released on bail. Learned counsel for the State has opposed the application. Certified copy as per rules. (Subhash Kakade) Judge Jk.",
+   "reviewed_by": "skeptic pass wf_87b6af80-0ae",
+   "source": "LeSICiN release, Zenodo record 6053791, train split, case id 107892742"
+  },
+  {
+   "anonymised": true,
+   "author": "LeSICiN ILSI train, fact text as released",
+   "author_type": "judgment-excerpt",
+   "charges": [
+    {
+     "charge": "Rape of a minor",
+     "sections": {
+      "bns": [
+       "BNS 65"
+      ],
+      "ipc": [
+       "IPC 376"
+      ]
+     }
+    },
+    {
+     "charge": "Kidnapping from lawful guardianship",
+     "sections": {
+      "bns": [
+       "BNS 137"
+      ],
+      "ipc": [
+       "IPC 363"
+      ]
+     }
+    },
+    {
+     "charge": "Procuration of minor girl",
+     "sections": {
+      "bns": [
+       "BNS 96"
+      ],
+      "ipc": [
+       "IPC 366A"
+      ]
+     }
+    }
+   ],
+   "id": "105616635",
+   "label_basis": "agent-drafted-skeptic-refuted",
+   "query": "Heard on I.A. No.6652/2020, a repeat third application filed under Section 389(1) of the Code of Criminal Procedure, 1973 for suspension of sentence and grant of bail to the appellant, whereas previous first two applications have been dismissed on merits. The appellant stands convicted for the offence punishable under Section 376 (2)(i) of the IPC read with Section 3/4 and 6 of the POCSO Act and jointly sentenced to undergo R.I. for 10 years with fine of Rs.1000/- and under Sections 363 and 366-A of the IPC and sentenced to undergo R.I. for 7 years with fine of Rs.1000/- and R.I. 10 years with fine of Rs.1000/- respectively, with default stipulations. Perused the statements of parents of prosecutrix. They both categorically stated that prosecutrix was between 15 to 16 years old at the time of incident. Nothing has been asked in cross-examination to contradict the factum of age of the prosecutrix as stated by the parents of the prosecutrix. It is prima facie reflected that the prosecutrix at the time of incident was 16 years old. Learned Panel Lawyer for the respondent/State has vehemently opposes the bail application and submits that previous applications have been dismissed on merits and there is strong case available against the appellant. Therefore, he prays to dismiss the application.",
+   "reviewed_by": "skeptic pass wf_b5f72eac-ac5",
+   "source": "LeSICiN release, Zenodo record 6053791, train split, case id 105616635"
+  },
+  {
+   "anonymised": true,
+   "author": "LeSICiN ILSI train, fact text as released",
+   "author_type": "judgment-excerpt",
+   "charges": [
+    {
+     "charge": "Kidnapping from lawful guardianship",
+     "sections": {
+      "bns": [
+       "BNS 137"
+      ],
+      "ipc": [
+       "IPC 363"
+      ]
+     }
+    },
+    {
+     "charge": "Kidnapping to compel marriage or illicit intercourse",
+     "sections": {
+      "bns": [
+       "BNS 87"
+      ],
+      "ipc": [
+       "IPC 366"
+      ]
+     }
+    },
+    {
+     "charge": "Rape of a minor",
+     "sections": {
+      "bns": [
+       "BNS 64",
+       "BNS 65"
+      ],
+      "ipc": [
+       "IPC 376"
+      ]
+     }
+    },
+    {
+     "charge": "Abetment of rape",
+     "sections": {
+      "bns": [
+       "BNS 49"
+      ],
+      "ipc": [
+       "IPC 109"
+      ]
+     }
+    },
+    {
+     "charge": "Criminal intimidation (threat to kill)",
+     "sections": {
+      "bns": [
+       "BNS 351"
+      ],
+      "ipc": [
+       "IPC 506"
+      ]
+     }
+    },
+    {
+     "charge": "Wrongfully concealing a kidnapped person",
+     "sections": {
+      "bns": [
+       "BNS 142"
+      ],
+      "ipc": [
+       "IPC 368"
+      ]
+     }
+    }
+   ],
+   "id": "190108901",
+   "label_basis": "agent-drafted-skeptic-refuted",
+   "query": "(21/01/2020) The applicants, who have been arraigned as an accused in the trial of Special Case No.300041/2016 arising out of Crime No.459/2016 registered at Police Station, Mada, Distt. Singrauli, have filed this revision under Section 397 read with Section 401 of Cr.P.C. being aggrieved by the order dated 06/02/2018 passed by Additional Sessions Judge to the Court of 1st Additional Sessions Judge and Special Judge (Protection of Children from Sexual Offences Act), Waidhan, Distt. Singrauli whereby charges have been framed against against the applicant No.1 for the offences punishable under Sections 363, 366, 376(2)(>), 376(2)(<). of IPC, under Section 5(B)/6 of Protection of Children from Sexual Offences Act, 2012, against 2 applicants No.2, 3, 4 for the offences punishable under Sections 376(2)(>) read with Section 109, 376(2)(<). 506 Part-II of IPC, under Section 5(B)/6 read with Section 17 of Protection of Children from Sexual Offences Act, 2012 and against applicant No.5 for the offences punishable under Sections 363, 366 of IPC. The prosecutrix, who was aged about 15 years, below the age of 18 years, was minor at the time of incident. Applicant No.5-Shiv Prasad Saket alias Binna Saket, who is son of applicant No.4 also facilitated applicant No.1-Dharmendra Kumar Saket for aiding the act of applicant No.1-Dharmendra Kumar Saket. On the next day, applicant 3 No.1-Dharmendra Kumar Saket forcibly took prosecutrix on motorcycle at Village Kachani and kept her in the house of applicant No.3-Sudarshan Saket who facilitated applicant No.1-Dharmendra Kumar Saket who forcibly kept prosecutrix and committed rape upon her. Father of applicant No.1 namely Asharafi Lal Saket (applicant No.2) came at the house of applicant No.3-Sudarshan Saket and pressurized the prosecutrix to solemnize Court marriage otherwise he will kill her and also threatened prosecutrix that she will not utter anything against applicant No.1-Dharmendra Kumar Saket to any one. In the meantime, when brother of prosecutrix found her missing and also found applicant No.1-Dharmendra Kumar Saket missing from his house in the village, then he lodged the report. During search of prosecutrix, Police came in the house of applicant No.1-Dharmendra Kumar Saket, then again applicant No.1-Dharmendra Kumar Saket, applicant No.2-Asharafi Lal Saket and applicant No.3-Sudarshan Saket threatened prosecutrix not to utter the name of any one of applicants about the act committed against her otherwise they will kill her. On reaching home prosecutrix narrated the 4 whole incident to her family members, thereafter lodged a report against the applicants. Learned trial Court has wrongly framed the charges against the applicants. She went along with applicant No.1-Dharmendra Kumar Saket. She is major aged about 19 years. This revision has been filed on wrong grounds, therefore, prays for dismissal of the revision. 5. Having heard learned counsel for the parties and perused the documents filed along with this petition as well as the case diary of Crime No.459/2016 registered at Police Station Mada, Distt. No doubt, prosecutrix seems minor and other applicants kept the prosecutrix in their house knowing that she had been abducted by applicant No.1-Dharmendra Kumar Saket from the custody of her brother and family members and also provided shelter to applicant No.1-Dharmendra Kumar Saket 6 thereby aiding in committing rape upon prosecutrix. In this way, prima facie, ingredients of offence under Section 368 of IPC and Section 16, Thirdly, Explanation-II of Protection of Child from Sexual Offences Act, 2012 come in the picture. There shall be no order as to cost.",
+   "reviewed_by": "skeptic pass wf_b5f72eac-ac5",
+   "source": "LeSICiN release, Zenodo record 6053791, train split, case id 190108901"
+  },
+  {
+   "anonymised": true,
+   "author": "LeSICiN ILSI train, fact text as released",
+   "author_type": "judgment-excerpt",
+   "charges": [
+    {
+     "charge": "Rape",
+     "sections": {
+      "bns": [
+       "BNS 64"
+      ],
+      "ipc": [
+       "IPC 376"
+      ]
+     }
+    },
+    {
+     "charge": "Causing hurt by stupefying drug",
+     "sections": {
+      "bns": [
+       "BNS 123"
+      ],
+      "ipc": [
+       "IPC 328"
+      ]
+     }
+    },
+    {
+     "charge": "Sexual harassment",
+     "sections": {
+      "bns": [
+       "BNS 75"
+      ],
+      "ipc": [
+       "IPC 354A"
+      ]
+     }
+    },
+    {
+     "charge": "Criminal intimidation",
+     "sections": {
+      "bns": [
+       "BNS 351"
+      ],
+      "ipc": [
+       "IPC 506"
+      ]
+     }
+    }
+   ],
+   "id": "176417778",
+   "label_basis": "agent-drafted-skeptic-refuted",
+   "query": "SC 187/2014 arising out of FIR No.486/2014 at PS Karawal Nagar pending at Karkardooma Courts. Petition is contested by the respondents. I have heard the petitioner and the counsel for the respondents and have examined the file. It is a matter of record that case vide SC No.187/2014 emanating from FIR No.486/2014 registered under Section 376/328/354A/506/34 IPC at PS Karawal Nagar is pending before Karkardooma Courts. Charge-sheet has already been filed. Petitioner's grievance is that due to threats extended by the respondents, she intends her case to be transferred from Karkardooma Courts to Tis Hazari Courts. Her other grievance is that she does not expect justice from the Court of learned Addl. Sessions Judge before whom the case is pending for disposal. P.(Crl.) 24/2016 Page 1 of 2 Regarding threat, it is relevant to note that the petitioner has already been granted protection by an order dated 04.04.2016 by the Hon'ble Supreme Court. SHO, Mukherjee Nagar Police Station has been directed to assess the requirement of providing protection to the petitioner and thereafter to provide the necessary security, protection, etc. without any delay. It is informed that the necessary protection has already been given to the petitioner. Petitioner's apprehension not to get justice from the Court below is without any foundation. It cannot be inferred that the Trial Court is biased or any favour has been shown whatsoever to the respondents. I find no sound reasons to transfer the matter from Karkardooma Courts to Tis Hazari Courts. The petition is dismissed. Costs `10,000/- imposed vide order dated 20.02.2016 shall be paid to the petitioner by the respondents on the next date of hearing before the Trial Court. (S.P.GARG) JUDGE MAY 02, 2017 / tr Tr. P.(Crl.) 24/2016 Page 2 of 2",
+   "reviewed_by": "skeptic pass wf_b5f72eac-ac5",
+   "source": "LeSICiN release, Zenodo record 6053791, train split, case id 176417778"
+  },
+  {
+   "anonymised": true,
+   "author": "LeSICiN ILSI train, fact text as released",
+   "author_type": "judgment-excerpt",
+   "charges": [
+    {
+     "charge": "Murder",
+     "sections": {
+      "bns": [
+       "BNS 103"
+      ],
+      "ipc": [
+       "IPC 302"
+      ]
+     }
+    },
+    {
+     "charge": "Kidnapping with intent to secretly and wrongfully confine",
+     "sections": {
+      "bns": [
+       "BNS 140"
+      ],
+      "ipc": [
+       "IPC 365"
+      ]
+     }
+    },
+    {
+     "charge": "Causing disappearance of evidence",
+     "sections": {
+      "bns": [
+       "BNS 238"
+      ],
+      "ipc": [
+       "IPC 201"
+      ]
+     }
+    },
+    {
+     "charge": "Criminal conspiracy",
+     "sections": {
+      "bns": [
+       "BNS 61"
+      ],
+      "ipc": [
+       "IPC 120B"
+      ]
+     }
+    }
+   ],
+   "id": "156132986",
+   "label_basis": "agent-drafted-skeptic-refuted",
+   "query": "The applicant has completed about one year and ten months behind bars. Given the aforesaid facts, I am of the view that, in the interests of justice, the applicant deserves to be released on bail. It is ordered accordingly. The applicant is, therefore, directed to be released on bail, subject to her furnishing a bail bond of Rs. 20,000/-, with a solvent surety of the like amount to the satisfaction of the Jail Superintendent, Bail Appl. Allowed, subject to all just exceptions. The application is disposed of. BAIL APPLN. This is an application for grant of regular bail. Bail Appl. 1150/2020 Page 1 of 6 The applicant was arrested on 3rd September, 2018, and is charged with having committed offences punishable under Sections 302/365/201 read with Sections 120-B/34 of the Indian Penal Code, 1860 (IPC). Bail Appl. 1150/2020 Page 2 of 6 Several witnesses, she points out, have yet to be examined, and release of the applicant, at this stage, may seriously prejudice the proceedings in trial. She has, as on date, suffered about one year and ten months behind bars. 1150/2020 Page 4 of 6 have, to her credit any previous conviction or FIR, and is not under trial in any other case. Her conduct, during her incarceration, is also reported, in the nominal roll furnished by the Jail Superintendent, to be satisfactory. Bail Appl. 1150/2020 Page 4 of 6 Admittedly, the applicant is also the mother of a 20 years old daughter and continued deprivation, of the company of her mother, would, invariably, be detrimental to the interest of the applicant's daughter. A High Power Committee of this Court, constituted by the Government of National Capital Territory of Delhi and headed by a learned sitting Judge of this Court, has recommended favourable consideration of applications, for bail, by persons (irrespective of gender) under trial for having committed offences under Section 302 IPC, with no other offence to their credit, who have completed two years of incarceration. 1150/2020 Page 5 of 6 within a period of two days. On furnishing of the said bail bond and surety, the applicant would be released on bail forthwith. Bail Appl. 1150/2020 Page 5 of 6 The applicant is restrained from leaving the boundaries of the city, without prior permission of the learned trial court or of this Court. She is also directed to report, at P.S. Tilak Nagar, every Friday at 11:00 am. The bail application is allowed in the aforesaid terms. Copy of this order be uploaded on the website positively within 24 hours and forwarded to learned counsel for the parties via e-mail. C. HARI SHANKAR, J.",
+   "reviewed_by": "skeptic pass wf_b5f72eac-ac5",
+   "source": "LeSICiN release, Zenodo record 6053791, train split, case id 156132986"
+  },
+  {
+   "anonymised": true,
+   "author": "LeSICiN ILSI train, fact text as released",
+   "author_type": "judgment-excerpt",
+   "charges": [
+    {
+     "charge": "Murder of Heeralal (head injury by co-accused Parwat)",
+     "sections": {
+      "bns": [
+       "BNS 103"
+      ],
+      "ipc": [
+       "IPC 302"
+      ]
+     }
+    },
+    {
+     "charge": "Hurt by Madan with a stick to the deceased's neck",
+     "sections": {
+      "bns": [
+       "BNS 117"
+      ],
+      "ipc": [
+       "IPC 325"
+      ]
+     }
+    }
+   ],
+   "id": "155317536",
+   "label_basis": "agent-drafted-skeptic-refuted",
+   "query": "Certified Copy as per rules. Heard on I.A. No.1502/2017, an application for suspension of sentence and grant of bail moved on behalf of appellant No.2- Madan. Appellant No.2- Madan has been convicted and sentenced by the trial court as under: Learned counsel for the appellants submits that appellant No.2 Madan was on bail during trial and he did not misuse the liberty granted to him. The quarrel started all of a sudden and it was not pre-planned. It is alleged against appellant No.2 Madan that he assaulted the deceased with a stick causing injuries on his neck. There is no any allegation that he assaulted for the second time. It is alleged against the co- accused Parwat that he assaulted the deceased 2 Cra.624.2015 on his head causing head injury. Appellant No.2 Madan did not know that the co-accused Parwat would cause death of the deceased Heeralal. The common intention of appellant No.2 Madan cannot be presumed with co-accused Parwat, therefore, no offence under Section 302 of IPC is made out against the appellant No.2 Madan either directly or with the help of Section 34 of IPC. The offence of appellant No.2 Madan may, at the most, fall within the purview of Section 325 of IPC whereas he has remained in custody for approximately more than two years. There are fair chances of success of this appeal. Thus, appellant No.2 Madan prays for grant of bail and suspension of execution of jail sentence. Learned Panel Lawyer opposes the application. After considering the submissions made by learned counsel for the parties and looking to the facts and circumstances of the case, it would be appropriate to accept the application of appellant No.2 Madan. Consequently, application I.A. No.1502/17, is hereby allowed. Subject to deposit of fine amount and if appellant No.2 Madan furnishes a bail bond in the sum of Rs.50,000/- (Rupees Fifty Thousand only) along with one surety bond of the same amount to the satisfaction of Trial Court that he shall appear before the office of 3 Cra.624.2015 this Court first on 27.06.2017 and on subsequent dates given by the office for appearance till disposal of the present appeal, then appellant No.2 Madan shall be released on bail and execution of his jail sentence shall remain suspended till disposal of this appeal.",
+   "reviewed_by": "skeptic pass wf_b5f72eac-ac5",
+   "source": "LeSICiN release, Zenodo record 6053791, train split, case id 155317536"
+  },
+  {
+   "anonymised": true,
+   "author": "LeSICiN ILSI train, fact text as released",
+   "author_type": "judgment-excerpt",
+   "charges": [
+    {
+     "charge": "Abetment of suicide",
+     "sections": {
+      "bns": [
+       "BNS 108"
+      ],
+      "ipc": [
+       "IPC 306"
+      ]
+     }
+    },
+    {
+     "charge": "Criminal intimidation (threat to cause death or grievous hurt)",
+     "sections": {
+      "bns": [
+       "BNS 351"
+      ],
+      "ipc": [
+       "IPC 506"
+      ]
+     }
+    }
+   ],
+   "id": "39883671",
+   "label_basis": "agent-drafted-skeptic-refuted",
+   "query": "This revision has been filed to set aside the order passed in Crl. M.P.No.94 of 2012, dated 17.08.2012 in S.C.No.180 of 2011 on the file of the learned Mahila Court, Chengalpattu.http://www.judis.nic.in 2 The first respondent police registered a case against the second respondent and two others for the offence under Sections 506(ii), 306 IPC and Section 4 and 4B of Tamil Nadu Prevention of Harassment of Woman Act (hereinafter referred to as ''TNPHW Act''). After investigation, the first respondent police laid charge sheet before the learned Judicial Magistrate, Madurantagam. Since the offences are triable by the learned Sessions Judge and it relates to woman, the learned Magistrate committed the case to the Mahila Court, Chengalpet. During the pendency of the case, A2/second respondent herein filed a petition under Section 227 Cr.P.C. to discharge him from the above case. Aggrieved over the said order dated 07.08.2012 in C.M.P.No.94 of 2012 in S.C.No.180 of 2011, the defacto complainant/P.W.2 has filed the present revision before this Court. The learned counsel for the revision petitioner would submit that when the victim was admitted in the hospital at Chengalpet,http://www.judis.nic.in 3 intimation was sent to the first respondent police station. One of the police officials came to the hospital and in the presence of the duty doctor, the police recorded the statement of the victim, in which she has stated that the victim and one Sivaraman/A1 loved each other for the past one year. Subsequently, A1 called the victim and refused to marry her. Therefore, she committed suicide by setting fire on herself. The learned Sessions Judge has failed to consider the scope of Section 227 Cr.P.C. and allowed the petition to discharge the second respondent, which warrants interference. The learned Government Advocate (Crl. side) appearing for the State would submit that the victim and other prosecution witnesses have clearly spoken about the involvement of the A2 and also abutment to commit suicide. The charges levelled against the second respondent are under Section 306 read with 341 IPC, 506(ii) IPC and Section 4 and 4B of Tamil Nadu Prevention of Harassment of Woman Act. Prior to the occurrence, three accused came to the house of the victim and called her to a lonely place and threatened her. A1 refused to marry her. Due to threaten of all the three accused, thehttp://www.judis.nic.in 4 victim was driven to commit suicide. Accordingly, the learned Government Advocate would submit that the learned Sessions Judge has erroneously allowed the petition. The learned counsel for the second respondent/A2 would submit that in the statement recorded by the police, she has stated that the accused threatened her. Except that word, no other allegations are made against the second respondent. It is well settled proposition of law that at the time of considering the petition for discharge, the Court has to see the report filed by the prosecution under Section 173 Cr.P.C., and not the defence taken by the accused, and documents filed and referred by the accused. On a reading of the entire materials, it is seen that when the victim was admitted in the hospital for treatment, the first respondent police came to the hospital on intimation. The victim herself has given the statement before the police in the presence of the Doctor. The Doctor, who treated the victim, has given the certificate. Therefore the order passed by the learned Sessions Judge is set aside. In the result, this Criminal Revision is allowed by setting aside the order in Crl.",
+   "reviewed_by": "skeptic pass wf_b5f72eac-ac5",
+   "source": "LeSICiN release, Zenodo record 6053791, train split, case id 39883671"
+  },
+  {
+   "anonymised": true,
+   "author": "LeSICiN ILSI train, fact text as released",
+   "author_type": "judgment-excerpt",
+   "charges": [
+    {
+     "charge": "Kidnapping from lawful guardianship",
+     "sections": {
+      "bns": [
+       "BNS 137"
+      ],
+      "ipc": [
+       "IPC 363"
+      ]
+     }
+    },
+    {
+     "charge": "Kidnapping or abducting a woman to compel marriage or illicit intercourse",
+     "sections": {
+      "bns": [
+       "BNS 87"
+      ],
+      "ipc": [
+       "IPC 366"
+      ]
+     }
+    },
+    {
+     "charge": "Rape",
+     "sections": {
+      "bns": [
+       "BNS 64"
+      ],
+      "ipc": [
+       "IPC 376"
+      ]
+     }
+    }
+   ],
+   "id": "154394117",
+   "label_basis": "agent-drafted-skeptic-refuted",
+   "query": "The appellant has been convicted and sentenced as under : As per the prosecution story, on 17.05.1995, the appellant who was known to the prosecutrix, kidnapped her from the safe custody of her parents and took her to Bombay and other places. On the 2 CRA No. 2360/1999 pretext of marriage, he committed rape with her and threatened her. In the meanwhile, the appellant got prepared the marriage certificate which was signed by the prosecutrix. Thereafter, MLC was conducted which confirmed that intercourse was committed with the prosecutrix. After due investigation, charge-sheet was filed by the police. 2 CRA No. 2360/1999 On the basis of the evidence available on record, learned trial Court convicted the appellant under Sections 363, 366 and 376 of the Indian Penal Code and awarded sentence as mentioned above. Hence, the appellant is liable to be acquitted from the charges levelled against him. Learned Panel Lawyer for the State has opposed the contentions of the counsel for the appellant. Heard learned counsel for the parties at length. Perused the record. The conviction of the appellant is mainly based on the 3 CRA No. 2360/1999 testimony of the prosecutrix. It is alleged that at the time of the incident i.e. on 17.05.1995, the prosecutrix was a minor. However, to prove her age as mentioned in the marksheet (Ex. P/2) no witness has been examined from the school nor the admission register has been exhibited by the prosecution. The prosecutrix herself stated that her date of birth was 23.06.1980 but her mother Pushplata (PW-2), although stated that the date was 23rd June, however, she was unable to recall the year of birth. Further, Narayan Singh - father of the prosecutrix was not examined by the prosecution. 3 CRA No. 2360/1999 The learned trial Court has held that on the date of incident, the prosecutrix was a minor. This finding of the trial Court is based only on the assumptions and presumptions, hence, this Court is not inclined to accept the aforesaid findings as proved. Hence, it is held that at the time of commission of offence, prosecutrix was not a minor girl. From the testimony of the prosecutrix, it is apparently clear that the appellant was known to her. She had accompanied the appellant from Narsinghpur to Bombay on her free will without any resistance from her part. Thereafter, she traveled from Bombay to other places with the appellant on train but she neither informed anyone nor complained against the appellant. After leaving her house, she resided with the appellant for about 28 days. In her statement, she has nowhere stated that the appellant restrained or confined her due to 4 CRA No. 2360/1999 which she was unable to escape. All these material facts have been ignored by the trial court. 4 CRA No. 2360/1999 Accordingly, the appeal filed by the appellant is allowed. He is acquitted from the charge of offences under Sections 363, 366 and 376 of the Indian Penal Code. (Smt. Anjuli Palo) Judge vidya Digitally signed by SREEVIDYA Date: 2019.08.29 16:39:36 +05'30'",
+   "reviewed_by": "skeptic pass wf_87b6af80-0ae",
+   "source": "LeSICiN release, Zenodo record 6053791, train split, case id 154394117"
+  },
+  {
+   "anonymised": true,
+   "author": "LeSICiN ILSI train, fact text as released",
+   "author_type": "judgment-excerpt",
+   "charges": [
+    {
+     "charge": "Criminal breach of trust by banker or agent",
+     "sections": {
+      "bns": [
+       "BNS 316"
+      ],
+      "ipc": [
+       "IPC 409"
+      ]
+     }
+    },
+    {
+     "charge": "Criminal conspiracy",
+     "sections": {
+      "bns": [
+       "BNS 61"
+      ],
+      "ipc": [
+       "IPC 120B"
+      ]
+     }
+    },
+    {
+     "charge": "Falsification of accounts",
+     "sections": {
+      "bns": [
+       "BNS 344"
+      ],
+      "ipc": [
+       "IPC 477A"
+      ]
+     }
+    }
+   ],
+   "id": "1733568",
+   "label_basis": "agent-drafted-skeptic-refuted",
+   "query": "ORDER Sen, J. The petitioners are being proceeded against for having committed offences punishable under Sections 409/120B & 477A, Penal Code that is to say, they are being tried for criminal breach of trust, conspiracy & falsification of accounts. Some of the petitioners were the managing agents of the Behala Sree Bank & some were the employees of the managing agents. The proceedings were started on the complaint of one Nani Gopal Haldar, a depositor, who had a current account with this Bank. His case briefly is that the managing agents of the Bank used the money which he deposited in his current account for the purpose of other businesses & thereby they committed the offences charged against them. On this petition of complaint, being filed the learned Magistrate ordered the police to investigate the matter treating the petition of complaint as the First Information Report. The police investigated the matter & submitted a charge-sheet & thereupon the learned Mag.",
+   "reviewed_by": "skeptic pass wf_87b6af80-0ae",
+   "source": "LeSICiN release, Zenodo record 6053791, train split, case id 1733568"
+  },
+  {
+   "anonymised": true,
+   "author": "LeSICiN ILSI train, fact text as released",
+   "author_type": "judgment-excerpt",
+   "charges": [
+    {
+     "charge": "Causing death by negligence",
+     "sections": {
+      "bns": [
+       "BNS 106"
+      ],
+      "ipc": [
+       "IPC 304A"
+      ]
+     }
+    },
+    {
+     "charge": "Disobedience of order duly promulgated by public servant",
+     "sections": {
+      "bns": [
+       "BNS 223"
+      ],
+      "ipc": [
+       "IPC 188"
+      ]
+     }
+    },
+    {
+     "charge": "Being member of unlawful assembly",
+     "sections": {
+      "bns": [
+       "BNS 189"
+      ],
+      "ipc": [
+       "IPC 143"
+      ]
+     }
+    }
+   ],
+   "id": "71898306",
+   "label_basis": "agent-drafted-skeptic-refuted",
+   "query": "This Criminal Original Petition has been filed to quash the impugned charge sheet in C.C.No.113 of 2017 on the file of the learned District Munsif cum Judicial Magistrate, Karaikudi. 2.The learned Counsel appearing for the petitioners would submit Without any base, the respondent police registered a case in Crime No.61 of 2017 for the offences under Sections 143, 188 and 304(A) IPC, as against the petitioners. He also submitted that the respondent has not produced any documents and it is not stated in the charge sheet that the petitioners are the committee members in the aforesaid temple. He also submitted that either in the complaint or in the charge sheet, they were not stated anything that the petitioners are present in the scene of occurrence. Without any basis the case was taken on file in C.C.No.113 of 2017, by the learned District Munsif cum Judicial Magistrate, karaikudi. Therefore, the petitioners have filed this petition to quash the proceedings. 3.The learned Government Advocate (Criminal Side) would submit that on 02.04.2017, at N.Vairavanpatti Village, Arulmigu Poomalcahiamman Temple festival was conducted by the festival organizer. In this regard, the committee has organized for conducting Manju Virattu in the village, without any permission from the concerned authorities. Due to which, one 'kattumadu' gored the Hemavarshini, who is the daughter ofhttp://www.judis.nic.in 2/7 CRL.O.P.(MD).No.3596 of 2018 one Saravanan and the girl was died in the hospital. Hence the case was registered by the respondent police. Heard Mr. R.Mathiyalagan, learned counsel appearing for the petitioner and Mr. K.Suyambulinga Bharathi, learned Government Advocate (Criminal Side) appearing for the first respondent. The case was registered for the offences punishable under Sections 143, 188 and 304(A) IPC. The case of the prosecution is that the petitioners were conducting 'Manju virattu' without getting any valid permission from the concerned authorities, due to which, one girl was died. It is also seen from the statement recorded under Section 161(3) Cr. It is also relevant to rely upon the judgment of the Hon'ble Supreme Court of India passed in Crl. A.No.255 of 2019 dated 12.02.2019 - Sau. Kamal Shivaji Pokarnekar vs. the State of Maharashtra & ors., as follows:- Hence this Criminal Original Petition stands dismissed. Since the case is of the year 2017, the learned District Munsif cum Judicial Magistrate, karaikudi, is directed to complete the trial within a period of six months from the date of receipt of a copy of this Order. Consequently, connected miscellaneous petitions are closed. 1.The District Munsif cum Judicial Magistrate, karaikudi. 2.The Inspector of Police, Kundrakudi Police Station, Sivagangai District. 3.The Additional Public Prosecutor, Madurai Bench of Madras High Court, Madurai. http://www.judis.nic.in 6/7 CRL.O.P.(MD).No.3596 of 2018 G.K.ILANTHIRAIYAN, J. das CRL.O.P.(MD).No.3596 of 2018 and CRL.M.P.(MD)Nos.1710 and 1711 of 2018 16.09.2019http://www.judis.nic.in 7/7",
+   "reviewed_by": "skeptic pass wf_87b6af80-0ae",
+   "source": "LeSICiN release, Zenodo record 6053791, train split, case id 71898306"
+  },
+  {
+   "anonymised": true,
+   "author": "LeSICiN ILSI train, fact text as released",
+   "author_type": "judgment-excerpt",
+   "charges": [
+    {
+     "charge": "Cruelty by husband or relative",
+     "sections": {
+      "bns": [
+       "BNS 85"
+      ],
+      "ipc": [
+       "IPC 498A"
+      ]
+     }
+    },
+    {
+     "charge": "Voluntarily causing hurt",
+     "sections": {
+      "bns": [
+       "BNS 115"
+      ],
+      "ipc": [
+       "IPC 323"
+      ]
+     }
+    },
+    {
+     "charge": "Obscene acts or words",
+     "sections": {
+      "bns": [
+       "BNS 296"
+      ],
+      "ipc": [
+       "IPC 294"
+      ]
+     }
+    },
+    {
+     "charge": "Criminal intimidation",
+     "sections": {
+      "bns": [
+       "BNS 351"
+      ],
+      "ipc": [
+       "IPC 506"
+      ]
+     }
+    }
+   ],
+   "id": "102242151",
+   "label_basis": "agent-drafted-skeptic-refuted",
+   "query": "This is first application under Section 438 of Cr.P.C. filed on behalf of applicant for grant of anticipatory bail. Applicant is apprehending his arrest in connection with Crime No.1160/2014 registered against him at Police Station Kotwali, District Shivpuri (M.P.) for commission of offence punishable under Sections 498A, 323, 294 and 506B of IPC. Learned counsel for the applicant contended that the case of the present applicant is akin to the case of other co- accused, namely, Smt. Shameem Bano and Azeez Khan who have been extended the benefit of anticipatory bail vide order dated 12.01.2015 in Misc. C.No.12341/2014 and Shahnawaz Khan who has been extended the benefit of anticipatory bail vide order dated 02.02.2015 in Misc. C.No.959/2015, therefore, claiming the same benefit, it is prayed that the present application may be allowed and the applicant may be granted the benefit of anticipatory bail on the same set of facts and circumstances. Learned P.L. for the State does not dispute the aforesaid position. State of M.P. disputed by the other side, but without expressing any opinion on the merits, application is allowed. It is directed that if applicant surrenders before the Investigating Officer on or before 20.03.2015 and thereafter furnishes the personal bond in the sum of Rs.50,000/-(Rs. Fifty Thousand Only) with one solvent surety to the satisfaction of concerning Investigating Officer then applicant be released on bail, subject to compliance of the conditions enumerated under section 438(2) of Cr.P.C. Certified copy as per rules.",
+   "reviewed_by": "skeptic pass wf_87b6af80-0ae",
+   "source": "LeSICiN release, Zenodo record 6053791, train split, case id 102242151"
+  },
+  {
+   "anonymised": true,
+   "author": "LeSICiN ILSI train, fact text as released",
+   "author_type": "judgment-excerpt",
+   "charges": [
+    {
+     "charge": "Murder of wife",
+     "sections": {
+      "bns": [
+       "BNS 103"
+      ],
+      "ipc": [
+       "IPC 302"
+      ]
+     }
+    },
+    {
+     "charge": "Cruelty to a married woman by husband and his relatives",
+     "sections": {
+      "bns": [
+       "BNS 85"
+      ],
+      "ipc": [
+       "IPC 498A"
+      ]
+     }
+    }
+   ],
+   "id": "1422198",
+   "label_basis": "agent-drafted-skeptic-refuted",
+   "query": "Petitioner No. 2 Dina Nath and petitioner No. 3 - Mala Devi are parents to Jatinder Kumar. Petitioner No. 4 Kumari Veena and Petitioner No. 5 - Kumari Poonam are sisters of Jatinder. By the impugned order dated 29th August 1989 the learned Additional Sessions Judge has directed that all the petitioners are liable to be charged under S. 498A IPC and under Ss. 302/34 IPC. The only material to which the learned State counsel could draw my attention was to the statement of the father of deceased named Chander Prakash. The facts which can be proved may constitute offence under one or other provision which is in doubt. The accused may be charged with having committed all or any of such offences or charged in the alternative for having committed some one of the said offences. However, the question of framing of charge in alternative can arise when there is no doubt about facts which can be proved but doubt is as to what offence will be constituted on those facts. It is not permissible, in law, to frame a charge of murder and a charge in alternative for accused having abetted the suicide, as it shows doubt as to facts. As stated earlier, the offences under Ss. 302 and 306 are diametrically opposed to each other. The evidence on record and in particular the circumstantial evidence do cast a grave suspicion of the petitioners 1 to 3 having committed offence under S. 302 IPC. It is not necessary at this stage to discuss the evidence in detail. The Additional Sessions Judge has rightly concluded that perusal of the post mortem report, inquest report and the presence of blood lying near the dead body raised a suspicion of offence under S. 302, as ordinarily blood would not start oozing out from the burns. Learned counsel for the State also contended that if this court comes to the conclusion that in law charge under S. 306 cannot be framed, the facts amply justify the conclusion that there is a grave suspicion of petitioners having committed offence under S. 302 IPC. I agree with the contention of the learned counsel for the State. For the foregoing reasons the revision petition is partly allowed. The impugned order directing framing of charge against petitioner Veena and Poonam is set aside. The said petitioners are discharged. The order directing framing of charge in alternative under S. 306 IPC against petitioners Jatinder Dina Nath and Smt. Mala Devi is set aside. However, the order directing framing of charge under Ss. 302/34 IPC and S. 498A IPC against the said three petitioners is maintained. The petition is disposed of in the above terms. The record be sent back immediately. Order accordingly.",
+   "reviewed_by": "skeptic pass wf_87b6af80-0ae",
+   "source": "LeSICiN release, Zenodo record 6053791, train split, case id 1422198"
+  },
+  {
+   "anonymised": true,
+   "author": "LeSICiN ILSI train, fact text as released",
+   "author_type": "judgment-excerpt",
+   "charges": [
+    {
+     "charge": "Attempt to murder",
+     "sections": {
+      "bns": [
+       "BNS 109"
+      ],
+      "ipc": [
+       "IPC 307"
+      ]
+     }
+    },
+    {
+     "charge": "Obscene words in public",
+     "sections": {
+      "bns": [
+       "BNS 296"
+      ],
+      "ipc": [
+       "IPC 294"
+      ]
+     }
+    },
+    {
+     "charge": "Criminal intimidation",
+     "sections": {
+      "bns": [
+       "BNS 351"
+      ],
+      "ipc": [
+       "IPC 506"
+      ]
+     }
+    },
+    {
+     "charge": "Wrongful restraint",
+     "sections": {
+      "bns": [
+       "BNS 126"
+      ],
+      "ipc": [
+       "IPC 341"
+      ]
+     }
+    }
+   ],
+   "id": "33467557",
+   "label_basis": "agent-drafted-skeptic-refuted",
+   "query": "I am shown as Defacto Complainant in the said complaint. It is respectfully submitted that inadvertently I became the DefactoComplainant in the said case as per the instruction of police. On the complaint lodged by the second respondent, the first respondentregistered a case in Crime No.138 of 2016 and after completing theinvestigation, has filed a charge sheet in P.R.C.No.2 of 2017 before thelearned Judicial Magistrate, Sathankulam, Thoothukudi District against thepetitioners herein for offences under Sections 341, 294(b), 506(2) and 307 ofthe Indian Penal Code, for quashing which, the petitioners are before thisCourt on the ground that they have arrived at a compromise with the defactocomplainant. Today, when the matter was taken up for hearing, Mr.C.Johnson,Special Sub-Inspector of Police, Thattarmadam Police Station, is present. Thedefacto complainant is present and the petitioners are also present and theiridentifications were also verified by this Court, in addition to theconfirmation of the identity of the parties by the learned GovernmentAdvocate (Criminal side) through Mr.C.Johnson, Special Sub-Inspector ofPolice, Thattarmadam Police Station. Under normal circumstances, a charge sheet under Section 307 of theIndian Penal Code cannot be quashed on the ground that the parties havearrived at a compromise. However, in Narinder Singh v. State of Punjabreported in 2014(2) MLJ (Crl.) 365 (SC), the Supreme Court has stated thatthe prosecution under Section 307 of the Indian Penal Code can be quashed, ifcertain conditions exist. In this case, it is the case of the prosecutionthat the defacto complainant was working in the Studio of A-3 and that whenthe defacto complainant asked for his salary, he is said to have been abusedby A-3 and his friends and that when A-1 attempted to attack him with aknife, the defacto complainant ducked and avoided getting injured. There areno pervious cases against these petitioners. The defacto complainant was notinjured at all. The defacto complainant has filed an affidavit dated 05.04.2017,wherein, it is stated as follows: That I am the 2nd Respondent/Defacto Complainant and well acquainted with the facts and I am competent to swear this Affidavit. Further werealized our mistake and settled the same with the help of our elders. Sinceall the petitioners/Accused Nos.1 to 4 are my friends and we have no personalgrudges each other, I don't want to pursue the said complaint and I give myconsent at my free will without any coercion to close the above mentionedcase.\" Therefore, thispetition is allowed and the entire proceedings in P.R.C.No.2 of 2017, on thefile of the learned Judicial Magistrate, Sathankulam, Thoothukudi District,in respect of all the accused including those who are not before this Courtare hereby quashed. The affidavit dated 05.04.2017 shall form part of thisorder. At the instance of the learned counsel for the petitioners, thepetitioners themselves voluntarily came forward to contribute some amount forthe purpose of removal of Seemai Karuvelam Trees. Accepting the submission, the petitioners are directed to pay a sumof Rs.500/- (Rupees Five Hundred only) each, to the credit of Indian BankSavings Account No.6514082295, operated by the Registrar (Administration),Madurai Bench of Madras High Court, Madurai, for the purpose of removal ofSeemai Karuvelam Trees, within a period of two weeks from today. After makingpayment, a copy of the challan shall be furnished to the Registrar(Administration), Madurai Bench of Madras High Cour, Madurai. 1.The Judicial Magistrate Court, Sathankulam, Thoothukudi District. 2.The Inspector of Police, Thattarmadam Police Station, Thoothukudi District. 3.The Additional Public Prosecutor, Madurai Bench of Madras High Court, Madurai..\u001a",
+   "reviewed_by": "skeptic pass wf_87b6af80-0ae",
+   "source": "LeSICiN release, Zenodo record 6053791, train split, case id 33467557"
+  },
+  {
+   "anonymised": true,
+   "author": "LeSICiN ILSI train, fact text as released",
+   "author_type": "judgment-excerpt",
+   "charges": [
+    {
+     "charge": "Kidnapping child from lawful guardianship",
+     "sections": {
+      "bns": [
+       "BNS 137"
+      ],
+      "ipc": [
+       "IPC 363"
+      ]
+     }
+    },
+    {
+     "charge": "Hurt by chemical spray into the eyes",
+     "sections": {
+      "bns": [
+       "BNS 115",
+       "BNS 118"
+      ],
+      "ipc": [
+       "IPC 323",
+       "IPC 324"
+      ]
+     }
+    }
+   ],
+   "id": "40330300",
+   "label_basis": "agent-drafted-skeptic-refuted",
+   "query": "This petition has been preferred invoking the inherent jurisdiction of this court under Section 482 of the Code of Criminal Procedure, 1973 (Cr.P.C.) praying for quashing of the first information report (FIR) No.223/2018, registered at Police Station Vikas Puri for offences punishable under Sections 323/326/363/34 of Indian Penal Code, 1860 (IPC). The FIR was registered on 08.06.2018 which, as per the petitioners, is an \"abuse of law\". The State as respondent has accepted notice and the SHO of Police Station Vikas Puri has produced the case diary for perusal. M.C. No.3428/2018 Page 1 of 4 The learned counsel for the petitioners has been heard and record has been perused. In the opinion of this court, the petition at hand itself is an abuse of the process of law, the prayer being highly premature and smacking of an attempt to stall the investigative process into the offences which are quite serious in nature, there being no material available on which it could be inferred that the allegations in the FIR are false, baseless, concocted or motivated. The first petitioner concededly was married to the third respondent who is the complainant in the FIR she being a resident of Vikas Puri, New Delhi. It appears that from out of the wedlock, a male child, now aged three years, was born. The marriage of the parties has run into rough weather, the child being in the physical care, custody and control of the mother (the first informant). It appears the FIR No.7/2018 had been registered by Police Station Bakshi Nagar, Jammu for offences punishable under Sections 376/354/506 Ranbir Penal Code (RPC) against the brother-in-law of the third respondent on the allegations that he had molested the minor daughter of the first petitioner. But, concededly, the Supreme Court by order dated 12.02.2018 in SLP (Crl.) 1328/2018 stayed the operation of the aforesaid order. M.C. No.3428/2018 Page 2 of 4 In the FIR lodged on 08.06.2018, in the context of which present petition has been filed, the third respondent has alleged that, while she was returning with the child from his school, travelling in a cycle-rickshaw, she was intercepted by the second and third petitioners - they being described as associates of the first petitioners - and that her child was forcibly snatched from her, after the rickshaw puller and she had been incapacitated by use of some chemical spray into their respective eyes. The petitioners state that the third respondent has managed to have the said FIR registered without taking into account that the first petitioner is the biological father of the child to whom the custody had been given by the third respondent after taking an amount of Rs.2 lac from him. It is really strange that the second and third petitioners have joined the first petitioner in filing this petition and thereby making an attempt to endorse his claim as to the lawful custody and control of the child on the relevant date. The offences alleged in the FIR are far too serious and cannot be trivialized, there being no material, as observed earlier, to assume that the allegations made therein by the third respondent are false. A specific role has been attributed in the FIR to the second and third petitioners who, of their own, have no right or claim as to the custody of the child nor there is any averment that they had been duly authorized by the first petitioner to take the child in their control. The matter needs probe. M.C. No.3428/2018 Page 3 of 4 The petition is dismissed in limine. Pending applications also stand disposed of.",
+   "reviewed_by": "skeptic pass wf_87b6af80-0ae",
+   "source": "LeSICiN release, Zenodo record 6053791, train split, case id 40330300"
+  },
+  {
+   "anonymised": true,
+   "author": "LeSICiN ILSI train, fact text as released",
+   "author_type": "judgment-excerpt",
+   "charges": [
+    {
+     "charge": "Attempt to murder by setting wife's family member on fire",
+     "sections": {
+      "bns": [
+       "BNS 109"
+      ],
+      "ipc": [
+       "IPC 307"
+      ]
+     }
+    },
+    {
+     "charge": "Cruelty to a married woman (dowry demand)",
+     "sections": {
+      "bns": [
+       "BNS 85"
+      ],
+      "ipc": [
+       "IPC 498A"
+      ]
+     }
+    }
+   ],
+   "id": "188477105",
+   "label_basis": "agent-drafted-skeptic-refuted",
+   "query": "The applicant will comply with all the terms and conditions of the bond executed by him; The applicant will cooperate in the trial; The applicant will not indulge himself in extending inducement, threat or promise to any person acquainted with the fact of the case so as to dissuade him from disclosing such facts to the Court or to the Police Officer, as the case may be; (RAMDUTT NAMDEV @ RAJU Vs THE STATE OF MADHYA PRADESH) 6 Jabalpur, Dated : 22-10-2020 Heard through Video Conferencing. Shri Bramhadatt Singh, learned counsel for the applicant. Earlier three bail applications i.e. M.Cr. Third bail application M.Cr. It is alleged that the complainant has given written complaint to the effect that when she was at her house and preparing food in the kitchen, all of a sudden family members assaulted her and thereafter, covered her face and two others tide her hands and poured something and set her on fire. On the basis of aforesaid, offence has been registered against the applicant. Learned counsel for the applicants submit that the applicant is innocent and has been falsely implicated. He has not committed any offence. The applicant is brother-in-law (Dever) of the victim. All the family members were residing separately. There are general allegations levelled against the applicant in regard to demand of dowry. No specific allegation has been attributed to Signature Not Verified SAN the applicant regarding setting her to the fire. He further submitted that the victim has stated that all the family members participated in the alleged incident and they set her to the fire. With these submissions, he prays for dismissal of the application. Heard learned counsel for both the parties and perused the entire material available in the PDF format. This order will remain operative subject to compliance of the following conditions by the applicant :- Certified Copy on payment of usual charges.",
+   "reviewed_by": "skeptic pass wf_87b6af80-0ae",
+   "source": "LeSICiN release, Zenodo record 6053791, train split, case id 188477105"
+  },
+  {
+   "anonymised": true,
+   "author": "LeSICiN ILSI train, fact text as released",
+   "author_type": "judgment-excerpt",
+   "charges": [
+    {
+     "charge": "Stalking",
+     "sections": {
+      "bns": [
+       "BNS 78"
+      ],
+      "ipc": [
+       "IPC 354D"
+      ]
+     }
+    },
+    {
+     "charge": "Voluntarily causing hurt",
+     "sections": {
+      "bns": [
+       "BNS 115"
+      ],
+      "ipc": [
+       "IPC 323"
+      ]
+     }
+    }
+   ],
+   "id": "21756622",
+   "label_basis": "agent-drafted-skeptic-refuted",
+   "query": "This is the first bail application filed by the applicant under Section 439 of the Cr.P.C. for grant of bail in connection with Crime No. 286/2018 registered at P.S. Semariya District- Panna for the offence punishable under section 363,354,354-D, 506/34 of the IPC. As per the prosecution story, the applicant used to follow and used to talk to the prosecutrix on mobile. On the day of incident i.e. on 19.10.2018 at about 11 PM in the night, when she went along with her sister for seeing Ramlila and Durgaji the accused/applicant came and asked her that her father is calling near the bus stand. On reaching the spot when she enquired about her father the applicant slapped her. Charge-sheet has been filed and trial will take time to conclude. On the aforesaid grounds, learned counsel for the applicant has prayed that the applicant be released on bail. Learned Government Advocate opposing the submissions made on behalf of the applicant has prayed for rejection of the bail application. (AKHIL KUMAR SRIVASTAVA) JUDGE MSP Digitally signed by MANVENDRA SINGH PARIHAR Date: 24/11/2018 13:25:01",
+   "reviewed_by": "skeptic pass wf_b5f72eac-ac5",
+   "source": "LeSICiN release, Zenodo record 6053791, train split, case id 21756622"
+  },
+  {
+   "anonymised": true,
+   "author": "LeSICiN ILSI train, fact text as released",
+   "author_type": "judgment-excerpt",
+   "charges": [
+    {
+     "charge": "Voluntarily causing hurt",
+     "sections": {
+      "bns": [
+       "BNS 115"
+      ],
+      "ipc": [
+       "IPC 323"
+      ]
+     }
+    },
+    {
+     "charge": "Obscene words in public place",
+     "sections": {
+      "bns": [
+       "BNS 296"
+      ],
+      "ipc": [
+       "IPC 294"
+      ]
+     }
+    },
+    {
+     "charge": "House-trespass",
+     "sections": {
+      "bns": [
+       "BNS 329",
+       "BNS 333"
+      ],
+      "ipc": [
+       "IPC 448",
+       "IPC 452"
+      ]
+     }
+    },
+    {
+     "charge": "Assault with intent to outrage modesty",
+     "sections": {
+      "bns": [
+       "BNS 74"
+      ],
+      "ipc": [
+       "IPC 354"
+      ]
+     }
+    }
+   ],
+   "id": "24605614",
+   "label_basis": "agent-drafted-skeptic-refuted",
+   "query": "ORDER P. Sathasivam, J. The petitioner challenges the detention order, dated 16.02.2006, detaining her son by name Ramesh as 'Goonda' as contemplated under the Tamil Nadu Prevention of Dangerous Activities of Bootleggers, Drug Offenders, Forest Offenders, Goondas, Immoral Traffic Offenders, Slum Grabbers and Video Pirates Act, 1982 (Tamil Nadu Act 14 of 1982). Heard learned Counsel for the petitioner as well as learned Additional Public Prosecutor for the respondents. Though several grounds have been raised, Mr.R.Sankarasubbu, at the foremost, submitted that the impugned order of detention was based on stale grounds, hence, the same cannot be sustained. While elaborating the above contention, learned Counsel pointed out that the grounds of detention refers to two adverse cases and the ground case. The first adverse case relates to an occurrence that took place on 29.2.2000, registered in Vellore Taluk Police Station Crime No. 108 of 2000 for offences under Sections 147, 148, 447, 324, 506(ii) read with Section 149 IPC. The second adverse case relates to an occurrence, dated 06.01.2002, registered in Crime No. 6 of 2002 on the file of the very same police station for offences under Sections 341, 294(b), 323 and 506(ii) IPC. The said case is also pending trial in the Court of Judicial Magistrate No. 1, Vellore, in C.C. No. 163 of 2002 . The occurrence in the second adverse case had taken place nearly after two years from the date of occurrence in the first adverse case. The impugned detention order was passed, based on the ground case occurrence, which is said to have taken place on 29.01.2006, ie., nearly after four years. In the said case, according to the complainant by name Raja, on 29.01.2006, in the afternoon, he went to shop to buy chocolate for his children. On the way, detenu Ramesh, who is an auto-driver, demanded money from him to meet out his expenses. When he questioned the said Ramesh, he scolded him in filthy language and kicked on the stomach. On seeing this, the ne ighbours intervened and separated. The complainant returned home and laid down. At about 9 .45 P.M., wife of the complainant by name Kannagi, on returning home from temple, asked her husband as to what had happened, for which, he told her in detail the incident occurred in the afternoon. It further shows that when his wife asked him to go to police Station for making complaint, the detenu trespassed into their house, scolded Kannagi in filthy language and kicked the complainant. When Kannagi came to the rescue of her husband, the detenu pulled her, tore her blouse and also attempted to outrage her modesty.",
+   "reviewed_by": "skeptic pass wf_b5f72eac-ac5",
+   "source": "LeSICiN release, Zenodo record 6053791, train split, case id 24605614"
+  },
+  {
+   "anonymised": true,
+   "author": "LeSICiN ILSI train, fact text as released",
+   "author_type": "judgment-excerpt",
+   "charges": [
+    {
+     "charge": "Attempt to murder",
+     "sections": {
+      "bns": [
+       "BNS 109"
+      ],
+      "ipc": [
+       "IPC 307"
+      ]
+     }
+    },
+    {
+     "charge": "Voluntarily causing grievous hurt by dangerous weapons",
+     "sections": {
+      "bns": [
+       "BNS 118"
+      ],
+      "ipc": [
+       "IPC 326"
+      ]
+     }
+    },
+    {
+     "charge": "Voluntarily causing hurt by dangerous weapons",
+     "sections": {
+      "bns": [
+       "BNS 118"
+      ],
+      "ipc": [
+       "IPC 324"
+      ]
+     }
+    },
+    {
+     "charge": "Voluntarily causing hurt",
+     "sections": {
+      "bns": [
+       "BNS 115"
+      ],
+      "ipc": [
+       "IPC 323"
+      ]
+     }
+    }
+   ],
+   "id": "1781247",
+   "label_basis": "agent-drafted-skeptic-refuted",
+   "query": "It is only with the grace of God that nobody died due to those injuries. The condition of Ghumansingh Raghuversingh and Komalsingh was precarious. ORDER Shacheendra Dwivedi, J. This revision petition has been preferred by the complainant-injured persons against the accused persons-non-petitioners, being aggrieved by the order of not framing charge against the non-petitioners for offence under Section 307, Indian Penal Code. The order that has been challenged by the complainant-petitioners is of framing of charges against the non-petitioners by the 3rd Addl. Sessions Judge, Vidhsha, under Sections 323/149, 324/149 and 326/149, Indian Penal Code. Briefly stated the facts leading to filing of this revision petition are that an incident of marpit took place in village Bhatoli, District Vidisha over at dispute of an agricultural land. On the date of the incident, the Revenue Inspector and a patwari had gone to the village for spot inspection and for verification of possession on the land. For that purpose, when a notice was being given to the non-petitioner Hariram and Jaswantsingh, they refused to sign the notice and all the accused attacked the complainant party shouting nobody be spared alive '. The Patwari and the Revenue Inspector, under fear, left the spot. In the assault, all the eight petitioners were injured. Ghumansingh suffered number of injuries including a stab wound on his abdomen, due to which his intestines came out with multiple perforations. He also suffered another grievous injury on the right frontal area of head which caused fracture resulting in his brain matter coming out. All other petitioners viz. Nos. 2 to 8 also suffered multiple injuries, many on vital parts of their bodies. It would be relevant to mention here, only the injuries of Komalsingh, Raghuveersingh and Mazbootsingh : - (1) An incised wound over left parietal region 5 X 2 X bone deep bleeding. (2) One contusion in lumber region of back 1 cm X 3 cm red in colour. (3) One contusion on left side of back in lumber region 8 cm X 3 cm. (4) One abrasion on left leg 2 X .2 X .2 cm. (5) One contusion over thigh left side 5 X 3 cm. General condition of the patient was not satisfactory due to head injury since there was bleeding through mouth and nose. (1) One penetrating wound over left side of back in lumber region. (2) One incised wound over chest left side. (3) Swelling over root of right thumb. (1)Lacerated wound over left temporal region 4 X 2 X bone deep. (2) Contusion over left thigh. (3) Multiple contusions over left leg. (4) Contusion over right leg 5 X 2 cm. (5) Contusion over right thigh 12 X 3 cm. (6) Contusion over right ankle joint 4 X 2 cm posteriorly. They were referred to Hamidia Hospital Bhopal. The first information report of the incident was lodged by shersingh and an offence under Section 307, Indian Penal Code, was registered against the non-petitioners. After due investigation, a challan was filed by the police for offence under Sections 147, 148 and 307, Indian Penal Code. After enquiry, the case was committed to the Court of Session, for trial. The learned 3rd Addl. Sessions Judge, by the impugned order held that from the material on record no case exclusively triable by the Court of Session was made out and consequently he framed the charges under Sections 323/149, 324/149 and 326/149, Indian Penal Code and transferred the case for trial to Chief Judicial Magistrate Vidisha under Section 228(l)(a), Criminal Procedure Code. Aggrieved by this order, the petitioners-injured persons have preferred this revision petition.",
+   "reviewed_by": "skeptic pass wf_87b6af80-0ae",
+   "source": "LeSICiN release, Zenodo record 6053791, train split, case id 1781247"
+  },
+  {
+   "anonymised": true,
+   "author": "LeSICiN ILSI train, fact text as released",
+   "author_type": "judgment-excerpt",
+   "charges": [
+    {
+     "charge": "Rioting armed with deadly weapon",
+     "sections": {
+      "bns": [
+       "BNS 191"
+      ],
+      "ipc": [
+       "IPC 147",
+       "IPC 148"
+      ]
+     }
+    },
+    {
+     "charge": "Voluntarily causing grievous hurt to Raja Khan",
+     "sections": {
+      "bns": [
+       "BNS 117",
+       "BNS 118"
+      ],
+      "ipc": [
+       "IPC 325",
+       "IPC 326"
+      ]
+     }
+    },
+    {
+     "charge": "Voluntarily causing hurt to Anam and Reshma",
+     "sections": {
+      "bns": [
+       "BNS 115"
+      ],
+      "ipc": [
+       "IPC 323"
+      ]
+     }
+    }
+   ],
+   "id": "106805320",
+   "label_basis": "agent-drafted-skeptic-refuted",
+   "query": "Heard on both M.Cr. Case diary of Crime No. 277/2019 registered at Police Station, Intkhedi District Bhopal for the offences punishable under Sections 147, 148, 149, 294, 323, 506, 325 and 456 of IPC and 25 Arms Act, also perused. Both have been falsely implicated in this case. A cross report was also lodged but the police arrested the present applicants. There is no any criminal background. The applicants did not inflected any injuries to the complainant party. On the other side, the State strongly opposed the application. It is submitted by the State that all accused persons are equally liable for the injuries caused to the complainant party. As per prosecution case, the First Information report was lodged by Anam Khan daughter of Raja Khan. As per report on 19.08.2019 at about 9:30 at night the Shahab Ali came to the in front of the house of complainant and called the Raja by give the challenge him that if he have courage then 2 MCRC-46869-2019 came out from the house. When the Raja Khan came out from the house the accused Jouhar attack him by the help of sword, Raja Khan fell down on the spot. Thereafter, Shahab Ali, Shahrukh, Shawar, Zishan, Kamran applicant Chand Miya also attack on Raja Khan by the help of sticks. Thereafter, all accused persons entered in the house and attack upon the complainant Anam Khan and her mother Reshma. Some other person including Azim, Anif and Amin were also present with the accused persons. A cross report has been lodged by Shabar Ali upon which the Crime No. 276/19 under Sections 294, 323, 506/34 of IPC has been registered against Raja Khan, Nosha Khan and Irfan. No any grievous injury has been found in the aforesaid cross case. While in the present case Raja Khan sustained the grievous injuries including the communited fracture of left nasal bone and linear undisplaced fracture of right nasal bone. Anam and Reshma Bi also sustained the injuries in this case and the injuries are supported by their MLC report. It is also submitted by prosecution that on 18.08.2019 Crime No. 272/19 under Sections 452, 354 and 506 of IPC was registered upon the report lodged by Reshma Bi. Due to aforesaid report the applicants committed the present crime to terrorize the complainant party. A knife has been seized from the Jouhar Khan and the lathi seized from other accused persons. On 02.12.2019, copy of challan has been filed in M.Cr. (B. K. SHRIVASTAVA) JUDGE dixit Digitally signed by MAHENDRA KUMAR DIXIT Date: 2019.12.05 18:07:47 +05'30'",
+   "reviewed_by": "skeptic pass wf_87b6af80-0ae",
+   "source": "LeSICiN release, Zenodo record 6053791, train split, case id 106805320"
+  },
+  {
+   "anonymised": true,
+   "author": "LeSICiN ILSI train, fact text as released",
+   "author_type": "judgment-excerpt",
+   "charges": [
+    {
+     "charge": "Rioting",
+     "sections": {
+      "bns": [
+       "BNS 191"
+      ],
+      "ipc": [
+       "IPC 147"
+      ]
+     }
+    },
+    {
+     "charge": "Voluntarily causing hurt",
+     "sections": {
+      "bns": [
+       "BNS 115"
+      ],
+      "ipc": [
+       "IPC 323"
+      ]
+     }
+    },
+    {
+     "charge": "Criminal intimidation",
+     "sections": {
+      "bns": [
+       "BNS 351"
+      ],
+      "ipc": [
+       "IPC 506"
+      ]
+     }
+    }
+   ],
+   "id": "44267882",
+   "label_basis": "agent-drafted-skeptic-refuted",
+   "query": "Shri A. K. Pandagare, learned Counsel for the respondent No.2/complainant--Yashveer. Petitioner -- Mukuk Singh Bais and Complainant /Respondent No.2--Yashveer are present in person. They have been identified by their respective Counsel. This petition under Section 482 of Cr.P.C. has been filed for quashment of FIR registered against the present petitioner vide Crime No.439/2017 for the alleged offence punishable under Sections 458, 147, 148, 149, 294, 506, 427 and 323 of IPC. 3. Learned Counsel for the petitioner has submitted that except offence under Section 458 of IPC all are compoundable offences. As per prosecution story on 22.10.2017 at around 8.46 p.m. one Jitendra Singh Gaud has called the father of respondent No.2 on his mobile No.7755460442 from mobile No.9827455885 and threatened him to advice the respondent No.2 to be away from college election. Thereafter, at around 10.00 p.m. the other accused persons, namely, Jitendra, Gabbar, Shrikant, 2 HIGH COURT OF MADHYA PRADESH : BENCH AT INDORE M.Cr. C. No.6320 of 2018 (Mukul Singh Bais versus The State of M.P. and another) Harshad, Mukul (present applicant) and Surendra Singh entered into the house of respondent No.2 and started abusing and beating to respondent No.2 and threatened him to be away from election. The respondent No.2 reported the entire incident and thereafter the offence has been registered vide Crime No.439 of 2017 under Sections 147, 148, 149, 294, 427, 458 and 506 of IPC.",
+   "reviewed_by": "skeptic pass wf_87b6af80-0ae",
+   "source": "LeSICiN release, Zenodo record 6053791, train split, case id 44267882"
+  },
+  {
+   "anonymised": true,
+   "author": "LeSICiN ILSI train, fact text as released",
+   "author_type": "judgment-excerpt",
+   "charges": [
+    {
+     "charge": "Rape of a minor girl",
+     "sections": {
+      "bns": [
+       "BNS 64",
+       "BNS 65"
+      ],
+      "ipc": [
+       "IPC 376",
+       "IPC 376AB"
+      ]
+     }
+    },
+    {
+     "charge": "Cheating of depositors",
+     "sections": {
+      "bns": [
+       "BNS 318"
+      ],
+      "ipc": [
+       "IPC 420"
+      ]
+     }
+    }
+   ],
+   "id": "53071757",
+   "label_basis": "agent-drafted-skeptic-refuted",
+   "query": "sdas rejected C.R.M. 10307 of 2018 In Re:- An application for bail under Section 439 of the Code of Criminal Procedure filed on 11.10.2018 in connection with Tehatta Police Station Case No. 288 of 2018 dated 31.08.2018 under Sections 376AB/376(2)(i) of the Indian Penal Code and Section 6 of the POCSO Act. And In Re : Manoranjan Das ..... petitioner Mr. Amit Singh ... for the petitioner Ms. Zarin N. Khan, Ms. Trina Mitra ... for the State Learned Counsel appearing for the petitioner submits that he is in custody for 83 days and it is also submitted that he has been falsely implicated in the instant case. Learned Counsel appearing for the State opposes the payer for bail and submits that victim was a minor girl. Having considered the materials in the case diary including the statement of the victim recorded under Section 164 of the Code of Criminal Procedure and keeping in mind the gravity of the offence and prima facie involvement of the petitioner therein, we are not inclined to grant bail to the petitioner at this stage. With this direction the bail application is rejected. (Madhumati Mitra, J.) (Joymalya Bagchi, J.) 2 3 C.R.M. 192 of 2018 In Re.: An application under Section 439 of the Code of Criminal Procedure filed on 05.01.2018 in connection with Karimpur Police Station Case No. 136 of 2012 dated 03.07.2012 under Sections 420/467/468/471/120B of the Indian Penal Code. And In Re : Rabish Kumar Upadhyay ..... petitioner Mr. Asraf Ali ... for the petitioner Mr. Debojyoti Deb ... for the State Having considered the materials on record prima facie disclosing involvement of the petitioner in the alleged crime of misappropriation of monies of the innocent depositors and the fact that the petitioner has absconded for a protracted period of time, we are not inclined to grant bail to the petitioner at this stage. The application for bail is, thus, rejected. (Rajarshi Bharadwaj, J.) (Joymalya Bagchi, J.) 4",
+   "reviewed_by": "skeptic pass wf_b5f72eac-ac5",
+   "source": "LeSICiN release, Zenodo record 6053791, train split, case id 53071757"
+  },
+  {
+   "anonymised": true,
+   "author": "LeSICiN ILSI train, fact text as released",
+   "author_type": "judgment-excerpt",
+   "charges": [
+    {
+     "charge": "Defamation",
+     "sections": {
+      "bns": [
+       "BNS 356"
+      ],
+      "ipc": [
+       "IPC 500"
+      ]
+     }
+    },
+    {
+     "charge": "Criminal intimidation",
+     "sections": {
+      "bns": [
+       "BNS 351"
+      ],
+      "ipc": [
+       "IPC 506"
+      ]
+     }
+    },
+    {
+     "charge": "Word or gesture insulting modesty of a woman",
+     "sections": {
+      "bns": [
+       "BNS 79"
+      ],
+      "ipc": [
+       "IPC 509"
+      ]
+     }
+    },
+    {
+     "charge": "Stalking",
+     "sections": {
+      "bns": [
+       "BNS 78"
+      ],
+      "ipc": [
+       "IPC 354D"
+      ]
+     }
+    }
+   ],
+   "id": "43861037",
+   "label_basis": "agent-drafted-skeptic-refuted",
+   "query": "The photocopy of said PoA is being taken on the record. M.C.No.3009/2015 Page 1 of 7 By way of this petition filed under Section 482 of the Code of Criminal Procedure, 1973, petitioner seek quashing of FIR No.326/2013 registered at Police Station CR Park, New Delhi, for the offences punishable under Sections 500/506/509 of the IPC and the consequential proceedings emanating therefrom against him. During investigation, Section 354D of the IPC was also invoked against the petitioner. Charge sheet has already been filed, however, Crl. M.C.No.3009/2015 Page 1 of 7 charges are yet to be framed. Meanwhile, due to intervention of common friends and respectable members of society, respondent Nos.2 & 3 have settled their dispute with the petitioner as both the parties knew each other for the last more than ten years. Respondent No.2 has given the Power of Attorney to respondent No.3 to withdraw the present case against the petitioner. A copy of this order be given dasti to the learned counsel for the parties. SURESH KAIT (JUDGE) AUGUST 10, 2015 M Crl. M.C.No.3009/2015 Page 7 of 7",
+   "reviewed_by": "skeptic pass wf_b5f72eac-ac5",
+   "source": "LeSICiN release, Zenodo record 6053791, train split, case id 43861037"
+  },
+  {
+   "anonymised": true,
+   "author": "LeSICiN ILSI train, fact text as released",
+   "author_type": "judgment-excerpt",
+   "charges": [
+    {
+     "charge": "Voluntarily causing hurt by dangerous weapon",
+     "sections": {
+      "bns": [
+       "BNS 115",
+       "BNS 118"
+      ],
+      "ipc": [
+       "IPC 323",
+       "IPC 324"
+      ]
+     }
+    },
+    {
+     "charge": "Obscene words in public",
+     "sections": {
+      "bns": [
+       "BNS 296"
+      ],
+      "ipc": [
+       "IPC 294"
+      ]
+     }
+    },
+    {
+     "charge": "Criminal intimidation",
+     "sections": {
+      "bns": [
+       "BNS 351"
+      ],
+      "ipc": [
+       "IPC 506"
+      ]
+     }
+    }
+   ],
+   "id": "127532648",
+   "label_basis": "agent-drafted-skeptic-refuted",
+   "query": "Challenging the same, this revision petition has been filed by both the petitioners. The purpose of revision is to enable the revisional court to satisfy itself as to the correctness, legality or propriety of any finding, sentence or order recorded or passed and as to the regularity of any proceedings of the subordinate criminal court. The brief facts: The injured Velkumar participated in the cremation ceremony of his mother-in-law and he wanted to pay last respects by garlanding the deadbody and that point of time, the accused persons objected the same and after criminally intimidating the injured, used abusive language against him and caused injuries. The specific allegation is that the second accused used knife and caused injury over backside of the head and the first accused used woodenlog and caused injury over the right hand. These injuries were corroborated by the evidence of Doctor, P.W.9-Mythili. P.W.9, in her evidence, has stated that she gave treatment to the injured one Velkumar and that Velkumar was having two injuries, one on the right front hand 5 x 2 x 1 c.m. and another injury on the left side of the head (at the back side) 4 x 1 x 1 c.m. (lacerated injury). The only question is, whether it is proved that those injuries were caused only by the petitioners 1 and 2 herein? Even though the case has been registered under Sections 294 (b), 323, 324, 325 and 506(ii) IPC, final report has been filed only under Sections 324, 325, 294(b) and 506(ii) IPC against three accused persons. The trial Court has acquitted the third accused completely and has acquitted the petitoners under Section 294(b) and 506(ii) IPC. When the evidence produced do not establish the ingredients necessary to be proved as extracted above, then, the findings are perverse. When the findings are shown to be perserve, the conviction and sentence are liable to be set aside. The first accused is acquitted of the charge under Section 325 IPC and the second accused is acquitted of the charge under Section 324 IPC. Learned Second Additional District and Sessions Judge, Chidambaram Learned Judicial Magistrate No.II, Chidambaram.",
+   "reviewed_by": "skeptic pass wf_b5f72eac-ac5",
+   "source": "LeSICiN release, Zenodo record 6053791, train split, case id 127532648"
+  },
+  {
+   "anonymised": true,
+   "author": "LeSICiN ILSI train, fact text as released",
+   "author_type": "judgment-excerpt",
+   "charges": [
+    {
+     "charge": "Rioting",
+     "sections": {
+      "bns": [
+       "BNS 191"
+      ],
+      "ipc": [
+       "IPC 147"
+      ]
+     }
+    },
+    {
+     "charge": "House-trespass after preparation for hurt",
+     "sections": {
+      "bns": [
+       "BNS 333"
+      ],
+      "ipc": [
+       "IPC 452"
+      ]
+     }
+    },
+    {
+     "charge": "Voluntarily causing hurt",
+     "sections": {
+      "bns": [
+       "BNS 115"
+      ],
+      "ipc": [
+       "IPC 323"
+      ]
+     }
+    },
+    {
+     "charge": "Mischief causing damage",
+     "sections": {
+      "bns": [
+       "BNS 324"
+      ],
+      "ipc": [
+       "IPC 427"
+      ]
+     }
+    },
+    {
+     "charge": "Obscene words in public",
+     "sections": {
+      "bns": [
+       "BNS 296"
+      ],
+      "ipc": [
+       "IPC 294"
+      ]
+     }
+    },
+    {
+     "charge": "Criminal intimidation",
+     "sections": {
+      "bns": [
+       "BNS 351"
+      ],
+      "ipc": [
+       "IPC 506"
+      ]
+     }
+    }
+   ],
+   "id": "102368932",
+   "label_basis": "agent-drafted-skeptic-refuted",
+   "query": "This is a First application under Section 438 of the Code of Criminal Procedure. Applicants Azad, Indalsingh, Hukumsingh, Arvind and Chandan are seeking anticipatory bail in connection with Crime No.356/2016 for the offence punishable under Sections 294, 323, 452, 427, 506, 147 and 149 of the IPC registered at Police Station Badgonda, District Indore. Learned Counsel for the applicants submits that the applicants are permanent resident of District Indore, having no criminal antecedent. There was a dispute between the creditor and borrower. The applicants have been falsely implicated in this case. This court has already allowed the application of co- accused Arjunsingh and Kuldeep; whereas learned Additional Sessions Judge has allowed the application of co-accused Shekhar, Ravi, Ramesh, Rajendra and Nirmal. On the ground of parity applicants are also entitled for bail. In such circumstances, they be granted anticipatory bail. On the other hand, learned Panel Lawyer opposes the prayer and prays for dismissal of application. Applicants shall ensure that they would not commit any such offence during currency of bail and rest of the conditions stipulated under Section 438 (2) of the Code of Criminal Procedure shall be binding on them. It is made clear that if the applicants breach any of the condition, then this order shall automatically stand cancelled without reference to this Court and the concerning Court shall be free to take appropriate action to secure the presence of the applicants. Certified copy as per rules. (JARAT KUMAR JAIN) JUDGE ns",
+   "reviewed_by": "skeptic pass wf_b5f72eac-ac5",
+   "source": "LeSICiN release, Zenodo record 6053791, train split, case id 102368932"
+  },
+  {
+   "anonymised": true,
+   "author": "LeSICiN ILSI train, fact text as released",
+   "author_type": "judgment-excerpt",
+   "charges": [
+    {
+     "charge": "cheating",
+     "sections": {
+      "bns": [
+       "BNS 318"
+      ],
+      "ipc": [
+       "IPC 420"
+      ]
+     }
+    },
+    {
+     "charge": "forgery of public record",
+     "sections": {
+      "bns": [
+       "BNS 337"
+      ],
+      "ipc": [
+       "IPC 466"
+      ]
+     }
+    },
+    {
+     "charge": "forgery for purpose of cheating",
+     "sections": {
+      "bns": [
+       "BNS 336"
+      ],
+      "ipc": [
+       "IPC 468"
+      ]
+     }
+    },
+    {
+     "charge": "using forged document as genuine",
+     "sections": {
+      "bns": [
+       "BNS 340"
+      ],
+      "ipc": [
+       "IPC 471"
+      ]
+     }
+    },
+    {
+     "charge": "theft",
+     "sections": {
+      "bns": [
+       "BNS 303"
+      ],
+      "ipc": [
+       "IPC 379"
+      ]
+     }
+    }
+   ],
+   "id": "150846258",
+   "label_basis": "agent-drafted-skeptic-refuted",
+   "query": "By this criminal revision the petitioner has challenged the order of trial court dated 11/7/2019 whereby petitioner's application under Section 311 of Cr.P.C. has been rejected. The petitioner is facing trial for offence under Sections 420, 466, 468, 471/34 and 379/34 of IPC and at the stage of final arguments in the trial, he had filed an application under section 311 of Cr.P.C. with a prayer to recall the witness Naval Singh Bhadoria alongwith revenue documents from 15/6/2005 to 15/6/2010 for the purpose of cross examination. Trial court by a detailed reasoned order has rejected the said application finding that application has been filed to fill up lacuna and no bonafide and proper reason has been disclosed for recalling the said witness. Learned counsel for petitioner submits that trial court has committed an error in rejecting the said application whereas learned counsel for respondent has supported the impugned order. Having heard the learned counsel for parties and on perusal of the record it is noticed that petitioner had filed an application for recall of the witness Naval Singh Bhadoria the investigating officer on the ground that his statements were recorded on 10/8/2018 and since the court time was over therefore, he could not be cross examined and that the investigating officer had not produced the documents relating to posting of petitioner from 15/6/2005 to ~2~ 15/6/2010 in Biaora Tehsil. Trial court while deciding the application under Section 311 Cr.P.C. has duly taken note of the factual position which was already on record. It has been noted by trial court that examination in chief of Naval Singh Bhadoria was conducted on 10/8/2018, on account of paucity of time on that date his cross-examination was postponed for the next date and on 23/10/2018 a detailed cross examination running in four pages was done by counsel for petitioner. Therefore, the plea of petitioner that he could not cross- examine Naval Singh Bhadoria on account of paucity of time on 10/8/18 has been found to be incorrect. It is worth noting that the application for recall of the witness was filed at the stage of final arguments in the case.",
+   "reviewed_by": "skeptic pass wf_b5f72eac-ac5",
+   "source": "LeSICiN release, Zenodo record 6053791, train split, case id 150846258"
+  },
+  {
+   "anonymised": true,
+   "author": "LeSICiN ILSI train, fact text as released",
+   "author_type": "judgment-excerpt",
+   "charges": [
+    {
+     "charge": "cheating",
+     "sections": {
+      "bns": [
+       "BNS 318"
+      ],
+      "ipc": [
+       "IPC 420"
+      ]
+     }
+    },
+    {
+     "charge": "forgery",
+     "sections": {
+      "bns": [
+       "BNS 336"
+      ],
+      "ipc": [
+       "IPC 465"
+      ]
+     }
+    },
+    {
+     "charge": "forgery of valuable security or will",
+     "sections": {
+      "bns": [
+       "BNS 338"
+      ],
+      "ipc": [
+       "IPC 467"
+      ]
+     }
+    },
+    {
+     "charge": "forgery for purpose of cheating",
+     "sections": {
+      "bns": [
+       "BNS 336"
+      ],
+      "ipc": [
+       "IPC 468"
+      ]
+     }
+    },
+    {
+     "charge": "using forged document as genuine",
+     "sections": {
+      "bns": [
+       "BNS 340"
+      ],
+      "ipc": [
+       "IPC 471"
+      ]
+     }
+    }
+   ],
+   "id": "19706913",
+   "label_basis": "agent-drafted-skeptic-refuted",
+   "query": "This petition has been filed u/s 397/401 of Cr.P.C. by the applicant to set- aside the order dated 23.07.2018 passed by 3rd Additional Sessions Judge, Harda in Criminal Appeal No. 16/17, whereby learned Additional Sessions Judge allowed the appeal No. 16/17 presented by the applicant-accused and remanded the case to the trial Court to take evidence for new charges. Heard both the parties and it is found evident that respondent No. 2-accused Laxmi Narayan was convicted and u/s 420, 465, 467, 468, 471 of IPC. Learned Additional Sessions Judge found that initially respondent-accused was charged under section 420 of IPC. The prosecution has examined all the witnesses. This application was allowed by the trial Court on 08.05.2015 and trial Court framed the charges against the respondent-accused under section 465, 467, 468, 471 of IPC but the learned trial Judge has not given any opportunity to the respondent No.2-accused for cross-examination regarding the new charges. So the learned Judge set aside the judgment of conviction and sentence and remanded the case back to for additional evidence in regard to new charges. So there is no illegality or perversity in the impugned order. Accordingly, the petition is liable to be dismissed with the instruction that the respondent No. 2-accused will cross-examine the witness with regard to new charges only.",
+   "reviewed_by": "skeptic pass wf_b5f72eac-ac5",
+   "source": "LeSICiN release, Zenodo record 6053791, train split, case id 19706913"
+  },
+  {
+   "anonymised": true,
+   "author": "LeSICiN ILSI train, fact text as released",
+   "author_type": "judgment-excerpt",
+   "charges": [
+    {
+     "charge": "murder",
+     "sections": {
+      "bns": [
+       "BNS 103"
+      ],
+      "ipc": [
+       "IPC 302"
+      ]
+     }
+    },
+    {
+     "charge": "attempt to murder",
+     "sections": {
+      "bns": [
+       "BNS 109"
+      ],
+      "ipc": [
+       "IPC 307"
+      ]
+     }
+    },
+    {
+     "charge": "rioting armed with deadly weapon",
+     "sections": {
+      "bns": [
+       "BNS 191"
+      ],
+      "ipc": [
+       "IPC 148"
+      ]
+     }
+    },
+    {
+     "charge": "wrongful restraint",
+     "sections": {
+      "bns": [
+       "BNS 126"
+      ],
+      "ipc": [
+       "IPC 341"
+      ]
+     }
+    }
+   ],
+   "id": "41590279",
+   "label_basis": "agent-drafted-skeptic-refuted",
+   "query": "The applicant shall install Arogya Setu App (if not already installed) in his mobile phone; Shri Atul Gupta, Advocate, for the complainant. In pursuance of the directions issued by the Apex Court and guidelines issued by the High Court of Madhya Pradesh in the wake of COVID-19 outbreak, the matter was taken up through video conferencing while adhering to the norms of social distancing prescribed by the Government. Case diary perused. Learned counsel for the rival parties are heard. The applicant has filed this first application under section 439 of the Cr.P.C. for grant of bail. The applicant has been arrested on 24.09.2019 by Police Station- Hazeera, Gwalior District Gwalior in connection with Crime No.292/2019 registered in relation to the offence punishable under Sections 302, 307, 341, 147, 148, 149, 120-B of IPC read with 294, 201, 202 of IPC and 25/27 of Arms Act. Prosecution story, in short, is that on 10/7/19, at about 1PM, when complainant's brother Sudip alias Pankaj Sikarwar was coming along with Raju Parmar, in the way, he was intercepted by Sanjay HIGH COURT OF MADHYA PRADESH, BENCH AT GWALIOR M.Cr. C.12902/2020 ( Sonu @ Ajay Singh Tomar Vs. The State of Madhya Pradesh ) (2) Tomar, Raman Chauhan and Parmal Tomar, who were hiding behind a house. From the other side of the house Bhaiji Chauhan, Raghvendra Tomar and 2-3 unknown persons also came out. They all started firing incessantly at Pankaj causing several firearm injuries to him. When complainant came forward to his rescue, he was also fired at, who somehow saved himself. Thereafter, firing, all the miscreants fled away on their Motorcycles, while Pankaj ultimately succumbed to such injuries. The name of the applicant does not find place in the F.I.R. Name of the applicant has been taken by the witnesses neither in the statement recorded under Section 161 of Cr.P.C. The C.C. T.V. Footage taken from the place of the incident does not reveal that the present applicant was on the spot. He has been implicated on the basis of the memorandum recorded under Section 27 of the Evidence Act which has not evidentiary value. At this stage, learned counsel for the appellant volunteered to deposit an amount of Rs.10,000/- (Rupees Ten Thousand) with Prime Minister Citizen Assistance and relief in Emergency Situation Fund (PM Cares Fund). However, it would not be desirable to enter into the merits of the rival contentions at this juncture.",
+   "reviewed_by": "skeptic pass wf_b5f72eac-ac5",
+   "source": "LeSICiN release, Zenodo record 6053791, train split, case id 41590279"
+  }
+ ],
+ "label_policy": "Section labels were drafted by an agent from the fact text and the Act text without seeing benchmark labels or retrieval output, then each charge and section was challenged by a second agent that defaulted to refuting. No lawyer has reviewed these labels.",
+ "licence_note": "Query text is fact text from the LeSICiN release (Zenodo record 6053791, CC BY 4.0), anonymised by its authors. Attribution: Paul et al., LeSICiN.",
+ "version": "v1"
+}

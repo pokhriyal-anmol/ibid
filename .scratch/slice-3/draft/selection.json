@@ -1,0 +1,187 @@
+{
+ "rule": "train; offence labels>=2 excluding IPC 34,149,120B; 150..600 words; groups 2,3,4+; first 10 per group by sha256(id)",
+ "rule_sha256": "b2e58c72410b3d977c5319f1e0ebec45ec8aec8752aefe727a5eb67a7d22cd1b",
+ "cases_read": 42835,
+ "items": [
+  {
+   "id": "43946072",
+   "group": "2",
+   "offence_labels": 2,
+   "words": 270
+  },
+  {
+   "id": "153470110",
+   "group": "2",
+   "offence_labels": 2,
+   "words": 248
+  },
+  {
+   "id": "871051",
+   "group": "2",
+   "offence_labels": 2,
+   "words": 160
+  },
+  {
+   "id": "115859665",
+   "group": "2",
+   "offence_labels": 2,
+   "words": 158
+  },
+  {
+   "id": "144642493",
+   "group": "2",
+   "offence_labels": 2,
+   "words": 257
+  },
+  {
+   "id": "132410886",
+   "group": "2",
+   "offence_labels": 2,
+   "words": 224
+  },
+  {
+   "id": "68666",
+   "group": "2",
+   "offence_labels": 2,
+   "words": 479
+  },
+  {
+   "id": "113916998",
+   "group": "2",
+   "offence_labels": 2,
+   "words": 194
+  },
+  {
+   "id": "107892742",
+   "group": "2",
+   "offence_labels": 2,
+   "words": 170
+  },
+  {
+   "id": "604193",
+   "group": "2",
+   "offence_labels": 2,
+   "words": 418
+  },
+  {
+   "id": "154394117",
+   "group": "3",
+   "offence_labels": 3,
+   "words": 508
+  },
+  {
+   "id": "1733568",
+   "group": "3",
+   "offence_labels": 3,
+   "words": 160
+  },
+  {
+   "id": "71898306",
+   "group": "3",
+   "offence_labels": 3,
+   "words": 454
+  },
+  {
+   "id": "156735282",
+   "group": "3",
+   "offence_labels": 3,
+   "words": 245
+  },
+  {
+   "id": "102242151",
+   "group": "3",
+   "offence_labels": 3,
+   "words": 244
+  },
+  {
+   "id": "175426019",
+   "group": "3",
+   "offence_labels": 3,
+   "words": 276
+  },
+  {
+   "id": "1422198",
+   "group": "3",
+   "offence_labels": 3,
+   "words": 455
+  },
+  {
+   "id": "33467557",
+   "group": "3",
+   "offence_labels": 3,
+   "words": 559
+  },
+  {
+   "id": "40330300",
+   "group": "3",
+   "offence_labels": 3,
+   "words": 600
+  },
+  {
+   "id": "188477105",
+   "group": "3",
+   "offence_labels": 3,
+   "words": 314
+  },
+  {
+   "id": "179558184",
+   "group": "4+",
+   "offence_labels": 5,
+   "words": 329
+  },
+  {
+   "id": "191897748",
+   "group": "4+",
+   "offence_labels": 5,
+   "words": 430
+  },
+  {
+   "id": "35728314",
+   "group": "4+",
+   "offence_labels": 6,
+   "words": 472
+  },
+  {
+   "id": "1781247",
+   "group": "4+",
+   "offence_labels": 11,
+   "words": 598
+  },
+  {
+   "id": "39887829",
+   "group": "4+",
+   "offence_labels": 8,
+   "words": 205
+  },
+  {
+   "id": "106805320",
+   "group": "4+",
+   "offence_labels": 8,
+   "words": 428
+  },
+  {
+   "id": "199804125",
+   "group": "4+",
+   "offence_labels": 4,
+   "words": 155
+  },
+  {
+   "id": "44267882",
+   "group": "4+",
+   "offence_labels": 7,
+   "words": 232
+  },
+  {
+   "id": "98240732",
+   "group": "4+",
+   "offence_labels": 6,
+   "words": 405
+  },
+  {
+   "id": "66380313",
+   "group": "4+",
+   "offence_labels": 5,
+   "words": 532
+  }
+ ]
+}

@@ -1,0 +1,104 @@
+{
+ "groups": {
+  "2": {
+   "included": 10,
+   "ids": [
+    "43946072",
+    "153470110",
+    "871051",
+    "107892742",
+    "105616635",
+    "190108901",
+    "176417778",
+    "156132986",
+    "155317536",
+    "39883671"
+   ]
+  },
+  "3": {
+   "included": 10,
+   "ids": [
+    "154394117",
+    "1733568",
+    "71898306",
+    "102242151",
+    "1422198",
+    "33467557",
+    "40330300",
+    "188477105",
+    "21756622",
+    "24605614"
+   ]
+  },
+  "4+": {
+   "included": 10,
+   "ids": [
+    "1781247",
+    "106805320",
+    "44267882",
+    "53071757",
+    "43861037",
+    "127532648",
+    "102368932",
+    "150846258",
+    "19706913",
+    "41590279"
+   ]
+  }
+ },
+ "walked": 51,
+ "lost": [
+  "115859665",
+  "144642493",
+  "132410886",
+  "68666",
+  "113916998",
+  "604193",
+  "176938238",
+  "146672492",
+  "156735282",
+  "175426019",
+  "9185283",
+  "179558184",
+  "191897748",
+  "39887829",
+  "98240732",
+  "66380313"
+ ],
+ "single_charge": [
+  "199923414",
+  "35728314",
+  "199804125",
+  "109072194",
+  "24426949"
+ ],
+ "items": 30,
+ "charges": 98,
+ "charges_dropped_in_included_items": 10,
+ "skeptic_missed_charges": {
+  "106805320": [
+   {
+    "charge": "House-trespass after preparation for hurt or assault",
+    "ipc": [
+     "IPC 452"
+    ],
+    "bns": [
+     "BNS 333"
+    ],
+    "evidence": "Thereafter, all accused persons entered in the house and attack upon the complainant Anam Khan and her mother Reshma"
+   }
+  ],
+  "44267882": [
+   {
+    "charge": "House-trespass after preparation for hurt or assault",
+    "ipc": [
+     "IPC 452"
+    ],
+    "bns": [
+     "BNS 333"
+    ],
+    "evidence": "entered into the house of respondent No.2 and started abusing and beating to respondent No.2 and threatened him to be away from election"
+   }
+  ]
+ }
+}

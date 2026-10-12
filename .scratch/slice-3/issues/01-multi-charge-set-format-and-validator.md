@@ -1,6 +1,6 @@
 # Define the multi-charge test set file and refuse any file that breaks its rules
 
-Status: ready-for-agent
+Status: done
 Blocked by: none
 
 What to build: the file format for the multi-charge test set, a validator command, and a hash pin, tested on an invented fixture set. Everything else in slice 3 reads this file, so the format and its refusals come first. No real queries are collected by this ticket (ticket 03 does that).
