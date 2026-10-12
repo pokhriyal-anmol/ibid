@@ -1,9 +1,11 @@
 """`ibid charges validate`: refuse a multi-charge test set file that breaks its format rules."""
 import hashlib
 import json
+import re
 import sqlite3
 import sys
 from collections import Counter
+from datetime import date
 from pathlib import Path
 
 from ibid import bench, bm25, index
@@ -181,4 +183,43 @@ def score(set_path: str, index_path: str, frozen_path: str, act: str, out_path: 
         },
     }
     Path(out_path).write_text(json.dumps(results, indent=2, sort_keys=True) + "\n")
+    return 0
+
+
+MIN_WORDS = 20
+SECTION_NUMBER = re.compile(r"(\b(section|sec|s|u/s|ipc|bns)\.?\s*\d+)|(\b\d+\s*(ipc|bns)\b)", re.I)  # shortcut: keyword-led numbers only, a bare "302" passes
+
+
+def intake(queries_path: str, author_type: str, author: str, out_path: str) -> int:
+    """`ibid charges intake`: turn person-written query blocks into a draft set that fails validate until labelled."""
+    try:
+        text = Path(queries_path).read_text()
+    except (OSError, UnicodeDecodeError) as e:
+        print(f"error: {e}", file=sys.stderr)
+        return 1
+    lines = text.splitlines()
+    while lines and (lines[0].startswith("#") or not lines[0].strip()):
+        lines.pop(0)  # header comment
+    blocks = [b.strip() for b in re.split(r"(?m)^---[ \t]*$", "\n".join(lines))]
+    problems, seen = [], set()
+    for n, b in enumerate(blocks, 1):
+        key = " ".join(b.lower().split())
+        if not b:
+            problems.append(f"block {n}: empty")
+        elif len(b.split()) < MIN_WORDS:
+            problems.append(f"block {n}: {len(b.split())} words, need at least {MIN_WORDS}")
+        elif SECTION_NUMBER.search(b):
+            problems.append(f"block {n}: contains what looks like a section number ({SECTION_NUMBER.search(b).group(0)!r})")
+        elif key in seen:
+            problems.append(f"block {n}: duplicate of an earlier block")
+        seen.add(key)
+    if problems:
+        print("\n".join(problems), file=sys.stderr)
+        return 1
+    items = [{"id": f"d-{n:03d}", "query": b, "author_type": author_type, "source": f"{author_type}-written, author {author}",
+              "anonymised": True, "charges": []} for n, b in enumerate(blocks, 1)]
+    data = {"version": "draft", "created": date.today().isoformat(), "licence_note": f"queries written by {author}",
+            "label_policy": "draft: charges, label_basis and reviewed_by are not set yet", "items": items}
+    Path(out_path).write_text(json.dumps(data, indent=2) + "\n")
+    print(f"wrote {len(items)} draft items to {out_path}")
     return 0

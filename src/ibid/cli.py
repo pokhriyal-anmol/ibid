@@ -120,6 +120,11 @@ def main(argv: list[str] | None = None) -> int:
     chv = chs.add_parser("validate")
     chv.add_argument("--set", required=True)
     chv.add_argument("--index", default="data/index/ibid.sqlite")
+    chi = chs.add_parser("intake", help="turn person-written query blocks into a draft set")
+    chi.add_argument("--queries", required=True)
+    chi.add_argument("--author-type", choices=("owner", "lawyer"), required=True)
+    chi.add_argument("--author", required=True)
+    chi.add_argument("--out", required=True)
     chc = chs.add_parser("score", help="score the frozen rule by charge on one Act")
     chc.add_argument("--set", required=True)
     chc.add_argument("--index", default="data/index/ibid.sqlite")
@@ -184,6 +189,8 @@ def main(argv: list[str] | None = None) -> int:
         from ibid import charges
         if a.charges_cmd == "score":
             return charges.score(a.set, a.index, a.frozen_rule, a.act, a.out, a.ledger)
+        if a.charges_cmd == "intake":
+            return charges.intake(a.queries, a.author_type, a.author, a.out)
         return charges.validate(a.set, a.index)
     if a.cmd == "bench" and a.bench_cmd == "report":
         from ibid.report import run_report
