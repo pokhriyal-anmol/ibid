@@ -1,0 +1,681 @@
+{
+  "inputs": {
+    "frozen_rule_params": "250c53f85b3dcaa5c370dcc7a0cbf8a6da7579bc0f398ea9be2341b4750a90bf",
+    "index": "efaf6fe8b342f151ac02ed110027320f39b0d99287327eb7d206453537a0d408",
+    "per_subquery": 2,
+    "producer": "claude sub-agents (model alias sonnet), one agent per 5 items, workflow charges-subqueries wf_e3378e78-db0",
+    "subqueries_sha256": "35e1f78060824ad4deaf9cb57fcac5add67f9826c10781b7f19da34860c0ca4c"
+  },
+  "items": {
+    "102242151": {
+      "bns": [
+        "BNS 115",
+        "BNS 117",
+        "BNS 27",
+        "BNS 270",
+        "BNS 296",
+        "BNS 53",
+        "BNS 64",
+        "BNS 85"
+      ],
+      "ipc": [
+        "IPC 113",
+        "IPC 294",
+        "IPC 322",
+        "IPC 325",
+        "IPC 336",
+        "IPC 376",
+        "IPC 397",
+        "IPC 498A"
+      ]
+    },
+    "102368932": {
+      "bns": [
+        "BNS 100",
+        "BNS 113",
+        "BNS 117",
+        "BNS 120",
+        "BNS 189",
+        "BNS 191",
+        "BNS 294",
+        "BNS 296",
+        "BNS 324",
+        "BNS 330",
+        "BNS 331",
+        "BNS 333"
+      ],
+      "ipc": [
+        "IPC 142",
+        "IPC 146",
+        "IPC 195A",
+        "IPC 294",
+        "IPC 299",
+        "IPC 322",
+        "IPC 325",
+        "IPC 425",
+        "IPC 427",
+        "IPC 452",
+        "IPC 455",
+        "IPC 510"
+      ]
+    },
+    "105616635": {
+      "bns": [
+        "BNS 101",
+        "BNS 137",
+        "BNS 141",
+        "BNS 188",
+        "BNS 64",
+        "BNS 65",
+        "BNS 95",
+        "BNS 96"
+      ],
+      "ipc": [
+        "IPC 300",
+        "IPC 354A",
+        "IPC 359",
+        "IPC 363",
+        "IPC 363A",
+        "IPC 366",
+        "IPC 366A",
+        "IPC 376"
+      ]
+    },
+    "106805320": {
+      "bns": [
+        "BNS 117",
+        "BNS 120",
+        "BNS 149",
+        "BNS 189",
+        "BNS 191",
+        "BNS 2",
+        "BNS 294",
+        "BNS 296",
+        "BNS 330",
+        "BNS 351"
+      ],
+      "ipc": [
+        "IPC 122",
+        "IPC 142",
+        "IPC 144",
+        "IPC 146",
+        "IPC 148",
+        "IPC 294",
+        "IPC 322",
+        "IPC 325",
+        "IPC 376",
+        "IPC 444",
+        "IPC 449",
+        "IPC 503",
+        "IPC 507",
+        "IPC 510"
+      ]
+    },
+    "107892742": {
+      "bns": [
+        "BNS 330",
+        "BNS 351",
+        "BNS 64",
+        "BNS 75",
+        "BNS 78",
+        "BNS 95"
+      ],
+      "ipc": [
+        "IPC 354A",
+        "IPC 354D",
+        "IPC 376",
+        "IPC 498A",
+        "IPC 503",
+        "IPC 507"
+      ]
+    },
+    "127532648": {
+      "bns": [
+        "BNS 100",
+        "BNS 117",
+        "BNS 118",
+        "BNS 120",
+        "BNS 294",
+        "BNS 296",
+        "BNS 330"
+      ],
+      "ipc": [
+        "IPC 195A",
+        "IPC 294",
+        "IPC 299",
+        "IPC 322",
+        "IPC 324",
+        "IPC 325",
+        "IPC 326",
+        "IPC 510"
+      ]
+    },
+    "1422198": {
+      "bns": [
+        "BNS 103",
+        "BNS 104",
+        "BNS 107",
+        "BNS 108",
+        "BNS 80",
+        "BNS 85"
+      ],
+      "ipc": [
+        "IPC 302",
+        "IPC 303",
+        "IPC 304B",
+        "IPC 305",
+        "IPC 306",
+        "IPC 498A"
+      ]
+    },
+    "150846258": {
+      "bns": [
+        "BNS 304",
+        "BNS 308",
+        "BNS 318",
+        "BNS 335",
+        "BNS 336",
+        "BNS 337",
+        "BNS 340",
+        "BNS 341",
+        "BNS 97"
+      ],
+      "ipc": [
+        "IPC 369",
+        "IPC 378",
+        "IPC 415",
+        "IPC 420",
+        "IPC 463",
+        "IPC 464",
+        "IPC 466",
+        "IPC 470",
+        "IPC 471"
+      ]
+    },
+    "153470110": {
+      "bns": [
+        "BNS 308",
+        "BNS 318",
+        "BNS 330",
+        "BNS 351"
+      ],
+      "ipc": [
+        "IPC 415",
+        "IPC 420",
+        "IPC 503",
+        "IPC 507"
+      ]
+    },
+    "154394117": {
+      "bns": [
+        "BNS 113",
+        "BNS 137",
+        "BNS 330",
+        "BNS 38",
+        "BNS 64",
+        "BNS 72",
+        "BNS 87",
+        "BNS 99"
+      ],
+      "ipc": [
+        "IPC 195A",
+        "IPC 361",
+        "IPC 363A",
+        "IPC 366",
+        "IPC 373",
+        "IPC 375",
+        "IPC 376",
+        "IPC 44"
+      ]
+    },
+    "155317536": {
+      "bns": [
+        "BNS 101",
+        "BNS 103",
+        "BNS 117",
+        "BNS 120",
+        "BNS 3",
+        "BNS 61"
+      ],
+      "ipc": [
+        "IPC 302",
+        "IPC 303",
+        "IPC 322",
+        "IPC 325",
+        "IPC 34",
+        "IPC 35"
+      ]
+    },
+    "156132986": {
+      "bns": [
+        "BNS 103",
+        "BNS 104",
+        "BNS 113",
+        "BNS 140",
+        "BNS 230",
+        "BNS 233"
+      ],
+      "ipc": [
+        "IPC 196",
+        "IPC 201",
+        "IPC 302",
+        "IPC 303",
+        "IPC 364",
+        "IPC 365"
+      ]
+    },
+    "1733568": {
+      "bns": [
+        "BNS 148",
+        "BNS 3",
+        "BNS 316",
+        "BNS 317",
+        "BNS 344",
+        "BNS 61"
+      ],
+      "ipc": [
+        "IPC 120A",
+        "IPC 120B",
+        "IPC 27",
+        "IPC 407",
+        "IPC 408",
+        "IPC 477A"
+      ]
+    },
+    "176417778": {
+      "bns": [
+        "BNS 123",
+        "BNS 329",
+        "BNS 330",
+        "BNS 351",
+        "BNS 38",
+        "BNS 64",
+        "BNS 75"
+      ],
+      "ipc": [
+        "IPC 328",
+        "IPC 354A",
+        "IPC 375",
+        "IPC 376",
+        "IPC 441",
+        "IPC 503",
+        "IPC 507"
+      ]
+    },
+    "1781247": {
+      "bns": [
+        "BNS 101",
+        "BNS 115",
+        "BNS 117",
+        "BNS 120",
+        "BNS 190",
+        "BNS 191"
+      ],
+      "ipc": [
+        "IPC 110",
+        "IPC 146",
+        "IPC 149",
+        "IPC 321",
+        "IPC 322",
+        "IPC 324",
+        "IPC 325",
+        "IPC 326"
+      ]
+    },
+    "188477105": {
+      "bns": [
+        "BNS 101",
+        "BNS 115",
+        "BNS 117",
+        "BNS 118",
+        "BNS 80",
+        "BNS 85"
+      ],
+      "ipc": [
+        "IPC 110",
+        "IPC 304B",
+        "IPC 321",
+        "IPC 322",
+        "IPC 326",
+        "IPC 498A"
+      ]
+    },
+    "190108901": {
+      "bns": [
+        "BNS 137",
+        "BNS 139",
+        "BNS 142",
+        "BNS 258",
+        "BNS 330",
+        "BNS 351",
+        "BNS 50",
+        "BNS 56",
+        "BNS 64",
+        "BNS 65",
+        "BNS 87",
+        "BNS 99"
+      ],
+      "ipc": [
+        "IPC 108A",
+        "IPC 110",
+        "IPC 220",
+        "IPC 361",
+        "IPC 363A",
+        "IPC 366",
+        "IPC 368",
+        "IPC 373",
+        "IPC 376",
+        "IPC 506",
+        "IPC 507"
+      ]
+    },
+    "19706913": {
+      "bns": [
+        "BNS 318",
+        "BNS 319",
+        "BNS 335",
+        "BNS 336",
+        "BNS 338",
+        "BNS 340",
+        "BNS 341"
+      ],
+      "ipc": [
+        "IPC 415",
+        "IPC 420",
+        "IPC 465",
+        "IPC 467",
+        "IPC 468",
+        "IPC 470",
+        "IPC 471"
+      ]
+    },
+    "21756622": {
+      "bns": [
+        "BNS 133",
+        "BNS 137",
+        "BNS 188",
+        "BNS 232",
+        "BNS 351",
+        "BNS 64",
+        "BNS 74",
+        "BNS 78"
+      ],
+      "ipc": [
+        "IPC 354",
+        "IPC 354B",
+        "IPC 354D",
+        "IPC 359",
+        "IPC 361",
+        "IPC 376",
+        "IPC 503",
+        "IPC 507"
+      ]
+    },
+    "24605614": {
+      "bns": [
+        "BNS 117",
+        "BNS 120",
+        "BNS 126",
+        "BNS 133",
+        "BNS 190",
+        "BNS 191",
+        "BNS 232",
+        "BNS 294",
+        "BNS 296",
+        "BNS 324",
+        "BNS 329",
+        "BNS 330",
+        "BNS 351",
+        "BNS 74"
+      ],
+      "ipc": [
+        "IPC 146",
+        "IPC 149",
+        "IPC 294",
+        "IPC 322",
+        "IPC 325",
+        "IPC 339",
+        "IPC 354",
+        "IPC 354B",
+        "IPC 440",
+        "IPC 441",
+        "IPC 442",
+        "IPC 503",
+        "IPC 507",
+        "IPC 510"
+      ]
+    },
+    "33467557": {
+      "bns": [
+        "BNS 101",
+        "BNS 115",
+        "BNS 126",
+        "BNS 232",
+        "BNS 294",
+        "BNS 296",
+        "BNS 324",
+        "BNS 351"
+      ],
+      "ipc": [
+        "IPC 294",
+        "IPC 308",
+        "IPC 321",
+        "IPC 339",
+        "IPC 440",
+        "IPC 503",
+        "IPC 507",
+        "IPC 510"
+      ]
+    },
+    "39883671": {
+      "bns": [
+        "BNS 107",
+        "BNS 108",
+        "BNS 126",
+        "BNS 127",
+        "BNS 296",
+        "BNS 3",
+        "BNS 330",
+        "BNS 351"
+      ],
+      "ipc": [
+        "IPC 294",
+        "IPC 305",
+        "IPC 306",
+        "IPC 32",
+        "IPC 339",
+        "IPC 340",
+        "IPC 503",
+        "IPC 507"
+      ]
+    },
+    "40330300": {
+      "bns": [
+        "BNS 117",
+        "BNS 118",
+        "BNS 133",
+        "BNS 137",
+        "BNS 139",
+        "BNS 74"
+      ],
+      "ipc": [
+        "IPC 324",
+        "IPC 326",
+        "IPC 354",
+        "IPC 354B",
+        "IPC 359",
+        "IPC 361"
+      ]
+    },
+    "41590279": {
+      "bns": [
+        "BNS 103",
+        "BNS 104",
+        "BNS 127",
+        "BNS 149",
+        "BNS 158",
+        "BNS 189",
+        "BNS 191",
+        "BNS 2",
+        "BNS 230",
+        "BNS 233",
+        "BNS 27",
+        "BNS 30",
+        "BNS 61"
+      ],
+      "ipc": [
+        "IPC 110",
+        "IPC 120A",
+        "IPC 120B",
+        "IPC 122",
+        "IPC 130",
+        "IPC 144",
+        "IPC 146",
+        "IPC 153AA",
+        "IPC 196",
+        "IPC 201",
+        "IPC 302",
+        "IPC 303",
+        "IPC 321",
+        "IPC 340"
+      ]
+    },
+    "43861037": {
+      "bns": [
+        "BNS 186",
+        "BNS 196",
+        "BNS 330",
+        "BNS 351",
+        "BNS 356",
+        "BNS 64",
+        "BNS 78",
+        "BNS 79"
+      ],
+      "ipc": [
+        "IPC 153A",
+        "IPC 298",
+        "IPC 354D",
+        "IPC 376",
+        "IPC 500",
+        "IPC 503",
+        "IPC 507",
+        "IPC 509"
+      ]
+    },
+    "43946072": {
+      "bns": [
+        "BNS 109",
+        "BNS 110",
+        "BNS 194",
+        "BNS 310"
+      ],
+      "ipc": [
+        "IPC 110",
+        "IPC 308",
+        "IPC 391",
+        "IPC 396"
+      ]
+    },
+    "44267882": {
+      "bns": [
+        "BNS 113",
+        "BNS 115",
+        "BNS 117",
+        "BNS 189",
+        "BNS 191",
+        "BNS 192",
+        "BNS 296",
+        "BNS 3",
+        "BNS 312",
+        "BNS 324",
+        "BNS 330",
+        "BNS 331",
+        "BNS 333",
+        "BNS 351"
+      ],
+      "ipc": [
+        "IPC 142",
+        "IPC 146",
+        "IPC 147",
+        "IPC 148",
+        "IPC 294",
+        "IPC 32",
+        "IPC 322",
+        "IPC 325",
+        "IPC 398",
+        "IPC 427",
+        "IPC 432",
+        "IPC 455",
+        "IPC 458",
+        "IPC 503",
+        "IPC 507"
+      ]
+    },
+    "53071757": {
+      "bns": [
+        "BNS 101",
+        "BNS 189",
+        "BNS 2",
+        "BNS 28",
+        "BNS 318",
+        "BNS 319",
+        "BNS 335",
+        "BNS 336",
+        "BNS 338",
+        "BNS 340",
+        "BNS 341",
+        "BNS 61",
+        "BNS 63",
+        "BNS 64",
+        "BNS 95"
+      ],
+      "ipc": [
+        "IPC 120A",
+        "IPC 120B",
+        "IPC 300",
+        "IPC 354A",
+        "IPC 363A",
+        "IPC 376",
+        "IPC 376AB",
+        "IPC 415",
+        "IPC 420",
+        "IPC 465",
+        "IPC 467",
+        "IPC 468",
+        "IPC 470",
+        "IPC 471"
+      ]
+    },
+    "71898306": {
+      "bns": [
+        "BNS 106",
+        "BNS 110",
+        "BNS 223",
+        "BNS 285"
+      ],
+      "ipc": [
+        "IPC 188",
+        "IPC 283",
+        "IPC 304A",
+        "IPC 308"
+      ]
+    },
+    "871051": {
+      "bns": [
+        "BNS 103",
+        "BNS 104",
+        "BNS 230",
+        "BNS 233"
+      ],
+      "ipc": [
+        "IPC 196",
+        "IPC 201",
+        "IPC 302",
+        "IPC 303"
+      ]
+    }
+  },
+  "layer": "decomposed",
+  "layer_version": "v1",
+  "set_sha256": "9b77ae213e7a7a9614606c9fc6396a0a323e155630f491bb3a3b0295ca9f2fd2"
+}

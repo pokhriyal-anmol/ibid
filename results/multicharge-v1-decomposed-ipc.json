@@ -1,0 +1,726 @@
+{
+  "act": "IPC",
+  "charges_excluded_no_counterpart": 0,
+  "conventions": {
+    "by_charges_per_item": "grouped by the number of charges counted for the Act, not the total in the item",
+    "excluded": "a charge with an empty list for the Act is left out; an item with none left is not scored",
+    "found": "a charge is found when any accepted section of the Act, rolled up to its section, is predicted",
+    "mean_predictions": "mean number of predicted sections per scored item"
+  },
+  "inputs": {
+    "index_sha256": "efaf6fe8b342f151ac02ed110027320f39b0d99287327eb7d206453537a0d408",
+    "layer": {
+      "frozen_rule_params": "250c53f85b3dcaa5c370dcc7a0cbf8a6da7579bc0f398ea9be2341b4750a90bf",
+      "index": "efaf6fe8b342f151ac02ed110027320f39b0d99287327eb7d206453537a0d408",
+      "per_subquery": 2,
+      "producer": "claude sub-agents (model alias sonnet), one agent per 5 items, workflow charges-subqueries wf_e3378e78-db0",
+      "subqueries_sha256": "35e1f78060824ad4deaf9cb57fcac5add67f9826c10781b7f19da34860c0ca4c"
+    },
+    "set_sha256": "9b77ae213e7a7a9614606c9fc6396a0a323e155630f491bb3a3b0295ca9f2fd2"
+  },
+  "items_in_set": 30,
+  "items_scored": 30,
+  "label_basis": {
+    "agent-drafted-skeptic-refuted": 30
+  },
+  "layer": "decomposed",
+  "layer_version": "v1",
+  "output": {
+    "all_charges_hit": 0.2,
+    "by_charges_per_item": {
+      "1": {
+        "all_charges_hit": 0.0,
+        "charges": 0,
+        "items": 0,
+        "mean_predictions": 0.0,
+        "recall": 0.0
+      },
+      "2": {
+        "all_charges_hit": 0.4,
+        "charges": 20,
+        "items": 10,
+        "mean_predictions": 6.6,
+        "recall": 0.65
+      },
+      "3+": {
+        "all_charges_hit": 0.1,
+        "charges": 78,
+        "items": 20,
+        "mean_predictions": 9.05,
+        "recall": 0.615385
+      }
+    },
+    "charges": 98,
+    "items": 30,
+    "mean_predictions": 8.233333,
+    "missed": [
+      {
+        "charge": "Attempt to murder",
+        "id": "43946072",
+        "top_predicted": [
+          "IPC 110",
+          "IPC 308",
+          "IPC 391"
+        ]
+      },
+      {
+        "charge": "Dacoity",
+        "id": "43946072",
+        "top_predicted": [
+          "IPC 110",
+          "IPC 308",
+          "IPC 391"
+        ]
+      },
+      {
+        "charge": "Criminal intimidation",
+        "id": "153470110",
+        "top_predicted": [
+          "IPC 415",
+          "IPC 420",
+          "IPC 503"
+        ]
+      },
+      {
+        "charge": "Criminal intimidation (appellant no.2 only)",
+        "id": "107892742",
+        "top_predicted": [
+          "IPC 354A",
+          "IPC 354D",
+          "IPC 376"
+        ]
+      },
+      {
+        "charge": "Kidnapping from lawful guardianship",
+        "id": "190108901",
+        "top_predicted": [
+          "IPC 108A",
+          "IPC 110",
+          "IPC 220"
+        ]
+      },
+      {
+        "charge": "Abetment of rape",
+        "id": "190108901",
+        "top_predicted": [
+          "IPC 108A",
+          "IPC 110",
+          "IPC 220"
+        ]
+      },
+      {
+        "charge": "Criminal intimidation",
+        "id": "176417778",
+        "top_predicted": [
+          "IPC 328",
+          "IPC 354A",
+          "IPC 375"
+        ]
+      },
+      {
+        "charge": "Criminal conspiracy",
+        "id": "156132986",
+        "top_predicted": [
+          "IPC 196",
+          "IPC 201",
+          "IPC 302"
+        ]
+      },
+      {
+        "charge": "Criminal intimidation (threat to cause death or grievous hurt)",
+        "id": "39883671",
+        "top_predicted": [
+          "IPC 294",
+          "IPC 305",
+          "IPC 306"
+        ]
+      },
+      {
+        "charge": "Kidnapping from lawful guardianship",
+        "id": "154394117",
+        "top_predicted": [
+          "IPC 195A",
+          "IPC 361",
+          "IPC 363A"
+        ]
+      },
+      {
+        "charge": "Criminal breach of trust by banker or agent",
+        "id": "1733568",
+        "top_predicted": [
+          "IPC 120A",
+          "IPC 120B",
+          "IPC 27"
+        ]
+      },
+      {
+        "charge": "Being member of unlawful assembly",
+        "id": "71898306",
+        "top_predicted": [
+          "IPC 188",
+          "IPC 283",
+          "IPC 304A"
+        ]
+      },
+      {
+        "charge": "Voluntarily causing hurt",
+        "id": "102242151",
+        "top_predicted": [
+          "IPC 113",
+          "IPC 294",
+          "IPC 322"
+        ]
+      },
+      {
+        "charge": "Criminal intimidation",
+        "id": "102242151",
+        "top_predicted": [
+          "IPC 113",
+          "IPC 294",
+          "IPC 322"
+        ]
+      },
+      {
+        "charge": "Attempt to murder",
+        "id": "33467557",
+        "top_predicted": [
+          "IPC 294",
+          "IPC 308",
+          "IPC 321"
+        ]
+      },
+      {
+        "charge": "Criminal intimidation",
+        "id": "33467557",
+        "top_predicted": [
+          "IPC 294",
+          "IPC 308",
+          "IPC 321"
+        ]
+      },
+      {
+        "charge": "Wrongful restraint",
+        "id": "33467557",
+        "top_predicted": [
+          "IPC 294",
+          "IPC 308",
+          "IPC 321"
+        ]
+      },
+      {
+        "charge": "Kidnapping child from lawful guardianship",
+        "id": "40330300",
+        "top_predicted": [
+          "IPC 324",
+          "IPC 326",
+          "IPC 354"
+        ]
+      },
+      {
+        "charge": "Attempt to murder by setting wife's family member on fire",
+        "id": "188477105",
+        "top_predicted": [
+          "IPC 110",
+          "IPC 304B",
+          "IPC 321"
+        ]
+      },
+      {
+        "charge": "Voluntarily causing hurt",
+        "id": "21756622",
+        "top_predicted": [
+          "IPC 354",
+          "IPC 354B",
+          "IPC 354D"
+        ]
+      },
+      {
+        "charge": "Voluntarily causing hurt",
+        "id": "24605614",
+        "top_predicted": [
+          "IPC 146",
+          "IPC 149",
+          "IPC 294"
+        ]
+      },
+      {
+        "charge": "House-trespass",
+        "id": "24605614",
+        "top_predicted": [
+          "IPC 146",
+          "IPC 149",
+          "IPC 294"
+        ]
+      },
+      {
+        "charge": "Attempt to murder",
+        "id": "1781247",
+        "top_predicted": [
+          "IPC 110",
+          "IPC 146",
+          "IPC 149"
+        ]
+      },
+      {
+        "charge": "Voluntarily causing hurt",
+        "id": "1781247",
+        "top_predicted": [
+          "IPC 110",
+          "IPC 146",
+          "IPC 149"
+        ]
+      },
+      {
+        "charge": "Voluntarily causing hurt to Anam and Reshma",
+        "id": "106805320",
+        "top_predicted": [
+          "IPC 122",
+          "IPC 142",
+          "IPC 144"
+        ]
+      },
+      {
+        "charge": "Voluntarily causing hurt",
+        "id": "44267882",
+        "top_predicted": [
+          "IPC 142",
+          "IPC 146",
+          "IPC 147"
+        ]
+      },
+      {
+        "charge": "Criminal intimidation",
+        "id": "44267882",
+        "top_predicted": [
+          "IPC 142",
+          "IPC 146",
+          "IPC 147"
+        ]
+      },
+      {
+        "charge": "Criminal intimidation",
+        "id": "43861037",
+        "top_predicted": [
+          "IPC 153A",
+          "IPC 298",
+          "IPC 354D"
+        ]
+      },
+      {
+        "charge": "Criminal intimidation",
+        "id": "127532648",
+        "top_predicted": [
+          "IPC 195A",
+          "IPC 294",
+          "IPC 299"
+        ]
+      },
+      {
+        "charge": "Rioting",
+        "id": "102368932",
+        "top_predicted": [
+          "IPC 142",
+          "IPC 146",
+          "IPC 195A"
+        ]
+      },
+      {
+        "charge": "Voluntarily causing hurt",
+        "id": "102368932",
+        "top_predicted": [
+          "IPC 142",
+          "IPC 146",
+          "IPC 195A"
+        ]
+      },
+      {
+        "charge": "Criminal intimidation",
+        "id": "102368932",
+        "top_predicted": [
+          "IPC 142",
+          "IPC 146",
+          "IPC 195A"
+        ]
+      },
+      {
+        "charge": "forgery for purpose of cheating",
+        "id": "150846258",
+        "top_predicted": [
+          "IPC 369",
+          "IPC 378",
+          "IPC 415"
+        ]
+      },
+      {
+        "charge": "theft",
+        "id": "150846258",
+        "top_predicted": [
+          "IPC 369",
+          "IPC 378",
+          "IPC 415"
+        ]
+      },
+      {
+        "charge": "attempt to murder",
+        "id": "41590279",
+        "top_predicted": [
+          "IPC 110",
+          "IPC 120A",
+          "IPC 120B"
+        ]
+      },
+      {
+        "charge": "rioting armed with deadly weapon",
+        "id": "41590279",
+        "top_predicted": [
+          "IPC 110",
+          "IPC 120A",
+          "IPC 120B"
+        ]
+      },
+      {
+        "charge": "wrongful restraint",
+        "id": "41590279",
+        "top_predicted": [
+          "IPC 110",
+          "IPC 120A",
+          "IPC 120B"
+        ]
+      }
+    ],
+    "predictions": {
+      "102242151": [
+        "IPC 113",
+        "IPC 294",
+        "IPC 322",
+        "IPC 325",
+        "IPC 336",
+        "IPC 376",
+        "IPC 397",
+        "IPC 498A"
+      ],
+      "102368932": [
+        "IPC 142",
+        "IPC 146",
+        "IPC 195A",
+        "IPC 294",
+        "IPC 299",
+        "IPC 322",
+        "IPC 325",
+        "IPC 425",
+        "IPC 427",
+        "IPC 452",
+        "IPC 455",
+        "IPC 510"
+      ],
+      "105616635": [
+        "IPC 300",
+        "IPC 354A",
+        "IPC 359",
+        "IPC 363",
+        "IPC 363A",
+        "IPC 366",
+        "IPC 366A",
+        "IPC 376"
+      ],
+      "106805320": [
+        "IPC 122",
+        "IPC 142",
+        "IPC 144",
+        "IPC 146",
+        "IPC 148",
+        "IPC 294",
+        "IPC 322",
+        "IPC 325",
+        "IPC 376",
+        "IPC 444",
+        "IPC 449",
+        "IPC 503",
+        "IPC 507",
+        "IPC 510"
+      ],
+      "107892742": [
+        "IPC 354A",
+        "IPC 354D",
+        "IPC 376",
+        "IPC 498A",
+        "IPC 503",
+        "IPC 507"
+      ],
+      "127532648": [
+        "IPC 195A",
+        "IPC 294",
+        "IPC 299",
+        "IPC 322",
+        "IPC 324",
+        "IPC 325",
+        "IPC 326",
+        "IPC 510"
+      ],
+      "1422198": [
+        "IPC 302",
+        "IPC 303",
+        "IPC 304B",
+        "IPC 305",
+        "IPC 306",
+        "IPC 498A"
+      ],
+      "150846258": [
+        "IPC 369",
+        "IPC 378",
+        "IPC 415",
+        "IPC 420",
+        "IPC 463",
+        "IPC 464",
+        "IPC 466",
+        "IPC 470",
+        "IPC 471"
+      ],
+      "153470110": [
+        "IPC 415",
+        "IPC 420",
+        "IPC 503",
+        "IPC 507"
+      ],
+      "154394117": [
+        "IPC 195A",
+        "IPC 361",
+        "IPC 363A",
+        "IPC 366",
+        "IPC 373",
+        "IPC 375",
+        "IPC 376",
+        "IPC 44"
+      ],
+      "155317536": [
+        "IPC 302",
+        "IPC 303",
+        "IPC 322",
+        "IPC 325",
+        "IPC 34",
+        "IPC 35"
+      ],
+      "156132986": [
+        "IPC 196",
+        "IPC 201",
+        "IPC 302",
+        "IPC 303",
+        "IPC 364",
+        "IPC 365"
+      ],
+      "1733568": [
+        "IPC 120A",
+        "IPC 120B",
+        "IPC 27",
+        "IPC 407",
+        "IPC 408",
+        "IPC 477A"
+      ],
+      "176417778": [
+        "IPC 328",
+        "IPC 354A",
+        "IPC 375",
+        "IPC 376",
+        "IPC 441",
+        "IPC 503",
+        "IPC 507"
+      ],
+      "1781247": [
+        "IPC 110",
+        "IPC 146",
+        "IPC 149",
+        "IPC 321",
+        "IPC 322",
+        "IPC 324",
+        "IPC 325",
+        "IPC 326"
+      ],
+      "188477105": [
+        "IPC 110",
+        "IPC 304B",
+        "IPC 321",
+        "IPC 322",
+        "IPC 326",
+        "IPC 498A"
+      ],
+      "190108901": [
+        "IPC 108A",
+        "IPC 110",
+        "IPC 220",
+        "IPC 361",
+        "IPC 363A",
+        "IPC 366",
+        "IPC 368",
+        "IPC 373",
+        "IPC 376",
+        "IPC 506",
+        "IPC 507"
+      ],
+      "19706913": [
+        "IPC 415",
+        "IPC 420",
+        "IPC 465",
+        "IPC 467",
+        "IPC 468",
+        "IPC 470",
+        "IPC 471"
+      ],
+      "21756622": [
+        "IPC 354",
+        "IPC 354B",
+        "IPC 354D",
+        "IPC 359",
+        "IPC 361",
+        "IPC 376",
+        "IPC 503",
+        "IPC 507"
+      ],
+      "24605614": [
+        "IPC 146",
+        "IPC 149",
+        "IPC 294",
+        "IPC 322",
+        "IPC 325",
+        "IPC 339",
+        "IPC 354",
+        "IPC 354B",
+        "IPC 440",
+        "IPC 441",
+        "IPC 442",
+        "IPC 503",
+        "IPC 507",
+        "IPC 510"
+      ],
+      "33467557": [
+        "IPC 294",
+        "IPC 308",
+        "IPC 321",
+        "IPC 339",
+        "IPC 440",
+        "IPC 503",
+        "IPC 507",
+        "IPC 510"
+      ],
+      "39883671": [
+        "IPC 294",
+        "IPC 305",
+        "IPC 306",
+        "IPC 32",
+        "IPC 339",
+        "IPC 340",
+        "IPC 503",
+        "IPC 507"
+      ],
+      "40330300": [
+        "IPC 324",
+        "IPC 326",
+        "IPC 354",
+        "IPC 354B",
+        "IPC 359",
+        "IPC 361"
+      ],
+      "41590279": [
+        "IPC 110",
+        "IPC 120A",
+        "IPC 120B",
+        "IPC 122",
+        "IPC 130",
+        "IPC 144",
+        "IPC 146",
+        "IPC 153AA",
+        "IPC 196",
+        "IPC 201",
+        "IPC 302",
+        "IPC 303",
+        "IPC 321",
+        "IPC 340"
+      ],
+      "43861037": [
+        "IPC 153A",
+        "IPC 298",
+        "IPC 354D",
+        "IPC 376",
+        "IPC 500",
+        "IPC 503",
+        "IPC 507",
+        "IPC 509"
+      ],
+      "43946072": [
+        "IPC 110",
+        "IPC 308",
+        "IPC 391",
+        "IPC 396"
+      ],
+      "44267882": [
+        "IPC 142",
+        "IPC 146",
+        "IPC 147",
+        "IPC 148",
+        "IPC 294",
+        "IPC 32",
+        "IPC 322",
+        "IPC 325",
+        "IPC 398",
+        "IPC 427",
+        "IPC 432",
+        "IPC 455",
+        "IPC 458",
+        "IPC 503",
+        "IPC 507"
+      ],
+      "53071757": [
+        "IPC 120A",
+        "IPC 120B",
+        "IPC 300",
+        "IPC 354A",
+        "IPC 363A",
+        "IPC 376",
+        "IPC 376AB",
+        "IPC 415",
+        "IPC 420",
+        "IPC 465",
+        "IPC 467",
+        "IPC 468",
+        "IPC 470",
+        "IPC 471"
+      ],
+      "71898306": [
+        "IPC 188",
+        "IPC 283",
+        "IPC 304A",
+        "IPC 308"
+      ],
+      "871051": [
+        "IPC 196",
+        "IPC 201",
+        "IPC 302",
+        "IPC 303"
+      ]
+    },
+    "recall": 0.622449
+  },
+  "parser_version": "4",
+  "scorings_of_this_layer_version": [
+    {
+      "act": "IPC",
+      "index_sha256": "efaf6fe8b342f151ac02ed110027320f39b0d99287327eb7d206453537a0d408",
+      "inputs": {
+        "frozen_rule_params": "250c53f85b3dcaa5c370dcc7a0cbf8a6da7579bc0f398ea9be2341b4750a90bf",
+        "index": "efaf6fe8b342f151ac02ed110027320f39b0d99287327eb7d206453537a0d408",
+        "per_subquery": 2,
+        "producer": "claude sub-agents (model alias sonnet), one agent per 5 items, workflow charges-subqueries wf_e3378e78-db0",
+        "subqueries_sha256": "35e1f78060824ad4deaf9cb57fcac5add67f9826c10781b7f19da34860c0ca4c"
+      },
+      "layer": "decomposed",
+      "layer_version": "v1",
+      "scores": {
+        "output": {
+          "all_charges_hit": 0.2,
+          "mean_predictions": 8.233333,
+          "recall": 0.622449
+        }
+      },
+      "set_sha256": "9b77ae213e7a7a9614606c9fc6396a0a323e155630f491bb3a3b0295ca9f2fd2"
+    }
+  ]
+}
