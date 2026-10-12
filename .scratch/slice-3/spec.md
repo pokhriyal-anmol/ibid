@@ -1,6 +1,6 @@
 # Slice 3: A real multi-charge test set and a per-charge score for the baseline
 
-Status: draft, 2026-10-12. Decisions needed from the owner are listed under "Decisions needed". Ticket 01 is written. The rest are proposed titles.
+Status: decisions recorded 2026-10-12. Tickets 01 to 04 are written. Tickets 05 and 06 are proposed titles.
 
 ## Problem Statement
 
@@ -43,12 +43,18 @@ flowchart LR
 
 Orange boxes need people. Green boxes are code an agent can build and test.
 
-## Decisions needed
+## Decisions (owner, 2026-10-12)
 
-1. Who collects the queries and labels. The set is only as good as its authors. Options: a lawyer the owner knows, the owner with a lawyer reviewing, or excerpts chosen from public judgments with a lawyer labelling. The ticket format accepts all three and refuses anything written by a model.
-2. Where the real set lives. Real fact patterns can be sensitive even when anonymised. Options: gitignored under a private path with only its hash committed, or committed to this private repository. The validator works on both.
-3. How many items for the first version. 50 is enough to see a gap of ten points between rules and too few for small differences. A first version of 30 that is scored and reported honestly may be more useful than waiting for 100.
-4. Which Act. The ILSI labels are IPC only. A BNS version of each item is possible through the concordance, but only for the 12 verified entries today. Proposal: IPC first, BNS later.
+1. Who writes the labels: agents, with an independent skeptic pass, as in slice 1. The labels are recorded as `agent-drafted-skeptic-refuted` and the file says no lawyer has reviewed them. Queries are never written by an agent. They are fact text of real cases from the LeSICiN release (CC BY 4.0, already anonymised), chosen by a written rule that is applied without reading the text.
+2. Where the set lives: in this private repository, committed with its pin.
+3. First version: 30 items, scored on the IPC and on the BNS.
+4. Both Acts. The BNS sections for each charge are labelled by the same agents from the BNS text, not copied from the concordance, which has only 12 verified entries.
+
+Consequences the owner should know:
+
+- The 30 items come from the ILSI train split. The frozen rule was tuned on the aggregate train score, so this set is not an unseen sample in the strict sense. Its influence on any tuned value is negligible, and the report says so. A holdout written by a lawyer would be cleaner and is a later option.
+- Agent-drafted labels share the blind spots of the model that drafted them. The skeptic pass reduces this and does not remove it. Scores on this set measure agreement with the drafted labels, and the legal judgment still needs a lawyer before any claim is published.
+- The BNS side is judged against labels from the BNS text, with no check from a second Act expert.
 
 ## User Stories
 
@@ -68,11 +74,11 @@ Only ticket 01 is written. The rest are titles, to be written when the owner has
 | # | Title | Kind | Blocked by |
 |---|---|---|---|
 | 01 | Define the multi-charge set file and refuse any file that breaks its rules | code | none |
-| 02 | Score a rule by charge: per-charge recall, all-charges-hit rate, strata by charge count | code | 01 |
-| 03 | Collect the first version: template, instructions for the author, anonymisation checklist, then the items | people | 01 |
-| 04 | Score the baseline v2.11 on the first version and publish the number | run | 02, 03 |
-| 05 | Code-only link expansion after ranking, along definition and punishment edges | code | 04 |
-| 06 | Untried baseline knobs (stemming, indexed levels, roll-up, stop words) under the slice 2 protocol | code | 04 |
+| 02 | Score a rule by charge, on the IPC and on the BNS | code | 01 |
+| 03 | Collect the first 30 items from real judgment text | agents, by workflow | 01 |
+| 04 | Score the frozen baseline on the first 30 items, on both Acts | run | 02, 03 |
+| 05 | Code-only link expansion after ranking, along definition and punishment edges | code, to be written | 04 |
+| 06 | Untried baseline knobs under the slice 2 protocol | code, to be written | 04 |
 
 A model layer (decompose, rewrite, rerank) is not in this slice. It needs the number from ticket 04, a model choice and a cost estimate, and it would be an opt-in layer under ADR 0001.
 
