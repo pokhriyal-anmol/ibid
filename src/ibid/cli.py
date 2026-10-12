@@ -138,6 +138,12 @@ def main(argv: list[str] | None = None) -> int:
     che.add_argument("--index", default="data/index/ibid.sqlite")
     che.add_argument("--frozen-rule", default="results/frozen-rule.json")
     che.add_argument("--out", required=True, help="writes <stem>.baseline-topk<suffix> and <stem>.baseline-threshold<suffix>")
+    ci = sub.add_parser("cited").add_subparsers(dest="cited_cmd", required=True).add_parser(
+        "extract", help="route A: sections a query names, mapped to the other Act through verified concordance")
+    ci.add_argument("--set", required=True)
+    ci.add_argument("--index", default="data/index/ibid.sqlite")
+    ci.add_argument("--concordance", required=True)
+    ci.add_argument("--out", required=True)
     bsub = sub.add_parser("bench").add_subparsers(dest="bench_cmd", required=True)
     bn = bsub.add_parser("check-labels")
     bn.add_argument("--data", default="data/raw/lesicin/label_vocab.json")
@@ -191,6 +197,9 @@ def main(argv: list[str] | None = None) -> int:
     rp.add_argument("--frozen-rule", default="results/frozen-rule.json", help="the frozen-rule record, names the frozen round")
     rp.add_argument("--out", default="results/report.md")
     a = ap.parse_args(argv)
+    if a.cmd == "cited":
+        from ibid import cited
+        return cited.extract(a.set, a.index, a.concordance, a.out)
     if a.cmd == "charges":
         from ibid import charges
         if a.charges_cmd == "export-baseline":
