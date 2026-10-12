@@ -297,6 +297,43 @@ def score(set_path: str, index_path: str, frozen_path: str, act: str, out_path: 
     return 0
 
 
+def subquery(set_path: str, subq_path: str, index_path: str, frozen_path: str, per_subquery: int, out_path: str) -> int:
+    """`ibid charges subquery` (route C): the frozen rule's top sections for each recorded sub-query, unioned per item."""
+    try:
+        raw, items, db = _load_set(set_path, index_path)
+        fz, rule = _load_rule(frozen_path)
+        sraw = Path(subq_path).read_bytes()
+        if err := pin_error(subq_path, sraw):
+            raise ValueError(err)
+        data, set_sha = json.loads(sraw), hashlib.sha256(raw).hexdigest()
+        if not isinstance(data, dict) or not isinstance(data.get("items"), dict):
+            raise ValueError(f"{subq_path} field items: must be an object")
+        if not _text(data.get("producer")):
+            raise ValueError(f"{subq_path} field producer: missing or empty")
+        if data.get("set_sha256") != set_sha:
+            raise ValueError(f"{subq_path} field set_sha256: {data.get('set_sha256')!r} is not the hash of the set file")
+        if isinstance(per_subquery, bool) or not isinstance(per_subquery, int) or per_subquery < 1:
+            raise ValueError("--per-subquery must be a positive integer")
+        ids = {i["id"] for i in items}
+        for iid, qs in data["items"].items():
+            if iid not in ids:
+                raise ValueError(f"item {iid} field id: not in the set")
+            if not isinstance(qs, list) or not all(_text(q) for q in qs):
+                raise ValueError(f"item {iid} field subqueries: must be a list of non-empty strings")
+    except (OSError, KeyError, ValueError, TypeError, AttributeError) as e:
+        print(f"error: {e}", file=sys.stderr)
+        return 1
+    ix = bm25.Index(db, rule["knobs"]["levels"], rule["knobs"]["stem"])
+    spaces = {a: _space(ix, a) for a in ACTS}
+    out = {iid: {a: sorted({c for q in qs for c, _ in bench.rank_sections(ix, q, spaces[a], rule["rollup"], rule["stop"], rule["knobs"])[:per_subquery]})
+                 for a in ACTS} for iid, qs in data["items"].items()}  # no sub-queries, no predictions
+    doc = {"layer": "decomposed", "layer_version": "v1", "set_sha256": set_sha,
+           "inputs": {"producer": data["producer"], "subqueries_sha256": hashlib.sha256(sraw).hexdigest(), "per_subquery": per_subquery,
+                      "frozen_rule_params": fz["rule"]["params_sha256"], "index": bench.sha256(index_path)}, "items": out}
+    Path(out_path).write_text(json.dumps(doc, indent=2, sort_keys=True) + "\n")
+    return 0
+
+
 MIN_WORDS = 20
 SECTION_NUMBER = re.compile(r"(\b(section|sec|s|u/s|ipc|bns)\.?\s*\d+)|(\b\d+\s*(ipc|bns)\b)", re.I)  # shortcut: keyword-led numbers only, a bare "302" passes
 

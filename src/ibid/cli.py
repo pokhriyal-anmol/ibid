@@ -163,6 +163,13 @@ def main(argv: list[str] | None = None) -> int:
     ae.add_argument("--ledger", default="results/test-ledger-assoc.json")
     ae.add_argument("--rescore-test", action="store_true")
     ae.add_argument("--out", default=None)
+    chq = chs.add_parser("subquery", help="route C: retrieve per recorded sub-query with the frozen rule and union")
+    chq.add_argument("--set", required=True)
+    chq.add_argument("--subqueries", required=True)
+    chq.add_argument("--index", default="data/index/ibid.sqlite")
+    chq.add_argument("--frozen-rule", default="results/frozen-rule.json")
+    chq.add_argument("--per-subquery", type=int, default=2)
+    chq.add_argument("--out", required=True)
     bsub = sub.add_parser("bench").add_subparsers(dest="bench_cmd", required=True)
     bn = bsub.add_parser("check-labels")
     bn.add_argument("--data", default="data/raw/lesicin/label_vocab.json")
@@ -223,6 +230,8 @@ def main(argv: list[str] | None = None) -> int:
         from ibid import charges
         if a.charges_cmd == "export-baseline":
             return charges.export_baseline(a.set, a.index, a.frozen_rule, a.out)
+        if a.charges_cmd == "subquery":
+            return charges.subquery(a.set, a.subqueries, a.index, a.frozen_rule, a.per_subquery, a.out)
         if a.charges_cmd == "score" and a.predictions:
             return charges.score_predictions(a.set, a.index, a.predictions, a.act, a.out, a.ledger)
         if a.charges_cmd == "score":
