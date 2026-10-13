@@ -8,9 +8,11 @@ Date: 2026-10-13. Set: `gold/multicharge/v2.json` (sha256 `9b4c14c5…`). Concor
 
 The selection rule was fixed before any post was read (`.scratch/slice-3/draft/ilsic-selection.json`): test split only, at least two distinct IPC offence sections, 40 to 250 words, no section number in the text, then the 30 smallest SHA-256 values. 29 of the 30 queries in set v1 name a section, and none in set v2 does, so this set measures reading a story.
 
+**Counts.** The test split has 836 rows. 658 had fewer than 2 distinct IPC sections (not counting IPC 34, 149 and 120B), 55 failed the 40 to 250 word rule and 14 contained a section number, which left 109 candidates. The 30 chosen items hold 138 cited sections. 50 were sections of other Acts and were left out (Code of Criminal Procedure 23, Domestic Violence Act 14, Hindu Marriage Act 7, and one each of five further Acts). 3 were IPC 34 (twice) and IPC 120B (once), left out of the charges in line with the selection rule's exclusion of those sections. One post lists IPC 354 twice, which counts once. No citation was dropped as absent from the index, so the remaining 138 - 50 - 3 - 1 = 84 are the charges.
+
 **Label limitation.** The corpus authors found 5.46 statutes per query from a law graduate on 50 queries against 2.40 in the data. The labels are incomplete. Recall against them is meaningful. Precision and the all-charges-found rate are lower bounds and should not be read as a quality measure of a layer. No lawyer reviewed these labels.
 
-**Privacy.** The scrub removes emails, URLs, runs of 7 or more digits, titled names, `Name:` labels and IFSC codes. Untitled names, places and company names can remain, so the set stays in the private repository.
+**Privacy.** The scrub removes emails, URLs, runs of 7 or more digits, titled names, `Name:` labels and IFSC codes. It made 15 replacements in the 30 posts: email 0, IFSC 2, labelled name 6, long digit run 5, titled name 2, URL 0 (`gold/multicharge/v2.json`, `scrub.counts`). Untitled names, places and company names can remain, so the set stays in the private repository.
 
 ## Result
 
@@ -35,6 +37,10 @@ Reading it:
 
 Source: the CAPT Bhopal correspondence table (June 2024), one director's compilation and not an MHA publication. 529 rows parsed, all 358 BNS sections covered. Candidates were checked against the index (every cited provision exists, and the two sides share a distinctive word), then every served candidate was challenged by an independent skeptic pass against the raw table lines. 4 of 350 were refuted (IPC cells written with `/` separators) and dropped. 348 entries are served, against 12 in v2.
 
+What the build produced, from `ibid concordance from-table` on the table's text layer and `concordance/v3.json` (re-derived 2026-10-13). 529 rows parsed. 354 candidate entries: one-to-one 286, merged 54, new 10, split 3, many-to-many 1. The text check refused 4 (an IPC cell holding a range 2, a many-to-many component 1, no shared distinctive word 1), leaving 350. The skeptic pass refuted 4 more, so 346 table-checked entries are served, plus 2 checked by hand, 348 in all: one-to-one 285, merged 49, new 10, split 2, removed 2. The 54 other entries in the file are the unserved ones carried from v2, each marked `refuted-by-agent`.
+
+Of the 100 ILSI labels, 93 now have a verified BNS counterpart. The 7 without one are IPC 13, 143, 161, 164, 294(b), 376 and 376(2).
+
 Set v1 re-run with v3, once each, through the same layers:
 
 | Layer | BNS recall with v2 | BNS recall with v3 | IPC recall (unchanged) |
@@ -42,6 +48,8 @@ Set v1 re-run with v3, once each, through the same layers:
 | A, cited | 0.0% | 82.7% | 87.8% |
 | B, association | 0.0% | 37.8% | 41.8% |
 
-The IPC figures did not move, so the BNS change is a change in coverage and not in either layer. The re-runs are in `results/multicharge-v1-*-concv3.json`. The main comparison table in `layer-comparison.md` still shows the v1 rows with concordance v2.
+The IPC figures did not move, so the BNS change is a change in coverage and not in either layer. The re-runs are in `results/multicharge-v1-*-concv3.json`. `layer-comparison.md` shows both: the v1 rows scored with concordance v2 and with v3 sit side by side, told apart by the concordance column, and both scorings of each layer version are in `gold/multicharge/v1.ledger.json`.
+
+BNS recall on set v2 is not independent. The set's BNS labels come only from verified concordance entries, and routes A and B produce their BNS predictions through the same entries, so their BNS recall is IPC recall carried through one table. It is not a check against the BNS text and is not comparable with the baseline and route C BNS rows, which do not read the concordance. This is why B shows 48.1% on the BNS against 39.3% on the IPC. The comparison report prints this beside A and B.
 
 Limits. The table's own errors, if any, are inherited. The skeptic pass confirms agreement with the table's text, not with the law. Entries typed `merged` with many IPC sections (for example BNS 316 for IPC 405 to 409) let any one IPC section count as a hit for the BNS section, which is the intended roll-up and also the generous one.

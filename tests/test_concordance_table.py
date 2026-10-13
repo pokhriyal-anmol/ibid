@@ -127,32 +127,38 @@ class FromTableTest(unittest.TestCase):
             "refused_reasons": {"cited provision not in the index": 1, "no shared distinctive word": 1}})
         self.assertIn("not an official MHA publication", self.out["report"]["source"])
 
+    def extract(self, conc: list) -> tuple[int, dict]:
+        """`ibid cited extract` on one query naming IPC 378, through the loader, with the given concordance."""
+        (self.tmp / "set.json").write_text(json.dumps({"items": [{"id": "q", "query": "Charged under Section 378 of the IPC."}]}))
+        (self.tmp / "conc.json").write_text(json.dumps(conc))
+        with contextlib.redirect_stderr(io.StringIO()):
+            code = main(["cited", "extract", "--set", str(self.tmp / "set.json"), "--index", str(self.tmp / "i.sqlite"),
+                         "--concordance", str(self.tmp / "conc.json"), "--out", str(self.tmp / "p.json")])
+        return code, (json.loads((self.tmp / "p.json").read_text())["items"] if code == 0 else {})
+
     def test_loader_accepts_the_new_basis_and_refuses_an_unknown_one(self):
-        db = index.build(str(self.tmp / "i.sqlite"), PROVS, [])
-        (self.tmp / "ok.json").write_text(json.dumps(self.out["entries"]))
-        self.assertEqual(len(concordance.load(str(self.tmp / "ok.json"), db)), 5)
-        bad = [{**self.out["entries"][0], "basis": "vibes"}]
-        (self.tmp / "bad.json").write_text(json.dumps(bad))
-        with self.assertRaises(ValueError):
-            concordance.load(str(self.tmp / "bad.json"), db)
+        code, items = self.extract(self.out["entries"])
+        self.assertEqual((code, items["q"]["bns"]), (0, ["BNS 303"]))
+        bad = [{**e, "basis": "vibes"} for e in self.out["entries"]]
+        self.assertEqual(self.extract(bad)[0], 1)
 
     def test_freeze_keeps_a_table_checked_entry_served(self):
-        (self.tmp / "s.md").write_text("")
-        (self.tmp / "g.json").write_text("[]")
+        ids = [f"ipc_to_bns-{i}" for i in range(12)]
+        gold = [{"id": i, "category": "ipc_to_bns", "query": "IPC 378", "expected_citations": ["BNS 999"], "expected_type": "one-to-one",
+                 "ipcPage": 1, "bnsPage": 1, "correspondence": True} for i in ids]
+        (self.tmp / "g.json").write_text(json.dumps(gold))
+        (self.tmp / "s.md").write_text("".join(f"## {i}\n\n- result: [x] pass  [ ] fail\n\n" for i in ids))
         (self.tmp / "dc.json").write_text(json.dumps(self.out["entries"]))
         for n in ("b.pdf", "i.pdf"):
             (self.tmp / n).write_bytes(n.encode())
-        from ibid import freeze
-        marks = {f"ipc_to_bns-{i}": "pass" for i in range(12)}
-        # the sheet-count rule is exercised in test_freeze; here the draft entries are passed through directly
-        orig = freeze.parse_sheet
-        freeze.parse_sheet = lambda _t: marks
-        self.addCleanup(setattr, freeze, "parse_sheet", orig)
-        gold = [{"id": i, "category": "ipc_to_bns", "query": "IPC 1", "expected_citations": ["BNS 1"], "expected_type": "one-to-one"} for i in marks]
-        (self.tmp / "g.json").write_text(json.dumps(gold))
-        self.assertEqual(freeze.freeze(str(self.tmp / "s.md"), str(self.tmp / "g.json"), str(self.tmp / "dc.json"),
-                                       str(self.tmp / "og.json"), str(self.tmp / "oc.json")), 0)
+        with contextlib.redirect_stdout(io.StringIO()):
+            code = main(["freeze", "--sheet", str(self.tmp / "s.md"), "--draft-gold", str(self.tmp / "g.json"),
+                         "--draft-conc", str(self.tmp / "dc.json"), "--out-gold", str(self.tmp / "og.json"),
+                         "--out-conc", str(self.tmp / "oc.json"), "--bns", str(self.tmp / "b.pdf"), "--ipc", str(self.tmp / "i.pdf")])
+        self.assertEqual(code, 0)
         out = json.loads((self.tmp / "oc.json").read_text())
+        # no sheet item matches these entries, so only the table check can keep them served
+        self.assertEqual(len(out), 5)
         self.assertTrue(all(e["verified"] and e["basis"] == "source-table-checked" for e in out))
 
     def test_v2_and_its_pin_are_untouched(self):

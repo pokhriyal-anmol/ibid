@@ -22,8 +22,8 @@ METRICS = ("micro_f1", "macro_f1", "jaccard")
 OUTPUTS = (("top_k", "top-k"), ("threshold", "threshold"))
 
 
-def pts(v: float) -> str:
-    return f"{v * 100:.2f}"
+def pts(v: float, places: int = 2) -> str:
+    return f"{v * 100:.{places}f}"
 
 
 def cell(scores: dict) -> str:

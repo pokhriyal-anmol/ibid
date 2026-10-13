@@ -23,7 +23,8 @@ class CompareTest(unittest.TestCase):
         self.sets = {}
         for name, queries in (("setA", ["he caused harm under section 302", "he took the bag"]), ("setB", ["a quarrel", "a theft"])):
             p = self.tmp / f"{name}.json"
-            p.write_text(json.dumps({"items": [{"id": f"{name}{n}", "query": q} for n, q in enumerate(queries)]}))
+            policy = "BNS sections come from verified concordance entries only." if name == "setB" else "Drafted by an agent."
+            p.write_text(json.dumps({"label_policy": policy, "items": [{"id": f"{name}{n}", "query": q} for n, q in enumerate(queries)]}))
             self.sets[name] = (p, hashlib.sha256(p.read_bytes()).hexdigest())
 
     def baseline(self, name, act, topk, thr, extra=()):
@@ -78,10 +79,10 @@ class CompareTest(unittest.TestCase):
         text = self.run_compare(self.fixture())
         row = next(ln for ln in text.splitlines() if ln.startswith("| assoc-nb | v1 | setA"))
         # 5 of 10 found; recall 50.0, minus top-k 10.0 and threshold 20.0; all-hit 0.0 minus 0.0 and 0.0; 5.00 predictions.
-        self.assertEqual([c.strip() for c in row.strip("|").split("|")][6:],
+        self.assertEqual([c.strip() for c in row.strip("|").split("|")][6:14],
                          ["5 of 10", "50.0", "+40.0", "+30.0", "0.0", "+0.0", "+0.0", "5.00"])
         row = next(ln for ln in text.splitlines() if ln.startswith("| cited | v1 | setB"))
-        self.assertEqual([c.strip() for c in row.strip("|").split("|")][6:],
+        self.assertEqual([c.strip() for c in row.strip("|").split("|")][6:14],
                          ["7 of 10", "70.0", "+50.0", "+40.0", "50.0", "+50.0", "+50.0", "2.00"])
         self.assertIn("setA | " + self.sets["setA"][1][:12], text)
 
@@ -104,6 +105,23 @@ class CompareTest(unittest.TestCase):
             self.assertEqual("subqueries_per_item_mean 4.5" in p, name == "decomposed v1", name)
             self.assertIn("1 of 2 queries name their sections", p)  # setA has one query citing "section 302"
             self.assertIn("0 of 2 queries name their sections", p)
+
+    def test_counts_are_kept_per_set_and_not_overwritten(self):
+        t = lambda r: {"recall": r, "all_charges_hit": 0.0, "mean_predictions": 2.0}  # noqa: E731
+        res = []
+        for name, shift, n in (("setA", 0.0, 7), ("setB", 0.1, 3)):
+            res.append(self.baseline(name, "IPC", t(0.1), t(0.2)))
+            res.append(self.layer("cited", name, "IPC", t(0.6 + shift), {"concordance": "c" * 64}, counts={"unmapped_citations": n}))
+        p = next(p for p in self.run_compare(res).split("### ")[1:] if p.startswith("cited"))
+        self.assertIn("on set setA, IPC, concordance cccccccc: unmapped_citations 7", p)
+        self.assertIn("on set setB, IPC, concordance cccccccc: unmapped_citations 3", p)
+
+    def test_concordance_read_layers_are_caveated_on_sets_whose_bns_labels_come_from_the_concordance(self):
+        text = self.run_compare(self.fixture())
+        for name, p in {p.split("\n")[0]: p for p in text.split("### ")[1:]}.items():
+            want = name in ("assoc-nb v1", "cited v1")
+            self.assertEqual("Set setB: its BNS labels come from verified concordance entries" in p, want, name)
+            self.assertNotIn("Set setA: its BNS labels come from", p)
 
     def test_two_scorings_of_one_layer_version_are_both_shown(self):
         text = self.run_compare(self.fixture())

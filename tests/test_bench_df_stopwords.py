@@ -99,8 +99,8 @@ class ExtraStopWordsTest(unittest.TestCase):
     def test_run_drops_the_terms_and_changes_the_hash(self):
         tmp = Path(tempfile.mkdtemp())
         self.addCleanup(shutil.rmtree, tmp)
-        index.build(str(tmp / "i.sqlite"), [Provision("IPC 1", "theft of property", None, ()),
-                                            Provision("IPC 2", "murder causing death", None, ())], []).close()
+        index.build(str(tmp / "i.sqlite"), [Provision("IPC 1", "theft property", None, ()),
+                                            Provision("IPC 2", "murder", None, ())], []).close()
         labels = {f"Section {n} in The Indian Penal Code": i for i, n in enumerate((1, 2))}
         (tmp / "labels.json").write_text(json.dumps(labels))
         write_split(tmp / "dev.jsonl", [["theft murder murder"]], [[next(iter(labels))]])
@@ -114,7 +114,8 @@ class ExtraStopWordsTest(unittest.TestCase):
             self.assertEqual(main(base + ["--out", str(tmp / name)] + extra), 0)
             outs.append(json.loads((tmp / name).read_text()))
         self.assertNotEqual(outs[0]["rule"]["params_sha256"], outs[1]["rule"]["params_sha256"])
-        # "murder" appears twice in the query but is one term; with it dropped only "theft" is left, so IPC 1 wins.
+        # "murder" is repeated in the query, and the shorter IPC 2 text wins without the flag. With "murder" dropped only "theft" is left, so IPC 1 wins.
+        self.assertEqual(outs[0]["predictions"], {"c00": ["IPC 2"]})
         self.assertEqual(outs[1]["predictions"], {"c00": ["IPC 1"]})
         self.assertEqual(outs[1]["rule"]["params_sha256"], bench.rule_hash(1, 0.5, "max", sorted(set(bench.STOP_WORDS) | {"murder"})))
 

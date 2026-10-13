@@ -113,7 +113,9 @@ class ChargesValidateTest(unittest.TestCase):
     def test_validate_does_not_rewrite_the_set_or_index(self):
         p, idx = self.write(ITEMS), self.tmp / "i.sqlite"
         before = [(f.read_bytes(), f.stat().st_mtime_ns) for f in (p, p.with_suffix(".sha256"), idx)]
-        self.run_validate(p)
+        code, out, _ = self.run_validate(p)
+        self.assertEqual(code, 0)
+        self.assertIn("items: 6", out)
         self.assertEqual(before, [(f.read_bytes(), f.stat().st_mtime_ns) for f in (p, p.with_suffix(".sha256"), idx)])
 
     def test_missing_top_level_field_is_refused(self):
