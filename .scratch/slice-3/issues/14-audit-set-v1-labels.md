@@ -1,6 +1,6 @@
 # Audit the labels of set v1 against independent sources
 
-Status: ready-for-agent
+Status: done
 Blocked by: none (ticket 13 is done, concordance v3 exists)
 
 What to build: an audit of `gold/multicharge/v1.json` that stands in for a lawyer's review as far as published sources and independent annotators can, and records its result in the file's review record. It does not remove the need for a lawyer before a score is published, and the report says so.

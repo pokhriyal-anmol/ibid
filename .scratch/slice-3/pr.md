@@ -43,6 +43,13 @@ Not part of this PR: ticket 10 (route D, person-written queries) is `ready-for-h
 
 On ILSI test, route B scores micro-F1 35.4, macro-F1 18.0 and Jaccard 22.8, scored once, against the Baseline's 9.6, 6.2 and 5.5. Both BNS zeros for A and B come from only 12 verified Concordance entries, not from the extractors.
 
+## Added after the first review: published sources instead of the owner's queries
+
+- **Concordance v3** (`concordance/v3.json`, pinned): 348 served entries against 12 in v2, from the CAPT Bhopal correspondence table (a person's compilation, not an MHA publication), parsed by `ibid concordance from-table`, text-checked against the index, then challenged by an independent skeptic pass against the raw table lines (4 of 350 refuted and dropped). With v3, on set v1, route A's BNS recall goes from 0% to 82.7% and route B's from 0% to 37.8%; the IPC figures are unchanged, so it is coverage, not the extractors (`results/multicharge-v1-*-concv3.json`).
+- **Set v2** (`gold/multicharge/v2.json`, pinned): 30 real layperson forum posts from ILSIC-Lay (CC BY-NC-SA 4.0, non-commercial), 84 charges, labels extracted from forum lawyers' replies by the corpus authors. Labels are incomplete, so recall is meaningful and precision is not. Per-charge recall (IPC / BNS): baseline top-k 4.8% / 9.9%, A 0% / 0%, B 39.3% / 48.1%, C 25.0% / 40.7%. See `results/multicharge-v2-report.md`.
+- **Label audit of set v1** (`.scratch/slice-3/label-audit.md`, `gold/multicharge/v1.1.json`): 96 of 98 charges confirmed by 2 of 3 blind panel agents, 97 of 98 BNS pairs agree with the table (1 not covered), 23 candidate missing charges listed and not added. This is not a lawyer review.
+- The set v2 file stays private (partial scrub of personal names). It is not for the public repository.
+
 ## Known issues
 
 - Set v1 is 30 items from judgment text, 29 of them naming their sections, labelled by agents with no lawyer review. It cannot separate rules that differ by a few charges, and route A's figure is partly circular. Route D (a set of person-written queries) is the fact-only measure and does not exist yet.
