@@ -1,0 +1,536 @@
+{
+  "act": "IPC",
+  "charges_excluded_no_counterpart": 0,
+  "conventions": {
+    "by_charges_per_item": "grouped by the number of charges counted for the Act, not the total in the item",
+    "excluded": "a charge with an empty list for the Act is left out; an item with none left is not scored",
+    "found": "a charge is found when any accepted section of the Act, rolled up to its section, is predicted",
+    "mean_predictions": "mean number of predicted sections per scored item"
+  },
+  "inputs": {
+    "index_sha256": "efaf6fe8b342f151ac02ed110027320f39b0d99287327eb7d206453537a0d408",
+    "layer": {
+      "concordance": "e32454733360bb32f797097894ed1f94a84b1c813a4b9b0177829cf12b579cfa",
+      "index": "efaf6fe8b342f151ac02ed110027320f39b0d99287327eb7d206453537a0d408"
+    },
+    "set_sha256": "9b4c14c5bcbbd3e5158099ed94722dc6292bc668ad3162013e0219f5f5edf0bb"
+  },
+  "items_in_set": 30,
+  "items_scored": 30,
+  "label_basis": {
+    "lawyer-answer-extracted": 30
+  },
+  "layer": "cited",
+  "layer_counts": {
+    "ambiguous_mentions": 0,
+    "not_in_act_dropped": 0,
+    "other_act_dropped": 0,
+    "unmapped_citations": 0
+  },
+  "layer_version": "v1",
+  "output": {
+    "all_charges_hit": 0.0,
+    "by_charges_per_item": {
+      "1": {
+        "all_charges_hit": 0.0,
+        "charges": 0,
+        "items": 0,
+        "mean_predictions": 0.0,
+        "recall": 0.0
+      },
+      "2": {
+        "all_charges_hit": 0.0,
+        "charges": 34,
+        "items": 17,
+        "mean_predictions": 0.0,
+        "recall": 0.0
+      },
+      "3+": {
+        "all_charges_hit": 0.0,
+        "charges": 50,
+        "items": 13,
+        "mean_predictions": 0.0,
+        "recall": 0.0
+      }
+    },
+    "charges": 84,
+    "items": 30,
+    "mean_predictions": 0.0,
+    "missed": [
+      {
+        "charge": "406. Punishment for criminal breach of trust.\u2014Whoever commits criminal breach of",
+        "id": "ilsic-lay-test-176",
+        "top_predicted": []
+      },
+      {
+        "charge": "409. Criminal breach of trust by public servant, or by banker, merchant or agent",
+        "id": "ilsic-lay-test-176",
+        "top_predicted": []
+      },
+      {
+        "charge": "406. Punishment for criminal breach of trust.\u2014Whoever commits criminal breach of",
+        "id": "ilsic-lay-test-37",
+        "top_predicted": []
+      },
+      {
+        "charge": "420. Cheating and dishonestly inducing delivery of property.\u2014Whoever cheats and ",
+        "id": "ilsic-lay-test-37",
+        "top_predicted": []
+      },
+      {
+        "charge": "406. Punishment for criminal breach of trust.\u2014Whoever commits criminal breach of",
+        "id": "ilsic-lay-test-800",
+        "top_predicted": []
+      },
+      {
+        "charge": "498A. Husband or relative of husband of a woman subjecting her to cruelty.\u2014Whoev",
+        "id": "ilsic-lay-test-800",
+        "top_predicted": []
+      },
+      {
+        "charge": "406. Punishment for criminal breach of trust.\u2014Whoever commits criminal breach of",
+        "id": "ilsic-lay-test-14",
+        "top_predicted": []
+      },
+      {
+        "charge": "420. Cheating and dishonestly inducing delivery of property.\u2014Whoever cheats and ",
+        "id": "ilsic-lay-test-14",
+        "top_predicted": []
+      },
+      {
+        "charge": "405. Criminal breach of trust.\u2014Whoever, being in any manner entrusted with prope",
+        "id": "ilsic-lay-test-756",
+        "top_predicted": []
+      },
+      {
+        "charge": "406. Punishment for criminal breach of trust.\u2014Whoever commits criminal breach of",
+        "id": "ilsic-lay-test-756",
+        "top_predicted": []
+      },
+      {
+        "charge": "420. Cheating and dishonestly inducing delivery of property.\u2014Whoever cheats and ",
+        "id": "ilsic-lay-test-756",
+        "top_predicted": []
+      },
+      {
+        "charge": "463. Forgery.\u2014Whoever makes any false document or false electronic record or par",
+        "id": "ilsic-lay-test-756",
+        "top_predicted": []
+      },
+      {
+        "charge": "465. Punishment for forgery.\u2014Whoever commits forgery shall be punished with impr",
+        "id": "ilsic-lay-test-756",
+        "top_predicted": []
+      },
+      {
+        "charge": "467. Forgery of valuable security, will, etc.\u2014Whoever forges a document which pu",
+        "id": "ilsic-lay-test-756",
+        "top_predicted": []
+      },
+      {
+        "charge": "468. Forgery for purpose of cheating.\u2014Whoever commits forgery, intending that th",
+        "id": "ilsic-lay-test-756",
+        "top_predicted": []
+      },
+      {
+        "charge": "471. Using as genuine a forged document or electronic record.\u2014Whoever fraudulent",
+        "id": "ilsic-lay-test-756",
+        "top_predicted": []
+      },
+      {
+        "charge": "406. Punishment for criminal breach of trust.\u2014Whoever commits criminal breach of",
+        "id": "ilsic-lay-test-219",
+        "top_predicted": []
+      },
+      {
+        "charge": "506. Punishment for criminal intimidation.\u2014Whoever commits the offence of crimin",
+        "id": "ilsic-lay-test-219",
+        "top_predicted": []
+      },
+      {
+        "charge": "406. Punishment for criminal breach of trust.\u2014Whoever commits criminal breach of",
+        "id": "ilsic-lay-test-302",
+        "top_predicted": []
+      },
+      {
+        "charge": "498A. Husband or relative of husband of a woman subjecting her to cruelty.\u2014Whoev",
+        "id": "ilsic-lay-test-302",
+        "top_predicted": []
+      },
+      {
+        "charge": "354. Assault or criminal force to woman with intent to outrage her modesty.\u2014Whoe",
+        "id": "ilsic-lay-test-506",
+        "top_predicted": []
+      },
+      {
+        "charge": "504. Intentional insult with intent to provoke breach of the peace.\u2014Whoever inte",
+        "id": "ilsic-lay-test-506",
+        "top_predicted": []
+      },
+      {
+        "charge": "509. Word, gesture or act intended to insult the modesty of a woman.\u2014Whoever, in",
+        "id": "ilsic-lay-test-506",
+        "top_predicted": []
+      },
+      {
+        "charge": "406. Punishment for criminal breach of trust.\u2014Whoever commits criminal breach of",
+        "id": "ilsic-lay-test-50",
+        "top_predicted": []
+      },
+      {
+        "charge": "498A. Husband or relative of husband of a woman subjecting her to cruelty.\u2014Whoev",
+        "id": "ilsic-lay-test-50",
+        "top_predicted": []
+      },
+      {
+        "charge": "406. Punishment for criminal breach of trust.\u2014Whoever commits criminal breach of",
+        "id": "ilsic-lay-test-88",
+        "top_predicted": []
+      },
+      {
+        "charge": "415. Cheating.\u2014Whoever, by deceiving any person, fraudulently or dishonestly ind",
+        "id": "ilsic-lay-test-88",
+        "top_predicted": []
+      },
+      {
+        "charge": "420. Cheating and dishonestly inducing delivery of property.\u2014Whoever cheats and ",
+        "id": "ilsic-lay-test-88",
+        "top_predicted": []
+      },
+      {
+        "charge": "497. Adultery.\u2014Whoever has sexual intercourse with a person who is and whom he k",
+        "id": "ilsic-lay-test-48",
+        "top_predicted": []
+      },
+      {
+        "charge": "498. Enticing or taking away or detaining with criminal intent a married woman.\u2014",
+        "id": "ilsic-lay-test-48",
+        "top_predicted": []
+      },
+      {
+        "charge": "353. Assault or criminal force to deter public servant from discharge of his dut",
+        "id": "ilsic-lay-test-424",
+        "top_predicted": []
+      },
+      {
+        "charge": "506. Punishment for criminal intimidation.\u2014Whoever commits the offence of crimin",
+        "id": "ilsic-lay-test-424",
+        "top_predicted": []
+      },
+      {
+        "charge": "499. Defamation.\u2014Whoever, by words either spoken or intended to be read, or by s",
+        "id": "ilsic-lay-test-589",
+        "top_predicted": []
+      },
+      {
+        "charge": "500. Punishment for defamation.\u2014Whoever defames another shall be punished with s",
+        "id": "ilsic-lay-test-589",
+        "top_predicted": []
+      },
+      {
+        "charge": "406. Punishment for criminal breach of trust.\u2014Whoever commits criminal breach of",
+        "id": "ilsic-lay-test-641",
+        "top_predicted": []
+      },
+      {
+        "charge": "498A. Husband or relative of husband of a woman subjecting her to cruelty.\u2014Whoev",
+        "id": "ilsic-lay-test-641",
+        "top_predicted": []
+      },
+      {
+        "charge": "268. Public nuisance.\u2014A person is guilty of a public nuisance who does any act o",
+        "id": "ilsic-lay-test-59",
+        "top_predicted": []
+      },
+      {
+        "charge": "290. Punishment for public nuisance in cases not otherwise provided for.\u2014Whoever",
+        "id": "ilsic-lay-test-59",
+        "top_predicted": []
+      },
+      {
+        "charge": "425. Mischief.\u2014Whoever with intent to cause, or knowing that he is likely to cau",
+        "id": "ilsic-lay-test-59",
+        "top_predicted": []
+      },
+      {
+        "charge": "268. Public nuisance.\u2014A person is guilty of a public nuisance who does any act o",
+        "id": "ilsic-lay-test-707",
+        "top_predicted": []
+      },
+      {
+        "charge": "290. Punishment for public nuisance in cases not otherwise provided for.\u2014Whoever",
+        "id": "ilsic-lay-test-707",
+        "top_predicted": []
+      },
+      {
+        "charge": "406. Punishment for criminal breach of trust.\u2014Whoever commits criminal breach of",
+        "id": "ilsic-lay-test-707",
+        "top_predicted": []
+      },
+      {
+        "charge": "425. Mischief.\u2014Whoever with intent to cause, or knowing that he is likely to cau",
+        "id": "ilsic-lay-test-707",
+        "top_predicted": []
+      },
+      {
+        "charge": "500. Punishment for defamation.\u2014Whoever defames another shall be punished with s",
+        "id": "ilsic-lay-test-707",
+        "top_predicted": []
+      },
+      {
+        "charge": "506. Punishment for criminal intimidation.\u2014Whoever commits the offence of crimin",
+        "id": "ilsic-lay-test-707",
+        "top_predicted": []
+      },
+      {
+        "charge": "493. Cohabitation caused by a man deceitfully inducing a belief of lawful marria",
+        "id": "ilsic-lay-test-645",
+        "top_predicted": []
+      },
+      {
+        "charge": "496. Marriage ceremony fraudulently gone through without lawful marriage.\u2014Whoeve",
+        "id": "ilsic-lay-test-645",
+        "top_predicted": []
+      },
+      {
+        "charge": "498A. Husband or relative of husband of a woman subjecting her to cruelty.\u2014Whoev",
+        "id": "ilsic-lay-test-645",
+        "top_predicted": []
+      },
+      {
+        "charge": "406. Punishment for criminal breach of trust.\u2014Whoever commits criminal breach of",
+        "id": "ilsic-lay-test-818",
+        "top_predicted": []
+      },
+      {
+        "charge": "420. Cheating and dishonestly inducing delivery of property.\u2014Whoever cheats and ",
+        "id": "ilsic-lay-test-818",
+        "top_predicted": []
+      },
+      {
+        "charge": "405. Criminal breach of trust.\u2014Whoever, being in any manner entrusted with prope",
+        "id": "ilsic-lay-test-432",
+        "top_predicted": []
+      },
+      {
+        "charge": "425. Mischief.\u2014Whoever with intent to cause, or knowing that he is likely to cau",
+        "id": "ilsic-lay-test-432",
+        "top_predicted": []
+      },
+      {
+        "charge": "378. Theft.\u2014Whoever, intending to take dishonestly any movable property out of t",
+        "id": "ilsic-lay-test-416",
+        "top_predicted": []
+      },
+      {
+        "charge": "385. Putting person in fear of injury in order to commit extortion.\u2014Whoever, in ",
+        "id": "ilsic-lay-test-416",
+        "top_predicted": []
+      },
+      {
+        "charge": "415. Cheating.\u2014Whoever, by deceiving any person, fraudulently or dishonestly ind",
+        "id": "ilsic-lay-test-416",
+        "top_predicted": []
+      },
+      {
+        "charge": "427. Mischief causing damage to the amount of fifty rupees.\u2014Whoever commits misc",
+        "id": "ilsic-lay-test-397",
+        "top_predicted": []
+      },
+      {
+        "charge": "504. Intentional insult with intent to provoke breach of the peace.\u2014Whoever inte",
+        "id": "ilsic-lay-test-397",
+        "top_predicted": []
+      },
+      {
+        "charge": "506. Punishment for criminal intimidation.\u2014Whoever commits the offence of crimin",
+        "id": "ilsic-lay-test-397",
+        "top_predicted": []
+      },
+      {
+        "charge": "405. Criminal breach of trust.\u2014Whoever, being in any manner entrusted with prope",
+        "id": "ilsic-lay-test-572",
+        "top_predicted": []
+      },
+      {
+        "charge": "406. Punishment for criminal breach of trust.\u2014Whoever commits criminal breach of",
+        "id": "ilsic-lay-test-572",
+        "top_predicted": []
+      },
+      {
+        "charge": "420. Cheating and dishonestly inducing delivery of property.\u2014Whoever cheats and ",
+        "id": "ilsic-lay-test-572",
+        "top_predicted": []
+      },
+      {
+        "charge": "468. Forgery for purpose of cheating.\u2014Whoever commits forgery, intending that th",
+        "id": "ilsic-lay-test-572",
+        "top_predicted": []
+      },
+      {
+        "charge": "406. Punishment for criminal breach of trust.\u2014Whoever commits criminal breach of",
+        "id": "ilsic-lay-test-620",
+        "top_predicted": []
+      },
+      {
+        "charge": "420. Cheating and dishonestly inducing delivery of property.\u2014Whoever cheats and ",
+        "id": "ilsic-lay-test-620",
+        "top_predicted": []
+      },
+      {
+        "charge": "420. Cheating and dishonestly inducing delivery of property.\u2014Whoever cheats and ",
+        "id": "ilsic-lay-test-0",
+        "top_predicted": []
+      },
+      {
+        "charge": "506. Punishment for criminal intimidation.\u2014Whoever commits the offence of crimin",
+        "id": "ilsic-lay-test-0",
+        "top_predicted": []
+      },
+      {
+        "charge": "376. Punishment for rape.\u2014(1) Whoever, except in the cases provided for in sub-s",
+        "id": "ilsic-lay-test-103",
+        "top_predicted": []
+      },
+      {
+        "charge": "498. Enticing or taking away or detaining with criminal intent a married woman.\u2014",
+        "id": "ilsic-lay-test-103",
+        "top_predicted": []
+      },
+      {
+        "charge": "500. Punishment for defamation.\u2014Whoever defames another shall be punished with s",
+        "id": "ilsic-lay-test-103",
+        "top_predicted": []
+      },
+      {
+        "charge": "406. Punishment for criminal breach of trust.\u2014Whoever commits criminal breach of",
+        "id": "ilsic-lay-test-402",
+        "top_predicted": []
+      },
+      {
+        "charge": "420. Cheating and dishonestly inducing delivery of property.\u2014Whoever cheats and ",
+        "id": "ilsic-lay-test-402",
+        "top_predicted": []
+      },
+      {
+        "charge": "420. Cheating and dishonestly inducing delivery of property.\u2014Whoever cheats and ",
+        "id": "ilsic-lay-test-376",
+        "top_predicted": []
+      },
+      {
+        "charge": "467. Forgery of valuable security, will, etc.\u2014Whoever forges a document which pu",
+        "id": "ilsic-lay-test-376",
+        "top_predicted": []
+      },
+      {
+        "charge": "468. Forgery for purpose of cheating.\u2014Whoever commits forgery, intending that th",
+        "id": "ilsic-lay-test-376",
+        "top_predicted": []
+      },
+      {
+        "charge": "471. Using as genuine a forged document or electronic record.\u2014Whoever fraudulent",
+        "id": "ilsic-lay-test-376",
+        "top_predicted": []
+      },
+      {
+        "charge": "156. Liability of agent of owner or occupier for whose benefit riot is committed",
+        "id": "ilsic-lay-test-742",
+        "top_predicted": []
+      },
+      {
+        "charge": "376. Punishment for rape.\u2014(1) Whoever, except in the cases provided for in sub-s",
+        "id": "ilsic-lay-test-742",
+        "top_predicted": []
+      },
+      {
+        "charge": "498A. Husband or relative of husband of a woman subjecting her to cruelty.\u2014Whoev",
+        "id": "ilsic-lay-test-742",
+        "top_predicted": []
+      },
+      {
+        "charge": "500. Punishment for defamation.\u2014Whoever defames another shall be punished with s",
+        "id": "ilsic-lay-test-742",
+        "top_predicted": []
+      },
+      {
+        "charge": "406. Punishment for criminal breach of trust.\u2014Whoever commits criminal breach of",
+        "id": "ilsic-lay-test-94",
+        "top_predicted": []
+      },
+      {
+        "charge": "420. Cheating and dishonestly inducing delivery of property.\u2014Whoever cheats and ",
+        "id": "ilsic-lay-test-94",
+        "top_predicted": []
+      },
+      {
+        "charge": "406. Punishment for criminal breach of trust.\u2014Whoever commits criminal breach of",
+        "id": "ilsic-lay-test-431",
+        "top_predicted": []
+      },
+      {
+        "charge": "420. Cheating and dishonestly inducing delivery of property.\u2014Whoever cheats and ",
+        "id": "ilsic-lay-test-431",
+        "top_predicted": []
+      },
+      {
+        "charge": "506. Punishment for criminal intimidation.\u2014Whoever commits the offence of crimin",
+        "id": "ilsic-lay-test-431",
+        "top_predicted": []
+      }
+    ],
+    "predictions": {
+      "ilsic-lay-test-0": [],
+      "ilsic-lay-test-103": [],
+      "ilsic-lay-test-14": [],
+      "ilsic-lay-test-176": [],
+      "ilsic-lay-test-219": [],
+      "ilsic-lay-test-302": [],
+      "ilsic-lay-test-37": [],
+      "ilsic-lay-test-376": [],
+      "ilsic-lay-test-397": [],
+      "ilsic-lay-test-402": [],
+      "ilsic-lay-test-416": [],
+      "ilsic-lay-test-424": [],
+      "ilsic-lay-test-431": [],
+      "ilsic-lay-test-432": [],
+      "ilsic-lay-test-48": [],
+      "ilsic-lay-test-50": [],
+      "ilsic-lay-test-506": [],
+      "ilsic-lay-test-572": [],
+      "ilsic-lay-test-589": [],
+      "ilsic-lay-test-59": [],
+      "ilsic-lay-test-620": [],
+      "ilsic-lay-test-641": [],
+      "ilsic-lay-test-645": [],
+      "ilsic-lay-test-707": [],
+      "ilsic-lay-test-742": [],
+      "ilsic-lay-test-756": [],
+      "ilsic-lay-test-800": [],
+      "ilsic-lay-test-818": [],
+      "ilsic-lay-test-88": [],
+      "ilsic-lay-test-94": []
+    },
+    "recall": 0.0
+  },
+  "parser_version": "4",
+  "scorings_of_this_layer_version": [
+    {
+      "act": "IPC",
+      "index_sha256": "efaf6fe8b342f151ac02ed110027320f39b0d99287327eb7d206453537a0d408",
+      "inputs": {
+        "concordance": "e32454733360bb32f797097894ed1f94a84b1c813a4b9b0177829cf12b579cfa",
+        "index": "efaf6fe8b342f151ac02ed110027320f39b0d99287327eb7d206453537a0d408"
+      },
+      "layer": "cited",
+      "layer_version": "v1",
+      "scores": {
+        "output": {
+          "all_charges_hit": 0.0,
+          "mean_predictions": 0.0,
+          "recall": 0.0
+        }
+      },
+      "set_sha256": "9b4c14c5bcbbd3e5158099ed94722dc6292bc668ad3162013e0219f5f5edf0bb"
+    }
+  ]
+}

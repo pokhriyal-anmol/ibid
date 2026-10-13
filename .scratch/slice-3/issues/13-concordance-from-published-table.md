@@ -1,6 +1,6 @@
 # Verify more concordance entries against a published correspondence table
 
-Status: ready-for-agent
+Status: done
 Blocked by: none (downloads approved 2026-10-13, files under `data/raw/capt/` and `data/raw/uppolice/`)
 
 What to build: concordance v3, with many more entries served as verified, so that routes A and B stop returning nothing for the BNS. Today 12 of 66 entries are served. The BNS side of every layer depends on this.

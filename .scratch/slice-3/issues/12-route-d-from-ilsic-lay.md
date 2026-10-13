@@ -1,7 +1,7 @@
 # Route D without writing queries: a layperson set from ILSIC-Lay
 
-Status: needs-triage
-Blocked by: the owner's approval to download the ILSIC data (see `spec.md`, "Downloads awaiting approval")
+Status: done
+Blocked by: none. Built 2026-10-13: `gold/multicharge/v2.json`, report `results/multicharge-v2-report.md`.
 
 What to build: set v2, `gold/multicharge/v2.json`, 30 items whose queries were written by real laypeople on a legal forum and published in the ILSIC corpus (EACL Findings 2026, https://arxiv.org/abs/2602.00881, data at https://github.com/Law-AI/ilsic, CC BY-NC-SA 4.0). This replaces the owner's step in ticket 10 with an academic source. The labels come from the lawyers' replies to each post, extracted by the corpus authors, so no agent writes or drafts a label.
 
