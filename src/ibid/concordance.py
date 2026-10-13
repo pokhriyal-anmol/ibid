@@ -8,6 +8,7 @@ import sqlite3
 
 NONE = "no verified concordance"
 TYPES = {"one-to-one", "split", "merged", "removed", "new"}
+BASES = {"human-checked", "agent-checked-for-owner", "refuted-by-agent", "source-table-checked"}
 
 
 def load(path: str, db: sqlite3.Connection) -> list[dict]:
@@ -18,6 +19,8 @@ def load(path: str, db: sqlite3.Connection) -> list[dict]:
     for i, e in enumerate(entries):
         if e.get("type") not in TYPES or not isinstance(e.get("verified"), bool):
             raise ValueError(f"concordance entry {i}: bad type or verified flag")
+        if e.get("basis", "human-checked") not in BASES:
+            raise ValueError(f"concordance entry {i}: unknown basis {e['basis']!r}")
         if (e["type"] == "removed" and e["bns"]) or (e["type"] == "new" and e["ipc"]):
             raise ValueError(f"concordance entry {i}: {e['type']} entry names a successor or ancestor")
         if not all(c.startswith("IPC ") for c in e["ipc"]) or not all(c.startswith("BNS ") for c in e["bns"]):

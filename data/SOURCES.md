@@ -31,3 +31,7 @@ Downloaded 2026-10-09.
 | `ilsic/id-act-meta.json`, `id-section-meta.json`, `section-texts.json`, `queries_to_annotate.json` | ILSIC, top-level folder | 3,772, 105,306, 1,434,370, 319,818 | `e51d5e27…`, `b7c59f1d…`, `d5bf7f94…`, `27e98ac6…` | as above |
 
 Not downloaded: the ILSIC `court-dataset` and `synthetic-layman-dataset` folders and the train and dev splits of the layperson sets. They are not needed for route D and the audit.
+
+### CAPT correspondence table: licence and use (ticket 13)
+
+Every page of `capt/comparison_summary_BNS_to_IPC.pdf` carries the line "© Anil Kishore Yadav, IPS, Director, CAPT Bhopal". No licence is stated, so the file stays under `data/raw/` and is not committed. Ibid reads it with `pdftotext -layout` and `ibid concordance from-table`, and keeps only section numbers and a row reference as evidence, not the table's comparison notes. Reports call it a personal compilation and not an official Ministry of Home Affairs publication.

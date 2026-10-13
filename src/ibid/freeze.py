@@ -80,7 +80,9 @@ def freeze(sheet: str, draft_gold: str, draft_conc: str, out_gold: str, out_conc
         return "agent-checked-for-owner" if item_id in delegated else "human-checked"
 
     # Only an entry matched by a passed sheet item is served; the rest stay verified:false.
-    conc = [{**e, "verified": (i := passed_item(e)) is not None, "basis": basis(i)}
+    # An entry the correspondence-table check already served keeps its basis; the sheet does not demote it.
+    conc = [e if e.get("basis") == "source-table-checked" and e["verified"] else
+            {**e, "verified": (i := passed_item(e)) is not None, "basis": basis(i)}
             for e in json.loads(Path(draft_conc).read_text())]
     gold_bytes = (json.dumps([to_eval_item(g, sources or {}) for g in kept], indent=2, sort_keys=True) + "\n").encode()
     Path(out_gold).write_bytes(gold_bytes)

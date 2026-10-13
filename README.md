@@ -86,7 +86,7 @@ uv run python -m unittest discover -s tests
 - **A frozen answer key.** [gold/v2.json](gold/v2.json) carries its SHA-256 in [gold/v2.sha256](gold/v2.sha256). One changed byte and scored mode refuses to run. Edits make a new version.
 - **Independent of the system.** Gold answers were drafted from the PDF page text, never from the index, and each cites its page. A second pass tried to refute every item.
 - **The harness can fail.** A scrambled section lowers its category, a wrong concordance mapping lowers its category, and swapped source pages refuse to score. See [tests/test_baseline.py](tests/test_baseline.py).
-- **Provenance in the data.** Every concordance entry carries a `basis`: `human-checked`, `agent-checked-for-owner` or `refuted-by-agent`. Only the first two are served.
+- **Provenance in the data.** Every concordance entry carries a `basis`: `human-checked`, `agent-checked-for-owner`, `source-table-checked` or `refuted-by-agent`. Only the first three are served.
 
 ## Repository map
 
