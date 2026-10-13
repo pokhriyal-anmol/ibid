@@ -1,0 +1,24 @@
+[
+  {
+    "cases": 13039,
+    "k": 5,
+    "r": 0.7,
+    "rule": {
+      "name": "query-rule",
+      "params_sha256": "250c53f85b3dcaa5c370dcc7a0cbf8a6da7579bc0f398ea9be2341b4750a90bf",
+      "version": "v2.11"
+    },
+    "scores": {
+      "jaccard": 0.054312,
+      "macro_f1": 0.060725,
+      "micro_f1": 0.093657
+    },
+    "section_score": "max",
+    "split_sha256": "9fc141a94b51febe3e3cd06494f13c587098afcda175fc2e3e4d6213a88b60d1",
+    "threshold_scores": {
+      "jaccard": 0.055216,
+      "macro_f1": 0.062099,
+      "micro_f1": 0.096436
+    }
+  }
+]

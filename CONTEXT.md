@@ -56,6 +56,22 @@ _Avoid_: Test data, ground truth
 The first scored run of the simplest retrieval that works. Every later layer (embeddings, graph) must beat it on the gold set to stay.
 _Avoid_: Benchmark (reserved for external benchmarks such as ILSI)
 
+**Benchmark label**:
+A label string from an external benchmark (LeSICiN), mapped to a citation. Benchmark labels are not a Gold set: they were not verified against the Gazette text.
+_Avoid_: Gold, ground truth
+
+**Query rule**:
+The fixed, versioned code that turns a raw query into index terms and a ranked list of sections, recorded as a rule version and a hash of its parameters ([ADR 0004](docs/adr/0004-fixed-tokenisation-of-the-raw-query.md)).
+_Avoid_: Prompt, query rewriting
+
+**Optimisation round**:
+One logged change to one declared knob of the query rule, scored on train and dev, never on test.
+_Avoid_: Experiment, run
+
+**Frozen rule**:
+The query rule of one logged round, recorded before the test split is scored. The test split is scored against it once.
+_Avoid_: Final model, best config
+
 **Slice**:
 One tracer-bullet increment that is demoable and verifiable on its own.
 _Avoid_: Phase, milestone

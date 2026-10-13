@@ -116,7 +116,66 @@ def main(argv: list[str] | None = None) -> int:
     cf.add_argument("--pages", default="data/raw/pages")
     cf.add_argument("--index", default="data/index/conform.sqlite")
     cf.add_argument("--drop", action="append", default=[], metavar="ID=REASON")
+    bsub = sub.add_parser("bench").add_subparsers(dest="bench_cmd", required=True)
+    bn = bsub.add_parser("check-labels")
+    bn.add_argument("--data", default="data/raw/lesicin/label_vocab.json")
+    bn.add_argument("--index", default="data/index/ibid.sqlite")
+    br = bsub.add_parser("run")
+    br.add_argument("--split", required=True)
+    br.add_argument("--labels", default="data/raw/lesicin/label_vocab.json")
+    br.add_argument("--index", default="data/index/ibid.sqlite")
+    br.add_argument("--manifest", default="data/lesicin.manifest.json")
+    br.add_argument("--k", type=int, required=True)
+    br.add_argument("--r", type=float, required=True, help="relative threshold in (0, 1]")
+    br.add_argument("--rollup", choices=("max", "sum"), default="max")
+    br.add_argument("--bm25-k1", type=float, default=1.2)
+    br.add_argument("--bm25-b", type=float, default=0.75)
+    br.add_argument("--stem", default="none", help="none or suffix")
+    br.add_argument("--levels", default="all", help="all, top or leaf")
+    br.add_argument("--out", required=True)
+    br.add_argument("--sample", nargs="?", type=int, const=200, default=None, metavar="N")
+    br.add_argument("--frozen-rule", default="results/frozen-rule.json")
+    br.add_argument("--ledger", default="results/test-ledger.json")
+    br.add_argument("--rescore-test", action="store_true")
+    bf = bsub.add_parser("freeze")
+    bf.add_argument("--log", default="results/optimisation-log.json")
+    bf.add_argument("--round", type=int, default=None, help="logged round to freeze, default the last")
+    bf.add_argument("--out", default="results/frozen-rule.json")
+    ro = bsub.add_parser("round", help="score train and dev with one declared change and append to the log")
+    ro.add_argument("--train", required=True)
+    ro.add_argument("--dev", required=True)
+    ro.add_argument("--labels", default="data/raw/lesicin/label_vocab.json")
+    ro.add_argument("--index", default="data/index/ibid.sqlite")
+    ro.add_argument("--manifest", default="data/lesicin.manifest.json")
+    ro.add_argument("--log", default="results/optimisation-log.json")
+    ro.add_argument("--change", action="append", default=[], metavar="KNOB=VALUE")
+    ro.add_argument("--k", type=int, help="round 0 only")
+    ro.add_argument("--r", type=float, help="round 0 only")
+    ro.add_argument("--rollup", choices=("max", "sum"), help="round 0 only, default max")
+    rp = bsub.add_parser("report", help="write the report from the log, the test ledger and the test results file")
+    rp.add_argument("--log", default="results/optimisation-log.json")
+    rp.add_argument("--ledger", default="results/test-ledger.json")
+    rp.add_argument("--results", required=True, help="the results file of the test run")
+    rp.add_argument("--frozen-rule", default="results/frozen-rule.json", help="the frozen-rule record, names the frozen round")
+    rp.add_argument("--out", default="results/report.md")
     a = ap.parse_args(argv)
+    if a.cmd == "bench" and a.bench_cmd == "report":
+        from ibid.report import run_report
+        return run_report(a.log, a.ledger, a.results, a.out, a.frozen_rule)
+    if a.cmd == "bench" and a.bench_cmd == "round":
+        from ibid.optimise import run_round
+        return run_round(a.train, a.dev, a.labels, a.index, a.manifest, a.log, a.change, a.k, a.r, a.rollup)
+    if a.cmd == "bench" and a.bench_cmd == "run":
+        from ibid.bench import run_bench
+        return run_bench(a.split, a.labels, a.index, a.k, a.r, a.rollup, a.out, a.manifest, a.sample,
+                         a.frozen_rule, a.ledger, a.rescore_test,
+                         {"bm25_k1": a.bm25_k1, "bm25_b": a.bm25_b, "stem": a.stem, "levels": a.levels})
+    if a.cmd == "bench" and a.bench_cmd == "freeze":
+        from ibid.bench import freeze_rule
+        return freeze_rule(a.log, a.round, a.out)
+    if a.cmd == "bench":
+        from ibid.bench import check_labels
+        return check_labels(a.data, a.index)
     if a.cmd == "conform":
         from ibid.conform import conform
         report = conform(a.gold, a.out, a.bns, a.ipc, a.pages, a.index, a.sheet, dict(d.split("=", 1) for d in a.drop))
