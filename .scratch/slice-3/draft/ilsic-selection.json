@@ -1,0 +1,307 @@
+{
+ "rule": "Ticket 12 selection from ILSIC-Lay test. Reads labels and word counts only; the rule is fixed before any post is read.\n\nRule: row has >= 2 distinct IPC sections (IPC 34, 149, 120B not counted), 40..250 words, no keyword-led section number\nin the text (the intake pattern), then the 30 rows whose sha256 of 'ilsic-lay-test-<row index>' sorts first.",
+ "source_sha256": "9f8eab7ba638f4413a3a30d0138c1de34173d5e9425bbfa1b9ef4d3ebdddf37d",
+ "stats": {
+  "rows": 836,
+  "lt2_ipc": 658,
+  "length": 55,
+  "has_section_number": 14,
+  "candidates": 109
+ },
+ "items": [
+  {
+   "row": 176,
+   "ipc": [
+    "406",
+    "409"
+   ],
+   "words": 95,
+   "id": "ilsic-lay-test-176"
+  },
+  {
+   "row": 37,
+   "ipc": [
+    "406",
+    "420"
+   ],
+   "words": 162,
+   "id": "ilsic-lay-test-37"
+  },
+  {
+   "row": 800,
+   "ipc": [
+    "406",
+    "498A"
+   ],
+   "words": 75,
+   "id": "ilsic-lay-test-800"
+  },
+  {
+   "row": 14,
+   "ipc": [
+    "406",
+    "420"
+   ],
+   "words": 209,
+   "id": "ilsic-lay-test-14"
+  },
+  {
+   "row": 756,
+   "ipc": [
+    "405",
+    "406",
+    "420",
+    "463",
+    "465",
+    "467",
+    "468",
+    "471"
+   ],
+   "words": 55,
+   "id": "ilsic-lay-test-756"
+  },
+  {
+   "row": 219,
+   "ipc": [
+    "406",
+    "506"
+   ],
+   "words": 165,
+   "id": "ilsic-lay-test-219"
+  },
+  {
+   "row": 302,
+   "ipc": [
+    "406",
+    "498A"
+   ],
+   "words": 197,
+   "id": "ilsic-lay-test-302"
+  },
+  {
+   "row": 506,
+   "ipc": [
+    "354",
+    "504",
+    "509"
+   ],
+   "words": 52,
+   "id": "ilsic-lay-test-506"
+  },
+  {
+   "row": 50,
+   "ipc": [
+    "406",
+    "498A"
+   ],
+   "words": 199,
+   "id": "ilsic-lay-test-50"
+  },
+  {
+   "row": 88,
+   "ipc": [
+    "406",
+    "415",
+    "420"
+   ],
+   "words": 183,
+   "id": "ilsic-lay-test-88"
+  },
+  {
+   "row": 48,
+   "ipc": [
+    "497",
+    "498"
+   ],
+   "words": 136,
+   "id": "ilsic-lay-test-48"
+  },
+  {
+   "row": 424,
+   "ipc": [
+    "353",
+    "506"
+   ],
+   "words": 71,
+   "id": "ilsic-lay-test-424"
+  },
+  {
+   "row": 589,
+   "ipc": [
+    "499",
+    "500"
+   ],
+   "words": 245,
+   "id": "ilsic-lay-test-589"
+  },
+  {
+   "row": 641,
+   "ipc": [
+    "406",
+    "498A"
+   ],
+   "words": 109,
+   "id": "ilsic-lay-test-641"
+  },
+  {
+   "row": 59,
+   "ipc": [
+    "268",
+    "290",
+    "425"
+   ],
+   "words": 46,
+   "id": "ilsic-lay-test-59"
+  },
+  {
+   "row": 707,
+   "ipc": [
+    "268",
+    "290",
+    "406",
+    "425",
+    "500",
+    "506"
+   ],
+   "words": 161,
+   "id": "ilsic-lay-test-707"
+  },
+  {
+   "row": 645,
+   "ipc": [
+    "493",
+    "496",
+    "498A"
+   ],
+   "words": 81,
+   "id": "ilsic-lay-test-645"
+  },
+  {
+   "row": 818,
+   "ipc": [
+    "406",
+    "420"
+   ],
+   "words": 213,
+   "id": "ilsic-lay-test-818"
+  },
+  {
+   "row": 432,
+   "ipc": [
+    "405",
+    "425"
+   ],
+   "words": 158,
+   "id": "ilsic-lay-test-432"
+  },
+  {
+   "row": 416,
+   "ipc": [
+    "378",
+    "385",
+    "415"
+   ],
+   "words": 86,
+   "id": "ilsic-lay-test-416"
+  },
+  {
+   "row": 397,
+   "ipc": [
+    "427",
+    "504",
+    "506"
+   ],
+   "words": 138,
+   "id": "ilsic-lay-test-397"
+  },
+  {
+   "row": 572,
+   "ipc": [
+    "405",
+    "406",
+    "420",
+    "468"
+   ],
+   "words": 108,
+   "id": "ilsic-lay-test-572"
+  },
+  {
+   "row": 620,
+   "ipc": [
+    "406",
+    "420"
+   ],
+   "words": 108,
+   "id": "ilsic-lay-test-620"
+  },
+  {
+   "row": 0,
+   "ipc": [
+    "420",
+    "506"
+   ],
+   "words": 66,
+   "id": "ilsic-lay-test-0"
+  },
+  {
+   "row": 103,
+   "ipc": [
+    "376",
+    "498",
+    "500"
+   ],
+   "words": 191,
+   "id": "ilsic-lay-test-103"
+  },
+  {
+   "row": 402,
+   "ipc": [
+    "406",
+    "420"
+   ],
+   "words": 105,
+   "id": "ilsic-lay-test-402"
+  },
+  {
+   "row": 376,
+   "ipc": [
+    "420",
+    "467",
+    "468",
+    "471"
+   ],
+   "words": 245,
+   "id": "ilsic-lay-test-376"
+  },
+  {
+   "row": 742,
+   "ipc": [
+    "156",
+    "376",
+    "498A",
+    "500"
+   ],
+   "words": 135,
+   "id": "ilsic-lay-test-742"
+  },
+  {
+   "row": 94,
+   "ipc": [
+    "406",
+    "420"
+   ],
+   "words": 129,
+   "id": "ilsic-lay-test-94"
+  },
+  {
+   "row": 431,
+   "ipc": [
+    "406",
+    "420",
+    "506"
+   ],
+   "words": 155,
+   "id": "ilsic-lay-test-431"
+  }
+ ]
+}
