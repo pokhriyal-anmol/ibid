@@ -79,4 +79,6 @@ Two measured failures line up with the literature.
 3. The untried baseline knobs (`stem`, `levels`, `rollup`, stop words), under the same protocol, with the single-label guard.
 4. A model layer for decomposition, rewriting and reranking, as an opt-in under ADR 0001. It needs a model choice, a cost estimate and its own packet.
 
+5. A learned term-to-section association (naive Bayes over the ILSI train labels) as an opt-in layer with its own packet, recorded in [ADR 0005](../adr/0005-learned-association-layer-is-opt-in.md).
+
 Not recommended yet: dense retrieval as a default, graph expansion before ranking, and PageIndex. The evidence for each is mixed or vendor-reported.

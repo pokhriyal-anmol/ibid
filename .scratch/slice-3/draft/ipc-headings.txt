@@ -1,0 +1,575 @@
+IPC 1: 1. Title and extent of operation of the Code.—This Act shall be called the Indian Penal Code, and shall extend
+IPC 2: 2. Punishment of offences committed within India.—Every person shall be liable to punishment under this Code a
+IPC 3: 3. Punishment of offences committed beyond, but which by law may be tried within, India.—Any person liable, by
+IPC 4: 4. Extension of Code to extra-territorial offences.—The provisions of this Code apply also to any offence comm
+IPC 5: 5. Certain laws not to be affected by this Act.—Nothing in this Act shall affect the provisions of any Act for
+IPC 6: 6. Definitions in the Code to be understood subject to exceptions.—Throughout this Code every definition of an
+IPC 7: 7. Sense of expression once explained.—Every expression which is explained in any part of this Code, is used i
+IPC 8: 8. Gender.—The pronoun “he” and its derivatives are used of any person, whether male or female.
+IPC 9: 9. Number.—Unless the contrary appears from the context, words importing the singular number include the plura
+IPC 10: 10. “Man”. “Woman”.—The word “man” denotes a male human being of any age; the word “woman” denotes a female hu
+IPC 11: 11. “Person”.—The word “person” includes any Company or Association or body of persons, whether incorporated o
+IPC 12: 12. “Public”.—The word “public” includes any class of the public or any community.
+IPC 13: 13. Definition of “Queen”.Omitted by the A. O. 1950.
+IPC 14: 14. “Servant of Government”.—The words “servant of Government” denote any officer or servant continued, appoin
+IPC 15: 15. Definition of “British India”. Rep. by the A. O. 1937.
+IPC 16: 16.Definition of “Government of India”.Rep., ibid.
+IPC 17: 17 “Government”.—The word “Government” denotes the Central Government or the Government of a State.
+IPC 18: 18. “India”.—“India” means the territory of India excluding the State of Jammu and Kashmir.
+IPC 19: 19. “Judge”.—The word “Judge” denotes not only every person who is officially designated as a Judge, but also 
+IPC 20: 20. “Court of Justice”.—The words “Court of Jutsice” denote a Judge who is empowered by law to act judicially 
+IPC 21: 21. “Public servant”.—The words “public servant” denote a person falling under any of the descriptions hereina
+IPC 22: 22. “Movable property”.—The words “movable property” are intended to include corporeal property of every descr
+IPC 23: 23. “Wrongful gain”.—“Wrongful gain” is gain by unlawful means of property to which the person gaining is not 
+IPC 24: 24. “Dishonestly”.—Whoever does anything with the intention of causing wrongful gain to one person or wrongful
+IPC 25: 25. “Fraudulently”.—A person is said to do a thing fraudulently if he does that thing with intent to defraud b
+IPC 26: 26. “Reason to believe”.—A person is said to have “reason to believe” a thing, if he has sufficient cause to b
+IPC 27: 27. “Property in possession of wife, clerk or servant”.—When property is in the possession of a person's wife,
+IPC 28: 28. “Counterfeit”.—A person is said to “counterfeit” who causes one thing to resemble another thing, intending
+IPC 29: 29. “Document”.—The word “document” denotes any matter expressed or described upon any substance by means of l
+IPC 29A: 29A. “Electronic record”.—The words “electronic record” shall have the meaning assigned to them in clause (t) 
+IPC 30: 30. “Valuable security”.—The words “valuable security” denote a document which is, or purports to be, a docume
+IPC 31: 31. “A will”.—The words “a will” denote any testamentary document.
+IPC 32: 32. Words referring to acts include illegal omissions.—In every part of this Code, except where a contrary int
+IPC 33: 33. “Act”. “Omission”.—The word “act” denotes as well as series of acts as a single act: the word “omission” d
+IPC 34: 34. Acts done by several persons in furtherance of common intention.—When a criminal act is done by several pe
+IPC 35: 35. When such an act is criminal by reason of its being done with a criminal knowledge or intention.—Whenever 
+IPC 36: 36. Effect caused partly by act and partly by omission.—Wherever the causing of a certain effect, or an attemp
+IPC 37: 37. Co-operation by doing one of several acts constituting an offence.—When an offence is committed by means o
+IPC 38: 38. Persons concerned in criminal act may be guilty of different offences.—Where several persons are engaged o
+IPC 39: 39. “Voluntarily”.—A person is said to cause an effect “voluntarily” when he causes it by means whereby he int
+IPC 40: 40. “Offence”.—Except in the Chapters and sections mentioned in clauses 2 and 3 of this section, the word “off
+IPC 41: 41. “Special law”.—A “special law” is a law applicable to a particular subject.
+IPC 42: 42. “Local law”.—A “local law” is a law applicable only to a particular part of India.
+IPC 43: 43. “Illegal”. “Legally bound to do”.—The word “illegal” is applicable to everything which is an offence or wh
+IPC 44: 44. “Injury”.—The word “injury” denotes any harm whatever illegally caused to any person, in body, mind, reput
+IPC 45: 45. “Life”.—The word “life” denotes the life of a human being, unless the contrary appears from the context.
+IPC 46: 46. “Death”.—The word “death” denotes the death of a human being unless the contrary appears from the context.
+IPC 47: 47. “Animal”.—The word “animal” denotes any living creature, other than a human being.
+IPC 48: 48. “Vessel”.—The word “vessel” denotes anything made for the conveyance by water of human beings or of proper
+IPC 49: 49. “Year”. “Month”.—Wherever the word “year” or the word “month” is used, it is to be understood that the yea
+IPC 50: 50. “Section”.—The word “section” denotes one of those portions of a Chapter of this Code which are distinguis
+IPC 51: 51. “Oath”.—The word “oath” includes a solemn affirmation substituted by law for an oath, and any declaration 
+IPC 52: 52. “Good faith”.—Nothing is said to be done or believed in “good faith” which is done or believed without due
+IPC 52A: 52A. “Harbour”.—Except in section 157, and in section 130 in the case in which the harbour is given by the wif
+IPC 53: 53. Punishments.—The punishments to which offenders are liable under the provisions of this Code are— First.—D
+IPC 53A: 53A. Construction of reference to transportation.—(1) Subject to the provisions of sub-section (2) and sub-sec
+IPC 54: 54. Commutation of sentence of death.—In every case in which sentence of death shall have been passed, the app
+IPC 55: 55. Commutation of sentence of imprisonment for life.—In every case in which sentence of imprisonment for life
+IPC 55A: 55A. Definition of “appropriate Government”.—In sections fifty-four and fifty-five the expression “appropriate
+IPC 56: 56. Sentence of Europeans and Americans to penal servitude. Proviso as to sentence for term exceeding ten year
+IPC 57: 57. Fractions of terms of punishment.—In calculating fractions of terms of punishment, imprisonment for life s
+IPC 58: 58. Offenders sentenced to transportation how dealt with until transported. Rep. by the Code of Criminal Proce
+IPC 59: 59. Transportation instead of imprisonment. Rep. by s.117 and the Sch., ibid. (w.e.f. 1-1-1956).
+IPC 60: 60. Sentence may be (in certain cases of imprisonment) wholly or partly rigorous or simple.—In every case in w
+IPC 61: 61. Sentence of forfeiture of property. Rep. by the Indian Penal Code (Amendment) Act, 1921 (16 of 1921), s. 4
+IPC 62: 62. Forfeiture of property, in respect of offenders punishable with death, transportation or imprisonment. Rep
+IPC 63: 63. Amount of fine.—Where no sum is expressed to which a fine may extend, the amount of fine to which the offe
+IPC 64: 64. Sentence of imprisonment for non-payment of fine.—In every case of an offence punishable with imprisonment
+IPC 65: 65. Limit to imprisonment for non-payment of fine, when imprisonment and fine awardable.— The term for which t
+IPC 66: 66. Description of imprisonment for non-payment of fine.—The imprisonment which the Court imposes in default o
+IPC 67: 67. Imprisonment for non-payment of fine, when offence punishable with fine only.—If the offence be punishable
+IPC 68: 68. Imprisonment to terminate on payment of fine.—The imprisonment which is imposed in default of payment of a
+IPC 69: 69. Termination of imprisonment on payment of proportional part of fine.—If, before the expiration of the term
+IPC 70: 70. Fine leviable within six years, of during imprisonment. Death not to discharge property from liability.—Th
+IPC 71: 71. Limit of punishment of offence made up of several offences.—Where anything which is an offence is made up 
+IPC 72: 72. Punishment of person guilty of one of several offences, the judgment stating that it is doubtful of which.
+IPC 73: 73. Solitary confinement.—Whenever any person is convicted of an offence for which under this Code the Court h
+IPC 74: 74. Limit of solitary confinement.—In executing a sentence of solitary confinement, such confinement shall in 
+IPC 75: 75. Enhanced punishment for certain offences under Chapter XII or Chapter XVII after previous conviction.—Whoe
+IPC 76: 76. Act done by a person bound, or by mistake of fact believing himself bound, by law.—Nothing is an offence w
+IPC 77: 77. Act of Judge when acting judicially.—Nothing is an offence which is done by a Judge when acting judicially
+IPC 78: 78. Act done pursuant to the judgment or order of Court.—Nothing which is done in pursuance of, or which is wa
+IPC 79: 79. Act done by a person justified, or by mistake of fact believing himself, justified, by law.— Nothing is an
+IPC 80: 80. Accident in doing a lawful act.—Nothing is an offence which is done by accident or misfortune, and without
+IPC 81: 81. Act likely to cause harm, but done without criminal intent, and to prevent other harm.— Nothing is an offe
+IPC 82: 82. Act of a child under seven years of age.—Nothing is an offence which is done by a child under seven years 
+IPC 83: 83. Act of a child above seven and under twelve of immature understanding.—Nothing is an offence which is done
+IPC 84: 84. Act of a person of unsound mind.—Nothing is an offence which is done by a person who, at the time of doing
+IPC 85: 85. Act of a person incapable of judgment by reason of intoxication caused against his will.— Nothing is an of
+IPC 86: 86. Offence requiring a particular intent or knowledge committed by one who is intoxicated.—In cases where an 
+IPC 87: 87. Act not intended and not known to be likely to cause death or grievous hurt, done by consent.—Nothing whic
+IPC 88: 88. Act not intended to cause death, done by consent in good faith for person's benefit.—Nothing, which is not
+IPC 89: 89. Act done in good faith for benefit of child or insane person, by or by consent of guardian.— Nothing which
+IPC 90: 90. Consent known to be given under fear or misconception.—A consent is not such a consent as is intended by a
+IPC 91: 91. Exclusion of acts which are offences independently of harm cause.—The exceptions in sections 87, 88 and 89
+IPC 92: 92. Act done in good faith for benefit of a person without consent.—Nothing is an offence by reason of any har
+IPC 93: 93. Communication made in good faith.—No communication made in good faith is an offence by reason of any harm 
+IPC 94: 94. Act to which a person is compelled by threats.—Except murder, and offences against the State punishable wi
+IPC 95: 95. Act causing slight harm.—Nothing is an offence by reason that it causes, or that it is intended to cause, 
+IPC 96: 96. Things done in private defence.—Nothing is an offence which is done in the exercise of the right of privat
+IPC 97: 97. Right of private defence of the body and of property.—Every person has a right, subject to the restriction
+IPC 98: 98. Right of private defence against the act of a person of unsound mind, etc.—When an act, which would otherw
+IPC 99: 99. Acts against which there is no right of private defence.—There is no right of private defence against an a
+IPC 100: 100. When the right of private defence of the body extends to causing death.—The right of private defence of t
+IPC 101: 101. When such right extends to causing any harm other than death.—If the offence be not of any of the descrip
+IPC 102: 102. Commencement and continuance of the right of private defence of the body.—The right of private defence of
+IPC 103: 103. When the right of private defence of property extends to causing death.—The right of private defence of p
+IPC 104: 104. When such right extends to causing any harm other than death.—If the offence, the committing of which, or
+IPC 105: 105. Commencement and continuance of the right of private defence of property.—The right of private defence of
+IPC 106: 106. Right of private defence against deadly assault when there is risk of harm to innocent person.—If in the 
+IPC 107: 107. Abetment of a thing.—A person abets the doing of a thing, who— First.—Instigates any person to do that th
+IPC 108: 108. Abettor.—A person abets an offence, who abets either the commission of an offence, or the commission of a
+IPC 108A: 108A. Abetment in India of offences outside India.—A person abets an offence within the meaning of this Code w
+IPC 109: 109. Punishment of abetment if the act abetted is committed in consequence and where no express provision is m
+IPC 110: 110. Punishment of abetment if person abetted does act with different intention from that of abettor.—Whoever 
+IPC 111: 111. Liability of abettor when one act abetted and different act done.—When an Act is abetted and a different 
+IPC 112: 112. Abettor when liable to cumulative punishment for act abetted and for act done.—If the act for which the a
+IPC 113: 113. Liability of abettor for an effect caused by the act abetted different from that intended by the abettor.
+IPC 114: 114. Abettor present when offence is committed.—Whenever any person, who is absent would be liable to be punis
+IPC 115: 115. Abetment of offence punishable with death or imprisonment for life.—if offence not committed.—Whoever abe
+IPC 116: 116. Abetment of offence punishable with imprisonment—if offence be not committed.—Whoever abets an offence pu
+IPC 117: 117. Abetting commission of offence by the public or by more than ten persons.—Whoever abets the commission of
+IPC 118: 118. Concealing design to commit offence punishable with death or imprisonment for life.— Whoever intending to
+IPC 119: 119. Public servant concealing design to commit offence which it is his duty to prevent.—Whoever, being a publ
+IPC 120: 120. Concealing design to commit offence punishable with imprisonment.—Whoever, intending to facilitate or kno
+IPC 120A: 120A. Definition of criminal conspiracy.—When two or more persons agree to do, or cause to be done,— (1) an il
+IPC 120B: 120B. Punishment of criminal conspiracy.—(1) Whoever is a party to a criminal conspiracy to commit an offence 
+IPC 121: 121. Waging, or attempting to wage war, or abetting waging of war, against the Government of India.—Whoever wa
+IPC 121A: 121A. Conspiracy to commit offences punishable by section 121.—Whoever within or without India conspires to co
+IPC 122: 122. Collecting arms, etc., with intention of waging war against the Government of India.— Whoever collects me
+IPC 123: 123. Concealing with intent to facilitate design to wage war.—Whoever by any act, or by any illegal omission, 
+IPC 124: 124. Assaulting President, Governor, etc., with intent to compel or restrain the exercise of any lawful power.
+IPC 124A: 124A. Sedition.—Whoever by words, either spoken or written, or by signs, or by visible representation, or othe
+IPC 125: 125. Waging war against any Asiatic Power in alliance with the Government of India.—Whoever wages war against 
+IPC 126: 126. Committing depredation on territories of Power at peace with the Government of India.— Whoever commits de
+IPC 127: 127. Receiving property taken by war or depredation mentioned in sections 125 and 126.— Whoever receives any p
+IPC 128: 128. Public servant voluntarily allowing prisoner of state or war to escape.—Whoever, being a public servant a
+IPC 129: 129. Public servant negligently suffering such prisoner to escape.—Whoever, being a public servant and having 
+IPC 130: 130. Aiding escape of, rescuing or harbouring such prisoner.—Whoever knowingly aids or assists any State priso
+IPC 131: 131. Abetting mutiny, or attempting to seduce a soldier, sailor or airman from his duty.— Whoever abets the co
+IPC 132: 132. Abetment of mutiny, if mutiny is committed in consequence thereof.—Whoever abets the committing of mutiny
+IPC 133: 133. Abetment of assault by soldier, sailor or airman on his superior officer, when in execution of his office
+IPC 134: 134. Abetment of such assault, if the assault committed.—Whoever abets an assault by an officer, soldier, sail
+IPC 135: 135. Abetment of desertion of soldier, sailor or airman.—Whoever, abets the desertion of any officer, soldier,
+IPC 136: 136. Harbouring deserter.—Whoever, except as hereinafter excepted, knowing or having reason to believe that an
+IPC 137: 137. Deserter concealed on board merchant vessel through negligence of master.—The master or person in charge 
+IPC 138: 138. Abetment of act of insubordination by soldier, sailor or airman.—Whoever abets what he knows to be an act
+IPC 138A: 138A. Application of foregoing sections to the Indian Marine Service.Rep. by the Amending Act, 1934 (35 of 193
+IPC 139: 139. Persons subject to certain Acts.—No person subject to the Army Act, the Army Act, 1950 (46 of 1950), the 
+IPC 140: 140. Wearing garb or carrying token used by soldier, sailor or airman.—Whoever, not being a soldier, sailor or
+IPC 141: 141. Unlawful assembly.—An assembly of five or more persons is designated an “unlawful assembly”, if the commo
+IPC 142: 142. Being member of unlawful assembly.—Whoever, being aware of facts which render any assembly an unlawful as
+IPC 143: 143. Punishment.—Whoever is a member of an unlawful assembly, shall be punished with imprisonment of either de
+IPC 144: 144. Joining unlawful assembly armed with deadly weapon.—Whoever, being armed with any deadly weapon, or with 
+IPC 145: 145. Joining or continuing in unlawful assembly, knowing it has been commanded to disperse.— Whoever joins or 
+IPC 146: 146. Rioting.—Whenever force or violence is used by an unlawful assembly, or by any member thereof, in prosecu
+IPC 147: 147. Punishment for rioting.—Whoever is guilty of rioting, shall be punished with imprisonment of either descr
+IPC 148: 148. Rioting, armed with deadly weapon.—Whoever is guilty of rioting, being armed with a deadly weapon or with
+IPC 149: 149. Every member of unlawful assembly guilty of offence committed in prosecution of common object.—If an offe
+IPC 150: 150. Hiring, or conniving at hiring, of persons to join unlawful assembly.—Whoever hires or engages, or employ
+IPC 151: 151. Knowingly joining or continuing in assembly of five or more persons after it has been commanded to disper
+IPC 152: 152. Assaulting or obstructing public servant when suppressing riot, etc.—Whoever assaults or threatens to ass
+IPC 153: 153. Wantonly giving provocation with intent to cause riot—if rioting be committed; if not committed.—Whoever 
+IPC 153A: 153A. Promoting enmity between different groups on ground of religion, race, place of birth, residence, langua
+IPC 153AA: 153AA. Punishment for knowingly carrying arms in any procession or organising, or holding or taking part in an
+IPC 153B: 153B. Imputations, assertions prejudicial to national integration.—(1) Whoever, by words either spoken or writ
+IPC 154: 154. Owner or occupier of land on which an unlawful assembly is held.—Whenever any unlawful assembly or riot t
+IPC 155: 155. Liability of person for whose benefit riot is committed.—Whenever a riot is committed for the benefit or 
+IPC 156: 156. Liability of agent of owner or occupier for whose benefit riot is committed.—Whenever a riot is committed
+IPC 157: 157. Harbouring persons hired for an unlawful assembly.—Whoever harbours, receives or assembles, in any house 
+IPC 158: 158. Being hired to take part in an unlawful assembly or riot.—Whoever is engaged, or hired, or offers or atte
+IPC 159: 159. Affray.—When two or more persons, by fighting in a public place, disturb the public peace, they are said 
+IPC 160: 160. Punishment for committing affray.—Whoever commits an affray, shall be punished with imprisonment of eithe
+IPC 161: 161. Public servant taking a gratification other than legal remuneration, in respect of an official act.Rep. b
+IPC 162: 162. Taking a gratification, in order, by corrupt or illegal means, to influence a public servant. Rep. by s. 
+IPC 163: 163. Taking a gratification for the exercise of personal influence with a public servant. Rep. by s. 31, ibid.
+IPC 164: 164. Punishment for abetment by public servant of the offences above defined.Rep. by s. 31, ibid.
+IPC 165: 165. Public servant obtaining any valuable thing, without consideration, from person concerned in any proceedi
+IPC 165A: 165A.Punishment for abetment of offences defined in section 161 or section 165.Rep. by the Prevention of Corru
+IPC 166: 166. Public servant disobeying law, with intent to cause injury to any person.—Whoever, being a public servant
+IPC 166A: 166A. Public servant disobeying direction under law.—Whoever, being a public servant,— (a) knowingly disobeys 
+IPC 166B: 166B. Punishment for non-treatment of victim.—Whoever, being in charge of a hospital, public or private, wheth
+IPC 167: 167. Public servant framing an incorrect document with intent to cause injury.—Whoever, being a public servant
+IPC 168: 168. Public servant unlawfully engaging in trade.—Whoever, being a public servant, and being legally bound as 
+IPC 169: 169. Public servant unlawfully buying or bidding for property.—Whoever, being a public servant, and being lega
+IPC 170: 170. Personating a public servant.—Whoever pretends to hold any particular office as a public servant, knowing
+IPC 171: 171. Wearing garb or carrying token used by public servant with fraudulent intent.—Whoever, not belonging to a
+IPC 171A: 171A. “Candidate”, “Electoral right” defined.—For the purposes of this Chapter— (a) “candidate” means a person
+IPC 171B: 171B. Bribery.—(1) Whoever— (i) gives a gratification to any person with the object of inducing him or any oth
+IPC 171C: 171C. Undue influence at elections.—(1) Whoever voluntarily interferes or attempts to interfere with the free 
+IPC 171D: 171D. Personation at elections.—Whoever at an election applies for a voting paper on votes in the name of any 
+IPC 171E: 171E. Punishment for bribery.—Whoever commits the offence of bribery shall be punished with imprisonment of ei
+IPC 171F: 171F. Punishment for undue influence or personation at an election.—Whoever commits the offence of undue influ
+IPC 171G: 171G. False statement in connection with an election.—Whoever with intent to affect the result of an election 
+IPC 171H: 171H. Illegal payments in connection with an election.—Whoever without the general or special authority in wri
+IPC 171I: 171-I. Failure to keep election accounts.—Whoever being required by any law for the time being in force or any
+IPC 172: 172. Absconding to avoid service of summons or other proceeding.—Whoever absconds in order to avoid being serv
+IPC 173: 173. Preventing service of summons or other proceeding, or preventing publication thereof.— Whoever in any man
+IPC 174: 174. Non-attendance in obedience to an order from public servant.—Whoever, being legally bound to attend in pe
+IPC 174A: 174A. Non-appearance in response to a proclamation under section 82 of Act 2 of 1974.— Whoever fails to appear
+IPC 175: 175. Omission to produce document to public servant by person legally bound to produce it.— Whoever, being leg
+IPC 176: 176. Omission to give notice or information to public servant by person legally bound to give it.— Whoever, be
+IPC 177: 177. Furnishing false information.—Whoever, being legally bound to furnish information on any subject to any p
+IPC 178: 178. Refusing oath or affirmation when duly required by public servant to make it.—Whoever refuses to bind him
+IPC 179: 179. Refusing to answer public servant authorised to question.—Whoever, being legally bound to state the truth
+IPC 180: 180. Refusing to sign statement.—Whoever refuses to sign any statement made by him, when required to sign that
+IPC 181: 181. False statement on oath or affirmation to public servant or person authorised to administer an oath or af
+IPC 182: 182. False information, with intent to cause public servant to use his lawful power to the injury of another p
+IPC 183: 183. Resistance to the taking of property by the lawful authority of a public servant.—Whoever offers any resi
+IPC 184: 184. Obstructing sale of property offered for sale by authority of public servant.—Whoever intentionally obstr
+IPC 185: 185. Illegal purchase or bid for property offered for sale by authority of public servant.— Whoever, at any sa
+IPC 186: 186. Obstructing public servant in discharge of public functions.—Whoever voluntarily obstructs any public ser
+IPC 187: 187. Omission to assist public servant when bound by law to give assistance.—Whoever, being bound by law to re
+IPC 188: 188. Disobedience to order duly promulgated by public servant.—Whoever, knowing that, by an order promulgated 
+IPC 189: 189. Threat of injury to public servant.—Whoever holds out any threat of injury to any public servant, or to a
+IPC 190: 190. Threat of injury to induce person to refrain from applying for protection to public servant.— Whoever hol
+IPC 191: 191. Giving false evidence.—Whoever, being legally bound by an oath or by an express provision of law to state
+IPC 192: 192. Fabricating false evidence.—Whoever causes any circumstance to exist or makes any false entry in any book
+IPC 193: 193. Punishment for false evidence.—Whoever intentionally gives false evidence in any of a judicial proceeding
+IPC 194: 194. Giving or fabricating false evidence with intent to procure conviction of capital offence.— Whoever gives
+IPC 195: 195. Giving or fabricating false evidence with intent to procure conviction of offence punishable with impriso
+IPC 195A: 195A. Threatening any person to give false evidence.—Whoever threatens another with any injury to his person, 
+IPC 196: 196. Using evidence known to be false.—Whoever corruptly uses or attempts to use as true or genuine evidence a
+IPC 197: 197. Issuing or signing false certificate.—Whoever issues or signs any certificate required by law to be given
+IPC 198: 198. Using as true a certificate known to be false.—Whoever corruptly uses or attempts to use any such certifi
+IPC 199: 199. False statement made in declaration which is by law receivable as evidence.—Whoever, in any declaration m
+IPC 200: 200. Using as true such declaration knowing it to be false.—Whoever corruptly uses or attempts to use as true 
+IPC 201: 201. Causing disappearance of evidence of offence, or giving false information to screen offender.—Whoever, kn
+IPC 202: 202. Intentional omission to give information of offence by person bound to inform.—Whoever, knowing or having
+IPC 203: 203. Giving false information respecting an offence committed.—Whoever, knowing or having reason to believe th
+IPC 204: 204. Destruction of document to prevent its production as evidence.—Whoever secretes or destroys any document 
+IPC 205: 205. False personation for purpose of act or proceeding in suit or prosecution.—Whoever falsely personates ano
+IPC 206: 206. Fraudulent removal or concealment of property to prevent its seizure as forfeited or in execution.—Whoeve
+IPC 207: 207. Fraudulent claim to property to prevent its seizure as forfeited or in execution.—Whoever fraudulently ac
+IPC 208: 208. Fraudulently suffering decree for sum not due.—Whoever fraudulently causes or suffers a decree or order t
+IPC 209: 209. Dishonesty making false claim in Court.—Whoever fraudulently or dishonestly, or with intent to injure or 
+IPC 210: 210. Fraudulently obtaining decree for sum not due.—Whoever fraudulently obtains a decree or order against any
+IPC 211: 211. False charge of offence made with intent to injure.—Whoever, with intent to cause injury to any person, i
+IPC 212: 212. Harbouring offender.—Whenever an offence has been committed, whoever harbours or conceals a person whom h
+IPC 213: 213. Taking gift, etc., to screen an offender from punishment.—Whoever accepts or attempts to obtain, or agree
+IPC 214: 214. Offering gift or restoration of property in consideration of screening offender.—Whoever gives or causes,
+IPC 215: 215. Taking gift to help to recover stolen property, etc.—Whoever takes or agrees or consents to take any grat
+IPC 216: 216. Harbouring offender who has escaped from custody or whose apprehension has been ordered.—Whenever any per
+IPC 216A: 216A. Penalty for harbouring robbers or dacoits.—Whoever, knowing or having reason to believe that any persons
+IPC 216B: 216B. Definition of “harbour” in sections 212, 216 and 216A. Rep. by the Indian Penal Code (Amendment) Act, 19
+IPC 217: 217. Public servant disobeying direction of law with intent to save person from punishment or property from fo
+IPC 218: 218. Public servant framing incorrect record or writing with intent to save person from punishment or property
+IPC 219: 219. Public servant in judicial proceeding corruptly making report, etc., contrary to law.— Whoever, being a p
+IPC 220: 220. Commitment for trial or confinement by person having authority who knows that he is acting contrary to la
+IPC 221: 221. Intentional omission to apprehend on the part of public servant bound to apprehend.— Whoever, being a pub
+IPC 222: 222. Intentional omission to apprehend on the part of public servant bound to apprehend person under sentence 
+IPC 223: 223. Escape from confinement or custody negligently suffered by public servant.—Whoever, being a public servan
+IPC 224: 224. Resistance or obstruction by a person to his lawful apprehension.—Whoever intentionally offers any resist
+IPC 225: 225. Resistance or obstruction to lawful apprehension of another person.—Whoever intentionally offers any resi
+IPC 225A: 225A. Omission to apprehend, or sufferance of escape, on part of public servant, in cases not otherwise, provi
+IPC 225B: 225B. Resistance or obstruction to lawful apprehension, or escape or rescue in cases not otherwise provided fo
+IPC 226: 226. Unlawful return from transportation. Rep. by the Code of Criminal Procedure (Amendment) Act, 1955 (26 of 
+IPC 227: 227. Violation of condition of remission of punishment.—Whoever, having accepted any conditional remission of 
+IPC 228: 228. Intentional insult or interruption to public servant sitting in judicial proceeding.—Whoever intentionall
+IPC 228A: 228A. Disclosure of identity of the victim of certain offences, etc.—(1) Whoever prints or publishes the name 
+IPC 229: 229. Personation of a juror or assessor.—Whoever, by personation or otherwise, shall intentionally cause, or k
+IPC 229A: 229A. Failure by person released on bail or bond to appear in court.—Whoever, having been charged with an offe
+IPC 230: 230. “Coin” defined.—Coin is metal used for the time being as money, and stamped and issued by the authority o
+IPC 231: 231. Counterfeiting coin.—Whoever counterfeits or knowingly performs any part of the process of counterfeiting
+IPC 232: 232. Counterfeiting Indian coin.—Whoever counterfeits, or knowingly performs any part of the process of counte
+IPC 233: 233. Making or selling instrument for counterfeiting coin.—Whoever makes or mends, or performs any part of the
+IPC 234: 234. Making or selling instrument for counterfeiting Indian coin.—Whoever makes or mends, or performs any part
+IPC 235: 235. Possession of instrument or material for the purpose of using the same for counterfeiting coin.—Whoever i
+IPC 236: 236. Abetting in India the counterfeiting out of India of coin.—Whoever, being within India abets the counterf
+IPC 237: 237. Import or export of counterfeit coin.—Whoever imports into India, or exports therefrom, any counterfeit c
+IPC 238: 238. Import or export of counterfeits of the Indian coin.—Whoever imports into India, or exports therefrom, an
+IPC 239: 239. Delivery of coin, possessed with knowledge that it is counterfeit.—Whoever, having any counterfeit coin, 
+IPC 240: 240. Delivery of Indian coin, possessed with knowledge that it is counterfeit.—Whoever, having any counterfeit
+IPC 241: 241. Delivery of coin as genuine, which, when first possessed, the deliverer did not know to be counterfeit.—W
+IPC 242: 242. Possession of counterfeit coin by person who knew it to be counterfeit when he became possessed thereof.—
+IPC 243: 243. Possession of Indian coin by person who knew it to be counterfeit when he became possessed thereof.—Whoev
+IPC 244: 244. Person employed in mint causing coin to be of different weight or composition from that fixed by law.—Who
+IPC 245: 245. Unlawfully taking coining instrument from mint.—Whoever, without lawful authority, takes out of any mint,
+IPC 246: 246. Fraudulently or dishonestly diminishing weight or altering composition of coin.—Whoever, fraudulently or 
+IPC 247: 247. Fraudulently or dishonestly diminishing weight or altering composition of Indian coin.— Whoever fraudulen
+IPC 248: 248. Altering appearance of coin with intent that it shall pass as coin of different description.— Whoever per
+IPC 249: 249. Altering appearance of Indian coin with intent that it shall pass as coin of different description.—Whoev
+IPC 250: 250. Delivery of coin, possessed with knowledge that it is altered.—Whoever, having coin in his possession wit
+IPC 251: 251. Delivery of Indian coin, possessed with knowledge that it is altered.—Whoever, having coin in his possess
+IPC 252: 252. Possession of coin by person who knew it to be altered when he became possessed thereof.— Whoever fraudul
+IPC 253: 253. Possession of Indian coin by person who knew it to be altered when he became possessed thereof.—Whoever, 
+IPC 254: 254. Delivery of coin as genuine which, when first possessed, the deliverer did not know to be altered.—Whoeve
+IPC 255: 255. Counterfeiting Government stamp.—Whoever counterfeits, or knowingly performs any part of the process of c
+IPC 256: 256. Having possession of instrument or material for counterfeiting Government stamp.— Whoever has in his poss
+IPC 257: 257. Making or selling instrument for counterfeiting Government stamp.—Whoever makes or performs any part of t
+IPC 258: 258. Sale of counterfeit Government stamp.—Whoever sells, or offers for sale, any stamp which he knows or has 
+IPC 259: 259. Having possession of counterfeit Government stamp.—Whoever has in his possession any stamp which he knows
+IPC 260: 260. Using as genuine a Government stamp known to be counterfeit.—Whoever uses as genuine any stamp, knowing i
+IPC 261: 261. Effacing writing from substance bearing Government stamp, or removing from document a stamp used for it, 
+IPC 262: 262. Using Government stamp known to have been before used.—Whoever, fraudulently or with intent to cause loss
+IPC 263: 263. Erasure of mark denoting that stamp has been used.—Whoever, fraudulently or with intent to cause loss to 
+IPC 263A: 263A. Prohibition of fictitious stamps.—(1) Whoever— (a) makes, knowingly utters, deals in or sells any fictit
+IPC 264: 264. Fraudulent use of false instrument for weighing.—Whoever, fraudulently uses any instrument for weighing w
+IPC 265: 265. Fraudulent use of false weight or measure.—Whoever, fraudulently uses any false weight or false measure o
+IPC 266: 266. Being in possession of false weight or measure.—Whoever is in possession of any instrument for weighing, 
+IPC 267: 267. Making or selling false weight or measure.—Whoever makes, sells or disposes of any instrument for weighin
+IPC 268: 268. Public nuisance.—A person is guilty of a public nuisance who does any act or is guilty of an illegal omis
+IPC 269: 269. Negligent act likely to spread infection of disease dangerous to life.—Whoever unlawfully or negligently 
+IPC 270: 270. Malignant act likely to spread infection of disease dangerous to life.—Whoever malignantly does any act w
+IPC 271: 271. Disobedience to quarantine rule.—Whoever knowingly disobeys any rule made and promulgated by the Governme
+IPC 272: 272. Adulteration of food or drink intended for sale.—Whoever adulterates any article of food or drink, so as 
+IPC 273: 273. Sale of noxious food or drink.—Whoever sells, or offers or exposes for sale, as food or drink, any articl
+IPC 274: 274. Adulteration of drugs.—Whoever adulterates any drug or medical preparation in such a manner as to lessen 
+IPC 275: 275. Sale of adulterated drugs.—Whoever, knowing any drug or medical preparation to have been adulterated in s
+IPC 276: 276. Sale of drug as a different drug or preparation.—Whoever knowingly sells, or offers or exposes for sale, 
+IPC 277: 277. Fouling water of public spring or reservoir.—Whoever voluntarily corrupts or fouls the water of any publi
+IPC 278: 278. Making atmosphere noxious to health.—Whoever voluntarily vitiates the atmosphere in any place so as to ma
+IPC 279: 279. Rash driving or riding on a public way.—Whoever drives any vehicle, or rides, on any public way in a mann
+IPC 280: 280. Rash navigation of vessel.—Whoever navigates any vessel in a manner so rash or negligent as to endanger h
+IPC 281: 281. Exhibition of false light, mark or buoy.—Whoever exhibits any false light, mark or buoy, intending or kno
+IPC 282: 282. Conveying person by water for hire in unsafe or overloaded vessel.—Whoever knowingly or negligently conve
+IPC 283: 283. Danger or obstruction in public way or line of navigation.—Whoever, by doing any act, or by omitting to t
+IPC 284: 284. Negligent conduct with respect to poisonous substance.—Whoever does, with any poisonous substance, any ac
+IPC 285: 285. Negligent conduct with respect to fire or combustible matter.—Whoever does, with fire or any combustible 
+IPC 286: 286. Negligent conduct with respect to explosive substance.—Whoever does, with any explosive substance, any ac
+IPC 287: 287. Negligent conduct with respect to machinery.—Whoever does, with any machinery, any act so rashly or negli
+IPC 288: 288. Negligent conduct with respect to pulling down or repairing buildings.—Whoever, in pulling down or repair
+IPC 289: 289. Negligent conduct with respect to animal.—Whoever knowingly or negligently omits to take such order with 
+IPC 290: 290. Punishment for public nuisance in cases not otherwise provided for.—Whoever commits a public nuisance in 
+IPC 291: 291. Continuance of nuisance after injunction to discontinue.—Whoever repeats or continues a public nuisance, 
+IPC 292: 292. Sale, etc., of obscene books, etc.—(1) For the purposes of sub-section (2), a book, pamphlet, paper, writ
+IPC 293: 293. Sale, etc., of obscene objects to young person.—Whoever sells, lets to hire, distributes, exhibits or cir
+IPC 294: 294. Obscene acts and songs.—Whoever, to the annoyance of others, (a) does any obscene act in any public place
+IPC 294A: 294A. Keeping lottery office.—Whoever keeps any office or place for the purpose of drawing any lottery not bei
+IPC 295: 295. Injuring or defiling place of worship, with intent to insult the religion of any class.—Whoever destroys,
+IPC 295A: 295A. Deliberate and malicious acts, intended to outrage religious feelings of any class by insulting its reli
+IPC 296: 296. Disturbing religious assembly.—Whoever voluntarily causes disturbance to any assembly lawfully engaged in
+IPC 297: 297. Trespassing on burial places, etc.—Whoever, with the intention of wounding the feelings of any person, or
+IPC 298: 298. Uttering words, etc., with deliberate intent to wound religious feelings.—Whoever, with the deliberate in
+IPC 299: 299. Culpable homicide.—Whoever causes death by doing an act with the intention of causing death, or with the 
+IPC 300: 300. Murder.—Except in the cases hereinafter excepted, culpable homicide is murder, if the act by which the de
+IPC 301: 301. Culpable homicide by causing death of person other than person whose death was intended.—If a person, by 
+IPC 302: 302. Punishment for murder.—Whoever commits murder shall be punished with death or imprisonment for life, and 
+IPC 303: 303. Punishment for murder by life-convict.—Whoever, being under sentence of imprisonment for life, commits mu
+IPC 304: 304. Punishment for culpable homicide not amounting to murder.—Whoever commits culpable homicide not amounting
+IPC 304A: 304A. Causing death by negligence.—Whoever causes the death of any person by doing any rash or negligent act n
+IPC 304B: 304B. Dowry death.—(1) Where the death of a woman is caused by any burns or bodily injury or occurs otherwise 
+IPC 305: 305. Abetment of suicide of child or insane person.—If any person under eighteen years of age, any insane pers
+IPC 306: 306. Abetment of suicide.—If any person commits suicide, whoever abets the commission of such suicide, shall b
+IPC 307: 307. Attempt to murder.—Whoever does any act with such intention or knowledge, and under such circumstances th
+IPC 308: 308. Attempt to commit culpable homicide.—Whoever does any act with such intention or knowledge and under such
+IPC 309: 309. Attempt to commit suicide.—Whoever attempts to commit suicide and does any act towards the commission of 
+IPC 310: 310. Thug.—Whoever, at any time after the passing of this Act, shall have been habitually associated with any 
+IPC 311: 311. Punishment.—Whoever is a thug, shall be punished with imprisonment for life, and shall also be liable to 
+IPC 312: 312. Causing miscarraige.—Whoever voluntarily causes a woman with child to miscarry, shall, if such miscarriag
+IPC 313: 313. Causing miscarriage without woman's consent.—Whoever commits the offence defined in the last preceding se
+IPC 314: 314. Death caused by act done with intent to cause miscarriage.—Whoever, with intent to cause the miscarriage 
+IPC 315: 315. Act done with intent to prevent child being born alive or to cause it to die after birth.— Whoever before
+IPC 316: 316. Causing death of quick unborn child by act amounting to culpable homicide.—Whoever does any act under suc
+IPC 317: 317. Exposure and abandonment of child under twelve years, by parent or person having care of it.—Whoever bein
+IPC 318: 318. Concealment of birth by secret disposal of dead body.—Whoever, by secretly burying or otherwise disposing
+IPC 319: 319. Hurt.—Whoever causes bodily pain, disease or infirmity to any person is said to cause hurt.
+IPC 320: 320. Grievous hurt.—The following kinds of hurt only are designated as “grievous”:— First.—Emasculation. Secon
+IPC 321: 321. Voluntarily causing hurt.—Whoever does any act with the intention of thereby causing hurt to any person, 
+IPC 322: 322. Voluntarily causing grievous hurt.—Whoever voluntarily causes hurt, if the hurt which he intends to cause
+IPC 323: 323. Punishment for voluntarily causing hurt.—Whoever, except in the case provided for by section 334, volunta
+IPC 324: 324. Voluntarily causing hurt by dangerous weapons or means.—Whoever, except in the case provided for by secti
+IPC 325: 325. Punishment for voluntarily causing grievous hurt.—Whoever, except in the case provided for by section 335
+IPC 326: 326. Voluntarily causing grievous hurt by dangerous weapons or means.—Whoever, except in the case provided for
+IPC 326A: 326A. Voluntarily causing grievous hurt by use of acid, etc.—Whoever causes permanent or partial damage or def
+IPC 326B: 326B. Voluntarily throwing or attempting to throw acid.—Whoever throws or attempts to throw acid on any person
+IPC 327: 327. Voluntarily causing hurt to extort property, or to constrain to an illegal to an act.—Whoever voluntarily
+IPC 328: 328. Causing hurt by means of poison, etc., with intent to commit and offence.—Whoever administers to or cause
+IPC 329: 329. Voluntarily causing grievous hurt to extort property, or to constrain to an illegal act.— Whoever volunta
+IPC 330: 330. Voluntarily causing hurt to extort confession, or to compel restoration of property.— Whoever voluntarily
+IPC 331: 331. Voluntarily causing grievous hurt to extort confession, or to compel restoration of property.—Whoever vol
+IPC 332: 332. Voluntarily causing hurt to deter public servant from his duty.—Whoever voluntarily causes hurt to any pe
+IPC 333: 333. Voluntarily causing grievous hurt to deter public servant from his duty.—Whoever voluntarily causes griev
+IPC 334: 334. Voluntarily causing hurt on provocation.—Whoever voluntarily causes hurt on grave and sudden provocation,
+IPC 335: 335. Voluntarily causing grievous hurt on provocation.—Whoever voluntarily causes grievous hurt on grave and s
+IPC 336: 336. Act endangering life or personal safety of others.—Whoever does any act so rashly or negligently as to en
+IPC 337: 337. Causing hurt by act endangering life or personal safety of others.—Whoever causes hurt to any person by d
+IPC 338: 338. Causing grievous hurt by act endangering life or personal safety of others.—Whoever causes grievous hurt 
+IPC 339: 339. Wrongful restraint.—Whoever voluntarily obstructs any person so as to prevent that person from proceeding
+IPC 340: 340. Wrongful confinement.—Whoever wrongfully restrains any person in such a manner as to prevent that person 
+IPC 341: 341. Punishment for wrongful restraint.—Whoever wrongfully restrains any person shall be punished with simple 
+IPC 342: 342. Punishment for wrongful confinement.—Whoever wrongfully confines any person shall be punished with impris
+IPC 343: 343. Wrongful confinement for three or more days.—Whoever wrongfully confines any person for three days, or mo
+IPC 344: 344. Wrongful confinement for ten or more days.—Whoever wrongfully confines any person for ten days, or more, 
+IPC 345: 345. Wrongful confinement of person for whose liberation writ has been issued.—Whoever keeps any person in wro
+IPC 346: 346. Wrongful confinement in secret.—Whoever wrongfully confines any person in such manner as to indicate an i
+IPC 347: 347. Wrongful confinement to extort property, or constrain to illegal act.—Whoever wrongfully confines any per
+IPC 348: 348. Wrongful confinement to extort confession, or compel restoration of property.—Whoever wrongfully confines
+IPC 349: 349. Force.—A person is said to use force to another if he causes motion, change of motion, or cessation of mo
+IPC 350: 350. Criminal force.—Whoever intentionally uses force to any person, without that person's consent, in order t
+IPC 351: 351. Assault.—Whoever makes any gesture, or any preparation intending or knowing it to be likely that such ges
+IPC 352: 352. Punishment for assault or criminal force otherwise than on grave provocation.—Whoever assaults or uses cr
+IPC 353: 353. Assault or criminal force to deter public servant from discharge of his duty.—Whoever assaults or uses cr
+IPC 354: 354. Assault or criminal force to woman with intent to outrage her modesty.—Whoever assaults or uses criminal 
+IPC 354A: 354A. Sexual harassment and punishment for sexual harassment.—(1) Aman committing any of the following acts— (
+IPC 354B: 354B. Assault or use of criminal force to woman with intent to disrobe.—Any man who assaults or uses criminal 
+IPC 354C: 354C. Voyeurism.—Any man who watches, or captures the image of a woman engaging in a private act in circumstan
+IPC 354D: 354D. Stalking.—(1) Any man who— (i) follows a woman and contacts, or attempts to contact such woman to foster
+IPC 355: 355. Assault or criminal force with intent to dishonour person, otherwise than on grave provocation. —Whoever 
+IPC 356: 356. Assault or criminal force in attempt to commit theft of property carried by a person.— Whoever assaults o
+IPC 357: 357. Assault or criminal force in attempt wrongfully to confine a person.—Whoever assaults or uses criminal fo
+IPC 358: 358. Assault or criminal force on grave provocation.—Whoever assaults or uses criminal force to any person on 
+IPC 359: 359. Kidnapping.—Kidnapping is of two kinds: kidnapping from India, and kidnapping from lawful guardianship.
+IPC 360: 360. Kidnapping from India.—Whoever conveys any person beyond the limits of India without the consent of that 
+IPC 361: 361. Kidnapping from lawful guardianship.—Whoever takes or entices any minor under sixteen years of age if a m
+IPC 362: 362. Abduction.—Whoever by force compels, or by any deceitful means induces, any person to go from any place, 
+IPC 363: 363. Punishment for kidnapping.—Whoever kidnaps any person from India or from lawful guardianship, shall be pu
+IPC 363A: 363A. Kidnapping or maiming a minor for purposes of begging.—(1) Whoever kidnaps any minor or, not being the l
+IPC 364: 364. Kidnapping or abducting in order to murder.—Whoever kidnaps or abducts any person in order that such pers
+IPC 364A: 364A. Kidnapping for ransom, etc.—Whoever kidnaps or abducts any person or keeps a person in detention after s
+IPC 365: 365. Kidnapping or abducting with intent secretly and wrongfully to confine person.—Whoever kidnaps or abducts
+IPC 366: 366. Kidnapping, abducting or inducing woman to compel her marriage, etc.—Whoever kidnaps or abducts any woman
+IPC 366A: 366A. Procuration of minor girl.—Whoever, by any means whatsoever, induces any minor girl under the age of eig
+IPC 366B: 366B. Importation of girl from foreign country.—Whoever imports into India from any country outside India or f
+IPC 367: 367. Kidnapping or abducting in order to subject person to grievous hurt, slavery, etc.—Whoever kidnaps or abd
+IPC 368: 368. Wrongfully concealing or keeping in confinement, kidnapped or abducted person.— Whoever, knowing that any
+IPC 369: 369. Kidnapping or abducting child under ten years with intent to steal from its person.— Whoever kidnaps or a
+IPC 370: 370. Trafficking of person.—(1) Whoever, for the purpose of exploitation, (a) recruits, (b)transports, (c) har
+IPC 370A: 370A. Exploitation of a trafficked person.—(1) Whoever, knowingly or having reason to believe that a minor has
+IPC 371: 371. Habitual dealing in slaves.—Whoever habitually imports, exports, removes, buys, sells, traffics or deals 
+IPC 372: 372. Selling minor for purposes of prostitution, etc.—Whoever sells, lets to hire, or otherwise disposes of an
+IPC 373: 373. Buying minor for purposes of prostitution, etc.—Whoever buys, hires or otherwise obtains possession of an
+IPC 374: 374. Unlawful compulsory labour.—Whoever unlawfully compels any person to labour against the will of that pers
+IPC 375: 375. Rape.—A man is said to commit “rape” if he— (a) penetrates his penis, to any extent, into the vagina, mou
+IPC 376: 376. Punishment for rape.—(1) Whoever, except in the cases provided for in sub-section (2), commits rape, shal
+IPC 376A: 376A. Punishment for causing death or resulting in persistent vegetative state of victim.— Whoever, commits an
+IPC 376AB: 376AB.Punishment for rape on woman under twelve years of age.—Whoever, commits rape on a woman under twelve ye
+IPC 376B: 376B. Sexual intercourse by husband upon his wife during separation.—Whoever has sexual intercourse with his o
+IPC 376C: 376C. Sexual intercourse by a person in authority.—Whoever, being— (a) in a position of authority or in a fidu
+IPC 376D: 376D. Gang rape.—Where a woman is raped by one or more persons constituting a group or acting in furtherance o
+IPC 376DA: 376DA.Punishment for gang rape on woman under sixteen years of age.—Where a woman under sixteen years of age i
+IPC 376DB: 376DB.Punishment for gang rape on woman under twelve years of age.—Where a woman under twelve years of age is 
+IPC 376E: 376E. Punishment for repeat offenders.—Whoever has been previously convicted of an offence punishable under se
+IPC 377: 377. Unnatural offences.—Whoever voluntarily has carnal intercourse against the order of nature with any man, 
+IPC 378: 378. Theft.—Whoever, intending to take dishonestly any movable property out of the possession of any person wi
+IPC 379: 379. Punishment for theft.—Whoever commits theft shall be punished with imprisonment of either description for
+IPC 380: 380. Theft in dwelling house, etc.—Whoever commits theft in any building, tent or vessel, which building, tent
+IPC 381: 381. Theft by clerk or servant of property in possession of master.—Whoever, being a clerk or servant, or bein
+IPC 382: 382. Theft after preparation made for causing death, hurt or restraint in order to the committing of the theft
+IPC 383: 383. Extortion.—Whoever intentionally puts any person in fear of any injury to that person, or to any other, a
+IPC 384: 384. Punishment for extortion.—Whoever commits extortion shall be punished with imprisonment of either descrip
+IPC 385: 385. Putting person in fear of injury in order to commit extortion.—Whoever, in order to the committing of ext
+IPC 386: 386. Extortion by putting a person in fear of death or grievous hurt.—Whoever commits extortion by putting any
+IPC 387: 387. Putting person in fear of death or of grievous hurt, in order to commit extortion.—Whoever, in order to t
+IPC 388: 388. Extortion by threat of accusation of an offence punishable with death or imprisonment for life, etc.—Whoe
+IPC 389: 389. Putting person in fear or accusation of offence, in order to commit extortion.—Whoever, in order to the c
+IPC 390: 390. Robbery.—In all robbery there is either theft or extortion. When theft is robbery.—Theft is “robbery” if,
+IPC 391: 391. Dacoity.—When five or more persons conjointly commit or attempt to commit a robbery, or where the whole n
+IPC 392: 392. Punishment for robbery.—Whoever commits robbery shall be punished with rigorous imprisonment for a term w
+IPC 393: 393. Attempt to commit robbery.—Whoever attempts to commit robbery shall be punished with rigorous imprisonmen
+IPC 394: 394. Voluntarily causing hurt in committing robbery.—If any person, in committing or in attempting to commit r
+IPC 395: 395. Punishment for dacoity.—Whoever commits dacoity shall be punished with imprisonment for life, or with rig
+IPC 396: 396. Dacoity with murder.—If any one of five or more persons, who are conjointly committing dacoity, commits m
+IPC 397: 397. Robbery, or dacoity, with attempt to cause death or grievous hurt.—If, at the time of committing robbery 
+IPC 398: 398. Attempt to commit robbery or dacoity when armed with deadly weapon.—If, at the time of attempting to comm
+IPC 399: 399. Making preparation to commit dacoity.—Whoever makes any preparation for committing dacoity, shall be puni
+IPC 400: 400. Punishment for belonging to gang of dacoits.—Whoever, at any time after the passing of this Act, shall be
+IPC 401: 401. Punishment for belonging to gang of thieves.—Whoever, at any time after the passing of this Act, shall be
+IPC 402: 402. Assembling for purpose of committing dacoity.—Whoever, at any time after the passing of this Act, shall b
+IPC 403: 403. Dishonest misappropriation of property.—Whoever dishonestly misappropriates or converts to his own use an
+IPC 404: 404. Dishonest misappropriation of property possessed by deceased person at the time of his death.—Whoever dis
+IPC 405: 405. Criminal breach of trust.—Whoever, being in any manner entrusted with property, or with any dominion over
+IPC 406: 406. Punishment for criminal breach of trust.—Whoever commits criminal breach of trust shall be punished with 
+IPC 407: 407. Criminal breach of trust by carrier, etc.—Whoever, being entrusted with property as a carrier, wharfinger
+IPC 408: 408. Criminal breach of trust by clerk or servant.—Whoever, being a clerk or servant or employed as a clerk or
+IPC 409: 409. Criminal breach of trust by public servant, or by banker, merchant or agent.—Whoever, being in any manner
+IPC 410: 410. Stolen property.—Property, the possession whereof has been transferred by theft, or by extortion, or by r
+IPC 411: 411. Dishonestly receiving stolen property.—Whoever dishonestly receives or retains any stolen property, knowi
+IPC 412: 412. Dishonestly receiving property stolen in the commission of a dacoity.—Whoever dishonestly receives or ret
+IPC 413: 413. Habitually dealing in stolen property.—Whoever habitually receives or deals in property which he knows or
+IPC 414: 414. Assisting in concealment of stolen property.—Whoever voluntarily assists in concealing or disposing of or
+IPC 415: 415. Cheating.—Whoever, by deceiving any person, fraudulently or dishonestly induces the person so deceived to
+IPC 416: 416. Cheating by personation.—A person is said to “cheat by personation” if he cheats by pretending to be some
+IPC 417: 417. Punishment for cheating.—Whoever cheats shall be punished with imprisonment of either description for a t
+IPC 418: 418. Cheating with knowledge that wrongful loss may ensue to person whose interest offender is bound to protec
+IPC 419: 419. Punishment for cheating by personation.—Whoever cheats by personation shall be punished with imprisonment
+IPC 420: 420. Cheating and dishonestly inducing delivery of property.—Whoever cheats and thereby dishonestly induces th
+IPC 421: 421. Dishonest or fraudulent removal or concealment of property to prevent distribution among creditors.—Whoev
+IPC 422: 422. Dishonestly or fraudulently preventing debt being available for creditors.—Whoever dishonestly or fraudul
+IPC 423: 423. Dishonest or fraudulent execution of deed of transfer containing false statement of consideration.—Whoeve
+IPC 424: 424. Dishonest or fraudulent removal or concealment of property.—Whoever dishonestly or fraudulently conceals 
+IPC 425: 425. Mischief.—Whoever with intent to cause, or knowing that he is likely to cause, wrongful loss or damage to
+IPC 426: 426. Punishment for mischief.—Whoever commits mischief shall be punished with imprisonment of either descripti
+IPC 427: 427. Mischief causing damage to the amount of fifty rupees.—Whoever commits mischief and thereby causes loss o
+IPC 428: 428. Mischief by killing or maiming animal of the value of ten rupees.—Whoever commits mischief by killing, po
+IPC 429: 429. Mischief by killing or maiming cattle, etc., of any value or any animal of the value of fifty rupees.—Who
+IPC 430: 430. Mischief by injury to works of irrigation or by wrongfully diverting water.—Whoever commits mischief by d
+IPC 431: 431. Mischief by injury to public road, bridge, river or channel.—Whoever commits mischief by doing any act wh
+IPC 432: 432. Mischief by causing inundation or obstruction to public drainage attended with damage.— Whoever commits m
+IPC 433: 433. Mischief by destroying, moving or rendering less useful a light-house or sea-mark.— Whoever commits misch
+IPC 434: 434. Mischief by destroying or moving, etc., a land-mark fixed by public authority.—Whoever commits mischief b
+IPC 435: 435. Mischief by fire or explosive substance with intent to cause damage to amount of one hundred or (in case 
+IPC 436: 436. Mischief by fire or explosive substance with intent to destroy house, etc.—Whoever commits mischief by fi
+IPC 437: 437. Mischief with intent to destroy or make unsafe a decked vessel or one of twenty tons burden.—Whoever comm
+IPC 438: 438. Punishment for the mischief described in section 437 committed by fire or explosive substance. —Whoever c
+IPC 439: 439. Punishment for intentionally running vessel aground or ashore with intent to commit theft, etc.—Whoever i
+IPC 440: 440. Mischief committed after preparation made for causing death or hurt.—Whoever commits mischief, having mad
+IPC 441: 441. Criminal trespass.—Whoever enters into or upon property in the possession of another with intent to commi
+IPC 442: 442. House-trespass.—Whoever commits criminal trespass by entering into or remaining in any building, tent or 
+IPC 443: 443. Lurking house-trespass.—Whoever commits house-trespass having taken precautions to conceal such house-tre
+IPC 444: 444. Lurking house-trespass by night.—Whoever commits lurking house-trespass after sunset and before sunrise, 
+IPC 445: 445. House-breaking.—A person is said to commit “house-breaking” who commits house-trespass if he effects his 
+IPC 446: 446. House-breaking by night.—Whoever commits house-breaking after sunset and before sunrise, is said to commi
+IPC 447: 447. Punishment for criminal trespass.—Whoever commits criminal trespass shall be punished with imprisonment o
+IPC 448: 448. Punishment for house-trespass.—Whoever commits house-trespass shall be punished with imprisonment of eith
+IPC 449: 449. House-trespass in order to commit offence punishable with death.—Whoever commits house- trespass in order
+IPC 450: 450. House-trespass in order to commit offence punishable with imprisonment for life.—Whoever commits house-tr
+IPC 451: 451. House-trespass in order to commit offence punishable with imprisonment.—Whoever commits house-trespass in
+IPC 452: 452. House-trespass alter preparation for hurt, assault or wrongful restraint.—Whoever commits house-trespass,
+IPC 453: 453. Punishment for lurking house-trespass or house-breaking.—Whoever commits lurking house- trespass or house
+IPC 454: 454. Lurking house-trespass or house-breaking in order to commit offence punishable with imprisonment.—Whoever
+IPC 455: 455. Lurking house-trespass or house-breaking after preparation for hurt, assault or wrongful restraint.—Whoev
+IPC 456: 456. Punishment for lurking house-trespass or house-breaking by night.—Whoever commits lurking house-trespass 
+IPC 457: 457. Lurking house-trespass or house-breaking by night in order to commit offence punishable with imprisonment
+IPC 458: 458. Lurking house-trespass or house-breaking by night after preparation for hurt, assault, or wrongful restra
+IPC 459: 459. Grievous hurt caused whilst committing lurking house-trespass or house-breaking.— Whoever, whilst committ
+IPC 460: 460. All persons jointly concerned in lurking house-trespass or house-breaking by night punishable where death
+IPC 461: 461. Dishonestly breaking open receptacle containing property.—Whoever dishonestly or with intent to commit mi
+IPC 462: 462. Punishment for same offence when committed by person entrusted with custody.—Whoever, being entrusted wit
+IPC 463: 463. Forgery.—Whoever makes any false document or false electronic record or part of a document or electronic 
+IPC 464: 464. Making a false document.—A person is said to make a false document or false electronic record— First.—Who
+IPC 465: 465. Punishment for forgery.—Whoever commits forgery shall be punished with imprisonment of either description
+IPC 466: 466. Forgery of record of Court or of public register, etc.—Whoever forges a document or an electronic record,
+IPC 467: 467. Forgery of valuable security, will, etc.—Whoever forges a document which purports to be a valuable securi
+IPC 468: 468. Forgery for purpose of cheating.—Whoever commits forgery, intending that the document or electronic recor
+IPC 469: 469. Forgery for purpose of harming reputation.—Whoever commits forgery, intending that the document or electr
+IPC 470: 470. Forged document.—A false document or electronic record made wholly or in part by forgery is designated “a
+IPC 471: 471. Using as genuine a forged document or electronic record.—Whoever fraudulently or dishonestly uses as genu
+IPC 472: 472. Making or possessing counterfeit seal, etc., with intent to commit forgery punishable under section 467.—
+IPC 473: 473. Making or possessing counterfeit seal, etc., with intent to commit forgery punishable otherwise.— Whoever
+IPC 474: 474. Having possession of document described in section 466 or 467, knowing it to be forged and intending to u
+IPC 475: 475. Counterfeiting device or mark used for authenticating documents described in section 467, or possessing c
+IPC 476: 476. Counterfeiting device or mark used for authenticating documents other than those described in section 467
+IPC 477: 477. Fraudulent cancellation, destruction, etc., of will, authority to adopt, or valuable security.— Whoever f
+IPC 477A: 477A. Falsification of accounts.—Whoever, being a clerk, officer or servant, or employed or acting in the capa
+IPC 478: 478. Trade Mark. Rep. by the Trade and Merchandise Marks Act, 1958 (43 of 1958),s. 135 and Sch. (w. e. f. 25-1
+IPC 479: 479. Property mark.—A mark used for denoting that movable property belongs to a particular person is called a 
+IPC 480: 480. Using a false trade mark. Rep. by the Trade and Merchandise Marks Act, 1958 (43 of 1958),s. 135and Sch. (
+IPC 481: 481. Using a false property mark.—Whoever marks any movable property or goods or any case, package or other re
+IPC 482: 482. Punishment for using a false property mark.—Whoever uses any false property mark shall, unless he proves 
+IPC 483: 483. Counterfeiting a property mark used by another.—Whoever counterfeits any property mark used by any other 
+IPC 484: 484. Counterfeiting a mark used by a public servant.—Whoever counterfeits any property mark used by a public s
+IPC 485: 485. Making or possession of any instrument for counterfeiting a property mark.—Whoever makes or has in his po
+IPC 486: 486. Selling goods marked with a counterfeit property mark.—Whoever sells, or exposes, or has in possession fo
+IPC 487: 487. Making a false mark upon any receptacle containing goods.—Whoever makes any false mark upon any case, pac
+IPC 488: 488. Punishment for making use of any such false mark.—Whoever makes use of any such false mark in any manner 
+IPC 489: 489. Tampering with property mark with intent to cause injury.—Whoever removes, destroys, defaces or adds to a
+IPC 489A: 489A. Counterfeiting currency-notes or bank-notes.—Whoever counterfeits, or knowingly performs any part of the
+IPC 489B: 489B. Using as genuine, forged or counterfeit currency-notes or bank-notes.—Whoever sells to, or buys or recei
+IPC 489C: 489C. Possession of forged or counterfeit currency-notes or bank-notes.—Whoever has in his possession any forg
+IPC 489D: 489D. Making or possessing instruments or materials for forging or counterfeiting currency notes or bank-notes
+IPC 489E: 489E. Making or using documents resembling currency-notes or bank-notes.—(1) Whoever makes, or causes to be ma
+IPC 490: 490. Breach of contract of service during voyage or journey. Rep. by the Workmen's Breach of Contract (Repeali
+IPC 491: 491. Breach of contract to attend on and supply wants of helpless person.—Whoever, being bound by a lawful con
+IPC 492: 492. Breach of contract to serve at distant place to which servant is conveyed at master's expense. Rep. by th
+IPC 493: 493. Cohabitation caused by a man deceitfully inducing a belief of lawful marriage.—Every man who by deceit ca
+IPC 494: 494. Marrying again during lifetime of husband or wife.—Whoever, having a husband or wife living, marries in a
+IPC 495: 495. Same offence with concealment of former marriage from person with whom subsequent marriage is contracted.
+IPC 496: 496. Marriage ceremony fraudulently gone through without lawful marriage.—Whoever, dishonestly or with a fraud
+IPC 497: 497. Adultery.—Whoever has sexual intercourse with a person who is and whom he knows or has reason to believe 
+IPC 498: 498. Enticing or taking away or detaining with criminal intent a married woman.—Whoever takes or entices away 
+IPC 498A: 498A. Husband or relative of husband of a woman subjecting her to cruelty.—Whoever, being the husband or the r
+IPC 499: 499. Defamation.—Whoever, by words either spoken or intended to be read, or by signs or by visible representat
+IPC 500: 500. Punishment for defamation.—Whoever defames another shall be punished with simple imprisonment for a term 
+IPC 501: 501. Printing or engraving matter known to be defamatory.—Whoever prints or engraves any matter, knowing or ha
+IPC 502: 502. Sale of printed or engraved substance containing defamatory matter.—Whoever sells or offers for sale any 
+IPC 503: 503. Criminal intimidation.—Whoever threatens another with any injury to his person, reputation or property, o
+IPC 504: 504. Intentional insult with intent to provoke breach of the peace.—Whoever intentionally insults, and thereby
+IPC 505: 505. Statements conducing to public mischief.—(1) Whoever makes, publishes or circulates any statement, rumour
+IPC 506: 506. Punishment for criminal intimidation.—Whoever commits the offence of criminal intimidation shall be punis
+IPC 507: 507. Criminal intimidation by an anonymous communication.—Whoever commits the offence of criminal intimidation
+IPC 508: 508. Act caused by inducing person to believe that he will be rendered an object of the Divine displeasure.—Wh
+IPC 509: 509. Word, gesture or act intended to insult the modesty of a woman.—Whoever, intending to insult the modesty 
+IPC 510: 510. Misconduct in public by a drunken person.—Whoever, in a state of intoxication, appears in any public plac
+IPC 511: 511. Punishment for attempting to commit offences punishable with imprisonment for life or other imprisonment.

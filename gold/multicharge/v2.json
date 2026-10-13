@@ -1,0 +1,1303 @@
+{
+ "created": "2026-10-13",
+ "items": [
+  {
+   "anonymised": true,
+   "author": "layperson post on a legal forum, as published in ILSIC-Lay",
+   "author_type": "forum-post",
+   "charges": [
+    {
+     "charge": "406. Punishment for criminal breach of trust.—Whoever commits criminal breach of",
+     "sections": {
+      "bns": [
+       "BNS 316"
+      ],
+      "ipc": [
+       "IPC 406"
+      ]
+     }
+    },
+    {
+     "charge": "409. Criminal breach of trust by public servant, or by banker, merchant or agent",
+     "sections": {
+      "bns": [
+       "BNS 316"
+      ],
+      "ipc": [
+       "IPC 409"
+      ]
+     }
+    }
+   ],
+   "id": "ilsic-lay-test-176",
+   "label_basis": "lawyer-answer-extracted",
+   "query": "PF amount was deducted for Dec 20, Jan 21 and Feb 21 but those are still not reflecting in my PF passbook. Company says that this was deposited as DD for all the employees during COVID time and PF office has not been able to reconcile as yet. I left the company in November 21. The issue is still unresolved. I am not able to withdraw full amount. Company has been assuring of resolution, but it has been +1 year they have not been able to do anything in this regard. Please advise my options.",
+   "reviewed_by": "corpus authors' automatic extraction from forum lawyers' replies",
+   "source": "ILSIC (Law-AI/ilsic, EACL Findings 2026) Layman-new-dataset test split, row 176"
+  },
+  {
+   "anonymised": true,
+   "author": "layperson post on a legal forum, as published in ILSIC-Lay",
+   "author_type": "forum-post",
+   "charges": [
+    {
+     "charge": "406. Punishment for criminal breach of trust.—Whoever commits criminal breach of",
+     "sections": {
+      "bns": [
+       "BNS 316"
+      ],
+      "ipc": [
+       "IPC 406"
+      ]
+     }
+    },
+    {
+     "charge": "420. Cheating and dishonestly inducing delivery of property.—Whoever cheats and ",
+     "sections": {
+      "bns": [
+       "BNS 318"
+      ],
+      "ipc": [
+       "IPC 420"
+      ]
+     }
+    }
+   ],
+   "id": "ilsic-lay-test-37",
+   "label_basis": "lawyer-answer-extracted",
+   "query": "Hi, My question is the question which every buyer has in Delhi/ Ncr in case they did get their flat. I am staying in Noida and i had booked one flat in 2011 and had taken loan also. Possession was cimmitted in 3 years. I have paid 95% payment to builder through bank finance and my payment. Now builder has run away and also it is almost certain that i am not going to get flat. But i am paying my loan emi diligently . Now since i will not get anything so this emi is total loss to me. Some of my friend was saying to stop emi but in that case bank declare me defaulter and will ruin my cibil. But some body was telling that in case i get court order (High court) or other then it is possible to stop emi and safeguard cibil also. Can you siggest if it is possible? If yes how i can proceed?",
+   "reviewed_by": "corpus authors' automatic extraction from forum lawyers' replies",
+   "source": "ILSIC (Law-AI/ilsic, EACL Findings 2026) Layman-new-dataset test split, row 37"
+  },
+  {
+   "anonymised": true,
+   "author": "layperson post on a legal forum, as published in ILSIC-Lay",
+   "author_type": "forum-post",
+   "charges": [
+    {
+     "charge": "406. Punishment for criminal breach of trust.—Whoever commits criminal breach of",
+     "sections": {
+      "bns": [
+       "BNS 316"
+      ],
+      "ipc": [
+       "IPC 406"
+      ]
+     }
+    },
+    {
+     "charge": "498A. Husband or relative of husband of a woman subjecting her to cruelty.—Whoev",
+     "sections": {
+      "bns": [
+       "BNS 85",
+       "BNS 86"
+      ],
+      "ipc": [
+       "IPC 498A"
+      ]
+     }
+    }
+   ],
+   "id": "ilsic-lay-test-800",
+   "label_basis": "lawyer-answer-extracted",
+   "query": "Dear All, what if someone approaches the court directly and file a private complaint (498A /DV)? How court will react on such complaints. Will refer to the police station which has jurisdiction where the incident (Marriage) took place? and where we stayed and staying post marriage or it can refer the case to any police station? What kind of implications do we need to face and what kind of preventive methods can be taken. Regards",
+   "reviewed_by": "corpus authors' automatic extraction from forum lawyers' replies",
+   "source": "ILSIC (Law-AI/ilsic, EACL Findings 2026) Layman-new-dataset test split, row 800"
+  },
+  {
+   "anonymised": true,
+   "author": "layperson post on a legal forum, as published in ILSIC-Lay",
+   "author_type": "forum-post",
+   "charges": [
+    {
+     "charge": "406. Punishment for criminal breach of trust.—Whoever commits criminal breach of",
+     "sections": {
+      "bns": [
+       "BNS 316"
+      ],
+      "ipc": [
+       "IPC 406"
+      ]
+     }
+    },
+    {
+     "charge": "420. Cheating and dishonestly inducing delivery of property.—Whoever cheats and ",
+     "sections": {
+      "bns": [
+       "BNS 318"
+      ],
+      "ipc": [
+       "IPC 420"
+      ]
+     }
+    }
+   ],
+   "id": "ilsic-lay-test-14",
+   "label_basis": "lawyer-answer-extracted",
+   "query": "Hello, I am from Hyderabad. Last year ([long_digits]) a call came to me from naukri.com saying that my CV has been selected for TATA motor. For that I told to pay Rs 2500 initially, I paid. After few days a guy name [titled_name] called me and took my interview and told me that u have to pay Rs 15000 for HR commission and so on. Till now I have paid nearly Rs 4.5 Lakh to [titled_name]. Every time I called he use to tell your joining will be next month. this goes on till now. Now from last one month that guy has switch off his phone and I am feeling depressed and helpless. please suggest me a way to deal with it. the Details are as follow [labelled_name] Account [labelled_name] no: Bank name: SBI IFSC code: [ifsc] Phone no: [deleted] and [deleted] Bank Account [labelled_name] [labelled_name] of Baroda Acc no: [deleted] Meerut Branch IFSC: [ifsc] Bank Account [labelled_name] motor Bank [labelled_name] of Baroda Acc no: [deleted] IFSC code: BAR0MATHURA Note: All the transaction happened digitally. No cash involve. I have the record of each transaction. I also have the sms details.",
+   "reviewed_by": "corpus authors' automatic extraction from forum lawyers' replies",
+   "source": "ILSIC (Law-AI/ilsic, EACL Findings 2026) Layman-new-dataset test split, row 14"
+  },
+  {
+   "anonymised": true,
+   "author": "layperson post on a legal forum, as published in ILSIC-Lay",
+   "author_type": "forum-post",
+   "charges": [
+    {
+     "charge": "405. Criminal breach of trust.—Whoever, being in any manner entrusted with prope",
+     "sections": {
+      "bns": [
+       "BNS 316"
+      ],
+      "ipc": [
+       "IPC 405"
+      ]
+     }
+    },
+    {
+     "charge": "406. Punishment for criminal breach of trust.—Whoever commits criminal breach of",
+     "sections": {
+      "bns": [
+       "BNS 316"
+      ],
+      "ipc": [
+       "IPC 406"
+      ]
+     }
+    },
+    {
+     "charge": "420. Cheating and dishonestly inducing delivery of property.—Whoever cheats and ",
+     "sections": {
+      "bns": [
+       "BNS 318"
+      ],
+      "ipc": [
+       "IPC 420"
+      ]
+     }
+    },
+    {
+     "charge": "463. Forgery.—Whoever makes any false document or false electronic record or par",
+     "sections": {
+      "bns": [
+       "BNS 336"
+      ],
+      "ipc": [
+       "IPC 463"
+      ]
+     }
+    },
+    {
+     "charge": "465. Punishment for forgery.—Whoever commits forgery shall be punished with impr",
+     "sections": {
+      "bns": [
+       "BNS 336"
+      ],
+      "ipc": [
+       "IPC 465"
+      ]
+     }
+    },
+    {
+     "charge": "467. Forgery of valuable security, will, etc.—Whoever forges a document which pu",
+     "sections": {
+      "bns": [
+       "BNS 338"
+      ],
+      "ipc": [
+       "IPC 467"
+      ]
+     }
+    },
+    {
+     "charge": "468. Forgery for purpose of cheating.—Whoever commits forgery, intending that th",
+     "sections": {
+      "bns": [
+       "BNS 336"
+      ],
+      "ipc": [
+       "IPC 468"
+      ]
+     }
+    },
+    {
+     "charge": "471. Using as genuine a forged document or electronic record.—Whoever fraudulent",
+     "sections": {
+      "bns": [
+       "BNS 340"
+      ],
+      "ipc": [
+       "IPC 471"
+      ]
+     }
+    }
+   ],
+   "id": "ilsic-lay-test-756",
+   "label_basis": "lawyer-answer-extracted",
+   "query": "Sir,I have purchased a used truck from a person..after taking money he changed hypothication from his finance to my finance..and registration also changed on my name with hypothication of my financier...now after 4 months it is learnt that he changed hypothication with forged documents..not only me...6 more cases booked against him......what shall I do now",
+   "reviewed_by": "corpus authors' automatic extraction from forum lawyers' replies",
+   "source": "ILSIC (Law-AI/ilsic, EACL Findings 2026) Layman-new-dataset test split, row 756"
+  },
+  {
+   "anonymised": true,
+   "author": "layperson post on a legal forum, as published in ILSIC-Lay",
+   "author_type": "forum-post",
+   "charges": [
+    {
+     "charge": "406. Punishment for criminal breach of trust.—Whoever commits criminal breach of",
+     "sections": {
+      "bns": [
+       "BNS 316"
+      ],
+      "ipc": [
+       "IPC 406"
+      ]
+     }
+    },
+    {
+     "charge": "506. Punishment for criminal intimidation.—Whoever commits the offence of crimin",
+     "sections": {
+      "bns": [
+       "BNS 351"
+      ],
+      "ipc": [
+       "IPC 506"
+      ]
+     }
+    }
+   ],
+   "id": "ilsic-lay-test-219",
+   "label_basis": "lawyer-answer-extracted",
+   "query": "I have a flat in Hyderabad and it been on lease since 2009 and every year we make a new agreement (specifically every 11 months) and since I’m a Canadian citizen and I rarely visit India. So I made my mother and younger brother responsible to collect the rent. Everything was going smoothly until this April when when the lease ended he stopped paying all together for at least 6 months now. And when we tried to reach him out he’s been ignoring us full time. So when my younger brother finally when to see him face to face and the tenant told him he has licensed gun and he’s stating that he won’t leave this house and the only we to approach him is by civil or court. And when I tried to call him from here in Canada he’s threatening me over the phone saying if I come to India he will make sure I won’t leave there alive. Please help. Thank you",
+   "reviewed_by": "corpus authors' automatic extraction from forum lawyers' replies",
+   "source": "ILSIC (Law-AI/ilsic, EACL Findings 2026) Layman-new-dataset test split, row 219"
+  },
+  {
+   "anonymised": true,
+   "author": "layperson post on a legal forum, as published in ILSIC-Lay",
+   "author_type": "forum-post",
+   "charges": [
+    {
+     "charge": "406. Punishment for criminal breach of trust.—Whoever commits criminal breach of",
+     "sections": {
+      "bns": [
+       "BNS 316"
+      ],
+      "ipc": [
+       "IPC 406"
+      ]
+     }
+    },
+    {
+     "charge": "498A. Husband or relative of husband of a woman subjecting her to cruelty.—Whoev",
+     "sections": {
+      "bns": [
+       "BNS 85",
+       "BNS 86"
+      ],
+      "ipc": [
+       "IPC 498A"
+      ]
+     }
+    }
+   ],
+   "id": "ilsic-lay-test-302",
+   "label_basis": "lawyer-answer-extracted",
+   "query": "My elder sister's husband expired 15 days ago. She was married for 12 years and has 2 daughters.Now she lives with her in laws who are torturing for property and are asking to sign on blank papers under the name of life insurance claims.The house and a shop was entirely owned by her husband . After husband's death who is the legal heir of this property? The papers of house are forcefully taken by brother in law. What action can be taken against him? What is the procedure to transfer this property to my sister? There is a loan on house of 1.5 lakhs which is still to be paid. The bank has not insured my sister's husband who took the loan. What legal action can be taken on bank ? Who will get the money of life insurance policy? Is her mother in law also legal heir of this property as well as life insurance amount. What legal action can be taken against mother in law , brothers in law and their wives for the torture they are doing? She lives in gujarat and i stay in pune ,maharashtra.Can I file legal complaint in pune jurisdistion?",
+   "reviewed_by": "corpus authors' automatic extraction from forum lawyers' replies",
+   "source": "ILSIC (Law-AI/ilsic, EACL Findings 2026) Layman-new-dataset test split, row 302"
+  },
+  {
+   "anonymised": true,
+   "author": "layperson post on a legal forum, as published in ILSIC-Lay",
+   "author_type": "forum-post",
+   "charges": [
+    {
+     "charge": "354. Assault or criminal force to woman with intent to outrage her modesty.—Whoe",
+     "sections": {
+      "bns": [
+       "BNS 74"
+      ],
+      "ipc": [
+       "IPC 354"
+      ]
+     }
+    },
+    {
+     "charge": "504. Intentional insult with intent to provoke breach of the peace.—Whoever inte",
+     "sections": {
+      "bns": [
+       "BNS 352"
+      ],
+      "ipc": [
+       "IPC 504"
+      ]
+     }
+    },
+    {
+     "charge": "509. Word, gesture or act intended to insult the modesty of a woman.—Whoever, in",
+     "sections": {
+      "bns": [
+       "BNS 79"
+      ],
+      "ipc": [
+       "IPC 509"
+      ]
+     }
+    }
+   ],
+   "id": "ilsic-lay-test-506",
+   "label_basis": "lawyer-answer-extracted",
+   "query": "A man recently called my friend and verbally abused her over phone without any provocation.He hurled numerous profane words at her which were sexually derogative,harrassing and abusive in nature and it left deep psychological impact on her mind.What action can be taken against that man ?Under which IPC can we book him?",
+   "reviewed_by": "corpus authors' automatic extraction from forum lawyers' replies",
+   "source": "ILSIC (Law-AI/ilsic, EACL Findings 2026) Layman-new-dataset test split, row 506"
+  },
+  {
+   "anonymised": true,
+   "author": "layperson post on a legal forum, as published in ILSIC-Lay",
+   "author_type": "forum-post",
+   "charges": [
+    {
+     "charge": "406. Punishment for criminal breach of trust.—Whoever commits criminal breach of",
+     "sections": {
+      "bns": [
+       "BNS 316"
+      ],
+      "ipc": [
+       "IPC 406"
+      ]
+     }
+    },
+    {
+     "charge": "498A. Husband or relative of husband of a woman subjecting her to cruelty.—Whoev",
+     "sections": {
+      "bns": [
+       "BNS 85",
+       "BNS 86"
+      ],
+      "ipc": [
+       "IPC 498A"
+      ]
+     }
+    }
+   ],
+   "id": "ilsic-lay-test-50",
+   "label_basis": "lawyer-answer-extracted",
+   "query": "I was married in 2011 and in this marriage we had 2 daughters. In 2019 I found out that wife was in an extra marital affair. I have CCTV footage and audio recordings which can prove it and also her own admission for the same in an audio messsge. She and her family reassured me that it will not happen again. So for the sake of kids, I forgave her and accepted her. But recently I found out that she is again in an affair with some other person. I confronted her and told her it’s best that we separate and get a divorce. I also told her that I can take care of the kids if she feels it’s a huge responsibility. She agreed and asked me if she could stay at her parents. I approved and she went. But since she has been staying at her parents, her tone has changed and seems like she and her family want to steer complications. Although I have all proofs of her adultery but if I file a petition for contested divorce what chance do I have with a the proof and what kind of counter attacks can she allege.",
+   "reviewed_by": "corpus authors' automatic extraction from forum lawyers' replies",
+   "source": "ILSIC (Law-AI/ilsic, EACL Findings 2026) Layman-new-dataset test split, row 50"
+  },
+  {
+   "anonymised": true,
+   "author": "layperson post on a legal forum, as published in ILSIC-Lay",
+   "author_type": "forum-post",
+   "charges": [
+    {
+     "charge": "406. Punishment for criminal breach of trust.—Whoever commits criminal breach of",
+     "sections": {
+      "bns": [
+       "BNS 316"
+      ],
+      "ipc": [
+       "IPC 406"
+      ]
+     }
+    },
+    {
+     "charge": "415. Cheating.—Whoever, by deceiving any person, fraudulently or dishonestly ind",
+     "sections": {
+      "bns": [
+       "BNS 318"
+      ],
+      "ipc": [
+       "IPC 415"
+      ]
+     }
+    },
+    {
+     "charge": "420. Cheating and dishonestly inducing delivery of property.—Whoever cheats and ",
+     "sections": {
+      "bns": [
+       "BNS 318"
+      ],
+      "ipc": [
+       "IPC 420"
+      ]
+     }
+    }
+   ],
+   "id": "ilsic-lay-test-88",
+   "label_basis": "lawyer-answer-extracted",
+   "query": "Hello, i am Dania i am a foreign national, i came to India for business purpose,than i opened a Private Limited company with the help of 1 Indian Director and i am the 2nd Director in company,we appointed him in September 2018, After that from December 2018 our business started to work and some funding started to accumulate in our Current account of company after successful sales, but suddenly on 13th March 2019 Indian Director send his resignation on email,and after that he transferred a big amount from Company's Account to his personal account without informing me after that he is neither taking my calls and not coming to office,He just hiding himself somewhere, Now i have to pay Gst and other liabilities but cant find him, i wrote several mails to him but no answer. and now my Visa is getting over i have to go back. Please suggest me what to do, how i can take money from him and pay taxes ?? i also want to know his 1 email is enough to set him free from company liabilities ??",
+   "reviewed_by": "corpus authors' automatic extraction from forum lawyers' replies",
+   "source": "ILSIC (Law-AI/ilsic, EACL Findings 2026) Layman-new-dataset test split, row 88"
+  },
+  {
+   "anonymised": true,
+   "author": "layperson post on a legal forum, as published in ILSIC-Lay",
+   "author_type": "forum-post",
+   "charges": [
+    {
+     "charge": "497. Adultery.—Whoever has sexual intercourse with a person who is and whom he k",
+     "sections": {
+      "bns": [],
+      "ipc": [
+       "IPC 497"
+      ]
+     }
+    },
+    {
+     "charge": "498. Enticing or taking away or detaining with criminal intent a married woman.—",
+     "sections": {
+      "bns": [
+       "BNS 84"
+      ],
+      "ipc": [
+       "IPC 498"
+      ]
+     }
+    }
+   ],
+   "id": "ilsic-lay-test-48",
+   "label_basis": "lawyer-answer-extracted",
+   "query": "Background: I come from a wealthy business family. My mother has found out that my father has committed adultery on multiple occasions. She has sought my help to resolve the situation (all options are on the table from her side). What I require: An understanding of the wife's legal options under Indian law in a case of adultery. I would also argue a case of neglect by the husband. References to important judgements will be very valuable - especially with regards to alimony and financial settlement. Important: While I understand this is a common question you will receive, please note that I will use this information to persuade my father to settle out of court - hence it VERY important that I show a strong case against him that can possibly lead to his financial ruin.",
+   "reviewed_by": "corpus authors' automatic extraction from forum lawyers' replies",
+   "source": "ILSIC (Law-AI/ilsic, EACL Findings 2026) Layman-new-dataset test split, row 48"
+  },
+  {
+   "anonymised": true,
+   "author": "layperson post on a legal forum, as published in ILSIC-Lay",
+   "author_type": "forum-post",
+   "charges": [
+    {
+     "charge": "353. Assault or criminal force to deter public servant from discharge of his dut",
+     "sections": {
+      "bns": [
+       "BNS 132"
+      ],
+      "ipc": [
+       "IPC 353"
+      ]
+     }
+    },
+    {
+     "charge": "506. Punishment for criminal intimidation.—Whoever commits the offence of crimin",
+     "sections": {
+      "bns": [
+       "BNS 351"
+      ],
+      "ipc": [
+       "IPC 506"
+      ]
+     }
+    }
+   ],
+   "id": "ilsic-lay-test-424",
+   "label_basis": "lawyer-answer-extracted",
+   "query": "Dear all, during m.p.election dec2018.i was on way to home .a perosn on election duty .i had argument on my personal bag of clothe .immediately police lodged FIR on me and my brother 353/186/188/506/34.police shown arrested and then released. Police has placed chargesheet and magistrate given bail.my borther recordered all in mobile .there was not a single word was wrong.no force use..kindly suggest how to process ahead to quash .Regards Mukesh",
+   "reviewed_by": "corpus authors' automatic extraction from forum lawyers' replies",
+   "source": "ILSIC (Law-AI/ilsic, EACL Findings 2026) Layman-new-dataset test split, row 424"
+  },
+  {
+   "anonymised": true,
+   "author": "layperson post on a legal forum, as published in ILSIC-Lay",
+   "author_type": "forum-post",
+   "charges": [
+    {
+     "charge": "499. Defamation.—Whoever, by words either spoken or intended to be read, or by s",
+     "sections": {
+      "bns": [
+       "BNS 356"
+      ],
+      "ipc": [
+       "IPC 499"
+      ]
+     }
+    },
+    {
+     "charge": "500. Punishment for defamation.—Whoever defames another shall be punished with s",
+     "sections": {
+      "bns": [
+       "BNS 356"
+      ],
+      "ipc": [
+       "IPC 500"
+      ]
+     }
+    }
+   ],
+   "id": "ilsic-lay-test-589",
+   "label_basis": "lawyer-answer-extracted",
+   "query": "Hello Sir, We are having a property in Hapur, Uttar Pradesh and its original owner was our great grandfather. He purchased this property on Patta in 1930's and built a Kothi in 850 sq yards area. He passed away in 1968, but before that, he executed his will in the favour of his daughter, and through this will we have been inheriting it through generation. We sold some part of it through the years, and it was done properly through the registry office. Then in 2015 we sold a flat to one of our neighbour, which is built on first floor of its back portion. Everything went well, until we tried to sell the rest of the portion. he was with an intent to grab the ground land which was right under his flat. Now he has defamed this land so much through his sources that we are not in a position to sell it. Further, with the help of his neighbour, who runs a digital news paper, he is printing baseless news about our property and trying to prove that we are not the owners of this land at all. We do possess the original registered will of the land, but due to termite attack, we lost the Patta papers. So what we must do to negate the effect of this mal publicity? Though we have registered Civil and Criminal Cases in a district court against both these parties. Suit is on. Kindly help.",
+   "reviewed_by": "corpus authors' automatic extraction from forum lawyers' replies",
+   "source": "ILSIC (Law-AI/ilsic, EACL Findings 2026) Layman-new-dataset test split, row 589"
+  },
+  {
+   "anonymised": true,
+   "author": "layperson post on a legal forum, as published in ILSIC-Lay",
+   "author_type": "forum-post",
+   "charges": [
+    {
+     "charge": "406. Punishment for criminal breach of trust.—Whoever commits criminal breach of",
+     "sections": {
+      "bns": [
+       "BNS 316"
+      ],
+      "ipc": [
+       "IPC 406"
+      ]
+     }
+    },
+    {
+     "charge": "498A. Husband or relative of husband of a woman subjecting her to cruelty.—Whoev",
+     "sections": {
+      "bns": [
+       "BNS 85",
+       "BNS 86"
+      ],
+      "ipc": [
+       "IPC 498A"
+      ]
+     }
+    }
+   ],
+   "id": "ilsic-lay-test-641",
+   "label_basis": "lawyer-answer-extracted",
+   "query": "my husband passed away after one month of my marriage.my inlaws disowned me and threw me out of their house after beating and abusing me the next day.all my belongings are also lying with them.what are the legal procedure i should adopt to get back my belongings and what are my legal rights.kindly advice me.also i would like to mention that as not even a month passed and my husband died,we do not have any idea,nor do we have any documents related to their property.what should i do. my inlaws have also taken the amount of life insurance of my husband,without my consent.kindly suggest at the earliest and oblige.",
+   "reviewed_by": "corpus authors' automatic extraction from forum lawyers' replies",
+   "source": "ILSIC (Law-AI/ilsic, EACL Findings 2026) Layman-new-dataset test split, row 641"
+  },
+  {
+   "anonymised": true,
+   "author": "layperson post on a legal forum, as published in ILSIC-Lay",
+   "author_type": "forum-post",
+   "charges": [
+    {
+     "charge": "268. Public nuisance.—A person is guilty of a public nuisance who does any act o",
+     "sections": {
+      "bns": [
+       "BNS 270"
+      ],
+      "ipc": [
+       "IPC 268"
+      ]
+     }
+    },
+    {
+     "charge": "290. Punishment for public nuisance in cases not otherwise provided for.—Whoever",
+     "sections": {
+      "bns": [
+       "BNS 292"
+      ],
+      "ipc": [
+       "IPC 290"
+      ]
+     }
+    },
+    {
+     "charge": "425. Mischief.—Whoever with intent to cause, or knowing that he is likely to cau",
+     "sections": {
+      "bns": [
+       "BNS 324"
+      ],
+      "ipc": [
+       "IPC 425"
+      ]
+     }
+    }
+   ],
+   "id": "ilsic-lay-test-59",
+   "label_basis": "lawyer-answer-extracted",
+   "query": "Hello, I live in Ahad Euphoria, Sarjapur Road, Bangalore. There's a day care running in the society which is creating a lot of nusance and disturbance. It's not having a NoC from association neither anything from BBMP. What steps can I take to get it removed?",
+   "reviewed_by": "corpus authors' automatic extraction from forum lawyers' replies",
+   "source": "ILSIC (Law-AI/ilsic, EACL Findings 2026) Layman-new-dataset test split, row 59"
+  },
+  {
+   "anonymised": true,
+   "author": "layperson post on a legal forum, as published in ILSIC-Lay",
+   "author_type": "forum-post",
+   "charges": [
+    {
+     "charge": "268. Public nuisance.—A person is guilty of a public nuisance who does any act o",
+     "sections": {
+      "bns": [
+       "BNS 270"
+      ],
+      "ipc": [
+       "IPC 268"
+      ]
+     }
+    },
+    {
+     "charge": "290. Punishment for public nuisance in cases not otherwise provided for.—Whoever",
+     "sections": {
+      "bns": [
+       "BNS 292"
+      ],
+      "ipc": [
+       "IPC 290"
+      ]
+     }
+    },
+    {
+     "charge": "406. Punishment for criminal breach of trust.—Whoever commits criminal breach of",
+     "sections": {
+      "bns": [
+       "BNS 316"
+      ],
+      "ipc": [
+       "IPC 406"
+      ]
+     }
+    },
+    {
+     "charge": "425. Mischief.—Whoever with intent to cause, or knowing that he is likely to cau",
+     "sections": {
+      "bns": [
+       "BNS 324"
+      ],
+      "ipc": [
+       "IPC 425"
+      ]
+     }
+    },
+    {
+     "charge": "500. Punishment for defamation.—Whoever defames another shall be punished with s",
+     "sections": {
+      "bns": [
+       "BNS 356"
+      ],
+      "ipc": [
+       "IPC 500"
+      ]
+     }
+    },
+    {
+     "charge": "506. Punishment for criminal intimidation.—Whoever commits the offence of crimin",
+     "sections": {
+      "bns": [
+       "BNS 351"
+      ],
+      "ipc": [
+       "IPC 506"
+      ]
+     }
+    }
+   ],
+   "id": "ilsic-lay-test-707",
+   "label_basis": "lawyer-answer-extracted",
+   "query": "I live in a big society (AWHO) having 1500 familiies in Whitefield, bangalore. This society is built for Army personell,but most of the non army people stay there as tenants .There have been number of cases happened for harassed with tenants as mc ( army people) feel , we are civilians and trat all tenants very badly. There is one lady (not even mc member- just a volunteer) named- anuja ramesh, she keep threatning tenants that i will throw you out from society , and harass with very unpleasant words. Same thing happened to me, when diapers of baby was not wrapped in newspaper inspite it was wrapped in polythene. She called me and started abusing me. I complaint, and struggled a lot, but inspite of that no action taken against mc. Now she keep harassing me by other means. I feel like doing suicide rather than staying here. Our security is stucked( 1 lac rs) .Matter is with every tenant",
+   "reviewed_by": "corpus authors' automatic extraction from forum lawyers' replies",
+   "source": "ILSIC (Law-AI/ilsic, EACL Findings 2026) Layman-new-dataset test split, row 707"
+  },
+  {
+   "anonymised": true,
+   "author": "layperson post on a legal forum, as published in ILSIC-Lay",
+   "author_type": "forum-post",
+   "charges": [
+    {
+     "charge": "493. Cohabitation caused by a man deceitfully inducing a belief of lawful marria",
+     "sections": {
+      "bns": [
+       "BNS 81"
+      ],
+      "ipc": [
+       "IPC 493"
+      ]
+     }
+    },
+    {
+     "charge": "496. Marriage ceremony fraudulently gone through without lawful marriage.—Whoeve",
+     "sections": {
+      "bns": [
+       "BNS 83"
+      ],
+      "ipc": [
+       "IPC 496"
+      ]
+     }
+    },
+    {
+     "charge": "498A. Husband or relative of husband of a woman subjecting her to cruelty.—Whoev",
+     "sections": {
+      "bns": [
+       "BNS 85",
+       "BNS 86"
+      ],
+      "ipc": [
+       "IPC 498A"
+      ]
+     }
+    }
+   ],
+   "id": "ilsic-lay-test-645",
+   "label_basis": "lawyer-answer-extracted",
+   "query": "I had a recorded calls for asking my salary. and metioning about the property and all is that enough to show in court. he is hindu and m christian marriage not registered because from the beginning he not supporting he saying marriage not register cannot go legally and u won't get compensation if apply divorce nothing i no need to give because marraige not register i no need to pay alimonry. is that true i won't get justice for there cheating",
+   "reviewed_by": "corpus authors' automatic extraction from forum lawyers' replies",
+   "source": "ILSIC (Law-AI/ilsic, EACL Findings 2026) Layman-new-dataset test split, row 645"
+  },
+  {
+   "anonymised": true,
+   "author": "layperson post on a legal forum, as published in ILSIC-Lay",
+   "author_type": "forum-post",
+   "charges": [
+    {
+     "charge": "406. Punishment for criminal breach of trust.—Whoever commits criminal breach of",
+     "sections": {
+      "bns": [
+       "BNS 316"
+      ],
+      "ipc": [
+       "IPC 406"
+      ]
+     }
+    },
+    {
+     "charge": "420. Cheating and dishonestly inducing delivery of property.—Whoever cheats and ",
+     "sections": {
+      "bns": [
+       "BNS 318"
+      ],
+      "ipc": [
+       "IPC 420"
+      ]
+     }
+    }
+   ],
+   "id": "ilsic-lay-test-818",
+   "label_basis": "lawyer-answer-extracted",
+   "query": "Hello I am from Hyderabad and I have loaned an amount of Rs 15,00,000/- to my ex-neighbour who is a lady entrepreneur who was facing with problems to pay salaries post covid effect. She has promised to return the amount in 3 months as she had some bills receivables from her clients. She managed to convince my wife that she can return the amount without delay. My wife convinced me and mortgaged her jewellery to help that lady. It has been 2 years but she only returned 3,00,000/- last year. Few months back she moved to a different apartment and before leaving made her give 1 personal cheque and 1 company cheque as proof. Both the cheques are blank and not dated but the amount of 15 lakhs only is written. Last week when my wife went to her, she found that the lady purchased a brand new Mercedes A class car but she has been postponing and requesting for more and more time. It is clear to me that she is not a fair person and has duped my innocent wife and me with lies all this while. Can you please suggest us what are our options in recovering our hard earned money from such fraudsters who have no ethics in life.",
+   "reviewed_by": "corpus authors' automatic extraction from forum lawyers' replies",
+   "source": "ILSIC (Law-AI/ilsic, EACL Findings 2026) Layman-new-dataset test split, row 818"
+  },
+  {
+   "anonymised": true,
+   "author": "layperson post on a legal forum, as published in ILSIC-Lay",
+   "author_type": "forum-post",
+   "charges": [
+    {
+     "charge": "405. Criminal breach of trust.—Whoever, being in any manner entrusted with prope",
+     "sections": {
+      "bns": [
+       "BNS 316"
+      ],
+      "ipc": [
+       "IPC 405"
+      ]
+     }
+    },
+    {
+     "charge": "425. Mischief.—Whoever with intent to cause, or knowing that he is likely to cau",
+     "sections": {
+      "bns": [
+       "BNS 324"
+      ],
+      "ipc": [
+       "IPC 425"
+      ]
+     }
+    }
+   ],
+   "id": "ilsic-lay-test-432",
+   "label_basis": "lawyer-answer-extracted",
+   "query": "If a wife uses the sperm of husband stored at sperm bank without the consent/knowledge of husband and have baby through IVF with the help of the nominee of the stored sperm( here, it is the husband's mother) , can the husband file for contested divorce on the ground of cruelty against the wife and get divorce? The husband and wife had no conjugal relation for the past 2 years. Also, can the doctors and nursing home be held responsible for not taking any permission of the husband? The mother of the husband signed all documents for IVF procedure and father of the wife signed on papers of delivery matter. Now, the mother of the husband and wife are not sharing details of how the whole process took place . It is to be noted that the wife already suffered cancer in uterus and went for chemotheraphy 5 years ago. Resulting which , one fallopian tube was removed.",
+   "reviewed_by": "corpus authors' automatic extraction from forum lawyers' replies",
+   "source": "ILSIC (Law-AI/ilsic, EACL Findings 2026) Layman-new-dataset test split, row 432"
+  },
+  {
+   "anonymised": true,
+   "author": "layperson post on a legal forum, as published in ILSIC-Lay",
+   "author_type": "forum-post",
+   "charges": [
+    {
+     "charge": "378. Theft.—Whoever, intending to take dishonestly any movable property out of t",
+     "sections": {
+      "bns": [
+       "BNS 303"
+      ],
+      "ipc": [
+       "IPC 378"
+      ]
+     }
+    },
+    {
+     "charge": "385. Putting person in fear of injury in order to commit extortion.—Whoever, in ",
+     "sections": {
+      "bns": [
+       "BNS 308"
+      ],
+      "ipc": [
+       "IPC 385"
+      ]
+     }
+    },
+    {
+     "charge": "415. Cheating.—Whoever, by deceiving any person, fraudulently or dishonestly ind",
+     "sections": {
+      "bns": [
+       "BNS 318"
+      ],
+      "ipc": [
+       "IPC 415"
+      ]
+     }
+    }
+   ],
+   "id": "ilsic-lay-test-416",
+   "label_basis": "lawyer-answer-extracted",
+   "query": "Marriage lasted for 1 year. Wife was caught with her boyfriend. She left matrimonal home and filed for domestic violence and dowry cases which she could not proof. Then after 7 years she came to her matrimonal home saying that she wanted to settle down and start a family. Stayed for 2 weeks got access to the bank vault and removed all the jewellery. Left her matrimonial house. Now demanding 20 lakhs for divorce. Can we file a FIR in police station for extortion of money.",
+   "reviewed_by": "corpus authors' automatic extraction from forum lawyers' replies",
+   "source": "ILSIC (Law-AI/ilsic, EACL Findings 2026) Layman-new-dataset test split, row 416"
+  },
+  {
+   "anonymised": true,
+   "author": "layperson post on a legal forum, as published in ILSIC-Lay",
+   "author_type": "forum-post",
+   "charges": [
+    {
+     "charge": "427. Mischief causing damage to the amount of fifty rupees.—Whoever commits misc",
+     "sections": {
+      "bns": [
+       "BNS 324"
+      ],
+      "ipc": [
+       "IPC 427"
+      ]
+     }
+    },
+    {
+     "charge": "504. Intentional insult with intent to provoke breach of the peace.—Whoever inte",
+     "sections": {
+      "bns": [
+       "BNS 352"
+      ],
+      "ipc": [
+       "IPC 504"
+      ]
+     }
+    },
+    {
+     "charge": "506. Punishment for criminal intimidation.—Whoever commits the offence of crimin",
+     "sections": {
+      "bns": [
+       "BNS 351"
+      ],
+      "ipc": [
+       "IPC 506"
+      ]
+     }
+    }
+   ],
+   "id": "ilsic-lay-test-397",
+   "label_basis": "lawyer-answer-extracted",
+   "query": "I have been tortured mentally by members and Chairman and Secretary of Society. They blocked my vehicle carrying construction material for balcony roofing, whereas after8 days only my neighbor constructed she'd in balcony.There was no any objection on him, whereas after that almost 25% people constructed balcony roofing in society. I feel I am been given discriminated behaviour without any reason. They had also damaged my construction material.So to recover the cost I had not paid 4months maintainance charges. And again started paying for later months. But Now they have stopped my deprived services like cleanliness in my porch, not lifting garbage using common amenities etc. Also they are threatening to put maintainance due in court. I can pay the amount, but I need justice against discrimination Happening with me. I feel like I am been mentally tortured.",
+   "reviewed_by": "corpus authors' automatic extraction from forum lawyers' replies",
+   "source": "ILSIC (Law-AI/ilsic, EACL Findings 2026) Layman-new-dataset test split, row 397"
+  },
+  {
+   "anonymised": true,
+   "author": "layperson post on a legal forum, as published in ILSIC-Lay",
+   "author_type": "forum-post",
+   "charges": [
+    {
+     "charge": "405. Criminal breach of trust.—Whoever, being in any manner entrusted with prope",
+     "sections": {
+      "bns": [
+       "BNS 316"
+      ],
+      "ipc": [
+       "IPC 405"
+      ]
+     }
+    },
+    {
+     "charge": "406. Punishment for criminal breach of trust.—Whoever commits criminal breach of",
+     "sections": {
+      "bns": [
+       "BNS 316"
+      ],
+      "ipc": [
+       "IPC 406"
+      ]
+     }
+    },
+    {
+     "charge": "420. Cheating and dishonestly inducing delivery of property.—Whoever cheats and ",
+     "sections": {
+      "bns": [
+       "BNS 318"
+      ],
+      "ipc": [
+       "IPC 420"
+      ]
+     }
+    },
+    {
+     "charge": "468. Forgery for purpose of cheating.—Whoever commits forgery, intending that th",
+     "sections": {
+      "bns": [
+       "BNS 336"
+      ],
+      "ipc": [
+       "IPC 468"
+      ]
+     }
+    }
+   ],
+   "id": "ilsic-lay-test-572",
+   "label_basis": "lawyer-answer-extracted",
+   "query": "I have been scammed by two people who said they work for book my show and duped me for 1 lac ruppee and sent me fake ed sheeran's concert tickets last month. They are not paying me my money telling they also got duped by someone else. They took the guarantee before taking the money that If you dont get the tickets they will return the money but they are now not returning. None of them work for book my show and pretended to be fake employees of Book My Show. What type of legal actions can I take? I have all the evidence in my whatsapp chat.",
+   "reviewed_by": "corpus authors' automatic extraction from forum lawyers' replies",
+   "source": "ILSIC (Law-AI/ilsic, EACL Findings 2026) Layman-new-dataset test split, row 572"
+  },
+  {
+   "anonymised": true,
+   "author": "layperson post on a legal forum, as published in ILSIC-Lay",
+   "author_type": "forum-post",
+   "charges": [
+    {
+     "charge": "406. Punishment for criminal breach of trust.—Whoever commits criminal breach of",
+     "sections": {
+      "bns": [
+       "BNS 316"
+      ],
+      "ipc": [
+       "IPC 406"
+      ]
+     }
+    },
+    {
+     "charge": "420. Cheating and dishonestly inducing delivery of property.—Whoever cheats and ",
+     "sections": {
+      "bns": [
+       "BNS 318"
+      ],
+      "ipc": [
+       "IPC 420"
+      ]
+     }
+    }
+   ],
+   "id": "ilsic-lay-test-620",
+   "label_basis": "lawyer-answer-extracted",
+   "query": "We made online payment of 2 lacks rs for a apartment in Sjr Primecorp Vogue Residences whitefield , bangalore for Flat No: 602 in Sixth Floor, Wing ‘Milano-C’. Seller had taken the loan from arka fincap and because of which Banks are unable to give legal clearance. We told the same to him and asked his loan outstanding reports and his agreement with the arka but he is not willing to share anything. Then we asked him to cancel the deal and return our booking amount of 2 lacks rs but he is saying that it is non refundable. Now we need help in recovering our booking amount.",
+   "reviewed_by": "corpus authors' automatic extraction from forum lawyers' replies",
+   "source": "ILSIC (Law-AI/ilsic, EACL Findings 2026) Layman-new-dataset test split, row 620"
+  },
+  {
+   "anonymised": true,
+   "author": "layperson post on a legal forum, as published in ILSIC-Lay",
+   "author_type": "forum-post",
+   "charges": [
+    {
+     "charge": "420. Cheating and dishonestly inducing delivery of property.—Whoever cheats and ",
+     "sections": {
+      "bns": [
+       "BNS 318"
+      ],
+      "ipc": [
+       "IPC 420"
+      ]
+     }
+    },
+    {
+     "charge": "506. Punishment for criminal intimidation.—Whoever commits the offence of crimin",
+     "sections": {
+      "bns": [
+       "BNS 351"
+      ],
+      "ipc": [
+       "IPC 506"
+      ]
+     }
+    }
+   ],
+   "id": "ilsic-lay-test-0",
+   "label_basis": "lawyer-answer-extracted",
+   "query": "Well, I'm into digital marketing and my client had not paid me for my services. He had also threatened me to life and i have that in the recording also I had sent him many followups on WhatsApp and now he has blocked me so now I have started mailing him. Please advise how should I go about it. P.S. This is happening since October 2018",
+   "reviewed_by": "corpus authors' automatic extraction from forum lawyers' replies",
+   "source": "ILSIC (Law-AI/ilsic, EACL Findings 2026) Layman-new-dataset test split, row 0"
+  },
+  {
+   "anonymised": true,
+   "author": "layperson post on a legal forum, as published in ILSIC-Lay",
+   "author_type": "forum-post",
+   "charges": [
+    {
+     "charge": "376. Punishment for rape.—(1) Whoever, except in the cases provided for in sub-s",
+     "sections": {
+      "bns": [],
+      "ipc": [
+       "IPC 376"
+      ]
+     }
+    },
+    {
+     "charge": "498. Enticing or taking away or detaining with criminal intent a married woman.—",
+     "sections": {
+      "bns": [
+       "BNS 84"
+      ],
+      "ipc": [
+       "IPC 498"
+      ]
+     }
+    },
+    {
+     "charge": "500. Punishment for defamation.—Whoever defames another shall be punished with s",
+     "sections": {
+      "bns": [
+       "BNS 356"
+      ],
+      "ipc": [
+       "IPC 500"
+      ]
+     }
+    }
+   ],
+   "id": "ilsic-lay-test-103",
+   "label_basis": "lawyer-answer-extracted",
+   "query": "I logged a complaint against my wife that she hide her previous marriages she married with four time and every time she lodged a fake complaints against all previous husband's and she separated in a short period and on separation she demand huge amount from all previous husband's and if they denied she lodged fake complaints in Police stations and in Mahila mandal.or in any govt. Department till date she lodged complaints against 20 peoples in different police station and in varioy departments.. and when I came to know the history I lodged a complaint against my wife as she demanded me 50 lacs and a house for separation or for Tallak otherwise I will be murdered by goons so take the matter to police and FIR registered against her under 420,34.387,294,170,506. On [long_digits]..and after that she take addinterim bail and after that she lodged fake complaints against me that forcefully intercourse without her wish and FIR booked under 376 and 498..on [long_digits] and since [long_digits] we are leaving separate and not meet so how it is possible... Please guide me how can I will remove safely from this matter Regards",
+   "reviewed_by": "corpus authors' automatic extraction from forum lawyers' replies",
+   "source": "ILSIC (Law-AI/ilsic, EACL Findings 2026) Layman-new-dataset test split, row 103"
+  },
+  {
+   "anonymised": true,
+   "author": "layperson post on a legal forum, as published in ILSIC-Lay",
+   "author_type": "forum-post",
+   "charges": [
+    {
+     "charge": "406. Punishment for criminal breach of trust.—Whoever commits criminal breach of",
+     "sections": {
+      "bns": [
+       "BNS 316"
+      ],
+      "ipc": [
+       "IPC 406"
+      ]
+     }
+    },
+    {
+     "charge": "420. Cheating and dishonestly inducing delivery of property.—Whoever cheats and ",
+     "sections": {
+      "bns": [
+       "BNS 318"
+      ],
+      "ipc": [
+       "IPC 420"
+      ]
+     }
+    }
+   ],
+   "id": "ilsic-lay-test-402",
+   "label_basis": "lawyer-answer-extracted",
+   "query": "Speak english only 10 yr tourist visa US citizen was approached by my neighbour reading legal way to get Indian citizenship he asked for 2 1/2 lakh stupidly paid him without receipt and he took off with my money, only have massages on WhatsApp and email but he use fake names. FRRO director whom I seen knows about this guy, we have his name and address how can we help get my money back and for me to get an extended stay in INDIA while we file case? If you call, best to SMS me first and IU will call back, must speak English good,",
+   "reviewed_by": "corpus authors' automatic extraction from forum lawyers' replies",
+   "source": "ILSIC (Law-AI/ilsic, EACL Findings 2026) Layman-new-dataset test split, row 402"
+  },
+  {
+   "anonymised": true,
+   "author": "layperson post on a legal forum, as published in ILSIC-Lay",
+   "author_type": "forum-post",
+   "charges": [
+    {
+     "charge": "420. Cheating and dishonestly inducing delivery of property.—Whoever cheats and ",
+     "sections": {
+      "bns": [
+       "BNS 318"
+      ],
+      "ipc": [
+       "IPC 420"
+      ]
+     }
+    },
+    {
+     "charge": "467. Forgery of valuable security, will, etc.—Whoever forges a document which pu",
+     "sections": {
+      "bns": [
+       "BNS 338"
+      ],
+      "ipc": [
+       "IPC 467"
+      ]
+     }
+    },
+    {
+     "charge": "468. Forgery for purpose of cheating.—Whoever commits forgery, intending that th",
+     "sections": {
+      "bns": [
+       "BNS 336"
+      ],
+      "ipc": [
+       "IPC 468"
+      ]
+     }
+    },
+    {
+     "charge": "471. Using as genuine a forged document or electronic record.—Whoever fraudulent",
+     "sections": {
+      "bns": [
+       "BNS 340"
+      ],
+      "ipc": [
+       "IPC 471"
+      ]
+     }
+    }
+   ],
+   "id": "ilsic-lay-test-376",
+   "label_basis": "lawyer-answer-extracted",
+   "query": "We had bought a plot in punjab in 2006, done registry and everything, we did not wanted to build any thing on it yet so we kept it as it is. In 2017 someone started to. Build house in that plot and as we stay away from the plot when we came to. Knw it was 80% built.. When we went to the site and discussed we came to knw that the person building it had bought the same from. Some property dealer in 2017 and started to. Built it immediately... The registery was fake and he was cheated... So we put a stay order on construction and later settled the issue by paying the construction cost to the party and toom. Possession of the house, completed it, got it approved from municipal corporation office under my father's name, we are paying for the electricity bills ever since and living in it for few days time to time... The case was resolved in 2018 jan and was taken back after signing affidavits approved in tehsil where the other party mentioned that he was sold fake registry and that this plot is ours.. Now in 2019 September.. A new party has come with a registry saying that its their land and the registry is dated back to 2008, pls tell is there a issue now.. As we never aold the plot after 2016 and we r in possession of the house now which is fully completed.",
+   "reviewed_by": "corpus authors' automatic extraction from forum lawyers' replies",
+   "source": "ILSIC (Law-AI/ilsic, EACL Findings 2026) Layman-new-dataset test split, row 376"
+  },
+  {
+   "anonymised": true,
+   "author": "layperson post on a legal forum, as published in ILSIC-Lay",
+   "author_type": "forum-post",
+   "charges": [
+    {
+     "charge": "156. Liability of agent of owner or occupier for whose benefit riot is committed",
+     "sections": {
+      "bns": [
+       "BNS 193"
+      ],
+      "ipc": [
+       "IPC 156"
+      ]
+     }
+    },
+    {
+     "charge": "376. Punishment for rape.—(1) Whoever, except in the cases provided for in sub-s",
+     "sections": {
+      "bns": [],
+      "ipc": [
+       "IPC 376"
+      ]
+     }
+    },
+    {
+     "charge": "498A. Husband or relative of husband of a woman subjecting her to cruelty.—Whoev",
+     "sections": {
+      "bns": [
+       "BNS 85",
+       "BNS 86"
+      ],
+      "ipc": [
+       "IPC 498A"
+      ]
+     }
+    },
+    {
+     "charge": "500. Punishment for defamation.—Whoever defames another shall be punished with s",
+     "sections": {
+      "bns": [
+       "BNS 356"
+      ],
+      "ipc": [
+       "IPC 500"
+      ]
+     }
+    }
+   ],
+   "id": "ilsic-lay-test-742",
+   "label_basis": "lawyer-answer-extracted",
+   "query": "A lady claiming to be my wife filed 498a and DV complaint in way back [long_digits]) DV complaint to MMTC 1 , Bangalore on year 2010 is dismissed by holding that marriage or live-in relationship not proven on 2013. Her appeal is dismissed for default in 2016 and has reached finality. Can this revived after long years now?. 2. 498a is still going on but my discharge application has no progress. I filed 482 quash petition in Bangalore HC on basis that marriage is not proved in DV proceedings. 498a has many witnesses including her parents who state that no one attended the marriage but speaks about live-in together. Will high court quash it? 3. Can she file a new application under 125 crpc in family court after 12 years after the alleged marriage?.",
+   "reviewed_by": "corpus authors' automatic extraction from forum lawyers' replies",
+   "source": "ILSIC (Law-AI/ilsic, EACL Findings 2026) Layman-new-dataset test split, row 742"
+  },
+  {
+   "anonymised": true,
+   "author": "layperson post on a legal forum, as published in ILSIC-Lay",
+   "author_type": "forum-post",
+   "charges": [
+    {
+     "charge": "406. Punishment for criminal breach of trust.—Whoever commits criminal breach of",
+     "sections": {
+      "bns": [
+       "BNS 316"
+      ],
+      "ipc": [
+       "IPC 406"
+      ]
+     }
+    },
+    {
+     "charge": "420. Cheating and dishonestly inducing delivery of property.—Whoever cheats and ",
+     "sections": {
+      "bns": [
+       "BNS 318"
+      ],
+      "ipc": [
+       "IPC 420"
+      ]
+     }
+    }
+   ],
+   "id": "ilsic-lay-test-94",
+   "label_basis": "lawyer-answer-extracted",
+   "query": "Hi. I am the owner of a hotel in Siliguri West Bengal. We had a buisness tie up with Oyo, with which we were unhappy and had to terminate the deal 4 months ago. We email the company saying to settle the accounts. But they never replied. They blocked our rooms from all other online travel agent's that we were previously working with. After repeated Watsapp discussions with the company local head, he pomisses he will give the details but it of no use as they prolonged it to 4 months of wait. This is costing me a lot of losses without any online bookings. This hotel is all I have to run my family and I just had a son. Please help. Show me what I can do.",
+   "reviewed_by": "corpus authors' automatic extraction from forum lawyers' replies",
+   "source": "ILSIC (Law-AI/ilsic, EACL Findings 2026) Layman-new-dataset test split, row 94"
+  },
+  {
+   "anonymised": true,
+   "author": "layperson post on a legal forum, as published in ILSIC-Lay",
+   "author_type": "forum-post",
+   "charges": [
+    {
+     "charge": "406. Punishment for criminal breach of trust.—Whoever commits criminal breach of",
+     "sections": {
+      "bns": [
+       "BNS 316"
+      ],
+      "ipc": [
+       "IPC 406"
+      ]
+     }
+    },
+    {
+     "charge": "420. Cheating and dishonestly inducing delivery of property.—Whoever cheats and ",
+     "sections": {
+      "bns": [
+       "BNS 318"
+      ],
+      "ipc": [
+       "IPC 420"
+      ]
+     }
+    },
+    {
+     "charge": "506. Punishment for criminal intimidation.—Whoever commits the offence of crimin",
+     "sections": {
+      "bns": [
+       "BNS 351"
+      ],
+      "ipc": [
+       "IPC 506"
+      ]
+     }
+    }
+   ],
+   "id": "ilsic-lay-test-431",
+   "label_basis": "lawyer-answer-extracted",
+   "query": "Dear Sir, I have purchased a duplex flat from a builder and the first transaction happened on 7th March 2014 but the sale deed for the land was registered on 26th June 2014 at registrar's office. The land on which duplex is getting built was owned by 3 persons jointly and they have give Power of attorney to the said builder. But they executed the power of attorney on 8th March 2013 and its written on POA document that \"This POA is valid for 11 months and 29 days from the date of its execution\". Also the POA document was registered on 11th March 2013. When I applied for bank loan the bank lawyer said that the sale deed registry is not valid as on 7th March 2014 the builder did not have any POA. Kindly clarify whether the sale deed is valid or not ? What can be done if the deed is invalid?",
+   "reviewed_by": "corpus authors' automatic extraction from forum lawyers' replies",
+   "source": "ILSIC (Law-AI/ilsic, EACL Findings 2026) Layman-new-dataset test split, row 431"
+  }
+ ],
+ "label_policy": "Each IPC section is a section cited in the forum lawyers' replies to the post, extracted by the corpus authors with a language model and regular expressions. The corpus authors found that a law graduate annotating 50 queries listed 5.46 statutes per query against 2.40 in the data, so these labels are incomplete: recall against them is meaningful and precision is not. BNS sections, where present, come from verified concordance entries only. No lawyer reviewed these labels for this repository. Posts are public forum text. The scrub is partial: untitled names, places and company names remain, so the set stays in the private repository.",
+ "licence_note": "Query text and labels are from ILSIC (arXiv 2602.00881, https://github.com/Law-AI/ilsic), CC BY-NC-SA 4.0: academic, non-commercial use, share-alike, attribution to the ILSIC authors.",
+ "scrub": {
+  "counts": {
+   "email": 0,
+   "ifsc": 2,
+   "labelled_name": 6,
+   "long_digits": 5,
+   "titled_name": 2,
+   "url": 0
+  },
+  "rules": "emails, URLs, runs of 7 or more digits and IFSC codes, a title (Mr, Mrs, Ms, Shri, Smt, Dr, Adv) or a 'Name:' label followed by up to three capitalised words are replaced by a bracketed tag. Other untitled names, places and company names are not removed."
+ },
+ "version": "v2"
+}

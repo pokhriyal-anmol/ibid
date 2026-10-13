@@ -1,0 +1,109 @@
+{
+ "items": {
+  "ilsic-lay-test-0": [
+   "whoever threatens another with injury to person with intent to cause alarm, threat to cause death, criminal intimidation"
+  ],
+  "ilsic-lay-test-103": [
+   "whoever puts a person in fear of death or injury in order to commit extortion of money or property",
+   "whoever having a husband or wife living marries again, such marriage being void, shall be punished",
+   "whoever conceals a former marriage from the person with whom another marriage is contracted",
+   "whoever institutes a false criminal charge knowing there is no just ground with intent to injure a person",
+   "whoever threatens another with injury to person with intent to cause alarm, threat to cause death, criminal intimidation"
+  ],
+  "ilsic-lay-test-14": [
+   "whoever cheats by deceiving a person and dishonestly induces delivery of money shall be punished",
+   "cheating using false promise of employment to induce payment of money"
+  ],
+  "ilsic-lay-test-176": [
+   "employer deducts provident fund contributions from employees wages but fails to deposit them to the fund"
+  ],
+  "ilsic-lay-test-219": [
+   "whoever threatens another with injury to his person with intent to cause alarm, including threat of death, shall be punished"
+  ],
+  "ilsic-lay-test-302": [
+   "whoever dishonestly misappropriates or converts to his own use movable property belonging to another shall be punished",
+   "whoever cheats and dishonestly induces a person to sign a document capable of being converted into a valuable security shall be punished",
+   "whoever voluntarily causes hurt or harasses a woman with cruelty to coerce her to give up property shall be punished"
+  ],
+  "ilsic-lay-test-37": [
+   "builder dishonestly induces buyers to pay money for a flat by deceiving them and does not deliver it"
+  ],
+  "ilsic-lay-test-376": [
+   "whoever makes a false document with intent to commit fraud or cause damage or support a claim to property is guilty of forgery",
+   "whoever cheats by selling property dishonestly inducing the buyer to part with money shall be punished"
+  ],
+  "ilsic-lay-test-397": [
+   "whoever causes damage to property of another person with intent to cause wrongful loss commits mischief",
+   "whoever voluntarily obstructs a person so as to prevent that person from proceeding in a direction he has a right to proceed"
+  ],
+  "ilsic-lay-test-402": [
+   "whoever cheats and thereby dishonestly induces the person deceived to deliver money or property shall be punished"
+  ],
+  "ilsic-lay-test-416": [
+   "whoever puts a person in fear of injury to dishonestly induce delivery of money commits extortion and shall be punished",
+   "whoever dishonestly takes movable property out of the possession of another without consent commits theft"
+  ],
+  "ilsic-lay-test-424": [
+   "assault or criminal force used to a public servant to deter him from discharging his duty",
+   "whoever obstructs a public servant in the discharge of his public functions shall be punished",
+   "disobedience to an order duly promulgated by a public servant lawfully empowered to promulgate it",
+   "whoever commits criminal intimidation by threatening another with injury shall be punished"
+  ],
+  "ilsic-lay-test-431": [],
+  "ilsic-lay-test-432": [
+   "wife subjects husband to cruelty by using his stored sperm without his consent to bear a child",
+   "whoever dishonestly makes use of another person's property without consent, or acts without knowledge or consent causing wrong"
+  ],
+  "ilsic-lay-test-48": [
+   "whoever has sexual intercourse with the wife of another man without that man's consent, not amounting to rape, commits adultery"
+  ],
+  "ilsic-lay-test-50": [
+   "whoever has sexual intercourse with the wife of another man without his consent or connivance commits adultery and shall be punished"
+  ],
+  "ilsic-lay-test-506": [
+   "whoever utters any word intending to insult the modesty of a woman, intending that such word be heard by her, shall be punished",
+   "whoever intentionally insults another and thereby gives provocation intending or knowing it likely to cause breach of the peace shall be punished"
+  ],
+  "ilsic-lay-test-572": [
+   "whoever cheats by pretending to be some other person and dishonestly induces delivery of property",
+   "whoever cheats and thereby dishonestly induces the person deceived to deliver money shall be punished"
+  ],
+  "ilsic-lay-test-589": [
+   "whoever makes or publishes any imputation concerning any person intending to harm the reputation of such person commits defamation"
+  ],
+  "ilsic-lay-test-59": [
+   "whoever does an act which causes common injury, danger or annoyance to the public commits public nuisance"
+  ],
+  "ilsic-lay-test-620": [],
+  "ilsic-lay-test-641": [
+   "whoever voluntarily causes hurt to another person shall be punished with imprisonment or fine",
+   "husband or relative of the husband subjecting a woman to cruelty shall be punished",
+   "whoever dishonestly misappropriates or converts to his own use movable property of another shall be punished"
+  ],
+  "ilsic-lay-test-645": [
+   "whoever cheats by deceiving a person and dishonestly induces delivery of property shall be punished with imprisonment"
+  ],
+  "ilsic-lay-test-707": [
+   "whoever abuses a person with insulting words intending to provoke breach of peace or commit another offence",
+   "whoever threatens another person with injury to compel or cause alarm shall be punished with imprisonment"
+  ],
+  "ilsic-lay-test-742": [
+   "husband or relative of the husband subjects a woman to cruelty shall be punished with imprisonment"
+  ],
+  "ilsic-lay-test-756": [
+   "whoever forges a document intending that it be used for cheating shall be punished",
+   "whoever cheats and dishonestly induces delivery of property by deception shall be punished"
+  ],
+  "ilsic-lay-test-800": [],
+  "ilsic-lay-test-818": [
+   "whoever cheats and dishonestly induces the person deceived to deliver property or money shall be punished with imprisonment"
+  ],
+  "ilsic-lay-test-88": [
+   "whoever being entrusted with property or dominion over it dishonestly misappropriates it or converts it to his own use commits criminal breach of trust"
+  ],
+  "ilsic-lay-test-94": []
+ },
+ "producer": "claude sub-agents (model alias sonnet), one agent per 5 items, workflow charges-subqueries-v2 wf_4488ed59-014",
+ "producer_note": "Each agent read only an id-to-query-text file, never labels, section numbers or retrieval results. The sub-queries are a model's paraphrase of what the text alleges, in statute-like words, and can carry legal knowledge the model has. The prompt is in the workflow script wf_4488ed59-014.",
+ "set_sha256": "9b4c14c5bcbbd3e5158099ed94722dc6292bc668ad3162013e0219f5f5edf0bb"
+}

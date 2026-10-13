@@ -1,0 +1,569 @@
+{
+  "act": "BNS",
+  "charges_excluded_no_counterpart": 0,
+  "conventions": {
+    "by_charges_per_item": "grouped by the number of charges counted for the Act, not the total in the item",
+    "excluded": "a charge with an empty list for the Act is left out; an item with none left is not scored",
+    "found": "a charge is found when any accepted section of the Act, rolled up to its section, is predicted",
+    "mean_predictions": "mean number of predicted sections per scored item"
+  },
+  "inputs": {
+    "index_sha256": "efaf6fe8b342f151ac02ed110027320f39b0d99287327eb7d206453537a0d408",
+    "layer": {
+      "frozen_rule_params": "250c53f85b3dcaa5c370dcc7a0cbf8a6da7579bc0f398ea9be2341b4750a90bf",
+      "index": "efaf6fe8b342f151ac02ed110027320f39b0d99287327eb7d206453537a0d408",
+      "per_subquery": 2,
+      "producer": "claude sub-agents (model alias sonnet), one agent per 5 items, workflow charges-subqueries wf_e3378e78-db0",
+      "subqueries_sha256": "35e1f78060824ad4deaf9cb57fcac5add67f9826c10781b7f19da34860c0ca4c"
+    },
+    "set_sha256": "9b77ae213e7a7a9614606c9fc6396a0a323e155630f491bb3a3b0295ca9f2fd2"
+  },
+  "items_in_set": 30,
+  "items_scored": 30,
+  "label_basis": {
+    "agent-drafted-skeptic-refuted": 30
+  },
+  "layer": "decomposed",
+  "layer_counts": {
+    "subqueries_per_item_mean": 4.37
+  },
+  "layer_version": "v1",
+  "output": {
+    "all_charges_hit": 0.5,
+    "by_charges_per_item": {
+      "1": {
+        "all_charges_hit": 0.0,
+        "charges": 0,
+        "items": 0,
+        "mean_predictions": 0.0,
+        "recall": 0.0
+      },
+      "2": {
+        "all_charges_hit": 0.7,
+        "charges": 20,
+        "items": 10,
+        "mean_predictions": 6.7,
+        "recall": 0.85
+      },
+      "3+": {
+        "all_charges_hit": 0.4,
+        "charges": 78,
+        "items": 20,
+        "mean_predictions": 8.65,
+        "recall": 0.782051
+      }
+    },
+    "charges": 98,
+    "items": 30,
+    "mean_predictions": 8.0,
+    "missed": [
+      {
+        "charge": "Causing disappearance of evidence",
+        "id": "871051",
+        "top_predicted": [
+          "BNS 103",
+          "BNS 104",
+          "BNS 230"
+        ]
+      },
+      {
+        "charge": "Abetment of rape",
+        "id": "190108901",
+        "top_predicted": [
+          "BNS 137",
+          "BNS 139",
+          "BNS 142"
+        ]
+      },
+      {
+        "charge": "Causing disappearance of evidence",
+        "id": "156132986",
+        "top_predicted": [
+          "BNS 103",
+          "BNS 104",
+          "BNS 113"
+        ]
+      },
+      {
+        "charge": "Criminal conspiracy",
+        "id": "156132986",
+        "top_predicted": [
+          "BNS 103",
+          "BNS 104",
+          "BNS 113"
+        ]
+      },
+      {
+        "charge": "Being member of unlawful assembly",
+        "id": "71898306",
+        "top_predicted": [
+          "BNS 106",
+          "BNS 110",
+          "BNS 223"
+        ]
+      },
+      {
+        "charge": "Criminal intimidation",
+        "id": "102242151",
+        "top_predicted": [
+          "BNS 115",
+          "BNS 117",
+          "BNS 27"
+        ]
+      },
+      {
+        "charge": "Attempt to murder",
+        "id": "33467557",
+        "top_predicted": [
+          "BNS 101",
+          "BNS 115",
+          "BNS 126"
+        ]
+      },
+      {
+        "charge": "Attempt to murder by setting wife's family member on fire",
+        "id": "188477105",
+        "top_predicted": [
+          "BNS 101",
+          "BNS 115",
+          "BNS 117"
+        ]
+      },
+      {
+        "charge": "Voluntarily causing hurt",
+        "id": "21756622",
+        "top_predicted": [
+          "BNS 133",
+          "BNS 137",
+          "BNS 188"
+        ]
+      },
+      {
+        "charge": "Voluntarily causing hurt",
+        "id": "24605614",
+        "top_predicted": [
+          "BNS 117",
+          "BNS 120",
+          "BNS 126"
+        ]
+      },
+      {
+        "charge": "Attempt to murder",
+        "id": "1781247",
+        "top_predicted": [
+          "BNS 101",
+          "BNS 115",
+          "BNS 117"
+        ]
+      },
+      {
+        "charge": "Voluntarily causing grievous hurt by dangerous weapons",
+        "id": "1781247",
+        "top_predicted": [
+          "BNS 101",
+          "BNS 115",
+          "BNS 117"
+        ]
+      },
+      {
+        "charge": "Voluntarily causing hurt by dangerous weapons",
+        "id": "1781247",
+        "top_predicted": [
+          "BNS 101",
+          "BNS 115",
+          "BNS 117"
+        ]
+      },
+      {
+        "charge": "Voluntarily causing hurt to Anam and Reshma",
+        "id": "106805320",
+        "top_predicted": [
+          "BNS 117",
+          "BNS 120",
+          "BNS 149"
+        ]
+      },
+      {
+        "charge": "Criminal intimidation",
+        "id": "127532648",
+        "top_predicted": [
+          "BNS 100",
+          "BNS 117",
+          "BNS 118"
+        ]
+      },
+      {
+        "charge": "Voluntarily causing hurt",
+        "id": "102368932",
+        "top_predicted": [
+          "BNS 100",
+          "BNS 113",
+          "BNS 117"
+        ]
+      },
+      {
+        "charge": "Criminal intimidation",
+        "id": "102368932",
+        "top_predicted": [
+          "BNS 100",
+          "BNS 113",
+          "BNS 117"
+        ]
+      },
+      {
+        "charge": "theft",
+        "id": "150846258",
+        "top_predicted": [
+          "BNS 304",
+          "BNS 308",
+          "BNS 318"
+        ]
+      },
+      {
+        "charge": "attempt to murder",
+        "id": "41590279",
+        "top_predicted": [
+          "BNS 103",
+          "BNS 104",
+          "BNS 127"
+        ]
+      },
+      {
+        "charge": "wrongful restraint",
+        "id": "41590279",
+        "top_predicted": [
+          "BNS 103",
+          "BNS 104",
+          "BNS 127"
+        ]
+      }
+    ],
+    "predictions": {
+      "102242151": [
+        "BNS 115",
+        "BNS 117",
+        "BNS 27",
+        "BNS 270",
+        "BNS 296",
+        "BNS 53",
+        "BNS 64",
+        "BNS 85"
+      ],
+      "102368932": [
+        "BNS 100",
+        "BNS 113",
+        "BNS 117",
+        "BNS 120",
+        "BNS 189",
+        "BNS 191",
+        "BNS 294",
+        "BNS 296",
+        "BNS 324",
+        "BNS 330",
+        "BNS 331",
+        "BNS 333"
+      ],
+      "105616635": [
+        "BNS 101",
+        "BNS 137",
+        "BNS 141",
+        "BNS 188",
+        "BNS 64",
+        "BNS 65",
+        "BNS 95",
+        "BNS 96"
+      ],
+      "106805320": [
+        "BNS 117",
+        "BNS 120",
+        "BNS 149",
+        "BNS 189",
+        "BNS 191",
+        "BNS 2",
+        "BNS 294",
+        "BNS 296",
+        "BNS 330",
+        "BNS 351"
+      ],
+      "107892742": [
+        "BNS 330",
+        "BNS 351",
+        "BNS 64",
+        "BNS 75",
+        "BNS 78",
+        "BNS 95"
+      ],
+      "127532648": [
+        "BNS 100",
+        "BNS 117",
+        "BNS 118",
+        "BNS 120",
+        "BNS 294",
+        "BNS 296",
+        "BNS 330"
+      ],
+      "1422198": [
+        "BNS 103",
+        "BNS 104",
+        "BNS 107",
+        "BNS 108",
+        "BNS 80",
+        "BNS 85"
+      ],
+      "150846258": [
+        "BNS 304",
+        "BNS 308",
+        "BNS 318",
+        "BNS 335",
+        "BNS 336",
+        "BNS 337",
+        "BNS 340",
+        "BNS 341",
+        "BNS 97"
+      ],
+      "153470110": [
+        "BNS 308",
+        "BNS 318",
+        "BNS 330",
+        "BNS 351"
+      ],
+      "154394117": [
+        "BNS 113",
+        "BNS 137",
+        "BNS 330",
+        "BNS 38",
+        "BNS 64",
+        "BNS 72",
+        "BNS 87",
+        "BNS 99"
+      ],
+      "155317536": [
+        "BNS 101",
+        "BNS 103",
+        "BNS 117",
+        "BNS 120",
+        "BNS 3",
+        "BNS 61"
+      ],
+      "156132986": [
+        "BNS 103",
+        "BNS 104",
+        "BNS 113",
+        "BNS 140",
+        "BNS 230",
+        "BNS 233"
+      ],
+      "1733568": [
+        "BNS 148",
+        "BNS 3",
+        "BNS 316",
+        "BNS 317",
+        "BNS 344",
+        "BNS 61"
+      ],
+      "176417778": [
+        "BNS 123",
+        "BNS 329",
+        "BNS 330",
+        "BNS 351",
+        "BNS 38",
+        "BNS 64",
+        "BNS 75"
+      ],
+      "1781247": [
+        "BNS 101",
+        "BNS 115",
+        "BNS 117",
+        "BNS 120",
+        "BNS 190",
+        "BNS 191"
+      ],
+      "188477105": [
+        "BNS 101",
+        "BNS 115",
+        "BNS 117",
+        "BNS 118",
+        "BNS 80",
+        "BNS 85"
+      ],
+      "190108901": [
+        "BNS 137",
+        "BNS 139",
+        "BNS 142",
+        "BNS 258",
+        "BNS 330",
+        "BNS 351",
+        "BNS 50",
+        "BNS 56",
+        "BNS 64",
+        "BNS 65",
+        "BNS 87",
+        "BNS 99"
+      ],
+      "19706913": [
+        "BNS 318",
+        "BNS 319",
+        "BNS 335",
+        "BNS 336",
+        "BNS 338",
+        "BNS 340",
+        "BNS 341"
+      ],
+      "21756622": [
+        "BNS 133",
+        "BNS 137",
+        "BNS 188",
+        "BNS 232",
+        "BNS 351",
+        "BNS 64",
+        "BNS 74",
+        "BNS 78"
+      ],
+      "24605614": [
+        "BNS 117",
+        "BNS 120",
+        "BNS 126",
+        "BNS 133",
+        "BNS 190",
+        "BNS 191",
+        "BNS 232",
+        "BNS 294",
+        "BNS 296",
+        "BNS 324",
+        "BNS 329",
+        "BNS 330",
+        "BNS 351",
+        "BNS 74"
+      ],
+      "33467557": [
+        "BNS 101",
+        "BNS 115",
+        "BNS 126",
+        "BNS 232",
+        "BNS 294",
+        "BNS 296",
+        "BNS 324",
+        "BNS 351"
+      ],
+      "39883671": [
+        "BNS 107",
+        "BNS 108",
+        "BNS 126",
+        "BNS 127",
+        "BNS 296",
+        "BNS 3",
+        "BNS 330",
+        "BNS 351"
+      ],
+      "40330300": [
+        "BNS 117",
+        "BNS 118",
+        "BNS 133",
+        "BNS 137",
+        "BNS 139",
+        "BNS 74"
+      ],
+      "41590279": [
+        "BNS 103",
+        "BNS 104",
+        "BNS 127",
+        "BNS 149",
+        "BNS 158",
+        "BNS 189",
+        "BNS 191",
+        "BNS 2",
+        "BNS 230",
+        "BNS 233",
+        "BNS 27",
+        "BNS 30",
+        "BNS 61"
+      ],
+      "43861037": [
+        "BNS 186",
+        "BNS 196",
+        "BNS 330",
+        "BNS 351",
+        "BNS 356",
+        "BNS 64",
+        "BNS 78",
+        "BNS 79"
+      ],
+      "43946072": [
+        "BNS 109",
+        "BNS 110",
+        "BNS 194",
+        "BNS 310"
+      ],
+      "44267882": [
+        "BNS 113",
+        "BNS 115",
+        "BNS 117",
+        "BNS 189",
+        "BNS 191",
+        "BNS 192",
+        "BNS 296",
+        "BNS 3",
+        "BNS 312",
+        "BNS 324",
+        "BNS 330",
+        "BNS 331",
+        "BNS 333",
+        "BNS 351"
+      ],
+      "53071757": [
+        "BNS 101",
+        "BNS 189",
+        "BNS 2",
+        "BNS 28",
+        "BNS 318",
+        "BNS 319",
+        "BNS 335",
+        "BNS 336",
+        "BNS 338",
+        "BNS 340",
+        "BNS 341",
+        "BNS 61",
+        "BNS 63",
+        "BNS 64",
+        "BNS 95"
+      ],
+      "71898306": [
+        "BNS 106",
+        "BNS 110",
+        "BNS 223",
+        "BNS 285"
+      ],
+      "871051": [
+        "BNS 103",
+        "BNS 104",
+        "BNS 230",
+        "BNS 233"
+      ]
+    },
+    "recall": 0.795918
+  },
+  "parser_version": "4",
+  "scorings_of_this_layer_version": [
+    {
+      "act": "BNS",
+      "index_sha256": "efaf6fe8b342f151ac02ed110027320f39b0d99287327eb7d206453537a0d408",
+      "inputs": {
+        "frozen_rule_params": "250c53f85b3dcaa5c370dcc7a0cbf8a6da7579bc0f398ea9be2341b4750a90bf",
+        "index": "efaf6fe8b342f151ac02ed110027320f39b0d99287327eb7d206453537a0d408",
+        "per_subquery": 2,
+        "producer": "claude sub-agents (model alias sonnet), one agent per 5 items, workflow charges-subqueries wf_e3378e78-db0",
+        "subqueries_sha256": "35e1f78060824ad4deaf9cb57fcac5add67f9826c10781b7f19da34860c0ca4c"
+      },
+      "layer": "decomposed",
+      "layer_version": "v1",
+      "scores": {
+        "output": {
+          "all_charges_hit": 0.5,
+          "mean_predictions": 8.0,
+          "recall": 0.795918
+        }
+      },
+      "set_sha256": "9b77ae213e7a7a9614606c9fc6396a0a323e155630f491bb3a3b0295ca9f2fd2"
+    }
+  ]
+}

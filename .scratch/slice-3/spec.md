@@ -1,0 +1,188 @@
+# Slice 3: A real multi-charge test set and a per-charge score for the baseline
+
+Status: decisions recorded 2026-10-12. Tickets 01 to 14 are written. 01 to 09 and 11 are done, 05 closed as rejected before scoring. 10 is built and waits on queries the owner cannot write, so route D now goes through published sources (12 to 14), which wait on download approval.
+
+## Problem Statement
+
+Slice 2 scored the baseline on a public benchmark: micro-F1 9.6 and macro-F1 6.2 on the ILSI test split. That number says little about the case the owner cares about, a query that describes several offences at once, written the way a person with a real case writes it. The benchmark cases are judgments, scored per section across 100 labels, and the queries a language model writes for tests are sanitised and mild. No number exists for how often Ibid finds each charge in a realistic multi-charge query, and without that number no later layer (link expansion, a model that decomposes the query) can be shown to beat the baseline, which ADR 0001 requires of any opt-in layer.
+
+## Solution
+
+A small, hand-collected set of 50 to 100 multi-charge queries, each written or chosen by a person and labelled with the sections a lawyer accepts for each charge. One command scores any rule on it by charge: the share of charges found, and the share of queries in which every charge is found. The baseline (rule v2.11) is scored first. The set is pinned, kept out of every tuning loop, and scored once per rule version.
+
+```mermaid
+flowchart LR
+  subgraph People["People, not a model"]
+    W["Lawyer or owner writes or<br/>chooses the query, removes identifiers"]
+    L["Lawyer labels accepted sections<br/>per charge, second person reviews"]
+  end
+  subgraph Set["Pinned test set, versioned"]
+    F[("multicharge vN.json<br/>plus .sha256")]
+    V["ibid charges validate<br/>ticket 01"]
+  end
+  subgraph Score["Scoring, code only"]
+    B["Baseline v2.11<br/>raw query in, sections out"]
+    C["Per-charge recall,<br/>all-charges-hit rate,<br/>by number of charges"]
+  end
+  subgraph Later["Later layers, each reports its own packet"]
+    X["Link expansion<br/>code only"]
+    M["Decompose, rewrite, rerank<br/>opt-in, needs a model"]
+  end
+  W --> L
+  L -->|"labelled items"| F
+  F --> V
+  V -->|"valid and pinned"| B
+  B --> C
+  C -.->|"number to beat"| X
+  C -.->|"number to beat"| M
+  classDef human fill:#ffe9c6,stroke:#a60
+  classDef code fill:#e3f5e3,stroke:#272
+  class W,L human
+  class V,B,C,X code
+```
+
+Orange boxes need people. Green boxes are code an agent can build and test.
+
+## Decisions (owner, 2026-10-12)
+
+1. Who writes the labels: agents, with an independent skeptic pass, as in slice 1. The labels are recorded as `agent-drafted-skeptic-refuted` and the file says no lawyer has reviewed them. Queries are never written by an agent. They are fact text of real cases from the LeSICiN release (CC BY 4.0, already anonymised), chosen by a written rule that is applied without reading the text.
+2. Where the set lives: in this private repository, committed with its pin.
+3. First version: 30 items, scored on the IPC and on the BNS.
+4. Both Acts. The BNS sections for each charge are labelled by the same agents from the BNS text, not copied from the concordance, which has only 12 verified entries.
+
+Consequences the owner should know:
+
+- The 30 items come from the ILSI train split. The frozen rule was tuned on the aggregate train score, so this set is not an unseen sample in the strict sense. Its influence on any tuned value is negligible, and the report says so. A holdout written by a lawyer would be cleaner and is a later option.
+- Agent-drafted labels share the blind spots of the model that drafted them. The skeptic pass reduces this and does not remove it. Scores on this set measure agreement with the drafted labels, and the legal judgment still needs a lawyer before any claim is published.
+- The BNS side is judged against labels from the BNS text, with no check from a second Act expert.
+
+## Revision, 2026-10-12 (owner: "A, B, C and D")
+
+The baseline finds 3 to 5 percent of charges on the first 30 items, and a label-free stop list did not fix it (ticket 05 outcome). The owner asked for four further routes. Each is a separate layer, and none of them replaces the baseline.
+
+| Route | What it is | Needs a model at run time | Ticket |
+|---|---|---|---|
+| A | Cited-section extraction: sections a query names are looked up directly and mapped to the other Act through verified concordance entries | no | 07 |
+| B | Learned association from ILSI train labels: a naive-Bayes style term-to-section model, an opt-in layer under a new ADR | no, but learned weights | 08 |
+| C | Decomposition into per-charge sub-queries by a model, then baseline retrieval per sub-query | yes, recorded as a pinned file | 09 |
+| D | Queries written by a person in their own words, then labelled the same way as v1 | no | 10 |
+
+```mermaid
+flowchart LR
+  Q["Raw query"] --> BL["Baseline v2.11"]
+  Q --> A["A: cited sections"]
+  Q --> B["B: learned association<br/>trained on ILSI train<br/>minus the 30 set items"]
+  Q --> C["C: sub-queries recorded<br/>in a pinned file"]
+  C --> BL2["Baseline per sub-query"]
+  BL --> P["predictions file"]
+  A --> P
+  B --> P
+  BL2 --> P
+  P --> S["charges score --predictions<br/>one scorer, ticket 06"]
+  S --> R["comparison report, ticket 11"]
+  subgraph Sets["Evaluation sets"]
+    V1["v1: 30 items from judgments<br/>28 name their sections"]
+    V2["D: person-written queries"]
+  end
+  Sets --> S
+```
+
+### The layer seam
+
+Every layer writes a predictions file and nothing else is scored:
+
+```json
+{"layer": "cited", "layer_version": "v1", "set_sha256": "...",
+ "inputs": {"concordance": "sha256", "model": "sha256"},
+ "items": {"<item id>": {"ipc": ["IPC 302"], "bns": ["BNS 103"]}}}
+```
+
+Order is not scored. The scorer reports the same figures for every layer (per-charge recall, all-charges-hit, mean predictions, by charges per item) and records which layer version scored which set. A second scoring of the same layer version on the same set is reported beside the first.
+
+### Rules that keep the numbers honest
+
+- Set v1 comes from the ILSI train split, so layer B is trained on train minus the 30 item ids, and a test asserts none of them is in its training data.
+- Set v1 has 29 of 30 queries naming their sections (a keyword-led section number such as "Section 302", "Sections 302/201" or "u/s 420"), and some of its labels were drafted from those mentions. Layer A is scored on it and the report calls the result what it is: how well code reads sections a document states, not a measure of reading facts.
+- Layer C's sub-queries are written by agents that see only the query, never a label or a retrieval result, and are stored in a pinned file. Retrieval from them is code.
+- Each layer is scored once per layer version on set v1. Nothing is tuned against it. Any parameter is declared in its ticket before a score exists. Layer B may use ILSI dev for its single declared choice and is scored once on ILSI test.
+- Layers A to C are opt-in under ADR 0001. Each reports its own evidence packet and is compared with the baseline on the same set. None changes the baseline path.
+
+## User Stories
+
+1. As the owner, I want the multi-charge set in a versioned, hash-pinned file, so every score traces to exact data.
+2. As the owner, I want each query written or chosen by a person, with its author type recorded, so assistant-written sanitised queries cannot enter.
+3. As the owner, I want each charge labelled with the sections a lawyer accepts for it, where one charge may accept several sections.
+4. As the builder, I want per-charge recall and the all-charges-hit rate for any rule on the set.
+5. As the builder, I want the baseline v2.11 scored on the set first, so every later layer has a number to beat.
+6. As the builder, I want a layer's output scored by the same command and reported separately from the baseline, as ADR 0001 requires.
+7. As a reader, I want results split by number of charges (1, 2, 3 or more), so simple queries stay visible.
+8. As the owner, I want the set kept out of any tuning loop: tuning stays on the ILSI train and dev splits, and the set is scored once per rule version.
+
+## Proposed tickets
+
+Only ticket 01 is written. The rest are titles, to be written when the owner has answered the decisions above.
+
+| # | Title | Kind | Blocked by |
+|---|---|---|---|
+| 01 | Define the multi-charge set file and refuse any file that breaks its rules | code, done | none |
+| 02 | Score a rule by charge, on the IPC and on the BNS | code, done | 01 |
+| 03 | Collect the first 30 items from real judgment text | agents, done | 01 |
+| 04 | Score the frozen baseline on the first 30 items, on both Acts | run, done | 02, 03 |
+| 05 | Corpus-frequency stop words | code, closed, rejected before scoring | 04 |
+| 06 | One scorer for every layer: score a predictions file, and export the baseline in that format | code | 02 |
+| 07 | Route A: cited-section extraction with verified-concordance mapping | code, then run | 06 |
+| 08 | Route B: learned term-to-section association, opt-in layer, ADR 0005 | code, then run | 06 |
+| 09 | Route C: per-charge sub-queries from a pinned file, baseline retrieval per sub-query | code, agents, then run | 06 |
+| 10 | Route D: collection kit for person-written queries | human, then agents label | none |
+| 11 | Comparison report across layers and sets | code, then run | 07, 08, 09 |
+
+| 12 | Route D without writing queries: a layperson set from ILSIC-Lay (real forum posts, labels from lawyers' replies) | data, then run | approval to download |
+| 13 | Verify more concordance entries against a published correspondence table | code, agents, then run | approval to use the table |
+| 14 | Audit the labels of set v1 against a published table and an independent second panel | agents, then report | 13 |
+
+A model layer (decompose, rewrite, rerank) is not in this slice. It needs the number from ticket 04, a model choice and a cost estimate, and it would be an opt-in layer under ADR 0001.
+
+## Decision, 2026-10-12 (owner): route D by published sources
+
+The owner cannot write 20 to 30 queries in their own words and asked for a workaround and for the concordance and lawyer-review items to proceed from academic sources. The result is tickets 12 to 14. Queries now come from the ILSIC-Lay corpus of real forum posts. Concordance entries are checked against a published correspondence table. Labels are audited against that table and an independent panel. Ticket 10's kit stays available for a person who can write.
+
+### Sources and what each can and cannot support
+
+| Source | Supports | Does not support |
+|---|---|---|
+| ILSIC-Lay, EACL Findings 2026, CC BY-NC-SA 4.0 | Realistic layperson wording. Statute labels from lawyers' replies. | Complete labels (an LL.M. annotator found 5.46 statutes per query against 2.40). The BNS. Commercial use. |
+| AILA 2019, Zenodo 4063986, CC BY 4.0 | 50 expert-written situations over 197 statutes. Optional set v3. | A large sample. A statement of who judged relevance, which the record does not give. |
+| CAPT correspondence table, June 2024 | A second, independent mapping from BNS to IPC with comparison notes, for verifying the concordance and the BNS labels. | An official status. It is one director's compilation, not an MHA document. |
+
+### Downloads awaiting approval
+
+Nothing below is fetched until the owner approves it.
+
+| File | Source | Size | Licence |
+|---|---|---|---|
+| ILSIC data folder (`dataset`) | Google Drive link in https://github.com/Law-AI/ilsic README | not shown on the page | CC BY-NC-SA 4.0 for the data (the repository's code is MIT) |
+| `AILA_2019_dataset.zip` | https://zenodo.org/records/4063986 | 20.7 MB, md5 07f9621e385ff0d4540ce8dfd76b0c21 | CC BY 4.0 |
+| `comparison_summary_BNS_to_IPC.pdf` | https://www.keralaprisons.gov.in/userfiles/act-and-rules/comparison_summary_BNS_to_IPC.pdf | 716,640 bytes (already saved by a read of its first rows) | not stated, copyright line names the author |
+| `IPC vis-a-vis BNS.pdf` (second table, optional) | uppolice.gov.in, "Three New Major Acts" folder | not checked | not stated |
+
+## Testing Decisions
+
+- Behaviour through the validate and score commands on small invented fixtures. Fixture queries are mild by design, and no quality number is taken from them.
+- Known-bad checks: a query marked `model` is refused, a changed byte is refused by the pin, a section absent from the index is refused, and a score that counts only the first accepted section is shown to differ from one that counts any.
+- The set is never read by an optimisation round. Any scoring of it is recorded with the rule version and the data hash, and a second scoring of the same rule version is reported beside the first.
+- Per-label results from the ILSI test split were read after scoring and must not steer tuning. Tuning evidence in this slice comes from ILSI train and dev, and from the multi-charge set only through one scoring per rule version.
+
+## Out of Scope
+
+- Any model call in retrieval, in this slice.
+- Retraining or fine-tuning anything.
+- A BNS version of the set.
+- Generating queries with a language model, even for fixtures that feed a score.
+- A new public benchmark. The set is for Ibid's own measurement.
+
+## Still open
+
+- The metric for "found". Proposed: a charge is found when any accepted section is in the top k or above the threshold. Per-charge precision (noise per query) is reported separately and not folded in.
+- Whether k and r for the baseline are the frozen v2.11 values or are re-chosen on this set. Proposal: frozen values, since re-choosing on the set would tune to it.
+- Ticket 04 gives one number for the baseline. Whether that number is enough to justify a model layer is a decision for after it exists.
+- Candidate ideas in [the literature note](../../docs/research/legal-retrieval-literature.md) that cost a model call are deferred. Their published numbers are not checked.

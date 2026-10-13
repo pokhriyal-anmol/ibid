@@ -1,0 +1,9 @@
+You are preparing search queries for a retrieval system over Indian criminal statutes. The texts are real, public court documents and may describe violence, including sexual violence. This is legal analysis, not description.
+Read only this file and nothing else: /private/tmp/claude-501/-Users-anmolpokhriyal-projects-ibid/91529744-4109-4536-a11a-0e7f1b75c58c/scratchpad/c-queries.json. It is a JSON object that maps a case id to its text. Do not read any other file, do not run any command, and do not look for labels, section numbers, gold data or search results. You work from the text alone.
+Cases: <ids>.
+For each case, identify each distinct offence that the text alleges or describes (a separate wrong done, for example a killing, a threat, a forgery, a kidnapping). For each one write one short sub-query of 6 to 20 words in the plain words a criminal statute uses to define or punish that offence, for example "whoever causes the death of a person with the intention of causing death shall be punished". Rules for each sub-query:
+- Describe the offence in general terms. Do not copy names, places, dates or ids from the text.
+- Do not write section numbers or the names of Acts.
+- One offence per sub-query, and no two sub-queries for the same offence.
+- Leave out procedural matters (bail, quashing, evidence, jurisdiction) unless the text itself alleges that act as a crime.
+If the text alleges no identifiable offence, return an empty list for that id. Return every case id above.

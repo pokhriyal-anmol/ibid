@@ -1,0 +1,368 @@
+{
+  "counts": {
+    "subqueries_per_item_mean": 1.53
+  },
+  "inputs": {
+    "frozen_rule_params": "250c53f85b3dcaa5c370dcc7a0cbf8a6da7579bc0f398ea9be2341b4750a90bf",
+    "index": "efaf6fe8b342f151ac02ed110027320f39b0d99287327eb7d206453537a0d408",
+    "per_subquery": 2,
+    "producer": "claude sub-agents (model alias sonnet), one agent per 5 items, workflow charges-subqueries-v2 wf_4488ed59-014",
+    "subqueries_sha256": "77ec3b048108f3793a10d714feb4451e558cf09c520fd40ed9a6ac582a7fcf00"
+  },
+  "items": {
+    "ilsic-lay-test-0": {
+      "bns": [
+        "BNS 232",
+        "BNS 351"
+      ],
+      "ipc": [
+        "IPC 503",
+        "IPC 506"
+      ]
+    },
+    "ilsic-lay-test-103": {
+      "bns": [
+        "BNS 2",
+        "BNS 232",
+        "BNS 246",
+        "BNS 248",
+        "BNS 308",
+        "BNS 309",
+        "BNS 351",
+        "BNS 356",
+        "BNS 82"
+      ],
+      "ipc": [
+        "IPC 136",
+        "IPC 209",
+        "IPC 211",
+        "IPC 385",
+        "IPC 387",
+        "IPC 494",
+        "IPC 495",
+        "IPC 503",
+        "IPC 506"
+      ]
+    },
+    "ilsic-lay-test-14": {
+      "bns": [
+        "BNS 143",
+        "BNS 318",
+        "BNS 319",
+        "BNS 69"
+      ],
+      "ipc": [
+        "IPC 196",
+        "IPC 415",
+        "IPC 420",
+        "IPC 480"
+      ]
+    },
+    "ilsic-lay-test-176": {
+      "bns": [
+        "BNS 147",
+        "BNS 316"
+      ],
+      "ipc": [
+        "IPC 171I",
+        "IPC 405"
+      ]
+    },
+    "ilsic-lay-test-219": {
+      "bns": [
+        "BNS 232",
+        "BNS 351"
+      ],
+      "ipc": [
+        "IPC 171C",
+        "IPC 503"
+      ]
+    },
+    "ilsic-lay-test-302": {
+      "bns": [
+        "BNS 117",
+        "BNS 308",
+        "BNS 315",
+        "BNS 318",
+        "BNS 345",
+        "BNS 85"
+      ],
+      "ipc": [
+        "IPC 22",
+        "IPC 322",
+        "IPC 325",
+        "IPC 383",
+        "IPC 404",
+        "IPC 420"
+      ]
+    },
+    "ilsic-lay-test-37": {
+      "bns": [
+        "BNS 308",
+        "BNS 318"
+      ],
+      "ipc": [
+        "IPC 383",
+        "IPC 415"
+      ]
+    },
+    "ilsic-lay-test-376": {
+      "bns": [
+        "BNS 318",
+        "BNS 319",
+        "BNS 336",
+        "BNS 340"
+      ],
+      "ipc": [
+        "IPC 415",
+        "IPC 420",
+        "IPC 463",
+        "IPC 470"
+      ]
+    },
+    "ilsic-lay-test-397": {
+      "bns": [
+        "BNS 113",
+        "BNS 126",
+        "BNS 171",
+        "BNS 324"
+      ],
+      "ipc": [
+        "IPC 171C",
+        "IPC 339",
+        "IPC 425",
+        "IPC 427"
+      ]
+    },
+    "ilsic-lay-test-402": {
+      "bns": [
+        "BNS 308",
+        "BNS 318"
+      ],
+      "ipc": [
+        "IPC 415",
+        "IPC 420"
+      ]
+    },
+    "ilsic-lay-test-416": {
+      "bns": [
+        "BNS 303",
+        "BNS 304",
+        "BNS 308",
+        "BNS 315"
+      ],
+      "ipc": [
+        "IPC 378",
+        "IPC 383",
+        "IPC 385",
+        "IPC 403"
+      ]
+    },
+    "ilsic-lay-test-424": {
+      "bns": [
+        "BNS 121",
+        "BNS 132",
+        "BNS 221",
+        "BNS 223",
+        "BNS 330",
+        "BNS 351",
+        "BNS 356",
+        "BNS 358"
+      ],
+      "ipc": [
+        "IPC 152",
+        "IPC 162",
+        "IPC 186",
+        "IPC 188",
+        "IPC 332",
+        "IPC 353",
+        "IPC 503",
+        "IPC 507"
+      ]
+    },
+    "ilsic-lay-test-431": {
+      "bns": [],
+      "ipc": []
+    },
+    "ilsic-lay-test-432": {
+      "bns": [
+        "BNS 2",
+        "BNS 63",
+        "BNS 85"
+      ],
+      "ipc": [
+        "IPC 136",
+        "IPC 24",
+        "IPC 403",
+        "IPC 498A"
+      ]
+    },
+    "ilsic-lay-test-48": {
+      "bns": [
+        "BNS 63",
+        "BNS 64"
+      ],
+      "ipc": [
+        "IPC 375",
+        "IPC 497"
+      ]
+    },
+    "ilsic-lay-test-50": {
+      "bns": [
+        "BNS 63",
+        "BNS 67"
+      ],
+      "ipc": [
+        "IPC 375",
+        "IPC 497"
+      ]
+    },
+    "ilsic-lay-test-506": {
+      "bns": [
+        "BNS 192",
+        "BNS 352",
+        "BNS 74",
+        "BNS 79"
+      ],
+      "ipc": [
+        "IPC 153",
+        "IPC 354",
+        "IPC 504",
+        "IPC 509"
+      ]
+    },
+    "ilsic-lay-test-572": {
+      "bns": [
+        "BNS 308",
+        "BNS 318",
+        "BNS 319"
+      ],
+      "ipc": [
+        "IPC 415",
+        "IPC 416",
+        "IPC 420"
+      ]
+    },
+    "ilsic-lay-test-589": {
+      "bns": [
+        "BNS 2",
+        "BNS 356"
+      ],
+      "ipc": [
+        "IPC 44",
+        "IPC 499"
+      ]
+    },
+    "ilsic-lay-test-59": {
+      "bns": [
+        "BNS 270",
+        "BNS 292"
+      ],
+      "ipc": [
+        "IPC 268",
+        "IPC 290"
+      ]
+    },
+    "ilsic-lay-test-620": {
+      "bns": [],
+      "ipc": []
+    },
+    "ilsic-lay-test-641": {
+      "bns": [
+        "BNS 117",
+        "BNS 120",
+        "BNS 315",
+        "BNS 345",
+        "BNS 80",
+        "BNS 85"
+      ],
+      "ipc": [
+        "IPC 22",
+        "IPC 304B",
+        "IPC 322",
+        "IPC 325",
+        "IPC 404",
+        "IPC 498A"
+      ]
+    },
+    "ilsic-lay-test-645": {
+      "bns": [
+        "BNS 318",
+        "BNS 319"
+      ],
+      "ipc": [
+        "IPC 415",
+        "IPC 420"
+      ]
+    },
+    "ilsic-lay-test-707": {
+      "bns": [
+        "BNS 171",
+        "BNS 194",
+        "BNS 232",
+        "BNS 352"
+      ],
+      "ipc": [
+        "IPC 159",
+        "IPC 171C",
+        "IPC 503",
+        "IPC 504"
+      ]
+    },
+    "ilsic-lay-test-742": {
+      "bns": [
+        "BNS 80",
+        "BNS 85"
+      ],
+      "ipc": [
+        "IPC 304B",
+        "IPC 498A"
+      ]
+    },
+    "ilsic-lay-test-756": {
+      "bns": [
+        "BNS 143",
+        "BNS 2",
+        "BNS 318",
+        "BNS 336"
+      ],
+      "ipc": [
+        "IPC 29",
+        "IPC 415",
+        "IPC 420",
+        "IPC 468"
+      ]
+    },
+    "ilsic-lay-test-800": {
+      "bns": [],
+      "ipc": []
+    },
+    "ilsic-lay-test-818": {
+      "bns": [
+        "BNS 308",
+        "BNS 318"
+      ],
+      "ipc": [
+        "IPC 415",
+        "IPC 420"
+      ]
+    },
+    "ilsic-lay-test-88": {
+      "bns": [
+        "BNS 316",
+        "BNS 317"
+      ],
+      "ipc": [
+        "IPC 407",
+        "IPC 408"
+      ]
+    },
+    "ilsic-lay-test-94": {
+      "bns": [],
+      "ipc": []
+    }
+  },
+  "layer": "decomposed",
+  "layer_version": "v1",
+  "set_sha256": "9b4c14c5bcbbd3e5158099ed94722dc6292bc668ad3162013e0219f5f5edf0bb"
+}

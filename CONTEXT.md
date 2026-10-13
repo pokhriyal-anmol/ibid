@@ -53,7 +53,7 @@ The frozen, hash-pinned list of questions with answers verified against the Gaze
 _Avoid_: Test data, ground truth
 
 **Baseline**:
-The first scored run of the simplest retrieval that works. Every later layer (embeddings, graph) must beat it on the gold set to stay.
+The first scored run of the simplest retrieval that works. Every later layer (embeddings, graph) must beat it to stay, on the same set and the same Act: the Gold set in slice 1, a Multi-charge set per charge in slice 3.
 _Avoid_: Benchmark (reserved for external benchmarks such as ILSI)
 
 **Benchmark label**:
@@ -71,6 +71,22 @@ _Avoid_: Experiment, run
 **Frozen rule**:
 The query rule of one logged round, recorded before the test split is scored. The test split is scored against it once.
 _Avoid_: Final model, best config
+
+**Charge**:
+One alleged offence inside a query that alleges several. A Charge has its own accepted sections in each Act, and is scored as found or not found.
+_Avoid_: Count, allegation, issue
+
+**Multi-charge set**:
+The frozen, hash-pinned list of queries that each allege one or more Charges, with accepted sections per Charge and Act, kept under `gold/multicharge/`. Not the Gold set: its labels have a recorded basis, some drafted by an agent and refuted by a skeptic.
+_Avoid_: Test set, gold (unqualified), dataset
+
+**Layer**:
+One way of producing a predictions file for a Multi-charge set, scored by the same function as the Baseline and compared on the same set and Act. Routes A to D are cited sections, learned association, per-charge sub-queries and person-written queries. A layer has a name and a layer version.
+_Avoid_: Model, approach, system
+
+**Predictions file**:
+The per-item sections a Layer predicts for each Act, with the hash of the set it was made for. `ibid charges score` is the only thing that scores it.
+_Avoid_: Output, run, submission
 
 **Slice**:
 One tracer-bullet increment that is demoable and verifiable on its own.

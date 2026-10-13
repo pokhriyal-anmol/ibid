@@ -116,6 +116,70 @@ def main(argv: list[str] | None = None) -> int:
     cf.add_argument("--pages", default="data/raw/pages")
     cf.add_argument("--index", default="data/index/conform.sqlite")
     cf.add_argument("--drop", action="append", default=[], metavar="ID=REASON")
+    chs = sub.add_parser("charges").add_subparsers(dest="charges_cmd", required=True)
+    chv = chs.add_parser("validate")
+    chv.add_argument("--set", required=True)
+    chv.add_argument("--index", default="data/index/ibid.sqlite")
+    chi = chs.add_parser("intake", help="turn person-written query blocks into a draft set")
+    chi.add_argument("--queries", required=True)
+    chi.add_argument("--author-type", choices=("owner", "lawyer"), required=True)
+    chi.add_argument("--author", required=True)
+    chi.add_argument("--out", required=True)
+    chc = chs.add_parser("score", help="score the frozen rule by charge on one Act")
+    chc.add_argument("--set", required=True)
+    chc.add_argument("--index", default="data/index/ibid.sqlite")
+    chc.add_argument("--frozen-rule", default="results/frozen-rule.json")
+    chc.add_argument("--predictions", default=None, help="a layer's predictions file, scored in place of --frozen-rule")
+    chc.add_argument("--act", choices=("ipc", "bns"), required=True)
+    chc.add_argument("--out", required=True)
+    chc.add_argument("--ledger", default=None, help="default: <set>.ledger.json beside the set")
+    che = chs.add_parser("export-baseline", help="write the frozen rule's two output rules as predictions files")
+    che.add_argument("--set", required=True)
+    che.add_argument("--index", default="data/index/ibid.sqlite")
+    che.add_argument("--frozen-rule", default="results/frozen-rule.json")
+    che.add_argument("--out", required=True, help="writes <stem>.baseline-topk<suffix> and <stem>.baseline-threshold<suffix>")
+    cmp_ = chs.add_parser("compare", help="one report across layers and sets, from results files")
+    cmp_.add_argument("--results", action="append", required=True)
+    cmp_.add_argument("--set", action="append", required=True, help="every set the results files name, matched by hash")
+    cmp_.add_argument("--ilsi", action="append", default=[], help="an ILSI test result, reported as a separate task")
+    cmp_.add_argument("--out", required=True)
+    cc = sub.add_parser("concordance").add_subparsers(dest="conc_cmd", required=True).add_parser(
+        "from-table", help="candidate entries from a published BNS to IPC correspondence table (pdftotext -layout text)")
+    cc.add_argument("--table", required=True)
+    cc.add_argument("--index", default="data/index/ibid.sqlite")
+    cc.add_argument("--out", required=True)
+    ci = sub.add_parser("cited").add_subparsers(dest="cited_cmd", required=True).add_parser(
+        "extract", help="route A: sections a query names, mapped to the other Act through verified concordance")
+    ci.add_argument("--set", required=True)
+    ci.add_argument("--index", default="data/index/ibid.sqlite")
+    ci.add_argument("--concordance", required=True)
+    ci.add_argument("--out", required=True)
+    asc = sub.add_parser("assoc").add_subparsers(dest="assoc_cmd", required=True)
+    af = asc.add_parser("fit", help="route B: fit the naive-Bayes layer on a train split minus the held-out set's ids")
+    af.add_argument("--train", required=True)
+    af.add_argument("--holdout-set", required=True)
+    af.add_argument("--labels", default="data/raw/lesicin/label_vocab.json")
+    af.add_argument("--out", required=True)
+    apr = asc.add_parser("predict", help="write the layer's predictions file for a multi-charge set")
+    apr.add_argument("--model", required=True)
+    apr.add_argument("--set", required=True)
+    apr.add_argument("--concordance", required=True)
+    apr.add_argument("--index", default="data/index/ibid.sqlite")
+    apr.add_argument("--out", required=True)
+    ae = asc.add_parser("eval", help="score a split with the benchmark's micro-F1, macro-F1 and Jaccard")
+    ae.add_argument("--model", required=True)
+    ae.add_argument("--split", required=True)
+    ae.add_argument("--manifest", default="data/lesicin.manifest.json")
+    ae.add_argument("--ledger", default="results/test-ledger-assoc.json")
+    ae.add_argument("--rescore-test", action="store_true")
+    ae.add_argument("--out", default=None)
+    chq = chs.add_parser("subquery", help="route C: retrieve per recorded sub-query with the frozen rule and union")
+    chq.add_argument("--set", required=True)
+    chq.add_argument("--subqueries", required=True)
+    chq.add_argument("--index", default="data/index/ibid.sqlite")
+    chq.add_argument("--frozen-rule", default="results/frozen-rule.json")
+    chq.add_argument("--per-subquery", type=int, default=2)
+    chq.add_argument("--out", required=True)
     bsub = sub.add_parser("bench").add_subparsers(dest="bench_cmd", required=True)
     bn = bsub.add_parser("check-labels")
     bn.add_argument("--data", default="data/raw/lesicin/label_vocab.json")
@@ -137,6 +201,16 @@ def main(argv: list[str] | None = None) -> int:
     br.add_argument("--frozen-rule", default="results/frozen-rule.json")
     br.add_argument("--ledger", default="results/test-ledger.json")
     br.add_argument("--rescore-test", action="store_true")
+    br.add_argument("--extra-stop-words", default=None, help="a df-stopwords file; its terms join the stop words (changes the rule hash)")
+    bd = bsub.add_parser("df-stopwords", help="terms in at least --min-df of a split's fact paragraphs, from text only")
+    bd.add_argument("--split", required=True)
+    bd.add_argument("--min-df", type=float, required=True)
+    bd.add_argument("--out", required=True)
+    bv = bsub.add_parser("derive-rule", help="a frozen-rule record with a stop list added, under a new version")
+    bv.add_argument("--from", dest="src", default="results/frozen-rule.json")
+    bv.add_argument("--stopwords", required=True)
+    bv.add_argument("--version", required=True)
+    bv.add_argument("--out", required=True)
     bf = bsub.add_parser("freeze")
     bf.add_argument("--log", default="results/optimisation-log.json")
     bf.add_argument("--round", type=int, default=None, help="logged round to freeze, default the last")
@@ -159,17 +233,52 @@ def main(argv: list[str] | None = None) -> int:
     rp.add_argument("--frozen-rule", default="results/frozen-rule.json", help="the frozen-rule record, names the frozen round")
     rp.add_argument("--out", default="results/report.md")
     a = ap.parse_args(argv)
+    if a.cmd == "concordance":
+        from ibid import table
+        return table.from_table(a.table, a.index, a.out)
+    if a.cmd == "cited":
+        from ibid import cited
+        return cited.extract(a.set, a.index, a.concordance, a.out)
+    if a.cmd == "charges":
+        from ibid import charges
+        if a.charges_cmd == "export-baseline":
+            return charges.export_baseline(a.set, a.index, a.frozen_rule, a.out)
+        if a.charges_cmd == "subquery":
+            return charges.subquery(a.set, a.subqueries, a.index, a.frozen_rule, a.per_subquery, a.out)
+        if a.charges_cmd == "score" and a.predictions:
+            return charges.score_predictions(a.set, a.index, a.predictions, a.act, a.out, a.ledger)
+        if a.charges_cmd == "score":
+            return charges.score(a.set, a.index, a.frozen_rule, a.act, a.out, a.ledger)
+        if a.charges_cmd == "compare":
+            from ibid import compare
+            return compare.compare(a.results, a.set, a.ilsi, a.out)
+        if a.charges_cmd == "intake":
+            return charges.intake(a.queries, a.author_type, a.author, a.out)
+        return charges.validate(a.set, a.index)
+    if a.cmd == "assoc":
+        from ibid import assoc
+        if a.assoc_cmd == "fit":
+            return assoc.fit(a.train, a.holdout_set, a.labels, a.out)
+        if a.assoc_cmd == "predict":
+            return assoc.predict(a.model, a.set, a.concordance, a.index, a.out)
+        return assoc.evaluate(a.model, a.split, a.manifest, a.ledger, a.rescore_test, a.out)
     if a.cmd == "bench" and a.bench_cmd == "report":
         from ibid.report import run_report
         return run_report(a.log, a.ledger, a.results, a.out, a.frozen_rule)
     if a.cmd == "bench" and a.bench_cmd == "round":
         from ibid.optimise import run_round
         return run_round(a.train, a.dev, a.labels, a.index, a.manifest, a.log, a.change, a.k, a.r, a.rollup)
+    if a.cmd == "bench" and a.bench_cmd == "df-stopwords":
+        from ibid.bench import df_stopwords
+        return df_stopwords(a.split, a.min_df, a.out)
+    if a.cmd == "bench" and a.bench_cmd == "derive-rule":
+        from ibid.bench import derive_rule
+        return derive_rule(a.src, a.stopwords, a.version, a.out)
     if a.cmd == "bench" and a.bench_cmd == "run":
         from ibid.bench import run_bench
         return run_bench(a.split, a.labels, a.index, a.k, a.r, a.rollup, a.out, a.manifest, a.sample,
                          a.frozen_rule, a.ledger, a.rescore_test,
-                         {"bm25_k1": a.bm25_k1, "bm25_b": a.bm25_b, "stem": a.stem, "levels": a.levels})
+                         {"bm25_k1": a.bm25_k1, "bm25_b": a.bm25_b, "stem": a.stem, "levels": a.levels}, a.extra_stop_words)
     if a.cmd == "bench" and a.bench_cmd == "freeze":
         from ibid.bench import freeze_rule
         return freeze_rule(a.log, a.round, a.out)

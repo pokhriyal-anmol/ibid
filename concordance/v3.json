@@ -1,0 +1,5078 @@
+[
+ {
+  "basis": "human-checked",
+  "bns": [],
+  "evidence": "IPC 18: \"“India”.—“India” means the territory of India excluding the State of Jammu and Kashmir.\" / Checked BNS 2 definitions (1)-(39) on BNS pp.2-6 and grepped all 102 BNS pages for a quoted “India” definition: none found. No BNS counterpart.",
+  "ipc": [
+   "IPC 18"
+  ],
+  "ipcPage": 16,
+  "type": "removed",
+  "verified": true
+ },
+ {
+  "basis": "human-checked",
+  "bns": [],
+  "evidence": "IPC 14: \"“Servant of Government”.—The words “servant of Government” denote any officer or servant continued, appointed or employed in India...\" / Checked BNS 2 definitions (1)-(39) on BNS pp.2-6 and grepped all 102 BNS pages for \"servant of Government\": no match (positive control: \"Public servant\" does match). No BNS counterpart.",
+  "ipc": [
+   "IPC 14"
+  ],
+  "ipcPage": 15,
+  "type": "removed",
+  "verified": true
+ },
+ {
+  "basis": "refuted-by-agent",
+  "bns": [
+   "BNS 147"
+  ],
+  "bnsPage": 48,
+  "evidence": "IPC 121: \"Whoever wages war against the Government of India, or attempts to wage such war, or abets...\" BNS 147: \"Whoever wages war against the Government of India, or attempts to wage such war, or abets the waging of such war...\" Same punishment (death or imprisonment for life, and fine).",
+  "ipc": [
+   "IPC 121"
+  ],
+  "ipcPage": 35,
+  "type": "one-to-one",
+  "verified": false
+ },
+ {
+  "basis": "refuted-by-agent",
+  "bns": [
+   "BNS 148"
+  ],
+  "bnsPage": 48,
+  "evidence": "IPC 121A: \"Conspiracy to commit offences punishable by section 121.—Whoever within or without...\" BNS 148: \"Whoever within or without and beyond India conspires to commit any of the offences punishable by section 147, or conspires to overawe...\" (side note: Conspiracy to commit offences punishable by section 147).",
+  "ipc": [
+   "IPC 121A"
+  ],
+  "ipcPage": 35,
+  "type": "one-to-one",
+  "verified": false
+ },
+ {
+  "basis": "refuted-by-agent",
+  "bns": [
+   "BNS 191"
+  ],
+  "bnsPage": 55,
+  "evidence": "IPC 146: \"Rioting.—Whenever force or violence is used by an unlawful assembly...\"; IPC 147: \"Punishment for rioting.—Whoever is guilty of rioting...\"; IPC 148: \"Rioting, armed with deadly weapon.—Whoever is guilty of rioting, being armed with a deadly weapon...\". BNS 191: \"(1) Whenever force or violence is used by an unlawful assembly... (2) Whoever is guilty of rioting... (3) Whoever is guilty of rioting, being armed with a deadly weapon...\". Armed rioting maximum rises from three years (IPC 148) to five years (BNS 191(3)).",
+  "ipc": [
+   "IPC 146",
+   "IPC 147",
+   "IPC 148"
+  ],
+  "ipcPage": 40,
+  "type": "merged",
+  "verified": false
+ },
+ {
+  "basis": "refuted-by-agent",
+  "bns": [
+   "BNS 194"
+  ],
+  "bnsPage": 56,
+  "evidence": "IPC 159: \"Affray.—When two or more persons, by fighting in a public place, disturb the public peace...\"; IPC 160: \"Punishment for committing affray.—Whoever commits an affray...\". BNS 194: \"(1) When two or more persons, by fighting in a public place, disturb the public peace, they are said to commit an affray. (2) Whoever commits an affray...\". Fine cap rises from one hundred to one thousand rupees.",
+  "ipc": [
+   "IPC 159",
+   "IPC 160"
+  ],
+  "ipcPage": 42,
+  "type": "merged",
+  "verified": false
+ },
+ {
+  "basis": "refuted-by-agent",
+  "bns": [
+   "BNS 173"
+  ],
+  "bnsPage": 51,
+  "evidence": "IPC 171E: \"Punishment for bribery.—Whoever commits the offence of bribery shall be punished with imprisonment of either description for a term which may extend to one year...\" BNS 173: \"Whoever commits the offence of bribery shall be punished with imprisonment of either description for a term which may extend to one year, or with fine, or with both:\".",
+  "ipc": [
+   "IPC 171E"
+  ],
+  "ipcPage": 46,
+  "type": "one-to-one",
+  "verified": false
+ },
+ {
+  "basis": "refuted-by-agent",
+  "bns": [
+   "BNS 238"
+  ],
+  "bnsPage": 66,
+  "evidence": "IPC 201: \"Causing disappearance of evidence of offence, or giving false information to screen offender.—Whoever, knowing or having reason to believe that an offence has been committed, causes any evidence...\" BNS 238: \"Whoever, knowing or having reason to believe that an offence has been committed, causes any evidence of the commission of that offence to disappear...\".",
+  "ipc": [
+   "IPC 201"
+  ],
+  "ipcPage": 53,
+  "type": "one-to-one",
+  "verified": false
+ },
+ {
+  "basis": "refuted-by-agent",
+  "bns": [
+   "BNS 249"
+  ],
+  "bnsPage": 68,
+  "evidence": "IPC 212: \"Harbouring offender.—Whenever an offence has been committed, whoever harbours or conceals a person whom he knows or has reason to believe to be the offender...\" BNS 249: \"Whenever an offence has been committed, whoever harbours or conceals a person whom he knows or has reason to believe to be the offender, with the intention of screening him from legal punishment shall,—\".",
+  "ipc": [
+   "IPC 212"
+  ],
+  "ipcPage": 55,
+  "type": "one-to-one",
+  "verified": false
+ },
+ {
+  "basis": "refuted-by-agent",
+  "bns": [
+   "BNS 72",
+   "BNS 73"
+  ],
+  "bnsPage": 26,
+  "evidence": "IPC 228A: \"Disclosure of identity of the victim of certain offences, etc.—(1) Whoever prints or publishes the name or any matter which may make known the identity...\" with (3) \"Whoever prints or publishes any matter in relation to any proceeding before a court...\" (p.60-61). BNS 72 (p.26): \"(1) Whoever prints or publishes the name or any matter which may make known the identity of any person against whom an offence under section 64...\" covers 228A(1)-(2); BNS 73 (p.27): \"Whoever prints or publishes any matter in relation to any proceeding before a Court with respect to an offence referred to in section 72...\" covers 228A(3).",
+  "ipc": [
+   "IPC 228A"
+  ],
+  "ipcPage": 60,
+  "type": "split",
+  "verified": false
+ },
+ {
+  "basis": "refuted-by-agent",
+  "bns": [
+   "BNS 268"
+  ],
+  "bnsPage": 73,
+  "evidence": "IPC 229: \"Personation of a juror or assessor.—Whoever, by personation or otherwise, shall intentionally cause, or knowingly suffer himself to be returned, empanelled or sworn as a juryman or assessor...\" BNS 268: \"Whoever, by personation or otherwise, shall intentionally cause, or knowingly suffer himself to be returned, empanelled or sworn as an assessor...\" (side note: Personation of assessor). Juror/jury limb dropped; same two-year maximum.",
+  "ipc": [
+   "IPC 229"
+  ],
+  "ipcPage": 61,
+  "type": "one-to-one",
+  "verified": false
+ },
+ {
+  "basis": "refuted-by-agent",
+  "bns": [
+   "BNS 178"
+  ],
+  "bnsPage": 52,
+  "evidence": "IPC 231 (p62): \"Counterfeiting coin.—Whoever counterfeits or knowingly performs any part of the process of counterfeiting coin\"; IPC 232 (p62): \"Counterfeiting Indian coin.—Whoever counterfeits, or knowingly performs any part of the process of counterfeiting Indian coin\"; IPC 255 (p64): \"Counterfeiting Government stamp.—Whoever counterfeits, or knowingly performs any part of the process of counterfeiting, any stamp issued by Government for the purpose of revenue\". BNS 178 (p52): \"Whoever counterfeits, or knowingly performs any part of the process of counterfeiting, any coin, stamp issued by Government for the purpose of revenue, currency-note or bank-note\". BNS 178 Explanation (3) and (4) carry the IPC 255 and IPC 231 Explanations. BNS 178 also absorbs IPC 489A, which is outside the 230-300 range.",
+  "ipc": [
+   "IPC 231",
+   "IPC 232",
+   "IPC 255"
+  ],
+  "ipcPage": 62,
+  "type": "merged",
+  "verified": false
+ },
+ {
+  "basis": "refuted-by-agent",
+  "bns": [
+   "BNS 181"
+  ],
+  "bnsPage": 53,
+  "evidence": "IPC 233 (p62): \"Making or selling instrument for counterfeiting coin.—Whoever makes or mends, or performs any part of the process of making or mending, or buys, sells or disposes of, any die or instrument\"; IPC 234/235 (p62) and IPC 256/257 (p64) are the matching instrument offences for Indian coin, coin possession and Government stamps. BNS 181 (p53): \"Whoever makes or mends, or performs any part of the process of making or mending, or buys or sells or disposes of, or has in his possession, any machinery, die, or instrument or material ... for forging or counterfeiting any coin, stamp issued by Government for the purpose of revenue, currency-note or bank-note\". I matched IPC 234, 235, 256 and 257 to BNS 181 using their IPC headings on p7 and their opening lines on p62/p64. I did not read their full bodies.",
+  "ipc": [
+   "IPC 233",
+   "IPC 234",
+   "IPC 235",
+   "IPC 256",
+   "IPC 257"
+  ],
+  "ipcPage": 62,
+  "type": "merged",
+  "verified": false
+ },
+ {
+  "basis": "refuted-by-agent",
+  "bns": [
+   "BNS 186"
+  ],
+  "bnsPage": 53,
+  "evidence": "IPC 263A (p65): \"Prohibition of fictitious stamps.—(1) Whoever— (a) makes, knowingly utters, deals in or sells any fictitious stamp, or knowingly uses for any postal purpose any fictitious stamp\". BNS 186 (p53-54): \"(1) Whoever— (a) makes, knowingly utters, deals in or sells any fictitious stamp, or knowingly uses for any postal purpose any fictitious stamp\" (marginal heading: Prohibition of fictitious stamps).",
+  "ipc": [
+   "IPC 263A"
+  ],
+  "ipcPage": 65,
+  "type": "one-to-one",
+  "verified": false
+ },
+ {
+  "basis": "refuted-by-agent",
+  "bns": [],
+  "evidence": "IPC 264 (p66): \"Fraudulent use of false instrument for weighing.—Whoever, fraudulently uses any instrument for weighing which he knows to be false\"; IPC 265-267 (p66) cover false weights or measures. No BNS counterpart: I grepped all 102 BNS pages for \"weigh\" and \"measure\". The only weight hits are about coin, in BNS 178 Explanation (5) and BNS 187 (mint). BNS Chapter X (p52-54) runs from 178 to 188 and has no weights-and-measures section. Chapter XV begins at BNS 270 with public nuisance.",
+  "ipc": [
+   "IPC 264",
+   "IPC 265",
+   "IPC 266",
+   "IPC 267"
+  ],
+  "ipcPage": 66,
+  "type": "removed",
+  "verified": false
+ },
+ {
+  "basis": "refuted-by-agent",
+  "bns": [
+   "BNS 270"
+  ],
+  "bnsPage": 73,
+  "evidence": "IPC 268 (p66): \"Public nuisance.—A person is guilty of a public nuisance who does any act or is guilty of an\". BNS 270 (p73): \"A person is guilty of a public nuisance who does any act or is guilty of an illegal\".",
+  "ipc": [
+   "IPC 268"
+  ],
+  "ipcPage": 66,
+  "type": "one-to-one",
+  "verified": false
+ },
+ {
+  "basis": "refuted-by-agent",
+  "bns": [
+   "BNS 281"
+  ],
+  "bnsPage": 74,
+  "evidence": "IPC 279 (p67): \"Rash driving or riding on a public way.—Whoever drives any vehicle, or rides, on any public way in a manner so rash or negligent as to endanger human life\". BNS 281 (p74): \"Whoever drives any vehicle, or rides, on any public way in a manner so rash or\".",
+  "ipc": [
+   "IPC 279"
+  ],
+  "ipcPage": 67,
+  "type": "one-to-one",
+  "verified": false
+ },
+ {
+  "basis": "refuted-by-agent",
+  "bns": [
+   "BNS 294"
+  ],
+  "bnsPage": 76,
+  "evidence": "IPC 292 (p69): \"Sale, etc., of obscene books, etc.—(1) For the purposes of sub-section (2), a book, pamphlet, paper, writing, drawing, painting, representation, figure or any other object, shall be deemed to be obscene\". BNS 294 (p76): \"(1) For the purposes of sub-section (2), a book, pamphlet, paper, writing, drawing, painting, representation, figure or any other object, including display of any content in electronic form shall be deemed to be obscene\".",
+  "ipc": [
+   "IPC 292"
+  ],
+  "ipcPage": 69,
+  "type": "one-to-one",
+  "verified": false
+ },
+ {
+  "basis": "refuted-by-agent",
+  "bns": [
+   "BNS 297"
+  ],
+  "bnsPage": 77,
+  "evidence": "IPC 294A (p71): \"Keeping lottery office.—Whoever keeps any office or place for the purpose of drawing any lottery not being a State lottery or a lottery authorised by the State Government\". BNS 297 (p77): \"(1) Whoever keeps any office or place for the purpose of drawing any lottery not being a State lottery or a lottery authorised by the State Government\". IPC 294A's second paragraph, on publishing proposals, is BNS 297(2).",
+  "ipc": [
+   "IPC 294A"
+  ],
+  "ipcPage": 71,
+  "type": "one-to-one",
+  "verified": false
+ },
+ {
+  "basis": "refuted-by-agent",
+  "bns": [
+   "BNS 100"
+  ],
+  "bnsPage": 31,
+  "evidence": "IPC 299 (p72): \"Culpable homicide.—Whoever causes death by doing an act with the intention of causing death\". BNS 100 (p31): \"Whoever causes death by doing an act with the intention of causing death,\".",
+  "ipc": [
+   "IPC 299"
+  ],
+  "ipcPage": 72,
+  "type": "one-to-one",
+  "verified": false
+ },
+ {
+  "basis": "refuted-by-agent",
+  "bns": [
+   "BNS 101"
+  ],
+  "bnsPage": 32,
+  "evidence": "IPC 300 (p73): \"Murder.—Except in the cases hereinafter excepted, culpable homicide is murder, if the act by which the death is caused\". BNS 101 (p32): \"Except in the cases hereinafter excepted, culpable homicide is murder,––\".",
+  "ipc": [
+   "IPC 300"
+  ],
+  "ipcPage": 73,
+  "type": "one-to-one",
+  "verified": false
+ },
+ {
+  "basis": "refuted-by-agent",
+  "bns": [
+   "BNS 103(1)"
+  ],
+  "bnsPage": 34,
+  "evidence": "IPC 302: \"Punishment for murder.—Whoever commits murder shall be punished with death or [imprisonment for life]\". BNS 103(1): \"Whoever commits murder shall be punished with death or imprisonment for life\".",
+  "ipc": [
+   "IPC 302"
+  ],
+  "ipcPage": 74,
+  "type": "one-to-one",
+  "verified": false
+ },
+ {
+  "basis": "refuted-by-agent",
+  "bns": [
+   "BNS 106(1)"
+  ],
+  "bnsPage": 34,
+  "evidence": "IPC 304A: \"Causing death by negligence.—Whoever causes the death of any person by doing any rash or negligent act not amounting to culpable homicide\". BNS 106(1): \"Whoever causes death of any person by doing any rash or negligent act not amounting to culpable homicide\" (maximum raised from two to five years).",
+  "ipc": [
+   "IPC 304A"
+  ],
+  "ipcPage": 75,
+  "type": "one-to-one",
+  "verified": false
+ },
+ {
+  "basis": "refuted-by-agent",
+  "bns": [
+   "BNS 80(1)"
+  ],
+  "bnsPage": 28,
+  "evidence": "IPC 304B: \"Dowry death.—(1) Where the death of a woman is caused by any burns or bodily injury or occurs otherwise than under normal circumstances\". BNS 80(1): \"Where the death of a woman is caused by any burns or bodily injury or occurs\".",
+  "ipc": [
+   "IPC 304B"
+  ],
+  "ipcPage": 75,
+  "type": "one-to-one",
+  "verified": false
+ },
+ {
+  "basis": "refuted-by-agent",
+  "bns": [
+   "BNS 108"
+  ],
+  "bnsPage": 34,
+  "evidence": "IPC 306: \"Abetment of suicide.—If any person commits suicide, whoever abets the commission of such\". BNS 108: \"If any person commits suicide, whoever abets the commission of such suicide\".",
+  "ipc": [
+   "IPC 306"
+  ],
+  "ipcPage": 76,
+  "type": "one-to-one",
+  "verified": false
+ },
+ {
+  "basis": "refuted-by-agent",
+  "bns": [
+   "BNS 88"
+  ],
+  "bnsPage": 29,
+  "evidence": "IPC 312: \"Causing miscarraige.—Whoever voluntarily causes a woman with child to miscarry, shall, if such miscarriage be not caused in good faith\". BNS 88: \"Whoever voluntarily causes a woman with child to miscarry, shall, if such miscarriage be not caused in good faith\".",
+  "ipc": [
+   "IPC 312"
+  ],
+  "ipcPage": 76,
+  "type": "one-to-one",
+  "verified": false
+ },
+ {
+  "basis": "refuted-by-agent",
+  "bns": [
+   "BNS 74"
+  ],
+  "bnsPage": 27,
+  "evidence": "IPC 354: \"Assault or criminal force to woman with intent to outrage her modesty.—Whoever assaults\". BNS 74: \"Whoever assaults or uses criminal force to any woman, intending to outrage\".",
+  "ipc": [
+   "IPC 354"
+  ],
+  "ipcPage": 83,
+  "type": "one-to-one",
+  "verified": false
+ },
+ {
+  "basis": "refuted-by-agent",
+  "bns": [
+   "BNS 64",
+   "BNS 65(1)"
+  ],
+  "bnsPage": 23,
+  "evidence": "IPC 376(1): \"Punishment for rape.—(1) Whoever, except in the cases provided for in sub-section (2), commits\" rape (p.90); IPC 376(3): \"Whoever, commits rape on a woman under sixteen years of age\" (p.91). BNS 64(1): \"Whoever, except in the cases provided for in sub-section (2), commits rape\" (p.23); BNS 65(1): \"Whoever, commits rape on a woman under sixteen years of age shall be\" (p.25). Sub-section (3) moved out of the rape punishment section into BNS 65.",
+  "ipc": [
+   "IPC 376"
+  ],
+  "ipcPage": 90,
+  "type": "split",
+  "verified": false
+ },
+ {
+  "basis": "refuted-by-agent",
+  "bns": [
+   "BNS 70(2)"
+  ],
+  "bnsPage": 26,
+  "evidence": "IPC 376DA: \"Punishment for gang rape on woman under sixteen years of age.—Where a woman under sixteen years of age is raped by one or more persons\"; IPC 376DB: \"Punishment for gang rape on woman under twelve years of age.—Where a woman under twelve years of age\". BNS 70(2): \"Where a woman under eighteen years of age is raped by one or more persons constituting a group\" with life for remainder of natural life or death. Both age bands fold into one under-eighteen provision.",
+  "ipc": [
+   "IPC 376DA",
+   "IPC 376DB"
+  ],
+  "ipcPage": 93,
+  "type": "merged",
+  "verified": false
+ },
+ {
+  "basis": "refuted-by-agent",
+  "bns": [],
+  "evidence": "IPC 310: \"Thug.—Whoever, at any time after the passing of this Act, shall have been habitually associated\". Searched all 102 BNS page files for \"thug\": zero hits. BNS 111 (organised crime, p.35) covers continuing unlawful activity but has no thug definition; no counterpart found.",
+  "ipc": [
+   "IPC 310"
+  ],
+  "ipcPage": 76,
+  "type": "removed",
+  "verified": false
+ },
+ {
+  "basis": "refuted-by-agent",
+  "bns": [],
+  "evidence": "IPC 311: \"Punishment.—Whoever is a thug, shall be punished with [imprisonment for life]\". Searched all BNS page files for \"thug\": zero hits. No counterpart found.",
+  "ipc": [
+   "IPC 311"
+  ],
+  "ipcPage": 76,
+  "type": "removed",
+  "verified": false
+ },
+ {
+  "basis": "refuted-by-agent",
+  "bns": [],
+  "evidence": "IPC 377 (p.94): \"Unnatural offences.—Whoever voluntarily has carnal intercourse against the order of nature...\". Searched every BNS page text for \"carnal\", \"against the order of nature\" and \"unnatural\": no carnal-intercourse offence found; only hits are \"unnatural lust\" in BNS p.15 (assault context) and p.46 (trafficking/slavery context), neither a counterpart. Treated as no BNS successor.",
+  "ipc": [
+   "IPC 377"
+  ],
+  "ipcPage": 94,
+  "type": "removed",
+  "verified": false
+ },
+ {
+  "basis": "refuted-by-agent",
+  "bns": [
+   "BNS 306"
+  ],
+  "bnsPage": 80,
+  "evidence": "IPC 381: \"Theft by clerk or servant of property in possession of master.—Whoever, being a clerk or servant...\" / BNS 306: \"Whoever, being a clerk or servant, or being employed in the capacity of a clerk or servant, commits theft...\"",
+  "ipc": [
+   "IPC 381"
+  ],
+  "ipcPage": 96,
+  "type": "one-to-one",
+  "verified": false
+ },
+ {
+  "basis": "refuted-by-agent",
+  "bns": [
+   "BNS 334(1)"
+  ],
+  "bnsPage": 92,
+  "evidence": "IPC 461: \"Dishonestly breaking open receptacle containing property.—Whoever dishonestly or with intent to commit mischief, breaks open...\" / BNS 334(1): \"Whoever dishonestly or with intent to commit mischief, breaks open or unfastens any closed receptacle...\"",
+  "ipc": [
+   "IPC 461"
+  ],
+  "ipcPage": 108,
+  "type": "one-to-one",
+  "verified": false
+ },
+ {
+  "basis": "refuted-by-agent",
+  "bns": [
+   "BNS 334(2)"
+  ],
+  "bnsPage": 92,
+  "evidence": "IPC 462: \"Punishment for same offence when committed by person entrusted with custody.—Whoever, being entrusted with any closed receptacle...\" / BNS 334(2): \"Whoever, being entrusted with any closed receptacle which contains or which he believes to contain property...\"",
+  "ipc": [
+   "IPC 462"
+  ],
+  "ipcPage": 108,
+  "type": "one-to-one",
+  "verified": false
+ },
+ {
+  "basis": "refuted-by-agent",
+  "bns": [
+   "BNS 324(3)",
+   "BNS 324(4)",
+   "BNS 324(5)"
+  ],
+  "bnsPage": 88,
+  "evidence": "IPC 427: \"Whoever commits mischief and thereby causes loss or damage to the amount of fifty rupees or upwards...\" (single 2-year band) / BNS 324(3): \"Whoever commits mischief and thereby causes loss or damage to any property...\"; 324(4): \"...to the amount of twenty thousand rupees and more but less than one lakh rupees...\"; 324(5): \"...to the amount of one lakh rupees or upwards...\". Split by value band is an inference from the text, not stated in either Act.",
+  "ipc": [
+   "IPC 427"
+  ],
+  "ipcPage": 104,
+  "type": "split",
+  "verified": false
+ },
+ {
+  "basis": "refuted-by-agent",
+  "bns": [
+   "BNS 325"
+  ],
+  "bnsPage": 89,
+  "evidence": "IPC 428: \"Whoever commits mischief by killing, poisoning, maiming or rendering useless any animal or animals of the value of the ten rupees...\"; IPC 429: \"Whoever commits mischief by killing, poisoning, maiming or rendering useless, any elephant, camel...\" / BNS 325: \"Whoever commits mischief by killing, poisoning, maiming or rendering useless any animal...\" (no value threshold).",
+  "ipc": [
+   "IPC 428",
+   "IPC 429"
+  ],
+  "ipcPage": 104,
+  "type": "merged",
+  "verified": false
+ },
+ {
+  "basis": "refuted-by-agent",
+  "bns": [
+   "BNS 316"
+  ],
+  "bnsPage": 85,
+  "evidence": "IPC 406: \"Whoever commits criminal breach of trust shall be punished...\"; 407: \"Whoever, being entrusted with property as a carrier, wharfinger...\"; 408: \"Whoever, being a clerk or servant...\"; 409: \"Whoever, being in any manner entrusted with property... in his capacity of a public servant...\" / BNS 316(2): \"Whoever commits criminal breach of trust shall be punished...\", 316(3) carrier, 316(4) clerk or servant, 316(5) public servant/banker, all in one section (definition at 316(1), p.84).",
+  "ipc": [
+   "IPC 406",
+   "IPC 407",
+   "IPC 408",
+   "IPC 409"
+  ],
+  "ipcPage": 101,
+  "type": "merged",
+  "verified": false
+ },
+ {
+  "basis": "refuted-by-agent",
+  "bns": [
+   "BNS 309"
+  ],
+  "bnsPage": 82,
+  "evidence": "IPC 392: \"Whoever commits robbery shall be punished with rigorous imprisonment...\"; 393: \"Whoever attempts to commit robbery...\"; 394: \"If any person, in committing or in attempting to commit robbery, voluntarily causes hurt...\" / BNS 309(4): \"Whoever commits robbery shall be punished...\", 309(5): \"Whoever attempts to commit robbery...\", 309(6): \"If any person, in committing or in attempting to commit robbery, voluntarily causes hurt...\" (309 opens p.81).",
+  "ipc": [
+   "IPC 392",
+   "IPC 393",
+   "IPC 394"
+  ],
+  "ipcPage": 98,
+  "type": "merged",
+  "verified": false
+ },
+ {
+  "basis": "refuted-by-agent",
+  "bns": [
+   "BNS 310"
+  ],
+  "bnsPage": 82,
+  "evidence": "IPC 391: \"When five or more persons conjointly commit...\"; 395: \"Whoever commits dacoity shall be punished...\"; 396: \"If any one of five or more persons...\"; 399/400/402 (p.99): preparation, belonging to gang of dacoits, assembling / BNS 310(1): \"When five or more persons conjointly commit or attempt to commit a robbery...\", (2) punishment, (3) murder, (4) \"Whoever makes any preparation for committing dacoity\", (5) assembled, (6) \"Whoever belongs to a gang of persons associated for the purpose of habitually committing dacoity\".",
+  "ipc": [
+   "IPC 391",
+   "IPC 395",
+   "IPC 396",
+   "IPC 399",
+   "IPC 400",
+   "IPC 402"
+  ],
+  "ipcPage": 98,
+  "type": "merged",
+  "verified": false
+ },
+ {
+  "basis": "refuted-by-agent",
+  "bns": [
+   "BNS 308"
+  ],
+  "bnsPage": 80,
+  "evidence": "IPC 383: \"Extortion.—Whoever intentionally puts any person in fear of any injury...\"; 384: \"Whoever commits extortion shall be punished...\"; 385-389 fear/accusation variants / BNS 308(1): \"Whoever intentionally puts any person in fear of any injury to that person, or to any other...\"; 308(2)-(7) on p.81 carry punishment, fear of injury, fear of death or grievous hurt, and accusation variants.",
+  "ipc": [
+   "IPC 383",
+   "IPC 384",
+   "IPC 385",
+   "IPC 386",
+   "IPC 387",
+   "IPC 388",
+   "IPC 389"
+  ],
+  "ipcPage": 97,
+  "type": "merged",
+  "verified": false
+ },
+ {
+  "basis": "refuted-by-agent",
+  "bns": [
+   "BNS 336(1)",
+   "BNS 336(2)",
+   "BNS 336(3)",
+   "BNS 336(4)"
+  ],
+  "bnsPage": 94,
+  "evidence": "IPC 463 (p.108): \"Forgery.—Whoever makes any false document or false electronic record or part of a document\"; IPC 465 (p.109): \"Whoever commits forgery shall be punished\"; IPC 468 (p.110): \"Whoever commits forgery, intending that the document or electronic record\" [for cheating]; IPC 469 (p.110): \"Whoever commits forgery, intending that the document\" [to harm reputation]. BNS 336 (p.94-95): (1) \"Whoever makes any false document or false electronic record or part of a document or electronic record...commits forgery\"; (2) \"Whoever commits forgery shall be punished with imprisonment...two years\"; (3) \"...shall be used for the purpose of cheating\"; (4) (p.95) \"...shall harm the reputation of any party\".",
+  "ipc": [
+   "IPC 463",
+   "IPC 465",
+   "IPC 468",
+   "IPC 469"
+  ],
+  "ipcPage": 108,
+  "type": "merged",
+  "verified": false
+ },
+ {
+  "basis": "refuted-by-agent",
+  "bns": [
+   "BNS 335"
+  ],
+  "bnsPage": 92,
+  "evidence": "IPC 464 (p.108): \"Making a false document.—A person is said to make a false document or false electronic record\". BNS 335 (p.92): \"A person is said to make a false document or false electronic record—(A) Who dishonestly or fraudulently—\".",
+  "ipc": [
+   "IPC 464"
+  ],
+  "ipcPage": 108,
+  "type": "one-to-one",
+  "verified": false
+ },
+ {
+  "basis": "refuted-by-agent",
+  "bns": [
+   "BNS 82(1)"
+  ],
+  "bnsPage": 28,
+  "evidence": "IPC 494 (p.113): \"Marrying again during lifetime of husband or wife.—Whoever, having a husband or wife\". BNS 82(1) (p.28): \"Whoever, having a husband or wife living, marries in any case in which such marriage is void\".",
+  "ipc": [
+   "IPC 494"
+  ],
+  "ipcPage": 113,
+  "type": "one-to-one",
+  "verified": false
+ },
+ {
+  "basis": "refuted-by-agent",
+  "bns": [],
+  "evidence": "IPC 497 (p.114): \"Adultery.—Whoever has sexual intercourse with a person who is and whom he knows\". No BNS counterpart found: searched all 102 BNS pages for \"adulter\" (hits only adulteration of food/drugs, BNS 274-277, p.74) and for the IPC 497 operative phrase \"sexual intercourse with a person who is and whom\" (no hit). Marriage-offence sections BNS 80-88 (p.28-29) checked; none is adultery.",
+  "ipc": [
+   "IPC 497"
+  ],
+  "ipcPage": 114,
+  "type": "removed",
+  "verified": false
+ },
+ {
+  "basis": "refuted-by-agent",
+  "bns": [
+   "BNS 84"
+  ],
+  "bnsPage": 29,
+  "evidence": "IPC 498 (p.114): \"Enticing or taking away or detaining with criminal intent a married woman.—Whoever takes\". BNS 84 (p.29): \"Whoever takes or entices away any woman who is and whom he knows or has reason to believe to be the wife of any other man\".",
+  "ipc": [
+   "IPC 498"
+  ],
+  "ipcPage": 114,
+  "type": "one-to-one",
+  "verified": false
+ },
+ {
+  "basis": "refuted-by-agent",
+  "bns": [
+   "BNS 356(1)",
+   "BNS 356(2)"
+  ],
+  "bnsPage": 99,
+  "evidence": "IPC 499 (p.114): \"Defamation.—Whoever, by words either spoken or intended to be read, or by signs or by visible\"; IPC 500 (p.116): \"Punishment for defamation.—Whoever defames another shall be punished with simple\". BNS 356(1) (p.99): \"Whoever, by words either spoken or intended to be read, or by signs or by visible representations\"; 356(2) (p.101): \"Whoever defames another shall be punished with simple imprisonment...or with community service\".",
+  "ipc": [
+   "IPC 499",
+   "IPC 500"
+  ],
+  "ipcPage": 114,
+  "type": "merged",
+  "verified": false
+ },
+ {
+  "basis": "refuted-by-agent",
+  "bns": [
+   "BNS 351(1)"
+  ],
+  "bnsPage": 97,
+  "evidence": "IPC 503 (p.117): \"Criminal intimidation.—Whoever threatens another with any injury to his person, reputation or\". BNS 351(1) (p.97): \"Whoever threatens another by any means, with any injury to his person, reputation or property\".",
+  "ipc": [
+   "IPC 503"
+  ],
+  "ipcPage": 117,
+  "type": "one-to-one",
+  "verified": false
+ },
+ {
+  "basis": "refuted-by-agent",
+  "bns": [
+   "BNS 351(2)",
+   "BNS 351(3)"
+  ],
+  "bnsPage": 98,
+  "evidence": "IPC 506 (p.118): \"Punishment for criminal intimidation.—Whoever commits the offence of criminal intimidation\" (base punishment plus aggravated threats). BNS 351(2) (p.98): \"Whoever commits the offence of criminal intimidation shall be punished...two years\"; 351(3) (p.98): \"Whoever commits the offence of criminal intimidation by threatening to cause death or grievous hurt\".",
+  "ipc": [
+   "IPC 506"
+  ],
+  "ipcPage": 118,
+  "type": "split",
+  "verified": false
+ },
+ {
+  "basis": "refuted-by-agent",
+  "bns": [
+   "BNS 355"
+  ],
+  "bnsPage": 99,
+  "evidence": "IPC 510 (p.119): \"Misconduct in public by a drunken person.—Whoever, in a state of intoxication, appears in any\". BNS 355 (p.99): \"Whoever, in a state of intoxication, appears in any public place\" (adds community service).",
+  "ipc": [
+   "IPC 510"
+  ],
+  "ipcPage": 119,
+  "type": "one-to-one",
+  "verified": false
+ },
+ {
+  "basis": "refuted-by-agent",
+  "bns": [
+   "BNS 62"
+  ],
+  "bnsPage": 22,
+  "evidence": "IPC 511 (p.119): \"Whoever attempts to commit an offence punishable by this Code with [imprisonment for life] or imprisonment\". BNS 62 (p.22): \"Whoever attempts to commit an offence punishable by this Sanhita with imprisonment for life or imprisonment\".",
+  "ipc": [
+   "IPC 511"
+  ],
+  "ipcPage": 119,
+  "type": "one-to-one",
+  "verified": false
+ },
+ {
+  "basis": "refuted-by-agent",
+  "bns": [
+   "BNS 113"
+  ],
+  "bnsPage": 37,
+  "evidence": "Terrorist act at bns/037.txt; 'terrorist act' absent from all IPC pages.",
+  "ipc": [],
+  "type": "new",
+  "verified": false
+ },
+ {
+  "basis": "refuted-by-agent",
+  "bns": [
+   "BNS 103(2)"
+  ],
+  "bnsPage": 34,
+  "evidence": "Mob lynching (murder by five or more persons acting in concert on grounds of race, caste or community) at bns/034.txt; IPC pages have no hits for 'race, caste or community' or 'in concert'.",
+  "ipc": [],
+  "type": "new",
+  "verified": false
+ },
+ {
+  "basis": "refuted-by-agent",
+  "bns": [
+   "BNS 117(4)"
+  ],
+  "bnsPage": 39,
+  "evidence": "Grievous hurt by group of five or more acting in concert on grounds of race, caste etc. at bns/039.txt; no matching phrase in any IPC page.",
+  "ipc": [],
+  "type": "new",
+  "verified": false
+ },
+ {
+  "basis": "refuted-by-agent",
+  "bns": [
+   "BNS 95"
+  ],
+  "bnsPage": 30,
+  "evidence": "Hiring, employing or engaging a child to commit an offence at bns/030.txt; 'child to commit' and 'Hiring, employing' absent from all IPC pages.",
+  "ipc": [],
+  "type": "new",
+  "verified": false
+ },
+ {
+  "basis": "refuted-by-agent",
+  "bns": [
+   "BNS 69"
+  ],
+  "bnsPage": 26,
+  "evidence": "Sexual intercourse by deceitful means or false promise to marry at bns/026.txt; 'promise to marry' absent from all IPC pages.",
+  "ipc": [],
+  "type": "new",
+  "verified": false
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 1"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 1(1) (p.1), 1(2) (p.1), 1(3) (p.1), 1(4) (p.1), 1(5) (p.1), 1(6) (p.1); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 1",
+   "IPC 2",
+   "IPC 3",
+   "IPC 4",
+   "IPC 5"
+  ],
+  "type": "merged",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 2"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 2 (p.1), 2(1) (p.1), 2(2) (p.2), 2(3) (p.2), 2(4) (p.2), 2(5) (p.2), 2(6) (p.2), 2(7) (p.2), 2(8) (p.2), 2(9) (p.2), 2(10) (p.2), 2(11) (p.2), 2(12) (p.2), 2(13) (p.2), 2(14) (p.2), 2(15) (p.2), 2(16) (p.2), 2(17) (p.2), 2(18) (p.2), 2(19) (p.2), 2(20) (p.2), 2(21) (p.2), 2(22) (p.3), 2(23) (p.3), 2(24) (p.3), 2(25) (p.3), 2(26) (p.3), 2(27) (p.3), 2(28) (p.3), 2(29) (p.3), 2(30) (p.3), 2(31) (p.3), 2(32) (p.3), 2(33) (p.3), 2(34) (p.3), 2(35) (p.3), 2(36) (p.3), 2(37) (p.3), 2(38) (p.3), 2(39) (p.3); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 10",
+   "IPC 11",
+   "IPC 12",
+   "IPC 17",
+   "IPC 19",
+   "IPC 20",
+   "IPC 21",
+   "IPC 22",
+   "IPC 23",
+   "IPC 24",
+   "IPC 25",
+   "IPC 26",
+   "IPC 28",
+   "IPC 29",
+   "IPC 29A",
+   "IPC 30",
+   "IPC 31",
+   "IPC 33",
+   "IPC 39",
+   "IPC 40",
+   "IPC 41",
+   "IPC 42",
+   "IPC 43",
+   "IPC 44",
+   "IPC 45",
+   "IPC 46",
+   "IPC 47",
+   "IPC 48",
+   "IPC 49",
+   "IPC 51",
+   "IPC 52",
+   "IPC 52A",
+   "IPC 8",
+   "IPC 9"
+  ],
+  "type": "merged",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 3"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 3(1) (p.3), 3(2) (p.3), 3(3) (p.3), 3(4) (p.3), 3(5) (p.4), 3(6) (p.4), 3(7) (p.4), 3(8) (p.4), 3(9) (p.4); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 27",
+   "IPC 32",
+   "IPC 34",
+   "IPC 35",
+   "IPC 36",
+   "IPC 37",
+   "IPC 38",
+   "IPC 6",
+   "IPC 7"
+  ],
+  "type": "merged",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 4"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 4 (p.4); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 53"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 5"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 5 (p.4), 5 (p.4); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 54",
+   "IPC 55",
+   "IPC 55A"
+  ],
+  "type": "merged",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 6"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 6 (p.4); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 57"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 7"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 7 (p.4); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 60"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 8"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 8(1) (p.4), 8(2) (p.4), 8(3) (p.4), 8(4) (p.4), 8(5) (p.5), 8(6) (p.5), 8(7) (p.5); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 63",
+   "IPC 64",
+   "IPC 65",
+   "IPC 66",
+   "IPC 67",
+   "IPC 68",
+   "IPC 69",
+   "IPC 70"
+  ],
+  "type": "merged",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 9"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 9 (p.5); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 71"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 10"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 10 (p.5); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 72"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 11"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 11 (p.5); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 73"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 12"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 12 (p.5); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 74"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 13"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 13 (p.5); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 75"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 14"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 14 (p.5); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 76"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 15"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 15 (p.5); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 77"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 16"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 16 (p.5); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 78"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 17"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 17 (p.5); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 79"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 18"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 18 (p.5); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 80"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 19"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 19 (p.5); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 81"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 20"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 20 (p.5); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 82"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 21"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 21 (p.5); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 83"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 22"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 22 (p.5); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 84"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 23"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 23 (p.6); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 85"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 24"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 24 (p.6); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 86"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 25"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 25 (p.6); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 87"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 26"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 26 (p.6); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 88"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 27"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 27 (p.6); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 89"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 28"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 28 (p.6); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 90"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 29"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 29 (p.6); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 91"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 30"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 30 (p.6); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 92"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 31"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 31 (p.6); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 93"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 32"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 32 (p.6); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 94"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 33"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 33 (p.6); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 95"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 34"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 34 (p.6); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 96"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 35"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 35 (p.6); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 97"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 36"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 36 (p.6); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 98"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 37"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 37 (p.6); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 99"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 38"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 38 (p.6); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 100"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 39"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 39 (p.6); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 101"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 40"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 40 (p.7); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 102"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 41"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 41 (p.7); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 103"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 42"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 42 (p.7); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 104"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 43"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 43 (p.7); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 105"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 44"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 44 (p.7); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 106"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 45"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 45 (p.7); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 107"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 46"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 46 (p.7); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 108"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 47"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 47 (p.7); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 108A"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 48"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 48 (p.7); independent skeptic pass confirmed against the table lines",
+  "ipc": [],
+  "type": "new",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 49"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 49 (p.7); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 109"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 50"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 50 (p.7); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 110"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 51"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 51 (p.7); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 111"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 52"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 52 (p.7); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 112"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 53"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 53 (p.7); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 113"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 54"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 54 (p.8); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 114"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 55"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 55 (p.8); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 115"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 56"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 56 (p.8); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 116"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 57"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 57 (p.8); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 117"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 58"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 58 (p.8); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 118"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 59"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 59 (p.8); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 119"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 60"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 60 (p.8); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 120"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 61"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 61(1) (p.8), 61(2) (p.8); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 120A",
+   "IPC 120B"
+  ],
+  "type": "merged",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 62"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 62 (p.8); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 511"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 63"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 63 (p.8); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 375"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 66"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 66 (p.8); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 376A"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 67"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 67 (p.9); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 376B"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 68"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 68 (p.9); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 376C"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 69"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 69 (p.9); independent skeptic pass confirmed against the table lines",
+  "ipc": [],
+  "type": "new",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 70"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 70(1) (p.9), 70(2) (p.9); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 376D",
+   "IPC 376DB"
+  ],
+  "type": "merged",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 71"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 71 (p.9); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 376E"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 72",
+   "BNS 73"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 72 (p.9), 73 (p.9); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 228A"
+  ],
+  "type": "split",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 74"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 74 (p.9); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 354"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 75"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 75 (p.9); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 354A"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 76"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 76 (p.9); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 354B"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 77"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 77 (p.9); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 354C"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 78"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 78 (p.9); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 354D"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 79"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 79 (p.9); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 509"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 80"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 80 (p.9); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 304B"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 81"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 81 (p.10); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 493"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 82"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 82(1) (p.10), 82(2) (p.10); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 494",
+   "IPC 495"
+  ],
+  "type": "merged",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 83"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 83 (p.10); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 496"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 84"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 84 (p.10); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 498"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 85",
+   "BNS 86"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 85 (p.10), 86 (p.10); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 498A"
+  ],
+  "type": "split",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 87"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 87 (p.10); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 366"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 88"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 88 (p.10); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 312"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 89"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 89 (p.10); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 313"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 90"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 90 (p.10); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 314"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 91"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 91 (p.10); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 315"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 92"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 92 (p.10); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 316"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 93"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 93 (p.10); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 317"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 94"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 94 (p.11); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 318"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 95"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 95 (p.11); independent skeptic pass confirmed against the table lines",
+  "ipc": [],
+  "type": "new",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 96"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 96 (p.11); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 366A"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 97"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 97 (p.11); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 369"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 98"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 98 (p.11); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 372"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 99"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 99 (p.11); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 373"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 100"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 100 (p.11); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 299"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 101"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 101 (p.11); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 300"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 102"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 102 (p.11); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 301"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 103"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 103 (p.11), 103 (p.11); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 302"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 104"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 104 (p.12); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 303"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 105"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 105 (p.12); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 304"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 106"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 106 (p.12), 106 (p.12); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 304A"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 107"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 107 (p.12); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 305"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 108"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 108 (p.12); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 306"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 109"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 109 (p.12); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 307"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 110"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 110 (p.12); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 308"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 111"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 111 (p.12); independent skeptic pass confirmed against the table lines",
+  "ipc": [],
+  "type": "new",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 112"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 112 (p.13); independent skeptic pass confirmed against the table lines",
+  "ipc": [],
+  "type": "new",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 113"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 113 (p.13); independent skeptic pass confirmed against the table lines",
+  "ipc": [],
+  "type": "new",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 114"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 114 (p.13); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 319"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 115"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 115 (p.13), 115 (p.13); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 321",
+   "IPC 323"
+  ],
+  "type": "merged",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 116"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 116 (p.13); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 320"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 117"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 117 (p.13), 117 (p.13), 117 (p.13), 117 (p.13); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 322",
+   "IPC 325"
+  ],
+  "type": "merged",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 118"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 118 (1) (p.14), 118 (2) (p.14); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 324",
+   "IPC 326"
+  ],
+  "type": "merged",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 119"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 119 (1) (p.14), 119 (2) (p.14); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 327",
+   "IPC 329"
+  ],
+  "type": "merged",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 120"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 120 (1) (p.14), 120 (2) (p.14); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 330",
+   "IPC 331"
+  ],
+  "type": "merged",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 121"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 121 (1) (p.14), 121 (2) (p.14); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 332",
+   "IPC 333"
+  ],
+  "type": "merged",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 122"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 122 (1) (p.14), 122 (2) (p.14); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 334",
+   "IPC 335"
+  ],
+  "type": "merged",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 123"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 123 (p.14); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 328"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 124"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 124 (1) (p.14), 124 (2) (p.15); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 326A",
+   "IPC 326B"
+  ],
+  "type": "merged",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 125"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 125 (p.15), 125 (a) (p.15), 125 (b) (p.15); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 336",
+   "IPC 337",
+   "IPC 338"
+  ],
+  "type": "merged",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 126"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 126 (1) (p.15), 126 (2) (p.15); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 339",
+   "IPC 341"
+  ],
+  "type": "merged",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 127"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 127 (1) (p.15), 127 (2) (p.15), 127 (3) (p.15), 127 (4) (p.15), 127 (5) (p.15), 127 (6) (p.15), 127 (7) (p.15), 127 (8) (p.15); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 340",
+   "IPC 342",
+   "IPC 343",
+   "IPC 344",
+   "IPC 345",
+   "IPC 346",
+   "IPC 347",
+   "IPC 348"
+  ],
+  "type": "merged",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 128"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 128 (p.15); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 349"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 129"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 129 (p.15); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 350"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 130"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 130 (p.15); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 351"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 131"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 131 (p.16); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 352"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 132"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 132 (p.16); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 353"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 133"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 133 (p.16); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 355"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 134"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 134 (p.16); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 356"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 135"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 135 (p.16); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 357"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 136"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 136 (p.16); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 358"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 137"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 137 (1) (p.16), 137 (1) (p.16), 137 (1) (p.16), 137 (2) (p.16); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 359",
+   "IPC 360",
+   "IPC 361",
+   "IPC 363"
+  ],
+  "type": "merged",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 138"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 138 (p.16); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 362"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 139"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 139 (p.16); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 363A"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 140"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 140 (1) (p.16), 140 (2) (p.16), 140 (3) (p.16), 140 (4) (p.17); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 364",
+   "IPC 364A",
+   "IPC 365",
+   "IPC 367"
+  ],
+  "type": "merged",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 141"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 141 (p.17); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 366B"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 142"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 142 (p.17); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 368"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 143"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 143 (p.17); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 370"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 144"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 144 (p.17); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 370A"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 145"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 145 (p.17); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 371"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 146"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 146 (p.17); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 374"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 147"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 147 (p.17); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 121"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 148"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 148 (p.17); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 121A"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 149"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 149 (p.17); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 122"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 150"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 150 (p.17); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 123"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 151"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 151 (p.17); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 124"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 152"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 152 (p.17); independent skeptic pass confirmed against the table lines",
+  "ipc": [],
+  "type": "new",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 153"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 153 (p.18); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 125"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 154"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 154 (p.18); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 126"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 155"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 155 (p.18); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 127"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 156"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 156 (p.18); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 128"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 157"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 157 (p.18); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 129"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 158"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 158 (p.18); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 130"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 159"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 159 (p.18); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 131"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 160"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 160 (p.18); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 132"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 161"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 161 (p.18); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 133"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 162"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 162 (p.18); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 134"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 163"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 163 (p.18); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 135"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 164"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 164 (p.18); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 136"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 165"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 165 (p.18); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 137"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 166"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 166 (p.18); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 138"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 167"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 167 (p.19); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 139"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 168"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 168 (p.19); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 140"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 169"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 169 (p.19); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 171A"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 170"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 170 (p.19); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 171B"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 171"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 171 (p.19); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 171C"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 172"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 172 (p.19); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 171D"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 173"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 173 (p.19); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 171E"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 174"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 174 (p.19); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 171F"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 175"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 175 (p.19); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 171G"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 176"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 176 (p.19); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 171H"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 182"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 182 (p.20); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 489E"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 183"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 183 (p.20); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 261"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 184"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 184 (p.20); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 262"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 185"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 185 (p.20); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 263"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 186"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 186 (p.20); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 263A"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 187"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 187 (p.20); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 244"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 188"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 188 (p.20); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 245"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 190"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 190 (p.21); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 149"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 191"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 191 (1) (p.21), 191 (2) (p.21), 191 (3) (p.21); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 146",
+   "IPC 147",
+   "IPC 148"
+  ],
+  "type": "merged",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 192"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 192 (p.21); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 153"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 193"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 193 (1) (p.21), 193 (2) (p.21), 193 (3) (p.21); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 154",
+   "IPC 155",
+   "IPC 156"
+  ],
+  "type": "merged",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 194"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 194 (1) (p.21), 194 (2) (p.21); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 159",
+   "IPC 160"
+  ],
+  "type": "merged",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 195"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 195 (1) (p.21), 195 (2) (p.22); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 152"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 196"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 196 (p.22); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 153A"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 197"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 197 (p.22); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 153B"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 198"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 198 (p.22); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 166"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 199"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 199 (p.22); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 166A"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 200"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 200 (p.22); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 166B"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 201"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 201 (p.22); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 167"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 202"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 202 (p.22); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 168"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 203"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 203 (p.22); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 169"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 204"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 204 (p.22); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 170"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 206"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 206 (p.22); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 172"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 207"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 207 (p.23); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 173"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 208"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 208 (p.23); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 174"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 209"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 209 (p.23); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 174A"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 210"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 210 (p.23); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 175"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 211"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 211 (p.23); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 176"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 212"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 212 (p.23); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 177"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 213"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 213 (p.23); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 178"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 214"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 214 (p.23); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 179"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 215"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 215 (p.23); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 180"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 216"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 216 (p.23); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 181"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 217"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 217 (p.23); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 182"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 218"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 218 (p.24); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 183"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 219"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 219 (p.24); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 184"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 220"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 220 (p.24); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 185"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 221"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 221 (p.24); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 186"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 222"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 222 (p.24); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 187"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 223"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 223 (p.24); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 188"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 224"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 224 (p.24); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 189"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 225"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 225 (p.24); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 190"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 226"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 226 (p.24); independent skeptic pass confirmed against the table lines",
+  "ipc": [],
+  "type": "new",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 227"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 227 (p.24); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 191"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 228"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 228 (p.24); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 192"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 229"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 229 (p.24); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 193"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 230"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 230 (p.25); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 194"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 231"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 231 (p.25); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 195"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 232"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 232 (p.25); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 195A"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 233"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 233 (p.25); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 196"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 234"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 234 (p.25); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 197"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 235"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 235 (p.25); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 198"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 236"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 236 (p.25); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 199"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 237"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 237 (p.25); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 200"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 238"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 238 (p.25); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 201"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 239"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 239 (p.25); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 202"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 240"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 240 (p.25); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 203"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 241"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 241 (p.25); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 204"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 242"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 242 (p.25); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 205"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 243"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 243 (p.25); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 206"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 244"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 244 (p.26); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 207"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 245"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 245 (p.26); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 208"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 246"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 246 (p.26); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 209"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 247"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 247 (p.26); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 210"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 248"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 248 (p.26); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 211"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 249"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 249 (p.26); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 212"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 250"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 250 (p.26); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 213"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 251"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 251 (p.26); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 214"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 252"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 252 (p.26); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 215"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 253"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 253 (p.26); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 216"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 254"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 254 (p.26); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 216A"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 255"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 255 (p.26); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 217"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 256"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 256 (p.26); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 218"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 257"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 257 (p.26); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 219"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 258"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 258 (p.27); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 220"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 259"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 259 (p.27); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 221"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 260"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 260 (p.27); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 222"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 261"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 261 (p.27); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 223"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 262"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 262 (p.27); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 224"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 263"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 263 (p.27); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 225"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 264"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 264 (p.27); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 225A"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 265"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 265 (p.27); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 225B"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 266"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 266 (p.27); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 227"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 267"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 267 (p.27); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 228"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 268"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 268 (p.27); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 229"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 269"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 269 (p.27); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 229A"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 270"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 270 (p.27); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 268"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 271"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 271 (p.28); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 269"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 272"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 272 (p.28); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 270"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 273"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 273 (p.28); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 271"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 274"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 274 (p.28); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 272"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 275"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 275 (p.28); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 273"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 276"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 276 (p.28); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 274"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 277"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 277 (p.28); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 275"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 278"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 278 (p.28); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 276"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 279"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 279 (p.28); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 277"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 280"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 280 (p.28); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 278"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 281"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 281 (p.28); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 279"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 282"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 282 (p.28); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 280"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 283"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 283 (p.28); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 281"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 284"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 284 (p.28); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 282"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 285"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 285 (p.28); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 283"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 286"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 286 (p.28); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 284"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 287"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 287 (p.29); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 285"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 288"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 288 (p.29); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 286"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 289"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 289 (p.29); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 287"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 290"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 290 (p.29); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 288"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 291"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 291 (p.29); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 289"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 292"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 292 (p.29); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 290"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 293"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 293 (p.29); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 291"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 294"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 294 (p.29); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 292"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 295"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 295 (p.29); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 293"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 296"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 296 (p.29); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 294"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 297"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 297 (p.29); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 294A"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 298"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 298 (p.29); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 295"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 299"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 299 (p.29); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 295A"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 300"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 300 (p.29); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 296"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 301"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 301 (p.29); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 297"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 302"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 302 (p.30); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 298"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 303"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 303 (1) (p.30), 303 (2) (p.30); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 378",
+   "IPC 379"
+  ],
+  "type": "merged",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 304"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 304 (p.30); independent skeptic pass confirmed against the table lines",
+  "ipc": [],
+  "type": "new",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 305"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 305 (p.30); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 380"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 306"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 306 (p.30); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 381"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 307"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 307 (p.30); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 382"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 308"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 308 (1) (p.30), 308 (2) (p.30), 308 (3) (p.30), 308 (4) (p.30), 308 (5) (p.30), 308 (6) (p.30), 308 (7) (p.30); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 383",
+   "IPC 384",
+   "IPC 385",
+   "IPC 386",
+   "IPC 387",
+   "IPC 388",
+   "IPC 389"
+  ],
+  "type": "merged",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 309"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 309 (4) (p.31), 309 (5) (p.31), 309 (6) (p.31); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 392",
+   "IPC 393",
+   "IPC 394"
+  ],
+  "type": "merged",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 310"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 310 (1) (p.31), 310 (2) (p.31), 310 (3) (p.31), 310 (4) (p.31), 310 (5) (p.31), 310 (6) (p.31); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 391",
+   "IPC 395",
+   "IPC 396",
+   "IPC 399",
+   "IPC 400",
+   "IPC 402"
+  ],
+  "type": "merged",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 311"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 311 (p.31); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 397"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 312"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 312 (p.31); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 398"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 313"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 313 (p.31); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 401"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 314"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 314 (p.31); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 403"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 315"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 315 (p.31); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 404"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 316"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 316 (1) (p.31), 316 (2) (p.31), 316 (3) (p.31), 316 (4) (p.31), 316 (5) (p.32); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 405",
+   "IPC 406",
+   "IPC 407",
+   "IPC 408",
+   "IPC 409"
+  ],
+  "type": "merged",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 317"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 317 (1) (p.32), 317 (2) (p.32), 317 (3) (p.32), 317 (4) (p.32), 317 (5) (p.32); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 410",
+   "IPC 411",
+   "IPC 412",
+   "IPC 413",
+   "IPC 414"
+  ],
+  "type": "merged",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 318"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 318 (1) (p.32), 318 (2) (p.32), 318 (3) (p.32), 318 (4) (p.32); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 415",
+   "IPC 417",
+   "IPC 418",
+   "IPC 420"
+  ],
+  "type": "merged",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 319"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 319 (1) (p.32), 319 (2) (p.32); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 416",
+   "IPC 419"
+  ],
+  "type": "merged",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 320"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 320 (p.32); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 421"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 321"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 321 (p.32); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 422"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 322"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 322 (p.32); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 423"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 323"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 323 (p.32); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 424"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 324"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 324 (1) (p.32), 324 (2) (p.33), 324 (3) (p.33), 324 (4) (p.33), 324 (5) (p.33), 324 (6) (p.33); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 425",
+   "IPC 426",
+   "IPC 427",
+   "IPC 440"
+  ],
+  "type": "merged",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 326"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 326 (a) (p.33), 326 (b) (p.33), 326 (c) (p.33), 326 (d) (p.33), 326 (e) (p.33), 326 (f) (p.33), 326 (g) (p.33); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 430",
+   "IPC 431",
+   "IPC 432",
+   "IPC 433",
+   "IPC 434",
+   "IPC 435",
+   "IPC 436"
+  ],
+  "type": "merged",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 327"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 327 (1) (p.33), 327 (2) (p.33); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 437",
+   "IPC 438"
+  ],
+  "type": "merged",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 328"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 328 (p.34); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 439"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 329"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 329 (1) (p.34), 329 (2) (p.34), 329 (3) (p.34), 329 (4) (p.34); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 441",
+   "IPC 442",
+   "IPC 447",
+   "IPC 448"
+  ],
+  "type": "merged",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 330"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 330 (1) (p.34), 330 (2) (p.34); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 443",
+   "IPC 445"
+  ],
+  "type": "merged",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 331"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 331 (1) (p.34), 331 (2) (p.34), 331 (3) (p.34), 331 (4) (p.34), 331 (5) (p.34), 331 (6) (p.34), 331 (7) (p.34), 331 (8) (p.35); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 453",
+   "IPC 454",
+   "IPC 455",
+   "IPC 456",
+   "IPC 457",
+   "IPC 458",
+   "IPC 459",
+   "IPC 460"
+  ],
+  "type": "merged",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 332"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 332 (a) (p.35), 332 (b) (p.35), 332 (c) (p.35); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 449",
+   "IPC 450",
+   "IPC 451"
+  ],
+  "type": "merged",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 333"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 333 (p.35); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 452"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 334"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 334 (1) (p.35), 334 (2) (p.35); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 461",
+   "IPC 462"
+  ],
+  "type": "merged",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 335"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 335 (p.35); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 464"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 336"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 336 (1) (p.35), 336 (2) (p.35), 336 (3) (p.35), 336 (4) (p.35); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 463",
+   "IPC 465",
+   "IPC 468",
+   "IPC 469"
+  ],
+  "type": "merged",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 337"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 337 (p.35); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 466"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 338"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 338 (p.35); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 467"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 339"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 339 (p.35); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 474"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 340"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 340 (1) (p.35), 340 (2) (p.35); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 470",
+   "IPC 471"
+  ],
+  "type": "merged",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 341"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 341 (1) (p.36), 341 (2) (p.36), 341 (3) (p.36), 341 (4) (p.36); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 472",
+   "IPC 473"
+  ],
+  "type": "merged",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 342"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 342 (1) (p.36), 342 (2) (p.36); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 475",
+   "IPC 476"
+  ],
+  "type": "merged",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 343"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 343 (p.36); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 477"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 344"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 344 (p.36); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 477A"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 345"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 345 (1) (p.36), 345 (2) (p.36), 345 (3) (p.36); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 479",
+   "IPC 481",
+   "IPC 482"
+  ],
+  "type": "merged",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 346"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 346 (p.36); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 489"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 347"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 347 (1) (p.36), 347 (2) (p.36); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 483",
+   "IPC 484"
+  ],
+  "type": "merged",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 348"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 348 (p.37); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 485"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 349"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 349 (p.37); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 486"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 350"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 350 (1) (p.37), 350 (2) (p.37); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 487",
+   "IPC 488"
+  ],
+  "type": "merged",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 351"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 351 (1) (p.37), 351 (4) (p.37); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 503",
+   "IPC 506",
+   "IPC 507"
+  ],
+  "type": "merged",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 352"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 352 (p.37); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 504"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 353"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 353 (p.37); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 505"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 354"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 354 (p.37); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 508"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 355"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 355 (p.37); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 510"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 356"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 356 (1) (p.37), 356 (2) (p.37), 356 (3) (p.37), 356 (4) (p.37); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 499",
+   "IPC 500",
+   "IPC 501",
+   "IPC 502"
+  ],
+  "type": "merged",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 357"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 357 (p.37); independent skeptic pass confirmed against the table lines",
+  "ipc": [
+   "IPC 491"
+  ],
+  "type": "one-to-one",
+  "verified": true
+ },
+ {
+  "basis": "source-table-checked",
+  "bns": [
+   "BNS 358"
+  ],
+  "evidence": "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication, rows 358 (p.37); independent skeptic pass confirmed against the table lines",
+  "ipc": [],
+  "type": "new",
+  "verified": true
+ }
+]

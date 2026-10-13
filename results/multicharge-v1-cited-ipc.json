@@ -1,0 +1,385 @@
+{
+  "act": "IPC",
+  "charges_excluded_no_counterpart": 0,
+  "conventions": {
+    "by_charges_per_item": "grouped by the number of charges counted for the Act, not the total in the item",
+    "excluded": "a charge with an empty list for the Act is left out; an item with none left is not scored",
+    "found": "a charge is found when any accepted section of the Act, rolled up to its section, is predicted",
+    "mean_predictions": "mean number of predicted sections per scored item"
+  },
+  "inputs": {
+    "index_sha256": "efaf6fe8b342f151ac02ed110027320f39b0d99287327eb7d206453537a0d408",
+    "layer": {
+      "concordance": "365d09d0144ab93e7f4fc03cb3b2baa3baaae10952d248894f2a867b32680322",
+      "index": "efaf6fe8b342f151ac02ed110027320f39b0d99287327eb7d206453537a0d408"
+    },
+    "set_sha256": "9b77ae213e7a7a9614606c9fc6396a0a323e155630f491bb3a3b0295ca9f2fd2"
+  },
+  "items_in_set": 30,
+  "items_scored": 30,
+  "label_basis": {
+    "agent-drafted-skeptic-refuted": 30
+  },
+  "layer": "cited",
+  "layer_counts": {
+    "ambiguous_mentions": 16,
+    "not_in_act_dropped": 2,
+    "other_act_dropped": 34,
+    "unmapped_citations": 183
+  },
+  "layer_version": "v1",
+  "output": {
+    "all_charges_hit": 0.733333,
+    "by_charges_per_item": {
+      "1": {
+        "all_charges_hit": 0.0,
+        "charges": 0,
+        "items": 0,
+        "mean_predictions": 0.0,
+        "recall": 0.0
+      },
+      "2": {
+        "all_charges_hit": 0.8,
+        "charges": 20,
+        "items": 10,
+        "mean_predictions": 3.1,
+        "recall": 0.85
+      },
+      "3+": {
+        "all_charges_hit": 0.7,
+        "charges": 78,
+        "items": 20,
+        "mean_predictions": 5.2,
+        "recall": 0.884615
+      }
+    },
+    "charges": 98,
+    "items": 30,
+    "mean_predictions": 4.5,
+    "missed": [
+      {
+        "charge": "Stalking",
+        "id": "107892742",
+        "top_predicted": [
+          "IPC 354",
+          "IPC 354A",
+          "IPC 506"
+        ]
+      },
+      {
+        "charge": "Criminal intimidation (threat to kill)",
+        "id": "190108901",
+        "top_predicted": [
+          "IPC 109",
+          "IPC 363",
+          "IPC 366"
+        ]
+      },
+      {
+        "charge": "Criminal breach of trust by banker or agent",
+        "id": "1733568",
+        "top_predicted": []
+      },
+      {
+        "charge": "Criminal conspiracy",
+        "id": "1733568",
+        "top_predicted": []
+      },
+      {
+        "charge": "Falsification of accounts",
+        "id": "1733568",
+        "top_predicted": []
+      },
+      {
+        "charge": "Causing death by negligence",
+        "id": "71898306",
+        "top_predicted": [
+          "IPC 143",
+          "IPC 188",
+          "IPC 304"
+        ]
+      },
+      {
+        "charge": "Criminal intimidation",
+        "id": "102242151",
+        "top_predicted": [
+          "IPC 294",
+          "IPC 323",
+          "IPC 498A"
+        ]
+      },
+      {
+        "charge": "Attempt to murder by setting wife's family member on fire",
+        "id": "188477105",
+        "top_predicted": []
+      },
+      {
+        "charge": "Cruelty to a married woman (dowry demand)",
+        "id": "188477105",
+        "top_predicted": []
+      },
+      {
+        "charge": "Voluntarily causing hurt",
+        "id": "21756622",
+        "top_predicted": [
+          "IPC 34",
+          "IPC 354",
+          "IPC 354D"
+        ]
+      },
+      {
+        "charge": "House-trespass",
+        "id": "24605614",
+        "top_predicted": [
+          "IPC 147",
+          "IPC 148",
+          "IPC 149"
+        ]
+      },
+      {
+        "charge": "Assault with intent to outrage modesty",
+        "id": "24605614",
+        "top_predicted": [
+          "IPC 147",
+          "IPC 148",
+          "IPC 149"
+        ]
+      }
+    ],
+    "predictions": {
+      "102242151": [
+        "IPC 294",
+        "IPC 323",
+        "IPC 498A"
+      ],
+      "102368932": [
+        "IPC 147",
+        "IPC 149",
+        "IPC 294",
+        "IPC 323",
+        "IPC 427",
+        "IPC 452",
+        "IPC 506"
+      ],
+      "105616635": [
+        "IPC 363",
+        "IPC 366A",
+        "IPC 376"
+      ],
+      "106805320": [
+        "IPC 147",
+        "IPC 148",
+        "IPC 149",
+        "IPC 294",
+        "IPC 323",
+        "IPC 325",
+        "IPC 34",
+        "IPC 354",
+        "IPC 452",
+        "IPC 456",
+        "IPC 506"
+      ],
+      "107892742": [
+        "IPC 354",
+        "IPC 354A",
+        "IPC 506"
+      ],
+      "127532648": [
+        "IPC 294",
+        "IPC 324",
+        "IPC 325",
+        "IPC 506"
+      ],
+      "1422198": [
+        "IPC 302",
+        "IPC 306",
+        "IPC 34",
+        "IPC 498A"
+      ],
+      "150846258": [
+        "IPC 34",
+        "IPC 379",
+        "IPC 420",
+        "IPC 466",
+        "IPC 468",
+        "IPC 471"
+      ],
+      "153470110": [
+        "IPC 420",
+        "IPC 506"
+      ],
+      "154394117": [
+        "IPC 363",
+        "IPC 366",
+        "IPC 376"
+      ],
+      "155317536": [
+        "IPC 302",
+        "IPC 325",
+        "IPC 34"
+      ],
+      "156132986": [
+        "IPC 120B",
+        "IPC 201",
+        "IPC 302",
+        "IPC 34",
+        "IPC 365"
+      ],
+      "1733568": [],
+      "176417778": [
+        "IPC 328",
+        "IPC 34",
+        "IPC 354A",
+        "IPC 376",
+        "IPC 506"
+      ],
+      "1781247": [
+        "IPC 147",
+        "IPC 148",
+        "IPC 149",
+        "IPC 307",
+        "IPC 323",
+        "IPC 324",
+        "IPC 326"
+      ],
+      "188477105": [],
+      "190108901": [
+        "IPC 109",
+        "IPC 363",
+        "IPC 366",
+        "IPC 368",
+        "IPC 376",
+        "IPC 5",
+        "IPC 6"
+      ],
+      "19706913": [
+        "IPC 420",
+        "IPC 465",
+        "IPC 467",
+        "IPC 468",
+        "IPC 471"
+      ],
+      "21756622": [
+        "IPC 34",
+        "IPC 354",
+        "IPC 354D",
+        "IPC 363",
+        "IPC 506"
+      ],
+      "24605614": [
+        "IPC 147",
+        "IPC 148",
+        "IPC 149",
+        "IPC 294",
+        "IPC 323",
+        "IPC 324",
+        "IPC 341",
+        "IPC 447",
+        "IPC 506"
+      ],
+      "33467557": [
+        "IPC 294",
+        "IPC 307",
+        "IPC 341",
+        "IPC 506"
+      ],
+      "39883671": [
+        "IPC 306",
+        "IPC 4",
+        "IPC 506"
+      ],
+      "40330300": [
+        "IPC 323",
+        "IPC 326",
+        "IPC 34",
+        "IPC 363"
+      ],
+      "41590279": [
+        "IPC 120B",
+        "IPC 147",
+        "IPC 148",
+        "IPC 149",
+        "IPC 302",
+        "IPC 307",
+        "IPC 341"
+      ],
+      "43861037": [
+        "IPC 354D",
+        "IPC 500",
+        "IPC 506",
+        "IPC 509"
+      ],
+      "43946072": [
+        "IPC 307",
+        "IPC 395"
+      ],
+      "44267882": [
+        "IPC 147",
+        "IPC 148",
+        "IPC 149",
+        "IPC 294",
+        "IPC 323",
+        "IPC 427",
+        "IPC 458",
+        "IPC 506"
+      ],
+      "53071757": [
+        "IPC 120B",
+        "IPC 376",
+        "IPC 420",
+        "IPC 467",
+        "IPC 468",
+        "IPC 471"
+      ],
+      "71898306": [
+        "IPC 143",
+        "IPC 188",
+        "IPC 304"
+      ],
+      "871051": [
+        "IPC 201",
+        "IPC 302"
+      ]
+    },
+    "recall": 0.877551
+  },
+  "parser_version": "4",
+  "scorings_of_this_layer_version": [
+    {
+      "act": "IPC",
+      "index_sha256": "efaf6fe8b342f151ac02ed110027320f39b0d99287327eb7d206453537a0d408",
+      "inputs": {
+        "concordance": "365d09d0144ab93e7f4fc03cb3b2baa3baaae10952d248894f2a867b32680322",
+        "index": "efaf6fe8b342f151ac02ed110027320f39b0d99287327eb7d206453537a0d408"
+      },
+      "layer": "cited",
+      "layer_version": "v1",
+      "scores": {
+        "output": {
+          "all_charges_hit": 0.733333,
+          "mean_predictions": 4.5,
+          "recall": 0.877551
+        }
+      },
+      "set_sha256": "9b77ae213e7a7a9614606c9fc6396a0a323e155630f491bb3a3b0295ca9f2fd2"
+    },
+    {
+      "act": "IPC",
+      "index_sha256": "efaf6fe8b342f151ac02ed110027320f39b0d99287327eb7d206453537a0d408",
+      "inputs": {
+        "concordance": "e32454733360bb32f797097894ed1f94a84b1c813a4b9b0177829cf12b579cfa",
+        "index": "efaf6fe8b342f151ac02ed110027320f39b0d99287327eb7d206453537a0d408"
+      },
+      "layer": "cited",
+      "layer_version": "v1",
+      "scores": {
+        "output": {
+          "all_charges_hit": 0.733333,
+          "mean_predictions": 4.5,
+          "recall": 0.877551
+        }
+      },
+      "set_sha256": "9b77ae213e7a7a9614606c9fc6396a0a323e155630f491bb3a3b0295ca9f2fd2"
+    }
+  ]
+}

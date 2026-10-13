@@ -6,3 +6,6 @@ __pycache__/
 data/raw/
 data/index/
 results.json
+
+# Fitted association model, 45 MB, rebuilt by `ibid assoc fit`; its SHA-256 is recorded in every result that used it
+data/assoc-nb-v1.json

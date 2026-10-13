@@ -42,6 +42,7 @@ Tests are `unittest`. There is no pytest. Needs `pdftotext`, `pdftohtml`, `pdfse
 | Index, lookup, keyword search | `src/ibid/index.py` |
 | Cross-references | `src/ibid/xref.py` |
 | Concordance | `src/ibid/concordance.py` |
+| Learned association layer (opt-in, ADR 0005) | `src/ibid/assoc.py` |
 | Eval, scoring, CLI | `src/ibid/cli.py` |
 | Gold conventions and freezing | `src/ibid/conform.py`, `src/ibid/freeze.py` |
 | Specs and tickets | `.scratch/<slice>/` (see `docs/agents/issue-tracker.md`) |

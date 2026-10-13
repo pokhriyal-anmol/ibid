@@ -1,0 +1,14 @@
+[
+  {
+    "cases": 13039,
+    "layer": "assoc-nb",
+    "layer_version": "v1",
+    "model_sha256": "251eef976c42a8c48c17228d977923ca877d1a58ff52a8d05490b41de46ea4ae",
+    "scores": {
+      "jaccard": 0.227616,
+      "macro_f1": 0.179709,
+      "micro_f1": 0.35381
+    },
+    "split_sha256": "9fc141a94b51febe3e3cd06494f13c587098afcda175fc2e3e4d6213a88b60d1"
+  }
+]

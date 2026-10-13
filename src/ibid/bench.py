@@ -224,6 +224,42 @@ def freeze_rule(log_path: str, round_no: int | None, out_path: str) -> int:
     return 0
 
 
+def df_stopwords(split_path: str, min_df: float, out_path: str) -> int:
+    """Terms in at least min_df of the cases' fact text, sorted. Reads only each case's `text`, never its labels (ADR 0001, 0004)."""
+    if not 0 < min_df <= 1:
+        print("error: need 0 < --min-df <= 1", file=sys.stderr)
+        return 1
+    with open(split_path) as f:
+        texts = [json.loads(line)["text"] for line in f if line.strip()]
+    if not texts:
+        print(f"error: {split_path} holds no cases", file=sys.stderr)
+        return 1
+    df: dict[str, int] = {}
+    for t in texts:
+        for w in set(bm25.QUERY_TOKEN.findall(bm25.fold(" ".join(t)))):
+            df[w] = df.get(w, 0) + 1
+    terms = sorted(w for w, n in df.items() if n / len(texts) >= min_df)
+    rec = {"cases": len(texts), "min_df": min_df, "split_sha256": sha256(split_path), "term_count": len(terms), "terms": terms}
+    Path(out_path).write_text(json.dumps(rec, indent=2, sort_keys=True) + "\n")
+    return 0
+
+
+def derive_rule(from_path: str, stopwords_path: str, version: str, out_path: str) -> int:
+    """The source frozen rule with a stop list added; every other parameter copied, hash recomputed as `freeze_rule` does."""
+    try:
+        src = json.loads(Path(from_path).read_text())
+        extra = json.loads(Path(stopwords_path).read_text())["terms"]
+        stop = sorted(set(src["stop_words"]) | set(extra))
+        h = rule_hash(src["k"], src["r"], src["section_score"], stop, src["knobs"])
+    except (OSError, KeyError, ValueError) as e:
+        print(f"error: cannot derive from {from_path} and {stopwords_path}: {e!r}", file=sys.stderr)
+        return 1
+    rec = {**src, "stop_words": stop, "rule": {**src["rule"], "version": version, "params_sha256": h},
+           "derived_from": {"rule_params_sha256": src["rule"]["params_sha256"], "stopwords_sha256": sha256(stopwords_path)}}
+    Path(out_path).write_text(json.dumps(rec, indent=2, sort_keys=True) + "\n")
+    return 0
+
+
 def test_guard(split_path: str, manifest_path: str, k: int, r: float, rollup: str, frozen_path: str, ledger_path: str,
                rescore: bool) -> tuple[bool, dict | None, list, int]:
     """(is the test split, its frozen record, prior ledger entries, 1 if refused).
@@ -250,7 +286,8 @@ def test_guard(split_path: str, manifest_path: str, k: int, r: float, rollup: st
 
 def run_bench(split_path: str, labels_path: str, index_path: str, k: int, r: float, rollup: str, out_path: str,
               manifest_path: str, sample: int | None = None, frozen_path: str = "results/frozen-rule.json",
-              ledger_path: str = "results/test-ledger.json", rescore: bool = False, knobs: dict | None = None) -> int:
+              ledger_path: str = "results/test-ledger.json", rescore: bool = False, knobs: dict | None = None,
+              extra_stop_words: str | None = None) -> int:
     try:
         check_params(k, r, rollup)
         check_knobs(knobs_of(knobs))
@@ -263,12 +300,15 @@ def run_bench(split_path: str, labels_path: str, index_path: str, k: int, r: flo
             return 1
         if on_test and sample is not None:
             raise ValueError("--sample is refused on the test split; it is scored once, in full")
+        if on_test and extra_stop_words:
+            raise ValueError("--extra-stop-words is refused on the test split; score it with a frozen rule")
+        extra = json.loads(Path(extra_stop_words).read_text())["terms"] if extra_stop_words else []
         space = load_space(labels_path)
         cases, benchmark_labels = load_cases(split_path, space, sample)
-    except ValueError as e:
+    except (ValueError, KeyError, OSError) as e:
         print(f"error: {e}", file=sys.stderr)
         return 1
-    stop_words = frozen["stop_words"] if frozen else None  # the test split is scored with the frozen round's rule
+    stop_words = frozen["stop_words"] if frozen else (sorted(set(STOP_WORDS) | set(extra)) if extra else None)  # the test split is scored with the frozen round's rule
     knobs = knobs_of(frozen.get("knobs") if frozen else knobs)
     rule = {"name": RULE_NAME, "version": frozen["rule"]["version"] if frozen else RULE_VERSION,
             "params_sha256": rule_hash(k, r, rollup, stop_words, knobs)}
