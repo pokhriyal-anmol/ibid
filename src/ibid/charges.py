@@ -11,8 +11,8 @@ from pathlib import Path
 from ibid import bench, bm25, index
 from ibid.cli import pin_error
 
-AUTHOR_TYPES = ("lawyer", "owner", "judgment-excerpt")
-LABEL_BASES = ("lawyer", "agent-drafted-skeptic-refuted", "agent-checked-for-owner")
+AUTHOR_TYPES = ("lawyer", "owner", "judgment-excerpt", "forum-post")
+LABEL_BASES = ("lawyer", "agent-drafted-skeptic-refuted", "agent-checked-for-owner", "lawyer-answer-extracted")
 TOP_FIELDS = ("version", "created", "licence_note", "label_policy")
 ACTS = ("ipc", "bns")
 

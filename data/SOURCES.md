@@ -18,3 +18,16 @@ Downloaded 2026-10-09.
 ## LeSICiN benchmark data
 
 `data/lesicin.manifest.json` pins the name, byte count and SHA-256 of the five files in `data/raw/lesicin/`, taken on 2026-10-11 from files that matched the Zenodo MD5s (https://zenodo.org/records/6053791). `ibid bench run` refuses a split or label file whose SHA-256 differs.
+
+## Slice 3 sources (2026-10-13), all under `data/raw/`, none committed
+
+| File | Source | Bytes | SHA-256 | Licence |
+|---|---|---|---|---|
+| `capt/comparison_summary_BNS_to_IPC.pdf` | https://www.keralaprisons.gov.in/userfiles/act-and-rules/comparison_summary_BNS_to_IPC.pdf. "Correspondence table and comparison summary of the BNS to the IPC", 38 pages, by the Director of CAPT Bhopal (IPS), June 2024. A personal compilation, not an MHA publication. Its numbering is the enacted BNS (murder punishment is 103). | 716,640 | `3ad875b6162deb9d6a722244c537b1ffa72ee20e025f08a32d272f2612cf9a25` | not stated, copyright line names the author |
+| `uppolice/ipc-vis-a-vis-bns.pdf` | uppolice.gov.in, "Three New Major Acts" folder. It is Project 39A's annotated comparison of the August 2023 *Bill*, 125 pages. Its clause numbers differ from the enacted BNS (murder punishment is clause 101), so it is not a source for BNS numbers. | 2,980,929 | `001386358dc793102ae4a8ac60ac7fb1bd6aff0c61c31e99b13394c57bcb082a` | not stated |
+| `aila2019/AILA_2019_dataset.zip` | https://zenodo.org/records/4063986 (md5 07f9621e385ff0d4540ce8dfd76b0c21, matched) | 20,736,273 | `788bef2f15e4d6212fc3c5b4c302343c52fdbf261e1599e4f2e8d3df2a5fde55` | CC BY 4.0 |
+| `ilsic/FT-Layman-test.jsonl.xz` | ILSIC (Law-AI/ilsic), Google Drive folder `Layman-new-dataset`. 836 posts, fields `instruction` and `answer` | 252,548 | `9f8eab7ba638f4413a3a30d0138c1de34173d5e9425bbfa1b9ef4d3ebdddf37d` | CC BY-NC-SA 4.0 (paper), code MIT |
+| `ilsic/FT-LMsub-test.jsonl.xz` | ILSIC, folder `Layman-subset-data`. 757 posts | 232,444 | `32af14a42a93928e88afab3f2593459d3609397ce395e44fbef37b67fb5f4998` | as above |
+| `ilsic/id-act-meta.json`, `id-section-meta.json`, `section-texts.json`, `queries_to_annotate.json` | ILSIC, top-level folder | 3,772, 105,306, 1,434,370, 319,818 | `e51d5e27…`, `b7c59f1d…`, `d5bf7f94…`, `27e98ac6…` | as above |
+
+Not downloaded: the ILSIC `court-dataset` and `synthetic-layman-dataset` folders and the train and dev splits of the layperson sets. They are not needed for route D and the audit.

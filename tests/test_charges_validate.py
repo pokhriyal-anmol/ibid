@@ -87,6 +87,13 @@ class ChargesValidateTest(unittest.TestCase):
             with self.subTest(label):
                 self.assert_refused(fn, iid, field)
 
+    def test_forum_post_with_answer_extracted_labels_is_valid_and_counted(self):
+        def fn(items):
+            items[0].update(author_type="forum-post", label_basis="lawyer-answer-extracted")
+        code, out, _ = self.run_validate(self.write(self.mutated(fn)))
+        self.assertEqual(code, 0)
+        self.assertIn("lawyer-answer-extracted: 1", out)
+
     def test_empty_bns_list_with_ipc_is_valid(self):
         items = [item(1, [charge(["IPC 302"], [])])]
         self.assertEqual(self.run_validate(self.write(items))[0], 0)
