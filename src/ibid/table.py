@@ -12,13 +12,43 @@ from collections import Counter
 from pathlib import Path
 
 SOURCE = "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication"
-ROW = re.compile(r"^\s{0,3}(\d{1,3}[A-Z]{0,2}(?:\(\w+\))*)\s{2,}\S")
+ROW = re.compile(r"^\s{0,3}(\d{1,3}[A-Z]{0,2}(?:\s?\(\w+\))*)\s{2,}\S")
 CELL = re.compile(r"New|\d+[A-Z]{0,2}(?:\(\w+\))*(?:\s*(?:,|&|and|to)\s*(?:\d+[A-Z]{0,2}(?:\(\w+\))*)?)*")
+TRAILING_CELL = re.compile(r" (\d+[A-Z]{0,2}(?:\(\w+\))*)$")  # a section number ending a subject
 PART = re.compile(r"\S+(?: \S+)*")  # a run of words with single spaces; two spaces end it
 SECTION = re.compile(r"\d+[A-Z]{0,2}")
 MAX_DF = 0.1
 MIN_WORD = 4
 TYPES = {(0, 1): "new", (1, 1): "one-to-one", (1, 2): "split", (2, 1): "merged"}
+
+
+def _ipc_column(body: str) -> int | None:
+    """The most common start of the IPC cell on a page, learned from rows whose cell is separated by two spaces."""
+    starts = Counter()
+    for line in body.splitlines():
+        parts = [(m.start(), m.group()) for m in PART.finditer(line)]
+        if ROW.match(line) and len(parts) > 2 and CELL.fullmatch(parts[2][1]):
+            starts[parts[2][0]] += 1
+    return starts.most_common(1)[0][0] if starts else None
+
+
+def _split_row(line: str, col: int | None) -> tuple[str, str, str, str]:
+    """(bns, subject, ipc cell, note). Cut at the IPC column when a word starts there, so a cell followed by
+    one space and a note, or a subject that runs up to the column, still splits correctly."""
+    parts = [(m.start(), m.group()) for m in PART.finditer(line)]
+    if col is not None:
+        for cut in sorted(range(col - 2, col + 3), key=lambda c: abs(c - col)):
+            if 0 < cut < len(line) and line[cut - 1] == " " and line[cut] != " ":
+                m, bns = CELL.match(line[cut:]), ROW.match(line)
+                subject = line[bns.end(1):cut].strip() if bns and bns.end(1) < cut else ""
+                if m and subject:
+                    return bns.group(1), subject, m.group().strip(), line[cut + m.end():].strip()
+    ipc = len(parts) > 2 and CELL.fullmatch(parts[2][1]) is not None
+    subject, rest = parts[1][1], " ".join(p for _, p in parts[3 if ipc else 2:])
+    tail = None if ipc else TRAILING_CELL.search(subject)
+    if tail:  # the cell sits one space after a wrapped subject, off this page's column
+        return parts[0][1], subject[:tail.start()].strip(), tail.group(1), " ".join(p for _, p in parts[2:])
+    return parts[0][1], subject, parts[2][1] if ipc else "", rest
 
 
 def parse_rows(text: str) -> list[dict]:
@@ -28,19 +58,19 @@ def parse_rows(text: str) -> list[dict]:
     rows: list[dict] = []
     for page, body in enumerate(text.split("\f"), 1):
         cols: tuple[int, int | None] | None = None
+        col = _ipc_column(body)
         for line in body.splitlines():
             if "©" in line or not line.strip():
                 continue
             parts = [(m.start(), m.group()) for m in PART.finditer(line)]
             if ROW.match(line):
-                ipc = len(parts) > 2 and CELL.fullmatch(parts[2][1]) is not None
-                rows.append({"bns": parts[0][1], "subject": parts[1][1], "ipc": parts[2][1] if ipc else "",
-                             "note": " ".join(p for _, p in parts[3 if ipc else 2:]), "page": page})
-                cols = (parts[1][0], parts[2][0] if ipc else None)
+                bns, subject, ipc, note = _split_row(line, col)
+                rows.append({"bns": bns, "subject": subject, "ipc": ipc, "note": note, "page": page})
+                cols = (parts[1][0], col if ipc else None)
             elif rows:
                 for start, p in parts:
                     kind = "subject" if cols and abs(start - cols[0]) <= 2 else \
-                        "ipc" if cols and cols[1] is not None and abs(start - cols[1]) <= 2 else "note"
+                        "ipc" if cols and cols[1] is not None and abs(start - cols[1]) <= 2 and CELL.fullmatch(p) else "note"
                     rows[-1][kind] = f"{rows[-1][kind]} {p}".strip()
     return rows
 

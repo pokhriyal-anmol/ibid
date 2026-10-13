@@ -79,6 +79,24 @@ class FromTableTest(unittest.TestCase):
         self.assertEqual(rows["2(8)"]["ipc"], "29 and 29A")
         self.assertEqual((rows["303"]["page"], rows["101"]["page"]), (1, 2))
 
+    def test_real_table_shapes_a_spaced_subclause_and_a_cell_one_space_from_its_note(self):
+        # seen in the CAPT table: "318 (4)" with a space, and "376(1) & Word ..." / "not 304 amounting" with one space
+        self.run_table(TABLE + (
+            " 318 (4)     Cheating and delivery.                 29      Included as a sub-section.\n"
+            " 64          Punishment for rape.                   300 & Word replaced with army.\n"
+            " 105         Culpable homicide not 120 amounting.   1       Minimum added.\n"))
+        rows = {r["bns"]: r for r in self.out["rows"]}
+        self.assertEqual(rows["318 (4)"]["ipc"], "29")
+        self.assertEqual((rows["64"]["ipc"], rows["64"]["note"]), ("300 &", "Word replaced with army."))
+        self.assertEqual((rows["105"]["ipc"], rows["105"]["subject"]), ("1", "Culpable homicide not 120 amounting."))
+        # a wrapped word in the IPC column that is not a section number goes to the note (BNS 86 "Explanat ion")
+        self.run_table(TABLE + (" 85          Cruelty.                               378     No change.\n"
+                                " 86          Cruelty defined.                       378     Split in two.\n"
+                                "                                                    Explanat   Sections 85 and 86 ok.\n"))
+        self.assertEqual({r["bns"]: r["ipc"] for r in self.out["rows"]}["86"], "378")
+        self.run_table(TABLE + " 21          Act of a child above seven under 29    No change.\n")
+        self.assertEqual({r["bns"]: r["ipc"] for r in self.out["rows"]}["21"], "29")  # off the page's column
+
     def test_entries_are_typed_from_the_counts_and_aggregated_to_section_level(self):
         self.assertEqual(self.served(), {
             (("IPC 1", "IPC 2"), ("BNS 1",)): "merged",   # sub-sections 1(1) to 1(3), the New sub-row adds no IPC side
