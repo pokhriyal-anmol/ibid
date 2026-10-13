@@ -143,6 +143,11 @@ def main(argv: list[str] | None = None) -> int:
     cmp_.add_argument("--set", action="append", required=True, help="every set the results files name, matched by hash")
     cmp_.add_argument("--ilsi", action="append", default=[], help="an ILSI test result, reported as a separate task")
     cmp_.add_argument("--out", required=True)
+    cc = sub.add_parser("concordance").add_subparsers(dest="conc_cmd", required=True).add_parser(
+        "from-table", help="candidate entries from a published BNS to IPC correspondence table (pdftotext -layout text)")
+    cc.add_argument("--table", required=True)
+    cc.add_argument("--index", default="data/index/ibid.sqlite")
+    cc.add_argument("--out", required=True)
     ci = sub.add_parser("cited").add_subparsers(dest="cited_cmd", required=True).add_parser(
         "extract", help="route A: sections a query names, mapped to the other Act through verified concordance")
     ci.add_argument("--set", required=True)
@@ -228,6 +233,9 @@ def main(argv: list[str] | None = None) -> int:
     rp.add_argument("--frozen-rule", default="results/frozen-rule.json", help="the frozen-rule record, names the frozen round")
     rp.add_argument("--out", default="results/report.md")
     a = ap.parse_args(argv)
+    if a.cmd == "concordance":
+        from ibid import table
+        return table.from_table(a.table, a.index, a.out)
     if a.cmd == "cited":
         from ibid import cited
         return cited.extract(a.set, a.index, a.concordance, a.out)
