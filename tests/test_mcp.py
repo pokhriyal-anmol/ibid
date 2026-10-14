@@ -5,7 +5,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from ibid import index
+from ibid import concordance, index
 from ibid.ipc import parse_ipc
 from ibid.parse import parse_bns
 from ibid.xref import extract
@@ -121,6 +121,50 @@ class ServerTest(unittest.TestCase):
     def test_search_bad_arguments_are_rpc_errors(self):
         for args in ({}, {"query": "murder", "limit": 0}, {"query": "murder", "limit": "3"}, {"query": "murder", "limit": True}):
             self.assertEqual(self.c.call("search", args)["error"]["code"], -32602, args)
+        self.assertEqual(self.c.request("ping")["result"], {})
+
+
+class ConcordanceToolTest(unittest.TestCase):
+    FIXTURE = "tests/fixtures/concordance.json"
+
+    @classmethod
+    def setUpClass(cls):
+        cls.tmp = tempfile.TemporaryDirectory()
+        provs = parse_bns(BNS_PDF) + parse_ipc(IPC_PDF)
+        db = index.build(str(Path(cls.tmp.name) / "i.sqlite"), provs, extract(provs))
+        cls.v3 = concordance.load(str(ROOT / "concordance/v3.json"), db)
+        cls.fix = concordance.load(str(ROOT / cls.FIXTURE), db)
+        cls.c = Client()
+        cls.cf = Client(command(conc=cls.FIXTURE))
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.c.close()
+        cls.cf.close()
+        cls.tmp.cleanup()
+
+    def check(self, client, entries, citation, src, dst):
+        want = concordance.lookup(entries, citation, src, dst)
+        res = client.call("concordance", {"citation": citation, "direction": f"{src}_to_{dst}"})["result"]
+        self.assertFalse(res["isError"])
+        if isinstance(want, str):
+            self.assertEqual(res["content"][0]["text"], want)
+        else:
+            self.assertEqual(res["structuredContent"]["result"], want)
+        return want
+
+    def test_both_directions_match_lookup(self):
+        for src, dst in (("ipc", "bns"), ("bns", "ipc")):
+            cit = next(e[src][0] for e in self.v3 if e["verified"] and e[src] and e[dst])
+            self.assertIsInstance(self.check(self.c, self.v3, cit, src, dst), list)
+
+    def test_only_unverified_gives_none(self):
+        self.assertEqual(self.check(self.cf, self.fix, "IPC 304B", "ipc", "bns"), concordance.NONE)
+        self.assertEqual(self.check(self.cf, self.fix, "BNS 80", "bns", "ipc"), concordance.NONE)
+
+    def test_bad_direction_is_an_error_and_server_survives(self):
+        for args in ({"citation": "IPC 302"}, {"citation": "IPC 302", "direction": "sideways"}):
+            self.assertEqual(self.c.call("concordance", args)["error"]["code"], -32602)
         self.assertEqual(self.c.request("ping")["result"], {})
 
 
