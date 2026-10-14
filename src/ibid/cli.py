@@ -143,6 +143,10 @@ def main(argv: list[str] | None = None) -> int:
     cmp_.add_argument("--set", action="append", required=True, help="every set the results files name, matched by hash")
     cmp_.add_argument("--ilsi", action="append", default=[], help="an ILSI test result, reported as a separate task")
     cmp_.add_argument("--out", required=True)
+    mc = sub.add_parser("mcp", help="stdio MCP server over the deterministic lookups")
+    mc.add_argument("--bns", default=os.environ.get("IBID_BNS_PDF", "data/raw/bns-prs.pdf"))
+    mc.add_argument("--ipc", default=os.environ.get("IBID_IPC_PDF", "data/raw/ipc-wipo.pdf"))
+    mc.add_argument("--concordance", default="concordance/v3.json")
     cc = sub.add_parser("concordance").add_subparsers(dest="conc_cmd", required=True).add_parser(
         "from-table", help="candidate entries from a published BNS to IPC correspondence table (pdftotext -layout text)")
     cc.add_argument("--table", required=True)
@@ -233,6 +237,9 @@ def main(argv: list[str] | None = None) -> int:
     rp.add_argument("--frozen-rule", default="results/frozen-rule.json", help="the frozen-rule record, names the frozen round")
     rp.add_argument("--out", default="results/report.md")
     a = ap.parse_args(argv)
+    if a.cmd == "mcp":
+        from ibid import mcp
+        return mcp.serve(a.bns, a.ipc, a.concordance)
     if a.cmd == "concordance":
         from ibid import table
         return table.from_table(a.table, a.index, a.out)
