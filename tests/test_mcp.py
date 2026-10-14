@@ -68,6 +68,37 @@ class ServerTest(unittest.TestCase):
         # if a stray reply were written, it would be read here instead of the ping reply
         self.assertEqual(self.c.request("ping")["id"], self.c.n)
 
+    def xrefs(self, cit):
+        res = self.c.call("cross_references", {"citation": cit})["result"]
+        self.assertFalse(res["isError"], cit)
+        return res["structuredContent"]
+
+    def test_cross_references_chain_in_stored_order(self):
+        unres = {u["source"] for u in index.unresolved(self.db)}
+        cits = [r[0] for r in self.db.execute("SELECT citation FROM provision")]
+        withchain = [c for c in cits if len(index.lookup(self.db, c)[2]) > 1 and c not in unres][:3]
+        self.assertTrue(withchain)
+        for cit in withchain:
+            self.assertEqual(self.xrefs(cit)["resolved"], index.lookup(self.db, cit)[2], cit)
+            self.assertEqual(self.xrefs(cit)["unresolved"], [], cit)
+
+    def test_cross_references_unresolved_with_reason(self):
+        src = index.unresolved(self.db)[0]["source"]
+        want = [{"matched": u["matched"], "reason": u["reason"]} for u in index.unresolved(self.db) if u["source"] == src]
+        got = self.xrefs(src)
+        self.assertEqual(got["unresolved"], want)
+        self.assertTrue(all(u["reason"] for u in got["unresolved"]))
+        self.assertEqual(got["resolved"], index.lookup(self.db, src)[2])
+
+    def test_cross_references_empty_and_unknown(self):
+        unres = {u["source"] for u in index.unresolved(self.db)}
+        cit = next(r[0] for r in self.db.execute("SELECT citation FROM provision")
+                   if not index.lookup(self.db, r[0])[2] and r[0] not in unres)
+        self.assertEqual(self.xrefs(cit), {"citation": cit, "resolved": [], "unresolved": []})
+        res = self.c.call("cross_references", {"citation": "BNS 9999"})["result"]
+        self.assertTrue(res["isError"])
+        self.assertNotIn("structuredContent", res)
+
     def test_unbuilt_tools_return_not_implemented(self):
         res = self.c.call("concordance", {"citation": "BNS 103", "direction": "bns_to_ipc"})["result"]
         self.assertTrue(res["isError"])
