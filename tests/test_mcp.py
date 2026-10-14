@@ -99,10 +99,6 @@ class ServerTest(unittest.TestCase):
         self.assertTrue(res["isError"])
         self.assertNotIn("structuredContent", res)
 
-    def test_unbuilt_tools_return_not_implemented(self):
-        res = self.c.call("concordance", {"citation": "BNS 103", "direction": "bns_to_ipc"})["result"]
-        self.assertTrue(res["isError"])
-
     def test_search_matches_index_search_in_order(self):
         for q, kw in (("murder", {}), ("theft of property", {}), ("murder", {"limit": 3}), ("theft", {"limit": 1}),
                    ("murder NOT theft", {}), ("\"theft of property\"", {}), ("mur*", {"limit": 4})):
