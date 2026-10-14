@@ -69,8 +69,28 @@ class ServerTest(unittest.TestCase):
         self.assertEqual(self.c.request("ping")["id"], self.c.n)
 
     def test_unbuilt_tools_return_not_implemented(self):
-        res = self.c.call("search", {"query": "murder"})["result"]
+        res = self.c.call("concordance", {"citation": "BNS 103", "direction": "bns_to_ipc"})["result"]
         self.assertTrue(res["isError"])
+
+    def test_search_matches_index_search_in_order(self):
+        for q, kw in (("murder", {}), ("theft of property", {}), ("murder", {"limit": 3}), ("theft", {"limit": 1}),
+                   ("murder NOT theft", {}), ("\"theft of property\"", {}), ("mur*", {"limit": 4})):
+            want = [{"citation": c, "text": t} for c, t in index.search(self.db, q, kw.get("limit", 10))]
+            self.assertTrue(want, q)
+            res = self.c.call("search", {"query": q, **kw})["result"]
+            self.assertFalse(res["isError"], q)
+            self.assertEqual(res["structuredContent"]["results"], want, q)
+            self.assertEqual(json.loads(res["content"][0]["text"])["results"], want, q)
+
+    def test_search_invalid_fts5_is_empty_not_error(self):
+        res = self.c.call("search", {"query": '"murder AND'})["result"]
+        self.assertFalse(res["isError"])
+        self.assertEqual(res["structuredContent"]["results"], [])
+
+    def test_search_bad_arguments_are_rpc_errors(self):
+        for args in ({}, {"query": "murder", "limit": 0}, {"query": "murder", "limit": "3"}, {"query": "murder", "limit": True}):
+            self.assertEqual(self.c.call("search", args)["error"]["code"], -32602, args)
+        self.assertEqual(self.c.request("ping")["result"], {})
 
 
 class StartupFailureTest(unittest.TestCase):

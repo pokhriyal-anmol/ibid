@@ -44,6 +44,12 @@ def call_tool(db, name: str, args: object) -> dict:
     for key in TOOLS[name][1]["required"]:
         if not isinstance(args.get(key), str):
             raise RpcError(-32602, f"missing or non-string argument: {key}")
+    if name == "search":
+        limit = args.get("limit", 10)
+        if isinstance(limit, bool) or not isinstance(limit, int) or limit < 1:
+            raise RpcError(-32602, "limit must be an integer of at least 1")
+        hits = index.search(db, args["query"], limit)
+        return _tool_result({"results": [{"citation": c, "text": t} for c, t in hits]})
     if name != "get_provision":
         return _tool_result("not implemented", True)
     got = index.lookup(db, args["citation"])
