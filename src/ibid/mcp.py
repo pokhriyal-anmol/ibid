@@ -36,7 +36,7 @@ def _tool_result(payload: dict | str, is_error: bool = False) -> dict:
     return out
 
 
-def call_tool(db, name: str, args: object) -> dict:
+def call_tool(db, entries: list[dict], name: str, args: object) -> dict:
     if name not in TOOLS:
         raise RpcError(-32602, f"unknown tool: {name}")
     if not isinstance(args, dict):
@@ -44,6 +44,12 @@ def call_tool(db, name: str, args: object) -> dict:
     for key in TOOLS[name][1]["required"]:
         if not isinstance(args.get(key), str):
             raise RpcError(-32602, f"missing or non-string argument: {key}")
+    if name == "concordance":
+        if args.get("direction") not in ("ipc_to_bns", "bns_to_ipc"):
+            raise RpcError(-32602, "direction must be ipc_to_bns or bns_to_ipc")
+        src, dst = args["direction"].split("_to_")
+        got = concordance.lookup(entries, args["citation"], src, dst)
+        return _tool_result(got if isinstance(got, str) else {"result": got})
     if name != "get_provision":
         return _tool_result("not implemented", True)
     got = index.lookup(db, args["citation"])
@@ -52,7 +58,7 @@ def call_tool(db, name: str, args: object) -> dict:
     return _tool_result({"citation": args["citation"], "text": got[0], "children": got[1]})
 
 
-def handle(db, msg: object) -> dict | None:
+def handle(db, entries: list[dict], msg: object) -> dict | None:
     if not isinstance(msg, dict) or not isinstance(msg.get("method"), str):
         return {"jsonrpc": "2.0", "id": None, "error": {"code": -32600, "message": "invalid request"}}
     mid, method, params = msg.get("id"), msg["method"], msg.get("params") or {}
@@ -67,7 +73,7 @@ def handle(db, msg: object) -> dict | None:
         elif method == "tools/call":
             if not isinstance(params, dict) or not isinstance(params.get("name"), str):
                 raise RpcError(-32602, "params.name is required")
-            result = call_tool(db, params["name"], params.get("arguments", {}))
+            result = call_tool(db, entries, params["name"], params.get("arguments", {}))
         elif "id" not in msg:
             return None  # notifications, including notifications/initialized
         else:
@@ -97,7 +103,7 @@ def serve(bns_pdf: str, ipc_pdf: str, concordance_path: str) -> int:
     with tempfile.TemporaryDirectory() as tmp:
         db = index.build(str(Path(tmp) / "ibid.sqlite"), provisions, extract(provisions))
         try:
-            concordance.load(concordance_path, db)
+            entries = concordance.load(concordance_path, db)
         except ValueError as e:
             print(f"error: {e}", file=sys.stderr)
             return 1
@@ -109,6 +115,6 @@ def serve(bns_pdf: str, ipc_pdf: str, concordance_path: str) -> int:
             except json.JSONDecodeError:
                 _emit({"jsonrpc": "2.0", "id": None, "error": {"code": -32700, "message": "parse error"}})
                 continue
-            if (reply := handle(db, msg)) is not None:
+            if (reply := handle(db, entries, msg)) is not None:
                 _emit(reply)
     return 0
