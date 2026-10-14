@@ -44,11 +44,14 @@ def call_tool(db, name: str, args: object) -> dict:
     for key in TOOLS[name][1]["required"]:
         if not isinstance(args.get(key), str):
             raise RpcError(-32602, f"missing or non-string argument: {key}")
-    if name != "get_provision":
+    if name not in ("get_provision", "cross_references"):
         return _tool_result("not implemented", True)
     got = index.lookup(db, args["citation"])
     if got is None:
         return _tool_result(f"Citation not in the index: {args['citation']}", True)
+    if name == "cross_references":
+        miss = [{"matched": u["matched"], "reason": u["reason"]} for u in index.unresolved(db) if u["source"] == args["citation"]]
+        return _tool_result({"citation": args["citation"], "resolved": got[2], "unresolved": miss})
     return _tool_result({"citation": args["citation"], "text": got[0], "children": got[1]})
 
 
