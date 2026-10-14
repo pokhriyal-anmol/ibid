@@ -10,6 +10,7 @@ from ibid.parse import BNS_TOTAL, parse_bns
 from ibid.xref import extract
 
 PROTOCOL_VERSION = "2024-11-05"
+DIRECTIONS = ("ipc_to_bns", "bns_to_ipc")
 _CITATION = {"type": "object", "properties": {"citation": {"type": "string"}}, "required": ["citation"]}
 TOOLS = {
     "get_provision": ("Verbatim text and child Citations of one Provision, by exact Citation.", _CITATION),
@@ -18,7 +19,7 @@ TOOLS = {
     "cross_references": ("Resolved and unresolved Cross-references of one Provision.", _CITATION),
     "concordance": ("Verified Concordance entries for a Citation.",
                     {"type": "object", "properties": {"citation": {"type": "string"},
-                                                      "direction": {"type": "string", "enum": ["ipc_to_bns", "bns_to_ipc"]}},
+                                                      "direction": {"type": "string", "enum": list(DIRECTIONS)}},
                      "required": ["citation", "direction"]}),
 }
 
@@ -51,13 +52,11 @@ def call_tool(db, entries: list[dict], name: str, args: object) -> dict:
         hits = index.search(db, args["query"], limit)
         return _tool_result({"results": [{"citation": c, "text": t} for c, t in hits]})
     if name == "concordance":
-        if args.get("direction") not in ("ipc_to_bns", "bns_to_ipc"):
-            raise RpcError(-32602, "direction must be ipc_to_bns or bns_to_ipc")
+        if args.get("direction") not in DIRECTIONS:
+            raise RpcError(-32602, "direction must be " + " or ".join(DIRECTIONS))
         src, dst = args["direction"].split("_to_")
         got = concordance.lookup(entries, args["citation"], src, dst)
         return _tool_result(got if isinstance(got, str) else {"result": got})
-    if name not in ("get_provision", "cross_references"):
-        return _tool_result("not implemented", True)
     got = index.lookup(db, args["citation"])
     if got is None:
         return _tool_result(f"Citation not in the index: {args['citation']}", True)
