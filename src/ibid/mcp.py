@@ -20,7 +20,7 @@ TOOLS = {
     "concordance": ("Verified Concordance entries for a Citation.",
                     {"type": "object", "properties": {"citation": {"type": "string"},
                                                       "direction": {"type": "string", "enum": list(DIRECTIONS)}},
-                     "required": ["citation", "direction"]}),
+                     "required": ["citation"]}),
 }
 
 
@@ -52,9 +52,14 @@ def call_tool(db, entries: list[dict], name: str, args: object) -> dict:
         hits = index.search(db, args["query"], limit)
         return _tool_result({"results": [{"citation": c, "text": t} for c, t in hits]})
     if name == "concordance":
-        if args.get("direction") not in DIRECTIONS:
+        prefix = args["citation"].split(" ")[0].lower()
+        inferred = {"ipc": DIRECTIONS[0], "bns": DIRECTIONS[1]}.get(prefix)
+        direction = args.get("direction", inferred)
+        if direction not in DIRECTIONS:
             raise RpcError(-32602, "direction must be " + " or ".join(DIRECTIONS))
-        src, dst = args["direction"].split("_to_")
+        if inferred and direction != inferred:
+            return _tool_result(f"direction {direction} contradicts the Citation prefix {prefix.upper()} (expects {inferred})", True)
+        src, dst = direction.split("_to_")
         got = concordance.lookup(entries, args["citation"], src, dst)
         section = args["citation"].split("(")[0].strip()
         if isinstance(got, str) and section != args["citation"]:  # sub-provision: retry its section
