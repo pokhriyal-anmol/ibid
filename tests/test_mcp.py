@@ -158,6 +158,26 @@ class ConcordanceToolTest(unittest.TestCase):
         self.assertEqual(self.check(self.cf, self.fix, "IPC 304B", "ipc", "bns"), concordance.NONE)
         self.assertEqual(self.check(self.cf, self.fix, "BNS 80", "bns", "ipc"), concordance.NONE)
 
+    def call(self, client, citation):
+        res = client.call("concordance", {"citation": citation, "direction": "bns_to_ipc"})["result"]
+        self.assertFalse(res["isError"])
+        return res
+
+    def test_subprovision_falls_back_to_section(self):
+        want = concordance.lookup(self.v3, "BNS 318", "bns", "ipc")
+        self.assertIsInstance(want, list)
+        got = self.call(self.c, "BNS 318(4)")["structuredContent"]
+        self.assertEqual(got, {"result": want, "via": "BNS 318"})
+
+    def test_subprovision_without_section_entry_is_none(self):
+        res = self.call(self.cf, "BNS 80(1)")
+        self.assertEqual(res["content"][0]["text"], concordance.NONE)
+        self.assertNotIn("structuredContent", res)
+
+    def test_section_has_no_via(self):
+        want = concordance.lookup(self.v3, "BNS 318", "bns", "ipc")
+        self.assertEqual(self.call(self.c, "BNS 318")["structuredContent"], {"result": want})
+
     def test_bad_direction_is_an_error_and_server_survives(self):
         for args in ({"citation": "IPC 302"}, {"citation": "IPC 302", "direction": "sideways"}):
             self.assertEqual(self.c.call("concordance", args)["error"]["code"], -32602)

@@ -56,6 +56,11 @@ def call_tool(db, entries: list[dict], name: str, args: object) -> dict:
             raise RpcError(-32602, "direction must be " + " or ".join(DIRECTIONS))
         src, dst = args["direction"].split("_to_")
         got = concordance.lookup(entries, args["citation"], src, dst)
+        section = args["citation"].split("(")[0].strip()
+        if isinstance(got, str) and section != args["citation"]:  # sub-provision: retry its section
+            got = concordance.lookup(entries, section, src, dst)
+            if not isinstance(got, str):
+                return _tool_result({"result": got, "via": section})
         return _tool_result(got if isinstance(got, str) else {"result": got})
     got = index.lookup(db, args["citation"])
     if got is None:
