@@ -55,3 +55,18 @@ def search(db: sqlite3.Connection, raw_query: str, limit: int = 10) -> list[tupl
         ).fetchall()
     except sqlite3.OperationalError:  # query is not valid FTS5 syntax: no hits, never rewritten
         return []
+
+
+def neighbours(db: sqlite3.Connection, citation: str) -> tuple[tuple[str, str] | None, tuple[str, str] | None]:
+    """(citation, heading line) of the previous and next section of the same Act in document order, None at an end.
+    A sub-provision gets the neighbours of its section."""
+    row = db.execute("SELECT rowid, parent FROM provision WHERE citation = ?", (citation,)).fetchone()
+    if row is None:
+        return None, None
+    while row[1]:  # nested sub-provisions walk up to their section
+        row = db.execute("SELECT rowid, parent FROM provision WHERE citation = ?", (row[1],)).fetchone()
+    rowid = row[0]
+    act = citation.split(" ")[0] + " %"
+    q = "SELECT citation, text FROM provision WHERE parent IS NULL AND citation LIKE ? AND rowid {} ? ORDER BY rowid {} LIMIT 1"
+    pair = [db.execute(q.format(op, order), (act, rowid)).fetchone() for op, order in (("<", "DESC"), (">", "ASC"))]
+    return tuple(None if r is None else (r[0], r[1].split("\n")[0].split("\u2014")[0][:100]) for r in pair)

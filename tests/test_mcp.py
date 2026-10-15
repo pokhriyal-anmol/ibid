@@ -119,6 +119,79 @@ class ServerTest(unittest.TestCase):
             self.assertEqual(self.c.call("search", args)["error"]["code"], -32602, args)
         self.assertEqual(self.c.request("ping")["result"], {})
 
+    def sections(self, act):
+        return [r[0] for r in self.db.execute("SELECT citation FROM provision WHERE parent IS NULL AND citation LIKE ? ORDER BY rowid", (act + " %",))]
+
+    def adj(self, q, **kw):
+        res = self.c.call("search", {"query": q, "adjacent": True, **kw})["result"]
+        self.assertFalse(res["isError"], q)
+        return res["structuredContent"]["results"]
+
+    def test_adjacent_keeps_hits_and_order(self):
+        for q, kw in (("murder", {}), ("criminal breach of trust", {}), ("theft", {"limit": 4})):
+            want = [{"citation": c, "text": t} for c, t in index.search(self.db, q, kw.get("limit", 10))]
+            plain = self.c.call("search", {"query": q, **kw})["result"]["structuredContent"]["results"]
+            self.assertEqual(plain, want, q)
+            got = self.adj(q, **kw)
+            self.assertEqual([(h["citation"], h["text"]) for h in got], [(w["citation"], w["text"]) for w in want], q)
+            self.assertTrue(all("previous" in h and "next" in h for h in got), q)
+        self.assertNotIn("previous", plain[0])
+        off = self.c.call("search", {"query": "murder", "adjacent": False})["result"]["structuredContent"]["results"]
+        self.assertEqual(off, [{"citation": c, "text": t} for c, t in index.search(self.db, "murder")])
+
+    def test_adjacent_ipc_405_precedes_406(self):
+        hit = next(h for h in self.adj("criminal breach of trust") if h["citation"] == "IPC 406")
+        self.assertEqual(hit["previous"]["citation"], "IPC 405")
+        self.assertTrue(hit["previous"]["heading"].startswith("405. Criminal breach of trust"))
+
+    def test_adjacent_neighbours_come_from_the_index(self):
+        for act in ("IPC", "BNS"):
+            secs = self.sections(act)
+            for i in (0, 1, len(secs) // 2, len(secs) - 1):
+                text = index.lookup(self.db, secs[i])[0]
+                q = '"' + " ".join(text.split()[:3]).replace('"', "") + '"'
+                hit = next((h for h in self.adj(q, limit=100) if h["citation"] == secs[i]), None)
+                if hit is None:
+                    continue
+                prev = secs[i - 1] if i else None
+                nxt = secs[i + 1] if i + 1 < len(secs) else None
+                self.assertEqual(hit["previous"] and hit["previous"]["citation"], prev, secs[i])
+                self.assertEqual(hit["next"] and hit["next"]["citation"], nxt, secs[i])
+
+    def test_adjacent_sub_provision_gets_its_sections_neighbours(self):
+        checked = 0
+        for act in ("IPC", "BNS"):
+            secs = self.sections(act)
+            subs = self.db.execute("SELECT citation, parent FROM provision WHERE parent IS NOT NULL AND citation LIKE ? ORDER BY rowid", (act + " %",)).fetchall()
+            for cit, parent in subs[len(subs) // 2::max(1, len(subs) // 8)]:
+                while parent not in secs:
+                    parent = self.db.execute("SELECT parent FROM provision WHERE citation = ?", (parent,)).fetchone()[0]
+                i = secs.index(parent)
+                words = index.lookup(self.db, cit)[0].replace('"', " ").split()[:4]
+                hit = next((h for h in self.adj('"' + " ".join(words) + '"', limit=100) if h["citation"] == cit), None)
+                if hit is None:
+                    continue
+                checked += 1
+                self.assertEqual(hit["previous"] and hit["previous"]["citation"], secs[i - 1] if i else None, cit)
+                self.assertEqual(hit["next"] and hit["next"]["citation"], secs[i + 1] if i + 1 < len(secs) else None, cit)
+        self.assertGreater(checked, 0)
+
+    def test_adjacent_ends_are_null(self):
+        for act in ("IPC", "BNS"):
+            secs = self.sections(act)
+            self.assertIsNone(index.neighbours(self.db, secs[0])[0], act)
+            self.assertIsNone(index.neighbours(self.db, secs[-1])[1], act)
+        first = self.sections("IPC")[0]
+        hit = next(h for h in self.adj('"Title and extent"') if h["citation"] == first)
+        self.assertIsNone(hit["previous"])
+        self.assertEqual(hit["next"]["citation"], self.sections("IPC")[1])
+
+    def test_adjacent_schema_and_bad_value(self):
+        search = next(t for t in self.c.request("tools/list")["result"]["tools"] if t["name"] == "search")
+        self.assertEqual(search["inputSchema"]["properties"]["adjacent"], {"type": "boolean"})
+        self.assertNotIn("adjacent", search["inputSchema"]["required"])
+        self.assertEqual(self.c.call("search", {"query": "murder", "adjacent": "yes"})["error"]["code"], -32602)
+
 
 class ConcordanceToolTest(unittest.TestCase):
     FIXTURE = "tests/fixtures/concordance.json"
@@ -158,10 +231,50 @@ class ConcordanceToolTest(unittest.TestCase):
         self.assertEqual(self.check(self.cf, self.fix, "IPC 304B", "ipc", "bns"), concordance.NONE)
         self.assertEqual(self.check(self.cf, self.fix, "BNS 80", "bns", "ipc"), concordance.NONE)
 
+    def call(self, client, citation):
+        res = client.call("concordance", {"citation": citation, "direction": "bns_to_ipc"})["result"]
+        self.assertFalse(res["isError"])
+        return res
+
+    def test_subprovision_falls_back_to_section(self):
+        want = concordance.lookup(self.v3, "BNS 318", "bns", "ipc")
+        self.assertIsInstance(want, list)
+        got = self.call(self.c, "BNS 318(4)")["structuredContent"]
+        self.assertEqual(got, {"result": want, "via": "BNS 318"})
+
+    def test_subprovision_without_section_entry_is_none(self):
+        res = self.call(self.cf, "BNS 80(1)")
+        self.assertEqual(res["content"][0]["text"], concordance.NONE)
+        self.assertNotIn("structuredContent", res)
+
+    def test_section_has_no_via(self):
+        want = concordance.lookup(self.v3, "BNS 318", "bns", "ipc")
+        self.assertEqual(self.call(self.c, "BNS 318")["structuredContent"], {"result": want})
+
     def test_bad_direction_is_an_error_and_server_survives(self):
-        for args in ({"citation": "IPC 302"}, {"citation": "IPC 302", "direction": "sideways"}):
+        for args in ({"citation": "IPC 302", "direction": "sideways"}, {"citation": "302"}):
             self.assertEqual(self.c.call("concordance", args)["error"]["code"], -32602)
         self.assertEqual(self.c.request("ping")["result"], {})
+
+    def test_direction_inferred_from_prefix(self):
+        for src, dst in (("ipc", "bns"), ("bns", "ipc")):
+            cit = next(e[src][0] for e in self.v3 if e["verified"] and e[src] and e[dst])
+            want = self.c.call("concordance", {"citation": cit, "direction": f"{src}_to_{dst}"})["result"]
+            got = self.c.call("concordance", {"citation": cit})["result"]
+            self.assertEqual(got, want)
+            self.assertEqual(got["structuredContent"]["result"], concordance.lookup(self.v3, cit, src, dst))
+
+    def test_contradicting_direction_is_a_tool_error(self):
+        res = self.c.call("concordance", {"citation": "BNS 318", "direction": "ipc_to_bns"})["result"]
+        self.assertTrue(res["isError"])
+        text = res["content"][0]["text"]
+        self.assertIn("BNS", text)
+        self.assertIn("ipc_to_bns", text)
+
+    def test_schema_requires_only_citation(self):
+        tool = next(t for t in self.c.request("tools/list")["result"]["tools"] if t["name"] == "concordance")
+        self.assertEqual(tool["inputSchema"]["required"], ["citation"])
+        self.assertEqual(tool["inputSchema"]["properties"]["direction"]["enum"], ["ipc_to_bns", "bns_to_ipc"])
 
 
 class StartupFailureTest(unittest.TestCase):
