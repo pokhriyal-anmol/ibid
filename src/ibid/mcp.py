@@ -15,7 +15,8 @@ _CITATION = {"type": "object", "properties": {"citation": {"type": "string"}}, "
 TOOLS = {
     "get_provision": ("Verbatim text and child Citations of one Provision, by exact Citation.", _CITATION),
     "search": ("Keyword search over the raw query.",
-               {"type": "object", "properties": {"query": {"type": "string"}, "limit": {"type": "integer"}}, "required": ["query"]}),
+               {"type": "object", "properties": {"query": {"type": "string"}, "limit": {"type": "integer"},
+                                                      "adjacent": {"type": "boolean"}}, "required": ["query"]}),
     "cross_references": ("Resolved and unresolved Cross-references of one Provision.", _CITATION),
     "concordance": ("Verified Concordance entries for a Citation.",
                     {"type": "object", "properties": {"citation": {"type": "string"},
@@ -50,7 +51,14 @@ def call_tool(db, entries: list[dict], name: str, args: object) -> dict:
         if isinstance(limit, bool) or not isinstance(limit, int) or limit < 1:
             raise RpcError(-32602, "limit must be an integer of at least 1")
         hits = index.search(db, args["query"], limit)
-        return _tool_result({"results": [{"citation": c, "text": t} for c, t in hits]})
+        if not isinstance(args.get("adjacent", False), bool):
+            raise RpcError(-32602, "adjacent must be a boolean")
+        results = [{"citation": c, "text": t} for c, t in hits]
+        if args.get("adjacent"):
+            for r in results:
+                prev, nxt = index.neighbours(db, r["citation"])
+                r["previous"], r["next"] = [None if n is None else {"citation": n[0], "heading": n[1]} for n in (prev, nxt)]
+        return _tool_result({"results": results})
     if name == "concordance":
         prefix = args["citation"].split(" ")[0].lower()
         inferred = {"ipc": DIRECTIONS[0], "bns": DIRECTIONS[1]}.get(prefix)
