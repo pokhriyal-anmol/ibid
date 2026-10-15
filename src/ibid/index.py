@@ -63,7 +63,9 @@ def neighbours(db: sqlite3.Connection, citation: str) -> tuple[tuple[str, str] |
     row = db.execute("SELECT rowid, parent FROM provision WHERE citation = ?", (citation,)).fetchone()
     if row is None:
         return None, None
-    rowid = db.execute("SELECT rowid FROM provision WHERE citation = ?", (row[1] or citation,)).fetchone()[0]
+    while row[1]:  # nested sub-provisions walk up to their section
+        row = db.execute("SELECT rowid, parent FROM provision WHERE citation = ?", (row[1],)).fetchone()
+    rowid = row[0]
     act = citation.split(" ")[0] + " %"
     q = "SELECT citation, text FROM provision WHERE parent IS NULL AND citation LIKE ? AND rowid {} ? ORDER BY rowid {} LIMIT 1"
     pair = [db.execute(q.format(op, order), (act, rowid)).fetchone() for op, order in (("<", "DESC"), (">", "ASC"))]

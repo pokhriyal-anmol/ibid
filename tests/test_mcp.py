@@ -158,6 +158,24 @@ class ServerTest(unittest.TestCase):
                 self.assertEqual(hit["previous"] and hit["previous"]["citation"], prev, secs[i])
                 self.assertEqual(hit["next"] and hit["next"]["citation"], nxt, secs[i])
 
+    def test_adjacent_sub_provision_gets_its_sections_neighbours(self):
+        checked = 0
+        for act in ("IPC", "BNS"):
+            secs = self.sections(act)
+            subs = self.db.execute("SELECT citation, parent FROM provision WHERE parent IS NOT NULL AND citation LIKE ? ORDER BY rowid", (act + " %",)).fetchall()
+            for cit, parent in subs[len(subs) // 2::max(1, len(subs) // 8)]:
+                while parent not in secs:
+                    parent = self.db.execute("SELECT parent FROM provision WHERE citation = ?", (parent,)).fetchone()[0]
+                i = secs.index(parent)
+                words = index.lookup(self.db, cit)[0].replace('"', " ").split()[:4]
+                hit = next((h for h in self.adj('"' + " ".join(words) + '"', limit=100) if h["citation"] == cit), None)
+                if hit is None:
+                    continue
+                checked += 1
+                self.assertEqual(hit["previous"] and hit["previous"]["citation"], secs[i - 1] if i else None, cit)
+                self.assertEqual(hit["next"] and hit["next"]["citation"], secs[i + 1] if i + 1 < len(secs) else None, cit)
+        self.assertGreater(checked, 0)
+
     def test_adjacent_ends_are_null(self):
         for act in ("IPC", "BNS"):
             secs = self.sections(act)
