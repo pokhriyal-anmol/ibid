@@ -159,9 +159,29 @@ class ConcordanceToolTest(unittest.TestCase):
         self.assertEqual(self.check(self.cf, self.fix, "BNS 80", "bns", "ipc"), concordance.NONE)
 
     def test_bad_direction_is_an_error_and_server_survives(self):
-        for args in ({"citation": "IPC 302"}, {"citation": "IPC 302", "direction": "sideways"}):
+        for args in ({"citation": "IPC 302", "direction": "sideways"}, {"citation": "302"}):
             self.assertEqual(self.c.call("concordance", args)["error"]["code"], -32602)
         self.assertEqual(self.c.request("ping")["result"], {})
+
+    def test_direction_inferred_from_prefix(self):
+        for src, dst in (("ipc", "bns"), ("bns", "ipc")):
+            cit = next(e[src][0] for e in self.v3 if e["verified"] and e[src] and e[dst])
+            want = self.c.call("concordance", {"citation": cit, "direction": f"{src}_to_{dst}"})["result"]
+            got = self.c.call("concordance", {"citation": cit})["result"]
+            self.assertEqual(got, want)
+            self.assertEqual(got["structuredContent"]["result"], concordance.lookup(self.v3, cit, src, dst))
+
+    def test_contradicting_direction_is_a_tool_error(self):
+        res = self.c.call("concordance", {"citation": "BNS 318", "direction": "ipc_to_bns"})["result"]
+        self.assertTrue(res["isError"])
+        text = res["content"][0]["text"]
+        self.assertIn("BNS", text)
+        self.assertIn("ipc_to_bns", text)
+
+    def test_schema_requires_only_citation(self):
+        tool = next(t for t in self.c.request("tools/list")["result"]["tools"] if t["name"] == "concordance")
+        self.assertEqual(tool["inputSchema"]["required"], ["citation"])
+        self.assertEqual(tool["inputSchema"]["properties"]["direction"]["enum"], ["ipc_to_bns", "bns_to_ipc"])
 
 
 class StartupFailureTest(unittest.TestCase):
