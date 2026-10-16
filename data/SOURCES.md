@@ -39,3 +39,7 @@ Every page of `capt/comparison_summary_BNS_to_IPC.pdf` carries the line "© Anil
 ### ILSIC-Lay posts in `gold/multicharge/v2.json`: privacy
 
 The 30 posts are public forum text under CC BY-NC-SA 4.0 (non-commercial, share-alike, attribution to the ILSIC authors). The scrub removes emails, URLs, runs of 7 or more digits, titled names, `Name:` labels and IFSC codes. Untitled names, places and company names can remain, so the file must not leave the private repository.
+
+### ILSIC layperson train split (2026-10-16, slice 6)
+
+`ilsic/FT-Layman-train.jsonl.xz`: ILSIC (Law-AI/ilsic), Google Drive folder `Layman-new-dataset`. 6,465 posts, fields `instruction` and `answer`. 1,749,944 bytes. SHA-256 `6f998e08b0488c94f096db85395fac1a2f21331f1c2348aaee93d27c7a55a0d8`. CC BY-NC-SA 4.0, non-commercial. Gitignored under `data/raw/`. It names 118 distinct IPC sections (98 with at least 5 posts, 46 with at least 20), 63 of them in the 98-section ILSI label vocabulary. All 30 sections cited in `gold/multicharge/v2.json` appear in it, against 19 in the ILSI vocabulary. Approved by the owner for download on 2026-10-16; the dev split was not downloaded.
