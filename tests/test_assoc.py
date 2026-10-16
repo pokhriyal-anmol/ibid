@@ -4,6 +4,7 @@ import contextlib
 import hashlib
 import io
 import json
+import lzma
 import shutil
 import sys
 import tempfile
@@ -12,8 +13,11 @@ from pathlib import Path
 
 from ibid import assoc, bench, index
 from ibid.cli import main
+from ibid.parse import Provision
 from test_charges_score import ITEMS, PROVS, charge, item
 
+FIX = Path(__file__).parent / "fixtures"
+V1_FIXTURE_SHA256 = "1588dba2f1832d167dbeecca51d5af3be4b58bd40e9228e3bbeaaa0c16d4a7f5"  # the v1 fit of TRAIN below, taken before the ilsic-lay path existed
 LABELS = {n: f"Section {n} in The Indian Penal Code" for n in range(100, 106)}
 # a3 and m1 are the interesting rows: a3 has two labels; m1 is a held-out set id and must never be counted.
 TRAIN = [("a1", ["The murder of a man.", "Knife knife!"], [100]), ("a2", ["theft of a purse"], [101]),
@@ -38,7 +42,8 @@ class AssocTest(unittest.TestCase):
     def setUp(self):
         self.tmp = Path(tempfile.mkdtemp())
         self.addCleanup(shutil.rmtree, self.tmp)
-        index.build(str(self.tmp / "i.sqlite"), PROVS, []).close()
+        extra = [Provision(f"IPC {n}", "invented", None, ()) for n in ("34", "149", "120B")]  # in the index, yet never labels
+        index.build(str(self.tmp / "i.sqlite"), PROVS + extra, []).close()
         (self.tmp / "labels.json").write_text(json.dumps({v: i for i, v in enumerate(LABELS.values())}))
         self.set = self.tmp / "set.json"
         self.set.write_text(json.dumps({"version": "t", "created": "2026-10-12", "licence_note": "invented", "label_policy": "invented", "items": ITEMS}))
@@ -92,6 +97,49 @@ class AssocTest(unittest.TestCase):
         self.assertEqual(a.read_bytes(), b.read_bytes())
         other = self.write_split("train2.jsonl", [(i, [t.replace("purse", "pursf") for t in ts], ls) for i, ts, ls in TRAIN])
         self.assertNotEqual(bench.sha256(str(self.fit("c.json", other))), bench.sha256(str(a)))
+
+    def fit_lay(self, out="v2.json", train=None, split=None, set_rows=(0, 2), expect=0):
+        s = self.tmp / "lay-set.json"
+        s.write_text(json.dumps({"items": [{"id": f"x{r}", "source": f"ILSIC Layman test split, row {r}"} for r in set_rows]}))
+        err = self.cli("assoc", "fit", "--source", "ilsic-lay", "--train", str(train or FIX / "ilsic-lay-train.jsonl"),
+                       "--holdout-split", str(split or FIX / "ilsic-lay-split.jsonl"), "--holdout-set", str(s),
+                       "--min-posts", "2", "--index", str(self.tmp / "i.sqlite"), "--out", str(self.tmp / out), expect=expect)
+        return self.tmp / out if expect == 0 else err
+
+    def test_ilsic_lay_header_counts_equal_hand_computed(self):
+        m = json.loads(self.fit_lay().read_text())
+        h = m["header"]
+        self.assertEqual((h["layer"], h["layer_version"], h["min_posts"], h["posts_read"], h["posts_fitted"]), ("assoc-nb", "v2", 2, 10, 5))
+        self.assertEqual(h["posts_dropped"], {"held_out": 1, "no_offence_section": 3, "none_above_threshold": 1})
+        self.assertEqual((h["other_act_citations_dropped"], h["vocabulary_size"]), (2, 2))
+        self.assertEqual((h["train_sha256"], h["holdout_split_sha256"]),
+                         (bench.sha256(str(FIX / "ilsic-lay-train.jsonl")), bench.sha256(str(FIX / "ilsic-lay-split.jsonl"))))
+        self.assertEqual(m["docs"], {"IPC 100": 3, "IPC 101": 3})  # 102 has one post, under the threshold; 34, 149, 120B, CrPC never labels
+        self.assertEqual(m["counts"]["IPC 100"], {"murder": 3, "man": 1, "knife": 2, "theft": 1})
+        self.assertEqual(m["counts"]["IPC 101"], {"theft": 4, "purse": 2, "murder": 1})
+
+    def test_ilsic_lay_post_equal_to_a_split_post_is_not_counted(self):
+        m = json.loads(self.fit_lay().read_text())
+        self.assertNotIn("stole", m["counts"]["IPC 101"], "held-out post 'A stranger  stole my PURSE' was fitted")
+        self.assertEqual(m["header"]["posts_dropped"]["held_out"], 1)
+
+    def test_ilsic_lay_refuses_a_set_item_whose_source_row_is_not_in_the_split(self):
+        self.assertIn("source row", self.fit_lay(set_rows=(0, 3), expect=1))
+
+    def test_ilsic_lay_fit_is_byte_identical_reads_xz_and_a_changed_byte_changes_the_hash(self):
+        a, b = self.fit_lay("a.json"), self.fit_lay("b.json")
+        self.assertEqual(a.read_bytes(), b.read_bytes())
+        raw = (FIX / "ilsic-lay-train.jsonl").read_bytes()
+        xz = self.tmp / "train.jsonl.xz"
+        xz.write_bytes(lzma.compress(raw))
+        self.assertEqual(json.loads(self.fit_lay("x.json", train=xz).read_text())["counts"], json.loads(a.read_text())["counts"])
+        bad = self.tmp / "train2.jsonl"
+        bad.write_bytes(raw.replace(b"cheating", b"cheatinf"))
+        self.assertNotEqual(json.loads(self.fit_lay("c.json", train=bad).read_text())["header"]["train_sha256"],
+                            json.loads(a.read_text())["header"]["train_sha256"])
+
+    def test_v1_model_on_the_fixture_is_unchanged(self):
+        self.assertEqual(bench.sha256(str(self.fit())), V1_FIXTURE_SHA256)
 
     def test_layer_imports_only_the_standard_library_and_ibid(self):
         allowed = set(sys.stdlib_module_names) | {"ibid"}

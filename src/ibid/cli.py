@@ -160,7 +160,11 @@ def main(argv: list[str] | None = None) -> int:
     ci.add_argument("--out", required=True)
     asc = sub.add_parser("assoc").add_subparsers(dest="assoc_cmd", required=True)
     af = asc.add_parser("fit", help="route B: fit the naive-Bayes layer on a train split minus the held-out set's ids")
+    af.add_argument("--source", choices=("ilsi", "ilsic-lay"), default="ilsi")
     af.add_argument("--train", required=True)
+    af.add_argument("--holdout-split", help="ilsic-lay: the Layman test split file")
+    af.add_argument("--min-posts", type=int, default=5)
+    af.add_argument("--index", default="data/index/ibid.sqlite")
     af.add_argument("--holdout-set", required=True)
     af.add_argument("--labels", default="data/raw/lesicin/label_vocab.json")
     af.add_argument("--out", required=True)
@@ -265,6 +269,11 @@ def main(argv: list[str] | None = None) -> int:
     if a.cmd == "assoc":
         from ibid import assoc
         if a.assoc_cmd == "fit":
+            if a.source == "ilsic-lay":
+                if not a.holdout_split:
+                    print("error: --holdout-split is required with --source ilsic-lay", file=sys.stderr)
+                    return 1
+                return assoc.fit_ilsic_lay(a.train, a.holdout_split, a.holdout_set, a.index, a.min_posts, a.out)
             return assoc.fit(a.train, a.holdout_set, a.labels, a.out)
         if a.assoc_cmd == "predict":
             return assoc.predict(a.model, a.set, a.concordance, a.index, a.out)
