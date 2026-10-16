@@ -133,6 +133,7 @@ def main(argv: list[str] | None = None) -> int:
     chc.add_argument("--act", choices=("ipc", "bns"), required=True)
     chc.add_argument("--out", required=True)
     chc.add_argument("--ledger", default=None, help="default: <set>.ledger.json beside the set")
+    chc.add_argument("--rescore", action="store_true", help="with --predictions: score a layer version again on a set and Act it was already scored on")
     che = chs.add_parser("export-baseline", help="write the frozen rule's two output rules as predictions files")
     che.add_argument("--set", required=True)
     che.add_argument("--index", default="data/index/ibid.sqlite")
@@ -160,7 +161,11 @@ def main(argv: list[str] | None = None) -> int:
     ci.add_argument("--out", required=True)
     asc = sub.add_parser("assoc").add_subparsers(dest="assoc_cmd", required=True)
     af = asc.add_parser("fit", help="route B: fit the naive-Bayes layer on a train split minus the held-out set's ids")
+    af.add_argument("--source", choices=("ilsi", "ilsic-lay"), default="ilsi")
     af.add_argument("--train", required=True)
+    af.add_argument("--holdout-split", help="ilsic-lay: the Layman test split file")
+    af.add_argument("--min-posts", type=int, default=5)
+    af.add_argument("--index", default="data/index/ibid.sqlite")
     af.add_argument("--holdout-set", required=True)
     af.add_argument("--labels", default="data/raw/lesicin/label_vocab.json")
     af.add_argument("--out", required=True)
@@ -253,7 +258,7 @@ def main(argv: list[str] | None = None) -> int:
         if a.charges_cmd == "subquery":
             return charges.subquery(a.set, a.subqueries, a.index, a.frozen_rule, a.per_subquery, a.out)
         if a.charges_cmd == "score" and a.predictions:
-            return charges.score_predictions(a.set, a.index, a.predictions, a.act, a.out, a.ledger)
+            return charges.score_predictions(a.set, a.index, a.predictions, a.act, a.out, a.ledger, a.rescore)
         if a.charges_cmd == "score":
             return charges.score(a.set, a.index, a.frozen_rule, a.act, a.out, a.ledger)
         if a.charges_cmd == "compare":
@@ -265,6 +270,11 @@ def main(argv: list[str] | None = None) -> int:
     if a.cmd == "assoc":
         from ibid import assoc
         if a.assoc_cmd == "fit":
+            if a.source == "ilsic-lay":
+                if not a.holdout_split:
+                    print("error: --holdout-split is required with --source ilsic-lay", file=sys.stderr)
+                    return 1
+                return assoc.fit_ilsic_lay(a.train, a.holdout_split, a.holdout_set, a.index, a.min_posts, a.out)
             return assoc.fit(a.train, a.holdout_set, a.labels, a.out)
         if a.assoc_cmd == "predict":
             return assoc.predict(a.model, a.set, a.concordance, a.index, a.out)
