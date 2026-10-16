@@ -153,8 +153,10 @@ def predict(model_path: str, set_path: str, concordance_path: str, index_path: s
         ipc = model.predict(item["query"])
         hits = [h for c in ipc for h in entries if h["verified"] and c in h["ipc"]]
         out[item["id"]] = {"ipc": ipc, "bns": list(dict.fromkeys(b for h in hits for b in h["bns"]))}
-    doc = {"layer": LAYER, "layer_version": LAYER_VERSION, "set_sha256": hashlib.sha256(raw).hexdigest(),
-           "inputs": {"model": model.sha256, "concordance": bench.sha256(concordance_path)}, "items": out}
+    h = model.header
+    doc = {"layer": LAYER, "layer_version": h["layer_version"], "set_sha256": hashlib.sha256(raw).hexdigest(),
+           "inputs": {"model": model.sha256, "train_sha256": h["train_sha256"], "concordance": bench.sha256(concordance_path),
+                      "train_source": "ilsic-lay" if h["layer_version"] == "v2" else "ilsi"}, "items": out}
     Path(out_path).write_text(json.dumps(doc, indent=2, sort_keys=True) + "\n")
     return 0
 

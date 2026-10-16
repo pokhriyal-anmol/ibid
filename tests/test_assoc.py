@@ -160,6 +160,23 @@ class AssocTest(unittest.TestCase):
                  "--act", "ipc", "--out", str(self.tmp / "s.json"))
         self.assertEqual(json.loads((self.tmp / "s.json").read_text())["layer"], "assoc-nb")
 
+    def predict_scored(self, model, name):
+        self.cli("assoc", "predict", "--model", str(model), "--set", str(self.set), "--concordance", str(self.tmp / "conc.json"),
+                 "--index", str(self.tmp / "i.sqlite"), "--out", str(self.tmp / f"{name}.json"))
+        self.cli("charges", "score", "--set", str(self.set), "--index", str(self.tmp / "i.sqlite"), "--predictions", str(self.tmp / f"{name}.json"),
+                 "--act", "ipc", "--out", str(self.tmp / f"{name}-s.json"), "--ledger", str(self.tmp / f"{name}-l.json"))
+        return json.loads((self.tmp / f"{name}.json").read_text())
+
+    def test_predict_names_the_layer_version_and_train_source_from_the_model_header(self):
+        model = self.fit_lay()
+        p = self.predict_scored(model, "p2")  # the scorer validated this file
+        self.assertEqual((p["layer"], p["layer_version"], p["inputs"]["model"]), ("assoc-nb", "v2", bench.sha256(str(model))))
+        self.assertEqual((p["inputs"]["train_sha256"], p["inputs"]["train_source"]),
+                         (bench.sha256(str(FIX / "ilsic-lay-train.jsonl")), "ilsic-lay"))
+        p1 = self.predict_scored(self.fit(), "p1")
+        self.assertEqual((p1["layer_version"], p1["inputs"]["train_source"]), ("v1", "ilsi"))
+        self.assertEqual(p1["inputs"]["train_sha256"], bench.sha256(str(self.train)))
+
     def eval(self, split, *extra, expect=0, ledger="ledger.json", out="e.json"):
         err = self.cli("assoc", "eval", "--model", str(self.tmp / "m.json"), "--split", str(split), "--manifest", str(self.tmp / "man.json"),
                        "--ledger", str(self.tmp / ledger), "--out", str(self.tmp / out), *extra, expect=expect)
