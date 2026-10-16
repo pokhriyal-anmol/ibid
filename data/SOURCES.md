@@ -35,3 +35,7 @@ Not downloaded: the ILSIC `court-dataset` and `synthetic-layman-dataset` folders
 ### CAPT correspondence table: licence and use (ticket 13)
 
 Every page of `capt/comparison_summary_BNS_to_IPC.pdf` carries the line "© Anil Kishore Yadav, IPS, Director, CAPT Bhopal". No licence is stated, so the file stays under `data/raw/` and is not committed. Ibid reads it with `pdftotext -layout` and `ibid concordance from-table`, and keeps only section numbers and a row reference as evidence, not the table's comparison notes. Reports call it a personal compilation and not an official Ministry of Home Affairs publication.
+
+### ILSIC-Lay posts in `gold/multicharge/v2.json`: privacy
+
+The 30 posts are public forum text under CC BY-NC-SA 4.0 (non-commercial, share-alike, attribution to the ILSIC authors). The scrub removes emails, URLs, runs of 7 or more digits, titled names, `Name:` labels and IFSC codes. Untitled names, places and company names can remain, so the file must not leave the private repository.

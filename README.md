@@ -49,7 +49,10 @@ Retrieval depends only on the raw query ([ADR 0001](docs/adr/0001-retrieval-inde
 | Slice | What it delivers | State |
 |---|---|---|
 | 1 | Parse both Acts, resolve cross-references, score a frozen gold set, byte-identical results | Done |
-| 2 | Public statute-identification benchmark (ILSI) | Planned, see `.scratch/slice-2/` |
+| 2 | Public statute-identification benchmark (ILSI), frozen rule v2.11 | Done |
+| 3 | Multi-charge sets and layers: cited sections, learned association, sub-queries. Concordance v3 from a published table | Done |
+| 4 | `ibid mcp`, a stdio MCP server over the deterministic lookups | Done |
+| 5 | MCP gaps from a real client: concordance fallback to the section, optional direction, adjacent sections in search | Done |
 
 What slice 1 measured on 2026-10-11:
 
@@ -61,6 +64,16 @@ What slice 1 measured on 2026-10-11:
 | Concordance | 66 entries. 12 are served as verified (8 human-checked, 4 agent-checked at the owner's request). The other 54 answer "no verified concordance" |
 | Baseline score | 45 of 45 |
 | Two scored runs | byte-identical |
+
+What slices 2 and 3 measured on 2026-10-13 (details in [results/layer-comparison.md](results/layer-comparison.md) and [results/multicharge-v2-report.md](results/multicharge-v2-report.md)):
+
+| Measure | Baseline (model-free) | Learned association layer |
+|---|---|---|
+| ILSI test, micro-F1 over 100 labels | 9.6% | 35.4% |
+| Layperson forum posts (set v2), IPC charges found | 4.8% to 6.0% of 84 | 39.3% |
+| Layperson forum posts (set v2), BNS charges found | 6.2% to 9.9% of 81 | 48.1% |
+
+These are measurements, not claims. The forum labels are extracted from lawyers' replies and are incomplete, so recall is meaningful and precision is not. The association layer is opt-in (ADR 0005), was fitted on the same corpus family, and its figures flatter it. Concordance v3 serves 348 entries from a published table, up from 12, and no lawyer has reviewed any label or mapping.
 
 The 45 of 45 is a ceiling, not a quality claim. The gold set is small and its conventions were settled with the system in view. Its job is to prove the harness works and can fail. Later layers (embeddings, graph) must beat this baseline on a harder set to stay.
 
@@ -106,6 +119,7 @@ uv run python -m unittest discover -s tests
 
 - The IPC text is the WIPO Lex copy consolidated to Act 34 of 2019, not the 1860 original.
 - Concordance is a legal judgement. Treat the output as a research aid, not legal advice, and have a lawyer review correspondence before relying on it or publishing a score.
+- Set v2 holds forum posts from ILSIC-Lay (CC BY-NC-SA 4.0, non-commercial) with a partial scrub of personal names. It must stay in the private repository.
 - The reuse terms of the source texts are not confirmed. The repository is private for that reason, and it holds provision text in its gold and concordance data.
 
 ## License
