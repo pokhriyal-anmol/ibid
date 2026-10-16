@@ -24,12 +24,13 @@ class PredictionsTest(_Base):
                  "m4": {"ipc": ["IPC 101"], "bns": ["BNS 203"]}}}  # m6 missing: no predictions
         return {**p, **over}
 
-    def run_pred(self, preds: dict, act="ipc", out="p.json", expect=0, name="preds.json"):
+    def run_pred(self, preds: dict, act="ipc", out="p.json", expect=0, name="preds.json", rescore=True, ledger=None):
         (self.tmp / name).write_text(json.dumps(preds))
         err = io.StringIO()
         with contextlib.redirect_stderr(err):
             code = main(["charges", "score", "--set", str(self.tmp / "set.json"), "--index", str(self.tmp / "i.sqlite"),
-                         "--predictions", str(self.tmp / name), "--act", act, "--out", str(self.tmp / out)])
+                         "--predictions", str(self.tmp / name), "--act", act, "--out", str(self.tmp / out), *(["--rescore"] if rescore else []),
+                         *(["--ledger", str(self.tmp / ledger)] if ledger else [])])
         self.assertEqual(code, expect, err.getvalue())
         return json.loads((self.tmp / out).read_text()) if expect == 0 else err.getvalue()
 
@@ -90,6 +91,20 @@ class PredictionsTest(_Base):
         r = self.run_pred(two, out="c.json")["scorings_of_this_layer_version"]
         self.assertEqual(len(r), 2)
         self.assertNotEqual(r[0]["scores"], r[1]["scores"])
+
+    def test_a_second_scoring_of_the_same_version_on_the_same_set_and_act_is_refused_unless_rescore(self):
+        self.run_pred(self.preds(), out="a.json", rescore=False)
+        ledger, out = (self.tmp / "set.ledger.json"), (self.tmp / "a.json")
+        before = (ledger.read_bytes(), out.read_bytes())
+        err = self.run_pred(self.preds({"m1": {"ipc": [], "bns": []}}), out="a.json", expect=1, rescore=False)
+        self.assertIn("hand v1", err)
+        self.assertEqual((ledger.read_bytes(), out.read_bytes()), before)
+        self.run_pred(self.preds(), "bns", "b.json", rescore=False)  # other Act
+        self.run_pred(self.preds(), out="c.json", rescore=False, ledger="other.ledger.json")  # other ledger, as another set has
+        self.run_pred(self.preds(layer_version="v2"), out="d.json", rescore=False)  # other layer version
+        two = self.preds({"m1": {"ipc": [], "bns": []}})
+        self.assertEqual(len(self.run_pred(two, out="e.json", rescore=True)["scorings_of_this_layer_version"]), 2)
+        self.assertEqual(len([e for e in json.loads(ledger.read_text()) if (e["layer_version"], e["act"]) == ("v1", "IPC")]), 2)
 
 
 for _n in [n for n in dir(_Base) if n.startswith("test_")]:
