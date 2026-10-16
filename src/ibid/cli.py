@@ -133,6 +133,7 @@ def main(argv: list[str] | None = None) -> int:
     chc.add_argument("--act", choices=("ipc", "bns"), required=True)
     chc.add_argument("--out", required=True)
     chc.add_argument("--ledger", default=None, help="default: <set>.ledger.json beside the set")
+    chc.add_argument("--rescore", action="store_true", help="with --predictions: score a layer version again on a set and Act it was already scored on")
     che = chs.add_parser("export-baseline", help="write the frozen rule's two output rules as predictions files")
     che.add_argument("--set", required=True)
     che.add_argument("--index", default="data/index/ibid.sqlite")
@@ -253,7 +254,7 @@ def main(argv: list[str] | None = None) -> int:
         if a.charges_cmd == "subquery":
             return charges.subquery(a.set, a.subqueries, a.index, a.frozen_rule, a.per_subquery, a.out)
         if a.charges_cmd == "score" and a.predictions:
-            return charges.score_predictions(a.set, a.index, a.predictions, a.act, a.out, a.ledger)
+            return charges.score_predictions(a.set, a.index, a.predictions, a.act, a.out, a.ledger, a.rescore)
         if a.charges_cmd == "score":
             return charges.score(a.set, a.index, a.frozen_rule, a.act, a.out, a.ledger)
         if a.charges_cmd == "compare":

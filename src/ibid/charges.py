@@ -199,7 +199,7 @@ CONVENTIONS = {
 FIGURES = ("recall", "all_charges_hit", "mean_predictions")
 
 
-def score_predictions(set_path: str, index_path: str, predictions_path: str, act: str, out_path: str, ledger_path: str | None = None) -> int:
+def score_predictions(set_path: str, index_path: str, predictions_path: str, act: str, out_path: str, ledger_path: str | None = None, rescore: bool = False) -> int:
     """`ibid charges score --predictions`: any layer's predictions file, scored by the same function as the frozen rule."""
     try:
         raw, items, db = _load_set(set_path, index_path)
@@ -210,12 +210,17 @@ def score_predictions(set_path: str, index_path: str, predictions_path: str, act
     except (OSError, KeyError, ValueError, TypeError, AttributeError) as e:
         print(f"error: {e}", file=sys.stderr)
         return 1
+    ledger_file = ledger_path or str(Path(set_path).with_suffix(".ledger.json"))
+    layer, version = data["layer"], data["layer_version"]
+    if not rescore and any((e.get("layer"), e.get("layer_version"), e.get("set_sha256"), e.get("act")) == (layer, version, set_sha, act.upper())
+                           for e in bench.read_ledger(ledger_file)):
+        print(f"error: {layer} {version} is already scored on this set and Act in {ledger_file}; pass --rescore to score it again", file=sys.stderr)
+        return 1
     ix = bm25.Index(db, bench.DEFAULT_KNOBS["levels"], bench.DEFAULT_KNOBS["stem"])
     out, excluded = _score_output(items, act, {i: e[act] for i, e in data["items"].items()}, ix)
-    layer, version = data["layer"], data["layer_version"]
     entry = {"set_sha256": set_sha, "act": act.upper(), "index_sha256": bench.sha256(index_path), "layer": layer,
              "layer_version": version, "inputs": data["inputs"], "scores": {"output": {m: out[m] for m in FIGURES}}}
-    ledger = _write_ledger(ledger_path or str(Path(set_path).with_suffix(".ledger.json")), entry)
+    ledger = _write_ledger(ledger_file, entry)
     results = {
         "inputs": {"set_sha256": set_sha, "index_sha256": entry["index_sha256"], "layer": data["inputs"]},
         "act": act.upper(), "layer": layer, "layer_version": version, "parser_version": bench.PARSER_VERSION,
