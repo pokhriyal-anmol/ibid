@@ -1,3 +1,11 @@
 # Owner decisions
 
 Standing answers to questions the workflows could not settle. Newest last. Each entry: Decision, Applies when, Why, Source (owner-stated or proxy-inferred), Date. Only owner-stated entries are binding.
+
+## D-001: A neighbour's heading is the opening of its text when a section has no title
+
+Decision: Option 1. A BNS neighbour's heading in `search` with `adjacent` is the first line of the section text, cut at the first em dash, capped at 100 characters. Owner: "the default was the right pick".
+Applies when: a tool must show a heading for a section whose source has no real title. Prefer showing a truncated opening over null, until real BNS headings are parsed.
+Why: not stated.
+Source: owner-stated
+Date: 2026-10-16
