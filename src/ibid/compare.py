@@ -43,12 +43,17 @@ def _row_cells(r: dict, base: dict | None) -> list[str]:
 
 
 def _caveats(layer: str, version: str, rows: list[dict], scorings: dict, inputs: dict, named: dict, counts: dict) -> list[str]:
-    """`named` maps a set hash to (queries naming sections, queries, BNS labels come from the concordance); `counts` is keyed by (set, Act, concordance)."""
+    """`named` maps a set hash to (queries naming sections, queries, BNS labels come from the concordance, items come from ILSIC-Lay); `counts` is keyed by (set, Act, concordance)."""
     out = [f"### {layer} {version}", ""]
     for r in sorted({x["set"]: x for x in rows}.values(), key=lambda x: x["set_name"]):
-        n, total, _ = named[r["set"]]
+        n, total, _, lay = named[r["set"]]
         out.append(f"- Set {r['set_name']}: label basis {json.dumps(r['basis'], sort_keys=True)}; {n} of {total} queries name their sections, "
                    "so a layer that reads cited sections is scored on text that states the answer.")
+        if "lawyer-answer-extracted" in r["basis"]:
+            out.append(f"- Set {r['set_name']}: its labels are incomplete (the corpus's 5.46 against 2.40 statutes per query), so recall is meaningful and precision is not.")
+        if inputs.get("train_source") == "ilsic-lay" and lay:
+            out.append(f"- Set {r['set_name']}: this layer was fitted on posts from the same corpus and forum, so the score is in-distribution, "
+                       "while the test posts themselves were held out.")
     if "concordance" in inputs:
         for r in sorted({x["set"]: x for x in rows}.values(), key=lambda x: x["set_name"]):
             if named[r["set"]][2]:
@@ -94,7 +99,8 @@ def compare(results: list[str], sets: list[str], ilsi: list[str], out_path: str)
             raw = Path(p).read_bytes()
             qs = [i["query"] for i in json.loads(raw)["items"]]
             policy = json.loads(raw).get("label_policy", "")
-            named = (sum(bool(SECTION_NUMBER.search(q)) for q in qs), len(qs), "concordance" in policy.lower())
+            named = (sum(bool(SECTION_NUMBER.search(q)) for q in qs), len(qs), "concordance" in policy.lower(),
+                     any("ILSIC" in i.get("source", "") for i in json.loads(raw)["items"]))
             set_info[hashlib.sha256(raw).hexdigest()] = (Path(p).stem, named)
         rows, layers = [], {}
         for p in results:

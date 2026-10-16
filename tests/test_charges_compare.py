@@ -21,25 +21,27 @@ class CompareTest(unittest.TestCase):
     def setUp(self):
         self.tmp = Path(tempfile.mkdtemp())
         self.sets = {}
-        for name, queries in (("setA", ["he caused harm under section 302", "he took the bag"]), ("setB", ["a quarrel", "a theft"])):
-            p = self.tmp / f"{name}.json"
-            policy = "BNS sections come from verified concordance entries only." if name == "setB" else "Drafted by an agent."
-            p.write_text(json.dumps({"label_policy": policy, "items": [{"id": f"{name}{n}", "query": q} for n, q in enumerate(queries)]}))
-            self.sets[name] = (p, hashlib.sha256(p.read_bytes()).hexdigest())
+        self.make_set("setA", ["he caused harm under section 302", "he took the bag"], "Drafted by an agent.")
+        self.make_set("setB", ["a quarrel", "a theft"], "BNS sections come from verified concordance entries only.")
 
-    def baseline(self, name, act, topk, thr, extra=()):
+    def make_set(self, name, queries, policy, source="LeSICiN release"):
+        p = self.tmp / f"{name}.json"
+        p.write_text(json.dumps({"label_policy": policy, "items": [{"id": f"{name}{n}", "query": q, "source": source} for n, q in enumerate(queries)]}))
+        self.sets[name] = (p, hashlib.sha256(p.read_bytes()).hexdigest())
+
+    def baseline(self, name, act, topk, thr, extra=(), labels=None):
         v = "v2.11"
         rule = {"name": "query-rule", "version": v, "params_sha256": "r" * 64}
         entries = [{"rule": rule, "scores": {"top_k": topk, "threshold": thr}}, *extra]
         return self.write(f"base-{name}-{act}", {
-            "inputs": {"set_sha256": self.sets[name][1], "index_sha256": INDEX}, "act": act, "rule": rule, "label_basis": LABELS,
+            "inputs": {"set_sha256": self.sets[name][1], "index_sha256": INDEX}, "act": act, "rule": rule, "label_basis": labels or LABELS,
             "top_k": figs(topk), "threshold": figs(thr), "scorings_of_this_rule_version": entries})
 
-    def layer(self, layer, name, act, out, inputs, extra=(), counts=None):
+    def layer(self, layer, name, act, out, inputs, extra=(), counts=None, version="v1", labels=None):
         entries = [{"scores": {"output": out}}, *[{"scores": {"output": e}} for e in extra]]
-        return self.write(f"{layer}-{name}-{act}", {
+        return self.write(f"{layer}-{version}-{name}-{act}", {
             "inputs": {"set_sha256": self.sets[name][1], "index_sha256": INDEX, "layer": inputs}, "act": act, "layer": layer,
-            "layer_version": "v1", "label_basis": LABELS, "output": figs(out), "layer_counts": counts or {}, "scorings_of_this_layer_version": entries})
+            "layer_version": version, "label_basis": labels or LABELS, "output": figs(out), "layer_counts": counts or {}, "scorings_of_this_layer_version": entries})
 
     def write(self, stem, d):
         p = self.tmp / f"{stem}.json"
@@ -130,6 +132,26 @@ class CompareTest(unittest.TestCase):
         self.assertIn("recall 50.0", p)
         self.assertIn("recall 45.0", p)
         self.assertIn("1 scoring of this layer version on set setB", p)
+
+    def test_label_incompleteness_and_in_distribution_caveats_are_generated_from_the_inputs(self):
+        t = {"recall": 0.5, "all_charges_hit": 0.0, "mean_predictions": 5.0}
+        ext = {"lawyer-answer-extracted": 2}
+        self.make_set("setC", ["my PF is not refunded", "landlord kept my deposit"], "Extracted.", source="ILSIC (Law-AI/ilsic) Layman test split")
+        res = [self.baseline("setA", "IPC", t, t), self.baseline("setC", "IPC", t, t, labels=ext)]
+        for v, src in (("v1", "ilsi"), ("v2", "ilsic-lay")):
+            inp = {"model": v * 32, "train_source": src}
+            res += [self.layer("assoc-nb", "setA", "IPC", t, inp, version=v), self.layer("assoc-nb", "setC", "IPC", t, inp, version=v, labels=ext)]
+        res.append(self.layer("assoc-nb", "setA", "IPC", t, {"model": "z" * 64, "train_source": "ilsic-lay"}, version="v3"))
+        text = self.run_compare(res, sets=("setA", "setC"))
+        sec = {p.split("\n")[0]: p for p in text.split("### ")[1:]}
+        incomplete, fitted = "labels are incomplete", "fitted on posts from the same corpus and forum"
+        self.assertEqual([incomplete in sec[k] for k in ("baseline v2.11", "assoc-nb v1", "assoc-nb v2")], [True] * 3)
+        self.assertEqual([fitted in sec[k] for k in ("baseline v2.11", "assoc-nb v1", "assoc-nb v2", "assoc-nb v3")], [False, False, True, False])
+        self.assertIn("5.46 against 2.40", sec["assoc-nb v2"])
+        self.assertIn("held out", sec["assoc-nb v2"])
+        self.assertNotIn(incomplete, sec["assoc-nb v3"])  # set A only: no extracted labels
+        rows = [ln.split("|")[1:3] for ln in text.splitlines() if ln.startswith("| assoc-nb") and "| setC | " + self.sets["setC"][1][:12] in ln]
+        self.assertEqual([[c.strip() for c in r] for r in rows], [["assoc-nb", "v1"], ["assoc-nb", "v2"]])
 
     def test_two_runs_are_byte_identical(self):
         a = self.run_compare(self.fixture(), out="a.md")
