@@ -1,0 +1,10 @@
+{"instruction": "murder man knife", "answer": ["Section 100 of The Indian Penal Code, 1860", "Section 34 of The Indian Penal Code, 1860", "Section 156 of The Code of Criminal Procedure, 1973"]}
+{"instruction": "murder knife", "answer": ["Section 100 of The Indian Penal Code, 1860"]}
+{"instruction": "theft purse", "answer": ["Section 101 of The Indian Penal Code, 1860"]}
+{"instruction": "theft theft purse", "answer": ["Section 101 of The Indian Penal Code, 1860", "Section 120B of The Indian Penal Code, 1860"]}
+{"instruction": "cheating once", "answer": ["Section 102 of The Indian Penal Code, 1860"]}
+{"instruction": "A stranger  stole my PURSE", "answer": ["Section 101 of The Indian Penal Code, 1860"]}
+{"instruction": "no section here", "answer": ["Section 156 of The Code of Criminal Procedure, 1973"]}
+{"instruction": "only conspiracy", "answer": ["Section 120B of The Indian Penal Code, 1860", "Section 149 of The Indian Penal Code, 1860"]}
+{"instruction": "unknown section post", "answer": ["Section 9999 of The Indian Penal Code, 1860"]}
+{"instruction": "murder theft", "answer": ["Section 100 of The Indian Penal Code, 1860", "Section 101 of The Indian Penal Code, 1860"]}
