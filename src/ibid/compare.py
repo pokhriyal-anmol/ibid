@@ -97,10 +97,11 @@ def compare(results: list[str], sets: list[str], ilsi: list[str], out_path: str)
         set_info = {}
         for p in sets:
             raw = Path(p).read_bytes()
-            qs = [i["query"] for i in json.loads(raw)["items"]]
-            policy = json.loads(raw).get("label_policy", "")
+            doc = json.loads(raw)
+            qs = [i["query"] for i in doc["items"]]
+            policy = doc.get("label_policy", "")
             named = (sum(bool(SECTION_NUMBER.search(q)) for q in qs), len(qs), "concordance" in policy.lower(),
-                     any("ILSIC" in i.get("source", "") for i in json.loads(raw)["items"]))
+                     any("ILSIC" in i.get("source", "") for i in doc["items"]))
             set_info[hashlib.sha256(raw).hexdigest()] = (Path(p).stem, named)
         rows, layers = [], {}
         for p in results:

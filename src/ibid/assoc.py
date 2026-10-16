@@ -79,7 +79,7 @@ def fit_ilsic_lay(train_path: str, split_path: str, holdout_set: str, index_path
         test_posts = {_same_post(r["instruction"]) for r in split}
         db = sqlite3.connect(f"file:{index_path}?mode=ro", uri=True)
         drop = dict.fromkeys(("held_out", "no_offence_section", "none_above_threshold"), 0)
-        other_act = 0
+        other_act = absent = 0
         kept: list[tuple[int, set[str]]] = []
         for n, row in enumerate(train):
             if _same_post(row["instruction"]) in test_posts:
@@ -87,7 +87,9 @@ def fit_ilsic_lay(train_path: str, split_path: str, holdout_set: str, index_path
                 continue
             other_act += len({a for a in row["answer"] if not IPC_CITE.fullmatch(a)})
             cites = {f"IPC {s}" for a in row["answer"] for s in IPC_CITE.findall(a)} - NOT_OFFENCES
-            cites = {c for c in cites if index.lookup(db, c)}  # a Citation absent from the index is dropped
+            present = {c for c in cites if index.lookup(db, c)}  # a Citation absent from the index is dropped and counted
+            absent += len(cites) - len(present)
+            cites = present
             if cites:
                 kept.append((n, cites))
             else:
@@ -117,6 +119,7 @@ def fit_ilsic_lay(train_path: str, split_path: str, holdout_set: str, index_path
     header = {"layer": LAYER, "layer_version": "v2", "top_k": TOP_K, "train_sha256": bench.sha256(train_path),
               "holdout_split_sha256": bench.sha256(split_path), "min_posts": min_posts, "posts_read": len(train),
               "posts_fitted": fitted, "posts_dropped": drop, "other_act_citations_dropped": other_act,
+              "index_absent_citations_dropped": absent,
               "vocabulary_size": len(vocab), "tokenisation": "lower-case, letters only, 44 base stop words, no stemming"}
     Path(out_path).write_text(json.dumps({"header": header, "docs": docs, "counts": counts}, sort_keys=True, separators=(",", ":")) + "\n")
     return 0
