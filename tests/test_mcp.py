@@ -5,7 +5,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from ibid import concordance, index
+from ibid import concordance, headings, index, mcp
 from ibid.ipc import parse_ipc
 from ibid.parse import parse_bns
 from ibid.xref import extract
@@ -167,6 +167,23 @@ class ServerTest(unittest.TestCase):
         hit = next(h for h in self.adj("criminal breach of trust") if h["citation"] == "IPC 406")
         self.assertEqual(hit["previous"]["citation"], "IPC 405")
         self.assertTrue(hit["previous"]["heading"].startswith("405. Criminal breach of trust"))
+
+    def test_adjacent_uses_real_headings(self):
+        words = index.lookup(self.db, "BNS 84")[0].replace('"', " ").split()[:4]
+        hit = next(h for h in self.adj('"' + " ".join(words) + '"', limit=100) if h["citation"] == "BNS 84")
+        self.assertEqual(hit["previous"]["heading"], "Marriage ceremony fraudulently gone through without lawful marriage.")
+        self.assertEqual(hit["next"]["heading"], "Husband or relative of husband of a woman subjecting her to cruelty.")
+
+    def test_adjacent_falls_back_where_the_sidecar_has_no_heading(self):
+        words = index.lookup(self.db, "BNS 84")[0].replace('"', " ").split()[:4]
+        heads = dict(headings.bns_headings(BNS_PDF))
+        heads["BNS 83"] = None  # the server is given a sidecar with this heading removed
+        msg = {"jsonrpc": "2.0", "id": 1, "method": "tools/call", "params": {"name": "search", "arguments": {"query": '"' + " ".join(words) + '"', "adjacent": True, "limit": 100}}}
+        hits = mcp.handle(self.db, [], msg, heads)["result"]["structuredContent"]["results"]
+        hit = next(h for h in hits if h["citation"] == "BNS 84")
+        self.assertEqual(hit["previous"]["heading"], index.neighbours(self.db, "BNS 84")[0][1])
+        self.assertTrue(hit["previous"]["heading"])
+        self.assertEqual(hit["next"]["heading"], heads["BNS 85"])
 
     def test_adjacent_neighbours_come_from_the_index(self):
         for act in ("IPC", "BNS"):

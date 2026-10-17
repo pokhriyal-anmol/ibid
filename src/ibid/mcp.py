@@ -58,7 +58,7 @@ def call_tool(db, entries: list[dict], name: str, args: object, heads: dict[str,
         if args.get("adjacent"):
             for r in results:
                 prev, nxt = index.neighbours(db, r["citation"])
-                r["previous"], r["next"] = [None if n is None else {"citation": n[0], "heading": n[1]} for n in (prev, nxt)]
+                r["previous"], r["next"] = [None if n is None else {"citation": n[0], "heading": heads.get(n[0]) or n[1]} for n in (prev, nxt)]
         return _tool_result({"results": results})
     if name == "concordance":
         prefix = args["citation"].split(" ")[0].lower()
