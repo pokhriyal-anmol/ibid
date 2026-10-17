@@ -6,6 +6,8 @@ after lowercasing, trimming and stripping one trailing full stop. Nothing else m
 import re
 import sqlite3
 
+from ibid import concordance
+
 PREFIX = "punishment for "
 
 
@@ -31,6 +33,17 @@ def ipc_pairs(db: sqlite3.Connection) -> list[tuple[str, str]]:
     return sorted(pairs, key=lambda p: (_order(p[0]), _order(p[1])))
 
 
-def list_links(db: sqlite3.Connection) -> list[str]:
-    pairs = ipc_pairs(db)
-    return [f"{a} <-> {b}" for a, b in pairs] + [f"IPC pairs: {len(pairs)}"]
+def bns_pairs(entries: list[dict], ipc: list[tuple[str, str]]) -> list[tuple[str, str]]:
+    """Carry each IPC pair to the BNS through verified entries only (`lookup` serves nothing else)."""
+    def served(c: str) -> set[str]:
+        hits = concordance.lookup(entries, c, "ipc", "bns")
+        return set() if hits == concordance.NONE else {b for h in hits for b in h["citations"]}
+    pairs = {tuple(sorted((a, b), key=_order)) for x, y in ipc for a in served(x) for b in served(y) if a != b}
+    return sorted(pairs, key=lambda p: (_order(p[0]), _order(p[1])))
+
+
+def list_links(db: sqlite3.Connection, entries: list[dict]) -> list[str]:
+    ipc = ipc_pairs(db)
+    bns = bns_pairs(entries, ipc)
+    return ([f"{a} <-> {b}" for a, b in ipc] + [f"IPC pairs: {len(ipc)}"]
+            + [f"{a} <-> {b}" for a, b in bns] + [f"BNS pairs: {len(bns)}"])

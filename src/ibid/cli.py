@@ -156,6 +156,7 @@ def main(argv: list[str] | None = None) -> int:
     lk = sub.add_parser("links").add_subparsers(dest="links_cmd", required=True).add_parser(
         "list", help="IPC definition-punishment links derived from headings")
     lk.add_argument("--index", default="data/index/ibid.sqlite")
+    lk.add_argument("--concordance", default="concordance/v3.json")
     ci = sub.add_parser("cited").add_subparsers(dest="cited_cmd", required=True).add_parser(
         "extract", help="route A: sections a query names, mapped to the other Act through verified concordance")
     ci.add_argument("--set", required=True)
@@ -308,8 +309,11 @@ def main(argv: list[str] | None = None) -> int:
     if a.cmd == "links":
         from ibid.links import list_links
         import sqlite3
+        if err := pin_error(a.concordance, Path(a.concordance).read_bytes()):
+            print(err, file=sys.stderr)
+            return 1
         db = sqlite3.connect(a.index)
-        print("\n".join(list_links(db)))
+        print("\n".join(list_links(db, concordance.load(a.concordance, db))))
         return 0
     if a.cmd == "conform":
         from ibid.conform import conform
