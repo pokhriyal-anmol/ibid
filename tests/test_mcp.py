@@ -166,7 +166,7 @@ class ServerTest(unittest.TestCase):
     def test_adjacent_ipc_405_precedes_406(self):
         hit = next(h for h in self.adj("criminal breach of trust") if h["citation"] == "IPC 406")
         self.assertEqual(hit["previous"]["citation"], "IPC 405")
-        self.assertTrue(hit["previous"]["heading"].startswith("405. Criminal breach of trust"))
+        self.assertTrue(hit["previous"]["heading"].startswith("Criminal breach of trust"))
 
     def test_adjacent_uses_real_headings(self):
         words = index.lookup(self.db, "BNS 84")[0].replace('"', " ").split()[:4]
