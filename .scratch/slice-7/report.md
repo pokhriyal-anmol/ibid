@@ -1,15 +1,17 @@
 # Slice 7: the verdict on `links v1`
 
-**Verdict: KEPT as an opt-in output only, under the pooled reading.** Decision 5 of the spec does not say whether recall is pooled. Pooling over Acts and output rules was chosen at report time, after scores existed. Read per set and Act, as `CONTEXT.md` defines the Baseline, the cells below with no newly found charge do not beat it (v2 BNS ties on both output rules, 8 to 8 and 5 to 5). Nothing is wired into `src/ibid/mcp.py`.
+**Verdict: NEGATIVE.** The owner chose the reading on 2026-10-17 (D-002): per-charge recall is compared per set and Act, as `CONTEXT.md` defines the Baseline, summed over the two output rules. The spec left the level open and the first report pooled over Acts, after scores existed; that reading is withdrawn. Nothing is wired into `src/ibid/mcp.py`.
 
 ## The rule applied
 
-Kept only if per-charge recall rises on both multi-charge sets (v1 and v2) and ILSI test micro-F1 does not fall. Recall of a set is the charges found, summed over both Acts and both output rules, against the same count for the baseline.
+Kept only if per-charge recall rises on both multi-charge sets (v1 and v2) and ILSI test micro-F1 does not fall. Recall is the charges found for one set and Act, summed over both output rules, against the same count for the baseline.
 
-| set | baseline found | links v1 found | recall rises |
-| --- | --- | --- | --- |
-| v1 | 17 | 21 | yes |
-| v2 | 22 | 30 | yes |
+| set | Act | baseline found | links v1 found | recall rises |
+| --- | --- | --- | --- | --- |
+| v1 | IPC | 8 | 10 | yes |
+| v1 | BNS | 9 | 11 | yes |
+| v2 | IPC | 9 | 17 | yes |
+| v2 | BNS | 13 | 13 | no |
 
 | output rule | baseline test micro-F1 % | links v1 % | change (points) | micro-F1 |
 | --- | --- | --- | --- | --- |

@@ -75,17 +75,18 @@ def ilsi() -> tuple[list[str], dict]:
 def main() -> None:
     rows, cells = multicharge()
     irows, f = ilsi()
-    pooled = {s: (sum(c["base_found"] for k, c in cells.items() if k[0] == s), sum(c["links_found"] for k, c in cells.items() if k[0] == s)) for s in SETS}
+    # Owner decision D-002 (2026-10-17): recall is compared per set and Act, summed over the two output rules.
+    pooled = {(s, a): (sum(c["base_found"] for k, c in cells.items() if k[:2] == (s, a)), sum(c["links_found"] for k, c in cells.items() if k[:2] == (s, a))) for s in SETS for a in ACTS}
     kept = all(l > b for b, l in pooled.values()) and all(l >= b for b, l in f.values())
     flat = sum(c["links_found"] <= c["base_found"] for c in cells.values())
     tot = {k: sum(c[k] for c in cells.values()) for k in ("new", "added", "added_ok")}
     o = ["# Slice 7: the verdict on `links v1`", "",
-         f"**Verdict: {'KEPT as an opt-in output only, under the pooled reading' if kept else 'NEGATIVE'}.** Decision 5 of the spec does not say whether recall is pooled. Pooling over Acts and output rules was chosen at report time, after scores existed. Read per set and Act, as `CONTEXT.md` defines the Baseline, the cells below with no newly found charge do not beat it. Nothing is wired into `src/ibid/mcp.py`.", "",
+         f"**Verdict: {'KEPT as an opt-in output only' if kept else 'NEGATIVE'}.** The owner chose the reading on 2026-10-17 (D-002): per-charge recall is compared per set and Act, as `CONTEXT.md` defines the Baseline, summed over the two output rules. The spec left the level open and the first report pooled over Acts, after scores existed; that reading is withdrawn. Nothing is wired into `src/ibid/mcp.py`.", "",
          "## The rule applied", "",
          "Kept only if per-charge recall rises on both multi-charge sets (v1 and v2) and ILSI test micro-F1 does not fall. "
-         "Recall of a set is the charges found, summed over both Acts and both output rules, against the same count for the baseline.", "",
-         "| set | baseline found | links v1 found | recall rises |", "| --- | --- | --- | --- |"]
-    o += [f"| {s} | {b} | {l} | {'yes' if l > b else 'no'} |" for s, (b, l) in pooled.items()]
+         "Recall is the charges found for one set and Act, summed over both output rules, against the same count for the baseline.", "",
+         "| set | Act | baseline found | links v1 found | recall rises |", "| --- | --- | --- | --- | --- |"]
+    o += [f"| {s} | {a} | {b} | {l} | {'yes' if l > b else 'no'} |" for (s, a), (b, l) in pooled.items()]
     o += ["", "| output rule | baseline test micro-F1 % | links v1 % | change (points) | micro-F1 |", "| --- | --- | --- | --- | --- |"] + irows
     o += ["", "## Per set, Act and output rule", "",
           "Added predictions are the sections links v1 appends that the baseline did not predict. An added prediction is correct when it is an accepted section of any charge of its item. Set v2 labels are incomplete, so the correct share there is a floor.", "",
