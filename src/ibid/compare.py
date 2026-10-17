@@ -79,17 +79,21 @@ def _caveats(layer: str, version: str, rows: list[dict], scorings: dict, inputs:
 def _ilsi(d: dict) -> list[list[str]]:
     """Rows of (layer, version, split, split hash, output, rule or model hash, cases, scores). The baseline has a top-k and a threshold row."""
     split = "test" if "test_scores" in d else "dev"
+    mean = lambda preds: f"{sum(map(len, preds.values())) / len(preds):.2f}" if preds else "-"
     if "rule" in d:
         layer, version, ident, sha = BASELINE, d["rule"]["version"], d["rule"]["params_sha256"], d["inputs"]["split_sha256"]
-        outs = {"top-k": d["scores"]}
+        outs = {"top-k": (d["scores"], mean(d.get("predictions")))}
         for e in d.get("test_scores", []):  # the threshold output of this rule on this split, scored in the same run
             if e["split_sha256"] == sha and e["rule"]["version"] == version and "threshold_scores" in e:
-                outs["threshold"] = e["threshold_scores"]
+                outs["threshold"] = (e["threshold_scores"], mean(d.get("threshold", {}).get("predictions")))
+    elif "outputs" in d:  # links: two output rules, each with its mean predictions per case
+        layer, version, ident, sha = d["layer"], d["layer_version"], d["frozen_rule_sha256"], d["split_sha256"]
+        outs = {o: (v["scores"], f"{v['mean_predictions']:.2f}") for o, v in d["outputs"].items()}
     else:
         layer, version, ident, sha = d["layer"], d["layer_version"], d["model_sha256"], d["split_sha256"]
-        outs = {f"top-{d['k']}" if "k" in d else "output": d["scores"]}
-    return [[layer, version, split, sha, o, ident, str(d["cases"]), _pct(f["micro_f1"]), _pct(f["macro_f1"]), _pct(f["jaccard"])]
-            for o, f in outs.items()]
+        outs = {f"top-{d['k']}" if "k" in d else "output": (d["scores"], "-")}
+    return [[layer, version, split, sha, o, ident, str(d["cases"]), _pct(f["micro_f1"]), _pct(f["macro_f1"]), _pct(f["jaccard"]), m]
+            for o, (f, m) in outs.items()]
 
 
 def compare(results: list[str], sets: list[str], ilsi: list[str], out_path: str) -> int:
@@ -146,7 +150,7 @@ def compare(results: list[str], sets: list[str], ilsi: list[str], out_path: str)
         doc += ["## ILSI splits, a different task", "",
                 "Judgment-level section prediction over 100 labels, scored by micro-F1, macro-F1 and Jaccard. "
                 "It is not comparable with the per-charge figures above.", ""]
-        doc += table(["layer", "version", "split", "split sha256", "output", "model or rule sha256", "cases", "micro-F1 %", "macro-F1 %", "Jaccard %"],
+        doc += table(["layer", "version", "split", "split sha256", "output", "model or rule sha256", "cases", "micro-F1 %", "macro-F1 %", "Jaccard %", "mean predictions"],
                       sorted(ilsi_rows))
     Path(out_path).write_text("\n".join(doc))
     return 0

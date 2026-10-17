@@ -153,10 +153,19 @@ def main(argv: list[str] | None = None) -> int:
     cc.add_argument("--table", required=True)
     cc.add_argument("--index", default="data/index/ibid.sqlite")
     cc.add_argument("--out", required=True)
-    lk = sub.add_parser("links").add_subparsers(dest="links_cmd", required=True).add_parser(
-        "list", help="IPC definition-punishment links derived from headings")
+    lsub = sub.add_parser("links").add_subparsers(dest="links_cmd", required=True)
+    lk = lsub.add_parser("list", help="IPC definition-punishment links derived from headings")
     lk.add_argument("--index", default="data/index/ibid.sqlite")
     lk.add_argument("--concordance", default="concordance/v3.json")
+    lb = lsub.add_parser("bench", help="score links v1 on an ILSI split; the test split once")
+    lb.add_argument("--split", required=True)
+    lb.add_argument("--labels", default="data/raw/lesicin/label_vocab.json")
+    lb.add_argument("--index", default="data/index/ibid.sqlite")
+    lb.add_argument("--manifest", default="data/lesicin.manifest.json")
+    lb.add_argument("--frozen-rule", default="results/frozen-rule.json")
+    lb.add_argument("--ledger", default="results/test-ledger-links.json")
+    lb.add_argument("--rescore-test", action="store_true")
+    lb.add_argument("--out", required=True)
     ci = sub.add_parser("cited").add_subparsers(dest="cited_cmd", required=True).add_parser(
         "extract", help="route A: sections a query names, mapped to the other Act through verified concordance")
     ci.add_argument("--set", required=True)
@@ -306,6 +315,9 @@ def main(argv: list[str] | None = None) -> int:
     if a.cmd == "bench":
         from ibid.bench import check_labels
         return check_labels(a.data, a.index)
+    if a.cmd == "links" and a.links_cmd == "bench":
+        from ibid.links import bench
+        return bench(a.split, a.labels, a.index, a.manifest, a.frozen_rule, a.ledger, a.rescore_test, a.out)
     if a.cmd == "links":
         from ibid.links import list_links
         import sqlite3
