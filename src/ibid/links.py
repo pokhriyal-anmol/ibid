@@ -22,15 +22,18 @@ def _order(citation: str) -> tuple[int, str]:
     return int(m[1]), m[2]
 
 
+def _pairs(ab) -> list[tuple[str, str]]:
+    pairs = {tuple(sorted(p, key=_order)) for p in ab}
+    return sorted(pairs, key=lambda p: (_order(p[0]), _order(p[1])))
+
+
 def ipc_pairs(db: sqlite3.Connection) -> list[tuple[str, str]]:
     rows = db.execute("SELECT citation, text FROM provision WHERE parent IS NULL AND citation LIKE 'IPC %'").fetchall()
     by_heading: dict[str, list[str]] = {}
     for c, t in rows:
         by_heading.setdefault(_heading(t), []).append(c)
-    pairs = {tuple(sorted((c, d), key=_order))
-             for c, t in rows if (h := _heading(t)).startswith(PREFIX)
-             for d in by_heading.get(h[len(PREFIX):], []) if d != c}
-    return sorted(pairs, key=lambda p: (_order(p[0]), _order(p[1])))
+    return _pairs((c, d) for c, t in rows if (h := _heading(t)).startswith(PREFIX)
+                  for d in by_heading.get(h[len(PREFIX):], []) if d != c)
 
 
 def bns_pairs(entries: list[dict], ipc: list[tuple[str, str]]) -> list[tuple[str, str]]:
@@ -38,8 +41,7 @@ def bns_pairs(entries: list[dict], ipc: list[tuple[str, str]]) -> list[tuple[str
     def served(c: str) -> set[str]:
         hits = concordance.lookup(entries, c, "ipc", "bns")
         return set() if hits == concordance.NONE else {b for h in hits for b in h["citations"]}
-    pairs = {tuple(sorted((a, b), key=_order)) for x, y in ipc for a in served(x) for b in served(y) if a != b}
-    return sorted(pairs, key=lambda p: (_order(p[0]), _order(p[1])))
+    return _pairs((a, b) for x, y in ipc for a in served(x) for b in served(y) if a != b)
 
 
 def list_links(db: sqlite3.Connection, entries: list[dict]) -> list[str]:

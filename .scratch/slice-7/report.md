@@ -1,6 +1,6 @@
 # Slice 7: the verdict on `links v1`
 
-**Verdict: KEPT as an opt-in output only.** Decision 5 of the spec, applied as written. Nothing is wired into `src/ibid/mcp.py`.
+**Verdict: KEPT as an opt-in output only, under the pooled reading.** Decision 5 of the spec does not say whether recall is pooled. Pooling over Acts and output rules was chosen at report time, after scores existed. Read per set and Act, as `CONTEXT.md` defines the Baseline, the cells below with no newly found charge do not beat it (v2 BNS ties on both output rules, 8 to 8 and 5 to 5). Nothing is wired into `src/ibid/mcp.py`.
 
 ## The rule applied
 

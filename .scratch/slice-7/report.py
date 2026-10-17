@@ -80,7 +80,7 @@ def main() -> None:
     flat = sum(c["links_found"] <= c["base_found"] for c in cells.values())
     tot = {k: sum(c[k] for c in cells.values()) for k in ("new", "added", "added_ok")}
     o = ["# Slice 7: the verdict on `links v1`", "",
-         f"**Verdict: {'KEPT as an opt-in output only' if kept else 'NEGATIVE'}.** Decision 5 of the spec, applied as written. Nothing is wired into `src/ibid/mcp.py`.", "",
+         f"**Verdict: {'KEPT as an opt-in output only, under the pooled reading' if kept else 'NEGATIVE'}.** Decision 5 of the spec does not say whether recall is pooled. Pooling over Acts and output rules was chosen at report time, after scores existed. Read per set and Act, as `CONTEXT.md` defines the Baseline, the cells below with no newly found charge do not beat it. Nothing is wired into `src/ibid/mcp.py`.", "",
          "## The rule applied", "",
          "Kept only if per-charge recall rises on both multi-charge sets (v1 and v2) and ILSI test micro-F1 does not fall. "
          "Recall of a set is the charges found, summed over both Acts and both output rules, against the same count for the baseline.", "",
