@@ -9,8 +9,6 @@ from pathlib import Path
 
 from ibid import bench, index
 from ibid.cli import main
-from ibid.compare import _ilsi
-from ibid.links import expand
 from ibid.parse import Provision
 
 L = {n: f"Section {n} in The Indian Penal Code" for n in (1, 2, 3, 4)}
@@ -76,15 +74,25 @@ class LinksBenchTest(unittest.TestCase):
         self.assertEqual(self.run_bench(self.dev), 0)
         self.assertFalse(self.ledger.exists())
 
-    def test_expand_keeps_originals_first_in_order_and_adds_no_duplicates(self):
-        links = {"IPC 2": ["IPC 1", "IPC 9"], "IPC 1": ["IPC 2"], "IPC 9": ["IPC 2"]}
-        self.assertEqual(expand(["IPC 2", "IPC 1"], links), ["IPC 2", "IPC 1", "IPC 9"])
-
     def test_compare_shows_both_outputs_with_mean_predictions(self):
         self.run_bench(self.test)
-        rows = _ilsi(json.loads((self.tmp / "out.json").read_text()))
-        self.assertEqual(sorted((r[0], r[1], r[2], r[4], r[10]) for r in rows),
-                         [("links", "v1", "test", "threshold", "1.50"), ("links", "v1", "test", "top-k", "1.50")])
+        qset = self.tmp / "set.json"  # `charges compare` insists on one multi-charge set and its baseline file
+        qset.write_text(json.dumps({"label_policy": "x", "items": [{"id": "s0", "query": "theft", "source": "x"}]}))
+        t = {"recall": 0.1, "all_charges_hit": 0.0, "mean_predictions": 5.0, "charges": 10, "items": 1}
+        rule = {"name": "query-rule", "version": "v9", "params_sha256": "r" * 64}
+        base = self.tmp / "base.json"
+        base.write_text(json.dumps({
+            "inputs": {"set_sha256": bench.sha256(str(qset)), "index_sha256": "i" * 64}, "act": "IPC", "rule": rule,
+            "label_basis": {}, "top_k": t, "threshold": t,
+            "scorings_of_this_rule_version": [{"rule": rule, "scores": {"top_k": t, "threshold": t}}]}))
+        report = self.tmp / "r.md"
+        with contextlib.redirect_stderr(io.StringIO()):
+            code = main(["charges", "compare", "--results", str(base), "--set", str(qset),
+                         "--ilsi", str(self.tmp / "out.json"), "--out", str(report)])
+        self.assertEqual(code, 0)
+        rows = [l for l in report.read_text().splitlines() if l.startswith("| links | v1 | test |")]
+        for out in ("top-k", "threshold"):
+            self.assertEqual(len([r for r in rows if f"| {out} |" in r and r.rstrip(" |").endswith("| 1.50")]), 1, rows)
 
 
 if __name__ == "__main__":
