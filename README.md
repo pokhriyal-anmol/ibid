@@ -53,6 +53,8 @@ Retrieval depends only on the raw query ([ADR 0001](docs/adr/0001-retrieval-inde
 | 3 | Multi-charge sets and layers: cited sections, learned association, sub-queries. Concordance v3 from a published table | Done |
 | 4 | `ibid mcp`, a stdio MCP server over the deterministic lookups | Done |
 | 5 | MCP gaps from a real client: concordance fallback to the section, optional direction, adjacent sections in search | Done |
+| 6 | Association layer v2 fitted on layperson text | Done |
+| 7 | Definition-punishment links from headings, expanded after ranking | Done, result negative under the pre-registered rule (ADR 0007) |
 
 What slice 1 measured on 2026-10-11:
 

@@ -37,9 +37,9 @@ class CompareTest(unittest.TestCase):
             "inputs": {"set_sha256": self.sets[name][1], "index_sha256": INDEX}, "act": act, "rule": rule, "label_basis": labels or LABELS,
             "top_k": figs(topk), "threshold": figs(thr), "scorings_of_this_rule_version": entries})
 
-    def layer(self, layer, name, act, out, inputs, extra=(), counts=None, version="v1", labels=None):
+    def layer(self, layer, name, act, out, inputs, extra=(), counts=None, version="v1", labels=None, tag=""):
         entries = [{"scores": {"output": out}}, *[{"scores": {"output": e}} for e in extra]]
-        return self.write(f"{layer}-{version}-{name}-{act}", {
+        return self.write(f"{layer}-{version}-{name}-{act}{tag}", {
             "inputs": {"set_sha256": self.sets[name][1], "index_sha256": INDEX, "layer": inputs}, "act": act, "layer": layer,
             "layer_version": version, "label_basis": labels or LABELS, "output": figs(out), "layer_counts": counts or {}, "scorings_of_this_layer_version": entries})
 
@@ -152,6 +152,16 @@ class CompareTest(unittest.TestCase):
         self.assertNotIn(incomplete, sec["assoc-nb v3"])  # set A only: no extracted labels
         rows = [ln.split("|")[1:3] for ln in text.splitlines() if ln.startswith("| assoc-nb") and "| setC | " + self.sets["setC"][1][:12] in ln]
         self.assertEqual([[c.strip() for c in r] for r in rows], [["assoc-nb", "v1"], ["assoc-nb", "v2"]])
+
+    def test_every_layer_row_shows_its_mean_predictions_per_item_including_links(self):
+        t = lambda r, m: {"recall": r, "all_charges_hit": 0.0, "mean_predictions": m}  # noqa: E731
+        res = [self.baseline("setA", "IPC", t(0.1, 5.0), t(0.2, 8.0)),
+               self.layer("links", "setA", "IPC", t(0.3, 5.61), {"baseline_layer": "baseline-topk"}),
+               self.layer("links", "setA", "IPC", t(0.4, 9.25), {"baseline_layer": "baseline-threshold"}, tag="-thr")]
+        text = self.run_compare(res, sets=("setA",))
+        rows = [[x.strip() for x in ln.strip("|").split("|")] for ln in text.splitlines() if ln.startswith("| ") and "| IPC |" in ln and "set sha256" not in ln]
+        rows = [c for c in rows if len(c) == 15]  # the per-charge table; the inputs table is shorter
+        self.assertEqual({(c[0], c[5]): c[13] for c in rows}, {("baseline", "top-k"): "5.00", ("baseline", "threshold"): "8.00", ("links", "top-k"): "5.61", ("links", "threshold"): "9.25"})
 
     def test_two_runs_are_byte_identical(self):
         a = self.run_compare(self.fixture(), out="a.md")

@@ -1,0 +1,28 @@
+[
+  {
+    "cases": 13039,
+    "frozen_rule_sha256": "ea01284dbbeb429e2f2c97de7d998a69b691aaab1ae1bd47b2a6a79358dbd01d",
+    "layer": "links",
+    "layer_version": "v1",
+    "link_set_sha256": "2c18057deebe9b5c5b15a4ea7bee2b2f6ad8b2f70e95a3326308fbdfe57eadf8",
+    "outputs": {
+      "threshold": {
+        "mean_predictions": 5.0258,
+        "scores": {
+          "jaccard": 0.065204,
+          "macro_f1": 0.067193,
+          "micro_f1": 0.118053
+        }
+      },
+      "top-k": {
+        "mean_predictions": 5.9448,
+        "scores": {
+          "jaccard": 0.065874,
+          "macro_f1": 0.065536,
+          "micro_f1": 0.113726
+        }
+      }
+    },
+    "split_sha256": "9fc141a94b51febe3e3cd06494f13c587098afcda175fc2e3e4d6213a88b60d1"
+  }
+]

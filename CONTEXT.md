@@ -22,7 +22,11 @@ _Avoid_: Reference (reserved for cross-reference)
 
 **Cross-reference**:
 A pointer inside the text of one provision to another provision, such as "as defined in section 2(8)". Resolved to a citation by rule, never by a model.
-_Avoid_: Link, mention
+_Avoid_: Link (reserved for definition-punishment link), mention
+
+**Definition-punishment link**:
+A two-way pairing of the Citation of a section headed "Punishment for X" with every other top-level section headed X, taken from IPC headings and carried to the BNS through verified Concordance entries (ADR 0007). Not a Cross-reference.
+_Avoid_: Cross-reference, relation
 
 **Cross-reference graph**:
 The directed graph of resolved cross-references across both Acts, built by deterministic parsing.
@@ -81,7 +85,7 @@ The frozen, hash-pinned list of queries that each allege one or more Charges, wi
 _Avoid_: Test set, gold (unqualified), dataset
 
 **Layer**:
-One way of producing a predictions file for a Multi-charge set, scored by the same function as the Baseline and compared on the same set and Act. Routes A to D are cited sections, learned association, per-charge sub-queries and person-written queries. A layer has a name and a layer version.
+One way of producing a predictions file for a Multi-charge set, scored by the same function as the Baseline and compared on the same set and Act. Routes A to D are cited sections, learned association, per-charge sub-queries and person-written queries. Links v1 appends Definition-punishment links to a baseline file. A layer has a name and a layer version.
 _Avoid_: Model, approach, system
 
 **Predictions file**:
