@@ -5,7 +5,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from ibid import concordance, index
+from ibid import concordance, headings, index, mcp
 from ibid.ipc import parse_ipc
 from ibid.parse import parse_bns
 from ibid.xref import extract
@@ -106,8 +106,31 @@ class ServerTest(unittest.TestCase):
             self.assertTrue(want, q)
             res = self.c.call("search", {"query": q, **kw})["result"]
             self.assertFalse(res["isError"], q)
-            self.assertEqual(res["structuredContent"]["results"], want, q)
-            self.assertEqual(json.loads(res["content"][0]["text"])["results"], want, q)
+            for got in (res["structuredContent"]["results"], json.loads(res["content"][0]["text"])["results"]):
+                self.assertTrue(all("heading" in h for h in got), q)  # the key is always there, null when none
+                self.assertEqual([{k: v for k, v in h.items() if k != "heading"} for h in got], want, q)
+
+    def test_get_provision_heading(self):
+        sub_ipc = self.db.execute("SELECT citation FROM provision WHERE parent IS NOT NULL AND citation LIKE 'IPC %' LIMIT 1").fetchone()[0]
+        want = {"BNS 83": "Marriage ceremony fraudulently gone through without lawful marriage.",
+                "BNS 86": "Cruelty defined.", "IPC 1": "Title and extent of operation of the Code.",
+                self.sub: None, sub_ipc: None}
+        for cit, heading in want.items():
+            res = self.c.call("get_provision", {"citation": cit})["result"]
+            self.assertFalse(res["isError"], cit)
+            self.assertEqual(res["structuredContent"]["heading"], heading, cit)
+
+    def test_search_hits_carry_heading(self):
+        hits = self.c.call("search", {"query": "murder", "limit": 20})["result"]["structuredContent"]["results"]
+        subs = [h for h in hits if h["citation"] != h["citation"].split("(")[0].split(" explanation")[0].split(" illustration")[0]]
+        self.assertTrue(subs)
+        self.assertTrue(all(h["heading"] is None for h in subs))
+        top = [h for h in hits if h not in subs]
+        self.assertTrue(top)
+        self.assertTrue(all(h["heading"] for h in top))  # murder-related sections all print a heading
+        hit = self.c.call("search", {"query": "marriage ceremony fraudulently gone through"})["result"]["structuredContent"]["results"]
+        self.assertIn(("IPC 496", "Marriage ceremony fraudulently gone through without lawful marriage."),
+                      [(h["citation"], h["heading"]) for h in hit])
 
     def test_search_invalid_fts5_is_empty_not_error(self):
         res = self.c.call("search", {"query": '"murder AND'})["result"]
@@ -131,18 +154,37 @@ class ServerTest(unittest.TestCase):
         for q, kw in (("murder", {}), ("criminal breach of trust", {}), ("theft", {"limit": 4})):
             want = [{"citation": c, "text": t} for c, t in index.search(self.db, q, kw.get("limit", 10))]
             plain = self.c.call("search", {"query": q, **kw})["result"]["structuredContent"]["results"]
-            self.assertEqual(plain, want, q)
+            self.assertEqual([{k: v for k, v in h.items() if k != "heading"} for h in plain], want, q)
             got = self.adj(q, **kw)
             self.assertEqual([(h["citation"], h["text"]) for h in got], [(w["citation"], w["text"]) for w in want], q)
             self.assertTrue(all("previous" in h and "next" in h for h in got), q)
         self.assertNotIn("previous", plain[0])
         off = self.c.call("search", {"query": "murder", "adjacent": False})["result"]["structuredContent"]["results"]
-        self.assertEqual(off, [{"citation": c, "text": t} for c, t in index.search(self.db, "murder")])
+        self.assertEqual([{k: v for k, v in h.items() if k != "heading"} for h in off],
+                         [{"citation": c, "text": t} for c, t in index.search(self.db, "murder")])
 
     def test_adjacent_ipc_405_precedes_406(self):
         hit = next(h for h in self.adj("criminal breach of trust") if h["citation"] == "IPC 406")
         self.assertEqual(hit["previous"]["citation"], "IPC 405")
-        self.assertTrue(hit["previous"]["heading"].startswith("405. Criminal breach of trust"))
+        self.assertTrue(hit["previous"]["heading"].startswith("Criminal breach of trust"))
+
+    def test_adjacent_uses_real_headings(self):
+        words = index.lookup(self.db, "BNS 84")[0].replace('"', " ").split()[:4]
+        hit = next(h for h in self.adj('"' + " ".join(words) + '"', limit=100) if h["citation"] == "BNS 84")
+        self.assertEqual(hit["previous"]["heading"], "Marriage ceremony fraudulently gone through without lawful marriage.")
+        self.assertEqual(hit["next"]["heading"], "Husband or relative of husband of a woman subjecting her to cruelty.")
+
+    def test_adjacent_falls_back_where_the_sidecar_has_no_heading(self):
+        words = index.lookup(self.db, "BNS 84")[0].replace('"', " ").split()[:4]
+        # Exception to AGENTS.md rule 5: the stdio server cannot be started with a modified sidecar, so this calls mcp.handle.
+        heads = dict(headings.bns_headings(BNS_PDF))
+        heads["BNS 83"] = None  # the server is given a sidecar with this heading removed
+        msg = {"jsonrpc": "2.0", "id": 1, "method": "tools/call", "params": {"name": "search", "arguments": {"query": '"' + " ".join(words) + '"', "adjacent": True, "limit": 100}}}
+        hits = mcp.handle(self.db, [], msg, heads)["result"]["structuredContent"]["results"]
+        hit = next(h for h in hits if h["citation"] == "BNS 84")
+        self.assertEqual(hit["previous"]["heading"], index.neighbours(self.db, "BNS 84")[0][1])
+        self.assertTrue(hit["previous"]["heading"])
+        self.assertEqual(hit["next"]["heading"], heads["BNS 85"])
 
     def test_adjacent_neighbours_come_from_the_index(self):
         for act in ("IPC", "BNS"):

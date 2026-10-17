@@ -17,3 +17,19 @@ Applies when: any pre-registered keep-or-drop rule for a layer. The spec states 
 Why: the pooled reading was picked after scores existed.
 Source: owner-stated
 Date: 2026-10-17
+
+## D-003: The association layer trains on both kinds of text
+
+Decision: Option 2 of Q-002. Add court-judgment text (ILSI train) to the layperson posts (ILSIC-Lay train) for the next layer version, `assoc-nb v3`, fitted once by concatenating counts with no weighting.
+Applies when: choosing training data for the association layer. A layer that must serve both layperson and judgment text is trained on both. Each new mix is a new layer version scored once.
+Why: v1 suits judgments, v2 suits forum posts, and each fails on the other.
+Source: owner-stated
+Date: 2026-10-17
+
+## D-004: A cross-check against a paraphrasing source is a tripwire, not a quality bar
+
+Decision: The BNS-headings check against the CAPT table passes at 80% exact match, with every mismatch printed on each run.
+Applies when: a test compares our output with an external source that paraphrases or has its own errors. The floor only has to separate correct from broken; a known-bad run (a shifted parse) must score far below it.
+Why: the 90% bar was a guess made before measuring. The real rate is 83.9%, and the sampled misses are mostly CAPT's paraphrase.
+Source: owner-stated
+Date: 2026-10-17

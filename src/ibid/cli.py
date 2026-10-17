@@ -148,6 +148,12 @@ def main(argv: list[str] | None = None) -> int:
     mc.add_argument("--bns", default=os.environ.get("IBID_BNS_PDF", "data/raw/bns-prs.pdf"))
     mc.add_argument("--ipc", default=os.environ.get("IBID_IPC_PDF", "data/raw/ipc-wipo.pdf"))
     mc.add_argument("--concordance", default="concordance/v3.json")
+    hd = sub.add_parser("headings").add_subparsers(dest="headings_cmd", required=True).add_parser(
+        "list", help="section headings, one citation and heading per line")
+    hd.add_argument("--act", choices=("bns", "ipc"), required=True)
+    hd.add_argument("--bns", default=os.environ.get("IBID_BNS_PDF", "data/raw/bns-prs.pdf"))
+    hd.add_argument("--ipc", default=os.environ.get("IBID_IPC_PDF", "data/raw/ipc-wipo.pdf"))
+    hd.add_argument("--layout", default=None, help="BNS only: read this `pdftotext -layout` text file instead of the PDF")
     cc = sub.add_parser("concordance").add_subparsers(dest="conc_cmd", required=True).add_parser(
         "from-table", help="candidate entries from a published BNS to IPC correspondence table (pdftotext -layout text)")
     cc.add_argument("--table", required=True)
@@ -263,6 +269,12 @@ def main(argv: list[str] | None = None) -> int:
     if a.cmd == "mcp":
         from ibid import mcp
         return mcp.serve(a.bns, a.ipc, a.concordance)
+    if a.cmd == "headings":
+        from ibid import headings
+        pairs = (headings.ipc_headings(a.ipc) if a.act == "ipc" else headings.parse_layout(Path(a.layout).read_text())
+                 if a.layout else headings.bns_headings(a.bns))
+        print("\n".join(headings.report(pairs)))
+        return 0
     if a.cmd == "concordance":
         from ibid import table
         return table.from_table(a.table, a.index, a.out)
