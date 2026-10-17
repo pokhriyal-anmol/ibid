@@ -1,0 +1,1003 @@
+{
+  "act": "BNS",
+  "charges_excluded_no_counterpart": 3,
+  "conventions": {
+    "by_charges_per_item": "grouped by the number of charges counted for the Act, not the total in the item",
+    "excluded": "a charge with an empty list for the Act is left out; an item with none left is not scored",
+    "found": "a charge is found when any accepted section of the Act, rolled up to its section, is predicted",
+    "mean_predictions": "mean number of predicted sections per scored item"
+  },
+  "inputs": {
+    "index_sha256": "efaf6fe8b342f151ac02ed110027320f39b0d99287327eb7d206453537a0d408",
+    "layer": {
+      "baseline": "e2a47cc710e546cae33922c6db07d22fda5789f923ce0fbaffa843906dcee4e0",
+      "baseline_layer": "baseline-threshold",
+      "concordance": "e32454733360bb32f797097894ed1f94a84b1c813a4b9b0177829cf12b579cfa",
+      "index": "efaf6fe8b342f151ac02ed110027320f39b0d99287327eb7d206453537a0d408"
+    },
+    "set_sha256": "9b4c14c5bcbbd3e5158099ed94722dc6292bc668ad3162013e0219f5f5edf0bb"
+  },
+  "items_in_set": 30,
+  "items_scored": 30,
+  "label_basis": {
+    "lawyer-answer-extracted": 30
+  },
+  "layer": "links",
+  "layer_counts": {},
+  "layer_version": "v1",
+  "output": {
+    "all_charges_hit": 0.066667,
+    "by_charges_per_item": {
+      "1": {
+        "all_charges_hit": 0.0,
+        "charges": 1,
+        "items": 1,
+        "mean_predictions": 20.0,
+        "recall": 0.0
+      },
+      "2": {
+        "all_charges_hit": 0.117647,
+        "charges": 34,
+        "items": 17,
+        "mean_predictions": 6.294118,
+        "recall": 0.117647
+      },
+      "3+": {
+        "all_charges_hit": 0.0,
+        "charges": 46,
+        "items": 12,
+        "mean_predictions": 5.75,
+        "recall": 0.021739
+      }
+    },
+    "charges": 81,
+    "items": 30,
+    "mean_predictions": 6.533333,
+    "missed": [
+      {
+        "charge": "406. Punishment for criminal breach of trust.\u2014Whoever commits criminal breach of",
+        "id": "ilsic-lay-test-37",
+        "top_predicted": [
+          "BNS 8",
+          "BNS 2",
+          "BNS 73"
+        ]
+      },
+      {
+        "charge": "420. Cheating and dishonestly inducing delivery of property.\u2014Whoever cheats and ",
+        "id": "ilsic-lay-test-37",
+        "top_predicted": [
+          "BNS 8",
+          "BNS 2",
+          "BNS 73"
+        ]
+      },
+      {
+        "charge": "406. Punishment for criminal breach of trust.\u2014Whoever commits criminal breach of",
+        "id": "ilsic-lay-test-800",
+        "top_predicted": [
+          "BNS 64",
+          "BNS 82",
+          "BNS 3"
+        ]
+      },
+      {
+        "charge": "498A. Husband or relative of husband of a woman subjecting her to cruelty.\u2014Whoev",
+        "id": "ilsic-lay-test-800",
+        "top_predicted": [
+          "BNS 64",
+          "BNS 82",
+          "BNS 3"
+        ]
+      },
+      {
+        "charge": "406. Punishment for criminal breach of trust.\u2014Whoever commits criminal breach of",
+        "id": "ilsic-lay-test-14",
+        "top_predicted": [
+          "BNS 72",
+          "BNS 182"
+        ]
+      },
+      {
+        "charge": "420. Cheating and dishonestly inducing delivery of property.\u2014Whoever cheats and ",
+        "id": "ilsic-lay-test-14",
+        "top_predicted": [
+          "BNS 72",
+          "BNS 182"
+        ]
+      },
+      {
+        "charge": "405. Criminal breach of trust.\u2014Whoever, being in any manner entrusted with prope",
+        "id": "ilsic-lay-test-756",
+        "top_predicted": [
+          "BNS 189",
+          "BNS 342"
+        ]
+      },
+      {
+        "charge": "406. Punishment for criminal breach of trust.\u2014Whoever commits criminal breach of",
+        "id": "ilsic-lay-test-756",
+        "top_predicted": [
+          "BNS 189",
+          "BNS 342"
+        ]
+      },
+      {
+        "charge": "420. Cheating and dishonestly inducing delivery of property.\u2014Whoever cheats and ",
+        "id": "ilsic-lay-test-756",
+        "top_predicted": [
+          "BNS 189",
+          "BNS 342"
+        ]
+      },
+      {
+        "charge": "463. Forgery.\u2014Whoever makes any false document or false electronic record or par",
+        "id": "ilsic-lay-test-756",
+        "top_predicted": [
+          "BNS 189",
+          "BNS 342"
+        ]
+      },
+      {
+        "charge": "465. Punishment for forgery.\u2014Whoever commits forgery shall be punished with impr",
+        "id": "ilsic-lay-test-756",
+        "top_predicted": [
+          "BNS 189",
+          "BNS 342"
+        ]
+      },
+      {
+        "charge": "467. Forgery of valuable security, will, etc.\u2014Whoever forges a document which pu",
+        "id": "ilsic-lay-test-756",
+        "top_predicted": [
+          "BNS 189",
+          "BNS 342"
+        ]
+      },
+      {
+        "charge": "468. Forgery for purpose of cheating.\u2014Whoever commits forgery, intending that th",
+        "id": "ilsic-lay-test-756",
+        "top_predicted": [
+          "BNS 189",
+          "BNS 342"
+        ]
+      },
+      {
+        "charge": "471. Using as genuine a forged document or electronic record.\u2014Whoever fraudulent",
+        "id": "ilsic-lay-test-756",
+        "top_predicted": [
+          "BNS 189",
+          "BNS 342"
+        ]
+      },
+      {
+        "charge": "406. Punishment for criminal breach of trust.\u2014Whoever commits criminal breach of",
+        "id": "ilsic-lay-test-219",
+        "top_predicted": [
+          "BNS 1",
+          "BNS 11"
+        ]
+      },
+      {
+        "charge": "506. Punishment for criminal intimidation.\u2014Whoever commits the offence of crimin",
+        "id": "ilsic-lay-test-219",
+        "top_predicted": [
+          "BNS 1",
+          "BNS 11"
+        ]
+      },
+      {
+        "charge": "406. Punishment for criminal breach of trust.\u2014Whoever commits criminal breach of",
+        "id": "ilsic-lay-test-302",
+        "top_predicted": [
+          "BNS 170",
+          "BNS 171",
+          "BNS 43"
+        ]
+      },
+      {
+        "charge": "498A. Husband or relative of husband of a woman subjecting her to cruelty.\u2014Whoev",
+        "id": "ilsic-lay-test-302",
+        "top_predicted": [
+          "BNS 170",
+          "BNS 171",
+          "BNS 43"
+        ]
+      },
+      {
+        "charge": "354. Assault or criminal force to woman with intent to outrage her modesty.\u2014Whoe",
+        "id": "ilsic-lay-test-506",
+        "top_predicted": [
+          "BNS 358",
+          "BNS 23",
+          "BNS 22"
+        ]
+      },
+      {
+        "charge": "504. Intentional insult with intent to provoke breach of the peace.\u2014Whoever inte",
+        "id": "ilsic-lay-test-506",
+        "top_predicted": [
+          "BNS 358",
+          "BNS 23",
+          "BNS 22"
+        ]
+      },
+      {
+        "charge": "509. Word, gesture or act intended to insult the modesty of a woman.\u2014Whoever, in",
+        "id": "ilsic-lay-test-506",
+        "top_predicted": [
+          "BNS 358",
+          "BNS 23",
+          "BNS 22"
+        ]
+      },
+      {
+        "charge": "406. Punishment for criminal breach of trust.\u2014Whoever commits criminal breach of",
+        "id": "ilsic-lay-test-50",
+        "top_predicted": [
+          "BNS 82",
+          "BNS 63",
+          "BNS 189"
+        ]
+      },
+      {
+        "charge": "498A. Husband or relative of husband of a woman subjecting her to cruelty.\u2014Whoev",
+        "id": "ilsic-lay-test-50",
+        "top_predicted": [
+          "BNS 82",
+          "BNS 63",
+          "BNS 189"
+        ]
+      },
+      {
+        "charge": "406. Punishment for criminal breach of trust.\u2014Whoever commits criminal breach of",
+        "id": "ilsic-lay-test-88",
+        "top_predicted": [
+          "BNS 18",
+          "BNS 68",
+          "BNS 245"
+        ]
+      },
+      {
+        "charge": "415. Cheating.\u2014Whoever, by deceiving any person, fraudulently or dishonestly ind",
+        "id": "ilsic-lay-test-88",
+        "top_predicted": [
+          "BNS 18",
+          "BNS 68",
+          "BNS 245"
+        ]
+      },
+      {
+        "charge": "420. Cheating and dishonestly inducing delivery of property.\u2014Whoever cheats and ",
+        "id": "ilsic-lay-test-88",
+        "top_predicted": [
+          "BNS 18",
+          "BNS 68",
+          "BNS 245"
+        ]
+      },
+      {
+        "charge": "498. Enticing or taking away or detaining with criminal intent a married woman.\u2014",
+        "id": "ilsic-lay-test-48",
+        "top_predicted": [
+          "BNS 2",
+          "BNS 1",
+          "BNS 82"
+        ]
+      },
+      {
+        "charge": "353. Assault or criminal force to deter public servant from discharge of his dut",
+        "id": "ilsic-lay-test-424",
+        "top_predicted": [
+          "BNS 2",
+          "BNS 177",
+          "BNS 189"
+        ]
+      },
+      {
+        "charge": "506. Punishment for criminal intimidation.\u2014Whoever commits the offence of crimin",
+        "id": "ilsic-lay-test-424",
+        "top_predicted": [
+          "BNS 2",
+          "BNS 177",
+          "BNS 189"
+        ]
+      },
+      {
+        "charge": "406. Punishment for criminal breach of trust.\u2014Whoever commits criminal breach of",
+        "id": "ilsic-lay-test-641",
+        "top_predicted": [
+          "BNS 82",
+          "BNS 41",
+          "BNS 63"
+        ]
+      },
+      {
+        "charge": "498A. Husband or relative of husband of a woman subjecting her to cruelty.\u2014Whoev",
+        "id": "ilsic-lay-test-641",
+        "top_predicted": [
+          "BNS 82",
+          "BNS 41",
+          "BNS 63"
+        ]
+      },
+      {
+        "charge": "268. Public nuisance.\u2014A person is guilty of a public nuisance who does any act o",
+        "id": "ilsic-lay-test-59",
+        "top_predicted": [
+          "BNS 2",
+          "BNS 356",
+          "BNS 31"
+        ]
+      },
+      {
+        "charge": "290. Punishment for public nuisance in cases not otherwise provided for.\u2014Whoever",
+        "id": "ilsic-lay-test-59",
+        "top_predicted": [
+          "BNS 2",
+          "BNS 356",
+          "BNS 31"
+        ]
+      },
+      {
+        "charge": "425. Mischief.\u2014Whoever with intent to cause, or knowing that he is likely to cau",
+        "id": "ilsic-lay-test-59",
+        "top_predicted": [
+          "BNS 2",
+          "BNS 356",
+          "BNS 31"
+        ]
+      },
+      {
+        "charge": "268. Public nuisance.\u2014A person is guilty of a public nuisance who does any act o",
+        "id": "ilsic-lay-test-707",
+        "top_predicted": [
+          "BNS 349",
+          "BNS 2",
+          "BNS 63"
+        ]
+      },
+      {
+        "charge": "290. Punishment for public nuisance in cases not otherwise provided for.\u2014Whoever",
+        "id": "ilsic-lay-test-707",
+        "top_predicted": [
+          "BNS 349",
+          "BNS 2",
+          "BNS 63"
+        ]
+      },
+      {
+        "charge": "406. Punishment for criminal breach of trust.\u2014Whoever commits criminal breach of",
+        "id": "ilsic-lay-test-707",
+        "top_predicted": [
+          "BNS 349",
+          "BNS 2",
+          "BNS 63"
+        ]
+      },
+      {
+        "charge": "425. Mischief.\u2014Whoever with intent to cause, or knowing that he is likely to cau",
+        "id": "ilsic-lay-test-707",
+        "top_predicted": [
+          "BNS 349",
+          "BNS 2",
+          "BNS 63"
+        ]
+      },
+      {
+        "charge": "500. Punishment for defamation.\u2014Whoever defames another shall be punished with s",
+        "id": "ilsic-lay-test-707",
+        "top_predicted": [
+          "BNS 349",
+          "BNS 2",
+          "BNS 63"
+        ]
+      },
+      {
+        "charge": "506. Punishment for criminal intimidation.\u2014Whoever commits the offence of crimin",
+        "id": "ilsic-lay-test-707",
+        "top_predicted": [
+          "BNS 349",
+          "BNS 2",
+          "BNS 63"
+        ]
+      },
+      {
+        "charge": "493. Cohabitation caused by a man deceitfully inducing a belief of lawful marria",
+        "id": "ilsic-lay-test-645",
+        "top_predicted": [
+          "BNS 106",
+          "BNS 189",
+          "BNS 356"
+        ]
+      },
+      {
+        "charge": "496. Marriage ceremony fraudulently gone through without lawful marriage.\u2014Whoeve",
+        "id": "ilsic-lay-test-645",
+        "top_predicted": [
+          "BNS 106",
+          "BNS 189",
+          "BNS 356"
+        ]
+      },
+      {
+        "charge": "498A. Husband or relative of husband of a woman subjecting her to cruelty.\u2014Whoev",
+        "id": "ilsic-lay-test-645",
+        "top_predicted": [
+          "BNS 106",
+          "BNS 189",
+          "BNS 356"
+        ]
+      },
+      {
+        "charge": "406. Punishment for criminal breach of trust.\u2014Whoever commits criminal breach of",
+        "id": "ilsic-lay-test-818",
+        "top_predicted": [
+          "BNS 8",
+          "BNS 61",
+          "BNS 11"
+        ]
+      },
+      {
+        "charge": "420. Cheating and dishonestly inducing delivery of property.\u2014Whoever cheats and ",
+        "id": "ilsic-lay-test-818",
+        "top_predicted": [
+          "BNS 8",
+          "BNS 61",
+          "BNS 11"
+        ]
+      },
+      {
+        "charge": "405. Criminal breach of trust.\u2014Whoever, being in any manner entrusted with prope",
+        "id": "ilsic-lay-test-432",
+        "top_predicted": [
+          "BNS 266",
+          "BNS 68",
+          "BNS 82"
+        ]
+      },
+      {
+        "charge": "425. Mischief.\u2014Whoever with intent to cause, or knowing that he is likely to cau",
+        "id": "ilsic-lay-test-432",
+        "top_predicted": [
+          "BNS 266",
+          "BNS 68",
+          "BNS 82"
+        ]
+      },
+      {
+        "charge": "378. Theft.\u2014Whoever, intending to take dishonestly any movable property out of t",
+        "id": "ilsic-lay-test-416",
+        "top_predicted": [
+          "BNS 309",
+          "BNS 64",
+          "BNS 41"
+        ]
+      },
+      {
+        "charge": "385. Putting person in fear of injury in order to commit extortion.\u2014Whoever, in ",
+        "id": "ilsic-lay-test-416",
+        "top_predicted": [
+          "BNS 309",
+          "BNS 64",
+          "BNS 41"
+        ]
+      },
+      {
+        "charge": "415. Cheating.\u2014Whoever, by deceiving any person, fraudulently or dishonestly ind",
+        "id": "ilsic-lay-test-416",
+        "top_predicted": [
+          "BNS 309",
+          "BNS 64",
+          "BNS 41"
+        ]
+      },
+      {
+        "charge": "427. Mischief causing damage to the amount of fifty rupees.\u2014Whoever commits misc",
+        "id": "ilsic-lay-test-397",
+        "top_predicted": [
+          "BNS 72"
+        ]
+      },
+      {
+        "charge": "504. Intentional insult with intent to provoke breach of the peace.\u2014Whoever inte",
+        "id": "ilsic-lay-test-397",
+        "top_predicted": [
+          "BNS 72"
+        ]
+      },
+      {
+        "charge": "506. Punishment for criminal intimidation.\u2014Whoever commits the offence of crimin",
+        "id": "ilsic-lay-test-397",
+        "top_predicted": [
+          "BNS 72"
+        ]
+      },
+      {
+        "charge": "405. Criminal breach of trust.\u2014Whoever, being in any manner entrusted with prope",
+        "id": "ilsic-lay-test-572",
+        "top_predicted": [
+          "BNS 189",
+          "BNS 11",
+          "BNS 356"
+        ]
+      },
+      {
+        "charge": "406. Punishment for criminal breach of trust.\u2014Whoever commits criminal breach of",
+        "id": "ilsic-lay-test-572",
+        "top_predicted": [
+          "BNS 189",
+          "BNS 11",
+          "BNS 356"
+        ]
+      },
+      {
+        "charge": "420. Cheating and dishonestly inducing delivery of property.\u2014Whoever cheats and ",
+        "id": "ilsic-lay-test-572",
+        "top_predicted": [
+          "BNS 189",
+          "BNS 11",
+          "BNS 356"
+        ]
+      },
+      {
+        "charge": "468. Forgery for purpose of cheating.\u2014Whoever commits forgery, intending that th",
+        "id": "ilsic-lay-test-572",
+        "top_predicted": [
+          "BNS 189",
+          "BNS 11",
+          "BNS 356"
+        ]
+      },
+      {
+        "charge": "406. Punishment for criminal breach of trust.\u2014Whoever commits criminal breach of",
+        "id": "ilsic-lay-test-620",
+        "top_predicted": [
+          "BNS 61",
+          "BNS 245",
+          "BNS 63"
+        ]
+      },
+      {
+        "charge": "420. Cheating and dishonestly inducing delivery of property.\u2014Whoever cheats and ",
+        "id": "ilsic-lay-test-620",
+        "top_predicted": [
+          "BNS 61",
+          "BNS 245",
+          "BNS 63"
+        ]
+      },
+      {
+        "charge": "420. Cheating and dishonestly inducing delivery of property.\u2014Whoever cheats and ",
+        "id": "ilsic-lay-test-0",
+        "top_predicted": [
+          "BNS 113",
+          "BNS 64",
+          "BNS 307"
+        ]
+      },
+      {
+        "charge": "506. Punishment for criminal intimidation.\u2014Whoever commits the offence of crimin",
+        "id": "ilsic-lay-test-0",
+        "top_predicted": [
+          "BNS 113",
+          "BNS 64",
+          "BNS 307"
+        ]
+      },
+      {
+        "charge": "498. Enticing or taking away or detaining with criminal intent a married woman.\u2014",
+        "id": "ilsic-lay-test-103",
+        "top_predicted": [
+          "BNS 43",
+          "BNS 8",
+          "BNS 64"
+        ]
+      },
+      {
+        "charge": "500. Punishment for defamation.\u2014Whoever defames another shall be punished with s",
+        "id": "ilsic-lay-test-103",
+        "top_predicted": [
+          "BNS 43",
+          "BNS 8",
+          "BNS 64"
+        ]
+      },
+      {
+        "charge": "406. Punishment for criminal breach of trust.\u2014Whoever commits criminal breach of",
+        "id": "ilsic-lay-test-402",
+        "top_predicted": [
+          "BNS 1",
+          "BNS 113",
+          "BNS 182"
+        ]
+      },
+      {
+        "charge": "420. Cheating and dishonestly inducing delivery of property.\u2014Whoever cheats and ",
+        "id": "ilsic-lay-test-402",
+        "top_predicted": [
+          "BNS 1",
+          "BNS 113",
+          "BNS 182"
+        ]
+      },
+      {
+        "charge": "420. Cheating and dishonestly inducing delivery of property.\u2014Whoever cheats and ",
+        "id": "ilsic-lay-test-376",
+        "top_predicted": [
+          "BNS 330",
+          "BNS 358",
+          "BNS 304"
+        ]
+      },
+      {
+        "charge": "467. Forgery of valuable security, will, etc.\u2014Whoever forges a document which pu",
+        "id": "ilsic-lay-test-376",
+        "top_predicted": [
+          "BNS 330",
+          "BNS 358",
+          "BNS 304"
+        ]
+      },
+      {
+        "charge": "468. Forgery for purpose of cheating.\u2014Whoever commits forgery, intending that th",
+        "id": "ilsic-lay-test-376",
+        "top_predicted": [
+          "BNS 330",
+          "BNS 358",
+          "BNS 304"
+        ]
+      },
+      {
+        "charge": "471. Using as genuine a forged document or electronic record.\u2014Whoever fraudulent",
+        "id": "ilsic-lay-test-376",
+        "top_predicted": [
+          "BNS 330",
+          "BNS 358",
+          "BNS 304"
+        ]
+      },
+      {
+        "charge": "156. Liability of agent of owner or occupier for whose benefit riot is committed",
+        "id": "ilsic-lay-test-742",
+        "top_predicted": [
+          "BNS 82",
+          "BNS 356",
+          "BNS 8"
+        ]
+      },
+      {
+        "charge": "498A. Husband or relative of husband of a woman subjecting her to cruelty.\u2014Whoev",
+        "id": "ilsic-lay-test-742",
+        "top_predicted": [
+          "BNS 82",
+          "BNS 356",
+          "BNS 8"
+        ]
+      },
+      {
+        "charge": "406. Punishment for criminal breach of trust.\u2014Whoever commits criminal breach of",
+        "id": "ilsic-lay-test-94",
+        "top_predicted": [
+          "BNS 189"
+        ]
+      },
+      {
+        "charge": "420. Cheating and dishonestly inducing delivery of property.\u2014Whoever cheats and ",
+        "id": "ilsic-lay-test-94",
+        "top_predicted": [
+          "BNS 189"
+        ]
+      },
+      {
+        "charge": "406. Punishment for criminal breach of trust.\u2014Whoever commits criminal breach of",
+        "id": "ilsic-lay-test-431",
+        "top_predicted": [
+          "BNS 2",
+          "BNS 3",
+          "BNS 194"
+        ]
+      },
+      {
+        "charge": "420. Cheating and dishonestly inducing delivery of property.\u2014Whoever cheats and ",
+        "id": "ilsic-lay-test-431",
+        "top_predicted": [
+          "BNS 2",
+          "BNS 3",
+          "BNS 194"
+        ]
+      },
+      {
+        "charge": "506. Punishment for criminal intimidation.\u2014Whoever commits the offence of crimin",
+        "id": "ilsic-lay-test-431",
+        "top_predicted": [
+          "BNS 2",
+          "BNS 3",
+          "BNS 194"
+        ]
+      }
+    ],
+    "predictions": {
+      "ilsic-lay-test-0": [
+        "BNS 113",
+        "BNS 64",
+        "BNS 307",
+        "BNS 2"
+      ],
+      "ilsic-lay-test-103": [
+        "BNS 43",
+        "BNS 8",
+        "BNS 64",
+        "BNS 67",
+        "BNS 63"
+      ],
+      "ilsic-lay-test-14": [
+        "BNS 72",
+        "BNS 182"
+      ],
+      "ilsic-lay-test-176": [
+        "BNS 356",
+        "BNS 11",
+        "BNS 316",
+        "BNS 204",
+        "BNS 2",
+        "BNS 64",
+        "BNS 217",
+        "BNS 46",
+        "BNS 169"
+      ],
+      "ilsic-lay-test-219": [
+        "BNS 1",
+        "BNS 11"
+      ],
+      "ilsic-lay-test-302": [
+        "BNS 170",
+        "BNS 171",
+        "BNS 43",
+        "BNS 358",
+        "BNS 308",
+        "BNS 245",
+        "BNS 23",
+        "BNS 41",
+        "BNS 26",
+        "BNS 100",
+        "BNS 81",
+        "BNS 173"
+      ],
+      "ilsic-lay-test-37": [
+        "BNS 8",
+        "BNS 2",
+        "BNS 73",
+        "BNS 304",
+        "BNS 35",
+        "BNS 358",
+        "BNS 180",
+        "BNS 356",
+        "BNS 330"
+      ],
+      "ilsic-lay-test-376": [
+        "BNS 330",
+        "BNS 358",
+        "BNS 304",
+        "BNS 41",
+        "BNS 315",
+        "BNS 8",
+        "BNS 2"
+      ],
+      "ilsic-lay-test-397": [
+        "BNS 72"
+      ],
+      "ilsic-lay-test-402": [
+        "BNS 1",
+        "BNS 113",
+        "BNS 182"
+      ],
+      "ilsic-lay-test-416": [
+        "BNS 309",
+        "BNS 64",
+        "BNS 41",
+        "BNS 82"
+      ],
+      "ilsic-lay-test-424": [
+        "BNS 2",
+        "BNS 177",
+        "BNS 189",
+        "BNS 172",
+        "BNS 64",
+        "BNS 143",
+        "BNS 68",
+        "BNS 242",
+        "BNS 269",
+        "BNS 175"
+      ],
+      "ilsic-lay-test-431": [
+        "BNS 2",
+        "BNS 3",
+        "BNS 194",
+        "BNS 111",
+        "BNS 176",
+        "BNS 335",
+        "BNS 8"
+      ],
+      "ilsic-lay-test-432": [
+        "BNS 266",
+        "BNS 68",
+        "BNS 82",
+        "BNS 85"
+      ],
+      "ilsic-lay-test-48": [
+        "BNS 2",
+        "BNS 1",
+        "BNS 82",
+        "BNS 59",
+        "BNS 189",
+        "BNS 307",
+        "BNS 3",
+        "BNS 127",
+        "BNS 120",
+        "BNS 245",
+        "BNS 17",
+        "BNS 63",
+        "BNS 23",
+        "BNS 178",
+        "BNS 314",
+        "BNS 303",
+        "BNS 338",
+        "BNS 308",
+        "BNS 358",
+        "BNS 356"
+      ],
+      "ilsic-lay-test-50": [
+        "BNS 82",
+        "BNS 63",
+        "BNS 189",
+        "BNS 17",
+        "BNS 170",
+        "BNS 98",
+        "BNS 46",
+        "BNS 173"
+      ],
+      "ilsic-lay-test-506": [
+        "BNS 358",
+        "BNS 23",
+        "BNS 22",
+        "BNS 75",
+        "BNS 227",
+        "BNS 356"
+      ],
+      "ilsic-lay-test-572": [
+        "BNS 189",
+        "BNS 11",
+        "BNS 356",
+        "BNS 139",
+        "BNS 229",
+        "BNS 228"
+      ],
+      "ilsic-lay-test-589": [
+        "BNS 61",
+        "BNS 351",
+        "BNS 245",
+        "BNS 37",
+        "BNS 189",
+        "BNS 2",
+        "BNS 356",
+        "BNS 193",
+        "BNS 10",
+        "BNS 247",
+        "BNS 210"
+      ],
+      "ilsic-lay-test-59": [
+        "BNS 2",
+        "BNS 356",
+        "BNS 31"
+      ],
+      "ilsic-lay-test-620": [
+        "BNS 61",
+        "BNS 245",
+        "BNS 63"
+      ],
+      "ilsic-lay-test-641": [
+        "BNS 82",
+        "BNS 41",
+        "BNS 63",
+        "BNS 189",
+        "BNS 11"
+      ],
+      "ilsic-lay-test-645": [
+        "BNS 106",
+        "BNS 189",
+        "BNS 356",
+        "BNS 16",
+        "BNS 1",
+        "BNS 82",
+        "BNS 2"
+      ],
+      "ilsic-lay-test-707": [
+        "BNS 349",
+        "BNS 2",
+        "BNS 63",
+        "BNS 45",
+        "BNS 72"
+      ],
+      "ilsic-lay-test-742": [
+        "BNS 82",
+        "BNS 356",
+        "BNS 8",
+        "BNS 73",
+        "BNS 63",
+        "BNS 2",
+        "BNS 43",
+        "BNS 68"
+      ],
+      "ilsic-lay-test-756": [
+        "BNS 189",
+        "BNS 342"
+      ],
+      "ilsic-lay-test-800": [
+        "BNS 64",
+        "BNS 82",
+        "BNS 3",
+        "BNS 16",
+        "BNS 189",
+        "BNS 193",
+        "BNS 116",
+        "BNS 72"
+      ],
+      "ilsic-lay-test-818": [
+        "BNS 8",
+        "BNS 61",
+        "BNS 11",
+        "BNS 78",
+        "BNS 4",
+        "BNS 2",
+        "BNS 356",
+        "BNS 1",
+        "BNS 232",
+        "BNS 314",
+        "BNS 9"
+      ],
+      "ilsic-lay-test-88": [
+        "BNS 18",
+        "BNS 68",
+        "BNS 245",
+        "BNS 46",
+        "BNS 189",
+        "BNS 356",
+        "BNS 308",
+        "BNS 101",
+        "BNS 204",
+        "BNS 1",
+        "BNS 113",
+        "BNS 330",
+        "BNS 103"
+      ],
+      "ilsic-lay-test-94": [
+        "BNS 189"
+      ]
+    },
+    "recall": 0.061728
+  },
+  "parser_version": "4",
+  "scorings_of_this_layer_version": [
+    {
+      "act": "BNS",
+      "index_sha256": "efaf6fe8b342f151ac02ed110027320f39b0d99287327eb7d206453537a0d408",
+      "inputs": {
+        "baseline": "e2a47cc710e546cae33922c6db07d22fda5789f923ce0fbaffa843906dcee4e0",
+        "baseline_layer": "baseline-threshold",
+        "concordance": "e32454733360bb32f797097894ed1f94a84b1c813a4b9b0177829cf12b579cfa",
+        "index": "efaf6fe8b342f151ac02ed110027320f39b0d99287327eb7d206453537a0d408"
+      },
+      "layer": "links",
+      "layer_version": "v1",
+      "scores": {
+        "output": {
+          "all_charges_hit": 0.066667,
+          "mean_predictions": 6.533333,
+          "recall": 0.061728
+        }
+      },
+      "set_sha256": "9b4c14c5bcbbd3e5158099ed94722dc6292bc668ad3162013e0219f5f5edf0bb"
+    }
+  ]
+}

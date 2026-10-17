@@ -25,10 +25,11 @@ def _rows(d: dict) -> tuple[str, str, list[dict], list[dict], dict, dict]:
         outs = {label: d[key] for key, label in OUTPUTS}
         scorings = [{label: s["scores"][key] for key, label in OUTPUTS} for s in d["scorings_of_this_rule_version"]]
         layer, version, inputs = BASELINE, d["rule"]["version"], {"rule_params_sha256": d["rule"]["params_sha256"]}
-    else:  # a predictions file's results: one output
-        outs = {"output": d["output"]}
-        scorings = [{"output": s["scores"]["output"]} for s in d["scorings_of_this_layer_version"]]
+    else:  # a predictions file's results: one output; links names the baseline output rule it expanded
         layer, version, inputs = d["layer"], d["layer_version"], d["inputs"]["layer"]
+        label = {"baseline-topk": "top-k", "baseline-threshold": "threshold"}.get(inputs.get("baseline_layer"), "output")
+        outs = {label: d["output"]}
+        scorings = [{label: s["scores"]["output"]} for s in d["scorings_of_this_layer_version"]]
     rows = [{**base, "output": o, **f} for o, f in outs.items()]
     return layer, version, rows, scorings, {**inputs, "index_sha256": d["inputs"]["index_sha256"]}, d.get("layer_counts", {})
 
@@ -70,7 +71,7 @@ def _caveats(layer: str, version: str, rows: list[dict], scorings: dict, inputs:
                    "A citation with no verified concordance entry gives no prediction in the other Act, which is why the BNS figure is low.")
     for (s, act, conc), c in sorted((k, c) for k, c in counts.items() if c):
         out.append(f"- Counts recorded by the layer on set {s}, {act}, concordance {conc}: " + ", ".join(f"{k} {v}" for k, v in sorted(c.items())) + ".")
-    for (s, act), sc in sorted(scorings.items()):
+    for (s, act, _), sc in sorted(scorings.items()):
         out.append(f"- {len(sc)} scoring{'s' if len(sc) != 1 else ''} of this layer version on set {s}, {act}:")
         out += [f"  - {'; '.join(f'{o}: {_fig(f)}' for o, f in x.items())}" for x in sc]
     return out + [""]
@@ -119,7 +120,7 @@ def compare(results: list[str], sets: list[str], ilsi: list[str], out_path: str)
             rec["rows"] += rs
             rec["inputs"].update(inputs)
             rec["counts"][(rs[0]["set_name"], rs[0]["act"], inputs.get("concordance", "-")[:8])] = counts
-            rec["scorings"][(rs[0]["set_name"], rs[0]["act"])] = scorings
+            rec["scorings"][(rs[0]["set_name"], rs[0]["act"], inputs.get("baseline_layer", ""))] = scorings
         ilsi_rows = [r for p in ilsi for r in _ilsi(json.loads(Path(p).read_text()))]
     except (OSError, KeyError, ValueError, TypeError) as e:
         print(f"error: {e}", file=sys.stderr)

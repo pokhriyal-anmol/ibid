@@ -106,6 +106,16 @@ class PredictionsTest(_Base):
         self.assertEqual(len(self.run_pred(two, out="e.json", rescore=True)["scorings_of_this_layer_version"]), 2)
         self.assertEqual(len([e for e in json.loads(ledger.read_text()) if (e["layer_version"], e["act"]) == ("v1", "IPC")]), 2)
 
+    def test_links_v1_is_scored_once_per_set_and_act(self):
+        links = self.preds(layer="links", inputs={"baseline_sha256": "b" * 64})
+        self.run_pred(links, out="l.json", rescore=False)
+        ledger, out = self.tmp / "set.ledger.json", self.tmp / "l.json"
+        before = (ledger.read_bytes(), out.read_bytes())
+        self.assertIn("links v1", self.run_pred(links, out="l.json", expect=1, rescore=False))
+        self.assertEqual((ledger.read_bytes(), out.read_bytes()), before)
+        self.run_pred(links, "bns", "lb.json", rescore=False)  # another Act
+        self.run_pred(links, out="lo.json", rescore=False, ledger="other.ledger.json")  # another set's ledger
+
 
 for _n in [n for n in dir(_Base) if n.startswith("test_")]:
     setattr(PredictionsTest, _n, None)  # the inherited frozen-rule tests already run in their own module

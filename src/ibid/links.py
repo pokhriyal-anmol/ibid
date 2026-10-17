@@ -132,7 +132,7 @@ def expand_file(predictions_path: str, index_path: str, concordance_path: str, o
         links = {"ipc": partners(ipc), "bns": partners(bns_pairs(concordance.load(concordance_path, db), ipc))}
         items = {i: {a: expand(p, links[a]) for a, p in acts.items()} for i, acts in data["items"].items()}
         doc = {"layer": "links", "layer_version": "v1", "set_sha256": data["set_sha256"],
-               "inputs": {"baseline": bench.sha256(predictions_path), "index": bench.sha256(index_path),
+               "inputs": {"baseline": bench.sha256(predictions_path), "baseline_layer": data["layer"], "index": bench.sha256(index_path),
                           "concordance": bench.sha256(concordance_path)}, "items": items}
     except (OSError, KeyError, ValueError, TypeError, AttributeError, sqlite3.Error) as e:
         print(f"error: {e}", file=sys.stderr)

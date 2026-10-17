@@ -51,6 +51,7 @@ class LinksExpandTest(unittest.TestCase):
         self.assertEqual((d["layer"], d["layer_version"], d["set_sha256"]), ("links", "v1", SET_SHA))
         for key, name in (("baseline", "in.json"), ("concordance", "c.json"), ("index", "i.sqlite")):
             self.assertEqual(d["inputs"][key], hashlib.sha256((self.tmp / name).read_bytes()).hexdigest())
+        self.assertEqual(d["inputs"]["baseline_layer"], "baseline-topk")
         other = self.expand(layer="baseline-topl", out="o2.json")  # one byte of the baseline differs
         self.assertNotEqual(d["inputs"]["baseline"], other["inputs"]["baseline"])
 
