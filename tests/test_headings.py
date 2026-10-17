@@ -8,6 +8,7 @@ import unittest
 from pathlib import Path
 
 from ibid.cli import main
+from ibid.headings import parse_layout
 from ibid.parse import PARSER_VERSION
 from pdfs import BNS_PDF, IPC_PDF
 
@@ -113,6 +114,12 @@ class HeadingsFixtureTest(unittest.TestCase):
         text = "\n".join(self.lines())
         self.assertNotIn("CHAPTER", text)
         self.assertNotIn("OF THINGS", text)
+
+    def test_a_left_note_one_space_from_the_body_is_not_lost(self):
+        page = "\n".join([left("Using as", "     1. Whoever uses a thing as genuine, shall be punished"),
+                          "genuine, forged other persons, and so the body goes on.",
+                          "misappropriation of property, ends here."])
+        self.assertEqual(parse_layout(page), [("BNS 1", "Using as genuine, forged misappropriation of")])
 
     def test_no_sub_provision_is_listed(self):
         self.assertFalse([ln for ln in self.lines() if ln.startswith("BNS ") and "(" in ln.split("\t")[0]])

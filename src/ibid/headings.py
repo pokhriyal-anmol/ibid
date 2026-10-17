@@ -49,6 +49,8 @@ def _cut(line: str, side: str | None, col: int) -> tuple[str, str]:
         return line[:cut], line[cut:].strip()
     if side == "left" and (m := LEFT_NOTE.match(line)) and len(m[1]) <= NOTE_MAX:  # body columns drift, the margin does not
         return m[2] or "", m[1]
+    if side == "left" and line[:1].strip() and (m := re.match(rf"(\S.{{0,{NOTE_MAX - 1}}})(?= )", line)):  # note and body share one space
+        return line[m.end():].strip(), m[1]
     return line, ""
 
 
