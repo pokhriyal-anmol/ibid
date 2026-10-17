@@ -34,3 +34,72 @@ def ipc_pairs(db: sqlite3.Connection) -> list[tuple[str, str]]:
 def list_links(db: sqlite3.Connection) -> list[str]:
     pairs = ipc_pairs(db)
     return [f"{a} <-> {b}" for a, b in pairs] + [f"IPC pairs: {len(pairs)}"]
+
+
+def partners(pairs: list[tuple[str, str]]) -> dict[str, list[str]]:
+    """Linked partners of each section, in citation order."""
+    out: dict[str, list[str]] = {}
+    for a, b in pairs:
+        out.setdefault(a, []).append(b)
+        out.setdefault(b, []).append(a)
+    return {c: sorted(v, key=_order) for c, v in out.items()}
+
+
+def expand(predicted: list[str], links: dict[str, list[str]]) -> list[str]:
+    """The originals in their order, then each one's partners in rank order, none twice."""
+    out = list(predicted)
+    for c in predicted:
+        out += [p for p in links.get(c, []) if p not in out]
+    return out
+
+
+def bench(split_path: str, labels_path: str, index_path: str, manifest_path: str, frozen_path: str,
+          ledger_path: str, rescore: bool, out_path: str) -> int:
+    """Score `links v1` on an ILSI split with the frozen rule's ranking and the benchmark's scorer.
+
+    The pinned test split is scored once per layer version, in its own ledger."""
+    import hashlib
+    import json
+    import sys
+    from pathlib import Path
+
+    from ibid import bench as b, bm25
+    try:
+        frozen_bytes = Path(frozen_path).read_bytes()
+        fr = json.loads(frozen_bytes)
+        k, r, rollup, stop, knobs = fr["k"], fr["r"], fr["section_score"], fr["stop_words"], b.knobs_of(fr.get("knobs"))
+        if fr["rule"]["params_sha256"] != b.rule_hash(k, r, rollup, stop, knobs):
+            raise ValueError(f"{frozen_path} does not hash to the rule it records")
+        if b.verify_pinned([split_path, labels_path], manifest_path):
+            return 1
+        sha = b.sha256(split_path)
+        on_test = Path(split_path).stem == "test" or sha == b.pinned_test_hash(manifest_path)
+        prior = [e for e in b.read_ledger(ledger_path)
+                 if e["layer"] == "links" and e["layer_version"] == "v1" and e["split_sha256"] == sha]
+        if on_test and prior and not rescore:
+            raise ValueError("the test split was already scored for this layer version; pass --rescore-test to score it again")
+        space = b.load_space(labels_path)
+        cases, gold = b.load_cases(split_path, space)
+    except (OSError, KeyError, ValueError) as e:
+        print(f"error: {e}", file=sys.stderr)
+        return 1
+    db = sqlite3.connect(f"file:{index_path}?mode=ro", uri=True)
+    pairs = ipc_pairs(db)
+    links = partners(pairs)
+    ix = bm25.Index(db, knobs["levels"], knobs["stem"])
+    ranked = [b.rank_sections(ix, " ".join(c["text"]), space, rollup, stop, knobs) for c in cases]
+    base = dict(zip(("top-k", "threshold"), zip(*(b.predict(x, k, r) for x in ranked))))
+    outputs = {}
+    for name, preds in base.items():
+        expanded = [expand(p, links) for p in preds]
+        outputs[name] = {"scores": b.score(gold, [set(p) for p in expanded], space),
+                         "mean_predictions": round(sum(map(len, expanded)) / len(cases), 4)}
+    res = {"layer": "links", "layer_version": "v1", "k": k, "r": r, "cases": len(cases), "split_sha256": sha,
+           "frozen_rule_sha256": hashlib.sha256(frozen_bytes).hexdigest(), "rule_params_sha256": fr["rule"]["params_sha256"],
+           "link_set_sha256": hashlib.sha256(json.dumps(pairs).encode()).hexdigest(), "outputs": outputs}
+    if on_test:
+        entry = {x: res[x] for x in ("layer", "layer_version", "frozen_rule_sha256", "link_set_sha256", "split_sha256", "cases", "outputs")}
+        Path(ledger_path).write_text(json.dumps(b.read_ledger(ledger_path) + [entry], indent=2, sort_keys=True) + "\n")
+        res["test_scores"] = prior + [entry]
+    Path(out_path).write_text(json.dumps(res, indent=2, sort_keys=True) + "\n")
+    return 0
