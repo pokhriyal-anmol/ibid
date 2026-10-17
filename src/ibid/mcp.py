@@ -4,7 +4,7 @@ import sys
 import tempfile
 from pathlib import Path
 
-from ibid import concordance, index
+from ibid import concordance, headings, index
 from ibid.ipc import IPC_TOTAL, parse_ipc
 from ibid.parse import BNS_TOTAL, parse_bns
 from ibid.xref import extract
@@ -38,7 +38,8 @@ def _tool_result(payload: dict | str, is_error: bool = False) -> dict:
     return out
 
 
-def call_tool(db, entries: list[dict], name: str, args: object) -> dict:
+def call_tool(db, entries: list[dict], name: str, args: object, heads: dict[str, str | None] | None = None) -> dict:
+    heads = heads or {}  # section Citation to heading; a sub-provision is absent, so its heading is null
     if name not in TOOLS:
         raise RpcError(-32602, f"unknown tool: {name}")
     if not isinstance(args, dict):
@@ -53,7 +54,7 @@ def call_tool(db, entries: list[dict], name: str, args: object) -> dict:
         hits = index.search(db, args["query"], limit)
         if not isinstance(args.get("adjacent", False), bool):
             raise RpcError(-32602, "adjacent must be a boolean")
-        results = [{"citation": c, "text": t} for c, t in hits]
+        results = [{"citation": c, "text": t, "heading": heads.get(c)} for c, t in hits]
         if args.get("adjacent"):
             for r in results:
                 prev, nxt = index.neighbours(db, r["citation"])
@@ -81,10 +82,10 @@ def call_tool(db, entries: list[dict], name: str, args: object) -> dict:
     if name == "cross_references":
         miss = [{"matched": u["matched"], "reason": u["reason"]} for u in index.unresolved(db) if u["source"] == args["citation"]]
         return _tool_result({"citation": args["citation"], "resolved": got[2], "unresolved": miss})
-    return _tool_result({"citation": args["citation"], "text": got[0], "children": got[1]})
+    return _tool_result({"citation": args["citation"], "heading": heads.get(args["citation"]), "text": got[0], "children": got[1]})
 
 
-def handle(db, entries: list[dict], msg: object) -> dict | None:
+def handle(db, entries: list[dict], msg: object, heads: dict[str, str | None] | None = None) -> dict | None:
     if not isinstance(msg, dict) or not isinstance(msg.get("method"), str):
         return {"jsonrpc": "2.0", "id": None, "error": {"code": -32600, "message": "invalid request"}}
     mid, method, params = msg.get("id"), msg["method"], msg.get("params") or {}
@@ -99,7 +100,7 @@ def handle(db, entries: list[dict], msg: object) -> dict | None:
         elif method == "tools/call":
             if not isinstance(params, dict) or not isinstance(params.get("name"), str):
                 raise RpcError(-32602, "params.name is required")
-            result = call_tool(db, entries, params["name"], params.get("arguments", {}))
+            result = call_tool(db, entries, params["name"], params.get("arguments", {}), heads)
         elif "id" not in msg:
             return None  # notifications, including notifications/initialized
         else:
@@ -133,6 +134,7 @@ def serve(bns_pdf: str, ipc_pdf: str, concordance_path: str) -> int:
         except ValueError as e:
             print(f"error: {e}", file=sys.stderr)
             return 1
+        heads = dict(headings.bns_headings(bns_pdf) + headings.ipc_headings(ipc_pdf))
         for line in sys.stdin:
             if not line.strip():
                 continue
@@ -141,6 +143,6 @@ def serve(bns_pdf: str, ipc_pdf: str, concordance_path: str) -> int:
             except json.JSONDecodeError:
                 _emit({"jsonrpc": "2.0", "id": None, "error": {"code": -32700, "message": "parse error"}})
                 continue
-            if (reply := handle(db, entries, msg)) is not None:
+            if (reply := handle(db, entries, msg, heads)) is not None:
                 _emit(reply)
     return 0
