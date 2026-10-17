@@ -18,6 +18,7 @@ START = re.compile(r"(\d+)\.(?!\d)")
 TOL = 3  # the cut sits this many columns before the margin's first column
 RIGHT_FROM = 60  # a right margin starts beyond this column
 NOTE_MAX = 20  # a left margin note is at most this wide
+JUSTIFIED_MAX = 16  # a stray margin word of three letters or fewer, left of this column, is margin
 HEADER_ROWS = 12  # the running page header ends at a rule line within this many lines
 
 
@@ -48,6 +49,8 @@ def _cut(line: str, side: str | None, col: int) -> tuple[str, str]:
             cut = line.find(" ", cut) if " " in line[cut:] else len(line)
         return line[:cut], line[cut:].strip()
     if side == "left" and (m := LEFT_NOTE.match(line)) and len(m[1]) <= NOTE_MAX:  # body columns drift, the margin does not
+        if m[2] and len(m[2]) <= 3 and m.start(2) < JUSTIFIED_MAX:  # a justified margin line ends in a stray word: "property    in"
+            return "", " ".join(line.split())
         return m[2] or "", m[1]
     if side == "left" and line[:1].strip() and (m := re.match(rf"(\S.{{0,{NOTE_MAX - 1}}})(?= )", line)):  # note and body share one space
         return line[m.end():].strip(), m[1]

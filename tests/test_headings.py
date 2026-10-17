@@ -121,6 +121,15 @@ class HeadingsFixtureTest(unittest.TestCase):
                           "misappropriation of property, ends here."])
         self.assertEqual(parse_layout(page), [("BNS 1", "Using as genuine, forged misappropriation of")])
 
+    def test_a_justified_margin_line_keeps_its_last_word(self):
+        # BNS 306: the printed heading is "...of property in possession of master." and the gazette pads "property    in"
+        page = "\n".join([left("Theft by clerk", "     1. Whoever, being a clerk or servant, commits theft in respect of any"),
+                          "or servant of     servant, commits theft in respect of any property in the possession of his",
+                          "property    in",
+                          "possession of     shall be punished with imprisonment of either description for a term which",
+                          "master.           may extend to seven years."])
+        self.assertEqual(parse_layout(page), [("BNS 1", "Theft by clerk or servant of property in possession of master.")])
+
     def test_no_sub_provision_is_listed(self):
         self.assertFalse([ln for ln in self.lines() if ln.startswith("BNS ") and "(" in ln.split("\t")[0]])
 

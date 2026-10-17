@@ -12,9 +12,7 @@ from pdfs import BNS_PDF
 
 CAPT_TEXT = Path(BNS_PDF).parent / "capt" / "comparison_summary_BNS_to_IPC.txt"
 HOW = f"pdftotext -layout {CAPT_TEXT.with_suffix('.pdf')} {CAPT_TEXT}"
-# The ticket asks for 0.90. The real data gives 0.83: the table drops or adds articles ("the") and
-# uses IPC wording in places. Raise this to 0.90 if the owner wants the ticket's number (see notes).
-MIN_RATE = 0.80
+MIN_RATE = 0.80  # owner decision D-004: the CAPT subjects paraphrase the printed headings, a shifted parse scores 0%
 
 
 def norm(s: str) -> str:
@@ -25,10 +23,10 @@ def match_rate(headings: dict[str, str | None], rows: list[dict]) -> tuple[float
     """Share of listed top-level sections whose heading equals a table subject, and one line per mismatch."""
     subjects: dict[str, list[str]] = {}
     for r in rows:
-        if r["bns"].isdigit() and headings.get(f"BNS {r['bns']}"):
+        if r["bns"].isdigit():
             subjects.setdefault(f"BNS {r['bns']}", []).append(r["subject"])
-    bad = [f"{c}\t{headings[c]}\t{' / '.join(s)}" for c, s in subjects.items()
-           if norm(headings[c]) not in map(norm, s)]
+    bad = [f"{c}\t{headings.get(c)}\t{' / '.join(s)}" for c, s in subjects.items()
+           if norm(headings.get(c) or "") not in map(norm, s)]
     return (len(subjects) - len(bad)) / len(subjects), bad
 
 
@@ -42,6 +40,7 @@ class CaptCrossCheckTest(unittest.TestCase):
 
     def check(self, headings: dict[str, str | None]) -> None:
         rate, bad = match_rate(headings, self.rows)
+        print(f"\nCAPT match rate {rate:.1%}; mismatches (citation, heading, subject):\n" + "\n".join(bad))
         self.assertGreaterEqual(rate, MIN_RATE, f"match rate {rate:.1%} is below {MIN_RATE:.0%}; mismatches:\n" + "\n".join(bad))
 
     def test_headings_match_the_table_subjects(self):

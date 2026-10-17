@@ -176,6 +176,7 @@ class ServerTest(unittest.TestCase):
 
     def test_adjacent_falls_back_where_the_sidecar_has_no_heading(self):
         words = index.lookup(self.db, "BNS 84")[0].replace('"', " ").split()[:4]
+        # Exception to AGENTS.md rule 5: the stdio server cannot be started with a modified sidecar, so this calls mcp.handle.
         heads = dict(headings.bns_headings(BNS_PDF))
         heads["BNS 83"] = None  # the server is given a sidecar with this heading removed
         msg = {"jsonrpc": "2.0", "id": 1, "method": "tools/call", "params": {"name": "search", "arguments": {"query": '"' + " ".join(words) + '"', "adjacent": True, "limit": 100}}}
