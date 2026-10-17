@@ -153,6 +153,9 @@ def main(argv: list[str] | None = None) -> int:
     cc.add_argument("--table", required=True)
     cc.add_argument("--index", default="data/index/ibid.sqlite")
     cc.add_argument("--out", required=True)
+    lk = sub.add_parser("links").add_subparsers(dest="links_cmd", required=True).add_parser(
+        "list", help="IPC definition-punishment links derived from headings")
+    lk.add_argument("--index", default="data/index/ibid.sqlite")
     ci = sub.add_parser("cited").add_subparsers(dest="cited_cmd", required=True).add_parser(
         "extract", help="route A: sections a query names, mapped to the other Act through verified concordance")
     ci.add_argument("--set", required=True)
@@ -302,6 +305,12 @@ def main(argv: list[str] | None = None) -> int:
     if a.cmd == "bench":
         from ibid.bench import check_labels
         return check_labels(a.data, a.index)
+    if a.cmd == "links":
+        from ibid.links import list_links
+        import sqlite3
+        db = sqlite3.connect(a.index)
+        print("\n".join(list_links(db)))
+        return 0
     if a.cmd == "conform":
         from ibid.conform import conform
         report = conform(a.gold, a.out, a.bns, a.ipc, a.pages, a.index, a.sheet, dict(d.split("=", 1) for d in a.drop))
