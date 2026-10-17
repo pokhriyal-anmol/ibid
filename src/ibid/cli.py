@@ -157,6 +157,11 @@ def main(argv: list[str] | None = None) -> int:
     lk = lsub.add_parser("list", help="IPC definition-punishment links derived from headings")
     lk.add_argument("--index", default="data/index/ibid.sqlite")
     lk.add_argument("--concordance", default="concordance/v3.json")
+    le = lsub.add_parser("expand", help="append linked partners to a baseline predictions file, as layer links v1")
+    le.add_argument("--predictions", required=True)
+    le.add_argument("--index", default="data/index/ibid.sqlite")
+    le.add_argument("--concordance", default="concordance/v3.json")
+    le.add_argument("--out", required=True)
     lb = lsub.add_parser("bench", help="score links v1 on an ILSI split; the test split once")
     lb.add_argument("--split", required=True)
     lb.add_argument("--labels", default="data/raw/lesicin/label_vocab.json")
@@ -318,6 +323,9 @@ def main(argv: list[str] | None = None) -> int:
     if a.cmd == "links" and a.links_cmd == "bench":
         from ibid.links import bench
         return bench(a.split, a.labels, a.index, a.manifest, a.frozen_rule, a.ledger, a.rescore_test, a.out)
+    if a.cmd == "links" and a.links_cmd == "expand":
+        from ibid.links import expand_file
+        return expand_file(a.predictions, a.index, a.concordance, a.out)
     if a.cmd == "links":
         from ibid.links import list_links
         import sqlite3

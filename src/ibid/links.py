@@ -116,3 +116,26 @@ def bench(split_path: str, labels_path: str, index_path: str, manifest_path: str
         res["test_scores"] = prior + [entry]
     Path(out_path).write_text(json.dumps(res, indent=2, sort_keys=True) + "\n")
     return 0
+
+
+def expand_file(predictions_path: str, index_path: str, concordance_path: str, out_path: str) -> int:
+    """`ibid links expand`: a baseline predictions file in, a `links v1` predictions file out. Reads the file; never ranks."""
+    import json
+    import sys
+    from pathlib import Path
+
+    from ibid import bench
+    try:
+        data = json.loads(Path(predictions_path).read_bytes())
+        db = sqlite3.connect(f"file:{index_path}?mode=ro", uri=True)
+        ipc = ipc_pairs(db)
+        links = {"ipc": partners(ipc), "bns": partners(bns_pairs(concordance.load(concordance_path, db), ipc))}
+        items = {i: {a: expand(p, links[a]) for a, p in acts.items()} for i, acts in data["items"].items()}
+        doc = {"layer": "links", "layer_version": "v1", "set_sha256": data["set_sha256"],
+               "inputs": {"baseline": bench.sha256(predictions_path), "index": bench.sha256(index_path),
+                          "concordance": bench.sha256(concordance_path)}, "items": items}
+    except (OSError, KeyError, ValueError, TypeError, AttributeError, sqlite3.Error) as e:
+        print(f"error: {e}", file=sys.stderr)
+        return 1
+    Path(out_path).write_text(json.dumps(doc, indent=2, sort_keys=True) + "\n")
+    return 0
