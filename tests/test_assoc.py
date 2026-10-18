@@ -314,20 +314,15 @@ class AssocTest(unittest.TestCase):
         self.assertEqual((entry["layer_version"], entry["model_sha256"]), ("v3", bench.sha256(str(self.tmp / "v3.json"))))
 
     def test_v3_eval_carries_micro_f1_over_its_own_and_over_v1_label_space_each_with_its_size(self):
-        v3 = self.fit_v3(min_examples=2)
+        self.fit_v3(min_examples=2)
         labels = str(self.tmp / "labels.json")
         res = self.eval(self.v3_test_split(), "--labels", labels, model="v3.json")
-        by = res["micro_f1_by_label_space"]
-        self.assertEqual((by["own"]["labels"], by["v1"]["labels"]), (v3["header"]["vocabulary_size"], len(LABELS)))
-        self.assertLess(by["own"]["labels"], by["v1"]["labels"])
-        self.assertEqual(by["own"]["micro_f1"], res["scores"]["micro_f1"])  # the rule's figure
-        model = assoc.Model(str(self.tmp / "v3.json"))
-        cases, gold = bench.load_cases(str(self.tmp / "test.jsonl"), bench.load_space(labels))
-        preds = [set(model.predict(" ".join(c["text"]))) for c in cases]
-        self.assertEqual(by["own"]["micro_f1"], bench.score(gold, preds, set(model.labels))["micro_f1"])
-        self.assertEqual(by["v1"]["micro_f1"], bench.score(gold, preds, bench.load_space(labels))["micro_f1"])
-        self.assertNotEqual(by["own"]["micro_f1"], by["v1"]["micro_f1"])
-        self.assertEqual(json.loads((self.tmp / "ledger.json").read_text())[0]["micro_f1_by_label_space"], by)
+        # v3 keeps 3 labels, so each of the 5 cases gets all 3 as predictions (15). d1 to d4 are right in both spaces (tp 4, fp 11).
+        # Own space: d5's zebra is outside it, fn 0, F1 = 8/19. v1's 6-label space counts d5 as a miss, fn 1, F1 = 8/20.
+        self.assertEqual(res["micro_f1_by_label_space"], {"own": {"labels": 3, "micro_f1": round(8 / 19, 6)},
+                                                          "v1": {"labels": 6, "micro_f1": 0.4}})
+        self.assertEqual(res["scores"]["micro_f1"], round(8 / 19, 6))  # the rule's figure
+        self.assertEqual(json.loads((self.tmp / "ledger.json").read_text())[0]["micro_f1_by_label_space"], res["micro_f1_by_label_space"])
 
     def test_v3_entry_leaves_the_v1_and_v2_ledger_entries_byte_for_byte(self):
         self.fit_v3(min_examples=2)

@@ -53,9 +53,12 @@ class V3Report(unittest.TestCase):
         self.assertIn("| above 15.3 | 15.3 | fail |", out)
         self.assertIn("Verdict: **negative**", out)
 
-    def test_low_micro_f1_is_negative_and_missing_is_undecided(self) -> None:
+    def test_low_micro_f1_is_negative(self) -> None:
         self.assertIn("Verdict: **negative**", report(V3, 0.30))
-        self.assertIn("Verdict: **not yet decided**", report(V3, None))
+
+    def test_unscored_ilsi_test_split_is_an_error_not_a_verdict(self) -> None:
+        with self.assertRaisesRegex(AssertionError, "FileNotFoundError"):
+            report(V3, None)
 
     def test_thresholds_match_adr_0008_and_output_is_repeatable(self) -> None:
         out = report(V3)

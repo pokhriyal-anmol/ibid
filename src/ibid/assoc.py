@@ -26,6 +26,17 @@ def _add(docs: dict[str, int], counts: dict[str, dict[str, int]], cites: set[str
             counts[c][t] = counts[c].get(t, 0) + 1
 
 
+def _vocab(cite_sets, minimum: int) -> tuple[set[str], dict[str, int], dict[str, dict[str, int]]]:
+    """Sections cited by at least `minimum` examples, with empty doc and count tables for them."""
+    posts: dict[str, int] = {}
+    for cites in cite_sets:
+        for c in cites:
+            posts[c] = posts.get(c, 0) + 1
+    vocab = {c for c, k in posts.items() if k >= minimum}
+    docs = dict.fromkeys(sorted(vocab), 0)
+    return vocab, docs, {c: {} for c in docs}
+
+
 def _ilsi_read(train_path: str, held: set[str], space: set[str]) -> tuple[list[tuple[set[str], list[str]]], int]:
     """ILSI train cases minus the held-out ids, as (citations, terms); and how many ids were dropped."""
     out, dropped = [], 0
@@ -111,13 +122,7 @@ def fit_ilsic_lay(train_path: str, split_path: str, holdout_set: str, index_path
     """assoc-nb v2: term counts per IPC section over ILSIC-Lay train posts, minus posts equal to a Layman test split post."""
     try:
         train, kept, drop, other_act, absent = _lay_read(train_path, split_path, holdout_set, index_path)
-        posts: dict[str, int] = {}
-        for _, cites in kept:
-            for c in cites:
-                posts[c] = posts.get(c, 0) + 1
-        vocab = {c for c, k in posts.items() if k >= min_posts}
-        docs = dict.fromkeys(sorted(vocab), 0)
-        counts: dict[str, dict[str, int]] = {c: {} for c in docs}
+        vocab, docs, counts = _vocab((c for _, c in kept), min_posts)
         fitted = 0
         for n, cites in kept:
             cites &= vocab
@@ -125,11 +130,7 @@ def fit_ilsic_lay(train_path: str, split_path: str, holdout_set: str, index_path
                 drop["none_above_threshold"] += 1
                 continue
             fitted += 1
-            terms = tokens(train[n]["instruction"])
-            for c in cites:
-                docs[c] += 1
-                for t in terms:
-                    counts[c][t] = counts[c].get(t, 0) + 1
+            _add(docs, counts, cites, tokens(train[n]["instruction"]))
     except (OSError, KeyError, ValueError, TypeError, sqlite3.Error, lzma.LZMAError) as e:
         print(f"error: {e}", file=sys.stderr)
         return 1
@@ -151,24 +152,19 @@ def fit_union(a: dict, b: dict, min_examples: int, out_path: str) -> int:
         train, kept, drop, other_act, absent = _lay_read(b["train"], b["holdout_split"], b["holdout_set"], b["index"])
         ilsi = [(c - NOT_OFFENCES, t) for c, t in ilsi]
         ilsi_drop = {"held_out": ilsi_held, "no_offence_section": sum(not c for c, _ in ilsi)}
-        examples = [(c, t) for c, t in ilsi if c] + [(c, tokens(train[n]["instruction"])) for n, c in kept]
-        posts: dict[str, int] = {}
-        for c, _ in examples:
-            for x in c:
-                posts[x] = posts.get(x, 0) + 1
-        vocab = {c for c, k in posts.items() if k >= min_examples}
-        docs = dict.fromkeys(sorted(vocab), 0)
-        counts: dict[str, dict[str, int]] = {c: {} for c in docs}
-        fitted = [0, 0]
-        ilsi_drop["none_above_threshold"] = drop["none_above_threshold"] = 0
-        for n, (c, t) in enumerate(examples):
-            side = n >= len(examples) - len(kept)
-            c &= vocab
-            if not c:
-                (drop if side else ilsi_drop)["none_above_threshold"] += 1
-                continue
-            fitted[side] += 1
-            _add(docs, counts, c, t)
+        lay = [(c, tokens(train[n]["instruction"])) for n, c in kept]
+        ilsi = [(c, t) for c, t in ilsi if c]
+        vocab, docs, counts = _vocab((c for c, _ in ilsi + lay), min_examples)
+        fitted = []
+        for examples, dropped in ((ilsi, ilsi_drop), (lay, drop)):
+            dropped["none_above_threshold"] = used = 0
+            for c, t in examples:
+                if kept_c := c & vocab:
+                    used += 1
+                    _add(docs, counts, kept_c, t)
+                else:
+                    dropped["none_above_threshold"] += 1
+            fitted.append(used)
     except (OSError, KeyError, ValueError, TypeError, sqlite3.Error, lzma.LZMAError) as e:
         print(f"error: {e}", file=sys.stderr)
         return 1

@@ -32,13 +32,9 @@ for s, name in (("v1", "judgment text"), ("v2", "forum posts")):
             rows.append((f"Set {s} ({name}), {act.upper()} recall", f"v2 {ref}", f"at least {floor}", v3, v3 >= floor))
 v1_f1 = pct(load("results/layers/assoc-nb-v1-test.json")["scores"]["micro_f1"])
 floor = round(v1_f1 - 2, 1)
-try:
-    t = load("results/layers/assoc-nb-v3-test.json")
-    v3_f1 = pct(t["scores"]["micro_f1"])
-    rows.append(("ILSI test micro-F1", f"v1 {v1_f1}", f"at least {floor}", v3_f1, v3_f1 >= floor))
-except FileNotFoundError:
-    t = None
-    rows.append(("ILSI test micro-F1", f"v1 {v1_f1}", f"at least {floor}", "not scored", False))
+t = load("results/layers/assoc-nb-v3-test.json")  # score the ILSI test split first (ibid assoc eval); a missing file is an error, not a verdict
+v3_f1 = pct(t["scores"]["micro_f1"])
+rows.append(("ILSI test micro-F1", f"v1 {v1_f1}", f"at least {floor}", v3_f1, v3_f1 >= floor))
 
 print("# assoc-nb v3 against the ADR 0008 decision rule\n")
 print("| # | Comparison | Reference | v3 must be | v3 | Result |\n|---|---|---|---|---|---|")
@@ -46,8 +42,6 @@ for n, (label, ref, need, v3, ok) in enumerate(rows, 1):
     print(f"| {n} | {label} | {ref} | {need} | {v3} | {'pass' if ok else 'fail'} |")
 if all(ok for *_, ok in rows):
     print("\nVerdict: **kept**. All five comparisons hold, so v3 stays an opt-in layer.")
-elif t is None and all(ok for *_, ok in rows[:-1]):
-    print("\nVerdict: **not yet decided**. The four recall comparisons hold; the ILSI test split has not been scored for v3.")
 else:
     print("\nVerdict: **negative**. Not every comparison holds, so v1 and v2 remain the two options.")
 print("\nADR 0008 names five comparisons (the spec's \"six\" counts to five). Recall is in percent, per set and Act, never pooled.")
@@ -56,7 +50,7 @@ used = {k: v["examples_used"] for k, v in model["sources"].items()}
 total = sum(used.values())
 print(f"\nVocabulary: {model['vocabulary_size']} IPC sections (at least {model['min_examples']} training examples).")
 print("Training examples fitted: " + ", ".join(f"{k} {n} ({100 * n / total:.1f}%)" for k, n in used.items()) + f", {total} in all.")
-if t and "micro_f1_by_label_space" in t:
+if "micro_f1_by_label_space" in t:
     print("\nILSI test micro-F1 by label space (one test run):")
     for k, v in t["micro_f1_by_label_space"].items():
         print(f"- {k} space, {v['labels']} labels: {pct(v['micro_f1'])}")

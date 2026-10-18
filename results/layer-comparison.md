@@ -233,6 +233,7 @@ Judgment-level section prediction over 100 labels, scored by micro-F1, macro-F1 
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | assoc-nb | v1 | dev | 7a2b784aa79dd9148a686d53cadde5a9747e6ffc15a6a1a6c80359551b92bc12 | top-5 | 251eef976c42a8c48c17228d977923ca877d1a58ff52a8d05490b41de46ea4ae | 10200 | 35.2 | 17.9 | 22.6 | - |
 | assoc-nb | v1 | test | 9fc141a94b51febe3e3cd06494f13c587098afcda175fc2e3e4d6213a88b60d1 | top-5 | 251eef976c42a8c48c17228d977923ca877d1a58ff52a8d05490b41de46ea4ae | 13039 | 35.4 | 18.0 | 22.8 | - |
+| assoc-nb | v3 | test | 9fc141a94b51febe3e3cd06494f13c587098afcda175fc2e3e4d6213a88b60d1 | top-5 | e6b555d0076aa31c4e351c7e521e3753551fd573ec1f32b97e185274d8b691a0 | 13039 | 35.2 | 12.5 | 21.0 | - |
 | baseline | v2 | dev | 7a2b784aa79dd9148a686d53cadde5a9747e6ffc15a6a1a6c80359551b92bc12 | top-k | 250c53f85b3dcaa5c370dcc7a0cbf8a6da7579bc0f398ea9be2341b4750a90bf | 10200 | 9.3 | 6.0 | 5.5 | 4.98 |
 | baseline | v2.11 | test | 9fc141a94b51febe3e3cd06494f13c587098afcda175fc2e3e4d6213a88b60d1 | threshold | 250c53f85b3dcaa5c370dcc7a0cbf8a6da7579bc0f398ea9be2341b4750a90bf | 13039 | 9.6 | 6.2 | 5.5 | 4.21 |
 | baseline | v2.11 | test | 9fc141a94b51febe3e3cd06494f13c587098afcda175fc2e3e4d6213a88b60d1 | top-k | 250c53f85b3dcaa5c370dcc7a0cbf8a6da7579bc0f398ea9be2341b4750a90bf | 13039 | 9.4 | 6.1 | 5.4 | 4.98 |
