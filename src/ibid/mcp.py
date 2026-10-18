@@ -4,19 +4,22 @@ import sys
 import tempfile
 from pathlib import Path
 
-from ibid import concordance, headings, index
+from ibid import assoc, concordance, headings, index
 from ibid.ipc import IPC_TOTAL, parse_ipc
 from ibid.parse import BNS_TOTAL, parse_bns
 from ibid.xref import extract
 
 PROTOCOL_VERSION = "2024-11-05"
 DIRECTIONS = ("ipc_to_bns", "bns_to_ipc")
+MODES = ("keyword", "learned")
+CAVEAT = "Learned mode: placeholder caveat, replaced by the measured wording."
 _CITATION = {"type": "object", "properties": {"citation": {"type": "string"}}, "required": ["citation"]}
 TOOLS = {
     "get_provision": ("Verbatim text and child Citations of one Provision, by exact Citation.", _CITATION),
     "search": ("Keyword search over the raw query.",
                {"type": "object", "properties": {"query": {"type": "string"}, "limit": {"type": "integer"},
-                                                      "adjacent": {"type": "boolean"}}, "required": ["query"]}),
+                                                      "adjacent": {"type": "boolean"},
+                                                      "mode": {"type": "string", "enum": list(MODES)}}, "required": ["query"]}),
     "cross_references": ("Resolved and unresolved Cross-references of one Provision.", _CITATION),
     "concordance": ("Verified Concordance entries for a Citation.",
                     {"type": "object", "properties": {"citation": {"type": "string"},
@@ -38,7 +41,48 @@ def _tool_result(payload: dict | str, is_error: bool = False) -> dict:
     return out
 
 
-def call_tool(db, entries: list[dict], name: str, args: object, heads: dict[str, str | None] | None = None) -> dict:
+class LazyModel:
+    """The assoc-nb v3 model file, read on the first learned call and never at startup."""
+
+    def __init__(self, path: str):
+        self.path, self.model = path, None
+
+    def get(self) -> assoc.Model:
+        if self.model is None:
+            try:
+                model = assoc.Model(self.path)
+            except (OSError, ValueError, KeyError, TypeError) as e:
+                raise ValueError(f"cannot read the learned model {self.path} ({e}); fit it with `ibid assoc fit --source union`") from None
+            h = model.header
+            if (h.get("layer"), h.get("layer_version")) != (assoc.LAYER, "v3"):
+                raise ValueError(f"model {self.path} is {h.get('layer')} {h.get('layer_version')}, expected {assoc.LAYER} v3")
+            self.model = model
+        return self.model
+
+
+def _learned(db, entries: list[dict], heads: dict, lazy: LazyModel | None, args: dict) -> dict:
+    limit = args.get("limit", assoc.TOP_K)
+    if isinstance(limit, bool) or not isinstance(limit, int) or limit < 1:
+        raise RpcError(-32602, "limit must be an integer of at least 1")
+    try:
+        model = (lazy or LazyModel("data/assoc-nb-v3.json")).get()
+    except ValueError as e:
+        return _tool_result(str(e), True)
+    notes = []
+    if limit > assoc.TOP_K:
+        notes.append(f"limit clamped to {assoc.TOP_K}")
+    if args.get("adjacent"):
+        notes.append("adjacent is not supported in learned mode and was ignored")
+    results = [{"citation": c, "heading": heads.get(c), "text": index.lookup(db, c)[0], "rank": r,
+                "bns": list(dict.fromkeys(b for h in entries if h["verified"] and c in h["ipc"] for b in h["bns"]))}
+               for r, c in enumerate(model.predict(args["query"])[:limit], 1)]
+    out = {"results": results, "layer": assoc.LAYER, "layer_version": model.header["layer_version"],
+           "model_sha256": model.sha256, "caveat": CAVEAT}
+    return _tool_result({**out, "notes": notes} if notes else out)
+
+
+def call_tool(db, entries: list[dict], name: str, args: object, heads: dict[str, str | None] | None = None,
+              lazy: LazyModel | None = None) -> dict:
     heads = heads or {}  # section Citation to heading; a sub-provision is absent, so its heading is null
     if name not in TOOLS:
         raise RpcError(-32602, f"unknown tool: {name}")
@@ -48,6 +92,10 @@ def call_tool(db, entries: list[dict], name: str, args: object, heads: dict[str,
         if not isinstance(args.get(key), str):
             raise RpcError(-32602, f"missing or non-string argument: {key}")
     if name == "search":
+        if args.get("mode", "keyword") not in MODES:
+            raise RpcError(-32602, "mode must be " + " or ".join(MODES))
+        if args.get("mode") == "learned":
+            return _learned(db, entries, heads, lazy, args)
         limit = args.get("limit", 10)
         if isinstance(limit, bool) or not isinstance(limit, int) or limit < 1:
             raise RpcError(-32602, "limit must be an integer of at least 1")
@@ -85,7 +133,8 @@ def call_tool(db, entries: list[dict], name: str, args: object, heads: dict[str,
     return _tool_result({"citation": args["citation"], "heading": heads.get(args["citation"]), "text": got[0], "children": got[1]})
 
 
-def handle(db, entries: list[dict], msg: object, heads: dict[str, str | None] | None = None) -> dict | None:
+def handle(db, entries: list[dict], msg: object, heads: dict[str, str | None] | None = None,
+           lazy: LazyModel | None = None) -> dict | None:
     if not isinstance(msg, dict) or not isinstance(msg.get("method"), str):
         return {"jsonrpc": "2.0", "id": None, "error": {"code": -32600, "message": "invalid request"}}
     mid, method, params = msg.get("id"), msg["method"], msg.get("params") or {}
@@ -100,7 +149,7 @@ def handle(db, entries: list[dict], msg: object, heads: dict[str, str | None] | 
         elif method == "tools/call":
             if not isinstance(params, dict) or not isinstance(params.get("name"), str):
                 raise RpcError(-32602, "params.name is required")
-            result = call_tool(db, entries, params["name"], params.get("arguments", {}), heads)
+            result = call_tool(db, entries, params["name"], params.get("arguments", {}), heads, lazy)
         elif "id" not in msg:
             return None  # notifications, including notifications/initialized
         else:
@@ -115,7 +164,7 @@ def _emit(obj: dict) -> None:
     sys.stdout.flush()
 
 
-def serve(bns_pdf: str, ipc_pdf: str, concordance_path: str) -> int:
+def serve(bns_pdf: str, ipc_pdf: str, concordance_path: str, assoc_model: str = "data/assoc-nb-v3.json") -> int:
     for path in (bns_pdf, ipc_pdf, concordance_path):
         if not Path(path).is_file():
             print(f"error: no such file: {path}", file=sys.stderr)
@@ -135,6 +184,7 @@ def serve(bns_pdf: str, ipc_pdf: str, concordance_path: str) -> int:
             print(f"error: {e}", file=sys.stderr)
             return 1
         heads = dict(headings.bns_headings(bns_pdf) + headings.ipc_headings(ipc_pdf))
+        lazy = LazyModel(assoc_model)
         for line in sys.stdin:
             if not line.strip():
                 continue
@@ -143,6 +193,6 @@ def serve(bns_pdf: str, ipc_pdf: str, concordance_path: str) -> int:
             except json.JSONDecodeError:
                 _emit({"jsonrpc": "2.0", "id": None, "error": {"code": -32700, "message": "parse error"}})
                 continue
-            if (reply := handle(db, entries, msg, heads)) is not None:
+            if (reply := handle(db, entries, msg, heads, lazy)) is not None:
                 _emit(reply)
     return 0

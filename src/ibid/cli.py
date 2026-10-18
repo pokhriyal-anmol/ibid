@@ -165,6 +165,7 @@ def main(argv: list[str] | None = None) -> int:
     mc.add_argument("--bns", default=os.environ.get("IBID_BNS_PDF", "data/raw/bns-prs.pdf"))
     mc.add_argument("--ipc", default=os.environ.get("IBID_IPC_PDF", "data/raw/ipc-wipo.pdf"))
     mc.add_argument("--concordance", default="concordance/v3.json")
+    mc.add_argument("--assoc-model", default="data/assoc-nb-v3.json", help="learned mode's model file; read on the first learned call")
     hd = sub.add_parser("headings").add_subparsers(dest="headings_cmd", required=True).add_parser(
         "list", help="section headings, one citation and heading per line")
     hd.add_argument("--act", choices=("bns", "ipc"), required=True)
@@ -293,7 +294,7 @@ def main(argv: list[str] | None = None) -> int:
         return 1
     if a.cmd == "mcp":
         from ibid import mcp
-        return mcp.serve(a.bns, a.ipc, a.concordance)
+        return mcp.serve(a.bns, a.ipc, a.concordance, a.assoc_model)
     if a.cmd == "headings":
         from ibid import headings
         pairs = (headings.ipc_headings(a.ipc) if a.act == "ipc" else headings.parse_layout(Path(a.layout).read_text())
