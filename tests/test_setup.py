@@ -11,7 +11,9 @@ import unittest
 from pathlib import Path
 from unittest import mock
 
+from ibid import setup
 from ibid.cli import main
+from ibid.parse import Provision
 
 ROOT = Path(__file__).resolve().parent.parent
 
@@ -30,12 +32,17 @@ class SetupTest(unittest.TestCase):
         self.raw = Path(self.tmp.name) / "raw"
         self.raw.mkdir()
         self.files = {"bns": b"fake bns bytes", "ipc": b"fake ipc bytes"}
-        manifest = {n: {"file": f"{n}.bin", "url": f"https://example.org/{n}", "bytes": len(b),
+        manifest = {n: {"file": f"{n}.bin", "url": f"https://example.org/{n}", "sections": 3, "bytes": len(b),
                         "sha256": hashlib.sha256(b).hexdigest()} for n, b in self.files.items()}
         self.sources = Path(self.tmp.name) / "sources.json"
         self.sources.write_text(json.dumps(manifest))
         for n, b in self.files.items():
             (self.raw / f"{n}.bin").write_bytes(b)
+        fake = lambda _: [Provision(f"s{i}", "", None, ()) for i in range(self.parsed)]  # noqa: E731
+        self.parsed = 3
+        patcher = mock.patch.dict(setup.PARSERS, {"bns": fake, "ipc": fake})
+        patcher.start()
+        self.addCleanup(patcher.stop)
         self.bindir = Path(self.tmp.name) / "bin"
         self.bindir.mkdir()
         for t in ("pdftotext", "pdftohtml", "pdfseparate", "pdfunite"):
@@ -60,6 +67,34 @@ class SetupTest(unittest.TestCase):
         self.assertIn(str((self.raw / "ipc.bin").resolve()), out)
         self.assertIn("ibid setup --fetch ipc --url", out)
 
+    def test_prints_counts_and_absolute_mcp_line(self):
+        code, out = self.run_it()
+        self.assertEqual(code, 0, out)
+        self.assertIn("BNS 3 sections, IPC 3 sections", out)
+        line = next(x for x in out.splitlines() if x.startswith("claude mcp add ibid -- "))
+        self.assertIn(str((self.raw / "bns.bin").resolve()), line)
+        self.assertIn(str((self.raw / "ipc.bin").resolve()), line)
+        self.assertTrue(Path(line.split("--directory ")[1].split()[0]).is_absolute())
+
+    def test_wrong_count_fails(self):
+        self.parsed = 2
+        code, out = self.run_it()
+        self.assertNotEqual(code, 0)
+        self.assertRegex(out, r"FAIL\s+bns: parsed 2 sections, expected 3")
+        self.assertNotIn("claude mcp add", out)
+
+    def test_failed_check_skips_parse(self):
+        (self.raw / "ipc.bin").unlink()
+        with mock.patch.dict(setup.PARSERS, {"bns": self.boom, "ipc": self.boom}):
+            code, out = self.run_it()
+        self.assertNotEqual(code, 0)
+        self.assertIn("parse not run", out)
+        self.assertNotIn("claude mcp add", out)
+
+    @staticmethod
+    def boom(_):
+        raise AssertionError("parse attempted")
+
     def test_wrong_bytes_reported_and_untouched(self):
         p = self.raw / "bns.bin"
         p.write_bytes(b"other")
@@ -78,6 +113,21 @@ class SetupTest(unittest.TestCase):
         self.assertRegex(out, r"FAIL\s+tool pdftotext")
         self.assertIn("brew install poppler", out)
         self.assertIn("apt install poppler-utils", out)
+
+
+class RealPdfTest(unittest.TestCase):
+    def test_real_pdfs_parse_to_expected_counts(self):
+        from pdfs import BNS_PDF, IPC_PDF
+        with tempfile.TemporaryDirectory() as d:
+            for n, p in (("bns-prs.pdf", BNS_PDF), ("ipc-wipo.pdf", IPC_PDF)):
+                (Path(d) / n).symlink_to(p)
+            out = io.StringIO()
+            with contextlib.redirect_stdout(out):
+                code = main(["setup", "--sources", str(ROOT / "data/sources.json"), "--raw-dir", d])
+        self.assertEqual(code, 0, out.getvalue())
+        self.assertIn("BNS 358 sections, IPC 575 sections", out.getvalue())
+        line = next(x for x in out.getvalue().splitlines() if x.startswith("claude mcp add ibid -- "))
+        self.assertIn(str(Path(BNS_PDF).resolve()), line)
 
 
 class ManifestTest(unittest.TestCase):

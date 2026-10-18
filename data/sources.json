@@ -4,6 +4,7 @@
     "url": "https://prsindia.org/files/bills_acts/bills_parliament/2023/The%20Bharatiya%20Nyaya%20Sanhita,%202023.pdf",
     "fetchable": true,
     "bytes": 1382923,
+    "sections": 358,
     "sha256": "67c92f7869420685e6cdc29b1bdde19fff91312b10241b3ed3e1163c5399600b"
   },
   "ipc": {
@@ -11,6 +12,7 @@
     "url": "https://www.wipo.int/wipolex/en/legislation/details/22981",
     "fetchable": false,
     "bytes": 1145178,
+    "sections": 575,
     "sha256": "1f81d285b4bc912b335596ffbba44280d49169a56c0d21572c8bf3f6b6fedd4e"
   }
 }
