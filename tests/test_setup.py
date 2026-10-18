@@ -20,6 +20,15 @@ from ibid.parse import Provision
 ROOT = Path(__file__).resolve().parent.parent
 
 
+def setUpModule() -> None:
+    # the developer's shell exports these for the other tests; setup must see only what each test sets
+    patcher = mock.patch.dict(os.environ)
+    patcher.start()
+    unittest.addModuleCleanup(patcher.stop)
+    for name in ("IBID_BNS_PDF", "IBID_IPC_PDF"):
+        os.environ.pop(name, None)
+
+
 def run_setup(*args: str, path: str) -> tuple[int, str]:
     out = io.StringIO()
     with mock.patch.dict(os.environ, {"PATH": path}), contextlib.redirect_stdout(out):
@@ -96,6 +105,14 @@ class SetupTest(unittest.TestCase):
     @staticmethod
     def boom(_):
         raise AssertionError("parse attempted")
+
+    def test_the_pdf_env_vars_override_the_raw_dir_like_every_other_command(self):
+        elsewhere = Path(self.tmp.name) / "elsewhere.bin"
+        elsewhere.write_bytes(b"not the recorded bytes")
+        with mock.patch.dict(os.environ, {"IBID_BNS_PDF": str(elsewhere)}):
+            code, out = self.run_it()
+        self.assertNotEqual(code, 0)
+        self.assertIn("present, hash differs", out)
 
     def test_wrong_bytes_reported_and_untouched(self):
         p = self.raw / "bns.bin"
@@ -215,10 +232,17 @@ class FetchTest(unittest.TestCase):
         code, out = self.fetch("--fetch", "ipc", "--url", self.url)
         self.assert_clean_failure(code, out, "exceeds")
 
+    def test_cap_applies_when_manifest_size_is_larger(self):
+        self.write_manifest(b"x" * 1000)
+        self.srv.body = b"x" * 50
+        with mock.patch.object(setup, "CAP", 10):
+            code, out = self.fetch("--fetch", "ipc", "--url", self.url)
+        self.assert_clean_failure(code, out, "exceeds 10 bytes")
+
     def test_http_error_leaves_nothing(self):
         self.srv.body = None
         code, out = self.fetch("--fetch", "ipc", "--url", self.url)
-        self.assert_clean_failure(code, out, "HTTP")
+        self.assert_clean_failure(code, out, "404")
 
     def test_existing_file_refused_without_request(self):
         p = self.raw / "ipc.bin"

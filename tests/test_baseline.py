@@ -79,24 +79,26 @@ class BaselineTest(unittest.TestCase):
     MODEL_PACKAGES = ("anthropic", "openai", "transformers", "sentence_transformers", "langchain", "requests", "httpx")
 
     @classmethod
-    def model_uses(cls, lock: str, sources: dict[str, str]) -> list[str]:
-        """Model or network packages in the resolved lock, or imported by any source file."""
+    def model_uses(cls, lock: str, sources: dict[str, str], net_ok: tuple[str, ...] = ()) -> list[str]:
+        """Model or network packages in the lock, or imported by any source file. Files named in net_ok may use stdlib network modules."""
         norm = lambda s: s.replace("-", "_")
         found = [f"uv.lock: {n}" for n in re.findall(r'^name = "([^"]+)"', lock, re.M) if norm(n) in cls.MODEL_PACKAGES]
         for path, src in sources.items():
             for mod in re.findall(r"^\s*(?:import|from)\s+([\w]+)", src, re.M):
-                if norm(mod) in cls.MODEL_PACKAGES or mod in ("urllib", "socket", "http"):
+                if norm(mod) in cls.MODEL_PACKAGES or (mod in ("urllib", "socket", "http") and not path.endswith(net_ok)):
                     found.append(f"{path}: {mod}")
         return found
 
     def test_no_model_is_a_dependency_or_an_import(self):
         # setup.py is the one network module: it downloads source PDFs, never calls a model (slice 10).
-        sources = {str(p): p.read_text() for p in (ROOT / "src" / "ibid").glob("*.py") if p.name != "setup.py"}
-        self.assertEqual(self.model_uses((ROOT / "uv.lock").read_text(), sources), [])
+        sources = {str(p): p.read_text() for p in (ROOT / "src" / "ibid").glob("*.py")}
+        self.assertEqual(self.model_uses((ROOT / "uv.lock").read_text(), sources, net_ok=("setup.py",)), [])
 
     def test_the_model_check_fails_on_a_known_bad_lock_and_import(self):
         bad = self.model_uses('name = "anthropic"\n', {"x.py": "def f():\n    import openai\n"})
         self.assertEqual(bad, ["uv.lock: anthropic", "x.py: openai"])
+        bad = self.model_uses("", {"src/setup.py": "import openai\nimport urllib.request\n"}, net_ok=("setup.py",))
+        self.assertEqual(bad, ["src/setup.py: openai"])
 
 
 if __name__ == "__main__":

@@ -63,13 +63,18 @@ def _download(url: str, target: Path, size: int, sha256: str) -> str | None:
             os.unlink(tmp)
 
 
+def _target(raw_dir: str, name: str, src: dict) -> Path:
+    """Where a source PDF lives: the same IBID_BNS_PDF / IBID_IPC_PDF override every other command honours."""
+    return Path(os.environ.get(f"IBID_{name.upper()}_PDF") or Path(raw_dir) / src["file"])
+
+
 def fetch(manifest: dict, raw_dir: str, name: str, url: str | None) -> int:
     src = manifest[name]
     if url is None and name == "ipc":
         print(IPC_NEEDS_URL.format(page=src["url"]), file=sys.stderr)
         return 1
     url = url or src["url"]
-    target = Path(raw_dir) / src["file"]
+    target = _target(raw_dir, name, src)
     if target.exists():
         print(f"error: {target.resolve()} already exists; refusing to overwrite. Move it away to fetch again.", file=sys.stderr)
         return 1
@@ -100,7 +105,7 @@ def run(sources: str, raw_dir: str, fetch_name: str | None = None, url: str | No
             ok = False
             print("\n".join(INSTALL))
     for name, src in manifest.items():
-        path = (Path(raw_dir) / src["file"]).resolve()
+        path = _target(raw_dir, name, src).resolve()
         if not path.is_file():
             ok = False
             print(f"FAIL  {name}: missing\n  get: {src['url']}\n  save as: {path}\n  or run: {_fetch_hint(name)}")
