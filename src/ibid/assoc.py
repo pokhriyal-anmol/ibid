@@ -214,9 +214,11 @@ def predict(model_path: str, set_path: str, concordance_path: str, index_path: s
         hits = [h for c in ipc for h in entries if h["verified"] and c in h["ipc"]]
         out[item["id"]] = {"ipc": ipc, "bns": list(dict.fromkeys(b for h in hits for b in h["bns"]))}
     h = model.header
+    union = h["layer_version"] == "v3"  # the union header holds one train hash per source
+    train = {f"train_sha256_{k}": v["train_sha256"] for k, v in h["sources"].items()} if union else {"train_sha256": h["train_sha256"]}
     doc = {"layer": LAYER, "layer_version": h["layer_version"], "set_sha256": hashlib.sha256(raw).hexdigest(),
-           "inputs": {"model": model.sha256, "train_sha256": h["train_sha256"], "concordance": bench.sha256(concordance_path),
-                      "train_source": {"v2": "ilsic-lay", "v3": "union"}.get(h["layer_version"], "ilsi")}, "items": out}
+           "inputs": {"model": model.sha256, **train, "concordance": bench.sha256(concordance_path),
+                      "train_source": "ilsi+ilsic-lay" if union else {"v2": "ilsic-lay"}.get(h["layer_version"], "ilsi")}, "items": out}
     Path(out_path).write_text(json.dumps(doc, indent=2, sort_keys=True) + "\n")
     return 0
 

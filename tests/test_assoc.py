@@ -234,6 +234,41 @@ class AssocTest(unittest.TestCase):
         self.assertEqual((p1["layer_version"], p1["inputs"]["train_source"]), ("v1", "ilsi"))
         self.assertEqual(p1["inputs"]["train_sha256"], bench.sha256(str(self.train)))
 
+    def score_v3(self, pred, name, ledger="v3.ledger.json", expect=0, *extra):
+        return self.cli("charges", "score", "--set", str(self.set), "--index", str(self.tmp / "i.sqlite"), "--predictions", str(pred),
+                        "--act", "ipc", "--out", str(self.tmp / name), "--ledger", str(self.tmp / ledger), *extra, expect=expect)
+
+    def test_predict_v3_names_layer_version_hash_and_both_train_sources(self):
+        model = self.fit_v3()
+        h = json.loads((self.tmp / "v3.json").read_text())["header"]["sources"]
+        p = self.predict_scored(self.tmp / "v3.json", "pv3")
+        self.assertEqual((p["layer"], p["layer_version"], p["inputs"]["model"], p["inputs"]["train_source"]),
+                         ("assoc-nb", "v3", bench.sha256(str(self.tmp / "v3.json")), "ilsi+ilsic-lay"))
+        self.assertEqual((p["inputs"]["train_sha256_ilsi"], p["inputs"]["train_sha256_ilsic-lay"]),
+                         (h["ilsi"]["train_sha256"], h["ilsic-lay"]["train_sha256"]))
+
+    def test_scorer_refuses_a_predictions_file_whose_version_is_not_the_one_in_its_results_name(self):
+        self.fit_v3()
+        self.predict_scored(self.tmp / "v3.json", "pv3")
+        pred = self.tmp / "pv3.json"
+        d = json.loads(pred.read_text())
+        d["layer_version"] = "v2"  # known-bad: a v2 file offered as the v3 results
+        bad = self.tmp / "bad.json"
+        bad.write_text(json.dumps(d))
+        err = self.score_v3(bad, "multicharge-v1-assoc-v3-ipc.json", "bad.ledger.json", 1)
+        self.assertIn("v3", err)
+        self.assertFalse((self.tmp / "multicharge-v1-assoc-v3-ipc.json").exists())
+        self.score_v3(pred, "multicharge-v1-assoc-v3-ipc.json", "ok.ledger.json")
+
+    def test_a_v3_file_scored_twice_is_refused_unless_rescore(self):
+        self.fit_v3()
+        self.predict_scored(self.tmp / "v3.json", "pv3")
+        self.score_v3(self.tmp / "pv3.json", "a.json")
+        led = (self.tmp / "v3.ledger.json").read_bytes()
+        self.assertIn("already scored", self.score_v3(self.tmp / "pv3.json", "b.json", "v3.ledger.json", 1))
+        self.assertEqual((self.tmp / "v3.ledger.json").read_bytes(), led)
+        self.score_v3(self.tmp / "pv3.json", "c.json", "v3.ledger.json", 0, "--rescore")
+
     def eval(self, split, *extra, expect=0, ledger="ledger.json", out="e.json"):
         err = self.cli("assoc", "eval", "--model", str(self.tmp / "m.json"), "--split", str(split), "--manifest", str(self.tmp / "man.json"),
                        "--ledger", str(self.tmp / ledger), "--out", str(self.tmp / out), *extra, expect=expect)
