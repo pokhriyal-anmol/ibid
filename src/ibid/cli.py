@@ -206,6 +206,7 @@ def main(argv: list[str] | None = None) -> int:
     ae.add_argument("--split", required=True)
     ae.add_argument("--manifest", default="data/lesicin.manifest.json")
     ae.add_argument("--ledger", default="results/test-ledger-assoc.json")
+    ae.add_argument("--labels", default=None, help="ILSI label vocabulary: also report micro-F1 over this (v1's) label space")
     ae.add_argument("--rescore-test", action="store_true")
     ae.add_argument("--out", default=None)
     chq = chs.add_parser("subquery", help="route C: retrieve per recorded sub-query with the frozen rule and union")
@@ -317,7 +318,7 @@ def main(argv: list[str] | None = None) -> int:
             return assoc.fit(a.train, a.holdout_set, a.labels, a.out)
         if a.assoc_cmd == "predict":
             return assoc.predict(a.model, a.set, a.concordance, a.index, a.out)
-        return assoc.evaluate(a.model, a.split, a.manifest, a.ledger, a.rescore_test, a.out)
+        return assoc.evaluate(a.model, a.split, a.manifest, a.ledger, a.rescore_test, a.out, a.labels)
     if a.cmd == "bench" and a.bench_cmd == "report":
         from ibid.report import run_report
         return run_report(a.log, a.ledger, a.results, a.out, a.frozen_rule)

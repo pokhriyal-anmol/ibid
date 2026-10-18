@@ -269,8 +269,8 @@ class AssocTest(unittest.TestCase):
         self.assertEqual((self.tmp / "v3.ledger.json").read_bytes(), led)
         self.score_v3(self.tmp / "pv3.json", "c.json", "v3.ledger.json", 0, "--rescore")
 
-    def eval(self, split, *extra, expect=0, ledger="ledger.json", out="e.json"):
-        err = self.cli("assoc", "eval", "--model", str(self.tmp / "m.json"), "--split", str(split), "--manifest", str(self.tmp / "man.json"),
+    def eval(self, split, *extra, expect=0, ledger="ledger.json", out="e.json", model="m.json"):
+        err = self.cli("assoc", "eval", "--model", str(self.tmp / model), "--split", str(split), "--manifest", str(self.tmp / "man.json"),
                        "--ledger", str(self.tmp / ledger), "--out", str(self.tmp / out), *extra, expect=expect)
         return json.loads((self.tmp / out).read_text()) if expect == 0 else err
 
@@ -297,6 +297,55 @@ class AssocTest(unittest.TestCase):
         (self.tmp / "man.json").write_text(json.dumps({"test.jsonl": {"sha256": bench.sha256(str(test))}}))
         self.eval(copy)
         self.assertIn("already scored", self.eval(copy, expect=1))
+
+    def v3_test_split(self):
+        rows = [("d1", ["knife"], [100]), ("d2", ["purse"], [101]), ("d3", ["cheating"], [102]), ("d4", ["knife"], [100]),
+                ("d5", ["zebra"], [105])]  # d5's label is in v1's space but not in v3's
+        test = self.write_split("test.jsonl", rows)
+        (self.tmp / "man.json").write_text(json.dumps({"test.jsonl": {"sha256": bench.sha256(str(test))}}))
+        return test
+
+    def test_v3_eval_ledger_names_v3_and_the_model_hash_and_a_second_run_is_refused(self):
+        self.fit_v3(min_examples=2)
+        test, labels = self.v3_test_split(), str(self.tmp / "labels.json")
+        self.eval(test, "--labels", labels, model="v3.json")
+        self.assertIn("already scored", self.eval(test, "--labels", labels, model="v3.json", expect=1))
+        (entry,) = json.loads((self.tmp / "ledger.json").read_text())
+        self.assertEqual((entry["layer_version"], entry["model_sha256"]), ("v3", bench.sha256(str(self.tmp / "v3.json"))))
+
+    def test_v3_eval_carries_micro_f1_over_its_own_and_over_v1_label_space_each_with_its_size(self):
+        v3 = self.fit_v3(min_examples=2)
+        labels = str(self.tmp / "labels.json")
+        res = self.eval(self.v3_test_split(), "--labels", labels, model="v3.json")
+        by = res["micro_f1_by_label_space"]
+        self.assertEqual((by["own"]["labels"], by["v1"]["labels"]), (v3["header"]["vocabulary_size"], len(LABELS)))
+        self.assertLess(by["own"]["labels"], by["v1"]["labels"])
+        self.assertEqual(by["own"]["micro_f1"], res["scores"]["micro_f1"])  # the rule's figure
+        model = assoc.Model(str(self.tmp / "v3.json"))
+        cases, gold = bench.load_cases(str(self.tmp / "test.jsonl"), bench.load_space(labels))
+        preds = [set(model.predict(" ".join(c["text"]))) for c in cases]
+        self.assertEqual(by["own"]["micro_f1"], bench.score(gold, preds, set(model.labels))["micro_f1"])
+        self.assertEqual(by["v1"]["micro_f1"], bench.score(gold, preds, bench.load_space(labels))["micro_f1"])
+        self.assertNotEqual(by["own"]["micro_f1"], by["v1"]["micro_f1"])
+        self.assertEqual(json.loads((self.tmp / "ledger.json").read_text())[0]["micro_f1_by_label_space"], by)
+
+    def test_v3_entry_leaves_the_v1_and_v2_ledger_entries_byte_for_byte(self):
+        self.fit_v3(min_examples=2)
+        old = [{"cases": 1, "layer": "assoc-nb", "layer_version": v, "model_sha256": "x", "scores": {"micro_f1": 0.5}, "split_sha256": "y"} for v in ("v1", "v2")]
+        text = json.dumps(old, indent=2, sort_keys=True) + "\n"
+        (self.tmp / "ledger.json").write_text(text)
+        self.eval(self.v3_test_split(), "--labels", str(self.tmp / "labels.json"), model="v3.json")
+        new = (self.tmp / "ledger.json").read_text()
+        self.assertEqual(len(json.loads(new)), 3)
+        self.assertTrue(new.startswith(text[:-3]))  # the first two entries are the same bytes, the list just grows
+
+    def test_v1_eval_scores_do_not_change_with_or_without_the_label_space_option(self):
+        self.fit()
+        dev = self.write_split("dev.jsonl", [("d1", ["knife"], [100]), ("d2", ["purse"], [101])])
+        a = self.eval(dev)["scores"]
+        b = self.eval(dev, "--labels", str(self.tmp / "labels.json"))
+        self.assertEqual(a, b["scores"])
+        self.assertEqual(b["micro_f1_by_label_space"]["own"], b["micro_f1_by_label_space"]["v1"])
 
 
 if __name__ == "__main__":

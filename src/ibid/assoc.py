@@ -223,10 +223,14 @@ def predict(model_path: str, set_path: str, concordance_path: str, index_path: s
     return 0
 
 
-def evaluate(model_path: str, split_path: str, manifest_path: str, ledger_path: str, rescore: bool, out_path: str | None) -> int:
-    """Score a split with the benchmark's own scorer. The pinned test split is scored once per layer version, in its own ledger."""
+def evaluate(model_path: str, split_path: str, manifest_path: str, ledger_path: str, rescore: bool, out_path: str | None,
+             labels_path: str | None = None) -> int:
+    """Score a split with the benchmark's own scorer. The pinned test split is scored once per layer version, in its own ledger.
+
+    With labels_path (ILSI's full label vocabulary, v1's space) the micro-F1 is also given over that space beside the model's own."""
     try:
         model = Model(model_path)
+        version = model.header["layer_version"]
         sha = bench.sha256(split_path)
         try:
             pinned = bench.pinned_test_hash(manifest_path)
@@ -234,19 +238,23 @@ def evaluate(model_path: str, split_path: str, manifest_path: str, ledger_path: 
             pinned = None
         on_test = Path(split_path).stem == "test" or sha == pinned
         prior = [e for e in bench.read_ledger(ledger_path)
-                 if e["layer"] == LAYER and e["layer_version"] == LAYER_VERSION and e["split_sha256"] == sha]
+                 if e["layer"] == LAYER and e["layer_version"] == version and e["split_sha256"] == sha]
         if on_test and prior and not rescore:
             raise ValueError("the test split was already scored for this layer version; pass --rescore-test to score it again")
         space = set(model.labels)
-        cases, gold = bench.load_cases(split_path, space)
+        wide = bench.load_space(labels_path) if labels_path else space
+        cases, gold = bench.load_cases(split_path, wide)
     except (OSError, KeyError, ValueError, TypeError) as e:
         print(f"error: {e}", file=sys.stderr)
         return 1
     preds = [set(model.predict(" ".join(c["text"]))) for c in cases]
-    res = {"layer": LAYER, "layer_version": LAYER_VERSION, "k": TOP_K, "model_sha256": model.sha256, "split_sha256": sha,
+    res = {"layer": LAYER, "layer_version": version, "k": TOP_K, "model_sha256": model.sha256, "split_sha256": sha,
            "cases": len(cases), "scores": bench.score(gold, preds, space)}
+    if labels_path:
+        res["micro_f1_by_label_space"] = {"own": {"labels": len(space), "micro_f1": res["scores"]["micro_f1"]},
+                                          "v1": {"labels": len(wide), "micro_f1": bench.score(gold, preds, wide)["micro_f1"]}}
     if on_test:
-        entry = {k: res[k] for k in ("layer", "layer_version", "model_sha256", "split_sha256", "cases", "scores")}
+        entry = {k: res[k] for k in ("layer", "layer_version", "model_sha256", "split_sha256", "cases", "scores", "micro_f1_by_label_space") if k in res}
         Path(ledger_path).write_text(json.dumps(bench.read_ledger(ledger_path) + [entry], indent=2, sort_keys=True) + "\n")
         res["test_scores"] = prior + [entry]
     text = json.dumps(res, indent=2, sort_keys=True) + "\n"
