@@ -196,6 +196,26 @@ class CompareTest(unittest.TestCase):
         self.assertNotIn("35.4", head)
         self.assertNotIn("## ILSI", self.run_compare(self.fixture(), out="n.md"))
 
+    def test_four_layers_give_one_row_per_layer_per_set_and_act_with_the_set_v2_caveat(self):
+        t = lambda r: {"recall": r, "all_charges_hit": 0.0, "mean_predictions": 5.0}  # noqa: E731
+        ext = {"lawyer-answer-extracted": 2}
+        self.make_set("setC", ["my PF is not refunded", "landlord kept my deposit"], "Extracted.", source="ILSIC (Law-AI/ilsic) Layman test split")
+        res = []
+        for name, labels in (("setA", None), ("setC", ext)):
+            for act in ("IPC", "BNS"):
+                res.append(self.baseline(name, act, t(0.1), t(0.2), labels=labels))
+                for n, v in enumerate(("v1", "v2", "v3")):
+                    res.append(self.layer("assoc-nb", name, act, t(0.3 + n / 10), {"model": v * 32, "concordance": "c" * 64}, version=v, labels=labels))
+        text = self.run_compare(res, sets=("setA", "setC"))
+        table = [[c.strip() for c in ln.strip("|").split("|")] for ln in text.splitlines() if ln.startswith("| ")]
+        table = [c for c in table if len(c) == 15 and c[0] != "layer"]  # the per-charge table
+        keys = [(c[0], c[1], c[2], c[4]) for c in table if c[0] == "assoc-nb"]
+        self.assertEqual(sorted(keys), sorted((("assoc-nb", v, s, a) for v in ("v1", "v2", "v3") for s in ("setA", "setC") for a in ("IPC", "BNS"))))
+        self.assertEqual(len(keys), len(set(keys)))
+        incomplete = [ln for ln in text.splitlines() if "labels are incomplete" in ln]
+        self.assertEqual(len(incomplete), 4)  # the baseline and the three layers, each for set C only
+        self.assertTrue(all(ln.startswith("- Set setC:") for ln in incomplete))
+
     def test_known_bad_inputs_are_refused(self):
         res = self.fixture()
         no_base = [r for r in res if "base-setB" not in r]
