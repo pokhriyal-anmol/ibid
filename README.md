@@ -83,12 +83,23 @@ The 45 of 45 is a ceiling, not a quality claim. The gold set is small and its co
 
 ## Quickstart
 
-You need [uv](https://docs.astral.sh/uv/) and poppler (`pdftotext`, `pdftohtml`, `pdfseparate`, `pdfunite`). The source PDFs are not in the repo. Fetch them from the URLs in [data/SOURCES.md](data/SOURCES.md) into `data/raw/` and check the hashes there.
+You need [uv](https://docs.astral.sh/uv/) and poppler (`pdftotext`, `pdftohtml`, `pdfseparate`, `pdfunite`). The source PDFs are not in the repo. `ibid setup` downloads and checks them for you.
 
 ```bash
 uv sync
-export IBID_BNS_PDF=$PWD/data/raw/bns-prs.pdf IBID_IPC_PDF=$PWD/data/raw/ipc-wipo.pdf
+uv run ibid setup --fetch bns
+```
 
+The IPC PDF comes from WIPO, whose download link is signed and expires, so a script cannot fetch it alone. Open the WIPO Lex page listed in [data/SOURCES.md](data/SOURCES.md), copy the PDF link, and pass it to setup:
+
+```bash
+uv run ibid setup --fetch ipc --url <link>
+uv run ibid setup
+```
+
+The last command checks the tools and both PDFs, parses both Acts, prints the section counts and prints the `claude mcp add` line for this machine.
+
+```bash
 # Run the frozen evaluation (scored mode refuses a gold file that fails its pin)
 uv run ibid eval --gold gold/v2.json --concordance concordance/v2.json --out results/run.json
 
