@@ -54,6 +54,10 @@ class SetupTest(unittest.TestCase):
         patcher = mock.patch.dict(setup.PARSERS, {"bns": fake, "ipc": fake})
         patcher.start()
         self.addCleanup(patcher.stop)
+        self.model = Path(self.tmp.name) / "assoc-nb-v3.json"
+        patcher = mock.patch.object(setup, "MODEL", self.model)
+        patcher.start()
+        self.addCleanup(patcher.stop)
         self.bindir = Path(self.tmp.name) / "bin"
         self.bindir.mkdir()
         for t in ("pdftotext", "pdftohtml", "pdfseparate", "pdfunite"):
@@ -69,6 +73,31 @@ class SetupTest(unittest.TestCase):
         self.assertEqual(code, 0, out)
         self.assertNotIn("FAIL", out)
         self.assertEqual(out.count("pass "), 6)
+
+    def test_absent_model_is_an_optional_line_and_exits_zero(self):
+        code, out = self.run_it()
+        self.assertEqual(code, 0, out)
+        line = next(x for x in out.splitlines() if x.startswith("optional"))
+        self.assertIn("absent", line)
+        self.assertIn("ibid assoc fit --source union", line)
+        self.assertEqual(out.count("pass "), 6)
+
+    def test_present_model_prints_its_hash_and_exits_zero(self):
+        self.model.write_bytes(b"invented model")
+        code, out = self.run_it()
+        self.assertEqual(code, 0, out)
+        line = next(x for x in out.splitlines() if x.startswith("optional"))
+        self.assertIn("present", line)
+        self.assertIn(hashlib.sha256(b"invented model").hexdigest(), line)
+
+    def test_required_failure_still_fails_with_the_model_line(self):
+        (self.raw / "ipc.bin").unlink()
+        for present in (False, True):
+            if present:
+                self.model.write_bytes(b"m")
+            code, out = self.run_it()
+            self.assertNotEqual(code, 0)
+            self.assertIn("optional", out)
 
     def test_missing_file_names_url_and_absolute_target(self):
         (self.raw / "ipc.bin").unlink()
