@@ -53,7 +53,7 @@ class AssocTest(unittest.TestCase):
 
     def write_split(self, name, rows) -> Path:
         p = self.tmp / name
-        p.write_text("".join(json.dumps({"id": i, "text": t, "labels": [LABELS[n] for n in ls]}) + "\n" for i, t, ls in rows))
+        p.write_text("".join(json.dumps({"id": i, "text": t, "labels": [LABELS.get(n) or f"Section {n} in The Indian Penal Code" for n in ls]}) + "\n" for i, t, ls in rows))
         return p
 
     def cli(self, *argv, expect=0):
@@ -137,6 +137,63 @@ class AssocTest(unittest.TestCase):
         bad.write_bytes(raw.replace(b"cheating", b"cheatinf"))
         self.assertNotEqual(json.loads(self.fit_lay("c.json", train=bad).read_text())["header"]["train_sha256"],
                             json.loads(a.read_text())["header"]["train_sha256"])
+
+    def fit_v3(self, out="v3.json", ilsi_rows=TRAIN, min_examples=1, ilsi_set=None, labels=None):
+        s = self.tmp / "lay-set.json"
+        s.write_text(json.dumps({"items": [{"id": f"x{r}", "source": f"ILSIC Layman test split, row {r}"} for r in (0, 2)]}))
+        self.cli("assoc", "fit", "--source", "union", "--train", str(self.write_split("ilsi-u.jsonl", ilsi_rows)),
+                 "--holdout-set", str(ilsi_set or self.set), "--labels", str(labels or self.tmp / "labels.json"),
+                 "--lay-train", str(FIX / "ilsic-lay-train.jsonl"), "--holdout-split", str(FIX / "ilsic-lay-split.jsonl"),
+                 "--lay-holdout-set", str(s), "--min-posts", str(min_examples), "--index", str(self.tmp / "i.sqlite"), "--out", str(self.tmp / out))
+        return json.loads((self.tmp / out).read_text())
+
+    def test_v3_header_names_both_sources_and_counts_are_the_sum_of_the_two_single_fits(self):
+        m, v1 = self.fit_v3(), json.loads(self.fit().read_text())
+        v2 = json.loads(self.fit_lay_min1().read_text())
+        h = m["header"]
+        self.assertEqual((h["layer"], h["layer_version"], h["min_examples"], h["vocabulary_size"]), ("assoc-nb", "v3", 1, len(m["docs"])))
+        self.assertEqual(h["sources"]["ilsi"], {"train_sha256": bench.sha256(str(self.tmp / "ilsi-u.jsonl")), "examples_used": 7,
+                                                "examples_dropped": {"held_out": 1, "no_offence_section": 0, "none_above_threshold": 0}})
+        lay = h["sources"]["ilsic-lay"]
+        self.assertEqual((lay["train_sha256"], lay["examples_used"], lay["examples_dropped"]),
+                         (bench.sha256(str(FIX / "ilsic-lay-train.jsonl")), 6, {"held_out": 1, "no_offence_section": 3, "none_above_threshold": 0}))
+        for c, terms in m["counts"].items():
+            want = {t: v1["counts"].get(c, {}).get(t, 0) + v2["counts"].get(c, {}).get(t, 0) for t in set(v1["counts"].get(c, {})) | set(v2["counts"].get(c, {}))}
+            self.assertEqual(terms, want, c)
+            self.assertEqual(m["docs"][c], v1["docs"].get(c, 0) + v2["docs"].get(c, 0), c)
+
+    def fit_lay_min1(self):
+        s = self.tmp / "lay-set1.json"
+        s.write_text(json.dumps({"items": [{"id": f"x{r}", "source": f"ILSIC Layman test split, row {r}"} for r in (0, 2)]}))
+        self.cli("assoc", "fit", "--source", "ilsic-lay", "--train", str(FIX / "ilsic-lay-train.jsonl"), "--holdout-split", str(FIX / "ilsic-lay-split.jsonl"),
+                 "--holdout-set", str(s), "--min-posts", "1", "--index", str(self.tmp / "i.sqlite"), "--out", str(self.tmp / "v2m1.json"))
+        return self.tmp / "v2m1.json"
+
+    @staticmethod
+    def leaked(m):
+        """Terms of held-out items found in the model: set v1's m1 'zebra' (IPC 101) and the Layman test post 'stole'."""
+        return [t for c, terms in m["counts"].items() for t in terms if (t == "zebra" and c == "IPC 101") or t == "stole"]
+
+    def test_v3_training_data_holds_no_held_out_id_and_the_check_can_fail(self):
+        self.assertEqual(self.leaked(self.fit_v3()), [], "a held-out item leaked into the v3 training data")
+        empty = self.tmp / "empty-set.json"
+        empty.write_text(json.dumps({"items": []}))  # known-bad: the set v1 drop removed
+        self.assertEqual(self.leaked(self.fit_v3("bad.json", ilsi_set=empty)), ["zebra"])
+
+    def test_v3_threshold_is_on_the_union_and_34_149_120b_never_appear(self):
+        labels = self.tmp / "labels2.json"
+        labels.write_text(json.dumps({f"Section {n} in The Indian Penal Code": i for i, n in enumerate([*range(100, 106), 34, 149, "120B"])}))
+        # IPC 103: a5 + 3 = 4 union examples; IPC 104: a6 + 4 = 5.
+        rows = [*TRAIN, *((f"b{n}", ["x"], [103]) for n in range(3)), *((f"c{n}", ["y"], [104]) for n in range(4)),
+                *((f"{k}{n}", ["common"], [k, 100]) for k in (34, 149, "120B") for n in range(5)), ("e1", ["alone"], [34])]
+        m = self.fit_v3("t.json", ilsi_rows=rows, min_examples=5, labels=labels)
+        self.assertNotIn("IPC 103", m["docs"], "a section with 4 union examples was included")
+        self.assertEqual(m["docs"]["IPC 104"], 5)
+        self.assertTrue({"IPC 34", "IPC 149", "IPC 120B"}.isdisjoint(m["docs"]), m["docs"])
+        self.assertEqual(m["header"]["vocabulary_size"], len(m["docs"]))
+        src = m["header"]["sources"]
+        self.assertEqual((src["ilsi"]["examples_used"], src["ilsi"]["examples_dropped"]), (23, {"held_out": 1, "no_offence_section": 1, "none_above_threshold": 6}))
+        self.assertEqual((src["ilsic-lay"]["examples_used"], src["ilsic-lay"]["examples_dropped"]["none_above_threshold"]), (5, 1))
 
     def test_v1_model_on_the_fixture_is_unchanged(self):
         self.assertEqual(bench.sha256(str(self.fit())), V1_FIXTURE_SHA256)

@@ -19,6 +19,29 @@ def tokens(text: str) -> list[str]:
     return [t for t in bm25.QUERY_TOKEN.findall(bm25.fold(text)) if t not in bench.STOP_WORDS]
 
 
+def _add(docs: dict[str, int], counts: dict[str, dict[str, int]], cites: set[str], terms: list[str]) -> None:
+    for c in cites:
+        docs[c] += 1
+        for t in terms:
+            counts[c][t] = counts[c].get(t, 0) + 1
+
+
+def _ilsi_read(train_path: str, held: set[str], space: set[str]) -> tuple[list[tuple[set[str], list[str]]], int]:
+    """ILSI train cases minus the held-out ids, as (citations, terms); and how many ids were dropped."""
+    out, dropped = [], 0
+    with open(train_path) as f:
+        for line in filter(str.strip, f):
+            case = json.loads(line)
+            if case["id"] in held:
+                dropped += 1
+                continue
+            cites = {bench.to_citation(x) for x in case["labels"]}
+            if not cites <= space:
+                raise ValueError(f"case {case['id']}: a label outside the label vocabulary")
+            out.append((cites, tokens(" ".join(case["text"]))))
+    return out, dropped
+
+
 def fit(train_path: str, holdout_path: str, labels_path: str, out_path: str) -> int:
     """Count terms per label over the train split minus the held-out ids; the model file is a pure function of its inputs."""
     try:
@@ -26,22 +49,10 @@ def fit(train_path: str, holdout_path: str, labels_path: str, out_path: str) -> 
         held = {i["id"] for i in json.loads(Path(holdout_path).read_text())["items"]}
         docs = dict.fromkeys(sorted(space), 0)
         counts: dict[str, dict[str, int]] = {c: {} for c in docs}
-        used = dropped = 0
-        with open(train_path) as f:
-            for line in filter(str.strip, f):
-                case = json.loads(line)
-                if case["id"] in held:
-                    dropped += 1
-                    continue
-                cites = {bench.to_citation(x) for x in case["labels"]}
-                if not cites <= space:
-                    raise ValueError(f"case {case['id']}: a label outside the label vocabulary")
-                used += 1
-                terms = tokens(" ".join(case["text"]))
-                for c in cites:
-                    docs[c] += 1
-                    for t in terms:
-                        counts[c][t] = counts[c].get(t, 0) + 1
+        examples, dropped = _ilsi_read(train_path, held, space)
+        used = len(examples)
+        for cites, terms in examples:
+            _add(docs, counts, cites, terms)
     except (OSError, KeyError, ValueError, TypeError) as e:
         print(f"error: {e}", file=sys.stderr)
         return 1
@@ -68,32 +79,38 @@ def _same_post(text: str) -> str:
     return " ".join(bm25.fold(text).split())
 
 
+def _lay_read(train_path: str, split_path: str, holdout_set: str, index_path: str):
+    """ILSIC-Lay train posts minus those equal to a Layman test post: (rows, kept (row no, citations), drops, other-Act count, absent count)."""
+    split, train = _rows(split_path), _rows(train_path)
+    for i in json.loads(Path(holdout_set).read_text())["items"]:
+        m = SOURCE_ROW.search(i["source"])
+        if not m or int(m[1]) >= len(split):
+            raise ValueError(f"set item {i['id']}: its source row is not in the holdout split file")
+    test_posts = {_same_post(r["instruction"]) for r in split}
+    db = sqlite3.connect(f"file:{index_path}?mode=ro", uri=True)
+    drop = dict.fromkeys(("held_out", "no_offence_section", "none_above_threshold"), 0)
+    other_act = absent = 0
+    kept: list[tuple[int, set[str]]] = []
+    for n, row in enumerate(train):
+        if _same_post(row["instruction"]) in test_posts:
+            drop["held_out"] += 1
+            continue
+        other_act += len({a for a in row["answer"] if not IPC_CITE.fullmatch(a)})
+        cites = {f"IPC {s}" for a in row["answer"] for s in IPC_CITE.findall(a)} - NOT_OFFENCES
+        present = {c for c in cites if index.lookup(db, c)}  # a Citation absent from the index is dropped and counted
+        absent += len(cites) - len(present)
+        cites = present
+        if cites:
+            kept.append((n, cites))
+        else:
+            drop["no_offence_section"] += 1
+    return train, kept, drop, other_act, absent
+
+
 def fit_ilsic_lay(train_path: str, split_path: str, holdout_set: str, index_path: str, min_posts: int, out_path: str) -> int:
     """assoc-nb v2: term counts per IPC section over ILSIC-Lay train posts, minus posts equal to a Layman test split post."""
     try:
-        split, train = _rows(split_path), _rows(train_path)
-        for i in json.loads(Path(holdout_set).read_text())["items"]:
-            m = SOURCE_ROW.search(i["source"])
-            if not m or int(m[1]) >= len(split):
-                raise ValueError(f"set item {i['id']}: its source row is not in the holdout split file")
-        test_posts = {_same_post(r["instruction"]) for r in split}
-        db = sqlite3.connect(f"file:{index_path}?mode=ro", uri=True)
-        drop = dict.fromkeys(("held_out", "no_offence_section", "none_above_threshold"), 0)
-        other_act = absent = 0
-        kept: list[tuple[int, set[str]]] = []
-        for n, row in enumerate(train):
-            if _same_post(row["instruction"]) in test_posts:
-                drop["held_out"] += 1
-                continue
-            other_act += len({a for a in row["answer"] if not IPC_CITE.fullmatch(a)})
-            cites = {f"IPC {s}" for a in row["answer"] for s in IPC_CITE.findall(a)} - NOT_OFFENCES
-            present = {c for c in cites if index.lookup(db, c)}  # a Citation absent from the index is dropped and counted
-            absent += len(cites) - len(present)
-            cites = present
-            if cites:
-                kept.append((n, cites))
-            else:
-                drop["no_offence_section"] += 1
+        train, kept, drop, other_act, absent = _lay_read(train_path, split_path, holdout_set, index_path)
         posts: dict[str, int] = {}
         for _, cites in kept:
             for c in cites:
@@ -121,6 +138,46 @@ def fit_ilsic_lay(train_path: str, split_path: str, holdout_set: str, index_path
               "posts_fitted": fitted, "posts_dropped": drop, "other_act_citations_dropped": other_act,
               "index_absent_citations_dropped": absent,
               "vocabulary_size": len(vocab), "tokenisation": "lower-case, letters only, 44 base stop words, no stemming"}
+    Path(out_path).write_text(json.dumps({"header": header, "docs": docs, "counts": counts}, sort_keys=True, separators=(",", ":")) + "\n")
+    return 0
+
+
+def fit_union(a: dict, b: dict, min_examples: int, out_path: str) -> int:
+    """assoc-nb v3: raw counts of the ILSI fit (a) and the ILSIC-Lay fit (b) added, no weighting; sections with min_examples or more in the union."""
+    try:
+        held = {i["id"] for i in json.loads(Path(a["holdout_set"]).read_text())["items"]}
+        space = bench.load_space(a["labels"])
+        ilsi, ilsi_held = _ilsi_read(a["train"], held, space)
+        train, kept, drop, other_act, absent = _lay_read(b["train"], b["holdout_split"], b["holdout_set"], b["index"])
+        ilsi = [(c - NOT_OFFENCES, t) for c, t in ilsi]
+        ilsi_drop = {"held_out": ilsi_held, "no_offence_section": sum(not c for c, _ in ilsi)}
+        examples = [(c, t) for c, t in ilsi if c] + [(c, tokens(train[n]["instruction"])) for n, c in kept]
+        posts: dict[str, int] = {}
+        for c, _ in examples:
+            for x in c:
+                posts[x] = posts.get(x, 0) + 1
+        vocab = {c for c, k in posts.items() if k >= min_examples}
+        docs = dict.fromkeys(sorted(vocab), 0)
+        counts: dict[str, dict[str, int]] = {c: {} for c in docs}
+        fitted = [0, 0]
+        ilsi_drop["none_above_threshold"] = drop["none_above_threshold"] = 0
+        for n, (c, t) in enumerate(examples):
+            side = n >= len(examples) - len(kept)
+            c &= vocab
+            if not c:
+                (drop if side else ilsi_drop)["none_above_threshold"] += 1
+                continue
+            fitted[side] += 1
+            _add(docs, counts, c, t)
+    except (OSError, KeyError, ValueError, TypeError, sqlite3.Error, lzma.LZMAError) as e:
+        print(f"error: {e}", file=sys.stderr)
+        return 1
+    header = {"layer": LAYER, "layer_version": "v3", "top_k": TOP_K, "min_examples": min_examples, "vocabulary_size": len(vocab),
+              "sources": {"ilsi": {"train_sha256": bench.sha256(a["train"]), "examples_used": fitted[0], "examples_dropped": ilsi_drop},
+                          "ilsic-lay": {"train_sha256": bench.sha256(b["train"]), "holdout_split_sha256": bench.sha256(b["holdout_split"]),
+                                        "examples_used": fitted[1], "examples_dropped": drop,
+                                        "other_act_citations_dropped": other_act, "index_absent_citations_dropped": absent}},
+              "tokenisation": "lower-case, letters only, 44 base stop words, no stemming"}
     Path(out_path).write_text(json.dumps({"header": header, "docs": docs, "counts": counts}, sort_keys=True, separators=(",", ":")) + "\n")
     return 0
 
@@ -159,7 +216,7 @@ def predict(model_path: str, set_path: str, concordance_path: str, index_path: s
     h = model.header
     doc = {"layer": LAYER, "layer_version": h["layer_version"], "set_sha256": hashlib.sha256(raw).hexdigest(),
            "inputs": {"model": model.sha256, "train_sha256": h["train_sha256"], "concordance": bench.sha256(concordance_path),
-                      "train_source": "ilsic-lay" if h["layer_version"] == "v2" else "ilsi"}, "items": out}
+                      "train_source": {"v2": "ilsic-lay", "v3": "union"}.get(h["layer_version"], "ilsi")}, "items": out}
     Path(out_path).write_text(json.dumps(doc, indent=2, sort_keys=True) + "\n")
     return 0
 
