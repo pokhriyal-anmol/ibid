@@ -90,6 +90,9 @@ def run_eval(gold_path: str, bns_pdf: str, ipc_pdf: str, index_path: str, out_pa
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(prog="ibid")
     sub = ap.add_subparsers(dest="cmd", required=True)
+    su = sub.add_parser("setup", help="check poppler tools and source PDFs, offline")
+    su.add_argument("--sources", default="data/sources.json")
+    su.add_argument("--raw-dir", default="data/raw")
     ev = sub.add_parser("eval")
     ev.add_argument("--gold", default="gold/v2.json")
     ev.add_argument("--bns", default=os.environ.get("IBID_BNS_PDF", "data/raw/bns-prs.pdf"))
@@ -269,6 +272,9 @@ def main(argv: list[str] | None = None) -> int:
     rp.add_argument("--frozen-rule", default="results/frozen-rule.json", help="the frozen-rule record, names the frozen round")
     rp.add_argument("--out", default="results/report.md")
     a = ap.parse_args(argv)
+    if a.cmd == "setup":
+        from ibid import setup
+        return setup.run(a.sources, a.raw_dir)
     if a.cmd == "mcp":
         from ibid import mcp
         return mcp.serve(a.bns, a.ipc, a.concordance)
