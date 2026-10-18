@@ -87,6 +87,18 @@ def run_eval(gold_path: str, bns_pdf: str, ipc_pdf: str, index_path: str, out_pa
     return 0
 
 
+def missing_pdf(a: argparse.Namespace) -> bool:
+    """True after printing the error and the setup hint if a source PDF this command reads is absent."""
+    paths = [getattr(a, k) for k in ("bns", "ipc") if hasattr(a, k)]
+    if a.cmd == "headings":  # reads one Act, or a layout text file instead of the BNS PDF
+        paths = [a.ipc] if a.act == "ipc" else [] if a.layout else [a.bns]
+    for path in paths:
+        if not Path(path).is_file():
+            print(f"error: no such file: {path}\nrun: ibid setup", file=sys.stderr)
+            return True
+    return False
+
+
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(prog="ibid")
     sub = ap.add_subparsers(dest="cmd", required=True)
@@ -275,6 +287,8 @@ def main(argv: list[str] | None = None) -> int:
     if a.cmd == "setup":
         from ibid import setup
         return setup.run(a.sources, a.raw_dir)
+    if missing_pdf(a):
+        return 1
     if a.cmd == "mcp":
         from ibid import mcp
         return mcp.serve(a.bns, a.ipc, a.concordance)

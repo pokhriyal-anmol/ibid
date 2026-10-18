@@ -320,14 +320,14 @@ class ConcordanceToolTest(unittest.TestCase):
 
 
 class StartupFailureTest(unittest.TestCase):
-    def run_bad(self, args):
+    def run_bad(self, args, lines=1):
         p = subprocess.run(args, cwd=ROOT, capture_output=True, text=True, timeout=120, env=ENV)
         self.assertNotEqual(p.returncode, 0)
         self.assertEqual(p.stdout, "")
-        self.assertEqual(len(p.stderr.strip().splitlines()), 1)
+        self.assertEqual(len(p.stderr.strip().splitlines()), lines)
 
     def test_missing_pdf(self):
-        self.run_bad(command(bns="/no/such.pdf"))
+        self.run_bad(command(bns="/no/such.pdf"), lines=2)  # error line plus "run: ibid setup"
 
     def test_missing_concordance(self):
         self.run_bad(command(conc="/no/such.json"))
