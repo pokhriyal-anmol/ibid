@@ -105,6 +105,8 @@ def main(argv: list[str] | None = None) -> int:
     su = sub.add_parser("setup", help="check poppler tools and source PDFs, offline")
     su.add_argument("--sources", default="data/sources.json")
     su.add_argument("--raw-dir", default="data/raw")
+    su.add_argument("--fetch", choices=["bns", "ipc"], help="download this source PDF, verified, never overwriting")
+    su.add_argument("--url", help="direct https PDF url (required for --fetch ipc)")
     ev = sub.add_parser("eval")
     ev.add_argument("--gold", default="gold/v2.json")
     ev.add_argument("--bns", default=os.environ.get("IBID_BNS_PDF", "data/raw/bns-prs.pdf"))
@@ -286,7 +288,7 @@ def main(argv: list[str] | None = None) -> int:
     a = ap.parse_args(argv)
     if a.cmd == "setup":
         from ibid import setup
-        return setup.run(a.sources, a.raw_dir)
+        return setup.run(a.sources, a.raw_dir, a.fetch, a.url)
     if missing_pdf(a):
         return 1
     if a.cmd == "mcp":

@@ -1,5 +1,6 @@
 """`ibid setup` through main(): offline checklist. Fixtures are tiny invented non-PDF files."""
 import contextlib
+import http.server
 import hashlib
 import io
 import json
@@ -7,6 +8,7 @@ import os
 import re
 import socket
 import tempfile
+import threading
 import unittest
 from pathlib import Path
 from unittest import mock
@@ -128,6 +130,119 @@ class RealPdfTest(unittest.TestCase):
         self.assertIn("BNS 358 sections, IPC 575 sections", out.getvalue())
         line = next(x for x in out.getvalue().splitlines() if x.startswith("claude mcp add ibid -- "))
         self.assertIn(str(Path(BNS_PDF).resolve()), line)
+
+
+class Handler(http.server.BaseHTTPRequestHandler):
+    def do_GET(self):
+        self.server.hits.append(self.path)
+        body, declared = self.server.body, self.server.declared
+        if body is None:
+            self.send_response(404)
+            self.end_headers()
+            return
+        self.send_response(200)
+        self.send_header("Content-Length", str(len(body) if declared is None else declared))
+        self.end_headers()
+        self.wfile.write(body)
+
+    def log_message(self, *a):
+        pass
+
+
+class FetchTest(unittest.TestCase):
+    GOOD = b"good bns bytes"
+
+    def setUp(self):
+        self.tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(self.tmp.cleanup)
+        self.raw = Path(self.tmp.name) / "raw"
+        self.raw.mkdir()
+        self.sources = Path(self.tmp.name) / "sources.json"
+        self.write_manifest(self.GOOD)
+        self.srv = http.server.HTTPServer(("127.0.0.1", 0), Handler)
+        self.srv.hits, self.srv.body, self.srv.declared = [], self.GOOD, None
+        threading.Thread(target=self.srv.serve_forever, daemon=True).start()
+        self.addCleanup(self.srv.server_close)
+        self.addCleanup(self.srv.shutdown)
+        self.url = f"http://127.0.0.1:{self.srv.server_port}/x.pdf"
+
+    def write_manifest(self, good: bytes):
+        m = {n: {"file": f"{n}.bin", "url": self.url_for(n), "bytes": len(good),
+                 "sha256": hashlib.sha256(good).hexdigest()} for n in ("bns", "ipc")}
+        self.sources.write_text(json.dumps(m))
+
+    def url_for(self, n):
+        return "https://example.org/" + n
+
+    def fetch(self, *args):
+        out, err = io.StringIO(), io.StringIO()
+        with contextlib.redirect_stdout(out), contextlib.redirect_stderr(err):
+            code = main(["setup", "--sources", str(self.sources), "--raw-dir", str(self.raw), *args])
+        return code, out.getvalue() + err.getvalue()
+
+    def assert_clean_failure(self, code, out, check):
+        self.assertNotEqual(code, 0, out)
+        self.assertIn(check, out)
+        self.assertEqual(os.listdir(self.raw), [])
+
+    def test_good_body_lands_with_manifest_hash(self):
+        code, out = self.fetch("--fetch", "ipc", "--url", self.url)
+        self.assertTrue((self.raw / "ipc.bin").read_bytes() == self.GOOD, out)
+        self.assertEqual(os.listdir(self.raw), ["ipc.bin"])
+        self.assertEqual(code, 0, out)
+        self.assertIn("fetched", out)
+        self.assertEqual(self.srv.hits, ["/x.pdf"])
+
+    def test_bns_uses_manifest_url(self):
+        m = json.loads(self.sources.read_text())
+        m["bns"]["url"] = self.url
+        self.sources.write_text(json.dumps(m))
+        self.fetch("--fetch", "bns")
+        self.assertEqual((self.raw / "bns.bin").read_bytes(), self.GOOD)
+
+    def test_wrong_hash_leaves_nothing(self):
+        self.srv.body = b"evil bns bytes"
+        code, out = self.fetch("--fetch", "ipc", "--url", self.url)
+        self.assert_clean_failure(code, out, "hash")
+
+    def test_truncated_body_leaves_nothing(self):
+        self.srv.body, self.srv.declared = self.GOOD[:5], len(self.GOOD)
+        code, out = self.fetch("--fetch", "ipc", "--url", self.url)
+        self.assert_clean_failure(code, out, "size")
+
+    def test_oversized_body_leaves_nothing(self):
+        self.srv.body = self.GOOD * 10
+        code, out = self.fetch("--fetch", "ipc", "--url", self.url)
+        self.assert_clean_failure(code, out, "exceeds")
+
+    def test_http_error_leaves_nothing(self):
+        self.srv.body = None
+        code, out = self.fetch("--fetch", "ipc", "--url", self.url)
+        self.assert_clean_failure(code, out, "HTTP")
+
+    def test_existing_file_refused_without_request(self):
+        p = self.raw / "ipc.bin"
+        p.write_bytes(b"precious wrong")
+        code, out = self.fetch("--fetch", "ipc", "--url", self.url)
+        self.assertNotEqual(code, 0)
+        self.assertIn("already exists", out)
+        self.assertEqual(p.read_bytes(), b"precious wrong")
+        self.assertEqual(self.srv.hits, [])
+
+    def test_disallowed_urls_refused_before_connecting(self):
+        for bad in ("http://example.com/x.pdf", "file:///etc/passwd", "http://127.0.0.1.evil.com/x.pdf"):
+            with mock.patch.object(socket.socket, "connect", side_effect=AssertionError("network")):
+                code, out = self.fetch("--fetch", "ipc", "--url", bad)
+            self.assertNotEqual(code, 0, bad)
+            self.assertIn("refused", out)
+            self.assertEqual(os.listdir(self.raw), [])
+
+    def test_ipc_without_url_explains(self):
+        code, out = self.fetch("--fetch", "ipc")
+        self.assertNotEqual(code, 0)
+        self.assertIn("signed", out)
+        self.assertIn("--url", out)
+        self.assertEqual(self.srv.hits, [])
 
 
 class ManifestTest(unittest.TestCase):
