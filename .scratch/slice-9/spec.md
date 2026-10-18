@@ -37,7 +37,7 @@ flowchart LR
 
 1. Training data: the ILSI train split minus the 30 ids of set v1, plus the ILSIC-Lay train split minus the 30 ids of set v2 and the posts that duplicate a Layman test post (the slice 6 rules, unchanged). Nothing from any test or dev split.
 2. Vocabulary: IPC sections that occur in at least 5 training examples in the union. Offence sections only, IPC 34, 149 and 120B excluded, as before.
-3. No weighting, no resampling, no tuning. The judgment text is 87 percent of the examples and the layer may lean towards it; that is a result to report, not something to correct in this slice. One fit, scored once per set and Act.
+3. No weighting, no resampling, no tuning. The judgment text is 94 percent of the examples and the layer may lean towards it; that is a result to report, not something to correct in this slice. One fit, scored once per set and Act.
 4. Tokenisation, smoothing and k are those of v1 and v2 (ADR 0004, ADR 0005).
 5. Model file `data/assoc-nb-v3.json`, gitignored, hash in every predictions file.
 6. ADR 0008 widens the data clause of ADR 0005 and ADR 0006 to the union and states the decision rule below.

@@ -1,0 +1,560 @@
+{
+  "act": "BNS",
+  "charges_excluded_no_counterpart": 3,
+  "conventions": {
+    "by_charges_per_item": "grouped by the number of charges counted for the Act, not the total in the item",
+    "excluded": "a charge with an empty list for the Act is left out; an item with none left is not scored",
+    "found": "a charge is found when any accepted section of the Act, rolled up to its section, is predicted",
+    "mean_predictions": "mean number of predicted sections per scored item"
+  },
+  "inputs": {
+    "index_sha256": "efaf6fe8b342f151ac02ed110027320f39b0d99287327eb7d206453537a0d408",
+    "layer": {
+      "concordance": "e32454733360bb32f797097894ed1f94a84b1c813a4b9b0177829cf12b579cfa",
+      "model": "e6b555d0076aa31c4e351c7e521e3753551fd573ec1f32b97e185274d8b691a0",
+      "train_sha256_ilsi": "23a0aedcf52a08e22e064fdce78501698d33b576a1437e5a02ecdbb01b3a2da8",
+      "train_sha256_ilsic-lay": "6f998e08b0488c94f096db85395fac1a2f21331f1c2348aaee93d27c7a55a0d8",
+      "train_source": "ilsi+ilsic-lay"
+    },
+    "set_sha256": "9b4c14c5bcbbd3e5158099ed94722dc6292bc668ad3162013e0219f5f5edf0bb"
+  },
+  "items_in_set": 30,
+  "items_scored": 30,
+  "label_basis": {
+    "lawyer-answer-extracted": 30
+  },
+  "layer": "assoc-nb",
+  "layer_counts": {},
+  "layer_version": "v3",
+  "output": {
+    "all_charges_hit": 0.5,
+    "by_charges_per_item": {
+      "1": {
+        "all_charges_hit": 0.0,
+        "charges": 1,
+        "items": 1,
+        "mean_predictions": 6.0,
+        "recall": 0.0
+      },
+      "2": {
+        "all_charges_hit": 0.764706,
+        "charges": 34,
+        "items": 17,
+        "mean_predictions": 5.411765,
+        "recall": 0.823529
+      },
+      "3+": {
+        "all_charges_hit": 0.166667,
+        "charges": 46,
+        "items": 12,
+        "mean_predictions": 5.25,
+        "recall": 0.543478
+      }
+    },
+    "charges": 81,
+    "items": 30,
+    "mean_predictions": 5.366667,
+    "missed": [
+      {
+        "charge": "467. Forgery of valuable security, will, etc.\u2014Whoever forges a document which pu",
+        "id": "ilsic-lay-test-756",
+        "top_predicted": [
+          "BNS 316",
+          "BNS 318",
+          "BNS 336"
+        ]
+      },
+      {
+        "charge": "354. Assault or criminal force to woman with intent to outrage her modesty.\u2014Whoe",
+        "id": "ilsic-lay-test-506",
+        "top_predicted": [
+          "BNS 351",
+          "BNS 352",
+          "BNS 101"
+        ]
+      },
+      {
+        "charge": "509. Word, gesture or act intended to insult the modesty of a woman.\u2014Whoever, in",
+        "id": "ilsic-lay-test-506",
+        "top_predicted": [
+          "BNS 351",
+          "BNS 352",
+          "BNS 101"
+        ]
+      },
+      {
+        "charge": "498. Enticing or taking away or detaining with criminal intent a married woman.\u2014",
+        "id": "ilsic-lay-test-48",
+        "top_predicted": [
+          "BNS 85",
+          "BNS 86",
+          "BNS 316"
+        ]
+      },
+      {
+        "charge": "353. Assault or criminal force to deter public servant from discharge of his dut",
+        "id": "ilsic-lay-test-424",
+        "top_predicted": [
+          "BNS 351",
+          "BNS 316",
+          "BNS 318"
+        ]
+      },
+      {
+        "charge": "499. Defamation.\u2014Whoever, by words either spoken or intended to be read, or by s",
+        "id": "ilsic-lay-test-589",
+        "top_predicted": [
+          "BNS 318",
+          "BNS 316",
+          "BNS 351"
+        ]
+      },
+      {
+        "charge": "500. Punishment for defamation.\u2014Whoever defames another shall be punished with s",
+        "id": "ilsic-lay-test-589",
+        "top_predicted": [
+          "BNS 318",
+          "BNS 316",
+          "BNS 351"
+        ]
+      },
+      {
+        "charge": "268. Public nuisance.\u2014A person is guilty of a public nuisance who does any act o",
+        "id": "ilsic-lay-test-59",
+        "top_predicted": [
+          "BNS 316",
+          "BNS 318",
+          "BNS 49"
+        ]
+      },
+      {
+        "charge": "290. Punishment for public nuisance in cases not otherwise provided for.\u2014Whoever",
+        "id": "ilsic-lay-test-59",
+        "top_predicted": [
+          "BNS 316",
+          "BNS 318",
+          "BNS 49"
+        ]
+      },
+      {
+        "charge": "425. Mischief.\u2014Whoever with intent to cause, or knowing that he is likely to cau",
+        "id": "ilsic-lay-test-59",
+        "top_predicted": [
+          "BNS 316",
+          "BNS 318",
+          "BNS 49"
+        ]
+      },
+      {
+        "charge": "268. Public nuisance.\u2014A person is guilty of a public nuisance who does any act o",
+        "id": "ilsic-lay-test-707",
+        "top_predicted": [
+          "BNS 316",
+          "BNS 85",
+          "BNS 86"
+        ]
+      },
+      {
+        "charge": "290. Punishment for public nuisance in cases not otherwise provided for.\u2014Whoever",
+        "id": "ilsic-lay-test-707",
+        "top_predicted": [
+          "BNS 316",
+          "BNS 85",
+          "BNS 86"
+        ]
+      },
+      {
+        "charge": "425. Mischief.\u2014Whoever with intent to cause, or knowing that he is likely to cau",
+        "id": "ilsic-lay-test-707",
+        "top_predicted": [
+          "BNS 316",
+          "BNS 85",
+          "BNS 86"
+        ]
+      },
+      {
+        "charge": "500. Punishment for defamation.\u2014Whoever defames another shall be punished with s",
+        "id": "ilsic-lay-test-707",
+        "top_predicted": [
+          "BNS 316",
+          "BNS 85",
+          "BNS 86"
+        ]
+      },
+      {
+        "charge": "493. Cohabitation caused by a man deceitfully inducing a belief of lawful marria",
+        "id": "ilsic-lay-test-645",
+        "top_predicted": [
+          "BNS 85",
+          "BNS 86",
+          "BNS 316"
+        ]
+      },
+      {
+        "charge": "496. Marriage ceremony fraudulently gone through without lawful marriage.\u2014Whoeve",
+        "id": "ilsic-lay-test-645",
+        "top_predicted": [
+          "BNS 85",
+          "BNS 86",
+          "BNS 316"
+        ]
+      },
+      {
+        "charge": "425. Mischief.\u2014Whoever with intent to cause, or knowing that he is likely to cau",
+        "id": "ilsic-lay-test-432",
+        "top_predicted": [
+          "BNS 85",
+          "BNS 86",
+          "BNS 316"
+        ]
+      },
+      {
+        "charge": "378. Theft.\u2014Whoever, intending to take dishonestly any movable property out of t",
+        "id": "ilsic-lay-test-416",
+        "top_predicted": [
+          "BNS 85",
+          "BNS 86",
+          "BNS 316"
+        ]
+      },
+      {
+        "charge": "385. Putting person in fear of injury in order to commit extortion.\u2014Whoever, in ",
+        "id": "ilsic-lay-test-416",
+        "top_predicted": [
+          "BNS 85",
+          "BNS 86",
+          "BNS 316"
+        ]
+      },
+      {
+        "charge": "415. Cheating.\u2014Whoever, by deceiving any person, fraudulently or dishonestly ind",
+        "id": "ilsic-lay-test-416",
+        "top_predicted": [
+          "BNS 85",
+          "BNS 86",
+          "BNS 316"
+        ]
+      },
+      {
+        "charge": "427. Mischief causing damage to the amount of fifty rupees.\u2014Whoever commits misc",
+        "id": "ilsic-lay-test-397",
+        "top_predicted": [
+          "BNS 316",
+          "BNS 85",
+          "BNS 86"
+        ]
+      },
+      {
+        "charge": "504. Intentional insult with intent to provoke breach of the peace.\u2014Whoever inte",
+        "id": "ilsic-lay-test-397",
+        "top_predicted": [
+          "BNS 316",
+          "BNS 85",
+          "BNS 86"
+        ]
+      },
+      {
+        "charge": "498. Enticing or taking away or detaining with criminal intent a married woman.\u2014",
+        "id": "ilsic-lay-test-103",
+        "top_predicted": [
+          "BNS 316",
+          "BNS 85",
+          "BNS 86"
+        ]
+      },
+      {
+        "charge": "500. Punishment for defamation.\u2014Whoever defames another shall be punished with s",
+        "id": "ilsic-lay-test-103",
+        "top_predicted": [
+          "BNS 316",
+          "BNS 85",
+          "BNS 86"
+        ]
+      },
+      {
+        "charge": "467. Forgery of valuable security, will, etc.\u2014Whoever forges a document which pu",
+        "id": "ilsic-lay-test-376",
+        "top_predicted": [
+          "BNS 316",
+          "BNS 318",
+          "BNS 336"
+        ]
+      },
+      {
+        "charge": "156. Liability of agent of owner or occupier for whose benefit riot is committed",
+        "id": "ilsic-lay-test-742",
+        "top_predicted": [
+          "BNS 85",
+          "BNS 86",
+          "BNS 316"
+        ]
+      },
+      {
+        "charge": "500. Punishment for defamation.\u2014Whoever defames another shall be punished with s",
+        "id": "ilsic-lay-test-742",
+        "top_predicted": [
+          "BNS 85",
+          "BNS 86",
+          "BNS 316"
+        ]
+      },
+      {
+        "charge": "506. Punishment for criminal intimidation.\u2014Whoever commits the offence of crimin",
+        "id": "ilsic-lay-test-431",
+        "top_predicted": [
+          "BNS 318",
+          "BNS 316",
+          "BNS 336"
+        ]
+      }
+    ],
+    "predictions": {
+      "ilsic-lay-test-0": [
+        "BNS 316",
+        "BNS 85",
+        "BNS 86",
+        "BNS 318",
+        "BNS 351"
+      ],
+      "ilsic-lay-test-103": [
+        "BNS 316",
+        "BNS 85",
+        "BNS 86",
+        "BNS 351",
+        "BNS 318"
+      ],
+      "ilsic-lay-test-14": [
+        "BNS 316",
+        "BNS 318",
+        "BNS 49",
+        "BNS 340",
+        "BNS 85",
+        "BNS 86"
+      ],
+      "ilsic-lay-test-176": [
+        "BNS 316",
+        "BNS 318",
+        "BNS 85",
+        "BNS 86",
+        "BNS 340"
+      ],
+      "ilsic-lay-test-219": [
+        "BNS 85",
+        "BNS 86",
+        "BNS 316",
+        "BNS 351",
+        "BNS 318",
+        "BNS 238"
+      ],
+      "ilsic-lay-test-302": [
+        "BNS 316",
+        "BNS 85",
+        "BNS 86",
+        "BNS 318",
+        "BNS 108",
+        "BNS 80"
+      ],
+      "ilsic-lay-test-37": [
+        "BNS 316",
+        "BNS 318",
+        "BNS 49",
+        "BNS 351",
+        "BNS 85",
+        "BNS 86"
+      ],
+      "ilsic-lay-test-376": [
+        "BNS 316",
+        "BNS 318",
+        "BNS 336",
+        "BNS 85",
+        "BNS 86",
+        "BNS 340"
+      ],
+      "ilsic-lay-test-397": [
+        "BNS 316",
+        "BNS 85",
+        "BNS 86",
+        "BNS 318",
+        "BNS 351",
+        "BNS 80"
+      ],
+      "ilsic-lay-test-402": [
+        "BNS 316",
+        "BNS 85",
+        "BNS 86",
+        "BNS 318",
+        "BNS 351",
+        "BNS 356"
+      ],
+      "ilsic-lay-test-416": [
+        "BNS 85",
+        "BNS 86",
+        "BNS 316",
+        "BNS 351",
+        "BNS 80",
+        "BNS 108"
+      ],
+      "ilsic-lay-test-424": [
+        "BNS 351",
+        "BNS 316",
+        "BNS 318",
+        "BNS 85",
+        "BNS 86",
+        "BNS 103"
+      ],
+      "ilsic-lay-test-431": [
+        "BNS 318",
+        "BNS 316",
+        "BNS 336",
+        "BNS 338",
+        "BNS 340"
+      ],
+      "ilsic-lay-test-432": [
+        "BNS 85",
+        "BNS 86",
+        "BNS 316",
+        "BNS 108",
+        "BNS 80"
+      ],
+      "ilsic-lay-test-48": [
+        "BNS 85",
+        "BNS 86",
+        "BNS 316",
+        "BNS 318",
+        "BNS 351",
+        "BNS 108"
+      ],
+      "ilsic-lay-test-50": [
+        "BNS 85",
+        "BNS 86",
+        "BNS 316",
+        "BNS 351",
+        "BNS 108"
+      ],
+      "ilsic-lay-test-506": [
+        "BNS 351",
+        "BNS 352",
+        "BNS 101",
+        "BNS 85",
+        "BNS 86",
+        "BNS 115"
+      ],
+      "ilsic-lay-test-572": [
+        "BNS 316",
+        "BNS 318",
+        "BNS 85",
+        "BNS 86",
+        "BNS 340",
+        "BNS 336"
+      ],
+      "ilsic-lay-test-589": [
+        "BNS 318",
+        "BNS 316",
+        "BNS 351",
+        "BNS 336",
+        "BNS 103"
+      ],
+      "ilsic-lay-test-59": [
+        "BNS 316",
+        "BNS 318",
+        "BNS 49",
+        "BNS 85",
+        "BNS 86"
+      ],
+      "ilsic-lay-test-620": [
+        "BNS 316",
+        "BNS 318",
+        "BNS 49",
+        "BNS 336"
+      ],
+      "ilsic-lay-test-641": [
+        "BNS 85",
+        "BNS 86",
+        "BNS 316",
+        "BNS 351",
+        "BNS 80"
+      ],
+      "ilsic-lay-test-645": [
+        "BNS 85",
+        "BNS 86",
+        "BNS 316",
+        "BNS 351",
+        "BNS 318"
+      ],
+      "ilsic-lay-test-707": [
+        "BNS 316",
+        "BNS 85",
+        "BNS 86",
+        "BNS 318",
+        "BNS 351"
+      ],
+      "ilsic-lay-test-742": [
+        "BNS 85",
+        "BNS 86",
+        "BNS 316",
+        "BNS 351",
+        "BNS 318"
+      ],
+      "ilsic-lay-test-756": [
+        "BNS 316",
+        "BNS 318",
+        "BNS 336",
+        "BNS 340"
+      ],
+      "ilsic-lay-test-800": [
+        "BNS 85",
+        "BNS 86",
+        "BNS 351",
+        "BNS 316",
+        "BNS 103"
+      ],
+      "ilsic-lay-test-818": [
+        "BNS 316",
+        "BNS 318",
+        "BNS 85",
+        "BNS 86",
+        "BNS 336",
+        "BNS 351"
+      ],
+      "ilsic-lay-test-88": [
+        "BNS 316",
+        "BNS 318",
+        "BNS 340",
+        "BNS 336"
+      ],
+      "ilsic-lay-test-94": [
+        "BNS 316",
+        "BNS 318",
+        "BNS 85",
+        "BNS 86",
+        "BNS 356",
+        "BNS 351"
+      ]
+    },
+    "recall": 0.654321
+  },
+  "parser_version": "4",
+  "scorings_of_this_layer_version": [
+    {
+      "act": "BNS",
+      "index_sha256": "efaf6fe8b342f151ac02ed110027320f39b0d99287327eb7d206453537a0d408",
+      "inputs": {
+        "concordance": "e32454733360bb32f797097894ed1f94a84b1c813a4b9b0177829cf12b579cfa",
+        "model": "e6b555d0076aa31c4e351c7e521e3753551fd573ec1f32b97e185274d8b691a0",
+        "train_sha256_ilsi": "23a0aedcf52a08e22e064fdce78501698d33b576a1437e5a02ecdbb01b3a2da8",
+        "train_sha256_ilsic-lay": "6f998e08b0488c94f096db85395fac1a2f21331f1c2348aaee93d27c7a55a0d8",
+        "train_source": "ilsi+ilsic-lay"
+      },
+      "layer": "assoc-nb",
+      "layer_version": "v3",
+      "scores": {
+        "output": {
+          "all_charges_hit": 0.5,
+          "mean_predictions": 5.366667,
+          "recall": 0.654321
+        }
+      },
+      "set_sha256": "9b4c14c5bcbbd3e5158099ed94722dc6292bc668ad3162013e0219f5f5edf0bb"
+    }
+  ]
+}

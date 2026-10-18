@@ -212,6 +212,10 @@ def score_predictions(set_path: str, index_path: str, predictions_path: str, act
         return 1
     ledger_file = ledger_path or str(Path(set_path).with_suffix(".ledger.json"))
     layer, version = data["layer"], data["layer_version"]
+    named = re.search(r"-assoc-(v\d+)-(?:ipc|bns)\.json$", out_path)  # a results name that carries a version must match the file's
+    if named and named[1] != version:
+        print(f"error: {out_path} names {named[1]} but the predictions file is {layer} {version}", file=sys.stderr)
+        return 1
     if not rescore and any((e.get("layer"), e.get("layer_version"), e.get("set_sha256"), e.get("act")) == (layer, version, set_sha, act.upper())
                            for e in bench.read_ledger(ledger_file)):
         print(f"error: {layer} {version} is already scored on this set and Act in {ledger_file}; pass --rescore to score it again", file=sys.stderr)

@@ -1,0 +1,819 @@
+{
+  "act": "BNS",
+  "charges_excluded_no_counterpart": 0,
+  "conventions": {
+    "by_charges_per_item": "grouped by the number of charges counted for the Act, not the total in the item",
+    "excluded": "a charge with an empty list for the Act is left out; an item with none left is not scored",
+    "found": "a charge is found when any accepted section of the Act, rolled up to its section, is predicted",
+    "mean_predictions": "mean number of predicted sections per scored item"
+  },
+  "inputs": {
+    "index_sha256": "efaf6fe8b342f151ac02ed110027320f39b0d99287327eb7d206453537a0d408",
+    "layer": {
+      "concordance": "e32454733360bb32f797097894ed1f94a84b1c813a4b9b0177829cf12b579cfa",
+      "model": "e6b555d0076aa31c4e351c7e521e3753551fd573ec1f32b97e185274d8b691a0",
+      "train_sha256_ilsi": "23a0aedcf52a08e22e064fdce78501698d33b576a1437e5a02ecdbb01b3a2da8",
+      "train_sha256_ilsic-lay": "6f998e08b0488c94f096db85395fac1a2f21331f1c2348aaee93d27c7a55a0d8",
+      "train_source": "ilsi+ilsic-lay"
+    },
+    "set_sha256": "9b77ae213e7a7a9614606c9fc6396a0a323e155630f491bb3a3b0295ca9f2fd2"
+  },
+  "items_in_set": 30,
+  "items_scored": 30,
+  "label_basis": {
+    "agent-drafted-skeptic-refuted": 30
+  },
+  "layer": "assoc-nb",
+  "layer_counts": {},
+  "layer_version": "v3",
+  "output": {
+    "all_charges_hit": 0.1,
+    "by_charges_per_item": {
+      "1": {
+        "all_charges_hit": 0.0,
+        "charges": 0,
+        "items": 0,
+        "mean_predictions": 0.0,
+        "recall": 0.0
+      },
+      "2": {
+        "all_charges_hit": 0.2,
+        "charges": 20,
+        "items": 10,
+        "mean_predictions": 5.1,
+        "recall": 0.4
+      },
+      "3+": {
+        "all_charges_hit": 0.05,
+        "charges": 78,
+        "items": 20,
+        "mean_predictions": 4.5,
+        "recall": 0.397436
+      }
+    },
+    "charges": 98,
+    "items": 30,
+    "mean_predictions": 4.7,
+    "missed": [
+      {
+        "charge": "Dacoity",
+        "id": "43946072",
+        "top_predicted": [
+          "BNS 351",
+          "BNS 352",
+          "BNS 115"
+        ]
+      },
+      {
+        "charge": "Murder",
+        "id": "871051",
+        "top_predicted": [
+          "BNS 85",
+          "BNS 86",
+          "BNS 351"
+        ]
+      },
+      {
+        "charge": "Causing disappearance of evidence",
+        "id": "871051",
+        "top_predicted": [
+          "BNS 85",
+          "BNS 86",
+          "BNS 351"
+        ]
+      },
+      {
+        "charge": "Sexual harassment",
+        "id": "107892742",
+        "top_predicted": [
+          "BNS 296",
+          "BNS 74",
+          "BNS 115"
+        ]
+      },
+      {
+        "charge": "Stalking",
+        "id": "107892742",
+        "top_predicted": [
+          "BNS 296",
+          "BNS 74",
+          "BNS 115"
+        ]
+      },
+      {
+        "charge": "Rape of a minor",
+        "id": "105616635",
+        "top_predicted": [
+          "BNS 137",
+          "BNS 87",
+          "BNS 74"
+        ]
+      },
+      {
+        "charge": "Procuration of minor girl",
+        "id": "105616635",
+        "top_predicted": [
+          "BNS 137",
+          "BNS 87",
+          "BNS 74"
+        ]
+      },
+      {
+        "charge": "Rape of a minor",
+        "id": "190108901",
+        "top_predicted": [
+          "BNS 351",
+          "BNS 137",
+          "BNS 296"
+        ]
+      },
+      {
+        "charge": "Abetment of rape",
+        "id": "190108901",
+        "top_predicted": [
+          "BNS 351",
+          "BNS 137",
+          "BNS 296"
+        ]
+      },
+      {
+        "charge": "Wrongfully concealing a kidnapped person",
+        "id": "190108901",
+        "top_predicted": [
+          "BNS 351",
+          "BNS 137",
+          "BNS 296"
+        ]
+      },
+      {
+        "charge": "Rape",
+        "id": "176417778",
+        "top_predicted": [
+          "BNS 318",
+          "BNS 316",
+          "BNS 351"
+        ]
+      },
+      {
+        "charge": "Causing hurt by stupefying drug",
+        "id": "176417778",
+        "top_predicted": [
+          "BNS 318",
+          "BNS 316",
+          "BNS 351"
+        ]
+      },
+      {
+        "charge": "Sexual harassment",
+        "id": "176417778",
+        "top_predicted": [
+          "BNS 318",
+          "BNS 316",
+          "BNS 351"
+        ]
+      },
+      {
+        "charge": "Murder",
+        "id": "156132986",
+        "top_predicted": [
+          "BNS 318",
+          "BNS 351",
+          "BNS 316"
+        ]
+      },
+      {
+        "charge": "Kidnapping with intent to secretly and wrongfully confine",
+        "id": "156132986",
+        "top_predicted": [
+          "BNS 318",
+          "BNS 351",
+          "BNS 316"
+        ]
+      },
+      {
+        "charge": "Causing disappearance of evidence",
+        "id": "156132986",
+        "top_predicted": [
+          "BNS 318",
+          "BNS 351",
+          "BNS 316"
+        ]
+      },
+      {
+        "charge": "Criminal conspiracy",
+        "id": "156132986",
+        "top_predicted": [
+          "BNS 318",
+          "BNS 351",
+          "BNS 316"
+        ]
+      },
+      {
+        "charge": "Murder of Heeralal (head injury by co-accused Parwat)",
+        "id": "155317536",
+        "top_predicted": [
+          "BNS 296",
+          "BNS 117",
+          "BNS 115"
+        ]
+      },
+      {
+        "charge": "Rape",
+        "id": "154394117",
+        "top_predicted": [
+          "BNS 137",
+          "BNS 87",
+          "BNS 351"
+        ]
+      },
+      {
+        "charge": "Criminal conspiracy",
+        "id": "1733568",
+        "top_predicted": [
+          "BNS 318",
+          "BNS 316",
+          "BNS 336"
+        ]
+      },
+      {
+        "charge": "Falsification of accounts",
+        "id": "1733568",
+        "top_predicted": [
+          "BNS 318",
+          "BNS 316",
+          "BNS 336"
+        ]
+      },
+      {
+        "charge": "Causing death by negligence",
+        "id": "71898306",
+        "top_predicted": [
+          "BNS 351",
+          "BNS 126",
+          "BNS 318"
+        ]
+      },
+      {
+        "charge": "Disobedience of order duly promulgated by public servant",
+        "id": "71898306",
+        "top_predicted": [
+          "BNS 351",
+          "BNS 126",
+          "BNS 318"
+        ]
+      },
+      {
+        "charge": "Being member of unlawful assembly",
+        "id": "71898306",
+        "top_predicted": [
+          "BNS 351",
+          "BNS 126",
+          "BNS 318"
+        ]
+      },
+      {
+        "charge": "Cruelty by husband or relative",
+        "id": "102242151",
+        "top_predicted": [
+          "BNS 296",
+          "BNS 351",
+          "BNS 115"
+        ]
+      },
+      {
+        "charge": "Murder of wife",
+        "id": "1422198",
+        "top_predicted": [
+          "BNS 85",
+          "BNS 86",
+          "BNS 108"
+        ]
+      },
+      {
+        "charge": "Attempt to murder",
+        "id": "33467557",
+        "top_predicted": [
+          "BNS 351",
+          "BNS 316",
+          "BNS 318"
+        ]
+      },
+      {
+        "charge": "Obscene words in public",
+        "id": "33467557",
+        "top_predicted": [
+          "BNS 351",
+          "BNS 316",
+          "BNS 318"
+        ]
+      },
+      {
+        "charge": "Kidnapping child from lawful guardianship",
+        "id": "40330300",
+        "top_predicted": [
+          "BNS 351",
+          "BNS 316",
+          "BNS 318"
+        ]
+      },
+      {
+        "charge": "Hurt by chemical spray into the eyes",
+        "id": "40330300",
+        "top_predicted": [
+          "BNS 351",
+          "BNS 316",
+          "BNS 318"
+        ]
+      },
+      {
+        "charge": "Attempt to murder by setting wife's family member on fire",
+        "id": "188477105",
+        "top_predicted": [
+          "BNS 296",
+          "BNS 351",
+          "BNS 115"
+        ]
+      },
+      {
+        "charge": "Stalking",
+        "id": "21756622",
+        "top_predicted": [
+          "BNS 296",
+          "BNS 74",
+          "BNS 137"
+        ]
+      },
+      {
+        "charge": "Voluntarily causing hurt",
+        "id": "21756622",
+        "top_predicted": [
+          "BNS 296",
+          "BNS 74",
+          "BNS 137"
+        ]
+      },
+      {
+        "charge": "Voluntarily causing hurt",
+        "id": "24605614",
+        "top_predicted": [
+          "BNS 126",
+          "BNS 351",
+          "BNS 191"
+        ]
+      },
+      {
+        "charge": "Obscene words in public place",
+        "id": "24605614",
+        "top_predicted": [
+          "BNS 126",
+          "BNS 351",
+          "BNS 191"
+        ]
+      },
+      {
+        "charge": "House-trespass",
+        "id": "24605614",
+        "top_predicted": [
+          "BNS 126",
+          "BNS 351",
+          "BNS 191"
+        ]
+      },
+      {
+        "charge": "Assault with intent to outrage modesty",
+        "id": "24605614",
+        "top_predicted": [
+          "BNS 126",
+          "BNS 351",
+          "BNS 191"
+        ]
+      },
+      {
+        "charge": "Attempt to murder",
+        "id": "1781247",
+        "top_predicted": [
+          "BNS 115",
+          "BNS 191",
+          "BNS 117"
+        ]
+      },
+      {
+        "charge": "Rioting",
+        "id": "44267882",
+        "top_predicted": [
+          "BNS 296",
+          "BNS 351",
+          "BNS 115"
+        ]
+      },
+      {
+        "charge": "Rape of a minor girl",
+        "id": "53071757",
+        "top_predicted": [
+          "BNS 351",
+          "BNS 303",
+          "BNS 117"
+        ]
+      },
+      {
+        "charge": "Cheating of depositors",
+        "id": "53071757",
+        "top_predicted": [
+          "BNS 351",
+          "BNS 303",
+          "BNS 117"
+        ]
+      },
+      {
+        "charge": "Defamation",
+        "id": "43861037",
+        "top_predicted": [
+          "BNS 316",
+          "BNS 318",
+          "BNS 336"
+        ]
+      },
+      {
+        "charge": "Word or gesture insulting modesty of a woman",
+        "id": "43861037",
+        "top_predicted": [
+          "BNS 316",
+          "BNS 318",
+          "BNS 336"
+        ]
+      },
+      {
+        "charge": "Stalking",
+        "id": "43861037",
+        "top_predicted": [
+          "BNS 316",
+          "BNS 318",
+          "BNS 336"
+        ]
+      },
+      {
+        "charge": "Obscene words in public",
+        "id": "127532648",
+        "top_predicted": [
+          "BNS 115",
+          "BNS 118",
+          "BNS 126"
+        ]
+      },
+      {
+        "charge": "Criminal intimidation",
+        "id": "127532648",
+        "top_predicted": [
+          "BNS 115",
+          "BNS 118",
+          "BNS 126"
+        ]
+      },
+      {
+        "charge": "Rioting",
+        "id": "102368932",
+        "top_predicted": [
+          "BNS 296",
+          "BNS 351",
+          "BNS 338"
+        ]
+      },
+      {
+        "charge": "House-trespass after preparation for hurt",
+        "id": "102368932",
+        "top_predicted": [
+          "BNS 296",
+          "BNS 351",
+          "BNS 338"
+        ]
+      },
+      {
+        "charge": "Voluntarily causing hurt",
+        "id": "102368932",
+        "top_predicted": [
+          "BNS 296",
+          "BNS 351",
+          "BNS 338"
+        ]
+      },
+      {
+        "charge": "Mischief causing damage",
+        "id": "102368932",
+        "top_predicted": [
+          "BNS 296",
+          "BNS 351",
+          "BNS 338"
+        ]
+      },
+      {
+        "charge": "forgery of public record",
+        "id": "150846258",
+        "top_predicted": [
+          "BNS 318",
+          "BNS 351",
+          "BNS 340"
+        ]
+      },
+      {
+        "charge": "theft",
+        "id": "150846258",
+        "top_predicted": [
+          "BNS 318",
+          "BNS 351",
+          "BNS 340"
+        ]
+      },
+      {
+        "charge": "forgery",
+        "id": "19706913",
+        "top_predicted": [
+          "BNS 351",
+          "BNS 115",
+          "BNS 85"
+        ]
+      },
+      {
+        "charge": "forgery of valuable security or will",
+        "id": "19706913",
+        "top_predicted": [
+          "BNS 351",
+          "BNS 115",
+          "BNS 85"
+        ]
+      },
+      {
+        "charge": "forgery for purpose of cheating",
+        "id": "19706913",
+        "top_predicted": [
+          "BNS 351",
+          "BNS 115",
+          "BNS 85"
+        ]
+      },
+      {
+        "charge": "using forged document as genuine",
+        "id": "19706913",
+        "top_predicted": [
+          "BNS 351",
+          "BNS 115",
+          "BNS 85"
+        ]
+      },
+      {
+        "charge": "murder",
+        "id": "41590279",
+        "top_predicted": [
+          "BNS 296",
+          "BNS 115",
+          "BNS 351"
+        ]
+      },
+      {
+        "charge": "rioting armed with deadly weapon",
+        "id": "41590279",
+        "top_predicted": [
+          "BNS 296",
+          "BNS 115",
+          "BNS 351"
+        ]
+      },
+      {
+        "charge": "wrongful restraint",
+        "id": "41590279",
+        "top_predicted": [
+          "BNS 296",
+          "BNS 115",
+          "BNS 351"
+        ]
+      }
+    ],
+    "predictions": {
+      "102242151": [
+        "BNS 296",
+        "BNS 351",
+        "BNS 115",
+        "BNS 74",
+        "BNS 318"
+      ],
+      "102368932": [
+        "BNS 296",
+        "BNS 351",
+        "BNS 338",
+        "BNS 318",
+        "BNS 336"
+      ],
+      "105616635": [
+        "BNS 137",
+        "BNS 87",
+        "BNS 74",
+        "BNS 351"
+      ],
+      "106805320": [
+        "BNS 115",
+        "BNS 109",
+        "BNS 191",
+        "BNS 118"
+      ],
+      "107892742": [
+        "BNS 296",
+        "BNS 74",
+        "BNS 115",
+        "BNS 117",
+        "BNS 351"
+      ],
+      "127532648": [
+        "BNS 115",
+        "BNS 118",
+        "BNS 126",
+        "BNS 191"
+      ],
+      "1422198": [
+        "BNS 85",
+        "BNS 86",
+        "BNS 108",
+        "BNS 351",
+        "BNS 80",
+        "BNS 115"
+      ],
+      "150846258": [
+        "BNS 318",
+        "BNS 351",
+        "BNS 340",
+        "BNS 336",
+        "BNS 115"
+      ],
+      "153470110": [
+        "BNS 351",
+        "BNS 318",
+        "BNS 126",
+        "BNS 316"
+      ],
+      "154394117": [
+        "BNS 137",
+        "BNS 87",
+        "BNS 351",
+        "BNS 74"
+      ],
+      "155317536": [
+        "BNS 296",
+        "BNS 117",
+        "BNS 115",
+        "BNS 74",
+        "BNS 118"
+      ],
+      "156132986": [
+        "BNS 318",
+        "BNS 351",
+        "BNS 316",
+        "BNS 336"
+      ],
+      "1733568": [
+        "BNS 318",
+        "BNS 316",
+        "BNS 336",
+        "BNS 340"
+      ],
+      "176417778": [
+        "BNS 318",
+        "BNS 316",
+        "BNS 351",
+        "BNS 336",
+        "BNS 340"
+      ],
+      "1781247": [
+        "BNS 115",
+        "BNS 191",
+        "BNS 117",
+        "BNS 118"
+      ],
+      "188477105": [
+        "BNS 296",
+        "BNS 351",
+        "BNS 115",
+        "BNS 74",
+        "BNS 85",
+        "BNS 86"
+      ],
+      "190108901": [
+        "BNS 351",
+        "BNS 137",
+        "BNS 296",
+        "BNS 87"
+      ],
+      "19706913": [
+        "BNS 351",
+        "BNS 115",
+        "BNS 85",
+        "BNS 86",
+        "BNS 318",
+        "BNS 296"
+      ],
+      "21756622": [
+        "BNS 296",
+        "BNS 74",
+        "BNS 137",
+        "BNS 351"
+      ],
+      "24605614": [
+        "BNS 126",
+        "BNS 351",
+        "BNS 191",
+        "BNS 324"
+      ],
+      "33467557": [
+        "BNS 351",
+        "BNS 316",
+        "BNS 318",
+        "BNS 126"
+      ],
+      "39883671": [
+        "BNS 351",
+        "BNS 85",
+        "BNS 86",
+        "BNS 126",
+        "BNS 115",
+        "BNS 108"
+      ],
+      "40330300": [
+        "BNS 351",
+        "BNS 316",
+        "BNS 318",
+        "BNS 85",
+        "BNS 86"
+      ],
+      "41590279": [
+        "BNS 296",
+        "BNS 115",
+        "BNS 351",
+        "BNS 109",
+        "BNS 74"
+      ],
+      "43861037": [
+        "BNS 316",
+        "BNS 318",
+        "BNS 336",
+        "BNS 351",
+        "BNS 345"
+      ],
+      "43946072": [
+        "BNS 351",
+        "BNS 352",
+        "BNS 115",
+        "BNS 191",
+        "BNS 109"
+      ],
+      "44267882": [
+        "BNS 296",
+        "BNS 351",
+        "BNS 115",
+        "BNS 74",
+        "BNS 109"
+      ],
+      "53071757": [
+        "BNS 351",
+        "BNS 303",
+        "BNS 117",
+        "BNS 327",
+        "BNS 324"
+      ],
+      "71898306": [
+        "BNS 351",
+        "BNS 126",
+        "BNS 318",
+        "BNS 115"
+      ],
+      "871051": [
+        "BNS 85",
+        "BNS 86",
+        "BNS 351",
+        "BNS 115",
+        "BNS 303"
+      ]
+    },
+    "recall": 0.397959
+  },
+  "parser_version": "4",
+  "scorings_of_this_layer_version": [
+    {
+      "act": "BNS",
+      "index_sha256": "efaf6fe8b342f151ac02ed110027320f39b0d99287327eb7d206453537a0d408",
+      "inputs": {
+        "concordance": "e32454733360bb32f797097894ed1f94a84b1c813a4b9b0177829cf12b579cfa",
+        "model": "e6b555d0076aa31c4e351c7e521e3753551fd573ec1f32b97e185274d8b691a0",
+        "train_sha256_ilsi": "23a0aedcf52a08e22e064fdce78501698d33b576a1437e5a02ecdbb01b3a2da8",
+        "train_sha256_ilsic-lay": "6f998e08b0488c94f096db85395fac1a2f21331f1c2348aaee93d27c7a55a0d8",
+        "train_source": "ilsi+ilsic-lay"
+      },
+      "layer": "assoc-nb",
+      "layer_version": "v3",
+      "scores": {
+        "output": {
+          "all_charges_hit": 0.1,
+          "mean_predictions": 4.7,
+          "recall": 0.397959
+        }
+      },
+      "set_sha256": "9b77ae213e7a7a9614606c9fc6396a0a323e155630f491bb3a3b0295ca9f2fd2"
+    }
+  ]
+}

@@ -185,9 +185,11 @@ def main(argv: list[str] | None = None) -> int:
     ci.add_argument("--out", required=True)
     asc = sub.add_parser("assoc").add_subparsers(dest="assoc_cmd", required=True)
     af = asc.add_parser("fit", help="route B: fit the naive-Bayes layer on a train split minus the held-out set's ids")
-    af.add_argument("--source", choices=("ilsi", "ilsic-lay"), default="ilsi")
+    af.add_argument("--source", choices=("ilsi", "ilsic-lay", "union"), default="ilsi")
     af.add_argument("--train", required=True)
     af.add_argument("--holdout-split", help="ilsic-lay: the Layman test split file")
+    af.add_argument("--lay-train", help="union: the ILSIC-Lay train file (--train is the ILSI train file)")
+    af.add_argument("--lay-holdout-set", help="union: the set v2 file")
     af.add_argument("--min-posts", type=int, default=5)
     af.add_argument("--index", default="data/index/ibid.sqlite")
     af.add_argument("--holdout-set", required=True)
@@ -204,6 +206,7 @@ def main(argv: list[str] | None = None) -> int:
     ae.add_argument("--split", required=True)
     ae.add_argument("--manifest", default="data/lesicin.manifest.json")
     ae.add_argument("--ledger", default="results/test-ledger-assoc.json")
+    ae.add_argument("--labels", default=None, help="ILSI label vocabulary: also report micro-F1 over this (v1's) label space")
     ae.add_argument("--rescore-test", action="store_true")
     ae.add_argument("--out", default=None)
     chq = chs.add_parser("subquery", help="route C: retrieve per recorded sub-query with the frozen rule and union")
@@ -299,6 +302,13 @@ def main(argv: list[str] | None = None) -> int:
         return charges.validate(a.set, a.index)
     if a.cmd == "assoc":
         from ibid import assoc
+        if a.assoc_cmd == "fit" and a.source == "union":
+            if not (a.lay_train and a.lay_holdout_set and a.holdout_split):
+                print("error: --lay-train, --lay-holdout-set and --holdout-split are required with --source union", file=sys.stderr)
+                return 1
+            return assoc.fit_union({"train": a.train, "holdout_set": a.holdout_set, "labels": a.labels},
+                                   {"train": a.lay_train, "holdout_split": a.holdout_split, "holdout_set": a.lay_holdout_set, "index": a.index},
+                                   a.min_posts, a.out)
         if a.assoc_cmd == "fit":
             if a.source == "ilsic-lay":
                 if not a.holdout_split:
@@ -308,7 +318,7 @@ def main(argv: list[str] | None = None) -> int:
             return assoc.fit(a.train, a.holdout_set, a.labels, a.out)
         if a.assoc_cmd == "predict":
             return assoc.predict(a.model, a.set, a.concordance, a.index, a.out)
-        return assoc.evaluate(a.model, a.split, a.manifest, a.ledger, a.rescore_test, a.out)
+        return assoc.evaluate(a.model, a.split, a.manifest, a.ledger, a.rescore_test, a.out, a.labels)
     if a.cmd == "bench" and a.bench_cmd == "report":
         from ibid.report import run_report
         return run_report(a.log, a.ledger, a.results, a.out, a.frozen_rule)
