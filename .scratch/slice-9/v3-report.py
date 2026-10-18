@@ -40,7 +40,11 @@ print("# assoc-nb v3 against the ADR 0008 decision rule\n")
 print("| # | Comparison | Reference | v3 must be | v3 | Result |\n|---|---|---|---|---|---|")
 for n, (label, ref, need, v3, ok) in enumerate(rows, 1):
     print(f"| {n} | {label} | {ref} | {need} | {v3} | {'pass' if ok else 'fail'} |")
-if all(ok for *_, ok in rows):
+v1_space = t.get("micro_f1_by_label_space", {}).get("v1")
+waived = rows[-1][-1] and v1_space is not None and pct(v1_space["micro_f1"]) < floor
+if all(ok for *_, ok in rows) and waived:
+    print(f"\nVerdict: **kept as opt-in, by owner waiver (D-005)**. All five comparisons hold in v3's own label space, but over v1's 100-label space the ILSI micro-F1 is {pct(v1_space['micro_f1'])}, {round(floor - pct(v1_space['micro_f1']), 1)} below the {floor} floor. The owner (Q-005, 2026-10-18) chose to report both and keep v3 as opt-in on the strength of its wins on both multi-charge sets. The pre-registered floor is not claimed as passed under the like-for-like reading.")
+elif all(ok for *_, ok in rows):
     print("\nVerdict: **kept**. All five comparisons hold, so v3 stays an opt-in layer.")
 else:
     print("\nVerdict: **negative**. Not every comparison holds, so v1 and v2 remain the two options.")

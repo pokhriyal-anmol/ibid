@@ -15,7 +15,7 @@ V2 = {"v1": {"ipc": 0.153, "bns": 0.163}, "v2": {"ipc": 0.548, "bns": 0.642}}
 V3 = {"v1": {"ipc": 0.40, "bns": 0.30}, "v2": {"ipc": 0.50, "bns": 0.60}}
 
 
-def build(root: Path, v3: dict, f1: float | None = 0.34) -> None:
+def build(root: Path, v3: dict, f1: float | None = 0.34, v1_space: float = 0.34) -> None:
     (root / "data").mkdir()
     (root / "results/layers").mkdir(parents=True)
     model = json.dumps(MODEL)
@@ -29,12 +29,12 @@ def build(root: Path, v3: dict, f1: float | None = 0.34) -> None:
     (root / "results/layers/assoc-nb-v1-test.json").write_text(json.dumps({"scores": {"micro_f1": 0.3538}}))
     if f1 is not None:
         (root / "results/layers/assoc-nb-v3-test.json").write_text(json.dumps(
-            {"scores": {"micro_f1": f1}, "micro_f1_by_label_space": {"own": {"labels": 140, "micro_f1": f1}, "v1": {"labels": 600, "micro_f1": 0.2}}}))
+            {"scores": {"micro_f1": f1}, "micro_f1_by_label_space": {"own": {"labels": 140, "micro_f1": f1}, "v1": {"labels": 600, "micro_f1": v1_space}}}))
 
 
-def report(v3: dict, f1: float | None = 0.34) -> str:
+def report(v3: dict, f1: float | None = 0.34, v1_space: float = 0.34) -> str:
     with tempfile.TemporaryDirectory() as d:
-        build(Path(d), v3, f1)
+        build(Path(d), v3, f1, v1_space)
         r = subprocess.run([sys.executable, str(SCRIPT), d], capture_output=True, text=True)
         assert r.returncode == 0, r.stderr
         return r.stdout
@@ -47,6 +47,11 @@ class V3Report(unittest.TestCase):
         self.assertIn("Verdict: **kept**", out)
         self.assertIn("140 labels: 34.0", out)
         self.assertIn("ilsi 90 (90.0%)", out)
+
+    def test_floor_missed_only_over_v1_space_is_kept_by_waiver_and_says_so(self) -> None:
+        out = report(V3, 0.34, v1_space=0.2)
+        self.assertIn("kept as opt-in, by owner waiver (D-005)", out)
+        self.assertNotIn("Verdict: **kept**.", out)
 
     def test_equal_to_v2_on_set_v1_ipc_fails_the_line_and_the_verdict(self) -> None:
         out = report({**V3, "v1": {"ipc": 0.153, "bns": 0.30}})

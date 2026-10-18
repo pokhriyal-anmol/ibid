@@ -13,7 +13,7 @@ What was built, by ticket (all six have Status: done):
 5. `results/layer-comparison.md` shows baseline, v1, v2 and v3. The only diff is one added assoc-nb v3 test row in the ILSI table.
 6. `.scratch/slice-9/v3-report.md` applies the ADR 0008 rule from the results files and model header.
 
-Result: the verdict is **kept**, and all five comparisons pass. On the ILSI test split, v3 micro-F1 is 35.2 in its own 140-label space and 33.3 in v1's 100-label space, against a floor of 33.4. The floor is judged over v3's own label space as ADR 0008 states, so the pass depends on that choice. Q-005 is the open owner question on this point, and over v1's label space the figure would fall just below the floor.
+Result: the verdict is **kept as opt-in by owner waiver (D-005)**. All five comparisons pass over v3's own label space; over v1's 100-label space the ILSI micro-F1 misses the floor by 0.1. On the ILSI test split, v3 micro-F1 is 35.2 in its own 140-label space and 33.3 in v1's 100-label space, against a floor of 33.4. The floor is judged over v3's own label space as ADR 0008 states, so the pass depends on that choice. Q-005 is the open owner question on this point, and over v1's label space the figure would fall just below the floor.
 
 Notes for the reviewer:
 
@@ -32,5 +32,5 @@ Notes for the reviewer:
 - [x] Micro-F1 test in `tests/test_assoc.py` asserts hand-derived values (8/19 in a 3-label space, 8/20 in a 6-label space).
 - [x] `tests/test_adr_0008.py` parses the rule table and checks each threshold in its own row. Mutating the 15.3 row to 16.3 made it fail, and restoring it made it pass.
 - [x] `results/layer-comparison.md` regenerated with `ibid charges compare`; the only diff is the added v3 test row.
-- [x] `.scratch/slice-9/v3-report.md` regenerated; all five comparisons pass and the verdict is kept.
+- [x] `.scratch/slice-9/v3-report.md` regenerated; the verdict is kept as opt-in by owner waiver (the floor is missed by 0.1 over v1's label space).
 - [x] Refit v3 model is byte-identical before and after the `_vocab` refactor.

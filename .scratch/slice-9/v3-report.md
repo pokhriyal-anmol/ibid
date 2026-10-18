@@ -8,7 +8,7 @@
 | 4 | Set v2 (forum posts), BNS recall | v2 64.2 | at least 59.2 | 65.4 | pass |
 | 5 | ILSI test micro-F1 | v1 35.4 | at least 33.4 | 35.2 | pass |
 
-Verdict: **kept**. All five comparisons hold, so v3 stays an opt-in layer.
+Verdict: **kept as opt-in, by owner waiver (D-005)**. All five comparisons hold in v3's own label space, but over v1's 100-label space the ILSI micro-F1 is 33.3, 0.1 below the 33.4 floor. The owner (Q-005, 2026-10-18) chose to report both and keep v3 as opt-in on the strength of its wins on both multi-charge sets. The pre-registered floor is not claimed as passed under the like-for-like reading.
 
 ADR 0008 names five comparisons (the spec's "six" counts to five). Recall is in percent, per set and Act, never pooled.
 

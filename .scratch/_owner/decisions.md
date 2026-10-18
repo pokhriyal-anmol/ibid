@@ -33,3 +33,11 @@ Applies when: a test compares our output with an external source that paraphrase
 Why: the 90% bar was a guess made before measuring. The real rate is 83.9%, and the sampled misses are mostly CAPT's paraphrase.
 Source: owner-stated
 Date: 2026-10-17
+
+## D-005: A pre-registered floor missed by 0.1 under the like-for-like reading is waived, openly
+
+Decision: Q-005. Report the ILSI test micro-F1 over both label spaces and keep `assoc-nb v3` as an opt-in layer, although it is 0.1 below the 33.4 floor over v1's label space.
+Applies when: a layer clears a pre-registered bar under one reading and misses it narrowly under the stricter one. The waiver is stated in the report and the ADR; the floor is never described as passed under the reading it failed.
+Why: v3 beats the layer built for each kind of text on both multi-charge sets by wide margins.
+Source: owner-stated
+Date: 2026-10-18

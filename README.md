@@ -55,6 +55,8 @@ Retrieval depends only on the raw query ([ADR 0001](docs/adr/0001-retrieval-inde
 | 5 | MCP gaps from a real client: concordance fallback to the section, optional direction, adjacent sections in search | Done |
 | 6 | Association layer v2 fitted on layperson text | Done |
 | 7 | Definition-punishment links from headings, expanded after ranking | Done, result negative under the pre-registered rule (ADR 0007) |
+| 8 | Real BNS section headings in the MCP server | Done |
+| 9 | One association layer (`assoc-nb v3`) fitted on judgments and forum posts | Done, kept as opt-in by owner waiver (ADR 0008) |
 
 What slice 1 measured on 2026-10-11:
 
