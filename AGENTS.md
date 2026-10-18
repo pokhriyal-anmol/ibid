@@ -12,6 +12,7 @@ The source PDFs are gitignored. In a git worktree they are missing, so point the
 
 ```bash
 uv sync
+uv run ibid setup --fetch bns                          # then --fetch ipc --url <link>; plain `ibid setup` checks tools, PDFs, counts
 export IBID_BNS_PDF=<root>/data/raw/bns-prs.pdf IBID_IPC_PDF=<root>/data/raw/ipc-wipo.pdf
 
 uv run python -m unittest discover -s tests                 # all tests, about 30 s

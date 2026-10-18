@@ -9,6 +9,8 @@ Downloaded 2026-10-09.
 | `bns-prs.pdf` | https://prsindia.org/files/bills_acts/bills_parliament/2023/The%20Bharatiya%20Nyaya%20Sanhita,%202023.pdf | 102 | `67c92f7869420685e6cdc29b1bdde19fff91312b10241b3ed3e1163c5399600b` |
 | `ipc-wipo.pdf` | WIPO Lex IN158, https://www.wipo.int/wipolex/en/legislation/details/22981 (the PDF link on that page is signed and expires) | 119 | `1f81d285b4bc912b335596ffbba44280d49169a56c0d21572c8bf3f6b6fedd4e` |
 
+`data/sources.json` holds the same URLs, sizes and hashes for `ibid setup`, and a test (`tests/test_setup.py`) keeps its hashes equal to the table above.
+
 ## Notes
 
 - BNS is the Gazette extraordinary of 25 Dec 2023 (CG-DL-E-25122023-250883). The Hindi text uses a legacy font and extracts as garbage.
