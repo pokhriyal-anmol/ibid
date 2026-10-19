@@ -12,11 +12,16 @@ from ibid.xref import extract
 PROTOCOL_VERSION = "2024-11-05"
 DIRECTIONS = ("ipc_to_bns", "bns_to_ipc")
 MODES = ("keyword", "learned")
-CAVEAT = "Learned mode: placeholder caveat, replaced by the measured wording."
+# Figures are read-checked against results/layer-comparison.md by tests/test_mcp_limits.py.
+KEYWORD_LIMITS = ("Keyword search finds 3.1 to 5.1 percent of IPC charges on set v1 and 4.8 to 6.0 percent on set v2 "
+                  "(story-style queries, measured per set).")
+CAVEAT = ("Learned mode was fitted on court-judgment text and layperson forum posts, covers 140 IPC sections, "
+          "finds 58.3 percent of IPC charges on layperson posts (set v2) and 42.9 percent on judgment text (set v1), "
+          "was measured on labels that are incomplete, and is not legal advice.")
 _CITATION = {"type": "object", "properties": {"citation": {"type": "string"}}, "required": ["citation"]}
 TOOLS = {
     "get_provision": ("Verbatim text and child Citations of one Provision, by exact Citation.", _CITATION),
-    "search": ("Keyword search over the raw query.",
+    "search": (f"Search the Acts by the raw query. mode keyword (default): {KEYWORD_LIMITS} mode learned: {CAVEAT}",
                {"type": "object", "properties": {"query": {"type": "string"}, "limit": {"type": "integer"},
                                                       "adjacent": {"type": "boolean"},
                                                       "mode": {"type": "string", "enum": list(MODES)}}, "required": ["query"]}),
