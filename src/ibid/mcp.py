@@ -93,7 +93,7 @@ def call_tool(db, entries: list[dict], name: str, args: object, heads: dict[str,
             raise RpcError(-32602, f"missing or non-string argument: {key}")
     if name == "search":
         if args.get("mode", "keyword") not in MODES:
-            raise RpcError(-32602, "mode must be " + " or ".join(MODES))
+            return _tool_result("mode must be " + " or ".join(MODES), True)
         if args.get("mode") == "learned":
             return _learned(db, entries, heads, lazy, args)
         limit = args.get("limit", 10)

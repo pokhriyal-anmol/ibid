@@ -108,7 +108,6 @@ class LearnedTest(unittest.TestCase):
         self.assertEqual(len(out["results"]), 4)  # the invented model has 4 labels
         self.assertIn("clamped", out["notes"][0])
         self.assertEqual(len(self.learned("murder", limit=2)["structuredContent"]["results"]), 2)
-        self.assertIn("keyword or learned", self.c.call("search", {"query": "x", "mode": "other"})["error"]["message"])
 
     def test_a_model_of_another_version_is_refused(self):
         m = json.loads(MODEL.read_text())
@@ -121,6 +120,79 @@ class LearnedTest(unittest.TestCase):
             self.assertIn("v2", res["content"][0]["text"])
         finally:
             c.close()
+
+
+class LearnedErrorsTest(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.tmp = Path(tempfile.mkdtemp())
+        m = json.loads(MODEL.read_text())
+        for extra in ("IPC 103", "IPC 104", "IPC 105"):  # real sections, so 7 labels can fill 5 slots
+            m["docs"][extra], m["counts"][extra] = 1, {"murder": 1}
+        (cls.tmp / "big.json").write_text(json.dumps(m))
+        cls.c = with_model(cls.tmp / "big.json")
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.c.close()
+        shutil.rmtree(cls.tmp)
+
+    def learned(self, **kw):
+        return self.c.call("search", {"query": "murder", "mode": "learned", **kw})["result"]
+
+    def refused(self, model_text: str) -> str:
+        path = self.tmp / "bad.json"
+        path.write_text(model_text)
+        c = with_model(path)
+        try:
+            res = c.call("search", {"query": "murder", "mode": "learned"})["result"]
+            self.assertTrue(res["isError"])
+            self.assertFalse(c.call("search", {"query": "murder"})["result"]["isError"])  # the server survived
+            return res["content"][0]["text"]
+        finally:
+            c.close()
+
+    def test_missing_model_names_the_path_and_the_fit_command(self):
+        c = with_model(self.tmp / "absent.json")
+        try:
+            text = c.call("search", {"query": "murder", "mode": "learned"})["result"]["content"][0]["text"]
+            self.assertIn(str(self.tmp / "absent.json"), text)
+            self.assertIn("ibid assoc fit --source union", text)
+        finally:
+            c.close()
+
+    def test_wrong_layer_and_wrong_version_name_found_and_expected(self):
+        m = json.loads(MODEL.read_text())
+        m["header"]["layer"] = "other-layer"
+        text = self.refused(json.dumps(m))
+        self.assertTrue("other-layer" in text and "assoc-nb" in text and "v3" in text, text)
+        m = json.loads(MODEL.read_text())
+        m["header"]["layer_version"] = "v2"
+        text = self.refused(json.dumps(m))
+        self.assertTrue("v2" in text and "v3" in text and "assoc-nb" in text, text)
+
+    def test_invalid_json_is_a_tool_error(self):
+        self.refused("{not json")
+
+    def test_other_mode_is_a_tool_error_naming_both_values(self):
+        res = self.c.call("search", {"query": "x", "mode": "other"})["result"]
+        self.assertTrue(res["isError"])
+        self.assertTrue("keyword" in res["content"][0]["text"] and "learned" in res["content"][0]["text"])
+
+    def test_limit_clamp_is_reported_and_an_honoured_limit_is_not(self):
+        out = self.learned(limit=50)["structuredContent"]
+        self.assertEqual(len(out["results"]), 5)
+        self.assertIn("clamped", out["notes"][0])
+        out = self.learned(limit=3)["structuredContent"]
+        self.assertEqual(len(out["results"]), 3)
+        self.assertNotIn("notes", out)
+
+    def test_adjacent_is_ignored_with_a_note(self):
+        out = self.learned(adjacent=True)["structuredContent"]
+        self.assertTrue(any("adjacent" in n and "ignored" in n for n in out["notes"]))
+        for h in out["results"]:
+            self.assertFalse({"previous", "next"} & set(h))
+        self.assertEqual(out["results"], self.learned()["structuredContent"]["results"])
 
 
 if __name__ == "__main__":
