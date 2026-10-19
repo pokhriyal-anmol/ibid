@@ -56,21 +56,21 @@ class LazyModel:
         if self.model is None:
             try:
                 model = assoc.Model(self.path)
-            except (OSError, ValueError, KeyError, TypeError) as e:
+                found = (model.header.get("layer"), model.header.get("layer_version"))
+            except (OSError, ValueError, KeyError, TypeError, AttributeError, ZeroDivisionError) as e:
                 raise ValueError(f"cannot read the learned model {self.path} ({e}); fit it with `ibid assoc fit --source union`") from None
-            h = model.header
-            if (h.get("layer"), h.get("layer_version")) != (assoc.LAYER, "v3"):
-                raise ValueError(f"model {self.path} is {h.get('layer')} {h.get('layer_version')}, expected {assoc.LAYER} v3")
+            if found != (assoc.LAYER, "v3"):
+                raise ValueError(f"model {self.path} is {found[0]} {found[1]}, expected {assoc.LAYER} v3")
             self.model = model
         return self.model
 
 
-def _learned(db, entries: list[dict], heads: dict, lazy: LazyModel | None, args: dict) -> dict:
+def _learned(db, entries: list[dict], heads: dict, lazy: LazyModel, args: dict) -> dict:
     limit = args.get("limit", assoc.TOP_K)
     if isinstance(limit, bool) or not isinstance(limit, int) or limit < 1:
         raise RpcError(-32602, "limit must be an integer of at least 1")
     try:
-        model = (lazy or LazyModel("data/assoc-nb-v3.json")).get()
+        model = lazy.get()
     except ValueError as e:
         return _tool_result(str(e), True)
     notes = []
@@ -86,9 +86,8 @@ def _learned(db, entries: list[dict], heads: dict, lazy: LazyModel | None, args:
     return _tool_result({**out, "notes": notes} if notes else out)
 
 
-def call_tool(db, entries: list[dict], name: str, args: object, heads: dict[str, str | None] | None = None,
-              lazy: LazyModel | None = None) -> dict:
-    heads = heads or {}  # section Citation to heading; a sub-provision is absent, so its heading is null
+def call_tool(db, entries: list[dict], name: str, args: object, heads: dict[str, str | None], lazy: LazyModel) -> dict:
+    # section Citation to heading; a sub-provision is absent, so its heading is null
     if name not in TOOLS:
         raise RpcError(-32602, f"unknown tool: {name}")
     if not isinstance(args, dict):
@@ -138,8 +137,7 @@ def call_tool(db, entries: list[dict], name: str, args: object, heads: dict[str,
     return _tool_result({"citation": args["citation"], "heading": heads.get(args["citation"]), "text": got[0], "children": got[1]})
 
 
-def handle(db, entries: list[dict], msg: object, heads: dict[str, str | None] | None = None,
-           lazy: LazyModel | None = None) -> dict | None:
+def handle(db, entries: list[dict], msg: object, heads: dict[str, str | None], lazy: LazyModel) -> dict | None:
     if not isinstance(msg, dict) or not isinstance(msg.get("method"), str):
         return {"jsonrpc": "2.0", "id": None, "error": {"code": -32600, "message": "invalid request"}}
     mid, method, params = msg.get("id"), msg["method"], msg.get("params") or {}
@@ -169,7 +167,7 @@ def _emit(obj: dict) -> None:
     sys.stdout.flush()
 
 
-def serve(bns_pdf: str, ipc_pdf: str, concordance_path: str, assoc_model: str = "data/assoc-nb-v3.json") -> int:
+def serve(bns_pdf: str, ipc_pdf: str, concordance_path: str, assoc_model: str) -> int:
     for path in (bns_pdf, ipc_pdf, concordance_path):
         if not Path(path).is_file():
             print(f"error: no such file: {path}", file=sys.stderr)

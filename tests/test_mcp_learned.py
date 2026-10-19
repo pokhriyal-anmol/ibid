@@ -92,34 +92,11 @@ class LearnedTest(unittest.TestCase):
         want = json.loads(self.c.lines[-1])["result"]["structuredContent"]
         self.assertEqual((hit["text"], hit["heading"]), (want["text"], want["heading"]))
 
-    def test_model_is_not_read_at_startup_and_a_missing_one_is_a_tool_error(self):
-        c = with_model(self.tmp / "absent.json")
-        try:
-            self.assertFalse(c.call("search", {"query": "murder"})["result"]["isError"])
-            res = c.call("search", {"query": "murder", "mode": "learned"})["result"]
-            self.assertTrue(res["isError"])
-            self.assertIn("absent.json", res["content"][0]["text"])
-            self.assertFalse(c.call("search", {"query": "murder"})["result"]["isError"])
-        finally:
-            c.close()
-
-    def test_limit_is_clamped_with_a_note_and_a_bad_mode_is_refused(self):
+    def test_limit_below_the_model_size_is_honoured_and_an_oversized_one_is_noted(self):
         out = self.learned("murder", limit=50)["structuredContent"]
         self.assertEqual(len(out["results"]), 4)  # the invented model has 4 labels
         self.assertIn("clamped", out["notes"][0])
         self.assertEqual(len(self.learned("murder", limit=2)["structuredContent"]["results"]), 2)
-
-    def test_a_model_of_another_version_is_refused(self):
-        m = json.loads(MODEL.read_text())
-        m["header"]["layer_version"] = "v2"
-        (self.tmp / "v2.json").write_text(json.dumps(m))
-        c = with_model(self.tmp / "v2.json")
-        try:
-            res = c.call("search", {"query": "murder", "mode": "learned"})["result"]
-            self.assertTrue(res["isError"])
-            self.assertIn("v2", res["content"][0]["text"])
-        finally:
-            c.close()
 
 
 class LearnedErrorsTest(unittest.TestCase):
@@ -155,6 +132,7 @@ class LearnedErrorsTest(unittest.TestCase):
     def test_missing_model_names_the_path_and_the_fit_command(self):
         c = with_model(self.tmp / "absent.json")
         try:
+            self.assertFalse(c.call("search", {"query": "murder"})["result"]["isError"])  # not read at startup
             text = c.call("search", {"query": "murder", "mode": "learned"})["result"]["content"][0]["text"]
             self.assertIn(str(self.tmp / "absent.json"), text)
             self.assertIn("ibid assoc fit --source union", text)
@@ -173,6 +151,9 @@ class LearnedErrorsTest(unittest.TestCase):
 
     def test_invalid_json_is_a_tool_error(self):
         self.refused("{not json")
+
+    def test_wrongly_typed_model_is_a_tool_error(self):
+        self.refused(json.dumps({"header": [], "docs": [], "counts": []}))
 
     def test_other_mode_is_a_tool_error_naming_both_values(self):
         res = self.c.call("search", {"query": "x", "mode": "other"})["result"]

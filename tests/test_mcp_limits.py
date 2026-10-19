@@ -9,7 +9,7 @@ from pdfs import _main_checkout
 from test_mcp_learned import MODEL as INVENTED, with_model
 
 ROOT = Path(__file__).parent.parent
-REAL_MODEL = _main_checkout() / "data/assoc-nb-v3.json"
+REAL_MODEL = next((p for p in (ROOT / "data/assoc-nb-v3.json", _main_checkout() / "data/assoc-nb-v3.json") if p.exists()), ROOT / "data/assoc-nb-v3.json")
 
 
 def rows(layer: str, version: str) -> dict[str, list[str]]:
