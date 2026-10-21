@@ -41,3 +41,11 @@ Applies when: a layer clears a pre-registered bar under one reading and misses i
 Why: v3 beats the layer built for each kind of text on both multi-charge sets by wide margins.
 Source: owner-stated
 Date: 2026-10-18
+
+## D-006: Slice 13 strategy signed; offline training allowed, test look spent only on a dev pass
+
+Decision: The owner signed `.scratch/slice-13/strategy.md` ("it's sound, move ahead"). The two open choices in it were not answered separately, so they were taken at the recommended defaults: (1) the linear model may be trained offline with a throwaway `uv run --with` tool, shipping JSON weights, Ibid's runtime staying stdlib; (2) the single IL-TUR test look is spent only if the best frozen candidate clears 28.08 macro-F1 on dev, otherwise the dev result is reported and the slice stops.
+Applies when: a learned-layer slice needs training that the standard library cannot do in reasonable time.
+Why: pure-Python training is too slow at 42,750 documents; the runtime and ADR 0001 are unaffected.
+Source: owner sign-off of the strategy, defaults mine (flag if wrong)
+Date: 2026-10-22

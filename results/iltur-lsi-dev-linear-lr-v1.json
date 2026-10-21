@@ -1,0 +1,13 @@
+{
+  "cases": 10181,
+  "k": 5,
+  "layer": "linear-lr",
+  "layer_version": "v1",
+  "model_sha256": "166f2626c16f3d8ba6d07d4bd804e7b69dc0889cd00e98491e4f7cb06cecd11a",
+  "scores": {
+    "jaccard": 0.342571,
+    "macro_f1": 0.389083,
+    "micro_f1": 0.493898
+  },
+  "split_sha256": "461b556903a496f2f0aac7d7eddfb5a33da02dc576e384152042faeb2ce26596"
+}

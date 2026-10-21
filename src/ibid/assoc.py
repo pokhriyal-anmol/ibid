@@ -8,7 +8,7 @@ import sqlite3
 import sys
 from pathlib import Path
 
-from ibid import bench, bm25, concordance, index
+from ibid import bench, bm25, concordance, index, linear
 from ibid.charges import _load_set
 
 LAYER, LAYER_VERSION, TOP_K = "assoc-nb", "v1", 5  # a change to tokenisation, smoothing or k is a new LAYER_VERSION
@@ -196,11 +196,18 @@ class Model:
         return sorted(score, key=lambda c: (-score[c], c))[:TOP_K]
 
 
+def open_model(path: str):
+    """The association model, or the offline-trained linear one when the header says so."""
+    if json.loads(Path(path).read_text())["header"].get("layer") == linear.LAYER:
+        return linear.LinearModel(path)
+    return Model(path)
+
+
 def predict(model_path: str, set_path: str, concordance_path: str, index_path: str, out_path: str) -> int:
     """IPC citations from the model; BNS citations only from verified concordance entries of those."""
     try:
         raw, items, db = _load_set(set_path, index_path)
-        model, entries = Model(model_path), concordance.load(concordance_path, db)
+        model, entries = open_model(model_path), concordance.load(concordance_path, db)
     except (OSError, KeyError, ValueError, TypeError) as e:
         print(f"error: {e}", file=sys.stderr)
         return 1
@@ -212,9 +219,9 @@ def predict(model_path: str, set_path: str, concordance_path: str, index_path: s
     h = model.header
     union = h["layer_version"] == "v3"  # the union header holds one train hash per source
     train = {f"train_sha256_{k}": v["train_sha256"] for k, v in h["sources"].items()} if union else {"train_sha256": h["train_sha256"]}
-    doc = {"layer": LAYER, "layer_version": h["layer_version"], "set_sha256": hashlib.sha256(raw).hexdigest(),
+    doc = {"layer": h.get("layer", LAYER), "layer_version": h["layer_version"], "set_sha256": hashlib.sha256(raw).hexdigest(),
            "inputs": {"model": model.sha256, **train, "concordance": bench.sha256(concordance_path),
-                      "train_source": "ilsi+ilsic-lay" if union else {"v2": "ilsic-lay"}.get(h["layer_version"], "ilsi")}, "items": out}
+                      "train_source": "ilsi+ilsic-lay" if union else {"v2": "ilsic-lay"}.get(h["layer_version"], "ilsi") if h.get("layer", LAYER) == LAYER else "il-tur-lsi"}, "items": out}
     Path(out_path).write_text(json.dumps(doc, indent=2, sort_keys=True) + "\n")
     return 0
 
@@ -225,8 +232,8 @@ def evaluate(model_path: str, split_path: str, manifest_path: str, ledger_path: 
 
     With labels_path (ILSI's full label vocabulary, v1's space) the micro-F1 is also given over that space beside the model's own."""
     try:
-        model = Model(model_path)
-        version = model.header["layer_version"]
+        model = open_model(model_path)
+        layer, version = model.header.get("layer", LAYER), model.header["layer_version"]
         sha = bench.sha256(split_path)
         try:
             pinned = bench.pinned_test_hash(manifest_path)
@@ -234,7 +241,7 @@ def evaluate(model_path: str, split_path: str, manifest_path: str, ledger_path: 
             pinned = None
         on_test = Path(split_path).stem == "test" or sha == pinned
         prior = [e for e in bench.read_ledger(ledger_path)
-                 if e["layer"] == LAYER and e["layer_version"] == version and e["split_sha256"] == sha]
+                 if e["layer"] == layer and e["layer_version"] == version and e["split_sha256"] == sha]
         if on_test and prior and not rescore:
             raise ValueError("the test split was already scored for this layer version; pass --rescore-test to score it again")
         space = set(model.labels)
@@ -244,7 +251,7 @@ def evaluate(model_path: str, split_path: str, manifest_path: str, ledger_path: 
         print(f"error: {e}", file=sys.stderr)
         return 1
     preds = [set(model.predict(" ".join(c["text"]))) for c in cases]
-    res = {"layer": LAYER, "layer_version": version, "k": TOP_K, "model_sha256": model.sha256, "split_sha256": sha,
+    res = {"layer": layer, "layer_version": version, "k": model.header.get("top_k", TOP_K), "model_sha256": model.sha256, "split_sha256": sha,
            "cases": len(cases), "scores": bench.score(gold, preds, space)}
     if labels_path:
         res["micro_f1_by_label_space"] = {"own": {"labels": len(space), "micro_f1": res["scores"]["micro_f1"]},

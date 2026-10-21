@@ -42,5 +42,17 @@
       "micro_f1": 0.298228
     },
     "split_sha256": "86e2c4f302da73d0301848d9a0a3611dd0084567c181b1616246c9438707beeb"
+  },
+  {
+    "cases": 13019,
+    "layer": "linear-lr",
+    "layer_version": "v1",
+    "model_sha256": "166f2626c16f3d8ba6d07d4bd804e7b69dc0889cd00e98491e4f7cb06cecd11a",
+    "scores": {
+      "jaccard": 0.342215,
+      "macro_f1": 0.391627,
+      "micro_f1": 0.493625
+    },
+    "split_sha256": "86e2c4f302da73d0301848d9a0a3611dd0084567c181b1616246c9438707beeb"
   }
 ]
