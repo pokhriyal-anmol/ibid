@@ -9,7 +9,9 @@ from sklearn.multiclass import OneVsRestClassifier
 from sklearn.metrics import f1_score
 
 D, OUT = sys.argv[1], sys.argv[2]
-GRID_FEATURES, GRID_C, CUTOFFS = (50_000, 150_000), (1, 4, 16), (0.15, 0.2, 0.25, 0.3, 0.4, 0.5)
+import os
+GRID_FEATURES, GRID_C = (50_000, 150_000), (1, 4, 16)
+CUTOFFS = tuple(float(c) for c in os.environ.get('IBID_CUTOFFS', '0.15,0.2,0.25,0.3,0.4,0.5').split(','))
 
 
 def load(split):

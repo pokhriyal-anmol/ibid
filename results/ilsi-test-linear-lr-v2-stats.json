@@ -1,0 +1,21 @@
+{
+  "cases": 13039,
+  "macro_f1": 0.595617,
+  "macro_f1_95ci": [
+    0.5875,
+    0.6021
+  ],
+  "macro_precision": 0.6354,
+  "macro_recall": 0.5816,
+  "micro_f1": 0.686934,
+  "micro_f1_95ci": [
+    0.6816,
+    0.6919
+  ],
+  "without_train_duplicates": {
+    "cases": 12934,
+    "macro_f1": 0.595916,
+    "micro_f1": 0.687916,
+    "removed": 105
+  }
+}

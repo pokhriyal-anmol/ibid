@@ -99,3 +99,32 @@ The target is met: the point estimate is above 28.08 and the lower end of the in
 Out of distribution, set v2 (layperson posts, report only, scored once per Act): IPC charge recall 44.0 (v3: 58.3, baseline: 4.8), BNS 50.6 (v3: 65.4, baseline: 9.9). The model wins by a wide margin on judgment text and loses to `assoc-nb v3` on layperson text, so it is not a replacement for v3 in the MCP `search` tool. It predicts the non-offence IPC 34 often, which costs precision on set v2. Set v1 was not scored: all 30 of its items are in the IL-TUR train split the model learned from.
 
 Not run: stages 2, 4 and 5 (see the freeze note). Not checked: the paper's averaging; any other seed (liblinear is deterministic, so one fit).
+
+## Test 1: the original, unmasked ILSI (pre-registered 2026-10-22, before any score)
+
+Why: the IL-TUR paper masks statute citations; the InLegalBERT paper reports 64.58 macro-F1 on the original ILSI and lists LeSICiN's 28.45 there (arXiv 2209.06049, Table 3). The comparison is only fair on the original text.
+
+Rules: same method and the same declared grid as stage 3 (features {50k, 150k} x C {1, 4, 16}), cutoffs {0.05, 0.10, 0.15, 0.20, 0.25, 0.30, 0.40, 0.50}, fit on `data/raw/lesicin/train.jsonl`, choice on `dev.jsonl` only, the same tie-break (within one bootstrap standard error of the best: smallest features, then smallest C). The weights go to `linear-lr v2` (a new layer version, the unmasked fit). Test is scored once. Reported next to: the frozen rule and `assoc-nb v1` and `v3` (already in the ledgers), LeSICiN 28.45 and InLegalBERT 64.58 (published, original ILSI). No decision rule beyond reporting. The train split is the original 42,835 cases and the test split 13,039, the files the earlier ILSI runs used.
+
+**Test 1 freeze (2026-10-22, before the test look).** Dev grid on unmasked ILSI (`select.py`): best per fit 53.1, 59.1, 59.8 (50k, C=1, 4, 16) and 52.5, 58.9, 59.9 (150k); every best cutoff 0.15, interior of the declared 8 values. Overall best 150k/C16 at 59.86 macro-F1, bootstrap SE 0.41. Within one SE: 50k/C16 and 150k/C16. Tie-break freezes **50,000 features, C=16, cutoff 0.15** as `linear-lr v2`.
+
+## Results of tests 1, 4 and 5 (2026-10-22)
+
+**Test 1: original, unmasked ILSI test (13,039 cases), `linear-lr v2`, scored once** (`results/test-ledger-assoc.json`, `results/ilsi-test-linear-lr-v2.json`):
+
+| | Macro-F1 | Macro precision | Macro recall | Micro-F1 |
+|---|---|---|---|---|
+| `linear-lr v2` | **59.56** (95% interval 58.8 to 60.2) | 63.5 | 58.2 | 68.69 |
+| Without the 105 test texts equal to a train text | 59.59 | | | 68.79 |
+| Dev | 59.75 | | | 68.91 |
+| InLegalBERT with a hierarchical classifier (InLegalBERT paper, Table 3) | 64.58 | 82.42 | 55.16 | not reported |
+| LeSICiN (same table, "best result in original paper") | 28.45 | 27.90 | 31.32 | not reported |
+| `assoc-nb v1` / `v3` (earlier, same split) | 18.0 / 12.5 | | | 35.4 / 35.2 |
+
+On the original text the linear model is about 31 points above LeSICiN and about 5 points below the published InLegalBERT figure. Our recall is higher than theirs and our precision much lower, so a better cutoff rule or a stronger encoder would be the place to look. The InLegalBERT numbers are taken from the paper; I did not rerun that model or confirm its split and metric match ours. Masking statute citations and entities costs this model about 20 macro-F1 points (59.6 unmasked, 39.2 masked), which is consistent with the IL-TUR and InLegalBERT numbers differing by a similar amount; the cause for those two papers is not verified.
+
+**Test 5: per-label breakdown, `linear-lr v1`, IL-TUR test** (`results/iltur-lsi-test-linear-lr-v1-per-label.json`): macro precision 44.1, recall 40.9. 2 labels score under 0.1 F1, 12 under 0.2, 34 under 0.3, 73 under 0.5; 27 reach 0.5 or more; none is never found. The weakest are general or procedural sections (IPC 4, 114, 228, 384, 299, 447, 2, 5); the strongest are IPC 302 (0.75), 229A, 174A, 438, 279. Log-support and F1 correlate at 0.47.
+
+**Test 4: AILA 2019 task 2, exploratory, not ledgered** (`.scratch/slice-13/aila_check.py`). The 197 AILA statutes include non-IPC law. 52 of them match an IPC heading exactly, and they carry 119 of the 221 relevant pairs (35 of the 50 queries). Recall of those 119 mapped pairs: frozen rule top-5 **6.7%** (8 found), `linear-lr v1` **66.4%** (79 found; 116 of the 119 are inside its 100 labels). Limits: the mapping is by exact heading only, covers 54% of the pairs, the queries are case facts like the training text, and the check was run once with no known-bad input beyond the counts above. Not a basis for a claim.
+
+**Not run:** test 2 (fine-tune InLegalBERT: needs a GPU and a model download, ask first) and test 3 (PROSLEX: not yet checked for availability).

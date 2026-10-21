@@ -1,0 +1,13 @@
+{
+  "cases": 10200,
+  "k": 5,
+  "layer": "linear-lr",
+  "layer_version": "v2",
+  "model_sha256": "9ed1be653ee50c0ed3c344d121fbef85867c4f55b5cfd8b0b895cbf2363eba29",
+  "scores": {
+    "jaccard": 0.557406,
+    "macro_f1": 0.597545,
+    "micro_f1": 0.68914
+  },
+  "split_sha256": "7a2b784aa79dd9148a686d53cadde5a9747e6ffc15a6a1a6c80359551b92bc12"
+}

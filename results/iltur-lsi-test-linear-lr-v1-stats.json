@@ -5,6 +5,8 @@
     0.3837,
     0.398
   ],
+  "macro_precision": 0.4413,
+  "macro_recall": 0.4088,
   "micro_f1": 0.493625,
   "micro_f1_95ci": [
     0.4891,
