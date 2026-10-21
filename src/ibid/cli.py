@@ -233,6 +233,7 @@ def main(argv: list[str] | None = None) -> int:
     il.add_argument("--index", default="data/index/ibid.sqlite")
     il.add_argument("--frozen-rule", default="results/frozen-rule.json")
     il.add_argument("--out", required=True)
+    il.add_argument("--benchmark", choices=("lay", "multi"), default="lay", help="which published numbers to print beside ours")
     chq = chs.add_parser("subquery", help="route C: retrieve per recorded sub-query with the frozen rule and union")
     chq.add_argument("--set", required=True)
     chq.add_argument("--subqueries", required=True)
@@ -331,7 +332,7 @@ def main(argv: list[str] | None = None) -> int:
         return charges.validate(a.set, a.index)
     if a.cmd == "ilsic":
         from ibid import ilsic
-        return ilsic.evaluate(a.split, a.train, a.index, a.frozen_rule, a.out)
+        return ilsic.evaluate(a.split, a.train, a.index, a.frozen_rule, a.out, a.benchmark)
     if a.cmd == "assoc":
         from ibid import assoc
         if a.assoc_cmd == "fit" and a.source == "union":
