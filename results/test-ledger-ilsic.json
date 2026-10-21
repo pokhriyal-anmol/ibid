@@ -1,0 +1,304 @@
+[
+  {
+    "assumption": "Label space is every statute string in the Lay train and test answers. A gold label no layer can predict counts as a miss. Macro scores average over the whole space, a label with no gold and no prediction scoring 0; this is our reading, the paper does not state its own.",
+    "label_space": 543,
+    "layer": "frozen-rule",
+    "output_rule": "threshold",
+    "parser_version": "4",
+    "primary": {
+      "labels": 543,
+      "macro_f1": 0.006721,
+      "macro_precision": 0.006696,
+      "macro_recall": 0.027363,
+      "micro_f1": 0.027373
+    },
+    "queries": 836,
+    "rule_params_sha256": "250c53f85b3dcaa5c370dcc7a0cbf8a6da7579bc0f398ea9be2341b4750a90bf",
+    "secondary_vocabulary": {
+      "labels": 119,
+      "macro_f1": 0.03067,
+      "macro_precision": 0.030555,
+      "macro_recall": 0.124856,
+      "micro_f1": 0.035184
+    },
+    "split_sha256": "9f8eab7ba638f4413a3a30d0138c1de34173d5e9425bbfa1b9ef4d3ebdddf37d",
+    "train_sha256": "6f998e08b0488c94f096db85395fac1a2f21331f1c2348aaee93d27c7a55a0d8",
+    "version": "v2.11"
+  },
+  {
+    "assumption": "Label space is every statute string in the Lay train and test answers. A gold label no layer can predict counts as a miss. Macro scores average over the whole space, a label with no gold and no prediction scoring 0; this is our reading, the paper does not state its own.",
+    "label_space": 543,
+    "layer": "assoc-nb",
+    "model_sha256": "251eef976c42a8c48c17228d977923ca877d1a58ff52a8d05490b41de46ea4ae",
+    "parser_version": "4",
+    "primary": {
+      "labels": 543,
+      "macro_f1": 0.006555,
+      "macro_precision": 0.005534,
+      "macro_recall": 0.019832,
+      "micro_f1": 0.095093
+    },
+    "queries": 836,
+    "secondary_vocabulary": {
+      "labels": 63,
+      "macro_f1": 0.056499,
+      "macro_precision": 0.0477,
+      "macro_recall": 0.170931,
+      "micro_f1": 0.124224
+    },
+    "split_sha256": "9f8eab7ba638f4413a3a30d0138c1de34173d5e9425bbfa1b9ef4d3ebdddf37d",
+    "train_sha256": "6f998e08b0488c94f096db85395fac1a2f21331f1c2348aaee93d27c7a55a0d8",
+    "version": "v1"
+  },
+  {
+    "assumption": "Label space is every statute string in the Lay train and test answers. A gold label no layer can predict counts as a miss. Macro scores average over the whole space, a label with no gold and no prediction scoring 0; this is our reading, the paper does not state its own.",
+    "label_space": 543,
+    "layer": "assoc-nb",
+    "model_sha256": "74be5e7e5d9447d811cf9e4deead76ec8491705db1b0c6d425d8e5e98a2bed6c",
+    "parser_version": "4",
+    "primary": {
+      "labels": 543,
+      "macro_f1": 0.006215,
+      "macro_precision": 0.005051,
+      "macro_recall": 0.016308,
+      "micro_f1": 0.126767
+    },
+    "queries": 836,
+    "secondary_vocabulary": {
+      "labels": 96,
+      "macro_f1": 0.035151,
+      "macro_precision": 0.028569,
+      "macro_recall": 0.09224,
+      "micro_f1": 0.161057
+    },
+    "split_sha256": "9f8eab7ba638f4413a3a30d0138c1de34173d5e9425bbfa1b9ef4d3ebdddf37d",
+    "train_sha256": "6f998e08b0488c94f096db85395fac1a2f21331f1c2348aaee93d27c7a55a0d8",
+    "version": "v2"
+  },
+  {
+    "assumption": "Label space is every statute string in the Lay train and test answers. A gold label no layer can predict counts as a miss. Macro scores average over the whole space, a label with no gold and no prediction scoring 0; this is our reading, the paper does not state its own.",
+    "label_space": 543,
+    "layer": "assoc-nb",
+    "model_sha256": "e6b555d0076aa31c4e351c7e521e3753551fd573ec1f32b97e185274d8b691a0",
+    "parser_version": "4",
+    "primary": {
+      "labels": 543,
+      "macro_f1": 0.006663,
+      "macro_precision": 0.005142,
+      "macro_recall": 0.020691,
+      "micro_f1": 0.119119
+    },
+    "queries": 836,
+    "secondary_vocabulary": {
+      "labels": 103,
+      "macro_f1": 0.035127,
+      "macro_precision": 0.027107,
+      "macro_recall": 0.10908,
+      "micro_f1": 0.15185
+    },
+    "split_sha256": "9f8eab7ba638f4413a3a30d0138c1de34173d5e9425bbfa1b9ef4d3ebdddf37d",
+    "train_sha256": "6f998e08b0488c94f096db85395fac1a2f21331f1c2348aaee93d27c7a55a0d8",
+    "version": "v3"
+  },
+  {
+    "assumption": "Label space is every statute string in the Lay train and test answers. A gold label no layer can predict counts as a miss. Macro scores average over the whole space, a label with no gold and no prediction scoring 0; this is our reading, the paper does not state its own.",
+    "label_space": 543,
+    "layer": "linear-lr",
+    "model_sha256": "166f2626c16f3d8ba6d07d4bd804e7b69dc0889cd00e98491e4f7cb06cecd11a",
+    "parser_version": "4",
+    "primary": {
+      "labels": 543,
+      "macro_f1": 0.011746,
+      "macro_precision": 0.011377,
+      "macro_recall": 0.022154,
+      "micro_f1": 0.126954
+    },
+    "queries": 836,
+    "secondary_vocabulary": {
+      "labels": 63,
+      "macro_f1": 0.101239,
+      "macro_precision": 0.098061,
+      "macro_recall": 0.190946,
+      "micro_f1": 0.190065
+    },
+    "split_sha256": "9f8eab7ba638f4413a3a30d0138c1de34173d5e9425bbfa1b9ef4d3ebdddf37d",
+    "train_sha256": "6f998e08b0488c94f096db85395fac1a2f21331f1c2348aaee93d27c7a55a0d8",
+    "version": "v1"
+  },
+  {
+    "assumption": "Label space is every statute string in the Lay train and test answers. A gold label no layer can predict counts as a miss. Macro scores average over the whole space, a label with no gold and no prediction scoring 0; this is our reading, the paper does not state its own.",
+    "label_space": 543,
+    "layer": "linear-lr",
+    "model_sha256": "9ed1be653ee50c0ed3c344d121fbef85867c4f55b5cfd8b0b895cbf2363eba29",
+    "parser_version": "4",
+    "primary": {
+      "labels": 543,
+      "macro_f1": 0.009633,
+      "macro_precision": 0.009041,
+      "macro_recall": 0.015423,
+      "micro_f1": 0.113177
+    },
+    "queries": 836,
+    "secondary_vocabulary": {
+      "labels": 63,
+      "macro_f1": 0.083024,
+      "macro_precision": 0.077927,
+      "macro_recall": 0.132931,
+      "micro_f1": 0.180258
+    },
+    "split_sha256": "9f8eab7ba638f4413a3a30d0138c1de34173d5e9425bbfa1b9ef4d3ebdddf37d",
+    "train_sha256": "6f998e08b0488c94f096db85395fac1a2f21331f1c2348aaee93d27c7a55a0d8",
+    "version": "v2"
+  },
+  {
+    "assumption": "Label space is every statute string in the Lay train and test answers. A gold label no layer can predict counts as a miss. Macro scores average over the whole space, a label with no gold and no prediction scoring 0; this is our reading, the paper does not state its own.",
+    "label_space": 540,
+    "layer": "frozen-rule",
+    "output_rule": "threshold",
+    "parser_version": "4",
+    "primary": {
+      "labels": 540,
+      "macro_f1": 0.00684,
+      "macro_precision": 0.007189,
+      "macro_recall": 0.025663,
+      "micro_f1": 0.029446
+    },
+    "queries": 757,
+    "rule_params_sha256": "250c53f85b3dcaa5c370dcc7a0cbf8a6da7579bc0f398ea9be2341b4750a90bf",
+    "secondary_vocabulary": {
+      "labels": 119,
+      "macro_f1": 0.031038,
+      "macro_precision": 0.03262,
+      "macro_recall": 0.116453,
+      "micro_f1": 0.036774
+    },
+    "split_sha256": "32af14a42a93928e88afab3f2593459d3609397ce395e44fbef37b67fb5f4998",
+    "train_sha256": "6f998e08b0488c94f096db85395fac1a2f21331f1c2348aaee93d27c7a55a0d8",
+    "version": "v2.11"
+  },
+  {
+    "assumption": "Label space is every statute string in the Lay train and test answers. A gold label no layer can predict counts as a miss. Macro scores average over the whole space, a label with no gold and no prediction scoring 0; this is our reading, the paper does not state its own.",
+    "label_space": 540,
+    "layer": "assoc-nb",
+    "model_sha256": "251eef976c42a8c48c17228d977923ca877d1a58ff52a8d05490b41de46ea4ae",
+    "parser_version": "4",
+    "primary": {
+      "labels": 540,
+      "macro_f1": 0.006832,
+      "macro_precision": 0.005736,
+      "macro_recall": 0.019942,
+      "micro_f1": 0.10574
+    },
+    "queries": 757,
+    "secondary_vocabulary": {
+      "labels": 63,
+      "macro_f1": 0.058559,
+      "macro_precision": 0.049164,
+      "macro_recall": 0.170931,
+      "micro_f1": 0.134907
+    },
+    "split_sha256": "32af14a42a93928e88afab3f2593459d3609397ce395e44fbef37b67fb5f4998",
+    "train_sha256": "6f998e08b0488c94f096db85395fac1a2f21331f1c2348aaee93d27c7a55a0d8",
+    "version": "v1"
+  },
+  {
+    "assumption": "Label space is every statute string in the Lay train and test answers. A gold label no layer can predict counts as a miss. Macro scores average over the whole space, a label with no gold and no prediction scoring 0; this is our reading, the paper does not state its own.",
+    "label_space": 540,
+    "layer": "assoc-nb",
+    "model_sha256": "74be5e7e5d9447d811cf9e4deead76ec8491705db1b0c6d425d8e5e98a2bed6c",
+    "parser_version": "4",
+    "primary": {
+      "labels": 540,
+      "macro_f1": 0.006542,
+      "macro_precision": 0.00529,
+      "macro_recall": 0.016398,
+      "micro_f1": 0.141253
+    },
+    "queries": 757,
+    "secondary_vocabulary": {
+      "labels": 96,
+      "macro_f1": 0.036801,
+      "macro_precision": 0.029758,
+      "macro_recall": 0.09224,
+      "micro_f1": 0.175439
+    },
+    "split_sha256": "32af14a42a93928e88afab3f2593459d3609397ce395e44fbef37b67fb5f4998",
+    "train_sha256": "6f998e08b0488c94f096db85395fac1a2f21331f1c2348aaee93d27c7a55a0d8",
+    "version": "v2"
+  },
+  {
+    "assumption": "Label space is every statute string in the Lay train and test answers. A gold label no layer can predict counts as a miss. Macro scores average over the whole space, a label with no gold and no prediction scoring 0; this is our reading, the paper does not state its own.",
+    "label_space": 540,
+    "layer": "assoc-nb",
+    "model_sha256": "e6b555d0076aa31c4e351c7e521e3753551fd573ec1f32b97e185274d8b691a0",
+    "parser_version": "4",
+    "primary": {
+      "labels": 540,
+      "macro_f1": 0.006987,
+      "macro_precision": 0.005425,
+      "macro_recall": 0.020806,
+      "micro_f1": 0.132689
+    },
+    "queries": 757,
+    "secondary_vocabulary": {
+      "labels": 103,
+      "macro_f1": 0.036632,
+      "macro_precision": 0.028442,
+      "macro_recall": 0.10908,
+      "micro_f1": 0.165163
+    },
+    "split_sha256": "32af14a42a93928e88afab3f2593459d3609397ce395e44fbef37b67fb5f4998",
+    "train_sha256": "6f998e08b0488c94f096db85395fac1a2f21331f1c2348aaee93d27c7a55a0d8",
+    "version": "v3"
+  },
+  {
+    "assumption": "Label space is every statute string in the Lay train and test answers. A gold label no layer can predict counts as a miss. Macro scores average over the whole space, a label with no gold and no prediction scoring 0; this is our reading, the paper does not state its own.",
+    "label_space": 540,
+    "layer": "linear-lr",
+    "model_sha256": "166f2626c16f3d8ba6d07d4bd804e7b69dc0889cd00e98491e4f7cb06cecd11a",
+    "parser_version": "4",
+    "primary": {
+      "labels": 540,
+      "macro_f1": 0.012174,
+      "macro_precision": 0.011795,
+      "macro_recall": 0.022277,
+      "micro_f1": 0.140762
+    },
+    "queries": 757,
+    "secondary_vocabulary": {
+      "labels": 63,
+      "macro_f1": 0.104346,
+      "macro_precision": 0.101098,
+      "macro_recall": 0.190946,
+      "micro_f1": 0.202609
+    },
+    "split_sha256": "32af14a42a93928e88afab3f2593459d3609397ce395e44fbef37b67fb5f4998",
+    "train_sha256": "6f998e08b0488c94f096db85395fac1a2f21331f1c2348aaee93d27c7a55a0d8",
+    "version": "v1"
+  },
+  {
+    "assumption": "Label space is every statute string in the Lay train and test answers. A gold label no layer can predict counts as a miss. Macro scores average over the whole space, a label with no gold and no prediction scoring 0; this is our reading, the paper does not state its own.",
+    "label_space": 540,
+    "layer": "linear-lr",
+    "model_sha256": "9ed1be653ee50c0ed3c344d121fbef85867c4f55b5cfd8b0b895cbf2363eba29",
+    "parser_version": "4",
+    "primary": {
+      "labels": 540,
+      "macro_f1": 0.01015,
+      "macro_precision": 0.00966,
+      "macro_recall": 0.015509,
+      "micro_f1": 0.125711
+    },
+    "queries": 757,
+    "secondary_vocabulary": {
+      "labels": 63,
+      "macro_f1": 0.087001,
+      "macro_precision": 0.082796,
+      "macro_recall": 0.132931,
+      "micro_f1": 0.191257
+    },
+    "split_sha256": "32af14a42a93928e88afab3f2593459d3609397ce395e44fbef37b67fb5f4998",
+    "train_sha256": "6f998e08b0488c94f096db85395fac1a2f21331f1c2348aaee93d27c7a55a0d8",
+    "version": "v2"
+  }
+]
