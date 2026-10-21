@@ -238,6 +238,7 @@ def main(argv: list[str] | None = None) -> int:
     il.add_argument("--out", required=True)
     il.add_argument("--ledger", default="results/test-ledger-ilsic.json")
     il.add_argument("--rescore-test", action="store_true")
+    il.add_argument("--space-from", help="a split whose answers join the train answers in the label space (default: the scored split)")
     il.add_argument("--benchmark", choices=("lay", "multi"), default="lay", help="which published numbers to print beside ours")
     chq = chs.add_parser("subquery", help="route C: retrieve per recorded sub-query with the frozen rule and union")
     chq.add_argument("--set", required=True)
@@ -340,7 +341,7 @@ def main(argv: list[str] | None = None) -> int:
         if a.model and not (a.layer and a.layer_version):
             print("error: --layer and --layer-version are required with --model", file=sys.stderr)
             return 1
-        return ilsic.evaluate(a.split, a.train, a.index, a.frozen_rule, a.out, a.model, (a.layer, a.layer_version), a.ledger, a.rescore_test, a.benchmark)
+        return ilsic.evaluate(a.split, a.train, a.index, a.frozen_rule, a.out, a.model, (a.layer, a.layer_version), a.ledger, a.rescore_test, a.benchmark, a.space_from)
     if a.cmd == "assoc":
         from ibid import assoc
         if a.assoc_cmd == "fit" and a.source == "union":

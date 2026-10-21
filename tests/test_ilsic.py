@@ -47,10 +47,10 @@ class IlsicEvalTest(unittest.TestCase):
         self.assertEqual(code, expect, err.getvalue())
         return json.loads((self.tmp / "o.json").read_text()) if expect == 0 else err.getvalue()
 
-    def run_model(self, model, layer, version, expect=0):
+    def run_model(self, model, layer, version, expect=0, split=FIX / "test.jsonl"):
         err = io.StringIO()
         with contextlib.redirect_stderr(err), contextlib.redirect_stdout(io.StringIO()):
-            code = main(["ilsic", "eval", "--split", str(FIX / "test.jsonl"), "--train", str(FIX / "train.jsonl"), "--model", str(model),
+            code = main(["ilsic", "eval", "--split", str(split), "--train", str(FIX / "train.jsonl"), "--model", str(model),
                          "--layer", layer, "--layer-version", version, "--out", str(self.tmp / "o.json"), "--ledger", str(self.tmp / "ledger.json")])
         self.assertEqual(code, expect, err.getvalue())
         return json.loads((self.tmp / "o.json").read_text()) if expect == 0 else err.getvalue()
@@ -101,11 +101,34 @@ class IlsicEvalTest(unittest.TestCase):
         (self.tmp / "f.json").write_text(json.dumps(bad))
         self.assertIn("does not hold the rule", self.run_eval(frozen=self.tmp / "f.json", expect=1))
 
-    def test_the_rule_gets_the_raw_query_and_no_network_or_model_client_is_imported(self):
-        src = (ROOT / "src/ibid/ilsic.py").read_text()
-        self.assertTrue(imports_of(src) <= {"json", "random", "re", "sqlite3", "sys", "pathlib", "ibid"})
-        self.assertIn('model.predict(row["instruction"])', src)
-        self.assertIn('row["instruction"]', src)
+    def test_the_rule_and_a_model_get_exactly_the_raw_query(self):
+        raw = "  Murder,  THEFT!! \n"
+        split = self.tmp / "raw.jsonl"
+        split.write_text(json.dumps({"instruction": raw, "answer": ["Section 100 of The Indian Penal Code, 1860"]}) + "\n")
+        seen = []
+        real = ilsic.bench.rank_sections
+        def spy(ix, query, *a, **k):
+            seen.append(query)
+            return real(ix, query, *a, **k)
+        with mock.patch.object(ilsic.bench, "rank_sections", spy):
+            self.run_eval(split=split)
+        self.assertEqual(seen, [raw])
+        model = mock.Mock(header={"layer_version": "v1"}, labels=["IPC 100"], sha256="x")
+        model.predict.return_value = ["IPC 100"]
+        with mock.patch.object(ilsic.assoc, "open_model", return_value=model):
+            self.run_model(split, "assoc-nb", "v1", split=split)
+        model.predict.assert_called_once_with(raw)
+
+    def test_no_network_or_model_client_is_imported(self):
+        allowed = {"json", "random", "re", "sqlite3", "sys", "pathlib", "ibid"}
+        self.assertTrue(imports_of((ROOT / "src/ibid/ilsic.py").read_text()) <= allowed)
+        self.assertFalse(imports_of("import requests\nfrom anthropic import x") <= allowed)  # the check can fail
+
+    def test_space_from_adds_another_split_to_the_label_space(self):
+        one = self.tmp / "one.jsonl"
+        one.write_text(json.dumps({"instruction": "murder", "answer": ["Section 100 of The Indian Penal Code, 1860"]}) + "\n")
+        self.assertEqual(self.run_eval(split=one)["label_space"], 2)
+        self.assertEqual(self.run_eval(split=one, extra=RESCORE + ("--space-from", str(FIX / "test.jsonl")))["label_space"], 6)
 
     def test_interval_is_deterministic_and_holds_the_point_estimate(self):
         a, b = (self.run_eval(extra=RESCORE)["interval_95"] for _ in range(2))

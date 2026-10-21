@@ -67,7 +67,9 @@ class LinearTest(unittest.TestCase):
 
     def test_layer_imports_only_the_standard_library_and_ibid(self):
         src = (Path(__file__).parents[1] / "src" / "ibid" / "linear.py").read_text()
-        self.assertLessEqual(imports_of(src), {"json", "math", "re", "collections", "pathlib", ""})
+        allowed = {"json", "math", "re", "collections", "pathlib", "ibid"}
+        self.assertLessEqual(imports_of(src), allowed)
+        self.assertFalse(imports_of("import numpy") <= allowed)  # the check can fail
 
 
 if __name__ == "__main__":

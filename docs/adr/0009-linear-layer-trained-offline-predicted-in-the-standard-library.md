@@ -25,3 +25,5 @@ flowchart LR
 **Limits.** It predicts the 100 IL-TUR labels, which include non-offence sections (2, 3, 34, 149, 120B among them). Its 30 set v1 items are inside its training data, so set v1 is not scored. On layperson text (set v2) it is weaker than `assoc-nb v3`. No lawyer reviewed any label.
 
 **Checks.** The stdlib prediction equals scikit-learn's probabilities to 3e-7 on 300 dev documents with no differing decision, and `ibid assoc eval` on dev reproduces scikit-learn's dev scores.
+
+**Added 2026-10-22 (slice 14).** `ibid ilsic eval` is a second scorer, for ILSIC splits only. It scores the frozen rule and the `assoc-nb` and `linear-lr` model files on the raw `instruction` (ADR 0001), over a fixed label space with zero-label macro averaging, and keeps its own once-per-version ledger, `results/test-ledger-ilsic.json`. `ibid assoc eval` stays the scorer for ILSI and IL-TUR splits. `linear-lr v2` is the same recipe fitted on the original ILSI text (`.scratch/slice-13/strategy.md`), with the same licence (CC BY-NC-SA 4.0, weights gitignored); neither version is fitted on ILSIC.

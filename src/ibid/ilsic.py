@@ -55,7 +55,7 @@ def _reading(gold: list[set[str]], pred: list[set[str]], space: set[str]) -> dic
             "macro_precision": round(sum(prec) / len(space), 6), "macro_recall": round(sum(rec) / len(space), 6)}
 
 
-def _frozen(frozen_path: str, index_path: str, rows: list[dict], space: set[str], cite: dict[str, str]) -> tuple[dict, list[set[str]], set[str]]:
+def _frozen(frozen_path: str, index_path: str, rows: list[dict], cite: dict[str, str]) -> tuple[dict, list[set[str]], set[str]]:
     frozen = json.loads(Path(frozen_path).read_text())
     k, r, rollup, knobs = frozen["k"], frozen["r"], frozen["section_score"], bench.knobs_of(frozen.get("knobs"))
     if frozen["rule"]["params_sha256"] != bench.rule_hash(k, r, rollup, frozen["stop_words"], knobs):
@@ -83,16 +83,17 @@ def _model(model_path: str, expect: tuple[str, str], rows: list[dict], cite: dic
 
 def evaluate(split_path: str, train_path: str, index_path: str, frozen_path: str, out_path: str,
              model_path: str | None = None, expect: tuple[str, str] = ("", ""), ledger_path: str = "results/test-ledger-ilsic.json",
-             rescore: bool = False, benchmark: str = "lay") -> int:
+             rescore: bool = False, benchmark: str = "lay", space_from: str | None = None) -> int:
     """Score the frozen rule, or a model file, on the raw `instruction` of every row; no query rewrite, no network (ADR 0001)."""
     try:
         rows = _rows(split_path)
-        space = {a for row in _rows(train_path) + rows for a in row["answer"]}
+        # the spec's space is Lay train + Lay test answers: pass the Lay test as space_from when scoring the Multi test
+        space = {a for row in _rows(train_path) + (_rows(space_from) if space_from else rows) for a in row["answer"]}
         if not rows or not space:
             raise ValueError("empty split or empty label space")
         cite = {label: f"IPC {m[1]}" for label in space if (m := IPC_LABEL.fullmatch(label))}
         who, pred, vocab = (_model(model_path, expect, rows, cite) if model_path
-                            else _frozen(frozen_path, index_path, rows, space, cite))
+                            else _frozen(frozen_path, index_path, rows, cite))
         prior = [e for e in bench.read_ledger(ledger_path)
                  if (e["split_sha256"], e["layer"], e["version"]) == (bench.sha256(split_path), who["layer"], who["version"])]
         if prior and not rescore:

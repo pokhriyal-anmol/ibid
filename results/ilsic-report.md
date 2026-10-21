@@ -58,7 +58,7 @@ Published best, Table 5: macro-F1 17.01 and micro-F1 33.95 (GPT-4.1 zero-shot).
 
 ## Notes
 
-- Zero-label assumption: the label space is every statute string in the Lay train and test answers. A gold label no layer can predict (other Acts, IPC sections absent from the index) counts as a miss. Macro scores average over the whole space, a label with no gold and no prediction scoring 0. The paper does not state its own treatment, so this is our reading. For the Multi test the space is the Lay train plus that split's answers.
+- Zero-label assumption: the label space is every statute string in the Lay train and test answers. A gold label no layer can predict (other Acts, IPC sections absent from the index) counts as a miss. Macro scores average over the whole space, a label with no gold and no prediction scoring 0. The paper does not state its own treatment, so this is our reading. For the Multi test the committed scores use the Lay train plus the Multi answers (540 labels, not the Lay space's 543); `ibid ilsic eval --space-from <Lay test>` gives the spec's space, and these scores have not been re-run with it.
 - Overlap: the Multi test is described as a subset of the Lay label space with a 757-query test, so the two tests overlap and are not independent evidence.
 - A layer clears a published number only if it is above it under the primary reading. The secondary reading is reported for information.
 - Layers predict IPC sections only; none predicts BNS or any other Act. `assoc-nb v2` and `v3` and `linear-lr` are fitted outside this slice; `assoc-nb v2` was rebuilt with `ibid assoc fit --source ilsic-lay` (ADR 0006) and is not in git. `assoc-nb v2` and `v3` use ILSIC-Lay train text, so their Lay scores are in-distribution.
@@ -66,4 +66,21 @@ Published best, Table 5: macro-F1 17.01 and micro-F1 33.95 (GPT-4.1 zero-shot).
 
 ## Byte-identity check
 
-SHA-256 of `results/baseline-v*.json`, `results/frozen-rule*.json`, `gold/` (including `v2.json`, `v2.sha256`), `concordance/` (including `v2.json`, `v2.sha256`) and every previously committed `results/` file, taken before and after scoring: identical (see PR note).
+Checked 2026-10-22 against `5d487ad`, the last commit before slice 14 (`8a3f7f7^`). The check hashes every file under `results/`, `gold/` and `concordance/` at that commit, except the new `ilsic` files, and compares it with the working tree (bash, not zsh, to avoid the history-modifier trap):
+
+```bash
+base=8a3f7f7^
+for f in $(git ls-tree -r --name-only $base -- results gold concordance | grep -v ilsic); do
+  a=$(git show "$base":"$f" | shasum -a 256 | cut -d" " -f1); b=$(shasum -a 256 "$f" | cut -d" " -f1)
+  [ -n "$a" ] && [ "$a" = "$b" ] || echo "DIFF $f"
+done
+```
+
+Output: no `DIFF` line over 119 files. Hashes of the files the ticket names, identical before and after:
+
+| File | SHA-256 |
+|---|---|
+| `gold/v2.json` (equals `gold/v2.sha256`) | `1670c5a4a3783a3f37f12f5bcf46db4f9d8fb0b966b60c26e7c4da6429698f62` |
+| `concordance/v2.json` (equals `concordance/v2.sha256`) | `365d09d0144ab93e7f4fc03cb3b2baa3baaae10952d248894f2a867b32680322` |
+| `results/frozen-rule.json` | `ea01284dbbeb429e2f2c97de7d998a69b691aaab1ae1bd47b2a6a79358dbd01d` |
+| `results/baseline-v2.json` | `e0fac482b3a5cd5ab743192f2e26663741dbb1419764f4c583169c315a589517` |
