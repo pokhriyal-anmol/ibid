@@ -1,0 +1,3 @@
+{"header": {"layer": "assoc-nb", "layer_version": "v1", "top_k": 5},
+ "docs": {"IPC 100": 1, "IPC 101": 1, "IPC 102": 1},
+ "counts": {"IPC 100": {"murder": 1}, "IPC 101": {"theft": 1}, "IPC 102": {"cheating": 1}}}

@@ -1,0 +1,3 @@
+{"header": {"layer": "linear-lr", "layer_version": "v1", "cutoff": 0.5},
+ "labels": ["Section 100 in The Indian Penal Code", "Section 101 in The Indian Penal Code", "Section 102 in The Indian Penal Code"],
+ "vocab": ["murder", "theft"], "idf": [1.0, 1.0], "coef": [[4, -4], [-4, 4], [0, 0]], "intercept": [-2, -2, -2]}

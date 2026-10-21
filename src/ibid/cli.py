@@ -232,6 +232,9 @@ def main(argv: list[str] | None = None) -> int:
     il.add_argument("--train", required=True, help="the Lay train file, used only to fix the label space")
     il.add_argument("--index", default="data/index/ibid.sqlite")
     il.add_argument("--frozen-rule", default="results/frozen-rule.json")
+    il.add_argument("--model", help="an assoc-nb or linear-lr model file, scored in place of the frozen rule")
+    il.add_argument("--layer", help="with --model: the layer the file must be")
+    il.add_argument("--layer-version", help="with --model: the version the file must be")
     il.add_argument("--out", required=True)
     chq = chs.add_parser("subquery", help="route C: retrieve per recorded sub-query with the frozen rule and union")
     chq.add_argument("--set", required=True)
@@ -331,7 +334,10 @@ def main(argv: list[str] | None = None) -> int:
         return charges.validate(a.set, a.index)
     if a.cmd == "ilsic":
         from ibid import ilsic
-        return ilsic.evaluate(a.split, a.train, a.index, a.frozen_rule, a.out)
+        if a.model and not (a.layer and a.layer_version):
+            print("error: --layer and --layer-version are required with --model", file=sys.stderr)
+            return 1
+        return ilsic.evaluate(a.split, a.train, a.index, a.frozen_rule, a.out, a.model, (a.layer, a.layer_version))
     if a.cmd == "assoc":
         from ibid import assoc
         if a.assoc_cmd == "fit" and a.source == "union":
