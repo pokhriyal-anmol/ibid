@@ -226,6 +226,13 @@ def main(argv: list[str] | None = None) -> int:
     ae.add_argument("--labels", default=None, help="ILSI label vocabulary: also report micro-F1 over this (v1's) label space")
     ae.add_argument("--rescore-test", action="store_true")
     ae.add_argument("--out", default=None)
+    il = sub.add_parser("ilsic").add_subparsers(dest="ilsic_cmd", required=True).add_parser(
+        "eval", help="score the frozen rule on an ILSIC split, paper's label space and vocabulary readings")
+    il.add_argument("--split", required=True)
+    il.add_argument("--train", required=True, help="the Lay train file, used only to fix the label space")
+    il.add_argument("--index", default="data/index/ibid.sqlite")
+    il.add_argument("--frozen-rule", default="results/frozen-rule.json")
+    il.add_argument("--out", required=True)
     chq = chs.add_parser("subquery", help="route C: retrieve per recorded sub-query with the frozen rule and union")
     chq.add_argument("--set", required=True)
     chq.add_argument("--subqueries", required=True)
@@ -322,6 +329,9 @@ def main(argv: list[str] | None = None) -> int:
         if a.charges_cmd == "intake":
             return charges.intake(a.queries, a.author_type, a.author, a.out)
         return charges.validate(a.set, a.index)
+    if a.cmd == "ilsic":
+        from ibid import ilsic
+        return ilsic.evaluate(a.split, a.train, a.index, a.frozen_rule, a.out)
     if a.cmd == "assoc":
         from ibid import assoc
         if a.assoc_cmd == "fit" and a.source == "union":
