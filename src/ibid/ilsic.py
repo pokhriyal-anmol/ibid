@@ -23,7 +23,7 @@ def _reading(gold: list[set[str]], pred: list[set[str]], space: set[str]) -> dic
             "macro_precision": round(sum(prec) / len(space), 6), "macro_recall": round(sum(rec) / len(space), 6)}
 
 
-def evaluate(split_path: str, train_path: str, index_path: str, frozen_path: str, out_path: str) -> int:
+def evaluate(split_path: str, train_path: str, index_path: str, frozen_path: str, out_path: str, ledger_path: str, rescore: bool = False) -> int:
     """Score the frozen rule's threshold output on the raw `instruction` of every row; no model, no network (ADR 0001)."""
     try:
         frozen = json.loads(Path(frozen_path).read_text())
@@ -31,6 +31,10 @@ def evaluate(split_path: str, train_path: str, index_path: str, frozen_path: str
         if frozen["rule"]["params_sha256"] != bench.rule_hash(k, r, rollup, frozen["stop_words"], knobs):
             raise ValueError(f"{frozen_path} does not hold the rule it names")
         rows = _rows(split_path)
+        prior = [e for e in bench.read_ledger(ledger_path)
+                 if (e["split_sha256"], e["layer"], e["version"]) == (bench.sha256(split_path), "frozen-rule", frozen["rule"]["version"])]
+        if prior and not rescore:
+            raise ValueError("this layer version was already scored on this split; pass --rescore-test to score it again")
         space = {a for row in _rows(train_path) + rows for a in row["answer"]}
         if not rows or not space:
             raise ValueError("empty split or empty label space")
@@ -49,6 +53,9 @@ def evaluate(split_path: str, train_path: str, index_path: str, frozen_path: str
            "output_rule": "threshold", "parser_version": PARSER_VERSION, "split_sha256": bench.sha256(split_path),
            "train_sha256": bench.sha256(train_path), "queries": len(rows), "label_space": len(space), "assumption": ASSUMPTION,
            "primary": _reading(gold, pred, space), "secondary_vocabulary": _reading(gold, pred, vocab)}
+    Path(ledger_path).write_text(json.dumps(bench.read_ledger(ledger_path) + [res], indent=2, sort_keys=True) + "\n")
+    if prior:  # the first look stays visible beside the new one
+        res["earlier_scorings"] = prior
     text = json.dumps(res, indent=2, sort_keys=True) + "\n"
     Path(out_path).write_text(text)
     print(text, end="")

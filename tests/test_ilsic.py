@@ -28,11 +28,11 @@ class IlsicEvalTest(unittest.TestCase):
         self.addCleanup(shutil.rmtree, self.tmp)
         index.build(str(self.tmp / "i.sqlite"), PROVS, []).close()
 
-    def run_eval(self, train=FIX / "train.jsonl", split=FIX / "test.jsonl", frozen=ROOT / "results/frozen-rule.json", expect=0):
+    def run_eval(self, train=FIX / "train.jsonl", split=FIX / "test.jsonl", frozen=ROOT / "results/frozen-rule.json", expect=0, extra=()):
         err = io.StringIO()
         with contextlib.redirect_stderr(err), contextlib.redirect_stdout(io.StringIO()):
             code = main(["ilsic", "eval", "--split", str(split), "--train", str(train), "--index", str(self.tmp / "i.sqlite"),
-                         "--frozen-rule", str(frozen), "--out", str(self.tmp / "o.json")])
+                         "--frozen-rule", str(frozen), "--out", str(self.tmp / "o.json"), "--ledger", str(self.tmp / "ledger.json"), *extra])
         self.assertEqual(code, expect, err.getvalue())
         return json.loads((self.tmp / "o.json").read_text()) if expect == 0 else err.getvalue()
 
@@ -42,6 +42,22 @@ class IlsicEvalTest(unittest.TestCase):
         self.assertEqual(res["secondary_vocabulary"], SECONDARY)
         self.assertEqual((res["label_space"], res["queries"], res["layer"], res["version"]), (6, 5, "frozen-rule", "v2.11"))
         self.assertIn("scoring 0", res["assumption"])
+
+    def test_second_scoring_is_refused_and_touches_nothing(self):
+        self.run_eval()
+        ledger = (self.tmp / "ledger.json").read_bytes()
+        (self.tmp / "o.json").unlink()
+        self.assertIn("--rescore-test", self.run_eval(expect=1))
+        self.assertFalse((self.tmp / "o.json").exists())
+        self.assertEqual((self.tmp / "ledger.json").read_bytes(), ledger)
+
+    def test_rescore_appends_and_keeps_the_first_entry(self):
+        self.run_eval()
+        first = json.loads((self.tmp / "ledger.json").read_text())
+        res = self.run_eval(extra=["--rescore-test"])
+        ledger = json.loads((self.tmp / "ledger.json").read_text())
+        self.assertEqual((len(ledger), ledger[0]), (2, first[0]))
+        self.assertEqual(res["earlier_scorings"], first)
 
     def test_label_space_reads_the_train_answers_too(self):
         empty = self.tmp / "t.jsonl"
