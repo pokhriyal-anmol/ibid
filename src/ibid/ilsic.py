@@ -50,7 +50,8 @@ def _model(model_path: str, expect: tuple[str, str], rows: list[dict], cite: dic
 
 
 def evaluate(split_path: str, train_path: str, index_path: str, frozen_path: str, out_path: str,
-             model_path: str | None = None, expect: tuple[str, str] = ("", "")) -> int:
+             model_path: str | None = None, expect: tuple[str, str] = ("", ""), ledger_path: str = "results/test-ledger-ilsic.json",
+             rescore: bool = False) -> int:
     """Score the frozen rule, or a model file, on the raw `instruction` of every row; no query rewrite, no network (ADR 0001)."""
     try:
         rows = _rows(split_path)
@@ -60,6 +61,10 @@ def evaluate(split_path: str, train_path: str, index_path: str, frozen_path: str
         cite = {label: f"IPC {m[1]}" for label in space if (m := IPC_LABEL.fullmatch(label))}
         who, pred, vocab = (_model(model_path, expect, rows, cite) if model_path
                             else _frozen(frozen_path, index_path, rows, space, cite))
+        prior = [e for e in bench.read_ledger(ledger_path)
+                 if (e["split_sha256"], e["layer"], e["version"]) == (bench.sha256(split_path), who["layer"], who["version"])]
+        if prior and not rescore:
+            raise ValueError("this layer version was already scored on this split; pass --rescore-test to score it again")
     except (OSError, KeyError, ValueError, TypeError, sqlite3.Error) as e:
         print(f"error: {e}", file=sys.stderr)
         return 1
@@ -67,6 +72,9 @@ def evaluate(split_path: str, train_path: str, index_path: str, frozen_path: str
     res = {**who, "parser_version": PARSER_VERSION, "split_sha256": bench.sha256(split_path),
            "train_sha256": bench.sha256(train_path), "queries": len(rows), "label_space": len(space), "assumption": ASSUMPTION,
            "primary": _reading(gold, pred, space), "secondary_vocabulary": _reading(gold, pred, vocab)}
+    Path(ledger_path).write_text(json.dumps(bench.read_ledger(ledger_path) + [res], indent=2, sort_keys=True) + "\n")
+    if prior:  # the first look stays visible beside the new one
+        res["earlier_scorings"] = prior
     text = json.dumps(res, indent=2, sort_keys=True) + "\n"
     Path(out_path).write_text(text)
     print(text, end="")
