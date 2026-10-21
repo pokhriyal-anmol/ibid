@@ -51,6 +51,26 @@ Two warnings about the table. The ILSI rows disagree by 29 points (64.58 against
 
 **Not workflow work:** a lawyer review of the gold sets (blocked, owner), and a legal check of the non-commercial training data before any public or commercial use of the learned layers.
 
+## G2 step 1 result (2026-10-22, research agent plus my spot checks)
+
+Why 64.58 and about 28 to 35 disagree on "the same" ILSI test. Found, with the papers' own words (notes in the scratchpad, not committed):
+
+- The InLegalBERT paper never mentions masking citations or entities, and uses the facts as released. IL-TUR's appendix says that released version "contains some unmasked statute citations" (verified by me in IL-TUR App. A.5). So the 64.58 is probably measured on text that still shows section numbers. That is an inference, not verified on the data.
+- IL-TUR masks them and reports InLegalBERT+LSTM-Attn at 26.23, while LeSICiN barely moves (28.45 to 28.08). So citations seem to help transformer encoders far more than LeSICiN.
+- The metric is a per-label mean of F1 in the LeSICiN code, and the 64.58 is not the harmonic mean of its own macro precision and recall (66.09, computed by me), so it is also a per-label mean. Our macro-F1 is the same kind. The zero-support handling in the InLegalBERT paper is not stated.
+- LeSICiN's own results may not reproduce from its repo: the paper says threshold 0.65 and 100 epochs, the released config says 0.51 and 2 epochs (agent's reading of the repo).
+- AoS (35.5) says it masks numeric values, yet its Table 7 shows citations such as "Sections 498A, 506B, 324 of IPC" in the text, so its text version is unclear.
+- Not found: InLegalBERT's fine-tuning code, its decision threshold, and the SIGIR 2024 paper behind AoS's LeSICiN-B row.
+
+**What this changes.** Two comparison classes, and only like-for-like claims are allowed:
+
+| Class | Published bars | Ibid | Claim allowed |
+|---|---|---|---|
+| Masked text (IL-TUR LSI) | 28.08 LeSICiN, 26.23 InLegalBERT+LSTM | 39.16 | beats the IL-TUR paper's baselines |
+| Original text, citations probably visible | 64.58 InLegalBERT (unreproduced), 35.5 AoS (text version unclear), 28.45 LeSICiN | 59.56 | above LeSICiN and AoS, below InLegalBERT's reported figure; no state-of-the-art claim |
+
+**Recommendation on step 2 (the budget InLegalBERT).** Defer it. The one bar above ours is a figure measured on possibly leaking text, from code I could not find, so closing 5 points to it would not earn a claim. Spend the effort on G3 and G1, and revisit only if the InLegalBERT authors or code settle the setup.
+
 ## Order I would run them
 
 1. G3 pre-registration, then G3 scoring (cheapest, most relevant, no downloads: the ILSIC files are already in `data/raw/ilsic`).
