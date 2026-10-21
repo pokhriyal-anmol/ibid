@@ -5,9 +5,10 @@ import json
 import shutil
 import tempfile
 import unittest
+from unittest import mock
 from pathlib import Path
 
-from ibid import bench, index
+from ibid import bench, ilsic, index
 from ibid.cli import main
 from ibid.parse import Provision
 from test_assoc import imports_of
@@ -29,6 +30,8 @@ LINEAR_SECONDARY = {"labels": 3, "macro_f1": 0.433333, "micro_f1": 0.545455, "ma
 ASSOC_PRIMARY = {"labels": 6, "macro_f1": 0.275794, "micro_f1": 0.521739, "macro_precision": 0.2, "macro_recall": 0.5}
 ASSOC_SECONDARY = {"labels": 3, "macro_f1": 0.551587, "micro_f1": 0.571429, "macro_precision": 0.4, "macro_recall": 1.0}
 
+RESCORE = ("--rescore-test",)
+
 
 class IlsicEvalTest(unittest.TestCase):
     def setUp(self):
@@ -48,7 +51,7 @@ class IlsicEvalTest(unittest.TestCase):
         err = io.StringIO()
         with contextlib.redirect_stderr(err), contextlib.redirect_stdout(io.StringIO()):
             code = main(["ilsic", "eval", "--split", str(FIX / "test.jsonl"), "--train", str(FIX / "train.jsonl"), "--model", str(model),
-                         "--layer", layer, "--layer-version", version, "--out", str(self.tmp / "o.json")])
+                         "--layer", layer, "--layer-version", version, "--out", str(self.tmp / "o.json"), "--ledger", str(self.tmp / "ledger.json")])
         self.assertEqual(code, expect, err.getvalue())
         return json.loads((self.tmp / "o.json").read_text()) if expect == 0 else err.getvalue()
 
@@ -100,9 +103,31 @@ class IlsicEvalTest(unittest.TestCase):
 
     def test_the_rule_gets_the_raw_query_and_no_network_or_model_client_is_imported(self):
         src = (ROOT / "src/ibid/ilsic.py").read_text()
-        self.assertTrue(imports_of(src) <= {"json", "re", "sqlite3", "sys", "pathlib", "ibid"})
+        self.assertTrue(imports_of(src) <= {"json", "random", "re", "sqlite3", "sys", "pathlib", "ibid"})
         self.assertIn('model.predict(row["instruction"])', src)
         self.assertIn('row["instruction"]', src)
+
+    def test_interval_is_deterministic_and_holds_the_point_estimate(self):
+        a, b = (self.run_eval(extra=RESCORE)["interval_95"] for _ in range(2))
+        self.assertEqual(a, b)
+        self.assertEqual(a, {"macro_f1": [0.066667, 0.5], "micro_f1": [0.181818, 0.823529]})  # pinned: seed 0 on this fixture
+        for m, point in (("macro_f1", PRIMARY["macro_f1"]), ("micro_f1", PRIMARY["micro_f1"])):
+            self.assertLessEqual(a[m][0], point)
+            self.assertGreaterEqual(a[m][1], point)
+            self.assertLess(a[m][0], a[m][1])
+
+    def test_verdict_uses_the_primary_reading_only(self):
+        # Fixture micro-F1: primary 57.14, secondary 66.67. A published 60 is cleared only under the secondary reading.
+        with mock.patch.dict(ilsic.PUBLISHED, {"lay": [("micro_f1", 60.0, "x", "Table 3"), ("micro_f1", 50.0, "y", "Table 3")]}):
+            v = self.run_eval(extra=RESCORE)["verdict_primary_reading"]
+        self.assertTrue(v[0].startswith("micro_f1 57.14: below 60.00"), v)
+        self.assertTrue(v[1].startswith("micro_f1 57.14: above 50.00"), v)
+        self.assertIn("published, not re-run by us", v[0])
+
+    def test_benchmark_flag_picks_the_published_numbers_and_they_carry_tables(self):
+        self.assertEqual(len(self.run_eval(extra=RESCORE)["verdict_primary_reading"]), 3)
+        self.assertEqual(len(self.run_eval(extra=RESCORE + ("--benchmark", "multi"))["verdict_primary_reading"]), 2)
+        self.assertTrue(all(len(p) == 4 and p[3].startswith("Table") for ps in ilsic.PUBLISHED.values() for p in ps))
 
 
 if __name__ == "__main__":
