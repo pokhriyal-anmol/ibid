@@ -62,7 +62,7 @@ def call_tool(db, entries: list[dict], name: str, args: object, heads: dict[str,
         if act in ("crpc", "bnss"):  # the second index
             if not procedure:
                 return _tool_result("The second index is not built, so CrPC and BNSS are not searchable.", True)
-            db, heads = procedure
+            db, heads = procedure[:2]
         hits = index.search(db, args["query"], limit, ACTS.get(act))
         results = [{"citation": c, "text": t, "heading": heads.get(c)} for c, t in hits]
         if args.get("adjacent"):

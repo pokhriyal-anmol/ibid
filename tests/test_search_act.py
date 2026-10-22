@@ -17,7 +17,7 @@ class SearchActTest(unittest.TestCase):
         cls.tmp = tempfile.TemporaryDirectory()
         cls.index = str(Path(cls.tmp.name) / "procedure.sqlite")
         assert build(str(MINI), cls.index).returncode == 0
-        cls.c = Client(command() + ["--procedure-index", cls.index])
+        cls.c = Client(command() + ["--procedure-index", cls.index, "--procedure-concordance", "absent.json"])
 
     @classmethod
     def tearDownClass(cls):

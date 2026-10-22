@@ -26,7 +26,7 @@ class ProcedureXrefTest(unittest.TestCase):
             dst.write_text(text.replace(old, new))
         cls.index = str(Path(cls.tmp.name, "procedure.sqlite"))
         cls.built = build(str(crpc), cls.index, str(bnss))
-        cls.c = Client(command() + ["--procedure-index", cls.index])
+        cls.c = Client(command() + ["--procedure-index", cls.index, "--procedure-concordance", "absent.json"])
 
     @classmethod
     def tearDownClass(cls):
