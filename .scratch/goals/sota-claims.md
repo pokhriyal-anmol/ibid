@@ -47,7 +47,7 @@ Two warnings about the table. The ILSI rows disagree by 29 points (64.58 against
 
 **G4. Coverage matrix and claims ledger.** One table, kept current: Acts covered (IPC, BNS), Acts not covered (BNSS, BSA, CrPC, Evidence Act, Constitution, others), tasks covered (statute identification, lookup, concordance), tasks not (the other seven IL-TUR tasks), each claim linked to its result file and limits. This is what replaces "most complete". Workflow fit: yes.
 
-**G5. Next Acts.** BNSS and BSA with concordances (the replacement of the CrPC and the Evidence Act), as separate slices, each with its own text-fidelity gold set. Workflow fit: yes, but each is large. Not a prerequisite for G1 to G3.
+**G5. Next Acts.** Order set by a measurement (2026-10-22, ILSIC Lay test gold labels by Act): IPC 36.2%, Code of Criminal Procedure 1973 18.8%, Hindu Marriage Act 12.2%, Domestic Violence Act 6.4%, Evidence Act 1.5%. So the first pair is the CrPC and the BNSS (spec: `.scratch/slice-15/spec.md`, draft, waiting on the owner's approval of three source downloads), then the Hindu Marriage and Domestic Violence Acts as small standalone Acts, then the Evidence Act and the BSA. A learned layer that predicts CrPC sections is a separate slice after the first. Workflow fit: yes once step 0 (sources) is done.
 
 **Not workflow work:** a lawyer review of the gold sets (blocked, owner), and a legal check of the non-commercial training data before any public or commercial use of the learned layers.
 
