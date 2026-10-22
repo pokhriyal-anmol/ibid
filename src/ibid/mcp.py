@@ -11,13 +11,15 @@ from ibid.parse import BNS_TOTAL, parse_bns
 from ibid.xref import extract
 
 PROTOCOL_VERSION = "2024-11-05"
+ACTS = {"ipc": "IPC", "bns": "BNS", "crpc": "CrPC", "bnss": "BNSS"}  # act argument to Citation prefix
 DIRECTIONS = ("ipc_to_bns", "bns_to_ipc")
 _CITATION = {"type": "object", "properties": {"citation": {"type": "string"}}, "required": ["citation"]}
 TOOLS = {
     "get_provision": ("Verbatim text and child Citations of one Provision, by exact Citation.", _CITATION),
     "search": ("Keyword search over the raw query.",
                {"type": "object", "properties": {"query": {"type": "string"}, "limit": {"type": "integer"},
-                                                      "adjacent": {"type": "boolean"}}, "required": ["query"]}),
+                                                      "adjacent": {"type": "boolean"},
+                                                      "act": {"type": "string", "enum": list(ACTS)}}, "required": ["query"]}),
     "cross_references": ("Resolved and unresolved Cross-references of one Provision.", _CITATION),
     "concordance": ("Verified Concordance entries for a Citation.",
                     {"type": "object", "properties": {"citation": {"type": "string"},
@@ -52,9 +54,16 @@ def call_tool(db, entries: list[dict], name: str, args: object, heads: dict[str,
         limit = args.get("limit", 10)
         if isinstance(limit, bool) or not isinstance(limit, int) or limit < 1:
             raise RpcError(-32602, "limit must be an integer of at least 1")
-        hits = index.search(db, args["query"], limit)
         if not isinstance(args.get("adjacent", False), bool):
             raise RpcError(-32602, "adjacent must be a boolean")
+        act = args.get("act")
+        if "act" in args and act not in ACTS:
+            raise RpcError(-32602, "act must be one of " + ", ".join(ACTS))
+        if act in ("crpc", "bnss"):  # the second index
+            if not procedure:
+                return _tool_result("The second index is not built, so CrPC and BNSS are not searchable.", True)
+            db, heads = procedure
+        hits = index.search(db, args["query"], limit, ACTS.get(act))
         results = [{"citation": c, "text": t, "heading": heads.get(c)} for c, t in hits]
         if args.get("adjacent"):
             for r in results:
