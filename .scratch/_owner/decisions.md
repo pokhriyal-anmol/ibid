@@ -49,3 +49,11 @@ Applies when: a learned-layer slice needs training that the standard library can
 Why: pure-Python training is too slow at 42,750 documents; the runtime and ADR 0001 are unaffected.
 Source: owner sign-off of the strategy, defaults mine (flag if wrong)
 Date: 2026-10-22
+
+## D-007: Slice 15 sources approved; the sources are treated as reusable, the compiled table stays out of git
+
+Decision: The owner approved the three downloads for slice 15 and said the evidence suggests the sources are reusable. The BNSS Gazette and the BNSS to CrPC table are downloaded. The BNSS Gazette is a government publication. The table carries "© Anil Kishore Yadav, IPS, Director, CAPT Bhopal" on every page with no licence, so it is kept out of git and Ibid stores only section numbers and row references, as for the BNS table. The CrPC text is still to come.
+Applies when: adding a source with an unstated licence. Keep the file out of git and store facts (numbers, references), not the compilation.
+Why: it follows the owner's call without publishing a file that has an explicit copyright line.
+Source: owner-stated (approval and reuse view); the handling of the table is mine (flag if wrong)
+Date: 2026-10-22

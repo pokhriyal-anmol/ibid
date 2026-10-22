@@ -45,3 +45,14 @@ The 30 posts are public forum text under CC BY-NC-SA 4.0 (non-commercial, share-
 ### ILSIC layperson train split (2026-10-16, slice 6)
 
 `ilsic/FT-Layman-train.jsonl.xz`: ILSIC (Law-AI/ilsic), Google Drive folder `Layman-new-dataset`. 6,465 posts, fields `instruction` and `answer`. 1,749,944 bytes. SHA-256 `6f998e08b0488c94f096db85395fac1a2f21331f1c2348aaee93d27c7a55a0d8`. CC BY-NC-SA 4.0, non-commercial. Gitignored under `data/raw/`. It names 118 distinct IPC sections (98 with at least 5 posts, 46 with at least 20), 63 of them in the 98-section ILSI label vocabulary. All 30 sections cited in `gold/multicharge/v2.json` appear in it, against 19 in the ILSI vocabulary. Approved by the owner for download on 2026-10-16; the dev split was not downloaded.
+
+## Slice 15 sources (2026-10-22), under `data/raw/`, none committed
+
+Downloaded 2026-10-22 with the owner's approval (D-007). Each was fetched into a fresh scratch directory, checked there (size against the server's `Content-Length`, first page read), then copied into place.
+
+| File | Source | Bytes | SHA-256 | Notes |
+|---|---|---|---|---|
+| `bnss-prs.pdf` | https://prsindia.org/files/bills_acts/bills_parliament/2023/The%20Bharatiya%20Nagarik%20Suraksha%20Sanhita,%202023.pdf | 2,033,181 | `5e60e2afe30d0fe7eca4f8126301146b76c86a444e690581f81eb564843517fe` | Gazette extraordinary of 25 Dec 2023, CG-DL-E-25122023-250884, Part II Section 1, an Act of Parliament, 249 pages with the Hindi text. The BNS is …250883 |
+| `capt/comparison_summary_BNSS_to_CrPC.pdf` | https://keralaprisons.gov.in/userfiles/act-and-rules/comparison_summary_BNSS_to_CrPC.pdf | 674,648 | `aa3e49147cf88141a8471a614246270ab4730cd3a4099e06de7a69792d80d33b` | 38 pages, author field "capt", created 21 Jun 2024. The BNSS is the first column. Every page carries "© Anil Kishore Yadav, IPS, Director, CAPT Bhopal" and no licence; the file stays out of git and Ibid keeps only section numbers and row references, as for the BNS table. A personal compilation, not an MHA publication |
+
+Not yet fetched: the Code of Criminal Procedure, 1973 as in force until 30 June 2024. India Code (`https://www.indiacode.nic.in/bitstream/123456789/15381/1/ccp1973.pdf`) is the official copy but did not answer from this machine (60 second timeouts on three URLs, 2026-10-22). The WIPO Lex copy is consolidated only to 1991 and omits later amendments, so it is not a substitute.
