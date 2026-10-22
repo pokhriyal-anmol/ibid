@@ -105,7 +105,7 @@ def main(argv: list[str] | None = None) -> int:
     su = sub.add_parser("setup", help="check poppler tools and source PDFs, offline")
     su.add_argument("--sources", default="data/sources.json")
     su.add_argument("--raw-dir", default="data/raw")
-    su.add_argument("--fetch", choices=["bns", "ipc"], help="download this source PDF, verified, never overwriting")
+    su.add_argument("--fetch", choices=["bns", "ipc", "bnss", "crpc", "bnss_crpc_table"], help="download this source PDF, verified, never overwriting")
     su.add_argument("--url", help="direct https PDF url (required for --fetch ipc)")
     ev = sub.add_parser("eval")
     ev.add_argument("--gold", default="gold/v2.json")

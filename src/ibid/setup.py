@@ -22,7 +22,7 @@ INSTALL = ["  run: brew install poppler          (macOS)", "  run: apt install p
 
 
 def _fetch_hint(name: str) -> str:
-    return "ibid setup --fetch bns" if name == "bns" else "ibid setup --fetch ipc --url <direct https PDF url>"
+    return "ibid setup --fetch ipc --url <direct https PDF url>" if name == "ipc" else f"ibid setup --fetch {name}"
 
 
 CAP = 200 * 1024 * 1024
@@ -81,6 +81,7 @@ def fetch(manifest: dict, raw_dir: str, name: str, url: str | None) -> int:
     if not _allowed(url):
         print(f"error: url refused (only https, or http to 127.0.0.1/localhost): {url}", file=sys.stderr)
         return 1
+    target.parent.mkdir(parents=True, exist_ok=True)
     failed = _download(url, target, src["bytes"], src["sha256"])
     if failed:
         print(f"error: {name}: {failed}", file=sys.stderr)
@@ -127,6 +128,8 @@ def _prove(manifest: dict, paths: dict) -> int:
     """Parse each Act and compare its section count with the manifest; on success print the mcp line."""
     ok, counts = True, {}
     for name, src in manifest.items():
+        if name not in PARSERS:  # slice 15 sources are checked for presence and hash only
+            continue
         counts[name] = sum(p.parent is None for p in PARSERS[name](str(paths[name])))
         good = counts[name] == src["sections"]
         ok = ok and good

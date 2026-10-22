@@ -12,5 +12,27 @@
     "bytes": 1145178,
     "sections": 575,
     "sha256": "1f81d285b4bc912b335596ffbba44280d49169a56c0d21572c8bf3f6b6fedd4e"
+  },
+  "bnss": {
+    "file": "bnss-prs.pdf",
+    "url": "https://prsindia.org/files/bills_acts/bills_parliament/2023/The%20Bharatiya%20Nagarik%20Suraksha%20Sanhita,%202023.pdf",
+    "bytes": 2033181,
+    "sha256": "5e60e2afe30d0fe7eca4f8126301146b76c86a444e690581f81eb564843517fe",
+    "reuse": "unconfirmed"
+  },
+  "crpc": {
+    "file": "crpc-indiacode.pdf",
+    "url": "https://web.archive.org/web/20251206113418id_/https://www.indiacode.nic.in/bitstream/123456789/13624/1/the_code_of_criminal_procedure%2C_1973.pdf",
+    "bytes": 1660268,
+    "sha256": "2f28d487c18d33f65195d7ab99cb5dc8fd4dcf232c7deb18dee7f8fa289891b9",
+    "reuse": "unconfirmed"
+  },
+  "bnss_crpc_table": {
+    "file": "capt/comparison_summary_BNSS_to_CrPC.pdf",
+    "url": "https://keralaprisons.gov.in/userfiles/act-and-rules/comparison_summary_BNSS_to_CrPC.pdf",
+    "bytes": 674648,
+    "sha256": "aa3e49147cf88141a8471a614246270ab4730cd3a4099e06de7a69792d80d33b",
+    "reuse": "unconfirmed",
+    "note": "copyright line on each page names the author; keep out of git, keep only section numbers and row references"
   }
 }
