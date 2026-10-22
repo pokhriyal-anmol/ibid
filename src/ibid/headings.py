@@ -57,28 +57,46 @@ def _cut(line: str, side: str | None, col: int) -> tuple[str, str]:
     return line, ""
 
 
-def parse_layout(layout: str) -> list[tuple[str, str | None]]:
-    """(citation, heading or None) for BNS sections 1..358 in order, from `pdftotext -layout` text."""
-    found: list[tuple[str, list[str]]] = []
+def walk_layout(layout: str, act: str, total: int, end: str | None = None) -> list[tuple[str, list[str], list[tuple[str, int]]]]:
+    """(citation, heading parts, body lines as (text, column)) for sections 1..total, from `pdftotext -layout` text.
+    A line that equals `end` once stripped stops the walk."""
+    found: list[tuple[str, list[str], list[tuple[str, int]]]] = []
     closed = True  # a heading ends at its first full stop; later margin text is a note or the next heading
     above: list[str] = []  # margin-only lines since the last body line, once the heading is closed
+    between = False  # a chapter heading and its title sit between two sections, not inside one
     for page in layout.split("\f"):
         lines = page.split("\n")
         rule = max((i for i, ln in enumerate(lines[:HEADER_ROWS]) if "____" in ln), default=-1)
         lines = lines[rule + 1:]
         side, col = _side(lines)
+        placed: list[tuple[list, str, int]] = []  # this page's body lines, columns made relative to the page's leftmost
         for line in lines:
+            if end and line.strip() == end:
+                break
             body, margin = _cut(line, side, col)
             m = START.match(body.lstrip())
-            if m and int(m[1]) == len(found) + 1 <= BNS_TOTAL:
-                found.append((f"BNS {m[1]}", above))
-                above, closed = [], False
+            if m and int(m[1]) == len(found) + 1 <= total:
+                found.append((f"{act} {m[1]}", above, []))
+                above, closed, between = [], False, False
+            between = between or re.fullmatch(r"CHAPTER [IVXLC]+", body.strip()) is not None
             if margin:
                 (above if closed else found[-1][1]).append(margin)
                 closed = closed or margin.endswith(".")
             if body.strip():
                 above = []
-    return [(c, " ".join(parts) or None) for c, parts in found]
+                if found and not between:
+                    placed.append((found[-1][2], body.strip(), len(line) - len(line.lstrip()) if side != "left" else line.rfind(body.strip())))
+        base = min((c for _, _, c in placed), default=0)
+        for into, text, c in placed:
+            into.append((text, c - base))
+        if end and any(ln.strip() == end for ln in lines):
+            break
+    return found
+
+
+def parse_layout(layout: str) -> list[tuple[str, str | None]]:
+    """(citation, heading or None) for BNS sections 1..358 in order, from `pdftotext -layout` text."""
+    return [(c, " ".join(parts) or None) for c, parts, _ in walk_layout(layout, "BNS", BNS_TOTAL)]
 
 
 def bns_headings(pdf_path: str) -> list[tuple[str, str | None]]:

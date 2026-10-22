@@ -11,14 +11,15 @@ import unittest
 from pathlib import Path
 
 from mcp_harness import ENV, ROOT, Client, command
-from pdfs import CRPC_PDF
+from pdfs import BNSS_PDF, CRPC_PDF
 
 MINI = ROOT / "tests" / "fixtures" / "crpc-mini.txt"
+BNSS_MINI = ROOT / "tests" / "fixtures" / "bnss-mini.txt"
 HEAD_41A = "Notice of appearance before police officer."
 
 
-def build(src: str, index_path: str) -> subprocess.CompletedProcess:
-    return subprocess.run([sys.executable, "-m", "ibid.cli", "procedure", "build", "--crpc", src, "--index", index_path],
+def build(src: str, index_path: str, bnss: str = str(BNSS_MINI)) -> subprocess.CompletedProcess:
+    return subprocess.run([sys.executable, "-m", "ibid.cli", "procedure", "build", "--crpc", src, "--bnss", bnss, "--index", index_path],
                           cwd=ROOT, env=ENV, capture_output=True, text=True)
 
 
@@ -158,7 +159,7 @@ class RealCrpcTest(unittest.TestCase):
     def setUpClass(cls):
         cls.tmp = tempfile.TemporaryDirectory()
         cls.index = str(Path(cls.tmp.name) / "procedure.sqlite")
-        cls.built = build(CRPC_PDF, cls.index)
+        cls.built = build(CRPC_PDF, cls.index, BNSS_PDF)
 
     @classmethod
     def tearDownClass(cls):

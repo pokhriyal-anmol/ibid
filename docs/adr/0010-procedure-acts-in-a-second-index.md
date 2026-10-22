@@ -7,3 +7,5 @@ The CrPC (and later the BNSS) is built into `data/index/procedure.sqlite`, with 
 **Cost:** a keyword search does not cross the two files. `search` stays on the first index until it gains an `act` argument, and a procedure Act's scores are never comparable with the IPC's. Anything that needs both must open both.
 
 **Rule:** a new Act that would change the first index's corpus goes in a second file. Headings of the procedure Acts come from their Arrangement of Sections.
+
+**BNSS:** built into the same file by `ibid procedure build` (`BNSS_PARSER_VERSION` in `meta`). The PRS Gazette copy prints no Arrangement of Sections, so its headings are the margin notes and its count is checked against the published 531; a file that does print an Arrangement is checked against it as the CrPC is. A `BNSS` Citation is looked up only in this file, never in the BNS section of the same number.

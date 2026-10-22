@@ -77,11 +77,11 @@ def call_tool(db, entries: list[dict], name: str, args: object, heads: dict[str,
             if not isinstance(got, str):
                 return _tool_result({"result": got, "via": section})
         return _tool_result(got if isinstance(got, str) else {"result": got})
-    if procedure and args["citation"].split(" ")[0] == "CrPC":  # the second index holds the procedure Acts
+    if procedure and args["citation"].split(" ")[0] in ("CrPC", "BNSS"):  # the second index holds the procedure Acts
         db, heads = procedure
     got = index.lookup(db, args["citation"])
     if got is None:
-        return _tool_result(f"Citation not in the index: {args['citation']}", True)
+        return _tool_result(f"Citation not in the index: {args['citation']}. Covered Acts: IPC, BNS, CrPC, BNSS.", True)
     if name == "cross_references":
         miss = [{"matched": u["matched"], "reason": u["reason"]} for u in index.unresolved(db) if u["source"] == args["citation"]]
         return _tool_result({"citation": args["citation"], "resolved": got[2], "unresolved": miss})

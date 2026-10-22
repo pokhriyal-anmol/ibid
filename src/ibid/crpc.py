@@ -105,19 +105,27 @@ def check(provisions: list[Provision], arr: list[tuple[str, str]]) -> tuple[bool
     return len(tops) == len(arr) and rate >= HEADING_MATCH_FLOOR, report
 
 
-def build(path: str, index_path: str) -> int:
+def build(path: str, index_path: str, bnss_path: str | None = None) -> int:
     """Check, then write the second index. A failed check writes nothing."""
     provisions, arr = parse_crpc(path)
     ok, report = check(provisions, arr)
+    heads = [(f"CrPC {k}", h) for k, h in arr]  # the Arrangement's, decision 7
+    versions = [("crpc_parser_version", CRPC_PARSER_VERSION)]
+    if bnss_path:
+        from ibid import bnss
+        more, more_heads, more_arr = bnss.parse_bnss(bnss_path)
+        bok, brep = bnss.check(more_heads, more_arr)
+        provisions, heads, ok, report = provisions + more, heads + more_heads, ok and bok, report + brep
+        versions.append(("bnss_parser_version", bnss.BNSS_PARSER_VERSION))
     print("\n".join(report))
     if not ok:
-        print("error: CrPC check failed, nothing written", file=sys.stderr)
+        print("error: procedure Act check failed, nothing written", file=sys.stderr)
         return 1
     db = index.build(index_path, provisions, [])
-    db.execute("CREATE TABLE heading (citation TEXT PRIMARY KEY, heading TEXT)")  # the Arrangement's, decision 7
-    db.executemany("INSERT INTO heading VALUES (?, ?)", [(f"CrPC {k}", h) for k, h in arr])
+    db.execute("CREATE TABLE heading (citation TEXT PRIMARY KEY, heading TEXT)")
+    db.executemany("INSERT INTO heading VALUES (?, ?)", heads)
     db.execute("CREATE TABLE meta (key TEXT PRIMARY KEY, value TEXT)")
-    db.execute("INSERT INTO meta VALUES ('crpc_parser_version', ?)", (CRPC_PARSER_VERSION,))
+    db.executemany("INSERT INTO meta VALUES (?, ?)", versions)
     db.commit()
     db.close()
     return 0
