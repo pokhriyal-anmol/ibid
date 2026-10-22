@@ -316,7 +316,7 @@ class ConcordanceToolTest(unittest.TestCase):
     def test_schema_requires_only_citation(self):
         tool = next(t for t in self.c.request("tools/list")["result"]["tools"] if t["name"] == "concordance")
         self.assertEqual(tool["inputSchema"]["required"], ["citation"])
-        self.assertEqual(tool["inputSchema"]["properties"]["direction"]["enum"], ["ipc_to_bns", "bns_to_ipc"])
+        self.assertEqual(tool["inputSchema"]["properties"]["direction"]["enum"], ["ipc_to_bns", "bns_to_ipc", "crpc_to_bnss", "bnss_to_crpc"])
 
 
 class StartupFailureTest(unittest.TestCase):

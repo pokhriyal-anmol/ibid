@@ -1,0 +1,6715 @@
+[
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 396"
+    ],
+    "crpc": [
+      "CrPC 357A",
+      "CrPC 357B"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 396 (p.30)",
+    "type": "merged",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 1"
+    ],
+    "crpc": [],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication: ipc cell is a range, cut off or unread, rows 1 (p.1)",
+    "type": "new",
+    "verified": false
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 10"
+    ],
+    "crpc": [],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication: ipc cell is a range, cut off or unread, rows 10 (p.2)",
+    "type": "new",
+    "verified": false
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 105"
+    ],
+    "crpc": [],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 105 (p.9)",
+    "type": "new",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 106"
+    ],
+    "crpc": [],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication: ipc cell is a range, cut off or unread, rows 106 (p.9)",
+    "type": "new",
+    "verified": false
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 107"
+    ],
+    "crpc": [],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 107 (p.9)",
+    "type": "new",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 11"
+    ],
+    "crpc": [],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication: ipc cell is a range, cut off or unread, rows 11 (p.2)",
+    "type": "new",
+    "verified": false
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 12"
+    ],
+    "crpc": [],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication: ipc cell is a range, cut off or unread, rows 12 (p.2)",
+    "type": "new",
+    "verified": false
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 172"
+    ],
+    "crpc": [],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 172 (p.13)",
+    "type": "new",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 217"
+    ],
+    "crpc": [],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication: ipc cell is a range, cut off or unread, rows 217 (p.18)",
+    "type": "new",
+    "verified": false
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 218"
+    ],
+    "crpc": [],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication: ipc cell is a range, cut off or unread, rows 218 (p.18)",
+    "type": "new",
+    "verified": false
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 219"
+    ],
+    "crpc": [],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication: ipc cell is a range, cut off or unread, rows 219 (p.18)",
+    "type": "new",
+    "verified": false
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 222"
+    ],
+    "crpc": [],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication: ipc cell is a range, cut off or unread, rows 222 (p.18)",
+    "type": "new",
+    "verified": false
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 223"
+    ],
+    "crpc": [],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication: ipc cell is a range, cut off or unread, rows 223 (p.18)",
+    "type": "new",
+    "verified": false
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 224"
+    ],
+    "crpc": [],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication: ipc cell is a range, cut off or unread, rows 224 (p.18)",
+    "type": "new",
+    "verified": false
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 297"
+    ],
+    "crpc": [],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication: ipc cell is a range, cut off or unread, rows 297 (p.24)",
+    "type": "new",
+    "verified": false
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 3"
+    ],
+    "crpc": [],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication: ipc cell is a range, cut off or unread, rows 3 (p.2)",
+    "type": "new",
+    "verified": false
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 336"
+    ],
+    "crpc": [],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 336 (p.26)",
+    "type": "new",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 356"
+    ],
+    "crpc": [],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 356 (p.27)",
+    "type": "new",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 39"
+    ],
+    "crpc": [],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication: ipc cell is a range, cut off or unread, rows 39 (p.4)",
+    "type": "new",
+    "verified": false
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 398"
+    ],
+    "crpc": [],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 398 (p.30)",
+    "type": "new",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 4"
+    ],
+    "crpc": [],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication: ipc cell is a range, cut off or unread, rows 4 (p.2)",
+    "type": "new",
+    "verified": false
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 40"
+    ],
+    "crpc": [],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication: ipc cell is a range, cut off or unread, rows 40 (p.4)",
+    "type": "new",
+    "verified": false
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 41"
+    ],
+    "crpc": [],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication: ipc cell is a range, cut off or unread, rows 41 (p.4)",
+    "type": "new",
+    "verified": false
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 42"
+    ],
+    "crpc": [],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication: ipc cell is a range, cut off or unread, rows 42 (p.4)",
+    "type": "new",
+    "verified": false
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 43"
+    ],
+    "crpc": [],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication: ipc cell is a range, cut off or unread, rows 43 (p.4)",
+    "type": "new",
+    "verified": false
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 44"
+    ],
+    "crpc": [],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication: ipc cell is a range, cut off or unread, rows 44 (p.4)",
+    "type": "new",
+    "verified": false
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 472"
+    ],
+    "crpc": [],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 472 (p.34)",
+    "type": "new",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 49"
+    ],
+    "crpc": [],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication: ipc cell is a range, cut off or unread, rows 49 (p.5)",
+    "type": "new",
+    "verified": false
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 5"
+    ],
+    "crpc": [],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication: ipc cell is a range, cut off or unread, rows 5 (p.2)",
+    "type": "new",
+    "verified": false
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 50"
+    ],
+    "crpc": [],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication: ipc cell is a range, cut off or unread, rows 50 (p.5)",
+    "type": "new",
+    "verified": false
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 51"
+    ],
+    "crpc": [],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication: ipc cell is a range, cut off or unread, rows 51 (p.5)",
+    "type": "new",
+    "verified": false
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 53"
+    ],
+    "crpc": [],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication: ipc cell is a range, cut off or unread, rows 53 (p.5)",
+    "type": "new",
+    "verified": false
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 530"
+    ],
+    "crpc": [],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 530 (p.38)",
+    "type": "new",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 55"
+    ],
+    "crpc": [],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication: ipc cell is a range, cut off or unread, rows 55 (p.5)",
+    "type": "new",
+    "verified": false
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 58"
+    ],
+    "crpc": [],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication: ipc cell is a range, cut off or unread, rows 58 (p.5)",
+    "type": "new",
+    "verified": false
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 6"
+    ],
+    "crpc": [],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication: ipc cell is a range, cut off or unread, rows 6 (p.2)",
+    "type": "new",
+    "verified": false
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 7"
+    ],
+    "crpc": [],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication: ipc cell is a range, cut off or unread, rows 7 (p.2)",
+    "type": "new",
+    "verified": false
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 8"
+    ],
+    "crpc": [],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication: ipc cell is a range, cut off or unread, rows 8 (p.2)",
+    "type": "new",
+    "verified": false
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 86"
+    ],
+    "crpc": [],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 86 (p.7)",
+    "type": "new",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 9"
+    ],
+    "crpc": [],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication: ipc cell is a range, cut off or unread, rows 9 (p.2)",
+    "type": "new",
+    "verified": false
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 103"
+    ],
+    "crpc": [
+      "CrPC 100"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 103 (p.8)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 104"
+    ],
+    "crpc": [
+      "CrPC 101"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 104 (p.8)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 108"
+    ],
+    "crpc": [
+      "CrPC 103"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 108 (p.9)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 109"
+    ],
+    "crpc": [
+      "CrPC 104"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 109 (p.9)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 110"
+    ],
+    "crpc": [
+      "CrPC 105"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 110 (p.9)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 111"
+    ],
+    "crpc": [
+      "CrPC 105A"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 111 (p.9)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 114"
+    ],
+    "crpc": [
+      "CrPC 105B"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 114 (p.9)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 115"
+    ],
+    "crpc": [
+      "CrPC 105C"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 115 (p.9)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 116"
+    ],
+    "crpc": [
+      "CrPC 105D"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 116 (p.9)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 117"
+    ],
+    "crpc": [
+      "CrPC 105E"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 117 (p.9)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 118"
+    ],
+    "crpc": [
+      "CrPC 105F"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 118 (p.9)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 119"
+    ],
+    "crpc": [
+      "CrPC 105G"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 119 (p.10)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 120"
+    ],
+    "crpc": [
+      "CrPC 105H"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 120 (p.10)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 121"
+    ],
+    "crpc": [
+      "CrPC 105I"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 121 (p.10)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 122"
+    ],
+    "crpc": [
+      "CrPC 105J"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 122 (p.10)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 123"
+    ],
+    "crpc": [
+      "CrPC 105K"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 123 (p.10)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 124"
+    ],
+    "crpc": [
+      "CrPC 105L"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 124 (p.10)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 125"
+    ],
+    "crpc": [
+      "CrPC 106"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 125 (p.10)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 126"
+    ],
+    "crpc": [
+      "CrPC 107"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 126 (p.10)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 127"
+    ],
+    "crpc": [
+      "CrPC 108"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 127 (p.10)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 128"
+    ],
+    "crpc": [
+      "CrPC 109"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 128 (p.10)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 129"
+    ],
+    "crpc": [
+      "CrPC 110"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 129 (p.10)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 130"
+    ],
+    "crpc": [
+      "CrPC 111"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 130 (p.10)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 131"
+    ],
+    "crpc": [
+      "CrPC 112"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 131 (p.10)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 132"
+    ],
+    "crpc": [
+      "CrPC 113"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 132 (p.10)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 133"
+    ],
+    "crpc": [
+      "CrPC 114"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 133 (p.10)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 134"
+    ],
+    "crpc": [
+      "CrPC 115"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 134 (p.10)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 135"
+    ],
+    "crpc": [
+      "CrPC 116"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 135 (p.10)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 136"
+    ],
+    "crpc": [
+      "CrPC 117"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 136 (p.10)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 137"
+    ],
+    "crpc": [
+      "CrPC 118"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 137 (p.10)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 138"
+    ],
+    "crpc": [
+      "CrPC 119"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 138 (p.11)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 139"
+    ],
+    "crpc": [
+      "CrPC 120"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 139 (p.11)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 140"
+    ],
+    "crpc": [
+      "CrPC 121"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 140 (p.11)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 141"
+    ],
+    "crpc": [
+      "CrPC 122"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 141 (p.11)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 142"
+    ],
+    "crpc": [
+      "CrPC 123"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 142 (p.11)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 143"
+    ],
+    "crpc": [
+      "CrPC 124"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 143 (p.11)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 144"
+    ],
+    "crpc": [
+      "CrPC 125"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 144 (p.11)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 145"
+    ],
+    "crpc": [
+      "CrPC 126"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 145 (p.11)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 146"
+    ],
+    "crpc": [
+      "CrPC 127"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 146 (p.11)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 147"
+    ],
+    "crpc": [
+      "CrPC 128"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 147 (p.11)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 148"
+    ],
+    "crpc": [
+      "CrPC 129"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 148 (p.11)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 149"
+    ],
+    "crpc": [
+      "CrPC 130"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 149 (p.11)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 150"
+    ],
+    "crpc": [
+      "CrPC 131"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 150 (p.11)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 151"
+    ],
+    "crpc": [
+      "CrPC 132"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 151 (p.11)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 152"
+    ],
+    "crpc": [
+      "CrPC 133"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 152 (p.11)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 153"
+    ],
+    "crpc": [
+      "CrPC 134"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 153 (p.11)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 154"
+    ],
+    "crpc": [
+      "CrPC 135"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 154 (p.11)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 155"
+    ],
+    "crpc": [
+      "CrPC 136"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 155 (p.12)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 156"
+    ],
+    "crpc": [
+      "CrPC 137"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 156 (p.12)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 157"
+    ],
+    "crpc": [
+      "CrPC 138"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 157 (p.12)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 158"
+    ],
+    "crpc": [
+      "CrPC 139"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 158 (p.12)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 159"
+    ],
+    "crpc": [
+      "CrPC 140"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 159 (p.12)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 160"
+    ],
+    "crpc": [
+      "CrPC 141"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 160 (p.12)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 161"
+    ],
+    "crpc": [
+      "CrPC 142"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 161 (p.12)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 162"
+    ],
+    "crpc": [
+      "CrPC 143"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 162 (p.12)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 163"
+    ],
+    "crpc": [
+      "CrPC 144"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 163 (p.12)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 164"
+    ],
+    "crpc": [
+      "CrPC 145"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 164 (p.12)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 165"
+    ],
+    "crpc": [
+      "CrPC 146"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 165 (p.12)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 166"
+    ],
+    "crpc": [
+      "CrPC 147"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 166 (p.12)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 167"
+    ],
+    "crpc": [
+      "CrPC 148"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 167 (p.12)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 168"
+    ],
+    "crpc": [
+      "CrPC 149"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 168 (p.12)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 13"
+    ],
+    "crpc": [
+      "CrPC 15"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 13 (p.3)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 169"
+    ],
+    "crpc": [
+      "CrPC 150"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 169 (p.12)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 170"
+    ],
+    "crpc": [
+      "CrPC 151"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 170 (p.13)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 171"
+    ],
+    "crpc": [
+      "CrPC 152"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 171 (p.13)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 173"
+    ],
+    "crpc": [
+      "CrPC 154"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 173 (p.13)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 174"
+    ],
+    "crpc": [
+      "CrPC 155"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 174 (p.13)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 175"
+    ],
+    "crpc": [
+      "CrPC 156"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 175 (p.13)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 176"
+    ],
+    "crpc": [
+      "CrPC 157"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 176 (p.13)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 177"
+    ],
+    "crpc": [
+      "CrPC 158"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 177 (p.13)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 178"
+    ],
+    "crpc": [
+      "CrPC 159"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 178 (p.14)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 179"
+    ],
+    "crpc": [
+      "CrPC 160"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 179 (p.14)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 180"
+    ],
+    "crpc": [
+      "CrPC 161"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 180 (p.14)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 181"
+    ],
+    "crpc": [
+      "CrPC 162"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 181 (p.14)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 182"
+    ],
+    "crpc": [
+      "CrPC 163"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 182 (p.14)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 183"
+    ],
+    "crpc": [
+      "CrPC 164"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 183 (p.14)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 184"
+    ],
+    "crpc": [
+      "CrPC 164A"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 184 (p.14)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 185"
+    ],
+    "crpc": [
+      "CrPC 165"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 185 (p.14)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 186"
+    ],
+    "crpc": [
+      "CrPC 166"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 186 (p.14)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 112"
+    ],
+    "crpc": [
+      "CrPC 166A"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 112 (p.9)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 113"
+    ],
+    "crpc": [
+      "CrPC 166B"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 113 (p.9)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 187"
+    ],
+    "crpc": [
+      "CrPC 167"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 187 (p.14)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 188"
+    ],
+    "crpc": [
+      "CrPC 168"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 188 (p.15)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 189"
+    ],
+    "crpc": [
+      "CrPC 169"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 189 (p.15)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 190"
+    ],
+    "crpc": [
+      "CrPC 170"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 190 (p.15)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 191"
+    ],
+    "crpc": [
+      "CrPC 171"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 191 (p.15)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 192"
+    ],
+    "crpc": [
+      "CrPC 172"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 192 (p.15)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 193"
+    ],
+    "crpc": [
+      "CrPC 173"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 193 (p.15)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 194"
+    ],
+    "crpc": [
+      "CrPC 174"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 194 (p.16)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 195"
+    ],
+    "crpc": [
+      "CrPC 175"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 195 (p.16)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 196"
+    ],
+    "crpc": [
+      "CrPC 176"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 196 (p.16)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 197"
+    ],
+    "crpc": [
+      "CrPC 177"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 197 (p.16)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 198"
+    ],
+    "crpc": [
+      "CrPC 178"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 198 (p.16)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 199"
+    ],
+    "crpc": [
+      "CrPC 179"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 199 (p.16)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 200"
+    ],
+    "crpc": [
+      "CrPC 180"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 200 (p.16)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 201"
+    ],
+    "crpc": [
+      "CrPC 181"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 201 (p.16)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 202"
+    ],
+    "crpc": [
+      "CrPC 182"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 202 (p.16)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 203"
+    ],
+    "crpc": [
+      "CrPC 183"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 203 (p.17)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 204"
+    ],
+    "crpc": [
+      "CrPC 184"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 204 (p.17)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 205"
+    ],
+    "crpc": [
+      "CrPC 185"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 205 (p.17)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 206"
+    ],
+    "crpc": [
+      "CrPC 186"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 206 (p.17)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 207"
+    ],
+    "crpc": [
+      "CrPC 187"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 207 (p.17)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 208"
+    ],
+    "crpc": [
+      "CrPC 188"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 208 (p.17)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 209"
+    ],
+    "crpc": [
+      "CrPC 189"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 209 (p.17)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 210"
+    ],
+    "crpc": [
+      "CrPC 190"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 210 (p.17)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 211"
+    ],
+    "crpc": [
+      "CrPC 191"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 211 (p.17)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 212"
+    ],
+    "crpc": [
+      "CrPC 192"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 212 (p.17)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 213"
+    ],
+    "crpc": [
+      "CrPC 193"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 213 (p.17)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 214"
+    ],
+    "crpc": [
+      "CrPC 194"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 214 (p.17)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 215"
+    ],
+    "crpc": [
+      "CrPC 195"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 215 (p.17)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 216"
+    ],
+    "crpc": [
+      "CrPC 195A"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 216 (p.17)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 220"
+    ],
+    "crpc": [
+      "CrPC 198A"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 220 (p.18)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 221"
+    ],
+    "crpc": [
+      "CrPC 198B"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 221 (p.18)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 2"
+    ],
+    "crpc": [
+      "CrPC 2"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication: ipc cell is a range, cut off or unread, rows 2 (p.1), 2(1)(l) (p.1), 2(1)(n) (p.1), 2(1)(o) (p.1), 2(1)(p) (p.1), 2(1)(q) (p.1), 2(1)(r) (p.1), 2(1)(s) (p.2), 2(1)(t) (p.2), 2(1)(u) (p.2), 2(1)(v) (p.2), 2(1)(x) (p.2), 2(1)(y) (p.2), 2(2) (p.2)",
+    "type": "one-to-one",
+    "verified": false
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 14"
+    ],
+    "crpc": [
+      "CrPC 20"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 14 (p.3)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 225"
+    ],
+    "crpc": [
+      "CrPC 202"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 225 (p.19)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 226"
+    ],
+    "crpc": [
+      "CrPC 203"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 226 (p.19)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 227"
+    ],
+    "crpc": [
+      "CrPC 204"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 227 (p.19)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 228"
+    ],
+    "crpc": [
+      "CrPC 205"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 228 (p.19)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 229"
+    ],
+    "crpc": [
+      "CrPC 206"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 229 (p.19)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 230"
+    ],
+    "crpc": [
+      "CrPC 207"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 230 (p.19)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 231"
+    ],
+    "crpc": [
+      "CrPC 208"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 231 (p.19)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 232"
+    ],
+    "crpc": [
+      "CrPC 209"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 232 (p.19)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 15"
+    ],
+    "crpc": [
+      "CrPC 21"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 15 (p.3)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 233"
+    ],
+    "crpc": [
+      "CrPC 210"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 233 (p.20)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 234"
+    ],
+    "crpc": [
+      "CrPC 211"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 234 (p.20)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 235"
+    ],
+    "crpc": [
+      "CrPC 212"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 235 (p.20)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 236"
+    ],
+    "crpc": [
+      "CrPC 213"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 236 (p.20)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 237"
+    ],
+    "crpc": [
+      "CrPC 214"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 237 (p.20)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 238"
+    ],
+    "crpc": [
+      "CrPC 215"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 238 (p.20)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 239"
+    ],
+    "crpc": [
+      "CrPC 216"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 239 (p.20)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 240"
+    ],
+    "crpc": [
+      "CrPC 217"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 240 (p.20)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 241"
+    ],
+    "crpc": [
+      "CrPC 218"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 241 (p.20)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 242"
+    ],
+    "crpc": [
+      "CrPC 219"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 242 (p.20)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 16"
+    ],
+    "crpc": [
+      "CrPC 22"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 16 (p.3)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 243"
+    ],
+    "crpc": [
+      "CrPC 220"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 243 (p.20)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 244"
+    ],
+    "crpc": [
+      "CrPC 221"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 244 (p.20)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 245"
+    ],
+    "crpc": [
+      "CrPC 222"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 245 (p.20)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 246"
+    ],
+    "crpc": [
+      "CrPC 223"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 246 (p.20)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 247"
+    ],
+    "crpc": [
+      "CrPC 224"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 247 (p.20)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 248"
+    ],
+    "crpc": [
+      "CrPC 225"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 248 (p.20)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 249"
+    ],
+    "crpc": [
+      "CrPC 226"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 249 (p.20)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 250"
+    ],
+    "crpc": [
+      "CrPC 227"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 250 (p.20)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 251"
+    ],
+    "crpc": [
+      "CrPC 228"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 251 (p.21)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 252"
+    ],
+    "crpc": [
+      "CrPC 229"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 252 (p.21)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 17"
+    ],
+    "crpc": [
+      "CrPC 23"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 17 (p.3)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 253"
+    ],
+    "crpc": [
+      "CrPC 230"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 253 (p.21)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 254"
+    ],
+    "crpc": [
+      "CrPC 231"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 254 (p.21)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 255"
+    ],
+    "crpc": [
+      "CrPC 232"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 255 (p.21)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 256"
+    ],
+    "crpc": [
+      "CrPC 233"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 256 (p.21)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 257"
+    ],
+    "crpc": [
+      "CrPC 234"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 257 (p.21)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 258"
+    ],
+    "crpc": [
+      "CrPC 235"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 258 (p.21)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 259"
+    ],
+    "crpc": [
+      "CrPC 236"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 259 (p.21)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 260"
+    ],
+    "crpc": [
+      "CrPC 237"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 260 (p.21)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 261"
+    ],
+    "crpc": [
+      "CrPC 238"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 261 (p.21)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 262"
+    ],
+    "crpc": [
+      "CrPC 239"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 262 (p.21)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 18"
+    ],
+    "crpc": [
+      "CrPC 24"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 18 (p.3)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 263"
+    ],
+    "crpc": [
+      "CrPC 240"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 263 (p.21)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 264"
+    ],
+    "crpc": [
+      "CrPC 241"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 264 (p.21)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 265"
+    ],
+    "crpc": [
+      "CrPC 242"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 265 (p.21)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 266"
+    ],
+    "crpc": [
+      "CrPC 243"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 266 (p.22)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 267"
+    ],
+    "crpc": [
+      "CrPC 244"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 267 (p.22)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 268"
+    ],
+    "crpc": [
+      "CrPC 245"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 268 (p.22)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 269"
+    ],
+    "crpc": [
+      "CrPC 246"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 269 (p.22)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 270"
+    ],
+    "crpc": [
+      "CrPC 247"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 270 (p.22)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 271"
+    ],
+    "crpc": [
+      "CrPC 248"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 271 (p.22)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 272"
+    ],
+    "crpc": [
+      "CrPC 249"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 272 (p.22)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 19"
+    ],
+    "crpc": [
+      "CrPC 25"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 19 (p.3)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 273"
+    ],
+    "crpc": [
+      "CrPC 250"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 273 (p.22)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 274"
+    ],
+    "crpc": [
+      "CrPC 251"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 274 (p.22)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 275"
+    ],
+    "crpc": [
+      "CrPC 252"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 275 (p.22)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 276"
+    ],
+    "crpc": [
+      "CrPC 253"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 276 (p.22)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 277"
+    ],
+    "crpc": [
+      "CrPC 254"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 277 (p.22)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 278"
+    ],
+    "crpc": [
+      "CrPC 255"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 278 (p.22)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 279"
+    ],
+    "crpc": [
+      "CrPC 256"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 279 (p.22)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 280"
+    ],
+    "crpc": [
+      "CrPC 257"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 280 (p.22)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 281"
+    ],
+    "crpc": [
+      "CrPC 258"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 281 (p.22)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 282"
+    ],
+    "crpc": [
+      "CrPC 259"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 282 (p.23)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 20"
+    ],
+    "crpc": [
+      "CrPC 25A"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 20 (p.3)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 21"
+    ],
+    "crpc": [
+      "CrPC 26"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 21 (p.3)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 283"
+    ],
+    "crpc": [
+      "CrPC 260"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 283 (p.23)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 284"
+    ],
+    "crpc": [
+      "CrPC 261"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 284 (p.23)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 285"
+    ],
+    "crpc": [
+      "CrPC 262"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 285 (p.23)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 286"
+    ],
+    "crpc": [
+      "CrPC 263"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 286 (p.23)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 287"
+    ],
+    "crpc": [
+      "CrPC 264"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 287 (p.23)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 288"
+    ],
+    "crpc": [
+      "CrPC 265"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 288 (p.23)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 289"
+    ],
+    "crpc": [
+      "CrPC 265A"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 289 (p.23)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 290"
+    ],
+    "crpc": [
+      "CrPC 265B"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 290 (p.23)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 291"
+    ],
+    "crpc": [
+      "CrPC 265C"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 291 (p.23)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 292"
+    ],
+    "crpc": [
+      "CrPC 265D"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 292 (p.23)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 293"
+    ],
+    "crpc": [
+      "CrPC 265E"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 293 (p.23)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 294"
+    ],
+    "crpc": [
+      "CrPC 265F"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 294 (p.23)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 295"
+    ],
+    "crpc": [
+      "CrPC 265G"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 295 (p.23)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 296"
+    ],
+    "crpc": [
+      "CrPC 265H"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 296 (p.23)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 298"
+    ],
+    "crpc": [
+      "CrPC 265J"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 298 (p.24)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 299"
+    ],
+    "crpc": [
+      "CrPC 265K"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 299 (p.24)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 300"
+    ],
+    "crpc": [
+      "CrPC 265L"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 300 (p.24)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 301"
+    ],
+    "crpc": [
+      "CrPC 266"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 301 (p.24)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 302"
+    ],
+    "crpc": [
+      "CrPC 267"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 302 (p.24)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 303"
+    ],
+    "crpc": [
+      "CrPC 268"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 303 (p.24)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 304"
+    ],
+    "crpc": [
+      "CrPC 269"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 304 (p.24)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 305"
+    ],
+    "crpc": [
+      "CrPC 270"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 305 (p.24)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 306"
+    ],
+    "crpc": [
+      "CrPC 271"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 306 (p.24)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 307"
+    ],
+    "crpc": [
+      "CrPC 272"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 307 (p.24)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 308"
+    ],
+    "crpc": [
+      "CrPC 273"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 308 (p.24)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 309"
+    ],
+    "crpc": [
+      "CrPC 274"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 309 (p.24)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 310"
+    ],
+    "crpc": [
+      "CrPC 275"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 310 (p.24)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 311"
+    ],
+    "crpc": [
+      "CrPC 276"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 311 (p.24)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 312"
+    ],
+    "crpc": [
+      "CrPC 277"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 312 (p.24)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 313"
+    ],
+    "crpc": [
+      "CrPC 278"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 313 (p.24)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 314"
+    ],
+    "crpc": [
+      "CrPC 279"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 314 (p.24)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 22"
+    ],
+    "crpc": [
+      "CrPC 28"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 22 (p.3)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 315"
+    ],
+    "crpc": [
+      "CrPC 280"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 315 (p.24)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 316"
+    ],
+    "crpc": [
+      "CrPC 281"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 316 (p.25)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 317"
+    ],
+    "crpc": [
+      "CrPC 282"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 317 (p.25)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 318"
+    ],
+    "crpc": [
+      "CrPC 283"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 318 (p.25)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 319"
+    ],
+    "crpc": [
+      "CrPC 284"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 319 (p.25)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 320"
+    ],
+    "crpc": [
+      "CrPC 285"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 320 (p.25)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 321"
+    ],
+    "crpc": [
+      "CrPC 286"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 321 (p.25)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 322"
+    ],
+    "crpc": [
+      "CrPC 287"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 322 (p.25)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 323"
+    ],
+    "crpc": [
+      "CrPC 288"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 323 (p.25)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 324"
+    ],
+    "crpc": [
+      "CrPC 289"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 324 (p.25)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 23"
+    ],
+    "crpc": [
+      "CrPC 29"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 23 (p.3)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 325"
+    ],
+    "crpc": [
+      "CrPC 290"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 325 (p.25)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 326"
+    ],
+    "crpc": [
+      "CrPC 291"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 326 (p.25)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 327"
+    ],
+    "crpc": [
+      "CrPC 291A"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 327 (p.25)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 328"
+    ],
+    "crpc": [
+      "CrPC 292"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 328 (p.25)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 329"
+    ],
+    "crpc": [
+      "CrPC 293"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 329 (p.25)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 330"
+    ],
+    "crpc": [
+      "CrPC 294"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 330 (p.25)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 331"
+    ],
+    "crpc": [
+      "CrPC 295"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 331 (p.26)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 332"
+    ],
+    "crpc": [
+      "CrPC 296"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 332 (p.26)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 333"
+    ],
+    "crpc": [
+      "CrPC 297"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 333 (p.26)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 334"
+    ],
+    "crpc": [
+      "CrPC 298"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 334 (p.26)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 335"
+    ],
+    "crpc": [
+      "CrPC 299"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 335 (p.26)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 24"
+    ],
+    "crpc": [
+      "CrPC 30"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 24 (p.3)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 337"
+    ],
+    "crpc": [
+      "CrPC 300"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 337 (p.26)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 338"
+    ],
+    "crpc": [
+      "CrPC 301"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 338 (p.26)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 339"
+    ],
+    "crpc": [
+      "CrPC 302"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 339 (p.26)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 340"
+    ],
+    "crpc": [
+      "CrPC 303"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 340 (p.26)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 341"
+    ],
+    "crpc": [
+      "CrPC 304"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 341 (p.26)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 342"
+    ],
+    "crpc": [
+      "CrPC 305"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 342 (p.26)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 343"
+    ],
+    "crpc": [
+      "CrPC 306"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 343 (p.26)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 344"
+    ],
+    "crpc": [
+      "CrPC 307"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 344 (p.26)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 345"
+    ],
+    "crpc": [
+      "CrPC 308"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 345 (p.26)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 346"
+    ],
+    "crpc": [
+      "CrPC 309"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 346 (p.26)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 25"
+    ],
+    "crpc": [
+      "CrPC 31"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 25 (p.3)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 347"
+    ],
+    "crpc": [
+      "CrPC 310"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 347 (p.27)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 348"
+    ],
+    "crpc": [
+      "CrPC 311"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 348 (p.27)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 349"
+    ],
+    "crpc": [
+      "CrPC 311A"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 349 (p.27)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 350"
+    ],
+    "crpc": [
+      "CrPC 312"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 350 (p.27)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 351"
+    ],
+    "crpc": [
+      "CrPC 313"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 351 (p.27)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 352"
+    ],
+    "crpc": [
+      "CrPC 314"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 352 (p.27)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 353"
+    ],
+    "crpc": [
+      "CrPC 315"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 353 (p.27)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 354"
+    ],
+    "crpc": [
+      "CrPC 316"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 354 (p.27)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 355"
+    ],
+    "crpc": [
+      "CrPC 317"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 355 (p.27)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 357"
+    ],
+    "crpc": [
+      "CrPC 318"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 357 (p.27)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 358"
+    ],
+    "crpc": [
+      "CrPC 319"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 358 (p.27)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 26"
+    ],
+    "crpc": [
+      "CrPC 32"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 26 (p.3)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 359"
+    ],
+    "crpc": [
+      "CrPC 320"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 359 (p.27)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 360"
+    ],
+    "crpc": [
+      "CrPC 321"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 360 (p.28)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 361"
+    ],
+    "crpc": [
+      "CrPC 322"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 361 (p.28)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 362"
+    ],
+    "crpc": [
+      "CrPC 323"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 362 (p.28)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 363"
+    ],
+    "crpc": [
+      "CrPC 324"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 363 (p.28)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 364"
+    ],
+    "crpc": [
+      "CrPC 325"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 364 (p.28)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 365"
+    ],
+    "crpc": [
+      "CrPC 326"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 365 (p.28)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 366"
+    ],
+    "crpc": [
+      "CrPC 327"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 366 (p.28)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 367"
+    ],
+    "crpc": [
+      "CrPC 328"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 367 (p.28)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 368"
+    ],
+    "crpc": [
+      "CrPC 329"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 368 (p.28)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 27"
+    ],
+    "crpc": [
+      "CrPC 33"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 27 (p.3)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 369"
+    ],
+    "crpc": [
+      "CrPC 330"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 369 (p.28)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 370"
+    ],
+    "crpc": [
+      "CrPC 331"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 370 (p.28)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 371"
+    ],
+    "crpc": [
+      "CrPC 332"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 371 (p.28)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 372"
+    ],
+    "crpc": [
+      "CrPC 333"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 372 (p.28)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 373"
+    ],
+    "crpc": [
+      "CrPC 334"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 373 (p.29)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 374"
+    ],
+    "crpc": [
+      "CrPC 335"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 374 (p.29)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 375"
+    ],
+    "crpc": [
+      "CrPC 336"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 375 (p.29)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 376"
+    ],
+    "crpc": [
+      "CrPC 337"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 376 (p.29)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 377"
+    ],
+    "crpc": [
+      "CrPC 338"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 377 (p.29)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 378"
+    ],
+    "crpc": [
+      "CrPC 339"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 378 (p.29)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 28"
+    ],
+    "crpc": [
+      "CrPC 34"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 28 (p.3)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 379"
+    ],
+    "crpc": [
+      "CrPC 340"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 379 (p.29)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 380"
+    ],
+    "crpc": [
+      "CrPC 341"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 380 (p.29)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 381"
+    ],
+    "crpc": [
+      "CrPC 342"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 381 (p.29)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 382"
+    ],
+    "crpc": [
+      "CrPC 343"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 382 (p.29)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 383"
+    ],
+    "crpc": [
+      "CrPC 344"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 383 (p.29)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 384"
+    ],
+    "crpc": [
+      "CrPC 345"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 384 (p.29)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 385"
+    ],
+    "crpc": [
+      "CrPC 346"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 385 (p.29)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 386"
+    ],
+    "crpc": [
+      "CrPC 347"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 386 (p.29)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 387"
+    ],
+    "crpc": [
+      "CrPC 348"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 387 (p.29)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 388"
+    ],
+    "crpc": [
+      "CrPC 349"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 388 (p.29)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 29"
+    ],
+    "crpc": [
+      "CrPC 35"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 29 (p.3)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 389"
+    ],
+    "crpc": [
+      "CrPC 350"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 389 (p.30)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 390"
+    ],
+    "crpc": [
+      "CrPC 351"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 390 (p.30)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 391"
+    ],
+    "crpc": [
+      "CrPC 352"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 391 (p.30)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 392"
+    ],
+    "crpc": [
+      "CrPC 353"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 392 (p.30)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 393"
+    ],
+    "crpc": [
+      "CrPC 354"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 393 (p.30)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 394"
+    ],
+    "crpc": [
+      "CrPC 356"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 394 (p.30)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 395"
+    ],
+    "crpc": [
+      "CrPC 357"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 395 (p.30)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 397"
+    ],
+    "crpc": [
+      "CrPC 357C"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 397 (p.30)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 399"
+    ],
+    "crpc": [
+      "CrPC 358"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 399 (p.30)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 400"
+    ],
+    "crpc": [
+      "CrPC 359"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 400 (p.30)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 30"
+    ],
+    "crpc": [
+      "CrPC 36"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 30 (p.3)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 401"
+    ],
+    "crpc": [
+      "CrPC 360"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 401 (p.31)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 402"
+    ],
+    "crpc": [
+      "CrPC 361"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 402 (p.31)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 403"
+    ],
+    "crpc": [
+      "CrPC 362"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 403 (p.31)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 404"
+    ],
+    "crpc": [
+      "CrPC 363"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 404 (p.31)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 405"
+    ],
+    "crpc": [
+      "CrPC 364"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 405 (p.31)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 406"
+    ],
+    "crpc": [
+      "CrPC 365"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 406 (p.31)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 407"
+    ],
+    "crpc": [
+      "CrPC 366"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 407 (p.31)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 408"
+    ],
+    "crpc": [
+      "CrPC 367"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 408 (p.31)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 409"
+    ],
+    "crpc": [
+      "CrPC 368"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 409 (p.31)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 410"
+    ],
+    "crpc": [
+      "CrPC 369"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 410 (p.31)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 31"
+    ],
+    "crpc": [
+      "CrPC 37"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 31 (p.4)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 411"
+    ],
+    "crpc": [
+      "CrPC 370"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 411 (p.31)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 412"
+    ],
+    "crpc": [
+      "CrPC 371"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 412 (p.31)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 413"
+    ],
+    "crpc": [
+      "CrPC 372"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 413 (p.31)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 414"
+    ],
+    "crpc": [
+      "CrPC 373"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 414 (p.31)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 415"
+    ],
+    "crpc": [
+      "CrPC 374"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 415 (p.32)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 416"
+    ],
+    "crpc": [
+      "CrPC 375"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 416 (p.32)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 417"
+    ],
+    "crpc": [
+      "CrPC 376"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 417 (p.32)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 418"
+    ],
+    "crpc": [
+      "CrPC 377"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 418 (p.32)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 419"
+    ],
+    "crpc": [
+      "CrPC 378"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 419 (p.32)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 420"
+    ],
+    "crpc": [
+      "CrPC 379"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 420 (p.32)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 32"
+    ],
+    "crpc": [
+      "CrPC 38"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 32 (p.4)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 421"
+    ],
+    "crpc": [
+      "CrPC 380"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 421 (p.32)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 422"
+    ],
+    "crpc": [
+      "CrPC 381"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 422 (p.32)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 423"
+    ],
+    "crpc": [
+      "CrPC 382"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 423 (p.32)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 424"
+    ],
+    "crpc": [
+      "CrPC 383"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 424 (p.32)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 425"
+    ],
+    "crpc": [
+      "CrPC 384"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 425 (p.32)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 426"
+    ],
+    "crpc": [
+      "CrPC 385"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 426 (p.32)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 427"
+    ],
+    "crpc": [
+      "CrPC 386"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 427 (p.32)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 428"
+    ],
+    "crpc": [
+      "CrPC 387"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 428 (p.32)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 429"
+    ],
+    "crpc": [
+      "CrPC 388"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 429 (p.32)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 430"
+    ],
+    "crpc": [
+      "CrPC 389"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 430 (p.32)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 33"
+    ],
+    "crpc": [
+      "CrPC 39"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 33 (p.4)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 431"
+    ],
+    "crpc": [
+      "CrPC 390"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 431 (p.32)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 432"
+    ],
+    "crpc": [
+      "CrPC 391"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 432 (p.32)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 433"
+    ],
+    "crpc": [
+      "CrPC 392"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 433 (p.32)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 434"
+    ],
+    "crpc": [
+      "CrPC 393"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 434 (p.33)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 435"
+    ],
+    "crpc": [
+      "CrPC 394"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 435 (p.33)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 436"
+    ],
+    "crpc": [
+      "CrPC 395"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 436 (p.33)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 437"
+    ],
+    "crpc": [
+      "CrPC 396"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 437 (p.33)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 438"
+    ],
+    "crpc": [
+      "CrPC 397"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 438 (p.33)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 439"
+    ],
+    "crpc": [
+      "CrPC 398"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 439 (p.33)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 440"
+    ],
+    "crpc": [
+      "CrPC 399"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 440 (p.33)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 34"
+    ],
+    "crpc": [
+      "CrPC 40"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 34 (p.4)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 441"
+    ],
+    "crpc": [
+      "CrPC 400"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 441 (p.33)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 442"
+    ],
+    "crpc": [
+      "CrPC 401"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 442 (p.33)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 443"
+    ],
+    "crpc": [
+      "CrPC 402"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 443 (p.33)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 444"
+    ],
+    "crpc": [
+      "CrPC 403"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 444 (p.33)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 445"
+    ],
+    "crpc": [
+      "CrPC 405"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 445 (p.33)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 446"
+    ],
+    "crpc": [
+      "CrPC 406"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 446 (p.33)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 447"
+    ],
+    "crpc": [
+      "CrPC 407"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 447 (p.33)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 448"
+    ],
+    "crpc": [
+      "CrPC 408"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 448 (p.33)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 449"
+    ],
+    "crpc": [
+      "CrPC 409"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 449 (p.33)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 35"
+    ],
+    "crpc": [
+      "CrPC 41"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication: ipc cell is a range, cut off or unread, rows 35 (p.4)",
+    "type": "one-to-one",
+    "verified": false
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 450"
+    ],
+    "crpc": [
+      "CrPC 410"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 450 (p.33)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 451"
+    ],
+    "crpc": [
+      "CrPC 411"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 451 (p.33)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 452"
+    ],
+    "crpc": [
+      "CrPC 412"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 452 (p.33)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 453"
+    ],
+    "crpc": [
+      "CrPC 413"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 453 (p.33)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 454"
+    ],
+    "crpc": [
+      "CrPC 414"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 454 (p.33)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 455"
+    ],
+    "crpc": [
+      "CrPC 415"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 455 (p.34)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 456"
+    ],
+    "crpc": [
+      "CrPC 416"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 456 (p.34)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 457"
+    ],
+    "crpc": [
+      "CrPC 417"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 457 (p.34)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 458"
+    ],
+    "crpc": [
+      "CrPC 418"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 458 (p.34)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 459"
+    ],
+    "crpc": [
+      "CrPC 419"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 459 (p.34)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 36"
+    ],
+    "crpc": [
+      "CrPC 41B"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 36 (p.4)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 37"
+    ],
+    "crpc": [
+      "CrPC 41C"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 37 (p.4)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 38"
+    ],
+    "crpc": [
+      "CrPC 41D"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 38 (p.4)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 460"
+    ],
+    "crpc": [
+      "CrPC 420"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 460 (p.34)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 461"
+    ],
+    "crpc": [
+      "CrPC 421"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 461 (p.34)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 462"
+    ],
+    "crpc": [
+      "CrPC 422"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 462 (p.34)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 463"
+    ],
+    "crpc": [
+      "CrPC 423"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 463 (p.34)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 464"
+    ],
+    "crpc": [
+      "CrPC 424"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 464 (p.34)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 465"
+    ],
+    "crpc": [
+      "CrPC 425"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 465 (p.34)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 466"
+    ],
+    "crpc": [
+      "CrPC 426"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 466 (p.34)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 467"
+    ],
+    "crpc": [
+      "CrPC 427"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 467 (p.34)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 468"
+    ],
+    "crpc": [
+      "CrPC 428"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 468 (p.34)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 469"
+    ],
+    "crpc": [
+      "CrPC 429"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 469 (p.34)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 470"
+    ],
+    "crpc": [
+      "CrPC 430"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 470 (p.34)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 471"
+    ],
+    "crpc": [
+      "CrPC 431"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 471 (p.34)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 473"
+    ],
+    "crpc": [
+      "CrPC 432"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 473 (p.35)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 474"
+    ],
+    "crpc": [
+      "CrPC 433"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 474 (p.35)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 475"
+    ],
+    "crpc": [
+      "CrPC 433A"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 475 (p.35)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 476"
+    ],
+    "crpc": [
+      "CrPC 434"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 476 (p.35)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 477"
+    ],
+    "crpc": [
+      "CrPC 435"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 477 (p.35)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 478"
+    ],
+    "crpc": [
+      "CrPC 436"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 478 (p.35)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 479"
+    ],
+    "crpc": [
+      "CrPC 436A"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 479 (p.35)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 480"
+    ],
+    "crpc": [
+      "CrPC 437"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 480 (p.35)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 481"
+    ],
+    "crpc": [
+      "CrPC 437A"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 481 (p.35)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 482"
+    ],
+    "crpc": [
+      "CrPC 438"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 482 (p.35)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 483"
+    ],
+    "crpc": [
+      "CrPC 439"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 483 (p.35)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 484"
+    ],
+    "crpc": [
+      "CrPC 440"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 484 (p.35)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 485"
+    ],
+    "crpc": [
+      "CrPC 441"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 485 (p.35)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 486"
+    ],
+    "crpc": [
+      "CrPC 441A"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 486 (p.36)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 487"
+    ],
+    "crpc": [
+      "CrPC 442"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 487 (p.36)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 488"
+    ],
+    "crpc": [
+      "CrPC 443"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 488 (p.36)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 489"
+    ],
+    "crpc": [
+      "CrPC 444"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 489 (p.36)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 490"
+    ],
+    "crpc": [
+      "CrPC 445"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 490 (p.36)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 491"
+    ],
+    "crpc": [
+      "CrPC 446"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 491 (p.36)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 492"
+    ],
+    "crpc": [
+      "CrPC 446A"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 492 (p.36)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 493"
+    ],
+    "crpc": [
+      "CrPC 447"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 493 (p.36)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 494"
+    ],
+    "crpc": [
+      "CrPC 448"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 494 (p.36)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 495"
+    ],
+    "crpc": [
+      "CrPC 449"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 495 (p.36)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 496"
+    ],
+    "crpc": [
+      "CrPC 450"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 496 (p.36)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 497"
+    ],
+    "crpc": [
+      "CrPC 451"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 497 (p.36)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 498"
+    ],
+    "crpc": [
+      "CrPC 452"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 498 (p.36)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 499"
+    ],
+    "crpc": [
+      "CrPC 453"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 499 (p.36)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 500"
+    ],
+    "crpc": [
+      "CrPC 454"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 500 (p.36)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 501"
+    ],
+    "crpc": [
+      "CrPC 455"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 501 (p.36)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 502"
+    ],
+    "crpc": [
+      "CrPC 456"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 502 (p.36)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 503"
+    ],
+    "crpc": [
+      "CrPC 457"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 503 (p.37)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 504"
+    ],
+    "crpc": [
+      "CrPC 458"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 504 (p.37)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 505"
+    ],
+    "crpc": [
+      "CrPC 459"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 505 (p.37)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 506"
+    ],
+    "crpc": [
+      "CrPC 460"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 506 (p.37)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 507"
+    ],
+    "crpc": [
+      "CrPC 461"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 507 (p.37)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 508"
+    ],
+    "crpc": [
+      "CrPC 462"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 508 (p.37)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 509"
+    ],
+    "crpc": [
+      "CrPC 463"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 509 (p.37)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 510"
+    ],
+    "crpc": [
+      "CrPC 464"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 510 (p.37)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 511"
+    ],
+    "crpc": [
+      "CrPC 465"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 511 (p.37)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 512"
+    ],
+    "crpc": [
+      "CrPC 466"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 512 (p.37)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 513"
+    ],
+    "crpc": [
+      "CrPC 467"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 513 (p.37)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 514"
+    ],
+    "crpc": [
+      "CrPC 468"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 514 (p.37)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 515"
+    ],
+    "crpc": [
+      "CrPC 469"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 515 (p.37)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 516"
+    ],
+    "crpc": [
+      "CrPC 470"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 516 (p.37)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 517"
+    ],
+    "crpc": [
+      "CrPC 471"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 517 (p.37)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 518"
+    ],
+    "crpc": [
+      "CrPC 472"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 518 (p.37)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 519"
+    ],
+    "crpc": [
+      "CrPC 473"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 519 (p.37)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 520"
+    ],
+    "crpc": [
+      "CrPC 474"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 520 (p.37)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 521"
+    ],
+    "crpc": [
+      "CrPC 475"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 521 (p.38)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 522"
+    ],
+    "crpc": [
+      "CrPC 476"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 522 (p.38)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 523"
+    ],
+    "crpc": [
+      "CrPC 477"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 523 (p.38)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 524"
+    ],
+    "crpc": [
+      "CrPC 478"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 524 (p.38)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 525"
+    ],
+    "crpc": [
+      "CrPC 479"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 525 (p.38)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 45"
+    ],
+    "crpc": [
+      "CrPC 48"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 45 (p.4)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 526"
+    ],
+    "crpc": [
+      "CrPC 480"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 526 (p.38)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 527"
+    ],
+    "crpc": [
+      "CrPC 481"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 527 (p.38)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 528"
+    ],
+    "crpc": [
+      "CrPC 482"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 528 (p.38)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 529"
+    ],
+    "crpc": [
+      "CrPC 483"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 529 (p.38)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 531"
+    ],
+    "crpc": [
+      "CrPC 484"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 531 (p.38)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 46"
+    ],
+    "crpc": [
+      "CrPC 49"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 46 (p.5)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 47"
+    ],
+    "crpc": [
+      "CrPC 50"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 47 (p.5)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 48"
+    ],
+    "crpc": [
+      "CrPC 50A"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 48 (p.5)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 52"
+    ],
+    "crpc": [
+      "CrPC 53A"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 52 (p.5)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 54"
+    ],
+    "crpc": [
+      "CrPC 54A"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 54 (p.5)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 56"
+    ],
+    "crpc": [
+      "CrPC 55A"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 56 (p.5)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 57"
+    ],
+    "crpc": [
+      "CrPC 56"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 57 (p.5)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 59"
+    ],
+    "crpc": [
+      "CrPC 58"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 59 (p.6)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 60"
+    ],
+    "crpc": [
+      "CrPC 59"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 60 (p.6)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 61"
+    ],
+    "crpc": [
+      "CrPC 60"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 61 (p.6)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 62"
+    ],
+    "crpc": [
+      "CrPC 60A"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 62 (p.6)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 63"
+    ],
+    "crpc": [
+      "CrPC 61"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 63 (p.6)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 64"
+    ],
+    "crpc": [
+      "CrPC 62"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 64 (p.6)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 65"
+    ],
+    "crpc": [
+      "CrPC 63"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 65 (p.6)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 66"
+    ],
+    "crpc": [
+      "CrPC 64"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 66 (p.6)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 67"
+    ],
+    "crpc": [
+      "CrPC 65"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 67 (p.6)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 68"
+    ],
+    "crpc": [
+      "CrPC 66"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 68 (p.6)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 69"
+    ],
+    "crpc": [
+      "CrPC 67"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 69 (p.6)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 70"
+    ],
+    "crpc": [
+      "CrPC 68"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 70 (p.6)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 71"
+    ],
+    "crpc": [
+      "CrPC 69"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 71 (p.6)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 72"
+    ],
+    "crpc": [
+      "CrPC 70"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 72 (p.6)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 73"
+    ],
+    "crpc": [
+      "CrPC 71"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 73 (p.6)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 74"
+    ],
+    "crpc": [
+      "CrPC 72"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 74 (p.6)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 75"
+    ],
+    "crpc": [
+      "CrPC 73"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 75 (p.6)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 76"
+    ],
+    "crpc": [
+      "CrPC 74"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 76 (p.7)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 77"
+    ],
+    "crpc": [
+      "CrPC 75"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 77 (p.7)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 78"
+    ],
+    "crpc": [
+      "CrPC 76"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 78 (p.7)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 79"
+    ],
+    "crpc": [
+      "CrPC 77"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 79 (p.7)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 80"
+    ],
+    "crpc": [
+      "CrPC 78"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 80 (p.7)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 81"
+    ],
+    "crpc": [
+      "CrPC 79"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 81 (p.7)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 82"
+    ],
+    "crpc": [
+      "CrPC 80"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 82 (p.7)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 83"
+    ],
+    "crpc": [
+      "CrPC 81"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 83 (p.7)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 84"
+    ],
+    "crpc": [
+      "CrPC 82"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 84 (p.7)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 85"
+    ],
+    "crpc": [
+      "CrPC 83"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 85 (p.7)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 87"
+    ],
+    "crpc": [
+      "CrPC 84"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 87 (p.7)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 88"
+    ],
+    "crpc": [
+      "CrPC 85"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 88 (p.7)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 89"
+    ],
+    "crpc": [
+      "CrPC 86"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 89 (p.7)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 90"
+    ],
+    "crpc": [
+      "CrPC 87"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 90 (p.7)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 91"
+    ],
+    "crpc": [
+      "CrPC 88"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 91 (p.7)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 92"
+    ],
+    "crpc": [
+      "CrPC 89"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 92 (p.8)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 93"
+    ],
+    "crpc": [
+      "CrPC 90"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 93 (p.8)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 94"
+    ],
+    "crpc": [
+      "CrPC 91"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 94 (p.8)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 95"
+    ],
+    "crpc": [
+      "CrPC 92"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 95 (p.8)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 96"
+    ],
+    "crpc": [
+      "CrPC 93"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 96 (p.8)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 97"
+    ],
+    "crpc": [
+      "CrPC 94"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 97 (p.8)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 98"
+    ],
+    "crpc": [
+      "CrPC 95"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 98 (p.8)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 99"
+    ],
+    "crpc": [
+      "CrPC 96"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 99 (p.8)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 100"
+    ],
+    "crpc": [
+      "CrPC 97"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 100 (p.8)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 101"
+    ],
+    "crpc": [
+      "CrPC 98"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 101 (p.8)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [
+      "BNSS 102"
+    ],
+    "crpc": [
+      "CrPC 99"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication, rows 102 (p.8)",
+    "type": "one-to-one",
+    "verified": true
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [],
+    "crpc": [
+      "CrPC 1"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication: no row in the table cites it, rows none",
+    "type": "removed",
+    "verified": false
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [],
+    "crpc": [
+      "CrPC 10"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication: no row in the table cites it, rows none",
+    "type": "removed",
+    "verified": false
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [],
+    "crpc": [
+      "CrPC 102"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication: no row in the table cites it, rows none",
+    "type": "removed",
+    "verified": false
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [],
+    "crpc": [
+      "CrPC 11"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication: no row in the table cites it, rows none",
+    "type": "removed",
+    "verified": false
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [],
+    "crpc": [
+      "CrPC 12"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication: no row in the table cites it, rows none",
+    "type": "removed",
+    "verified": false
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [],
+    "crpc": [
+      "CrPC 13"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication: no row in the table cites it, rows none",
+    "type": "removed",
+    "verified": false
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [],
+    "crpc": [
+      "CrPC 14"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication: no row in the table cites it, rows none",
+    "type": "removed",
+    "verified": false
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [],
+    "crpc": [
+      "CrPC 153"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication: no row in the table cites it, rows none",
+    "type": "removed",
+    "verified": false
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [],
+    "crpc": [
+      "CrPC 16"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication: no row in the table cites it, rows none",
+    "type": "removed",
+    "verified": false
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [],
+    "crpc": [
+      "CrPC 17"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication: no row in the table cites it, rows none",
+    "type": "removed",
+    "verified": false
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [],
+    "crpc": [
+      "CrPC 18"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication: no row in the table cites it, rows none",
+    "type": "removed",
+    "verified": false
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [],
+    "crpc": [
+      "CrPC 19"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication: no row in the table cites it, rows none",
+    "type": "removed",
+    "verified": false
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [],
+    "crpc": [
+      "CrPC 196"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication: no row in the table cites it, rows none",
+    "type": "removed",
+    "verified": false
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [],
+    "crpc": [
+      "CrPC 197"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication: no row in the table cites it, rows none",
+    "type": "removed",
+    "verified": false
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [],
+    "crpc": [
+      "CrPC 198"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication: no row in the table cites it, rows none",
+    "type": "removed",
+    "verified": false
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [],
+    "crpc": [
+      "CrPC 199"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication: no row in the table cites it, rows none",
+    "type": "removed",
+    "verified": false
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [],
+    "crpc": [
+      "CrPC 200"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication: no row in the table cites it, rows none",
+    "type": "removed",
+    "verified": false
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [],
+    "crpc": [
+      "CrPC 201"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication: no row in the table cites it, rows none",
+    "type": "removed",
+    "verified": false
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [],
+    "crpc": [
+      "CrPC 265I"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication: no row in the table cites it, rows none",
+    "type": "removed",
+    "verified": false
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [],
+    "crpc": [
+      "CrPC 27"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication: no row in the table cites it, rows none",
+    "type": "removed",
+    "verified": false
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [],
+    "crpc": [
+      "CrPC 3"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication: no row in the table cites it, rows none",
+    "type": "removed",
+    "verified": false
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [],
+    "crpc": [
+      "CrPC 355"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication: no row in the table cites it, rows none",
+    "type": "removed",
+    "verified": false
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [],
+    "crpc": [
+      "CrPC 4"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication: no row in the table cites it, rows none",
+    "type": "removed",
+    "verified": false
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [],
+    "crpc": [
+      "CrPC 404"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication: no row in the table cites it, rows none",
+    "type": "removed",
+    "verified": false
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [],
+    "crpc": [
+      "CrPC 41A"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication: no row in the table cites it, rows none",
+    "type": "removed",
+    "verified": false
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [],
+    "crpc": [
+      "CrPC 42"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication: no row in the table cites it, rows none",
+    "type": "removed",
+    "verified": false
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [],
+    "crpc": [
+      "CrPC 43"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication: no row in the table cites it, rows none",
+    "type": "removed",
+    "verified": false
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [],
+    "crpc": [
+      "CrPC 44"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication: no row in the table cites it, rows none",
+    "type": "removed",
+    "verified": false
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [],
+    "crpc": [
+      "CrPC 45"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication: no row in the table cites it, rows none",
+    "type": "removed",
+    "verified": false
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [],
+    "crpc": [
+      "CrPC 46"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication: no row in the table cites it, rows none",
+    "type": "removed",
+    "verified": false
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [],
+    "crpc": [
+      "CrPC 47"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication: no row in the table cites it, rows none",
+    "type": "removed",
+    "verified": false
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [],
+    "crpc": [
+      "CrPC 5"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication: no row in the table cites it, rows none",
+    "type": "removed",
+    "verified": false
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [],
+    "crpc": [
+      "CrPC 51"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication: no row in the table cites it, rows none",
+    "type": "removed",
+    "verified": false
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [],
+    "crpc": [
+      "CrPC 52"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication: no row in the table cites it, rows none",
+    "type": "removed",
+    "verified": false
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [],
+    "crpc": [
+      "CrPC 53"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication: no row in the table cites it, rows none",
+    "type": "removed",
+    "verified": false
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [],
+    "crpc": [
+      "CrPC 54"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication: no row in the table cites it, rows none",
+    "type": "removed",
+    "verified": false
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [],
+    "crpc": [
+      "CrPC 55"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication: no row in the table cites it, rows none",
+    "type": "removed",
+    "verified": false
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [],
+    "crpc": [
+      "CrPC 57"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication: no row in the table cites it, rows none",
+    "type": "removed",
+    "verified": false
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [],
+    "crpc": [
+      "CrPC 6"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication: no row in the table cites it, rows none",
+    "type": "removed",
+    "verified": false
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [],
+    "crpc": [
+      "CrPC 7"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication: no row in the table cites it, rows none",
+    "type": "removed",
+    "verified": false
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [],
+    "crpc": [
+      "CrPC 8"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication: no row in the table cites it, rows none",
+    "type": "removed",
+    "verified": false
+  },
+  {
+    "basis": "source-table-checked",
+    "bnss": [],
+    "crpc": [
+      "CrPC 9"
+    ],
+    "evidence": "CAPT Bhopal correspondence table BNSS to CrPC: one director's compilation, not an official MHA publication: no row in the table cites it, rows none",
+    "type": "removed",
+    "verified": false
+  }
+]
