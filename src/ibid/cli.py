@@ -89,7 +89,7 @@ def run_eval(gold_path: str, bns_pdf: str, ipc_pdf: str, index_path: str, out_pa
 
 def missing_pdf(a: argparse.Namespace) -> bool:
     """True after printing the error and the setup hint if a source PDF this command reads is absent."""
-    paths = [getattr(a, k) for k in ("bns", "ipc") if hasattr(a, k)]
+    paths = [getattr(a, k) for k in ("bns", "ipc", "crpc") if hasattr(a, k)]
     if a.cmd == "headings":  # reads one Act, or a layout text file instead of the BNS PDF
         paths = [a.ipc] if a.act == "ipc" else [] if a.layout else [a.bns]
     for path in paths:
@@ -165,6 +165,11 @@ def main(argv: list[str] | None = None) -> int:
     mc.add_argument("--bns", default=os.environ.get("IBID_BNS_PDF", "data/raw/bns-prs.pdf"))
     mc.add_argument("--ipc", default=os.environ.get("IBID_IPC_PDF", "data/raw/ipc-wipo.pdf"))
     mc.add_argument("--concordance", default="concordance/v3.json")
+    mc.add_argument("--procedure-index", default="data/index/procedure.sqlite", help="the second index; ignored if absent")
+    pr = sub.add_parser("procedure").add_subparsers(dest="proc_cmd", required=True).add_parser(
+        "build", help="parse the CrPC, check it against its Arrangement of Sections, write the second index")
+    pr.add_argument("--crpc", default=os.environ.get("IBID_CRPC_PDF", "data/raw/crpc-indiacode.pdf"))
+    pr.add_argument("--index", default="data/index/procedure.sqlite")
     hd = sub.add_parser("headings").add_subparsers(dest="headings_cmd", required=True).add_parser(
         "list", help="section headings, one citation and heading per line")
     hd.add_argument("--act", choices=("bns", "ipc"), required=True)
@@ -307,7 +312,10 @@ def main(argv: list[str] | None = None) -> int:
         return 1
     if a.cmd == "mcp":
         from ibid import mcp
-        return mcp.serve(a.bns, a.ipc, a.concordance)
+        return mcp.serve(a.bns, a.ipc, a.concordance, a.procedure_index)
+    if a.cmd == "procedure":
+        from ibid import crpc
+        return crpc.build(a.crpc, a.index)
     if a.cmd == "headings":
         from ibid import headings
         pairs = (headings.ipc_headings(a.ipc) if a.act == "ipc" else headings.parse_layout(Path(a.layout).read_text())
