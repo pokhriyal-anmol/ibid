@@ -1,6 +1,6 @@
 # Slice 15: The Code of Criminal Procedure 1973 and the BNSS 2023, with a verified concordance
 
-Status: DRAFT 2026-10-22 for owner review (goal G5 of `.scratch/goals/sota-claims.md`, order changed by the measurement below). Not ready for `wf-ship`: step 0 (sources) needs the owner's approval to download and a recorded hash for each file.
+Status: approved 2026-10-22 (owner approved the three downloads and the CrPC and BNSS order; D-007). Step 0 is done: the three source files are in `data/raw/` of the main checkout and recorded in `data/SOURCES.md`. In a git worktree they are missing: read them by absolute path from `/Users/anmolpokhriyal/projects/ibid/data/raw/` (`bnss-prs.pdf`, `crpc-indiacode.pdf`, `capt/comparison_summary_BNSS_to_CrPC.pdf`). The build extends `data/sources.json` and `ibid setup` with these three entries (hashes in `data/SOURCES.md`), and must not download anything.
 
 ## Problem Statement
 
@@ -39,10 +39,10 @@ flowchart LR
 
 1. **A second index, not a rebuilt one.** New file `data/index/procedure.sqlite`, same schema as the first. `data/index/ibid.sqlite`, `PARSER_VERSION` for the IPC and the BNS, the frozen rule and its scores stay untouched. ADR 0010 records why.
 2. **Citation forms.** `CrPC 438` and `BNSS 482(1)`, built the way `IPC 420` and `BNS 103(1)` are: section number with an optional letter suffix (`41A`), then sub-provisions. A sub-provision's text starts at its own label with no section prefix. Illustrations, provisos, explanations and exceptions are part of their section's text, as in the IPC. Amendment marks and footnote numerals are not part of the text. Schedules and Forms are not parsed in this slice and are named in the coverage table as not covered.
-3. **Sources (step 0, owner).** Three files, none downloaded yet:
-   - the BNSS as gazetted (Act 46 of 2023). Candidate: PRS India, `https://prsindia.org/files/bills_acts/bills_parliament/2023/The%20Bharatiya%20Nagarik%20Suraksha%20Sanhita,%202023.pdf` (server reports 2,033,181 bytes). A second PRS file with underscores in its name (1,152,442 bytes) may be the Bill and must not be used. Which one is the Gazette text is confirmed by reading page 1 after download.
-   - the CrPC as it stood until its repeal (30 June 2024). Candidate: India Code. The WIPO copy is consolidated only to 1991 and is too old. The source is not yet found; ticket 1 reports the options and the owner chooses.
-   - the BNSS to CrPC correspondence table: `https://keralaprisons.gov.in/userfiles/act-and-rules/comparison_summary_BNSS_to_CrPC.pdf` (server reports 674,648 bytes). Same family as the CAPT table used for the BNS: a personal compilation by a police training academy director, not an MHA publication; the copyright line on each page applies, so the file stays under `data/raw/` and Ibid keeps only section numbers and row references.
+3. **Sources (step 0, done).** Three files:
+   - the BNSS as gazetted (Act 46 of 2023). Candidate: PRS India, `https://prsindia.org/files/bills_acts/bills_parliament/2023/The%20Bharatiya%20Nagarik%20Suraksha%20Sanhita,%202023.pdf` (2,033,181 bytes, SHA-256 `5e60e2af…17fe`), confirmed on page 1 as the Gazette extraordinary of 25 Dec 2023, CG-DL-E-25122023-250884, as `data/raw/bnss-prs.pdf`. A second PRS file with underscores in its name (1,152,442 bytes) may be the Bill and was not downloaded.
+   - the CrPC (Act 2 of 1974) at India Code's November 2019 revision, taken from the Internet Archive capture of the official India Code file because India Code refuses every request (the owner's browser included): `data/raw/crpc-indiacode.pdf`, 1,660,268 bytes, SHA-256 `2f28d487c18d33f65195d7ab99cb5dc8fd4dcf232c7deb18dee7f8fa289891b9`. Its Arrangement of Sections lists 532 entries. Amendments after 2019, if any, are not in it; replace it with a current India Code copy when one can be fetched.
+   - the BNSS to CrPC correspondence table: `https://keralaprisons.gov.in/userfiles/act-and-rules/comparison_summary_BNSS_to_CrPC.pdf` (674,648 bytes, SHA-256 `aa3e4914…d33b`, 38 pages, BNSS in the first column). Same family as the CAPT table used for the BNS: a personal compilation by a police training academy director, not an MHA publication; the copyright line on each page applies, so the file stays under `data/raw/` and Ibid keeps only section numbers and row references.
    Each file gets bytes and SHA-256 in `data/sources.json` and `data/SOURCES.md`, and `ibid setup` checks them. Reuse terms are recorded as "unconfirmed" until the owner confirms them.
 4. **Independent checks instead of a lawyer.** Both Acts print an Arrangement of Sections (every section number and heading) before the body. For each Act: (a) the count of parsed top-level sections equals the count in the Arrangement; (b) every section's body heading equals its Arrangement heading after lower-casing and removing punctuation; mismatches are printed and a rate under 98% fails the test (a stricter bar than the 80% of D-004, because both lists come from the same document, not a paraphrasing source). Neither check confirms the body text itself is right; that is stated.
 5. **Concordance CrPC to BNSS.** Built with the existing `ibid concordance from-table` path, parsed from the correspondence table, written as `concordance/crpc-bnss-v1.json` plus a SHA-256 pin. Only verified entries are served: an entry is verified when both citations exist in the index and, as with the BNS, the table row and the two headings agree under the same skeptic rules. A cross-check of table subjects against BNSS headings is a tripwire at 80% (D-004), with every mismatch printed. New, removed, split and merged sections are typed, as in Concordance v3.
@@ -78,8 +78,6 @@ The `ibid` commands (`setup`, parse and index build, `concordance from-table`, `
 - Any change to the frozen rule, ranking, a gold set or a pinned file.
 - Any claim of legal accuracy: the texts are parsed from PDFs, the concordance from a compilation, and no lawyer reviewed either.
 
-## Open items for the owner
+## Closed items
 
-1. Approve the three downloads in step 0 (names, sources and sizes above), or point to a different source for the CrPC.
-2. Confirm the reuse terms for each source, or accept "unconfirmed" as for the first two Acts.
-3. Confirm that the CrPC and the BNSS come before the Evidence Act pair (the measurement above says so; say if the product matters more than the benchmark).
+Downloads approved, reuse view recorded (D-007), order confirmed. Still true: the CrPC text is at the 2019 revision and the table is a copyrighted compilation kept out of git.
