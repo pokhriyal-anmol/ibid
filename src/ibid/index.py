@@ -47,11 +47,12 @@ def ref_counts(db: sqlite3.Connection, act: str) -> dict[str, int]:
             "unresolved": db.execute(q + "NULL", (act + " %",)).fetchone()[0]}
 
 
-def search(db: sqlite3.Connection, raw_query: str, limit: int = 10) -> list[tuple[str, str]]:
+def search(db: sqlite3.Connection, raw_query: str, limit: int = 10, act: str | None = None) -> list[tuple[str, str]]:
     """FTS5 keyword search on the raw query only (ADR 0001). Ties on score break by citation, so order is total."""
     try:
         return db.execute(
-            "SELECT citation, text FROM fts WHERE fts MATCH ? ORDER BY rank, citation LIMIT ?", (raw_query, limit)
+            "SELECT citation, text FROM fts WHERE fts MATCH ?" + (" AND citation LIKE ?" if act else "") + " ORDER BY rank, citation LIMIT ?",
+            (raw_query, *([act + " %"] if act else []), limit),
         ).fetchall()
     except sqlite3.OperationalError:  # query is not valid FTS5 syntax: no hits, never rewritten
         return []
