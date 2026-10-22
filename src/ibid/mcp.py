@@ -1,5 +1,6 @@
 """`ibid mcp`: a stdio MCP server (newline-delimited JSON-RPC 2.0) over the deterministic lookups. No model (ADR 0001)."""
 import json
+import sqlite3
 import sys
 import tempfile
 from pathlib import Path
@@ -38,7 +39,7 @@ def _tool_result(payload: dict | str, is_error: bool = False) -> dict:
     return out
 
 
-def call_tool(db, entries: list[dict], name: str, args: object, heads: dict[str, str | None] | None = None) -> dict:
+def call_tool(db, entries: list[dict], name: str, args: object, heads: dict[str, str | None] | None = None, procedure: tuple | None = None) -> dict:
     heads = heads or {}  # section Citation to heading; a sub-provision is absent, so its heading is null
     if name not in TOOLS:
         raise RpcError(-32602, f"unknown tool: {name}")
@@ -76,6 +77,8 @@ def call_tool(db, entries: list[dict], name: str, args: object, heads: dict[str,
             if not isinstance(got, str):
                 return _tool_result({"result": got, "via": section})
         return _tool_result(got if isinstance(got, str) else {"result": got})
+    if procedure and args["citation"].split(" ")[0] == "CrPC":  # the second index holds the procedure Acts
+        db, heads = procedure
     got = index.lookup(db, args["citation"])
     if got is None:
         return _tool_result(f"Citation not in the index: {args['citation']}", True)
@@ -85,7 +88,7 @@ def call_tool(db, entries: list[dict], name: str, args: object, heads: dict[str,
     return _tool_result({"citation": args["citation"], "heading": heads.get(args["citation"]), "text": got[0], "children": got[1]})
 
 
-def handle(db, entries: list[dict], msg: object, heads: dict[str, str | None] | None = None) -> dict | None:
+def handle(db, entries: list[dict], msg: object, heads: dict[str, str | None] | None = None, procedure: tuple | None = None) -> dict | None:
     if not isinstance(msg, dict) or not isinstance(msg.get("method"), str):
         return {"jsonrpc": "2.0", "id": None, "error": {"code": -32600, "message": "invalid request"}}
     mid, method, params = msg.get("id"), msg["method"], msg.get("params") or {}
@@ -100,7 +103,7 @@ def handle(db, entries: list[dict], msg: object, heads: dict[str, str | None] | 
         elif method == "tools/call":
             if not isinstance(params, dict) or not isinstance(params.get("name"), str):
                 raise RpcError(-32602, "params.name is required")
-            result = call_tool(db, entries, params["name"], params.get("arguments", {}), heads)
+            result = call_tool(db, entries, params["name"], params.get("arguments", {}), heads, procedure)
         elif "id" not in msg:
             return None  # notifications, including notifications/initialized
         else:
@@ -115,7 +118,7 @@ def _emit(obj: dict) -> None:
     sys.stdout.flush()
 
 
-def serve(bns_pdf: str, ipc_pdf: str, concordance_path: str) -> int:
+def serve(bns_pdf: str, ipc_pdf: str, concordance_path: str, procedure_index: str | None = None) -> int:
     for path in (bns_pdf, ipc_pdf, concordance_path):
         if not Path(path).is_file():
             print(f"error: no such file: {path}", file=sys.stderr)
@@ -135,6 +138,10 @@ def serve(bns_pdf: str, ipc_pdf: str, concordance_path: str) -> int:
             print(f"error: {e}", file=sys.stderr)
             return 1
         heads = dict(headings.bns_headings(bns_pdf) + headings.ipc_headings(ipc_pdf))
+        procedure = None
+        if procedure_index and Path(procedure_index).is_file():
+            pdb = sqlite3.connect(f"file:{procedure_index}?mode=ro", uri=True)
+            procedure = (pdb, dict(pdb.execute("SELECT citation, heading FROM heading")))
         for line in sys.stdin:
             if not line.strip():
                 continue
@@ -143,6 +150,6 @@ def serve(bns_pdf: str, ipc_pdf: str, concordance_path: str) -> int:
             except json.JSONDecodeError:
                 _emit({"jsonrpc": "2.0", "id": None, "error": {"code": -32700, "message": "parse error"}})
                 continue
-            if (reply := handle(db, entries, msg, heads)) is not None:
+            if (reply := handle(db, entries, msg, heads, procedure)) is not None:
                 _emit(reply)
     return 0

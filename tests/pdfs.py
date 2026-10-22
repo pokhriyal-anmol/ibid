@@ -13,3 +13,4 @@ def _main_checkout() -> Path:
 
 BNS_PDF = os.environ.get("IBID_BNS_PDF") or str(_main_checkout() / "data/raw/bns-prs.pdf")
 IPC_PDF = os.environ.get("IBID_IPC_PDF") or str(_main_checkout() / "data/raw/ipc-wipo.pdf")
+CRPC_PDF = os.environ.get("IBID_CRPC_PDF") or str(_main_checkout() / "data/raw/crpc-indiacode.pdf")

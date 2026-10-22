@@ -41,6 +41,7 @@ Tests are `unittest`. There is no pytest. Needs `pdftotext`, `pdftohtml`, `pdfse
 |---|---|
 | Parse BNS / IPC | `src/ibid/parse.py`, `src/ibid/ipc.py` |
 | Index, lookup, keyword search | `src/ibid/index.py` |
+| CrPC parse, Arrangement check, second index (ADR 0010) | `src/ibid/crpc.py`, `ibid procedure build` |
 | Cross-references | `src/ibid/xref.py` |
 | Concordance | `src/ibid/concordance.py` |
 | Learned association layer (opt-in, ADR 0005) | `src/ibid/assoc.py` |
