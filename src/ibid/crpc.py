@@ -17,6 +17,7 @@ from ibid import index
 
 from ibid.parse import Provision, _split
 from ibid.ipc import _head
+from ibid.xref import extract
 
 CRPC_PARSER_VERSION = "1"
 HEADING_MATCH_FLOOR = 0.98  # both lists come from one document, so stricter than D-004's 80%
@@ -121,7 +122,7 @@ def build(path: str, index_path: str, bnss_path: str | None = None) -> int:
     if not ok:
         print("error: procedure Act check failed, nothing written", file=sys.stderr)
         return 1
-    db = index.build(index_path, provisions, [])
+    db = index.build(index_path, provisions, extract(provisions))
     db.execute("CREATE TABLE heading (citation TEXT PRIMARY KEY, heading TEXT)")
     db.executemany("INSERT INTO heading VALUES (?, ?)", heads)
     db.execute("CREATE TABLE meta (key TEXT PRIMARY KEY, value TEXT)")
