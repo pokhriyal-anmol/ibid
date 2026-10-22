@@ -10,9 +10,11 @@ flowchart LR
     C["IPC to BNS concordance<br/>348 verified entries"]
     D["Lookup, cross-references,<br/>keyword search, headings"]
     E["Learned layers, opt-in<br/>IPC offences only"]
+    J["CrPC 1973 and BNSS 2023<br/>second index"]
+    K["CrPC to BNSS concordance<br/>verified entries only"]
   end
   subgraph Out["Not covered"]
-    F["BNSS and CrPC"]
+    F["Schedules and Forms,<br/>post-2019 CrPC amendments"]
     G["BSA and Evidence Act"]
     H["Constitution, all other<br/>central and state Acts"]
     I["Case law, judgment prediction,<br/>7 of 8 IL-TUR tasks"]
@@ -22,9 +24,10 @@ flowchart LR
   A -->|"verified entries only"| C
   C --- B
   A --> E
+  J -->|"verified entries only"| K
   classDef covered fill:#e3f5e3,stroke:#272
   classDef gap fill:#fbe9e7,stroke:#a33
-  class A,B,C,D,E covered
+  class A,B,C,D,E,J,K covered
   class F,G,H,I gap
 ```
 
@@ -35,16 +38,21 @@ flowchart LR
 | Indian Penal Code, 1860 | yes | 575 sections | 554 have a heading, 21 do not (count by `ibid headings list --act ipc`) |
 | Bharatiya Nyaya Sanhita, 2023 | yes | 358 sections | all 358 have a heading, read from the PDF margin |
 | IPC to BNS concordance | yes | 402 entries, 348 served | the rest are unverified or have no counterpart; `concordance/v3.json` |
-| BNSS, CrPC, BSA, Evidence Act | no | 0 | the next Acts to add |
+| Code of Criminal Procedure, 1973 (India Code, November 2019 revision) | yes | 534 sections | second index `data/index/procedure.sqlite`; Schedules and Forms not covered |
+| Bharatiya Nagarik Suraksha Sanhita, 2023 | yes | 531 sections | second index; Schedules and Forms not covered |
+| Procedure Act checks | n/a | CrPC 534/534 sections against its Arrangement; headings 99.06% (529/534) | BNSS 531/531 against the published count; the Gazette prints no Arrangement, so BNSS headings (margin notes) are checked for presence only. Neither check confirms the body text. |
+| CrPC to BNSS concordance | yes | 573 entries, 498 served | merged 1, new 40, one-to-one 490, removed 42; the rest are unverified; tripwire of BNSS headings against table subjects 89.3% (57 of 531 mismatch), floor 80%; `concordance/crpc-bnss-v1.json` |
+| BSA, Evidence Act | no | 0 | the next Acts to add |
 | Constitution and every other Act | no | 0 | |
 
 | Capability | Status |
 |---|---|
 | Verbatim text and exact citation for a section or sub-provision | built, no model call |
-| Cross-references and the IPC to BNS mapping | built, verified entries only |
+| Cross-references and the IPC to BNS and CrPC to BNSS mappings | built, verified entries only |
+| Keyword search on the CrPC and the BNSS | built, no retrieval accuracy claimed, no gold set exists |
 | Keyword search on the raw query | built, weak on story-style questions (rows C4 and C6) |
 | Learned layers (`assoc-nb`, `linear-lr`) | built, opt-in, IPC offence sections only, research data licences |
-| Anything outside the IPC and the BNS | not built |
+| Anything outside the IPC, BNS, CrPC and BNSS | not built |
 
 IL-TUR has eight tasks. Ibid has been scored on one, legal statute identification. The other seven (L-NER, RR, CJPE, BAIL, PCR, SUMM, L-MT) have not been attempted.
 

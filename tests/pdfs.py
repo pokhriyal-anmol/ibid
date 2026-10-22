@@ -15,3 +15,4 @@ BNS_PDF = os.environ.get("IBID_BNS_PDF") or str(_main_checkout() / "data/raw/bns
 IPC_PDF = os.environ.get("IBID_IPC_PDF") or str(_main_checkout() / "data/raw/ipc-wipo.pdf")
 CRPC_PDF = os.environ.get("IBID_CRPC_PDF") or str(_main_checkout() / "data/raw/crpc-indiacode.pdf")
 BNSS_PDF = os.environ.get("IBID_BNSS_PDF") or str(_main_checkout() / "data/raw/bnss-prs.pdf")
+TABLE_PDF = os.environ.get("IBID_BNSS_CRPC_TABLE_PDF") or str(_main_checkout() / "data/raw/capt/comparison_summary_BNSS_to_CrPC.pdf")
