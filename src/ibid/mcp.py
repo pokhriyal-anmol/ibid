@@ -12,7 +12,7 @@ from ibid.xref import extract
 
 PROTOCOL_VERSION = "2024-11-05"
 ACTS = {"ipc": "IPC", "bns": "BNS", "crpc": "CrPC", "bnss": "BNSS"}  # act argument to Citation prefix
-DIRECTIONS = ("ipc_to_bns", "bns_to_ipc")
+DIRECTIONS = ("ipc_to_bns", "bns_to_ipc", "crpc_to_bnss", "bnss_to_crpc")
 _CITATION = {"type": "object", "properties": {"citation": {"type": "string"}}, "required": ["citation"]}
 TOOLS = {
     "get_provision": ("Verbatim text and child Citations of one Provision, by exact Citation.", _CITATION),
@@ -72,13 +72,15 @@ def call_tool(db, entries: list[dict], name: str, args: object, heads: dict[str,
         return _tool_result({"results": results})
     if name == "concordance":
         prefix = args["citation"].split(" ")[0].lower()
-        inferred = {"ipc": DIRECTIONS[0], "bns": DIRECTIONS[1]}.get(prefix)
+        inferred = {d.split("_to_")[0]: d for d in DIRECTIONS}.get(prefix)
         direction = args.get("direction", inferred)
         if direction not in DIRECTIONS:
             raise RpcError(-32602, "direction must be " + " or ".join(DIRECTIONS))
         if inferred and direction != inferred:
             return _tool_result(f"direction {direction} contradicts the Citation prefix {prefix.upper()} (expects {inferred})", True)
         src, dst = direction.split("_to_")
+        if src in ("crpc", "bnss"):
+            entries = procedure[2] if procedure else []
         got = concordance.lookup(entries, args["citation"], src, dst)
         section = args["citation"].split("(")[0].strip()
         if isinstance(got, str) and section != args["citation"]:  # sub-provision: retry its section
@@ -87,7 +89,7 @@ def call_tool(db, entries: list[dict], name: str, args: object, heads: dict[str,
                 return _tool_result({"result": got, "via": section})
         return _tool_result(got if isinstance(got, str) else {"result": got})
     if procedure and args["citation"].split(" ")[0] in ("CrPC", "BNSS"):  # the second index holds the procedure Acts
-        db, heads = procedure
+        db, heads = procedure[:2]
     got = index.lookup(db, args["citation"])
     if got is None:
         return _tool_result(f"Citation not in the index: {args['citation']}. Covered Acts: IPC, BNS, CrPC, BNSS.", True)
@@ -127,7 +129,7 @@ def _emit(obj: dict) -> None:
     sys.stdout.flush()
 
 
-def serve(bns_pdf: str, ipc_pdf: str, concordance_path: str, procedure_index: str | None = None) -> int:
+def serve(bns_pdf: str, ipc_pdf: str, concordance_path: str, procedure_index: str | None = None, procedure_concordance: str | None = None) -> int:
     for path in (bns_pdf, ipc_pdf, concordance_path):
         if not Path(path).is_file():
             print(f"error: no such file: {path}", file=sys.stderr)
@@ -150,7 +152,12 @@ def serve(bns_pdf: str, ipc_pdf: str, concordance_path: str, procedure_index: st
         procedure = None
         if procedure_index and Path(procedure_index).is_file():
             pdb = sqlite3.connect(f"file:{procedure_index}?mode=ro", uri=True)
-            procedure = (pdb, dict(pdb.execute("SELECT citation, heading FROM heading")))
+            try:
+                pentries = concordance.load(procedure_concordance, pdb, "crpc", "bnss") if procedure_concordance and Path(procedure_concordance).is_file() else []
+            except ValueError as e:
+                print(f"error: {e}", file=sys.stderr)
+                return 1
+            procedure = (pdb, dict(pdb.execute("SELECT citation, heading FROM heading")), pentries)
         for line in sys.stdin:
             if not line.strip():
                 continue

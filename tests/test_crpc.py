@@ -36,7 +36,7 @@ class MiniCrpcTest(unittest.TestCase):
         cls.tmp = tempfile.TemporaryDirectory()
         cls.index = str(Path(cls.tmp.name) / "procedure.sqlite")
         cls.built = build(str(MINI), cls.index)
-        cls.c = Client(command() + ["--procedure-index", cls.index])
+        cls.c = Client(command() + ["--procedure-index", cls.index, "--procedure-concordance", "absent.json"])
 
     @classmethod
     def tearDownClass(cls):
@@ -173,7 +173,7 @@ class RealCrpcTest(unittest.TestCase):
         self.assertGreaterEqual(float(re.search(r"heading match: ([\d.]+)%", self.built.stdout)[1]), 98.0)
 
     def test_section_438_and_a_lettered_section_are_served_through_mcp(self):
-        c = Client(command() + ["--procedure-index", self.index])
+        c = Client(command() + ["--procedure-index", self.index, "--procedure-concordance", "absent.json"])
         self.addCleanup(c.close)
         sc = c.call("get_provision", {"citation": "CrPC 438"})["result"]["structuredContent"]
         self.assertEqual(sc["heading"], "Direction for grant of bail to person apprehending arrest.")

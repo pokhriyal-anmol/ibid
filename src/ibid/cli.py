@@ -165,6 +165,7 @@ def main(argv: list[str] | None = None) -> int:
     mc.add_argument("--bns", default=os.environ.get("IBID_BNS_PDF", "data/raw/bns-prs.pdf"))
     mc.add_argument("--ipc", default=os.environ.get("IBID_IPC_PDF", "data/raw/ipc-wipo.pdf"))
     mc.add_argument("--concordance", default="concordance/v3.json")
+    mc.add_argument("--procedure-concordance", default="concordance/crpc-bnss-v1.json", help="ignored if absent")
     mc.add_argument("--procedure-index", default="data/index/procedure.sqlite", help="the second index; ignored if absent")
     pr = sub.add_parser("procedure").add_subparsers(dest="proc_cmd", required=True).add_parser(
         "build", help="parse the CrPC and the BNSS, check both, write the second index")
@@ -179,6 +180,7 @@ def main(argv: list[str] | None = None) -> int:
     hd.add_argument("--layout", default=None, help="BNS only: read this `pdftotext -layout` text file instead of the PDF")
     cc = sub.add_parser("concordance").add_subparsers(dest="conc_cmd", required=True).add_parser(
         "from-table", help="candidate entries from a published BNS to IPC correspondence table (pdftotext -layout text)")
+    cc.add_argument("--acts", choices=("ipc-bns", "crpc-bnss"), default="ipc-bns")
     cc.add_argument("--table", required=True)
     cc.add_argument("--index", default="data/index/ibid.sqlite")
     cc.add_argument("--out", required=True)
@@ -313,7 +315,7 @@ def main(argv: list[str] | None = None) -> int:
         return 1
     if a.cmd == "mcp":
         from ibid import mcp
-        return mcp.serve(a.bns, a.ipc, a.concordance, a.procedure_index)
+        return mcp.serve(a.bns, a.ipc, a.concordance, a.procedure_index, a.procedure_concordance)
     if a.cmd == "procedure":
         from ibid import crpc
         return crpc.build(a.crpc, a.index, a.bnss)
@@ -325,7 +327,7 @@ def main(argv: list[str] | None = None) -> int:
         return 0
     if a.cmd == "concordance":
         from ibid import table
-        return table.from_table(a.table, a.index, a.out)
+        return table.from_table(a.table, a.index, a.out, a.acts)
     if a.cmd == "cited":
         from ibid import cited
         return cited.extract(a.set, a.index, a.concordance, a.out)
