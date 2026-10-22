@@ -8,6 +8,7 @@ cross-checked; a file that does print an Arrangement (the test fixture) is check
 shortcut: margin notes that the column cut misses stay in the body text, and a clause is any line set 10
 columns right of its page's leftmost, and a section whose clause labels repeat keeps no clause children; upgrade if a ticket needs exact clause children.
 """
+import os
 import re
 
 from ibid.crpc import HEADING_MATCH_FLOOR, _norm, arrangement, layout_text
@@ -15,9 +16,10 @@ from ibid.headings import walk_layout
 from ibid.parse import Provision, _split
 
 BNSS_PARSER_VERSION = "1"
-BNSS_TOTAL = 531  # sections of Act 46 of 2023 as gazetted
+BNSS_TOTAL = int(os.environ.get("IBID_BNSS_TOTAL", 531))  # sections of Act 46 of 2023 as gazetted; the env var lets a test use a small file
 CLAUSE_INDENT = 10  # columns right of the page's leftmost body line
 _ENACTED = re.compile(r"\s*BE it enacted")
+_PART = re.compile(r"[A-Z]\.—")  # a Part heading ("B.—Warrant of arrest") between sections
 
 
 def parse_bnss(path: str) -> tuple[list[Provision], list[tuple[str, str | None]], list[tuple[str, str]]]:
@@ -28,7 +30,7 @@ def parse_bnss(path: str) -> tuple[list[Provision], list[tuple[str, str | None]]
     walked = walk_layout("\n".join(lines[start:]), "BNSS", len(arr) or BNSS_TOTAL, "THE FIRST SCHEDULE")
     provisions, heads = [], []
     for cite, parts, body in walked:
-        rows = [(t, c >= CLAUSE_INDENT) for t, c in body if not t.isdigit()]  # a bare number is a page number
+        rows = [(t, c >= CLAUSE_INDENT) for t, c in body if not t.isdigit() and not _PART.match(t)]  # a bare number is a page number
         try:
             provisions += _split("BNSS", cite.split()[1], rows)
         except ValueError:  # nested clauses repeat a label, which a Citation cannot tell apart

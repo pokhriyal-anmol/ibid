@@ -76,7 +76,7 @@ def fit(train_path: str, holdout_path: str, labels_path: str, out_path: str) -> 
     return 0
 
 
-IPC_CITE = re.compile(r"Section (\d+[A-Z]?) of The Indian Penal Code, 1860")
+IPC_CITE = re.compile(r"Section (\d+[A-Z]{0,2}) of The Indian Penal Code, 1860")
 SOURCE_ROW = re.compile(r"row (\d+)$")
 NOT_OFFENCES = {"IPC 34", "IPC 149", "IPC 120B"}  # common intention, common object, conspiracy: not offence sections (set v2's rule)
 

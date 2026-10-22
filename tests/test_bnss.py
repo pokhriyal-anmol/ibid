@@ -2,11 +2,13 @@
 Seam: `ibid procedure build` and JSON-RPC over stdio, on an invented mini-BNSS in the shape of the Gazette layout text."""
 import re
 import sqlite3
+import subprocess
+import sys
 import tempfile
 import unittest
 from pathlib import Path
 
-from mcp_harness import Client, command
+from mcp_harness import ENV, ROOT, Client, command
 from pdfs import BNSS_PDF, CRPC_PDF
 from test_crpc import BNSS_MINI, MINI, build
 
@@ -103,6 +105,49 @@ class CheckFailsOnBadInputTest(unittest.TestCase):
         self.assertFalse(index.exists())
 
 
+class NoArrangementTest(unittest.TestCase):
+    """The real Gazette prints no Arrangement, so the count comes from BNSS_TOTAL and headings are checked for presence only."""
+
+    def setUp(self):
+        self.tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(self.tmp.cleanup)
+        self.src = BNSS_MINI.read_text()
+        self.body = self.src[self.src.index("                         THE MINI BHARATIYA", 10):]  # the Act without its Arrangement
+
+    def run_with(self, text: str, total: str = "4"):
+        bnss = Path(self.tmp.name) / "bnss.txt"
+        bnss.write_text(text)
+        index = Path(self.tmp.name) / "p.sqlite"
+        done = subprocess.run([sys.executable, "-m", "ibid.cli", "procedure", "build", "--crpc", str(MINI), "--bnss", str(bnss), "--index", str(index)],
+                              cwd=ROOT, env={**ENV, "IBID_BNSS_TOTAL": total}, capture_output=True, text=True)
+        return done, index
+
+    def test_the_good_file_passes_on_the_constant_alone(self):
+        done, index = self.run_with(self.body)
+        self.assertEqual(done.returncode, 0, done.stdout + done.stderr)
+        self.assertIn("BNSS sections: 4/4", done.stdout)
+        self.assertIn("BNSS has no Arrangement", done.stdout)
+        self.assertTrue(index.exists())
+
+    def test_a_section_dropped_fails_on_the_count_and_writes_nothing(self):
+        gone = "Saving of other\nlaw.                  4. Nothing in this Sanhita affects any other law.\n"
+        self.assertIn(gone, self.body)
+        done, index = self.run_with(self.body.replace(gone, ""))
+        self.assertEqual(done.returncode, 1)
+        self.assertIn("BNSS sections: 3/4", done.stdout)
+        self.assertIn("BNSS 4: no heading, body None", done.stdout)
+        self.assertFalse(index.exists())
+
+    def test_a_margin_heading_removed_is_printed_and_the_rate_falls_below_the_floor(self):
+        gone = "Short title.          1."
+        self.assertIn(gone, self.body)
+        done, index = self.run_with(self.body.replace(gone, "                      1."))
+        self.assertEqual(done.returncode, 1)
+        self.assertIn("BNSS heading match: 75.00%", done.stdout)
+        self.assertIn("BNSS 1: no heading, body None", done.stdout)
+        self.assertFalse(index.exists())
+
+
 class RealBnssTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -119,6 +164,15 @@ class RealBnssTest(unittest.TestCase):
         self.assertEqual(self.built.returncode, 0, self.built.stderr)
         self.assertIn("BNSS sections: 531/531", self.built.stdout)
         self.assertGreaterEqual(float(re.search(r"BNSS heading match: ([\d.]+)%", self.built.stdout)[1]), 98.0)
+
+    def test_a_part_heading_and_a_wrapped_margin_note_stay_out_of_the_text(self):
+        c = Client(command() + ["--procedure-index", self.index, "--procedure-concordance", "absent.json"])
+        self.addCleanup(c.close)
+        get = lambda cite: c.call("get_provision", {"citation": cite})["result"]["structuredContent"]
+        for cite in ("BNSS 71", "BNSS 83", "BNSS 456", "BNSS 471"):
+            self.assertNotRegex(get(cite)["text"][-60:], r"[A-Z]\.—", cite)
+        self.assertEqual(get("BNSS 246")["heading"], "What persons may be charged jointly.")
+        self.assertNotIn("What persons", get("BNSS 246")["text"])
 
     def test_section_482_and_its_first_sub_section_are_served_through_mcp(self):
         c = Client(command() + ["--procedure-index", self.index, "--procedure-concordance", "absent.json"])

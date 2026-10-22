@@ -16,6 +16,14 @@ ROOT = Path(__file__).parents[1]
 DOC = (ROOT / "docs" / "claims.md").read_text()
 
 
+ROWS = {c.strip(): ln for ln in DOC.splitlines() if ln.startswith("|") for c in [ln.split("|")[1]]}  # first cell -> whole row
+
+
+def in_row(row: str, value: str) -> bool:
+    """value stands alone in the row whose first cell starts with `row`: not part of a longer number."""
+    return re.search(rf"(?<![\d.]){re.escape(value)}(?!\d)", next(ln for k, ln in ROWS.items() if k.startswith(row))) is not None
+
+
 def load(path: str):
     return json.loads((ROOT / path).read_text())
 
@@ -65,22 +73,26 @@ def procedure_figures() -> dict[str, str]:
     trip = conc.getvalue().splitlines()[0]
     entries = json.loads((ROOT / "concordance" / "crpc-bnss-v1.json").read_text())
     kinds = collections.Counter(e["type"] for e in entries)
-    return {"CrPC count": re.search(r"CrPC sections: (\d+)/", log)[1] + " sections", "CrPC headings": re.search(r"CrPC heading match: (.*)", log)[1],
-            "BNSS count": re.search(r"BNSS sections: (\d+)/", log)[1] + " sections", "tripwire": trip.split("table subjects ")[1].split(",")[0],
-            "entries": f"{len(entries)} entries, {sum(e['verified'] for e in entries)} served",
-            "types": ", ".join(f"{k} {kinds[k]}" for k in sorted(kinds))}
+    served = collections.Counter(e["type"] for e in entries if e["verified"])
+    return {"CrPC count": ("Code of Criminal Procedure", re.search(r"CrPC sections: (\d+)/", log)[1] + " sections"),
+            "CrPC headings": ("Procedure Act checks", re.search(r"CrPC heading match: (.*)", log)[1]),
+            "BNSS count": ("Bharatiya Nagarik Suraksha", re.search(r"BNSS sections: (\d+)/", log)[1] + " sections"),
+            "tripwire": ("CrPC to BNSS concordance", trip.split("table subjects ")[1].split(",")[0]),
+            "entries": ("CrPC to BNSS concordance", f"{len(entries)} entries, {sum(e['verified'] for e in entries)} served"),
+            **{f"{t} served": ("CrPC to BNSS concordance", f"{t} {served[t]}") for t in sorted(kinds)},
+            **{f"{t} unverified": ("CrPC to BNSS concordance", f"{t} {kinds[t] - served[t]}") for t in sorted(kinds) if kinds[t] > served[t]}}
 
 
 class ClaimsTest(unittest.TestCase):
     def test_procedure_figures_equal_a_fresh_run(self):
-        for name, want in procedure_figures().items():
+        for name, (row, want) in procedure_figures().items():
             with self.subTest(name):
-                self.assertTrue(want in DOC, f"{name}: '{want}' is not in docs/claims.md")
+                self.assertTrue(in_row(row, want), f"{name}: '{want}' is not in the '{row}' row of docs/claims.md")
 
     def test_every_figure_in_the_ledger_equals_its_result_file(self):
         for name, value in figures().items():
             with self.subTest(name):
-                self.assertTrue(pct(value) in DOC, f"{name}: {pct(value)} is not in docs/claims.md")
+                self.assertTrue(in_row(name.split()[0], pct(value)), f"{name}: {pct(value)} is not in its row of docs/claims.md")
 
     def test_concordance_counts_equal_the_pinned_file(self):
         conc = load("concordance/v3.json")

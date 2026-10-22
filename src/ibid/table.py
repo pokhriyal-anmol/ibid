@@ -12,6 +12,8 @@ import sqlite3
 from collections import Counter
 from pathlib import Path
 
+from ibid.crpc import _norm
+
 SOURCE = "CAPT Bhopal correspondence table, June 2024: one director's compilation, not an official MHA publication"
 ROW = re.compile(r"^\s{0,3}(\d{1,3}[A-Z]{0,2}(?:\s?\(\w+\))*)\s{2,}\S")
 CELL = re.compile(r"New|-|\d+[A-Z]{0,2}(?:\(\w+\))*(?:\s*(?:,|&|and|to)\s*(?:\d+[A-Z]{0,2}(?:\(\w+\))*)?)*")
@@ -131,9 +133,10 @@ def _refusal(g: dict, t: str | None, texts: dict[str, str], common: set[str]) ->
 def candidates(rows: list[dict], db: sqlite3.Connection, old: str = "IPC", new: str = "BNS", source: str = SOURCE) -> tuple[list[dict], list[dict]]:
     """(served entries, refused entries with a reason). In the procedure index a heading is not part of a
     section's text, so it joins the text the skeptic rule reads."""
-    texts = dict(db.execute("SELECT citation, text FROM provision"))
     if db.execute("SELECT 1 FROM sqlite_master WHERE name = 'heading'").fetchone():
         texts = {c: f"{h or ''} {t}" for c, t, h in db.execute("SELECT p.citation, p.text, h.heading FROM provision p LEFT JOIN heading h USING (citation)")}
+    else:
+        texts = dict(db.execute("SELECT citation, text FROM provision"))
     df = Counter(w for t in texts.values() for w in _words(t))
     common = {w for w, n in df.items() if n > MAX_DF * len(texts)}
     served, refused = [], []
@@ -148,10 +151,6 @@ def candidates(rows: list[dict], db: sqlite3.Connection, old: str = "IPC", new: 
             served.append({**entry, "verified": True, "basis": "source-table-checked",
                            "evidence": f"{source}, rows {', '.join(g['rows'])}"})
     return served, refused
-
-
-def _norm(s: str) -> str:
-    return " ".join(re.sub(r"[^\w\s]", " ", s.lower()).split())
 
 
 def tripwire(rows: list[dict], db: sqlite3.Connection) -> tuple[float, list[str]]:

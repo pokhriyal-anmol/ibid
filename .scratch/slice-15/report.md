@@ -19,22 +19,21 @@ The CrPC is the November 2019 India Code revision, taken from the Internet Archi
 
 | Act | Parsed sections | Against | Heading match |
 |---|---|---|---|
-| CrPC | 534 | 534 entries in its Arrangement of Sections | 99.06% (529 of 534), floor 98% |
+| CrPC | 534 | 534 entries in its Arrangement of Sections | 99.25% (530 of 534), floor 98% |
 | BNSS | 531 | the published count, 531 | 100.00% (531 of 531), presence only |
 
 The BNSS Gazette prints no Arrangement of Sections, so its headings (margin notes) could not be compared with a second list. The 100% means each section has a heading, not that the heading is right. Neither check confirms the body text.
 
-CrPC heading mismatches (all five printed by the build):
+CrPC heading mismatches (all four printed by the build):
 
 | Citation | Arrangement | Body |
 |---|---|---|
 | CrPC 208 | Supply of copies of statements and documents to accused in other cases triable by Court of Session. | Supply of copies of statements and documents to accused in other cases triable by Cour t of Session. |
-| CrPC 265I | Period of detention undergone by the accused to be set-off against the sentence of imprisonment. | Period of detention undergone by the accused to be set off against the sentence of imprisonment. |
 | CrPC 404 | Statement by Metropolitan Magistrate of ground of his decision to be considered by High Court. | Statement by Metropolitan Magistrate of grounds of his decision to be considered by High Court. |
 | CrPC 409 | Withdrawal of cases and appeals by Sessions Judges. | Withdrawal of cases and appeals by Session Judge. |
 | CrPC 482 | Saving of inherent power of High Court. | Saving of inherent powers of High Court. |
 
-CrPC 208 and 265I differ by a split word and a hyphen. CrPC 404, 409 and 482 differ by a singular or plural word.
+CrPC 208 differs by a split word. CrPC 404, 409 and 482 differ by a singular or plural word.
 
 ## Concordance CrPC to BNSS
 
@@ -48,7 +47,7 @@ CrPC 208 and 265I differ by a split word and a hyphen. CrPC 404, 409 and 482 dif
 | removed | 0 | 42 | 42 |
 | split | 0 | 0 | 0 |
 
-Tripwire: the BNSS heading equals a table subject for 89.3% of 531 sections, floor 80%. All 57 mismatches, as printed:
+Tripwire: the BNSS heading equals a table subject for 89.5% of 531 sections, floor 80%. All 56 mismatches, as printed:
 
 | Citation | BNSS heading | Table subject |
 |---|---|---|
@@ -75,7 +74,6 @@ Tripwire: the BNSS heading equals a table subject for 89.3% of 531 sections, flo
 | BNSS 224 | Procedure by Magistrate not competent to take cognizance of case. | Procedure by Magistrate not competent to take cognizance of the case. |
 | BNSS 230 | Supply to accused of copy of police report and other documents. | Supply to the accused of copy of police report and other documents. |
 | BNSS 233 | Procedure to be followed when there is a complaint case and police investigation in respect of same offence. | Procedure to be followed when there is a complaint case and police investigation in respect of the same offence. |
-| BNSS 246 | may be charged jointly. | What persons may be charged jointly. |
 | BNSS 260 | Procedure in cases instituted under sub-section (2) of section 222. | Procedure in cases instituted under sib-section 2 of section 222. |
 | BNSS 284 | Summary trial by Magistrate of second class. | Summary trial by Magistrate of the second class. |
 | BNSS 289 | Application of Chapter. | Application of the Chapter. |

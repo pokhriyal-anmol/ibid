@@ -41,7 +41,7 @@ def arrangement(lines: list[str]) -> list[tuple[str, str]]:
             out.append([m[1] + m[2], m[3].strip()])
         elif out and not out[-1][1].endswith(".") and re.match(r"\s{4,}\S", ln) and not re.match(r"\s*(CHAPTER|[A-Z]\.[–-])", ln) and ln.strip() != ln.strip().upper():
             out[-1][1] += " " + ln.strip()
-    return [(k, h) for k, h in out]
+    return [tuple(x) for x in out]
 
 
 def _clean(text: str) -> str:
@@ -85,7 +85,7 @@ def parse_crpc(path: str) -> tuple[list[Provision], list[tuple[str, str]]]:
 
 
 def _norm(s: str) -> str:
-    return " ".join(re.sub(r"[^a-z0-9 ]", "", s.lower()).split())
+    return " ".join(re.sub(r"[^\w\s]", " ", s.lower()).split())  # punctuation is a gap, so "set-off" equals "set off"
 
 
 def body_heading(text: str) -> str:

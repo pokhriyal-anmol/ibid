@@ -15,6 +15,7 @@ LEFT_NOTE = re.compile(r"(\S+(?: \S+)*)(?:\s+(.*))?$")  # a line that starts at 
 LEFT_ROW = re.compile(r"\S.*?\s{3,}\d{1,3}\.(?!\d)")
 RIGHT_ROW = re.compile(r"\s{0,12}\d{1,3}\.(?!\d)")
 START = re.compile(r"(\d+)\.(?!\d)")
+NOTE_SLACK = 12  # a right margin's first line may start this many columns before its column
 TOL = 3  # the cut sits this many columns before the margin's first column
 RIGHT_FROM = 60  # a right margin starts beyond this column
 NOTE_MAX = 20  # a left margin note is at most this wide
@@ -45,6 +46,9 @@ def _cut(line: str, side: str | None, col: int) -> tuple[str, str]:
     """(body, margin) of one line, cut by column because a margin note can sit under four spaces from the body."""
     if side == "right":
         cut = col - TOL
+        segs = _segments(line)
+        if len(segs) > 1 and cut - NOTE_SLACK <= segs[-1][0] < cut:  # a wrapped note's first line can start left of the rest
+            cut = segs[-1][0]
         if line[cut - 1:cut].strip() and line[cut:cut + 1].strip():  # the cut fell inside a body word: skip its tail
             cut = line.find(" ", cut) if " " in line[cut:] else len(line)
         return line[:cut], line[cut:].strip()

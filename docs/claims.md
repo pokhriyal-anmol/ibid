@@ -40,8 +40,8 @@ flowchart LR
 | IPC to BNS concordance | yes | 402 entries, 348 served | the rest are unverified or have no counterpart; `concordance/v3.json` |
 | Code of Criminal Procedure, 1973 (India Code, November 2019 revision) | yes | 534 sections | second index `data/index/procedure.sqlite`; Schedules and Forms not covered |
 | Bharatiya Nagarik Suraksha Sanhita, 2023 | yes | 531 sections | second index; Schedules and Forms not covered |
-| Procedure Act checks | n/a | CrPC 534/534 sections against its Arrangement; headings 99.06% (529/534) | BNSS 531/531 against the published count; the Gazette prints no Arrangement, so BNSS headings (margin notes) are checked for presence only. Neither check confirms the body text. |
-| CrPC to BNSS concordance | yes | 573 entries, 498 served | merged 1, new 40, one-to-one 490, removed 42; the rest are unverified; tripwire of BNSS headings against table subjects 89.3% (57 of 531 mismatch), floor 80%; `concordance/crpc-bnss-v1.json` |
+| Procedure Act checks | n/a | CrPC 534/534 sections against its Arrangement; headings 99.25% (530/534) | BNSS 531/531 against the published count; the Gazette prints no Arrangement, so BNSS headings (margin notes) are checked for presence only. Neither check confirms the body text. |
+| CrPC to BNSS concordance | yes | 573 entries, 498 served | served: merged 1, new 9, one-to-one 488, removed 0; unverified and never served: new 31, one-to-one 2, removed 42; tripwire of BNSS headings against table subjects 89.5% (56 of 531 mismatch), floor 80%; `concordance/crpc-bnss-v1.json` |
 | BSA, Evidence Act | no | 0 | the next Acts to add |
 | Constitution and every other Act | no | 0 | |
 

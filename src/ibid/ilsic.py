@@ -1,7 +1,6 @@
 """Slice 14 ticket 01: `ibid ilsic eval`, the frozen rule scored on an ILSIC split under the paper's label space and under its own vocabulary."""
 import json
 import random
-import re
 import sqlite3
 import sys
 from pathlib import Path
@@ -10,7 +9,6 @@ from ibid import assoc, bench, bm25
 from ibid.assoc import _rows
 from ibid.parse import PARSER_VERSION
 
-IPC_LABEL = re.compile(r"Section (\d+[A-Z]{0,2}) of The Indian Penal Code, 1860")
 ASSUMPTION = ("Label space is every statute string in the Lay train and test answers. A gold label no layer can predict counts as a miss. "
               "Macro scores average over the whole space, a label with no gold and no prediction scoring 0; this is our reading, the paper does not state its own.")
 
@@ -91,7 +89,7 @@ def evaluate(split_path: str, train_path: str, index_path: str, frozen_path: str
         space = {a for row in _rows(train_path) + (_rows(space_from) if space_from else rows) for a in row["answer"]}
         if not rows or not space:
             raise ValueError("empty split or empty label space")
-        cite = {label: f"IPC {m[1]}" for label in space if (m := IPC_LABEL.fullmatch(label))}
+        cite = {label: f"IPC {m[1]}" for label in space if (m := assoc.IPC_CITE.fullmatch(label))}
         who, pred, vocab = (_model(model_path, expect, rows, cite) if model_path
                             else _frozen(frozen_path, index_path, rows, cite))
         prior = [e for e in bench.read_ledger(ledger_path)
