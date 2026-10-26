@@ -109,6 +109,10 @@ uv run python -m unittest discover -s tests
 
 `results/run.json` should be byte-identical to [results/baseline-v2.json](results/baseline-v2.json).
 
+## Learned mode (research option)
+
+`search` has an opt-in `mode: "learned"` that uses the `assoc-nb v3` model in `data/assoc-nb-v3.json`. It is not part of the standard install and `ibid setup` only reports whether the file exists. You make it yourself with `ibid assoc fit --source union` (flags in `ibid assoc fit --help`; see [ADR 0008](docs/adr/0008-association-layer-fitted-on-both-kinds-of-text.md)). The training data, ILSI and ILSIC-Lay, are gated and licensed non-commercial, so the model is gitignored and cannot be redistributed. Keyword mode stays the default and needs none of this.
+
 ## How we know it works
 
 - **A frozen answer key.** [gold/v2.json](gold/v2.json) carries its SHA-256 in [gold/v2.sha256](gold/v2.sha256). One changed byte and scored mode refuses to run. Edits make a new version.
