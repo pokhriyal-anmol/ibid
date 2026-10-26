@@ -180,7 +180,7 @@ class ServerTest(unittest.TestCase):
         heads = dict(headings.bns_headings(BNS_PDF))
         heads["BNS 83"] = None  # the server is given a sidecar with this heading removed
         msg = {"jsonrpc": "2.0", "id": 1, "method": "tools/call", "params": {"name": "search", "arguments": {"query": '"' + " ".join(words) + '"', "adjacent": True, "limit": 100}}}
-        hits = mcp.handle(self.db, [], msg, heads)["result"]["structuredContent"]["results"]
+        hits = mcp.handle(self.db, [], msg, heads, mcp.LazyModel("unused"))["result"]["structuredContent"]["results"]
         hit = next(h for h in hits if h["citation"] == "BNS 84")
         self.assertEqual(hit["previous"]["heading"], index.neighbours(self.db, "BNS 84")[0][1])
         self.assertTrue(hit["previous"]["heading"])

@@ -35,7 +35,7 @@ The full unittest suite is green. Review fixed several weak tests and each new t
 - Q-004: Strictly greater counts as above a published number. A tie reads as below.
 - Q-005: The Multi label space was built the way ticket 1 did it (Lay train plus the scored split's answers), giving 540 labels.
 
-These five were settled by the build and review steps and are not in your queue. Q-006 and Q-007 below are.
+These five were settled by the build and review steps and are not in your queue. Q-009 (was numbered Q-006 on this branch before it met main's Q-006) and Q-007 below are.
 
 ## Held back
 
@@ -56,5 +56,5 @@ No layer clears any published ILSIC number under the primary reading, so goal G3
 
 2 pending, 0 blocking. That is below the batch size of 8, so none are asked yet and the work carries on without them.
 
-- Q-006: Rescore the six Multi results on the Lay-based 543-label space (this spends a second test look), or keep the 540-label scores. The `--space-from` option exists for the rescore.
+- Q-009: Rescore the six Multi results on the Lay-based 543-label space (this spends a second test look), or keep the 540-label scores. The `--space-from` option exists for the rescore.
 - Q-007: Which frozen-rule output rule is scored on ILSIC: threshold 0.7, top-k 5, or both. Default taken is the threshold.

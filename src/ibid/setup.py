@@ -17,6 +17,8 @@ from ibid.parse import parse_bns
 PARSERS = {"bns": parse_bns, "ipc": parse_ipc}
 REPO = Path(__file__).resolve().parents[2]
 
+MODEL = REPO / "data/assoc-nb-v3.json"
+FIT = "ibid assoc fit --source union ... --out data/assoc-nb-v3.json (see README, Learned mode)"
 TOOLS = ["pdftotext", "pdftohtml", "pdfseparate", "pdfunite"]
 INSTALL = ["  run: brew install poppler          (macOS)", "  run: apt install poppler-utils     (Debian)"]
 
@@ -118,6 +120,8 @@ def run(sources: str, raw_dir: str, fetch_name: str | None = None, url: str | No
         else:
             print(f"pass  {name}: {path} hash ok")
             paths[name] = path
+    print(f"optional  learned model {MODEL}: present, sha256 {hashlib.sha256(MODEL.read_bytes()).hexdigest()}"
+          if MODEL.is_file() else f"optional  learned model {MODEL}: absent (only needed for search mode learned). fit: {FIT}")
     if not ok:
         print("skip  parse not run: fix the failed checks above")
         return 1

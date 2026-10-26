@@ -172,6 +172,7 @@ def main(argv: list[str] | None = None) -> int:
     pr.add_argument("--crpc", default=os.environ.get("IBID_CRPC_PDF", "data/raw/crpc-indiacode.pdf"))
     pr.add_argument("--bnss", default=os.environ.get("IBID_BNSS_PDF", "data/raw/bnss-prs.pdf"))
     pr.add_argument("--index", default="data/index/procedure.sqlite")
+    mc.add_argument("--assoc-model", default="data/assoc-nb-v3.json", help="learned mode's model file; read on the first learned call")
     hd = sub.add_parser("headings").add_subparsers(dest="headings_cmd", required=True).add_parser(
         "list", help="section headings, one citation and heading per line")
     hd.add_argument("--act", choices=("bns", "ipc"), required=True)
@@ -315,7 +316,7 @@ def main(argv: list[str] | None = None) -> int:
         return 1
     if a.cmd == "mcp":
         from ibid import mcp
-        return mcp.serve(a.bns, a.ipc, a.concordance, a.procedure_index, a.procedure_concordance)
+        return mcp.serve(a.bns, a.ipc, a.concordance, a.assoc_model, a.procedure_index, a.procedure_concordance)
     if a.cmd == "procedure":
         from ibid import crpc
         return crpc.build(a.crpc, a.index, a.bnss)
