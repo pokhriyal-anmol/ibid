@@ -27,6 +27,10 @@ def pin_error(gold_path: str, gold_bytes: bytes) -> str | None:
     return None
 
 
+LOOKUPS = {"section_lookup", "subprovision_lookup", "cross_reference_chain"}  # the categories scored by an exact lookup
+MCP_CONCORDANCE = "concordance/v3.json"  # the newest committed, pinned concordance
+
+
 def score_gold(db: sqlite3.Connection, entries: list[dict], items: list[dict]) -> tuple[list[dict], dict]:
     """Every gold item scored: the outcome records and the per-category pass counts."""
     outcomes, cats = [], defaultdict(lambda: {"passed": 0, "total": 0})
@@ -50,15 +54,34 @@ def score_item(db: sqlite3.Connection, entries: list[dict], item: dict) -> dict:
         got = concordance.lookup(entries, item["query"], *DIRECTIONS[item["category"]])
         ok = got == item["expected"]
         outcome["packet"] = got
-    else:
+    elif item["category"] in LOOKUPS:
         got = index.lookup(db, item["query"])
         ok = got is not None and got[0] == item["expected_text"] and got[1] == item.get("expected_children", got[1])
         if item["category"] == "cross_reference_chain":
             ok = ok and got[2] == item["expected_refs"]
             outcome["packet"] = [(c, index.lookup(db, c)[0]) for c in got[2]]
+    else:
+        raise ValueError(f"gold item {item['id']}: unknown category {item['category']!r}")
     if "conformed" in item:  # system-conformed, not independently authored
         outcome["conformed"] = item["conformed"]
     return {**outcome, "pass": ok}
+
+
+def build_results(db: sqlite3.Connection, run: dict, counts: dict, cats: dict, outcomes: list[dict]) -> dict:
+    """The results record: what was scored, against which pinned inputs, by which parser."""
+    gold_path, concordance_path = run["gold_path"], run["concordance_path"]
+    return {
+        "mode": run["mode"],
+        "gold_version": Path(gold_path).stem,
+        "gold_sha256": hashlib.sha256(run["gold_bytes"]).hexdigest(),
+        "concordance": {"file": Path(concordance_path).name, "sha256": hashlib.sha256(Path(concordance_path).read_bytes()).hexdigest()} if concordance_path else None,
+        "parser_version": PARSER_VERSION,
+        "sections": counts,
+        "categories": cats,
+        "outcomes": outcomes,
+        "xref": {act: index.ref_counts(db, act) for act in ("BNS", "IPC")},
+        "unresolved_xref": index.unresolved(db),
+    }
 
 
 def run_eval(gold_path: str, bns_pdf: str, ipc_pdf: str, index_path: str, out_path: str, concordance_path: str | None = None, mode: str = "scored") -> int:
@@ -85,19 +108,13 @@ def run_eval(gold_path: str, bns_pdf: str, ipc_pdf: str, index_path: str, out_pa
     except ValueError as e:
         print(f"error: {e}", file=sys.stderr)
         return 1
-    outcomes, cats = score_gold(db, entries, json.loads(gold_bytes))
-    results = {
-        "mode": mode,
-        "gold_version": Path(gold_path).stem,
-        "gold_sha256": hashlib.sha256(gold_bytes).hexdigest(),
-        "concordance": {"file": Path(concordance_path).name, "sha256": hashlib.sha256(Path(concordance_path).read_bytes()).hexdigest()} if concordance_path else None,
-        "parser_version": PARSER_VERSION,
-        "sections": counts,
-        "categories": cats,
-        "outcomes": outcomes,
-        "xref": {act: index.ref_counts(db, act) for act in ("BNS", "IPC")},
-        "unresolved_xref": index.unresolved(db),
-    }
+    try:
+        outcomes, cats = score_gold(db, entries, json.loads(gold_bytes))
+    except ValueError as e:
+        print(f"error: {e}", file=sys.stderr)
+        return 1
+    results = build_results(db, {"mode": mode, "gold_path": gold_path, "gold_bytes": gold_bytes, "concordance_path": concordance_path},
+                            counts, cats, outcomes)
     with open(out_path, "w") as f:
         f.write(json.dumps(results, indent=2, sort_keys=True) + "\n")
     return 0
@@ -180,7 +197,7 @@ def main(argv: list[str] | None = None) -> int:
     mc = sub.add_parser("mcp", help="stdio MCP server over the deterministic lookups")
     mc.add_argument("--bns", default=os.environ.get("IBID_BNS_PDF", "data/raw/bns-prs.pdf"))
     mc.add_argument("--ipc", default=os.environ.get("IBID_IPC_PDF", "data/raw/ipc-wipo.pdf"))
-    mc.add_argument("--concordance", default="concordance/v3.json")
+    mc.add_argument("--concordance", default=MCP_CONCORDANCE)
     mc.add_argument("--procedure-concordance", default="concordance/crpc-bnss-v1.json", help="ignored if absent")
     mc.add_argument("--procedure-index", default="data/index/procedure.sqlite", help="the second index; ignored if absent")
     pr = sub.add_parser("procedure").add_subparsers(dest="proc_cmd", required=True).add_parser(

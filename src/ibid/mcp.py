@@ -172,13 +172,19 @@ def _log(event: str, msg: object, **fields: object) -> None:
                       "method": msg.get("method") if isinstance(msg.get("method"), str) else None, "tool": tool, **fields}), file=sys.stderr, flush=True)
 
 
+def _valid_id(msg: dict) -> bool:
+    """JSON-RPC 2.0: an id is a string, a number or null; a message without one is a notification."""
+    value = msg.get("id")
+    return "id" not in msg or value is None or isinstance(value, str) or (isinstance(value, (int, float)) and not isinstance(value, bool))
+
+
 def _error(msg: dict, code: int, message: str) -> dict | None:
     """The error reply, or None for a notification: JSON-RPC forbids answering a message that has no id."""
     return None if "id" not in msg else {"jsonrpc": "2.0", "id": msg["id"], "error": {"code": code, "message": message}}
 
 
 def handle(db, entries: list[dict], msg: object, heads: dict[str, str | None], lazy: LazyModel, procedure: tuple | None = None) -> dict | None:
-    if not isinstance(msg, dict) or not isinstance(msg.get("method"), str):
+    if not isinstance(msg, dict) or not isinstance(msg.get("method"), str) or msg.get("jsonrpc") != "2.0" or not _valid_id(msg):
         _log("rejected", msg, code=-32600, message="invalid request")
         return {"jsonrpc": "2.0", "id": None, "error": {"code": -32600, "message": "invalid request"}}
     mid, method, params = msg.get("id"), msg["method"], msg.get("params") or {}
