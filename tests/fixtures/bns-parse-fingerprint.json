@@ -1,0 +1,8 @@
+{
+ "chains_sha256": "766081ce5397a30bdce7128656dea5b0f1bf6c90754a1fe76efedbf922082195",
+ "edges": 331,
+ "edges_sha256": "64c7345906237f15edc1e8ccdd1532c54eaa3f1a9ca664cd7c8121fc93d9006e",
+ "parse_sha256": "ae4cc8bc372e2ba9da305dff6a6a2131e52008d9a4d72c3ec51b18cba800edeb",
+ "parser_version": "4",
+ "provisions": 1237
+}
