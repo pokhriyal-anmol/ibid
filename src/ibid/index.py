@@ -50,7 +50,7 @@ def ref_counts(db: sqlite3.Connection, act: str) -> dict[str, int]:
 
 def _match(db: sqlite3.Connection, query: str, limit: int, act: str | None) -> list[tuple[str, str]]:
     return db.execute(
-        "SELECT citation, text FROM fts WHERE fts MATCH ?" + (" AND citation LIKE ?" if act else "") + " ORDER BY rank, citation LIMIT ?",
+        "SELECT citation, text FROM fts WHERE fts MATCH ?" + (" AND citation LIKE ?" if act else "") + " ORDER BY citation, rank LIMIT ?",
         (query, *([act + " %"] if act else []), limit),
     ).fetchall()
 
