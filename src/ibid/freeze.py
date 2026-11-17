@@ -91,5 +91,5 @@ def freeze(sheet: str, draft_gold: str, draft_conc: str, out_gold: str, out_conc
     conc_bytes = (json.dumps(conc, indent=2, sort_keys=True) + "\n").encode()
     Path(out_conc).write_bytes(conc_bytes)
     Path(out_conc).with_suffix(".sha256").write_text(hashlib.sha256(conc_bytes).hexdigest() + "\n")
-    print(f"frozen {len(kept)} gold items, {len(conc)} concordance entries ({sum(e['verified'] for e in conc)} verified), {len(failed)} dropped")
+    print(f"frozen {len(kept)} gold items, {len(conc)} concordance entries ({sum(e["verified"] for e in conc)} verified), {len(failed)} dropped")
     return 0
