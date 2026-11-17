@@ -1,6 +1,7 @@
 """The SQLite index: one file, rebuilt from source on every run."""
 import json
 import os
+import re
 import sqlite3
 
 from ibid.parse import Provision
@@ -47,15 +48,34 @@ def ref_counts(db: sqlite3.Connection, act: str) -> dict[str, int]:
             "unresolved": db.execute(q + "NULL", (act + " %",)).fetchone()[0]}
 
 
+def _match(db: sqlite3.Connection, query: str, limit: int, act: str | None) -> list[tuple[str, str]]:
+    return db.execute(
+        "SELECT citation, text FROM fts WHERE fts MATCH ?" + (" AND citation LIKE ?" if act else "") + " ORDER BY rank, citation LIMIT ?",
+        (query, *([act + " %"] if act else []), limit),
+    ).fetchall()
+
+
 def search(db: sqlite3.Connection, raw_query: str, limit: int = 10, act: str | None = None) -> list[tuple[str, str]]:
     """FTS5 keyword search on the raw query only (ADR 0001). Ties on score break by citation, so order is total."""
     try:
-        return db.execute(
-            "SELECT citation, text FROM fts WHERE fts MATCH ?" + (" AND citation LIKE ?" if act else "") + " ORDER BY rank, citation LIMIT ?",
-            (raw_query, *([act + " %"] if act else []), limit),
-        ).fetchall()
+        return _match(db, raw_query, limit, act)
     except sqlite3.OperationalError:  # query is not valid FTS5 syntax: no hits, never rewritten
         return []
+
+
+def search_explained(db: sqlite3.Connection, raw_query: str, limit: int = 10, act: str | None = None) -> tuple[list[tuple[str, str]], dict[str, str]]:
+    """`search` for the MCP tool, which never answers with a silent empty list (ADR 0011). The eval path keeps `search`.
+    A query that is not valid FTS5 syntax is retried once with each word quoted, and `searched_as` says what ran."""
+    extra: dict[str, str] = {}
+    try:
+        hits = _match(db, raw_query, limit, act)
+    except sqlite3.OperationalError:
+        extra["searched_as"] = " ".join(f'"{w}"' for w in re.findall(r"\w+", raw_query))
+        hits = _match(db, extra["searched_as"], limit, act) if extra["searched_as"] else []
+    if not hits:
+        extra["notice"] = ("No section contains every word of the query. Keyword search needs every word to match: use fewer or more specific words."
+                           if extra.get("searched_as", raw_query) else "The query has no words to search for.")
+    return hits, extra
 
 
 def neighbours(db: sqlite3.Connection, citation: str) -> tuple[tuple[str, str] | None, tuple[str, str] | None]:

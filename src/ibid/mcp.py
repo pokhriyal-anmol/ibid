@@ -117,13 +117,13 @@ def call_tool(db, entries: list[dict], name: str, args: object, heads: dict[str,
             if not procedure:
                 return _tool_result("The second index is not built, so CrPC and BNSS are not searchable.", True)
             db, heads = procedure[:2]
-        hits = index.search(db, args["query"], limit, ACTS.get(act))
+        hits, extra = index.search_explained(db, args["query"], limit, ACTS.get(act))
         results = [{"citation": c, "text": t, "heading": heads.get(c)} for c, t in hits]
         if args.get("adjacent"):
             for r in results:
                 prev, nxt = index.neighbours(db, r["citation"])
                 r["previous"], r["next"] = [None if n is None else {"citation": n[0], "heading": heads.get(n[0]) or n[1]} for n in (prev, nxt)]
-        return _tool_result({"results": results})
+        return _tool_result({"results": results, **extra})
     if name == "concordance":
         prefix = args["citation"].split(" ")[0].lower()
         inferred = {d.split("_to_")[0]: d for d in DIRECTIONS}.get(prefix)
