@@ -115,7 +115,7 @@ def _split(act: str, n: int | str, lines: list[tuple[str, bool]], texts: list[st
     for j, (cite, parent, start, _, end) in enumerate(nodes):
         src = [ln for ln, _ in lines] if j == 0 else texts
         kids = tuple(x[0] for x in nodes if x[1] == j)
-        out.append(Provision(cite, " ".join(" ".join(src[start:end]).split()), nodes[parent][0] if parent is not None else None, kids))
+        out.append(Provision(cite, " ".join(src[start:end]), nodes[parent][0] if parent is not None else None, kids))
     return out
 
 
