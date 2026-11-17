@@ -2,6 +2,7 @@
 without the IPC PDF. Each test below was written against a planted bug that CI missed (see docs/readiness/ledger.md).
 Exception to AGENTS.md rule 5: calls score_item, concordance.load and mcp.handle directly, because `ibid eval` needs both PDFs."""
 import contextlib
+import hashlib
 import io
 import json
 import sys
@@ -113,7 +114,7 @@ class ConcordanceLoadTest(Base):
 
     def test_malformed_entries_are_refused(self):
         for bad in ({**self.GOOD, "type": "nope"}, {**self.GOOD, "verified": "yes"}, {**self.GOOD, "basis": "x"},
-                    {**self.GOOD, "type": "removed"}, {**self.GOOD, "ipc": ["BNS 103"]}):
+                    {**self.GOOD, "type": "removed"}, {**self.GOOD, "ipc": ["BNS 103"]}, {**self.GOOD, "bns": ["IPC 302"]}):
             with self.assertRaises(ValueError, msg=str(bad)):
                 self.load(bad)
 
@@ -210,6 +211,68 @@ class EvalGateTest(unittest.TestCase):
             self.assertEqual(rc, 1)
             self.assertIn("IPC section count does not match", err.getvalue())
             self.assertFalse((Path(tmp) / "r.json").exists())
+
+
+class PinTest(Base):
+    def pinned(self, name: str, pin_text: str | None) -> tuple[str, bytes]:
+        gold = Path(self.tmp.name) / f"{name}.json"
+        gold.write_text("[]")
+        pin = gold.with_suffix(".sha256")
+        pin.unlink(missing_ok=True)
+        if pin_text is not None:
+            pin.write_text(pin_text)
+        return str(gold), gold.read_bytes()
+
+    def test_a_pin_must_equal_the_whole_sha256_of_the_file(self):
+        digest = hashlib.sha256(b"[]").hexdigest()
+        self.assertIsNone(cli.pin_error(*self.pinned("ok", digest + "\n")))
+        self.assertIn("does not match", cli.pin_error(*self.pinned("short", digest[:8])))
+        self.assertIn("does not match", cli.pin_error(*self.pinned("tail", digest[:8] + "0" * 56)))  # right first 8 characters, wrong rest
+        self.assertIn("no pin file", cli.pin_error(*self.pinned("none", None)))
+
+
+class ScoreGoldTest(Base):
+    def test_the_pass_count_is_the_number_of_items_that_passed(self):
+        items = [{"id": "a", "category": "get_provision", "query": "IPC 302", "expected_text": P302.text},
+                 {"id": "b", "category": "get_provision", "query": "IPC 302", "expected_text": "wrong"},
+                 {"id": "c", "category": "get_provision", "query": "IPC 999", "expected_text": ""}]
+        outcomes, cats = cli.score_gold(self.db, [], items)
+        self.assertEqual([o["pass"] for o in outcomes], [True, False, False])
+        self.assertEqual(cats["get_provision"], {"passed": 1, "total": 3})
+
+
+class ChainOrderTest(unittest.TestCase):
+    def test_a_cross_reference_chain_is_compared_in_order_not_as_a_set(self):
+        edges = [Edge("IPC 302", "section 379", "IPC 379", None), Edge("IPC 302", "section 500", "IPC 500", None)]
+        with tempfile.TemporaryDirectory() as tmp:
+            db = index.build(str(Path(tmp) / "i.sqlite"), PROVS, edges)
+            item = {"id": "t", "category": "cross_reference_chain", "query": "IPC 302", "expected_text": P302.text}
+            self.assertTrue(cli.score_item(db, [], {**item, "expected_refs": ["IPC 379", "IPC 500"]})["pass"])
+            self.assertFalse(cli.score_item(db, [], {**item, "expected_refs": ["IPC 500", "IPC 379"]})["pass"])
+            db.close()
+
+
+class EvalConcordancePinTest(unittest.TestCase):
+    def test_scored_eval_refuses_a_concordance_that_does_not_match_its_pin_before_parsing_anything(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            conc = Path(tmp) / "c.json"
+            conc.write_text("[]")
+            err = io.StringIO()
+            for pin in (None, "0" * 64):  # no pin file, then a wrong one
+                conc.with_suffix(".sha256").unlink(missing_ok=True)
+                if pin:
+                    conc.with_suffix(".sha256").write_text(pin)
+                with contextlib.redirect_stderr(err):
+                    # the PDFs do not exist: reaching the parser would raise, so a clean refusal proves the pin is checked first
+                    rc = cli.run_eval("gold/v2.json", "/absent/bns.pdf", "/absent/ipc.pdf", f"{tmp}/i.sqlite", f"{tmp}/r.json", str(conc), "scored")
+                self.assertEqual(rc, 1, pin)
+            self.assertEqual(err.getvalue().count("scored mode refused"), 2)
+
+    def test_the_committed_concordances_match_their_pins(self):
+        root = Path(__file__).parent.parent
+        for name in ("v2", "v3", "crpc-bnss-v1"):
+            path = root / "concordance" / f"{name}.json"
+            self.assertIsNone(cli.pin_error(str(path), path.read_bytes()), name)
 
 
 if __name__ == "__main__":

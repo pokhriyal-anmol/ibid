@@ -27,6 +27,17 @@ def pin_error(gold_path: str, gold_bytes: bytes) -> str | None:
     return None
 
 
+def score_gold(db: sqlite3.Connection, entries: list[dict], items: list[dict]) -> tuple[list[dict], dict]:
+    """Every gold item scored: the outcome records and the per-category pass counts."""
+    outcomes, cats = [], defaultdict(lambda: {"passed": 0, "total": 0})
+    for item in items:
+        outcome = score_item(db, entries, item)
+        outcomes.append(outcome)
+        cats[item["category"]]["total"] += 1
+        cats[item["category"]]["passed"] += outcome["pass"]
+    return outcomes, cats
+
+
 def score_item(db: sqlite3.Connection, entries: list[dict], item: dict) -> dict:
     """One gold item against the index: its outcome record, with `pass` set."""
     outcome = {"id": item["id"], "category": item["category"]}
@@ -55,6 +66,9 @@ def run_eval(gold_path: str, bns_pdf: str, ipc_pdf: str, index_path: str, out_pa
     if mode == "scored" and (err := pin_error(gold_path, gold_bytes)):
         print(f"error: scored mode refused: {err}", file=sys.stderr)
         return 1
+    if mode == "scored" and concordance_path and (err := pin_error(concordance_path, Path(concordance_path).read_bytes())):
+        print(f"error: scored mode refused: {err}", file=sys.stderr)  # AGENTS.md rule 2: a pinned concordance is never edited in place
+        return 1
     provisions, counts = [], {}
     for act, parse, total, pdf in (("BNS", parse_bns, BNS_TOTAL, bns_pdf), ("IPC", parse_ipc, IPC_TOTAL, ipc_pdf)):
         parsed = parse(pdf)
@@ -71,12 +85,7 @@ def run_eval(gold_path: str, bns_pdf: str, ipc_pdf: str, index_path: str, out_pa
     except ValueError as e:
         print(f"error: {e}", file=sys.stderr)
         return 1
-    outcomes, cats = [], defaultdict(lambda: {"passed": 0, "total": 0})
-    for item in json.loads(gold_bytes):
-        outcome = score_item(db, entries, item)
-        outcomes.append(outcome)
-        cats[item["category"]]["total"] += 1
-        cats[item["category"]]["passed"] += outcome["pass"]
+    outcomes, cats = score_gold(db, entries, json.loads(gold_bytes))
     results = {
         "mode": mode,
         "gold_version": Path(gold_path).stem,

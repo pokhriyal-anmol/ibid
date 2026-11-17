@@ -1,4 +1,5 @@
 """Ticket 08: the baseline is reproducible and the harness can fail. Scored mode, pinned gold."""
+import hashlib
 import json
 import re
 import shutil
@@ -61,6 +62,7 @@ class BaselineTest(unittest.TestCase):
         victim["bns"] = ["BNS 1"]
         bad = self.tmp / "wrong-conc.json"
         bad.write_text(json.dumps(entries))
+        bad.with_suffix(".sha256").write_text(hashlib.sha256(bad.read_bytes()).hexdigest() + "\n")  # a new version file takes a new pin (AGENTS.md rule 2)
         code, out = self.run_scored(conc=str(bad))
         self.assertEqual(code, 0)
         got = json.loads(out.read_text())["categories"]
