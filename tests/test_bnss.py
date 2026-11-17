@@ -11,10 +11,12 @@ from pathlib import Path
 from mcp_harness import ENV, ROOT, Client, command
 from pdfs import BNSS_PDF, CRPC_PDF
 from test_crpc import BNSS_MINI, MINI, build
+from pdfs import needs_ipc
 
 COVERED = ("IPC", "BNS", "CrPC", "BNSS")
 
 
+@needs_ipc
 class MiniBnssTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -148,6 +150,7 @@ class NoArrangementTest(unittest.TestCase):
         self.assertFalse(index.exists())
 
 
+@needs_ipc
 class RealBnssTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):

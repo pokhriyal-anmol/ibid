@@ -14,8 +14,10 @@ from ibid.cli import main
 ROOT = Path(__file__).parent.parent
 GOLD, CONC, BASELINE = ROOT / "gold" / "v2.json", ROOT / "concordance" / "v2.json", ROOT / "results" / "baseline-v2.json"
 from pdfs import BNS_PDF as PDF, IPC_PDF
+from pdfs import needs_ipc
 
 
+@needs_ipc
 class BaselineTest(unittest.TestCase):
     def setUp(self):
         self.tmp = Path(tempfile.mkdtemp())

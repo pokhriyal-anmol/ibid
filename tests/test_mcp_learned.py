@@ -12,6 +12,7 @@ from ibid import index
 from ibid.cli import main
 from mcp_harness import Client, command
 from test_charges_score import PROVS, charge, item
+from pdfs import needs_ipc
 
 FIX = Path(__file__).parent / "fixtures"
 MODEL = FIX / "assoc-nb-v3-invented.json"
@@ -22,6 +23,7 @@ def with_model(path: Path) -> Client:
     return Client(command() + ["--assoc-model", str(path)])
 
 
+@needs_ipc
 class GoldenTest(unittest.TestCase):
     """The pre-change responses, recorded before mcp.py was touched: no mode and mode keyword must be byte-identical."""
 
@@ -37,6 +39,7 @@ class GoldenTest(unittest.TestCase):
                 c.close()
 
 
+@needs_ipc
 class LearnedTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -99,6 +102,7 @@ class LearnedTest(unittest.TestCase):
         self.assertEqual(len(self.learned("murder", limit=2)["structuredContent"]["results"]), 2)
 
 
+@needs_ipc
 class LearnedErrorsTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):

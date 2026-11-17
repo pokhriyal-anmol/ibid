@@ -11,6 +11,7 @@ from ibid.cli import main
 from ibid.headings import parse_layout
 from ibid.parse import PARSER_VERSION
 from pdfs import BNS_PDF, IPC_PDF
+from pdfs import needs_ipc
 
 ROOT = Path(__file__).resolve().parent.parent
 GUARDED = ("results", "gold", "concordance")
@@ -134,6 +135,7 @@ class HeadingsFixtureTest(unittest.TestCase):
         self.assertFalse([ln for ln in self.lines() if ln.startswith("BNS ") and "(" in ln.split("\t")[0]])
 
 
+@needs_ipc
 class HeadingsRealPdfTest(unittest.TestCase):
     def test_bns(self):
         before = snapshot()

@@ -12,6 +12,7 @@ from pathlib import Path
 
 from mcp_harness import ENV, ROOT, Client, command
 from pdfs import BNSS_PDF, CRPC_PDF
+from pdfs import needs_ipc
 
 MINI = ROOT / "tests" / "fixtures" / "crpc-mini.txt"
 BNSS_MINI = ROOT / "tests" / "fixtures" / "bnss-mini.txt"
@@ -30,6 +31,7 @@ def snapshot() -> dict[str, str]:
     return {str(p): hashlib.sha256(p.read_bytes()).hexdigest() for p in paths if p.is_file()}
 
 
+@needs_ipc
 class MiniCrpcTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -130,6 +132,7 @@ class CheckFailsOnBadInputTest(unittest.TestCase):
         self.assertFalse(index.exists())
 
 
+@needs_ipc
 class FirstIndexUntouchedTest(unittest.TestCase):
     def test_the_build_leaves_the_first_index_the_pins_and_results_byte_identical(self):
         first = ROOT / "data/index/ibid.sqlite"
@@ -154,6 +157,7 @@ class FirstIndexUntouchedTest(unittest.TestCase):
         self.assertNotEqual(snapshot(), before)
 
 
+@needs_ipc
 class RealCrpcTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
