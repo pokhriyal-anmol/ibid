@@ -11,8 +11,10 @@ from ibid.parse import parse_bns
 from ibid.xref import extract
 from mcp_harness import ENV, ROOT, Client, command
 from pdfs import BNS_PDF, IPC_PDF
+from pdfs import needs_ipc
 
 
+@needs_ipc
 class ServerTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -235,6 +237,7 @@ class ServerTest(unittest.TestCase):
         self.assertEqual(self.c.call("search", {"query": "murder", "adjacent": "yes"})["error"]["code"], -32602)
 
 
+@needs_ipc
 class ConcordanceToolTest(unittest.TestCase):
     FIXTURE = "tests/fixtures/concordance.json"
 
@@ -319,6 +322,7 @@ class ConcordanceToolTest(unittest.TestCase):
         self.assertEqual(tool["inputSchema"]["properties"]["direction"]["enum"], ["ipc_to_bns", "bns_to_ipc", "crpc_to_bnss", "bnss_to_crpc"])
 
 
+@needs_ipc
 class StartupFailureTest(unittest.TestCase):
     def run_bad(self, args, lines=1):
         p = subprocess.run(args, cwd=ROOT, capture_output=True, text=True, timeout=120, env=ENV)

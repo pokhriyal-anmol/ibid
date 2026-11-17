@@ -18,6 +18,7 @@ from ibid import setup
 from ibid.cli import main
 from ibid.parse import Provision
 from pdfs import _main_checkout
+from pdfs import needs_ipc
 
 ROOT = Path(__file__).resolve().parent.parent
 MAIN_RAW = _main_checkout() / "data/raw"
@@ -168,6 +169,7 @@ class SetupTest(unittest.TestCase):
         self.assertIn("apt install poppler-utils", out)
 
 
+@needs_ipc
 class RealPdfTest(unittest.TestCase):
     def test_real_pdfs_parse_to_expected_counts(self):
         from pdfs import BNS_PDF, IPC_PDF

@@ -18,6 +18,7 @@ from ibid.parse import Provision
 from mcp_harness import ROOT, Client, command
 from pdfs import BNSS_PDF, CRPC_PDF
 from test_crpc import build
+from pdfs import needs_ipc
 
 TABLE = """\
 BNSS       Subject                          CrPC       Summary of Comparison
@@ -120,6 +121,7 @@ class CrpcBnssFromTableTest(unittest.TestCase):
         self.assertIn("BNSS 20", printed)
 
 
+@needs_ipc
 class CrpcBnssMcpTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):

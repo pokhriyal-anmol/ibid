@@ -13,6 +13,7 @@ from ibid.cli import main
 from ibid.ipc import parse_ipc
 from ibid.parse import Provision, parse_bns
 from pdfs import BNS_PDF, IPC_PDF
+from pdfs import needs_ipc
 
 ROOT = Path(__file__).resolve().parent.parent
 GUARDED = ("results", "gold", "concordance")
@@ -53,6 +54,7 @@ def snapshot() -> dict[str, str]:
             for d in GUARDED for p in sorted((ROOT / d).rglob("*")) if p.is_file()}
 
 
+@needs_ipc
 class LinksListTest(unittest.TestCase):
     def setUp(self):
         self.tmp = Path(tempfile.mkdtemp())

@@ -9,6 +9,7 @@ from ibid.ipc import parse_ipc
 from ibid.parse import parse_bns
 from ibid.xref import extract
 from pdfs import BNS_PDF, IPC_PDF
+from pdfs import needs_ipc
 
 # punishment section first, defining section second
 PAIRS = [("IPC 302", "IPC 300"), ("IPC 406", "IPC 405"), ("IPC 420", "IPC 415")]
@@ -23,6 +24,7 @@ def edges(db) -> list[tuple[str, str | None]]:
     return db.execute("SELECT source, target FROM xref").fetchall()
 
 
+@needs_ipc
 class XrefGraphTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):

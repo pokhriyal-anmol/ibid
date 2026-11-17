@@ -7,10 +7,12 @@ from pathlib import Path
 
 from mcp_harness import ROOT, Client, command
 from test_crpc import MINI, build
+from pdfs import needs_ipc
 
 FIXTURE = json.loads((ROOT / "tests/fixtures/search-no-act.json").read_text())  # recorded before any code change
 
 
+@needs_ipc
 class SearchActTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):

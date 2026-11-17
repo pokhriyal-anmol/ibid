@@ -13,10 +13,12 @@ from ibid.cli import main
 
 GOLD = str(Path(__file__).parent.parent / "gold" / "draft.json")
 from pdfs import BNS_PDF as PDF, IPC_PDF
+from pdfs import needs_ipc
 FIX = Path(__file__).parent / "fixtures"
 CGOLD, CONC = str(FIX / "concordance-gold.json"), str(FIX / "concordance.json")
 
 
+@needs_ipc
 class EvalTest(unittest.TestCase):
     def setUp(self):
         self.tmp = Path(tempfile.mkdtemp())

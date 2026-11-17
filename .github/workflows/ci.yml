@@ -34,5 +34,20 @@ jobs:
       - name: Compile
         run: uv run --python 3.12 python -m compileall -q src
 
-      - name: Tests that need no source PDFs
-        run: uv run --python 3.12 python -m unittest tests.test_freeze
+      - name: Poppler tools
+        run: sudo apt-get install -y poppler-utils
+
+      - uses: actions/cache@v4
+        with:
+          path: data/raw
+          key: raw-${{ hashFiles('data/sources.json') }}
+
+      # Each fetch checks the pinned sha256 and never overwrites. `ibid setup` exits 1 here because the
+      # IPC PDF is missing (signed, expiring WIPO link), so the exit code is ignored; a failed fetch
+      # leaves a PDF absent and the tests that need it fail. IPC tests skip (tests/pdfs.py needs_ipc).
+      - name: Fetch the source PDFs CI can reach
+        run: |
+          for s in bns bnss crpc bnss_crpc_table; do uv run --python 3.12 ibid setup --fetch "$s" || true; done
+
+      - name: Tests
+        run: uv run --python 3.12 python -m unittest discover -s tests

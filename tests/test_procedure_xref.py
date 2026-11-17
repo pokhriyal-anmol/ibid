@@ -6,6 +6,7 @@ from pathlib import Path
 
 from mcp_harness import Client, command
 from test_crpc import BNSS_MINI, MINI, build
+from pdfs import needs_ipc
 
 CRPC_OLD = "43. Saving.—Nothing in this Code affects any other law.\n"
 CRPC_NEW = ("43. Saving.—Nothing in this Code affects any other law, as section 41A applies, and so does section 43, "
@@ -15,6 +16,7 @@ BNSS_NEW = ("Nothing in this Sanhita affects any other law, as section 3 applies
             "but not section 3 of the Bharatiya Nyaya Sanhita, 2023.\n")
 
 
+@needs_ipc
 class ProcedureXrefTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):

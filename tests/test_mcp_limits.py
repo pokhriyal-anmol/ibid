@@ -7,6 +7,7 @@ from ibid import mcp
 from mcp_harness import Client
 from pdfs import _main_checkout
 from test_mcp_learned import MODEL as INVENTED, with_model
+from pdfs import needs_ipc
 
 ROOT = Path(__file__).parent.parent
 REAL_MODEL = next((p for p in (ROOT / "data/assoc-nb-v3.json", _main_checkout() / "data/assoc-nb-v3.json") if p.exists()), ROOT / "data/assoc-nb-v3.json")
@@ -33,6 +34,7 @@ def expected() -> tuple[str, str]:
                      "was measured on labels that are incomplete, and is not legal advice.")
 
 
+@needs_ipc
 class LimitsTest(unittest.TestCase):
     def test_tools_list_shows_mode_and_the_report_figures(self):
         c = Client()
