@@ -1,6 +1,5 @@
 """`ibid mcp`: a stdio MCP server (newline-delimited JSON-RPC 2.0) over the deterministic lookups. No model (ADR 0001)."""
 import json
-import re
 from datetime import datetime, timezone
 import sqlite3
 import sys
@@ -123,7 +122,7 @@ def call_tool(db, entries: list[dict], name: str, args: object, heads: dict[str,
             if not procedure:
                 return _tool_result("The second index is not built, so CrPC and BNSS are not searchable.", True)
             db, heads = procedure[:2]
-        if len(re.findall(r"\w+", args["query"])) > MAX_QUERY_WORDS:
+        if len(index.WORD.findall(args["query"])) > MAX_QUERY_WORDS:
             raise RpcError(-32602, f"query is too long: keyword search takes at most {MAX_QUERY_WORDS} words")
         hits, extra = index.search_explained(db, args["query"], limit, ACTS.get(act))
         results = [{"citation": c, "text": t, "heading": heads.get(c)} for c, t in hits]
@@ -194,6 +193,9 @@ def handle(db, entries: list[dict], msg: object, heads: dict[str, str | None], l
     except RpcError as e:
         _log("rejected", msg, code=e.code, message=e.message)
         return {"jsonrpc": "2.0", "id": mid, "error": {"code": e.code, "message": e.message}}
+    except UnicodeEncodeError:  # a lone surrogate in a JSON string: the client's input, not a server bug
+        _log("rejected", msg, code=-32602, message="string cannot be encoded as UTF-8")
+        return {"jsonrpc": "2.0", "id": mid, "error": {"code": -32602, "message": "a string contains a lone surrogate and cannot be encoded as UTF-8"}}
     except Exception as e:  # a bug or an input nobody validated must not end the session; the client gets no stack trace
         _log("internal_error", msg, error_type=type(e).__name__, message=str(e))
         return {"jsonrpc": "2.0", "id": mid, "error": {"code": -32603, "message": "internal error"}}
