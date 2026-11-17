@@ -63,6 +63,16 @@ class McpLogTest(unittest.TestCase):
                 mcp._decode(bad)
         self.assertEqual(mcp._decode('{"id":1.5,"x":1e300}'), {"id": 1.5, "x": 1e300})
 
+    def test_a_query_past_the_word_cap_is_refused_before_it_reaches_the_index(self):
+        reply, logs = self.call(self.search(query=" OR ".join(["a"] * 4000)))
+        self.assertEqual(reply["error"]["code"], -32602)
+        self.assertIn("200", reply["error"]["message"])
+        self.assertEqual([r["event"] for r in logs], ["rejected"])
+        at_cap = self.call(self.search(query=" ".join(["murder"] * 200)))[0]
+        self.assertFalse(at_cap["result"]["isError"])  # 200 words are still searched
+        over = self.call(self.search(query=" ".join(["murder"] * 201)))[0]
+        self.assertEqual(over["error"]["code"], -32602)
+
     def test_an_invalid_request_is_logged(self):
         reply, logs = self.call({"jsonrpc": "2.0", "id": 3})
         self.assertEqual(reply["error"]["code"], -32600)
