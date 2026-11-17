@@ -3,12 +3,14 @@ import json
 import os
 import re
 import sqlite3
+import time
 
 from ibid.parse import Provision
 from ibid.xref import Edge, chains
 
 
 WORD = re.compile(r"[^\W_]+")  # the tokens FTS5 sees: letters and digits, so `_` and punctuation separate words
+SEARCH_BUDGET_SECONDS = 1.0  # a real query takes under 0.05 s; this stops the pathological shapes (NEAR, long OR chains) whatever their word count
 KEYWORD_LIMIT = 100  # the result size a keyword item is judged on, shared by eval and conform
 
 
@@ -49,11 +51,25 @@ def ref_counts(db: sqlite3.Connection, act: str) -> dict[str, int]:
             "unresolved": db.execute(q + "NULL", (act + " %",)).fetchone()[0]}
 
 
-def _match(db: sqlite3.Connection, query: str, limit: int, act: str | None) -> list[tuple[str, str]]:
-    return db.execute(
-        "SELECT citation, text FROM fts WHERE fts MATCH ?" + (" AND citation LIKE ?" if act else "") + " ORDER BY rank, citation LIMIT ?",
-        (query, *([act + " %"] if act else []), limit),
-    ).fetchall()
+class SearchTimeout(Exception):
+    """The query ran past its time budget and SQLite was told to stop it."""
+
+
+def _match(db: sqlite3.Connection, query: str, limit: int, act: str | None, budget: float | None = None) -> list[tuple[str, str]]:
+    deadline = None if budget is None else time.monotonic() + budget
+    if deadline is not None:
+        db.set_progress_handler(lambda: time.monotonic() > deadline, 100)  # a true return interrupts the statement
+    try:
+        return db.execute(
+            "SELECT citation, text FROM fts WHERE fts MATCH ?" + (" AND citation LIKE ?" if act else "") + " ORDER BY rank, citation LIMIT ?",
+            (query, *([act + " %"] if act else []), limit),
+        ).fetchall()
+    except sqlite3.OperationalError as e:
+        if deadline is not None and time.monotonic() > deadline:
+            raise SearchTimeout from e
+        raise
+    finally:
+        db.set_progress_handler(None, 0)
 
 
 def search(db: sqlite3.Connection, raw_query: str, limit: int = 10, act: str | None = None) -> list[tuple[str, str]]:
@@ -64,15 +80,19 @@ def search(db: sqlite3.Connection, raw_query: str, limit: int = 10, act: str | N
         return []
 
 
-def search_explained(db: sqlite3.Connection, raw_query: str, limit: int = 10, act: str | None = None) -> tuple[list[tuple[str, str]], dict[str, str]]:
+def search_explained(db: sqlite3.Connection, raw_query: str, limit: int = 10, act: str | None = None,
+                     budget: float = SEARCH_BUDGET_SECONDS) -> tuple[list[tuple[str, str]], dict[str, str]]:
     """`search` for the MCP tool, which never answers with a silent empty list (ADR 0011). The eval path keeps `search`.
     A query that is not valid FTS5 syntax is retried once with each word quoted, and `searched_as` says what ran."""
     extra: dict[str, str] = {}
     try:
-        hits = _match(db, raw_query, limit, act)
-    except sqlite3.OperationalError:
-        extra["searched_as"] = " ".join(f'"{w}"' for w in WORD.findall(raw_query))
-        hits = _match(db, extra["searched_as"], limit, act) if extra["searched_as"] else []
+        try:
+            hits = _match(db, raw_query, limit, act, budget)
+        except sqlite3.OperationalError:
+            extra["searched_as"] = " ".join(f'"{w}"' for w in WORD.findall(raw_query))
+            hits = _match(db, extra["searched_as"], limit, act, budget) if extra["searched_as"] else []
+    except SearchTimeout:
+        return [], {"notice": f"The search took longer than {budget:g} s and was stopped. Use fewer or simpler terms."}
     if not hits:
         extra["notice"] = ("No section contains every word of the query. Keyword search needs every word to match: use fewer or more specific words."
                            if extra.get("searched_as", raw_query) else "The query has no words to search for.")

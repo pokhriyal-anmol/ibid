@@ -112,11 +112,42 @@ class ConcordanceLoadTest(Base):
             with self.assertRaises(ValueError, msg=str(bad)):
                 self.load(bad)
 
+    def test_the_contents_of_an_entry_must_be_the_right_types_too(self):
+        for bad in ({**self.GOOD, "bns": [103]}, {**self.GOOD, "ipc": [["IPC 302"]]}, {**self.GOOD, "type": ["one-to-one"]},
+                    {**self.GOOD, "basis": ["human-checked"]}, {**self.GOOD, "type": {"a": 1}}):
+            with self.assertRaises(ValueError, msg=str(bad)):
+                self.load(bad)
+        for top in ("5", '{"a": 1}', '"text"', "null"):  # a concordance file is a JSON list
+            path = Path(self.tmp.name) / "top.json"
+            path.write_text(top)
+            with self.assertRaises(ValueError, msg=top):
+                concordance.load(str(path), self.db)
+
     def test_malformed_entries_are_refused(self):
         for bad in ({**self.GOOD, "type": "nope"}, {**self.GOOD, "verified": "yes"}, {**self.GOOD, "basis": "x"},
                     {**self.GOOD, "type": "removed"}, {**self.GOOD, "ipc": ["BNS 103"]}, {**self.GOOD, "bns": ["IPC 302"]}):
             with self.assertRaises(ValueError, msg=str(bad)):
                 self.load(bad)
+
+
+class SearchBudgetTest(Base):
+    SLOW = " OR ".join(["murder"] * 100)  # enough steps for the progress handler to fire on a tiny index
+
+    def test_a_search_past_its_time_budget_is_stopped_with_a_notice_not_an_error(self):
+        hits, extra = index.search_explained(self.db, self.SLOW, budget=-1.0)  # the deadline has already passed
+        self.assertEqual(hits, [])
+        self.assertIn("took longer", extra["notice"])
+        self.assertNotIn("searched_as", extra)  # a timeout is not a syntax error and is not retried
+
+    def test_the_connection_is_usable_after_a_timeout_and_normal_queries_are_unaffected(self):
+        index.search_explained(self.db, self.SLOW, budget=-1.0)
+        self.assertTrue(index.search(self.db, self.SLOW))  # unbudgeted: a handler left installed with its deadline passed would stop this
+        hits, extra = index.search_explained(self.db, "murder")
+        self.assertIn("IPC 302", [c for c, _ in hits])
+        self.assertEqual(extra, {})
+
+    def test_the_eval_search_has_no_budget(self):
+        self.assertTrue(index.search(self.db, self.SLOW))
 
 
 class McpContractTest(Base):

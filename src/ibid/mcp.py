@@ -16,7 +16,7 @@ ACTS = {"ipc": "IPC", "bns": "BNS", "crpc": "CrPC", "bnss": "BNSS"}  # act argum
 DIRECTIONS = ("ipc_to_bns", "bns_to_ipc", "crpc_to_bnss", "bnss_to_crpc")
 MODES = ("keyword", "learned")
 MAX_QUERY_WORDS = 200  # FTS5 time grows about quadratically with terms: 400 `a OR a` terms took 0.7 s, 4000 took 85 s
-MAX_QUERY_CHARS = 4000  # FTS5 phrase cost is linear in tokens (about 60 microseconds each), so this bounds a query to well under a second
+MAX_QUERY_CHARS = 4000  # phrase cost is linear in tokens; the time budget in index.search_explained is what bounds every shape
 MAX_LIMIT = 10_000  # the index holds about 2,000 provisions; SQLite's own LIMIT overflows at 2**63
 # Figures are read-checked against results/layer-comparison.md by tests/test_mcp_limits.py.
 KEYWORD_LIMITS = ("Keyword search finds 3.1 to 5.1 percent of IPC charges on set v1 and 4.8 to 6.0 percent on set v2 "
