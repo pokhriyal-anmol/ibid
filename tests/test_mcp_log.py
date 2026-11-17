@@ -50,6 +50,13 @@ class McpLogTest(unittest.TestCase):
         self.assertEqual(reply, {"jsonrpc": "2.0", "id": 7, "error": {"code": -32603, "message": "internal error"}})
         self.assertEqual([(r["event"], r["error_type"]) for r in logs], [("internal_error", "ZeroDivisionError")])
 
+    def test_an_oversized_limit_is_a_client_error_not_an_internal_one(self):
+        for limit in (2**63, 10**6):
+            reply, logs = self.call(self.search(limit=limit))
+            self.assertEqual(reply["error"]["code"], -32602, limit)
+            self.assertEqual([r["event"] for r in logs], ["rejected"], limit)
+        self.assertEqual(self.call(self.search(limit=10_000))[0]["result"]["isError"], False)
+
     def test_an_invalid_request_is_logged(self):
         reply, logs = self.call({"jsonrpc": "2.0", "id": 3})
         self.assertEqual(reply["error"]["code"], -32600)

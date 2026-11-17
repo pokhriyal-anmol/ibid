@@ -15,6 +15,7 @@ PROTOCOL_VERSION = "2024-11-05"
 ACTS = {"ipc": "IPC", "bns": "BNS", "crpc": "CrPC", "bnss": "BNSS"}  # act argument to Citation prefix
 DIRECTIONS = ("ipc_to_bns", "bns_to_ipc", "crpc_to_bnss", "bnss_to_crpc")
 MODES = ("keyword", "learned")
+MAX_LIMIT = 10_000  # the index holds about 2,000 provisions; SQLite's own LIMIT overflows at 2**63
 # Figures are read-checked against results/layer-comparison.md by tests/test_mcp_limits.py.
 KEYWORD_LIMITS = ("Keyword search finds 3.1 to 5.1 percent of IPC charges on set v1 and 4.8 to 6.0 percent on set v2 "
                   "(story-style queries, measured per set).")
@@ -109,6 +110,8 @@ def call_tool(db, entries: list[dict], name: str, args: object, heads: dict[str,
         limit = args.get("limit", 10)
         if isinstance(limit, bool) or not isinstance(limit, int) or limit < 1:
             raise RpcError(-32602, "limit must be an integer of at least 1")
+        if limit > MAX_LIMIT:
+            raise RpcError(-32602, f"limit must be at most {MAX_LIMIT}")
         if not isinstance(args.get("adjacent", False), bool):
             raise RpcError(-32602, "adjacent must be a boolean")
         act = args.get("act")
@@ -193,6 +196,10 @@ def handle(db, entries: list[dict], msg: object, heads: dict[str, str | None], l
     return None if "id" not in msg else {"jsonrpc": "2.0", "id": mid, "result": result}
 
 
+def _not_json(token: str) -> None:
+    raise ValueError(f"{token} is not JSON")
+
+
 def _emit(obj: dict) -> None:
     sys.stdout.write(json.dumps(obj) + "\n")
     sys.stdout.flush()
@@ -232,8 +239,8 @@ def serve(bns_pdf: str, ipc_pdf: str, concordance_path: str, assoc_model: str, p
             if not line.strip():
                 continue
             try:
-                msg = json.loads(line)
-            except json.JSONDecodeError:
+                msg = json.loads(line, parse_constant=_not_json)
+            except (ValueError, RecursionError):  # not JSON, NaN or Infinity (stdout must stay valid JSON), or nested past the stack
                 _log("rejected", None, code=-32700, message="parse error")
                 _emit({"jsonrpc": "2.0", "id": None, "error": {"code": -32700, "message": "parse error"}})
                 continue

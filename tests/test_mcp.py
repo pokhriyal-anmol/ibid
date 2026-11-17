@@ -154,6 +154,16 @@ class ServerTest(unittest.TestCase):
             c.proc.stderr.close()
         self.assertEqual([(r["event"], r["code"]) for r in logged], [("rejected", -32602), ("rejected", -32700)])
 
+    def test_a_hostile_line_is_a_parse_error_and_the_session_survives(self):
+        c = Client()
+        try:
+            for bad in ('{"jsonrpc":"2.0","id":1,"method":"ping","params":' + "[" * 100000 + "]" * 100000 + "}",
+                        '{"jsonrpc":"2.0","id":NaN,"method":"ping"}', '{"jsonrpc":"2.0","id":Infinity,"method":"ping"}'):
+                self.assertEqual(c.send_raw(bad)["error"]["code"], -32700, bad[:60])
+            self.assertEqual(c.request("ping")["result"], {})
+        finally:
+            c.close()
+
     def test_search_bad_arguments_are_rpc_errors(self):
         for args in ({}, {"query": "murder", "limit": 0}, {"query": "murder", "limit": "3"}, {"query": "murder", "limit": True}):
             self.assertEqual(self.c.call("search", args)["error"]["code"], -32602, args)
