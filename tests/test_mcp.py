@@ -134,10 +134,11 @@ class ServerTest(unittest.TestCase):
         self.assertIn(("IPC 496", "Marriage ceremony fraudulently gone through without lawful marriage."),
                       [(h["citation"], h["heading"]) for h in hit])
 
-    def test_search_invalid_fts5_is_empty_not_error(self):
+    def test_search_invalid_fts5_is_retried_quoted_and_says_so(self):
         res = self.c.call("search", {"query": '"murder AND'})["result"]
         self.assertFalse(res["isError"])
-        self.assertEqual(res["structuredContent"]["results"], [])
+        self.assertEqual(res["structuredContent"]["searched_as"], '"murder" "AND"')
+        self.assertTrue(res["structuredContent"]["results"])
 
     def test_search_bad_arguments_are_rpc_errors(self):
         for args in ({}, {"query": "murder", "limit": 0}, {"query": "murder", "limit": "3"}, {"query": "murder", "limit": True}):
