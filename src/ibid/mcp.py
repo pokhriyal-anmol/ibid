@@ -1,5 +1,6 @@
 """`ibid mcp`: a stdio MCP server (newline-delimited JSON-RPC 2.0) over the deterministic lookups. No model (ADR 0001)."""
 import json
+import re
 from datetime import datetime, timezone
 import sqlite3
 import sys
@@ -15,6 +16,7 @@ PROTOCOL_VERSION = "2024-11-05"
 ACTS = {"ipc": "IPC", "bns": "BNS", "crpc": "CrPC", "bnss": "BNSS"}  # act argument to Citation prefix
 DIRECTIONS = ("ipc_to_bns", "bns_to_ipc", "crpc_to_bnss", "bnss_to_crpc")
 MODES = ("keyword", "learned")
+MAX_QUERY_WORDS = 200  # FTS5 time grows about quadratically with terms: 400 `a OR a` terms took 0.7 s, 4000 took 85 s
 MAX_LIMIT = 10_000  # the index holds about 2,000 provisions; SQLite's own LIMIT overflows at 2**63
 # Figures are read-checked against results/layer-comparison.md by tests/test_mcp_limits.py.
 KEYWORD_LIMITS = ("Keyword search finds 3.1 to 5.1 percent of IPC charges on set v1 and 4.8 to 6.0 percent on set v2 "
@@ -121,6 +123,8 @@ def call_tool(db, entries: list[dict], name: str, args: object, heads: dict[str,
             if not procedure:
                 return _tool_result("The second index is not built, so CrPC and BNSS are not searchable.", True)
             db, heads = procedure[:2]
+        if len(re.findall(r"\w+", args["query"])) > MAX_QUERY_WORDS:
+            raise RpcError(-32602, f"query is too long: keyword search takes at most {MAX_QUERY_WORDS} words")
         hits, extra = index.search_explained(db, args["query"], limit, ACTS.get(act))
         results = [{"citation": c, "text": t, "heading": heads.get(c)} for c, t in hits]
         if args.get("adjacent"):
