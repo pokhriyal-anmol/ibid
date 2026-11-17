@@ -1,5 +1,6 @@
 """`ibid mcp`: a stdio MCP server (newline-delimited JSON-RPC 2.0) over the deterministic lookups. No model (ADR 0001)."""
 import json
+from datetime import datetime, timezone
 import sqlite3
 import sys
 import tempfile
@@ -111,7 +112,7 @@ def call_tool(db, entries: list[dict], name: str, args: object, heads: dict[str,
         if not isinstance(args.get("adjacent", False), bool):
             raise RpcError(-32602, "adjacent must be a boolean")
         act = args.get("act")
-        if "act" in args and act not in ACTS:
+        if "act" in args and (not isinstance(act, str) or act not in ACTS):
             raise RpcError(-32602, "act must be one of " + ", ".join(ACTS))
         if act in ("crpc", "bnss"):  # the second index
             if not procedure:
@@ -153,8 +154,18 @@ def call_tool(db, entries: list[dict], name: str, args: object, heads: dict[str,
     return _tool_result({"citation": args["citation"], "heading": heads.get(args["citation"]), "text": got[0], "children": got[1]})
 
 
+def _log(event: str, msg: object, **fields: object) -> None:
+    """One JSON line on stderr per failed request, for whoever runs the server (stdout carries only JSON-RPC)."""
+    msg = msg if isinstance(msg, dict) else {}
+    params = msg.get("params")
+    tool = params.get("name") if isinstance(params, dict) and isinstance(params.get("name"), str) else None
+    print(json.dumps({"ts": datetime.now(timezone.utc).isoformat(timespec="seconds"), "event": event, "id": msg.get("id"),
+                      "method": msg.get("method") if isinstance(msg.get("method"), str) else None, "tool": tool, **fields}), file=sys.stderr, flush=True)
+
+
 def handle(db, entries: list[dict], msg: object, heads: dict[str, str | None], lazy: LazyModel, procedure: tuple | None = None) -> dict | None:
     if not isinstance(msg, dict) or not isinstance(msg.get("method"), str):
+        _log("rejected", msg, code=-32600, message="invalid request")
         return {"jsonrpc": "2.0", "id": None, "error": {"code": -32600, "message": "invalid request"}}
     mid, method, params = msg.get("id"), msg["method"], msg.get("params") or {}
     try:
@@ -174,7 +185,11 @@ def handle(db, entries: list[dict], msg: object, heads: dict[str, str | None], l
         else:
             raise RpcError(-32601, f"method not found: {method}")
     except RpcError as e:
+        _log("rejected", msg, code=e.code, message=e.message)
         return {"jsonrpc": "2.0", "id": mid, "error": {"code": e.code, "message": e.message}}
+    except Exception as e:  # a bug or an input nobody validated must not end the session; the client gets no stack trace
+        _log("internal_error", msg, error_type=type(e).__name__, message=str(e))
+        return {"jsonrpc": "2.0", "id": mid, "error": {"code": -32603, "message": "internal error"}}
     return None if "id" not in msg else {"jsonrpc": "2.0", "id": mid, "result": result}
 
 
@@ -219,6 +234,7 @@ def serve(bns_pdf: str, ipc_pdf: str, concordance_path: str, assoc_model: str, p
             try:
                 msg = json.loads(line)
             except json.JSONDecodeError:
+                _log("rejected", None, code=-32700, message="parse error")
                 _emit({"jsonrpc": "2.0", "id": None, "error": {"code": -32700, "message": "parse error"}})
                 continue
             if (reply := handle(db, entries, msg, heads, lazy, procedure)) is not None:
