@@ -1,0 +1,37 @@
+Copyright (c) 2026 Anmol Pokhriyal. All rights reserved.
+
+PROPRIETARY. NO LICENCE IS GRANTED.
+
+This repository and everything in it that its copyright holder wrote (the source
+code, tests, documentation, architecture decision records and the original
+data files) is the private property of the copyright holder. Without the
+copyright holder's prior written permission you may not use, copy, modify,
+merge, publish, distribute, sublicense, sell, host, or make derivative works
+of it, in whole or in part, for any purpose, whether commercial or not.
+
+Having access to a copy, for example through a private repository, a download
+or an email, does not grant any right in it. Permission, if given, is given in
+writing, for a stated purpose, and can be withdrawn.
+
+THIRD-PARTY MATERIAL IS NOT COVERED
+
+This notice covers only the copyright holder's original work. It does not
+cover, and the copyright holder does not license, material written by others
+that this repository reproduces or reads, including:
+
+  - the text of statutes and other legislative documents taken from the
+    sources recorded in data/SOURCES.md and data/sources.json;
+  - forum posts and labels from ILSIC-Lay, which are licensed CC BY-NC-SA 4.0
+    by their creators;
+  - the BNS to IPC and BNSS to CrPC comparison tables, which carry their
+    authors' copyright and no licence.
+
+That material stays under its own terms. Obtaining or reusing it is the
+responsibility of whoever holds it. See data/SOURCES.md and the README.
+
+NO WARRANTY
+
+THE SOFTWARE AND ITS OUTPUT ARE PROVIDED "AS IS", WITHOUT WARRANTY OF ANY
+KIND, EXPRESS OR IMPLIED, INCLUDING FITNESS FOR A PARTICULAR PURPOSE. THE
+OUTPUT IS A RESEARCH AID AND IS NOT LEGAL ADVICE. THE COPYRIGHT HOLDER IS NOT
+LIABLE FOR ANY CLAIM OR DAMAGES ARISING FROM ITS USE.
