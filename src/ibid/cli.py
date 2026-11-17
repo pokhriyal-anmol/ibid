@@ -3,6 +3,7 @@ import argparse
 import hashlib
 import json
 import os
+import sqlite3
 import sys
 from collections import defaultdict
 from pathlib import Path
@@ -24,6 +25,29 @@ def pin_error(gold_path: str, gold_bytes: bytes) -> str | None:
     if pin.read_text().strip() != hashlib.sha256(gold_bytes).hexdigest():
         return f"{gold_path} does not match its pin {pin}"
     return None
+
+
+def score_item(db: sqlite3.Connection, entries: list[dict], item: dict) -> dict:
+    """One gold item against the index: its outcome record, with `pass` set."""
+    outcome = {"id": item["id"], "category": item["category"]}
+    if item["category"] == "keyword":
+        packet = index.search(db, item["query"], index.KEYWORD_LIMIT)
+        # Scored as a set: the order is BM25 rank and cannot be authored independently of the system.
+        ok = {c for c, _ in packet} == set(item["expected_citations"])
+        outcome["packet"] = packet
+    elif item["category"] in DIRECTIONS:
+        got = concordance.lookup(entries, item["query"], *DIRECTIONS[item["category"]])
+        ok = got == item["expected"]
+        outcome["packet"] = got
+    else:
+        got = index.lookup(db, item["query"])
+        ok = got is not None and got[0] == item["expected_text"] and got[1] == item.get("expected_children", got[1])
+        if item["category"] == "cross_reference_chain":
+            ok = ok and got[2] == item["expected_refs"]
+            outcome["packet"] = [(c, index.lookup(db, c)[0]) for c in got[2]]
+    if "conformed" in item:  # system-conformed, not independently authored
+        outcome["conformed"] = item["conformed"]
+    return {**outcome, "pass": ok}
 
 
 def run_eval(gold_path: str, bns_pdf: str, ipc_pdf: str, index_path: str, out_path: str, concordance_path: str | None = None, mode: str = "scored") -> int:
@@ -49,27 +73,10 @@ def run_eval(gold_path: str, bns_pdf: str, ipc_pdf: str, index_path: str, out_pa
         return 1
     outcomes, cats = [], defaultdict(lambda: {"passed": 0, "total": 0})
     for item in json.loads(gold_bytes):
-        outcome = {"id": item["id"], "category": item["category"]}
-        if item["category"] == "keyword":
-            packet = index.search(db, item["query"], index.KEYWORD_LIMIT)
-            # Scored as a set: the order is BM25 rank and cannot be authored independently of the system.
-            ok = {c for c, _ in packet} == set(item["expected_citations"])
-            outcome["packet"] = packet
-        elif item["category"] in DIRECTIONS:
-            got = concordance.lookup(entries, item["query"], *DIRECTIONS[item["category"]])
-            ok = got == item["expected"]
-            outcome["packet"] = got
-        else:
-            got = index.lookup(db, item["query"])
-            ok = got is not None and got[0] == item["expected_text"] and got[1] == item.get("expected_children", got[1])
-            if item["category"] == "cross_reference_chain":
-                ok = ok and got[2] == item["expected_refs"]
-                outcome["packet"] = [(c, index.lookup(db, c)[0]) for c in got[2]]
-        if "conformed" in item:  # system-conformed, not independently authored
-            outcome["conformed"] = item["conformed"]
-        outcomes.append({**outcome, "pass": ok})
+        outcome = score_item(db, entries, item)
+        outcomes.append(outcome)
         cats[item["category"]]["total"] += 1
-        cats[item["category"]]["passed"] += ok
+        cats[item["category"]]["passed"] += outcome["pass"]
     results = {
         "mode": mode,
         "gold_version": Path(gold_path).stem,
