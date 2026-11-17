@@ -132,6 +132,7 @@ class CheckFailsOnBadInputTest(unittest.TestCase):
         self.assertFalse(index.exists())
 
 
+@needs_ipc
 class FirstIndexUntouchedTest(unittest.TestCase):
     def test_the_build_leaves_the_first_index_the_pins_and_results_byte_identical(self):
         first = ROOT / "data/index/ibid.sqlite"
