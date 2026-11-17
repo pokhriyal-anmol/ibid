@@ -22,9 +22,9 @@ jobs:
           bad=$(git ls-files | grep -i -E '\.pdf$|^data/raw/' || true)
           if [ -n "$bad" ]; then echo "Source texts must not be committed:"; echo "$bad"; exit 1; fi
 
-      - name: Frozen gold matches its pin
+      - name: Frozen gold and concordance match their pins
         run: |
-          for pin in gold/v[0-9]*.sha256; do
+          for pin in gold/v[0-9]*.sha256 concordance/*.sha256; do
             file="${pin%.sha256}.json"
             want=$(tr -d ' \n' < "$pin")
             got=$(sha256sum "$file" | cut -d' ' -f1)
