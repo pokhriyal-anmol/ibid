@@ -103,6 +103,14 @@ class ConcordanceLoadTest(Base):
         with self.assertRaisesRegex(ValueError, "not in the index"):
             self.load({**self.GOOD, "bns": ["BNS 999"]})
 
+    def test_entries_that_are_not_well_formed_objects_are_a_value_error_not_a_traceback(self):
+        for bad in ({"type": "one-to-one", "verified": True, "ipc": ["IPC 302"]},          # no bns key
+                    {"type": "one-to-one", "verified": True, "ipc": "IPC 302", "bns": ["BNS 103"]},  # not a list
+                    {"type": "one-to-one", "verified": True, "ipc": [], "bns": ["BNS 103"]},          # a one-to-one needs both sides
+                    {**self.GOOD, "bns": []}, [1, 2], "text", None):
+            with self.assertRaises(ValueError, msg=str(bad)):
+                self.load(bad)
+
     def test_malformed_entries_are_refused(self):
         for bad in ({**self.GOOD, "type": "nope"}, {**self.GOOD, "verified": "yes"}, {**self.GOOD, "basis": "x"},
                     {**self.GOOD, "type": "removed"}, {**self.GOOD, "ipc": ["BNS 103"]}):
