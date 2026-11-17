@@ -3,6 +3,8 @@ name = "ibid"
 version = "0.1.0"
 description = "Deterministic retrieval of Indian criminal statute with exact citations"
 requires-python = ">=3.11"
+license = { file = "LICENSE" }
+classifiers = ["License :: Other/Proprietary License"]
 dependencies = []
 
 [project.scripts]

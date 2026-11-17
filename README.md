@@ -145,4 +145,4 @@ What Ibid covers, what it has been measured on, and what it may and may not clai
 
 ## License
 
-None chosen yet. All rights reserved until one is added.
+Proprietary, all rights reserved. See [LICENSE](LICENSE). No licence is granted, and the repository must stay private: the source texts' reuse terms are unconfirmed and set v2 carries CC BY-NC-SA 4.0 material that the licence does not cover. If you want to share the code later, relicense only the original code and leave the third-party data out.
