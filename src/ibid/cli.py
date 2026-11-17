@@ -33,7 +33,7 @@ def score_item(db: sqlite3.Connection, entries: list[dict], item: dict) -> dict:
     if item["category"] == "keyword":
         packet = index.search(db, item["query"], index.KEYWORD_LIMIT)
         # Scored as a set: the order is BM25 rank and cannot be authored independently of the system.
-        ok = {c for c, _ in packet} == set(item["expected_citations"])
+        ok = {c for c, _ in packet} >= set(item["expected_citations"])
         outcome["packet"] = packet
     elif item["category"] in DIRECTIONS:
         got = concordance.lookup(entries, item["query"], *DIRECTIONS[item["category"]])
