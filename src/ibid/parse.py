@@ -109,7 +109,7 @@ def _split(act: str, n: int | str, lines: list[tuple[str, bool]], texts: list[st
         if cite in seen:
             raise ValueError(f"duplicate citation {cite}")
         seen.add(cite)
-        nodes.append([cite, parent, i, kind, len(lines)])
+        nodes.append([cite, parent, i + 1, kind, len(lines)])
         stack.append(len(nodes) - 1)
     out = []
     for j, (cite, parent, start, _, end) in enumerate(nodes):
