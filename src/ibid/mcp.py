@@ -16,6 +16,7 @@ ACTS = {"ipc": "IPC", "bns": "BNS", "crpc": "CrPC", "bnss": "BNSS"}  # act argum
 DIRECTIONS = ("ipc_to_bns", "bns_to_ipc", "crpc_to_bnss", "bnss_to_crpc")
 MODES = ("keyword", "learned")
 MAX_QUERY_WORDS = 200  # FTS5 time grows about quadratically with terms: 400 `a OR a` terms took 0.7 s, 4000 took 85 s
+MAX_QUERY_CHARS = 4000  # FTS5 phrase cost is linear in tokens (about 60 microseconds each), so this bounds a query to well under a second
 MAX_LIMIT = 10_000  # the index holds about 2,000 provisions; SQLite's own LIMIT overflows at 2**63
 # Figures are read-checked against results/layer-comparison.md by tests/test_mcp_limits.py.
 KEYWORD_LIMITS = ("Keyword search finds 3.1 to 5.1 percent of IPC charges on set v1 and 4.8 to 6.0 percent on set v2 "
@@ -122,6 +123,8 @@ def call_tool(db, entries: list[dict], name: str, args: object, heads: dict[str,
             if not procedure:
                 return _tool_result("The second index is not built, so CrPC and BNSS are not searchable.", True)
             db, heads = procedure[:2]
+        if len(args["query"]) > MAX_QUERY_CHARS:  # words alone undercount: FTS5 splits at characters Python treats as letters
+            raise RpcError(-32602, f"query is too long: keyword search takes at most {MAX_QUERY_CHARS} characters")
         if len(index.WORD.findall(args["query"])) > MAX_QUERY_WORDS:
             raise RpcError(-32602, f"query is too long: keyword search takes at most {MAX_QUERY_WORDS} words")
         hits, extra = index.search_explained(db, args["query"], limit, ACTS.get(act))
@@ -169,6 +172,11 @@ def _log(event: str, msg: object, **fields: object) -> None:
                       "method": msg.get("method") if isinstance(msg.get("method"), str) else None, "tool": tool, **fields}), file=sys.stderr, flush=True)
 
 
+def _error(msg: dict, code: int, message: str) -> dict | None:
+    """The error reply, or None for a notification: JSON-RPC forbids answering a message that has no id."""
+    return None if "id" not in msg else {"jsonrpc": "2.0", "id": msg["id"], "error": {"code": code, "message": message}}
+
+
 def handle(db, entries: list[dict], msg: object, heads: dict[str, str | None], lazy: LazyModel, procedure: tuple | None = None) -> dict | None:
     if not isinstance(msg, dict) or not isinstance(msg.get("method"), str):
         _log("rejected", msg, code=-32600, message="invalid request")
@@ -192,13 +200,13 @@ def handle(db, entries: list[dict], msg: object, heads: dict[str, str | None], l
             raise RpcError(-32601, f"method not found: {method}")
     except RpcError as e:
         _log("rejected", msg, code=e.code, message=e.message)
-        return {"jsonrpc": "2.0", "id": mid, "error": {"code": e.code, "message": e.message}}
+        return _error(msg, e.code, e.message)
     except UnicodeEncodeError:  # a lone surrogate in a JSON string: the client's input, not a server bug
         _log("rejected", msg, code=-32602, message="string cannot be encoded as UTF-8")
-        return {"jsonrpc": "2.0", "id": mid, "error": {"code": -32602, "message": "a string contains a lone surrogate and cannot be encoded as UTF-8"}}
+        return _error(msg, -32602, "a string contains a lone surrogate and cannot be encoded as UTF-8")
     except Exception as e:  # a bug or an input nobody validated must not end the session; the client gets no stack trace
         _log("internal_error", msg, error_type=type(e).__name__, message=str(e))
-        return {"jsonrpc": "2.0", "id": mid, "error": {"code": -32603, "message": "internal error"}}
+        return _error(msg, -32603, "internal error")
     return None if "id" not in msg else {"jsonrpc": "2.0", "id": mid, "result": result}
 
 

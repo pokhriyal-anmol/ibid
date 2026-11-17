@@ -18,6 +18,10 @@ def load(path: str, db: sqlite3.Connection, old: str = "ipc", new: str = "bns") 
         entries = json.load(f)
     known = {c for (c,) in db.execute("SELECT citation FROM provision")}
     for i, e in enumerate(entries):
+        if not isinstance(e, dict) or not all(isinstance(e.get(side), list) for side in (old, new)):
+            raise ValueError(f"concordance entry {i}: not an object with {old} and {new} lists")
+        if e.get("type") in ("one-to-one", "split", "merged") and not (e[old] and e[new]):
+            raise ValueError(f"concordance entry {i}: a {e['type']} entry needs both {old} and {new} citations")
         if e.get("type") not in TYPES or not isinstance(e.get("verified"), bool):
             raise ValueError(f"concordance entry {i}: bad type or verified flag")
         if e.get("basis", "human-checked") not in BASES:

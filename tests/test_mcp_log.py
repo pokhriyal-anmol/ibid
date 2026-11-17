@@ -64,7 +64,7 @@ class McpLogTest(unittest.TestCase):
         self.assertEqual(mcp._decode('{"id":1.5,"x":1e300}'), {"id": 1.5, "x": 1e300})
 
     def test_a_query_past_the_word_cap_is_refused_before_it_reaches_the_index(self):
-        reply, logs = self.call(self.search(query=" OR ".join(["a"] * 4000)))
+        reply, logs = self.call(self.search(query=" OR ".join(["a"] * 500)))
         self.assertEqual(reply["error"]["code"], -32602)
         self.assertIn("200", reply["error"]["message"])
         self.assertEqual([r["event"] for r in logs], ["rejected"])
@@ -86,6 +86,18 @@ class McpLogTest(unittest.TestCase):
                 reply = mcp.handle(self.db, [], msg, {}, mcp.LazyModel("unused"))
             self.assertEqual(reply["error"]["code"], -32602, name)
             self.assertEqual([json.loads(r)["event"] for r in err.getvalue().splitlines()], ["rejected"], name)
+
+    def test_a_query_is_capped_by_length_as_well_as_by_words(self):  # U+19B0 is a letter to Python and a separator to FTS5
+        sneaky = "a\u19b0" * 2001
+        self.assertEqual(self.call(self.search(query=sneaky))[0]["error"]["code"], -32602)
+        self.assertFalse(self.call(self.search(query="murder " * 150))[0]["result"]["isError"])
+
+    def test_a_notification_is_never_answered_even_when_it_fails(self):
+        for params in ({"name": "nope"}, {"name": "search", "arguments": {"query": "x", "act": []}}, {"name": "search", "arguments": {"query": "\ud800"}}):
+            reply, logs = self.call({"jsonrpc": "2.0", "method": "tools/call", "params": params})
+            self.assertIsNone(reply, params)
+            self.assertEqual([r["event"] for r in logs], ["rejected"], params)  # still logged for the owner
+        self.assertEqual(self.call({"jsonrpc": "2.0", "id": 1, "method": "tools/call", "params": {"name": "nope"}})[0]["error"]["code"], -32602)
 
     def test_an_invalid_request_is_logged(self):
         reply, logs = self.call({"jsonrpc": "2.0", "id": 3})
