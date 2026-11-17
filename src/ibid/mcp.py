@@ -200,6 +200,17 @@ def _not_json(token: str) -> None:
     raise ValueError(f"{token} is not JSON")
 
 
+def _finite(text: str) -> float:
+    value = float(text)
+    if value in (float("inf"), float("-inf")):  # 1e400 overflows to inf, which json.dumps would print as Infinity
+        raise ValueError(f"{text} is not a finite number")
+    return value
+
+
+def _decode(line: str) -> object:
+    return json.loads(line, parse_constant=_not_json, parse_float=_finite)
+
+
 def _emit(obj: dict) -> None:
     sys.stdout.write(json.dumps(obj) + "\n")
     sys.stdout.flush()
@@ -239,7 +250,7 @@ def serve(bns_pdf: str, ipc_pdf: str, concordance_path: str, assoc_model: str, p
             if not line.strip():
                 continue
             try:
-                msg = json.loads(line, parse_constant=_not_json)
+                msg = _decode(line)
             except (ValueError, RecursionError):  # not JSON, NaN or Infinity (stdout must stay valid JSON), or nested past the stack
                 _log("rejected", None, code=-32700, message="parse error")
                 _emit({"jsonrpc": "2.0", "id": None, "error": {"code": -32700, "message": "parse error"}})

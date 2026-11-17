@@ -57,6 +57,12 @@ class McpLogTest(unittest.TestCase):
             self.assertEqual([r["event"] for r in logs], ["rejected"], limit)
         self.assertEqual(self.call(self.search(limit=10_000))[0]["result"]["isError"], False)
 
+    def test_a_line_json_cannot_represent_is_refused_not_echoed(self):
+        for bad in ('{"id":NaN}', '{"id":Infinity}', '{"id":1e400}', '{"id":-1e400}', '{"params":[1E999]}', "not json", "[" * 100000):
+            with self.assertRaises((ValueError, RecursionError), msg=bad[:30]):
+                mcp._decode(bad)
+        self.assertEqual(mcp._decode('{"id":1.5,"x":1e300}'), {"id": 1.5, "x": 1e300})
+
     def test_an_invalid_request_is_logged(self):
         reply, logs = self.call({"jsonrpc": "2.0", "id": 3})
         self.assertEqual(reply["error"]["code"], -32600)

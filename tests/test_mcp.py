@@ -158,7 +158,8 @@ class ServerTest(unittest.TestCase):
         c = Client()
         try:
             for bad in ('{"jsonrpc":"2.0","id":1,"method":"ping","params":' + "[" * 100000 + "]" * 100000 + "}",
-                        '{"jsonrpc":"2.0","id":NaN,"method":"ping"}', '{"jsonrpc":"2.0","id":Infinity,"method":"ping"}'):
+                        '{"jsonrpc":"2.0","id":NaN,"method":"ping"}', '{"jsonrpc":"2.0","id":Infinity,"method":"ping"}',
+                        '{"jsonrpc":"2.0","id":1e400,"method":"ping"}'):
                 self.assertEqual(c.send_raw(bad)["error"]["code"], -32700, bad[:60])
             self.assertEqual(c.request("ping")["result"], {})
         finally:
