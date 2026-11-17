@@ -63,14 +63,14 @@ class ScoreItemTest(Base):
         self.assertFalse(self.score(category="keyword", query="murder", expected_citations=both + ["IPC 379"]))
 
     def test_a_lookup_must_match_its_children_when_the_gold_names_them(self):
-        base = {"category": "get_provision", "query": "IPC 302", "expected_text": P302.text}
+        base = {"category": "section_lookup", "query": "IPC 302", "expected_text": P302.text}
         self.assertTrue(self.score(**base))
         self.assertTrue(self.score(**base, expected_children=["IPC 302(1)"]))
         self.assertFalse(self.score(**base, expected_children=["IPC 302(9)"]))
 
     def test_a_lookup_must_match_its_text_and_a_missing_citation_fails(self):
-        self.assertFalse(self.score(category="get_provision", query="IPC 302", expected_text="other"))
-        self.assertFalse(self.score(category="get_provision", query="IPC 999", expected_text=""))
+        self.assertFalse(self.score(category="section_lookup", query="IPC 302", expected_text="other"))
+        self.assertFalse(self.score(category="section_lookup", query="IPC 999", expected_text=""))
 
     def test_a_cross_reference_chain_must_match_its_expected_refs(self):
         chain = {"category": "cross_reference_chain", "query": "IPC 302", "expected_text": P302.text}
@@ -264,12 +264,12 @@ class PinTest(Base):
 
 class ScoreGoldTest(Base):
     def test_the_pass_count_is_the_number_of_items_that_passed(self):
-        items = [{"id": "a", "category": "get_provision", "query": "IPC 302", "expected_text": P302.text},
-                 {"id": "b", "category": "get_provision", "query": "IPC 302", "expected_text": "wrong"},
-                 {"id": "c", "category": "get_provision", "query": "IPC 999", "expected_text": ""}]
+        items = [{"id": "a", "category": "section_lookup", "query": "IPC 302", "expected_text": P302.text},
+                 {"id": "b", "category": "section_lookup", "query": "IPC 302", "expected_text": "wrong"},
+                 {"id": "c", "category": "section_lookup", "query": "IPC 999", "expected_text": ""}]
         outcomes, cats = cli.score_gold(self.db, [], items)
         self.assertEqual([o["pass"] for o in outcomes], [True, False, False])
-        self.assertEqual(cats["get_provision"], {"passed": 1, "total": 3})
+        self.assertEqual(cats["section_lookup"], {"passed": 1, "total": 3})
 
 
 class ChainOrderTest(unittest.TestCase):
