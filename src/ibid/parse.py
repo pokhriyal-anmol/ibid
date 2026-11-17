@@ -104,7 +104,7 @@ def _split(act: str, n: int | str, lines: list[tuple[str, bool]], texts: list[st
         if kind in ("sub", "clause"):
             cite = f"{nodes[parent][0]}({label})"
         else:
-            k = sum(1 for x in nodes if x[1] == parent and x[3] == kind) + 1
+            k = sum(1 for x in nodes if x[1] == parent and x[3] in _ATTACHED) + 1
             cite = f"{nodes[parent][0]} {kind} {k}"
         if cite in seen:
             raise ValueError(f"duplicate citation {cite}")
