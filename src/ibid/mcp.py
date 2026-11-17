@@ -152,7 +152,7 @@ def call_tool(db, entries: list[dict], name: str, args: object, heads: dict[str,
             if not isinstance(got, str):
                 return _tool_result({"result": got, "via": section})
         return _tool_result(got if isinstance(got, str) else {"result": got})
-    if procedure and args["citation"].split(" ")[0] in ("CrPC", "BNSS"):  # the second index holds the procedure Acts
+    if procedure and args["citation"].split(" ")[0] in ("CrPC",):  # the second index holds the procedure Acts
         db, heads = procedure[:2]
     got = index.lookup(db, args["citation"])
     if got is None:
