@@ -16,13 +16,17 @@ def load(path: str, db: sqlite3.Connection, old: str = "ipc", new: str = "bns") 
     """`old` and `new` name the two sides: ipc and bns, or crpc and bnss. Raises ValueError if any entry is malformed or names a citation absent from the index."""
     with open(path) as f:
         entries = json.load(f)
+    if not isinstance(entries, list):
+        raise ValueError("concordance file: not a JSON list")
     known = {c for (c,) in db.execute("SELECT citation FROM provision")}
     for i, e in enumerate(entries):
-        if not isinstance(e, dict) or not all(isinstance(e.get(side), list) for side in (old, new)):
-            raise ValueError(f"concordance entry {i}: not an object with {old} and {new} lists")
-        if e.get("type") in ("one-to-one", "split", "merged") and not (e[old] and e[new]):
+        if not isinstance(e, dict) or not all(isinstance(e.get(side), list) and all(isinstance(c, str) for c in e[side]) for side in (old, new)):
+            raise ValueError(f"concordance entry {i}: not an object with {old} and {new} lists of citations")
+        if not isinstance(e.get("type"), str) or not isinstance(e.get("basis", "human-checked"), str):
+            raise ValueError(f"concordance entry {i}: type and basis must be strings")
+        if e["type"] in ("one-to-one", "split", "merged") and not (e[old] and e[new]):
             raise ValueError(f"concordance entry {i}: a {e['type']} entry needs both {old} and {new} citations")
-        if e.get("type") not in TYPES or not isinstance(e.get("verified"), bool):
+        if e["type"] not in TYPES or not isinstance(e.get("verified"), bool):
             raise ValueError(f"concordance entry {i}: bad type or verified flag")
         if e.get("basis", "human-checked") not in BASES:
             raise ValueError(f"concordance entry {i}: unknown basis {e['basis']!r}")
