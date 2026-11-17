@@ -73,6 +73,20 @@ class McpLogTest(unittest.TestCase):
         over = self.call(self.search(query=" ".join(["murder"] * 201)))[0]
         self.assertEqual(over["error"]["code"], -32602)
 
+    def test_words_are_counted_the_way_fts5_splits_them(self):
+        for joined in ("_".join(["a"] * 201), "a_b-c.d " * 60):  # `_` and punctuation separate FTS5 tokens
+            self.assertEqual(self.call(self.search(query=joined))[0]["error"]["code"], -32602, joined[:20])
+        self.assertFalse(self.call(self.search(query="_".join(["murder"] * 200)))[0]["result"]["isError"])
+
+    def test_a_lone_surrogate_is_a_client_error_not_an_internal_one(self):
+        for name, arguments in (("search", {"query": "\ud800"}), ("get_provision", {"citation": "IPC \udc00"})):
+            msg = {"jsonrpc": "2.0", "id": 5, "method": "tools/call", "params": {"name": name, "arguments": arguments}}
+            err = io.StringIO()
+            with contextlib.redirect_stderr(err):
+                reply = mcp.handle(self.db, [], msg, {}, mcp.LazyModel("unused"))
+            self.assertEqual(reply["error"]["code"], -32602, name)
+            self.assertEqual([json.loads(r)["event"] for r in err.getvalue().splitlines()], ["rejected"], name)
+
     def test_an_invalid_request_is_logged(self):
         reply, logs = self.call({"jsonrpc": "2.0", "id": 3})
         self.assertEqual(reply["error"]["code"], -32600)

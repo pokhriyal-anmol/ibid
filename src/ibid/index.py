@@ -8,6 +8,7 @@ from ibid.parse import Provision
 from ibid.xref import Edge, chains
 
 
+WORD = re.compile(r"[^\W_]+")  # the tokens FTS5 sees: letters and digits, so `_` and punctuation separate words
 KEYWORD_LIMIT = 100  # the result size a keyword item is judged on, shared by eval and conform
 
 
@@ -70,7 +71,7 @@ def search_explained(db: sqlite3.Connection, raw_query: str, limit: int = 10, ac
     try:
         hits = _match(db, raw_query, limit, act)
     except sqlite3.OperationalError:
-        extra["searched_as"] = " ".join(f'"{w}"' for w in re.findall(r"\w+", raw_query))
+        extra["searched_as"] = " ".join(f'"{w}"' for w in WORD.findall(raw_query))
         hits = _match(db, extra["searched_as"], limit, act) if extra["searched_as"] else []
     if not hits:
         extra["notice"] = ("No section contains every word of the query. Keyword search needs every word to match: use fewer or more specific words."
