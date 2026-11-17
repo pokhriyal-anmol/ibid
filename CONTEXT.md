@@ -5,7 +5,7 @@ A local, deterministic retrieval engine for Indian criminal statute (the IPC and
 ## Language
 
 **Act**:
-One statute as published in the Gazette of India. v1 holds two: the IPC (1860) and the BNS (2023).
+One statute as published in the Gazette of India. Four are held: the IPC (1860) and the BNS (2023) in the first index, the CrPC (1973) and the BNSS (2023) in a second index (ADR 0010).
 _Avoid_: Law, code, statute (unqualified)
 
 **Section tree**:
@@ -29,11 +29,11 @@ A two-way pairing of the Citation of a section headed "Punishment for X" with ev
 _Avoid_: Cross-reference, relation
 
 **Cross-reference graph**:
-The directed graph of resolved cross-references across both Acts, built by deterministic parsing.
+The directed graph of resolved cross-references across the Acts of one index, built by deterministic parsing.
 _Avoid_: Knowledge graph, GraphRAG graph
 
 **Concordance**:
-The mapping between an IPC provision and the BNS provision that replaced it. One IPC provision may map to several BNS provisions, and the reverse. Each entry has a type: one-to-one, split, merged, removed (an IPC provision with no BNS successor) or new (a BNS provision with no IPC ancestor). Where several IPC provisions were regrouped into several BNS provisions (many-to-many), the entry is typed merged and lists all of both. Only verified entries are served; any other IPC provision answers "no verified concordance".
+The mapping between a provision and the one that replaced it: IPC to BNS, and CrPC to BNSS (a second Concordance, built from a correspondence table and served in both directions). One IPC provision may map to several BNS provisions, and the reverse. Each entry has a type: one-to-one, split, merged, removed (an IPC provision with no BNS successor) or new (a BNS provision with no IPC ancestor). Where several IPC provisions were regrouped into several BNS provisions (many-to-many), the entry is typed merged and lists all of both. Only verified entries are served; a CrPC section the table does not mention is typed removed but is never verified, so it is not served; any other IPC provision answers "no verified concordance".
 _Avoid_: Conversion table, converter
 
 ## Retrieval

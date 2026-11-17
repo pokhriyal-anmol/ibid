@@ -1,5 +1,6 @@
 """`ibid mcp`: a stdio MCP server (newline-delimited JSON-RPC 2.0) over the deterministic lookups. No model (ADR 0001)."""
 import json
+import sqlite3
 import sys
 import tempfile
 from pathlib import Path
@@ -10,7 +11,8 @@ from ibid.parse import BNS_TOTAL, parse_bns
 from ibid.xref import extract
 
 PROTOCOL_VERSION = "2024-11-05"
-DIRECTIONS = ("ipc_to_bns", "bns_to_ipc")
+ACTS = {"ipc": "IPC", "bns": "BNS", "crpc": "CrPC", "bnss": "BNSS"}  # act argument to Citation prefix
+DIRECTIONS = ("ipc_to_bns", "bns_to_ipc", "crpc_to_bnss", "bnss_to_crpc")
 MODES = ("keyword", "learned")
 # Figures are read-checked against results/layer-comparison.md by tests/test_mcp_limits.py.
 KEYWORD_LIMITS = ("Keyword search finds 3.1 to 5.1 percent of IPC charges on set v1 and 4.8 to 6.0 percent on set v2 "
@@ -24,6 +26,7 @@ TOOLS = {
     "search": (f"Search the Acts by the raw query. mode keyword (default): {KEYWORD_LIMITS} mode learned: {CAVEAT}",
                {"type": "object", "properties": {"query": {"type": "string"}, "limit": {"type": "integer"},
                                                       "adjacent": {"type": "boolean"},
+                                                      "act": {"type": "string", "enum": list(ACTS)},
                                                       "mode": {"type": "string", "enum": list(MODES)}}, "required": ["query"]}),
     "cross_references": ("Resolved and unresolved Cross-references of one Provision.", _CITATION),
     "concordance": ("Verified Concordance entries for a Citation.",
@@ -86,7 +89,7 @@ def _learned(db, entries: list[dict], heads: dict, lazy: LazyModel, args: dict) 
     return _tool_result({**out, "notes": notes} if notes else out)
 
 
-def call_tool(db, entries: list[dict], name: str, args: object, heads: dict[str, str | None], lazy: LazyModel) -> dict:
+def call_tool(db, entries: list[dict], name: str, args: object, heads: dict[str, str | None], lazy: LazyModel, procedure: tuple | None = None) -> dict:
     # section Citation to heading; a sub-provision is absent, so its heading is null
     if name not in TOOLS:
         raise RpcError(-32602, f"unknown tool: {name}")
@@ -99,13 +102,22 @@ def call_tool(db, entries: list[dict], name: str, args: object, heads: dict[str,
         if args.get("mode", "keyword") not in MODES:
             return _tool_result("mode must be " + " or ".join(MODES), True)
         if args.get("mode") == "learned":
+            if args.get("act", "ipc") != "ipc":
+                return _tool_result("learned mode covers IPC sections only; leave act out or pass ipc", True)
             return _learned(db, entries, heads, lazy, args)
         limit = args.get("limit", 10)
         if isinstance(limit, bool) or not isinstance(limit, int) or limit < 1:
             raise RpcError(-32602, "limit must be an integer of at least 1")
-        hits = index.search(db, args["query"], limit)
         if not isinstance(args.get("adjacent", False), bool):
             raise RpcError(-32602, "adjacent must be a boolean")
+        act = args.get("act")
+        if "act" in args and act not in ACTS:
+            raise RpcError(-32602, "act must be one of " + ", ".join(ACTS))
+        if act in ("crpc", "bnss"):  # the second index
+            if not procedure:
+                return _tool_result("The second index is not built, so CrPC and BNSS are not searchable.", True)
+            db, heads = procedure[:2]
+        hits = index.search(db, args["query"], limit, ACTS.get(act))
         results = [{"citation": c, "text": t, "heading": heads.get(c)} for c, t in hits]
         if args.get("adjacent"):
             for r in results:
@@ -114,13 +126,15 @@ def call_tool(db, entries: list[dict], name: str, args: object, heads: dict[str,
         return _tool_result({"results": results})
     if name == "concordance":
         prefix = args["citation"].split(" ")[0].lower()
-        inferred = {"ipc": DIRECTIONS[0], "bns": DIRECTIONS[1]}.get(prefix)
+        inferred = {d.split("_to_")[0]: d for d in DIRECTIONS}.get(prefix)
         direction = args.get("direction", inferred)
         if direction not in DIRECTIONS:
             raise RpcError(-32602, "direction must be " + " or ".join(DIRECTIONS))
         if inferred and direction != inferred:
             return _tool_result(f"direction {direction} contradicts the Citation prefix {prefix.upper()} (expects {inferred})", True)
         src, dst = direction.split("_to_")
+        if src in ("crpc", "bnss"):
+            entries = procedure[2] if procedure else []
         got = concordance.lookup(entries, args["citation"], src, dst)
         section = args["citation"].split("(")[0].strip()
         if isinstance(got, str) and section != args["citation"]:  # sub-provision: retry its section
@@ -128,16 +142,18 @@ def call_tool(db, entries: list[dict], name: str, args: object, heads: dict[str,
             if not isinstance(got, str):
                 return _tool_result({"result": got, "via": section})
         return _tool_result(got if isinstance(got, str) else {"result": got})
+    if procedure and args["citation"].split(" ")[0] in ("CrPC", "BNSS"):  # the second index holds the procedure Acts
+        db, heads = procedure[:2]
     got = index.lookup(db, args["citation"])
     if got is None:
-        return _tool_result(f"Citation not in the index: {args['citation']}", True)
+        return _tool_result(f"Citation not in the index: {args['citation']}. Covered Acts: IPC, BNS, CrPC, BNSS.", True)
     if name == "cross_references":
         miss = [{"matched": u["matched"], "reason": u["reason"]} for u in index.unresolved(db) if u["source"] == args["citation"]]
         return _tool_result({"citation": args["citation"], "resolved": got[2], "unresolved": miss})
     return _tool_result({"citation": args["citation"], "heading": heads.get(args["citation"]), "text": got[0], "children": got[1]})
 
 
-def handle(db, entries: list[dict], msg: object, heads: dict[str, str | None], lazy: LazyModel) -> dict | None:
+def handle(db, entries: list[dict], msg: object, heads: dict[str, str | None], lazy: LazyModel, procedure: tuple | None = None) -> dict | None:
     if not isinstance(msg, dict) or not isinstance(msg.get("method"), str):
         return {"jsonrpc": "2.0", "id": None, "error": {"code": -32600, "message": "invalid request"}}
     mid, method, params = msg.get("id"), msg["method"], msg.get("params") or {}
@@ -152,7 +168,7 @@ def handle(db, entries: list[dict], msg: object, heads: dict[str, str | None], l
         elif method == "tools/call":
             if not isinstance(params, dict) or not isinstance(params.get("name"), str):
                 raise RpcError(-32602, "params.name is required")
-            result = call_tool(db, entries, params["name"], params.get("arguments", {}), heads, lazy)
+            result = call_tool(db, entries, params["name"], params.get("arguments", {}), heads, lazy, procedure)
         elif "id" not in msg:
             return None  # notifications, including notifications/initialized
         else:
@@ -167,7 +183,7 @@ def _emit(obj: dict) -> None:
     sys.stdout.flush()
 
 
-def serve(bns_pdf: str, ipc_pdf: str, concordance_path: str, assoc_model: str) -> int:
+def serve(bns_pdf: str, ipc_pdf: str, concordance_path: str, assoc_model: str, procedure_index: str | None = None, procedure_concordance: str | None = None) -> int:
     for path in (bns_pdf, ipc_pdf, concordance_path):
         if not Path(path).is_file():
             print(f"error: no such file: {path}", file=sys.stderr)
@@ -188,6 +204,15 @@ def serve(bns_pdf: str, ipc_pdf: str, concordance_path: str, assoc_model: str) -
             return 1
         heads = dict(headings.bns_headings(bns_pdf) + headings.ipc_headings(ipc_pdf))
         lazy = LazyModel(assoc_model)
+        procedure = None
+        if procedure_index and Path(procedure_index).is_file():
+            pdb = sqlite3.connect(f"file:{procedure_index}?mode=ro", uri=True)
+            try:
+                pentries = concordance.load(procedure_concordance, pdb, "crpc", "bnss") if procedure_concordance and Path(procedure_concordance).is_file() else []
+            except ValueError as e:
+                print(f"error: {e}", file=sys.stderr)
+                return 1
+            procedure = (pdb, dict(pdb.execute("SELECT citation, heading FROM heading")), pentries)
         for line in sys.stdin:
             if not line.strip():
                 continue
@@ -196,6 +221,6 @@ def serve(bns_pdf: str, ipc_pdf: str, concordance_path: str, assoc_model: str) -
             except json.JSONDecodeError:
                 _emit({"jsonrpc": "2.0", "id": None, "error": {"code": -32700, "message": "parse error"}})
                 continue
-            if (reply := handle(db, entries, msg, heads, lazy)) is not None:
+            if (reply := handle(db, entries, msg, heads, lazy, procedure)) is not None:
                 _emit(reply)
     return 0

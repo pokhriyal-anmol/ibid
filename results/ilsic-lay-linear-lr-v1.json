@@ -1,0 +1,41 @@
+{
+  "assumption": "Label space is every statute string in the Lay train and test answers. A gold label no layer can predict counts as a miss. Macro scores average over the whole space, a label with no gold and no prediction scoring 0; this is our reading, the paper does not state its own.",
+  "benchmark": "lay",
+  "interval_95": {
+    "macro_f1": [
+      0.007742,
+      0.013904
+    ],
+    "micro_f1": [
+      0.112058,
+      0.144509
+    ]
+  },
+  "label_space": 543,
+  "layer": "linear-lr",
+  "model_sha256": "166f2626c16f3d8ba6d07d4bd804e7b69dc0889cd00e98491e4f7cb06cecd11a",
+  "parser_version": "4",
+  "primary": {
+    "labels": 543,
+    "macro_f1": 0.011746,
+    "macro_precision": 0.011377,
+    "macro_recall": 0.022154,
+    "micro_f1": 0.126954
+  },
+  "queries": 836,
+  "secondary_vocabulary": {
+    "labels": 63,
+    "macro_f1": 0.101239,
+    "macro_precision": 0.098061,
+    "macro_recall": 0.190946,
+    "micro_f1": 0.190065
+  },
+  "split_sha256": "9f8eab7ba638f4413a3a30d0138c1de34173d5e9425bbfa1b9ef4d3ebdddf37d",
+  "train_sha256": "6f998e08b0488c94f096db85395fac1a2f21331f1c2348aaee93d27c7a55a0d8",
+  "verdict_primary_reading": [
+    "macro_f1 1.17: below 14.83 (GPT-4.1 two-shot, Table 3; published, not re-run by us)",
+    "micro_f1 12.70: below 34.23 (GPT-4.1 two-shot, Table 3; published, not re-run by us)",
+    "micro_f1 12.70: below 33.19 (fine-tuned Gemma-3, Table 3; published, not re-run by us)"
+  ],
+  "version": "v1"
+}

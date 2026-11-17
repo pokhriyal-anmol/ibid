@@ -160,6 +160,13 @@ class LearnedErrorsTest(unittest.TestCase):
         self.assertTrue(res["isError"])
         self.assertTrue("keyword" in res["content"][0]["text"] and "learned" in res["content"][0]["text"])
 
+    def test_learned_mode_with_another_act_is_a_tool_error_not_silent_ipc_results(self):
+        for act in ("crpc", "bnss", "bns"):
+            res = self.c.call("search", {"query": "murder", "mode": "learned", "act": act})["result"]
+            self.assertTrue(res["isError"], act)
+            self.assertIn("IPC sections only", res["content"][0]["text"])
+        self.assertFalse(self.c.call("search", {"query": "murder", "mode": "learned", "act": "ipc"})["result"]["isError"])
+
     def test_limit_clamp_is_reported_and_an_honoured_limit_is_not(self):
         out = self.learned(limit=50)["structuredContent"]
         self.assertEqual(len(out["results"]), 5)

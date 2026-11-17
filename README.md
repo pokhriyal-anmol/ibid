@@ -136,6 +136,8 @@ uv run python -m unittest discover -s tests
 
 ## Limits
 
+What Ibid covers, what it has been measured on, and what it may and may not claim: [docs/claims.md](docs/claims.md).
+
 - The IPC text is the WIPO Lex copy consolidated to Act 34 of 2019, not the 1860 original.
 - Concordance is a legal judgement. Treat the output as a research aid, not legal advice, and have a lawyer review correspondence before relying on it or publishing a score.
 - Set v2 holds forum posts from ILSIC-Lay (CC BY-NC-SA 4.0, non-commercial) with a partial scrub of personal names. It must stay in the private repository.

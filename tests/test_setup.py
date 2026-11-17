@@ -7,6 +7,7 @@ import json
 import os
 import re
 import socket
+import subprocess
 import tempfile
 import threading
 import unittest
@@ -16,8 +17,12 @@ from unittest import mock
 from ibid import setup
 from ibid.cli import main
 from ibid.parse import Provision
+from pdfs import _main_checkout
 
 ROOT = Path(__file__).resolve().parent.parent
+MAIN_RAW = _main_checkout() / "data/raw"
+NEW_FILES = {"bnss": "bnss-prs.pdf", "crpc": "crpc-indiacode.pdf",
+             "bnss_crpc_table": "capt/comparison_summary_BNSS_to_CrPC.pdf"}
 
 
 def setUpModule() -> None:
@@ -25,7 +30,7 @@ def setUpModule() -> None:
     patcher = mock.patch.dict(os.environ)
     patcher.start()
     unittest.addModuleCleanup(patcher.stop)
-    for name in ("IBID_BNS_PDF", "IBID_IPC_PDF"):
+    for name in ("IBID_BNS_PDF", "IBID_IPC_PDF", "IBID_BNSS_PDF", "IBID_CRPC_PDF", "IBID_BNSS_CRPC_TABLE_PDF"):
         os.environ.pop(name, None)
 
 
@@ -169,11 +174,16 @@ class RealPdfTest(unittest.TestCase):
         with tempfile.TemporaryDirectory() as d:
             for n, p in (("bns-prs.pdf", BNS_PDF), ("ipc-wipo.pdf", IPC_PDF)):
                 (Path(d) / n).symlink_to(p)
+            (Path(d) / "capt").mkdir()
+            for f in NEW_FILES.values():
+                (Path(d) / f).symlink_to(MAIN_RAW / f)
             out = io.StringIO()
             with contextlib.redirect_stdout(out):
                 code = main(["setup", "--sources", str(ROOT / "data/sources.json"), "--raw-dir", d])
         self.assertEqual(code, 0, out.getvalue())
         self.assertIn("BNS 358 sections, IPC 575 sections", out.getvalue())
+        for n in NEW_FILES:
+            self.assertRegex(out.getvalue(), rf"pass\s+{n}: .*hash ok")
         line = next(x for x in out.getvalue().splitlines() if x.startswith("claude mcp add ibid -- "))
         self.assertIn(str(Path(BNS_PDF).resolve()), line)
 
@@ -298,11 +308,96 @@ class FetchTest(unittest.TestCase):
         self.assertEqual(self.srv.hits, [])
 
 
+class NewSourcesTest(unittest.TestCase):
+    """The three slice 15 entries have no parser: setup checks presence, size and hash only."""
+    BODIES = {"bnss": b"b1", "crpc": b"c22", "bnss_crpc_table": b"t333"}
+    FILES = {"bnss": "bnss.bin", "crpc": "crpc.bin", "bnss_crpc_table": "capt/t.bin"}
+
+    def setUp(self):
+        self.tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(self.tmp.cleanup)
+        self.raw = Path(self.tmp.name) / "raw"
+        (self.raw / "capt").mkdir(parents=True)
+        m = {n: {"file": self.FILES[n], "url": "https://example.org/" + n, "bytes": len(b),
+                 "sha256": hashlib.sha256(b).hexdigest()} for n, b in self.BODIES.items()}
+        for n in ("bns", "ipc"):
+            m[n] = {"file": f"{n}.bin", "url": "https://example.org/" + n, "sections": 1, "bytes": 1,
+                    "sha256": hashlib.sha256(b"x").hexdigest()}
+            (self.raw / f"{n}.bin").write_bytes(b"x")
+        self.sources = Path(self.tmp.name) / "sources.json"
+        self.sources.write_text(json.dumps(m))
+        for n, b in self.BODIES.items():
+            (self.raw / self.FILES[n]).write_bytes(b)
+        fake = lambda _: [Provision("s", "", None, ())]  # noqa: E731
+        patcher = mock.patch.dict(setup.PARSERS, {"bns": fake, "ipc": fake})
+        patcher.start()
+        self.addCleanup(patcher.stop)
+        self.bindir = Path(self.tmp.name) / "bin"
+        self.bindir.mkdir()
+        for t in setup.TOOLS:
+            (self.bindir / t).write_text("#!/bin/sh\n")
+            (self.bindir / t).chmod(0o755)
+
+    def run_it(self):
+        return run_setup("--sources", str(self.sources), "--raw-dir", str(self.raw), path=str(self.bindir))
+
+    def serve(self, body: bytes) -> str:
+        srv = http.server.HTTPServer(("127.0.0.1", 0), Handler)
+        srv.hits, srv.body, srv.declared = [], body, None
+        threading.Thread(target=srv.serve_forever, daemon=True).start()
+        self.addCleanup(srv.server_close)
+        self.addCleanup(srv.shutdown)
+        return f"http://127.0.0.1:{srv.server_port}/t"
+
+    def fetch_table(self, url: str) -> tuple[int, str]:
+        out, err = io.StringIO(), io.StringIO()
+        with contextlib.redirect_stdout(out), contextlib.redirect_stderr(err):
+            code = main(["setup", "--sources", str(self.sources), "--raw-dir", str(self.raw),
+                         "--fetch", "bnss_crpc_table", "--url", url])
+        return code, out.getvalue() + err.getvalue()
+
+    def test_present_and_matching_offline(self):
+        with mock.patch.object(socket.socket, "connect", side_effect=AssertionError("network")):
+            code, out = self.run_it()
+        self.assertEqual(code, 0, out)
+        for n in self.BODIES:
+            self.assertRegex(out, rf"pass\s+{n}: .*hash ok")
+
+    def test_each_missing_file_is_reported(self):
+        for n, f in self.FILES.items():
+            with self.subTest(n):
+                (self.raw / f).rename(self.raw / "gone")
+                code, out = self.run_it()
+                (self.raw / "gone").rename(self.raw / f)
+                self.assertNotEqual(code, 0)
+                self.assertRegex(out, rf"FAIL\s+{n}: missing")
+
+    def test_wrong_hash_is_a_mismatch_not_ok(self):
+        (self.raw / "capt/t.bin").write_bytes(b"T333")
+        code, out = self.run_it()
+        self.assertNotEqual(code, 0)
+        self.assertRegex(out, r"FAIL\s+bnss_crpc_table: present, hash differs")
+        self.assertNotRegex(out, r"pass\s+bnss_crpc_table")
+
+    def test_fetch_wrong_hash_is_rejected_and_leaves_no_file(self):
+        (self.raw / "capt/t.bin").unlink()
+        code, out = self.fetch_table(self.serve(b"T333"))
+        self.assertNotEqual(code, 0)
+        self.assertIn("hash check failed", out)
+        self.assertEqual(list((self.raw / "capt").iterdir()), [])
+
+    def test_fetch_good_body_lands_in_a_missing_subdirectory(self):
+        (self.raw / "capt/t.bin").unlink()
+        (self.raw / "capt").rmdir()
+        code, out = self.fetch_table(self.serve(b"t333"))
+        self.assertEqual((self.raw / "capt/t.bin").read_bytes(), b"t333", out)
+
+
 class ManifestTest(unittest.TestCase):
     def md_hashes(self) -> dict:
         md = (ROOT / "data" / "SOURCES.md").read_text()
-        return {n: re.search(rf"`{f}`.*?`([0-9a-f]{{64}})`", md).group(1)
-                for n, f in (("bns", "bns-prs.pdf"), ("ipc", "ipc-wipo.pdf"))}
+        files = {"bns": "bns-prs.pdf", "ipc": "ipc-wipo.pdf", **NEW_FILES}
+        return {n: re.search(rf"`{f}`.*?`([0-9a-f]{{64}})`", md).group(1) for n, f in files.items()}
 
     def manifest(self) -> dict:
         return json.loads((ROOT / "data" / "sources.json").read_text())
@@ -310,6 +405,18 @@ class ManifestTest(unittest.TestCase):
     def test_sources_json_matches_sources_md(self):
         m = self.manifest()
         self.assertEqual({n: s["sha256"] for n, s in m.items()}, self.md_hashes())
+
+    def test_slice_15_entries_are_recorded_with_reuse_unconfirmed(self):
+        m = self.manifest()
+        for n, f in NEW_FILES.items():
+            self.assertEqual(m[n]["file"], f)
+            self.assertEqual(m[n]["reuse"], "unconfirmed")
+            self.assertTrue(m[n]["url"].startswith("https://"))
+            self.assertEqual(m[n]["bytes"], (MAIN_RAW / f).stat().st_size)
+
+    def test_no_raw_file_is_tracked(self):
+        out = subprocess.run(["git", "ls-files", "data/raw"], cwd=ROOT, capture_output=True, text=True, check=True)
+        self.assertEqual(out.stdout, "")
 
     def test_altered_hash_is_detected(self):
         m = self.manifest()

@@ -19,7 +19,7 @@ _NUM = r"\d+[A-Z]*(?:\(\w+\))*"
 _SEC = rf"sections?\s+{_NUM}(?:(?:,|\s+and|\s+or)\s+(?:sections?\s+)?{_NUM})*"
 _REF = re.compile(rf"\b(?:{_Q}\s+of\s+)*(?:{_Q}|{_SEC}|this section)")
 _OTHER = re.compile(r"\s+of\s+(?:the\s+(?:(?:\(?[A-Z][\w’]*\)?|of)\s+){0,8}?(?:Act|Code|Sanhita)\b(?:\s+of\s+(?:[A-Z]\w*\s*)+)?|that\s+section)")
-_ROOT = re.compile(r"(?:IPC|BNS) \d+[A-Z]*")
+_ROOT = re.compile(r"(?:IPC|BNSS|BNS|CrPC) \d+[A-Z]*")
 
 
 @dataclass(frozen=True)
@@ -58,7 +58,7 @@ def extract(provisions: list[Provision]) -> list[Edge]:
         own = p.text
         for c in p.children:
             own = own.replace(by_cite[c].text, " ", 1)
-        act, root = p.citation[:3], _ROOT.match(p.citation)[0]
+        act, root = p.citation.split(" ")[0],_ROOT.match(p.citation)[0]
         for m in _REF.finditer(own):
             matched = m[0]
             other = _OTHER.match(own, m.end())

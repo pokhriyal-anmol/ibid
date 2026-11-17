@@ -9,10 +9,11 @@ import sqlite3
 NONE = "no verified concordance"
 TYPES = {"one-to-one", "split", "merged", "removed", "new"}
 BASES = {"human-checked", "agent-checked-for-owner", "refuted-by-agent", "source-table-checked"}
+PREFIX = {"ipc": "IPC ", "bns": "BNS ", "crpc": "CrPC ", "bnss": "BNSS "}
 
 
-def load(path: str, db: sqlite3.Connection) -> list[dict]:
-    """Raises ValueError if any entry is malformed or names a citation absent from the index."""
+def load(path: str, db: sqlite3.Connection, old: str = "ipc", new: str = "bns") -> list[dict]:
+    """`old` and `new` name the two sides: ipc and bns, or crpc and bnss. Raises ValueError if any entry is malformed or names a citation absent from the index."""
     with open(path) as f:
         entries = json.load(f)
     known = {c for (c,) in db.execute("SELECT citation FROM provision")}
@@ -21,17 +22,17 @@ def load(path: str, db: sqlite3.Connection) -> list[dict]:
             raise ValueError(f"concordance entry {i}: bad type or verified flag")
         if e.get("basis", "human-checked") not in BASES:
             raise ValueError(f"concordance entry {i}: unknown basis {e['basis']!r}")
-        if (e["type"] == "removed" and e["bns"]) or (e["type"] == "new" and e["ipc"]):
+        if (e["type"] == "removed" and e[new]) or (e["type"] == "new" and e[old]):
             raise ValueError(f"concordance entry {i}: {e['type']} entry names a successor or ancestor")
-        if not all(c.startswith("IPC ") for c in e["ipc"]) or not all(c.startswith("BNS ") for c in e["bns"]):
+        if not all(c.startswith(PREFIX[old]) for c in e[old]) or not all(c.startswith(PREFIX[new]) for c in e[new]):
             raise ValueError(f"concordance entry {i}: citation on the wrong side")
-        for c in e["ipc"] + e["bns"]:
+        for c in e[old] + e[new]:
             if c not in known:
                 raise ValueError(f"concordance entry {i}: {c!r} is not in the index")
     return entries
 
 
 def lookup(entries: list[dict], citation: str, src: str, dst: str) -> list[dict] | str:
-    """src/dst are "ipc"/"bns". Verified entries naming `citation`, in file order, else NONE."""
+    """src/dst are "ipc"/"bns" or "crpc"/"bnss". Verified entries naming `citation`, in file order, else NONE."""
     hits = [{"type": e["type"], "citations": e[dst]} for e in entries if e["verified"] and citation in e[src]]
     return hits or NONE

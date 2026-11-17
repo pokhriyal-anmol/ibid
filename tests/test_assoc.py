@@ -34,7 +34,7 @@ def imports_of(source: str) -> set[str]:
         if isinstance(n, ast.Import):
             out |= {a.name.split(".")[0] for a in n.names}
         elif isinstance(n, ast.ImportFrom):
-            out.add((n.module or "").split(".")[0])
+            out.add("ibid" if n.level else n.module.split(".")[0])  # a relative import is inside the package
     return out
 
 

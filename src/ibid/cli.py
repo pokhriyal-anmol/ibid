@@ -89,7 +89,7 @@ def run_eval(gold_path: str, bns_pdf: str, ipc_pdf: str, index_path: str, out_pa
 
 def missing_pdf(a: argparse.Namespace) -> bool:
     """True after printing the error and the setup hint if a source PDF this command reads is absent."""
-    paths = [getattr(a, k) for k in ("bns", "ipc") if hasattr(a, k)]
+    paths = [getattr(a, k) for k in ("bns", "ipc", "crpc", "bnss") if hasattr(a, k)]
     if a.cmd == "headings":  # reads one Act, or a layout text file instead of the BNS PDF
         paths = [a.ipc] if a.act == "ipc" else [] if a.layout else [a.bns]
     for path in paths:
@@ -105,7 +105,7 @@ def main(argv: list[str] | None = None) -> int:
     su = sub.add_parser("setup", help="check poppler tools and source PDFs, offline")
     su.add_argument("--sources", default="data/sources.json")
     su.add_argument("--raw-dir", default="data/raw")
-    su.add_argument("--fetch", choices=["bns", "ipc"], help="download this source PDF, verified, never overwriting")
+    su.add_argument("--fetch", choices=["bns", "ipc", "bnss", "crpc", "bnss_crpc_table"], help="download this source PDF, verified, never overwriting")
     su.add_argument("--url", help="direct https PDF url (required for --fetch ipc)")
     ev = sub.add_parser("eval")
     ev.add_argument("--gold", default="gold/v2.json")
@@ -165,6 +165,13 @@ def main(argv: list[str] | None = None) -> int:
     mc.add_argument("--bns", default=os.environ.get("IBID_BNS_PDF", "data/raw/bns-prs.pdf"))
     mc.add_argument("--ipc", default=os.environ.get("IBID_IPC_PDF", "data/raw/ipc-wipo.pdf"))
     mc.add_argument("--concordance", default="concordance/v3.json")
+    mc.add_argument("--procedure-concordance", default="concordance/crpc-bnss-v1.json", help="ignored if absent")
+    mc.add_argument("--procedure-index", default="data/index/procedure.sqlite", help="the second index; ignored if absent")
+    pr = sub.add_parser("procedure").add_subparsers(dest="proc_cmd", required=True).add_parser(
+        "build", help="parse the CrPC and the BNSS, check both, write the second index")
+    pr.add_argument("--crpc", default=os.environ.get("IBID_CRPC_PDF", "data/raw/crpc-indiacode.pdf"))
+    pr.add_argument("--bnss", default=os.environ.get("IBID_BNSS_PDF", "data/raw/bnss-prs.pdf"))
+    pr.add_argument("--index", default="data/index/procedure.sqlite")
     mc.add_argument("--assoc-model", default="data/assoc-nb-v3.json", help="learned mode's model file; read on the first learned call")
     hd = sub.add_parser("headings").add_subparsers(dest="headings_cmd", required=True).add_parser(
         "list", help="section headings, one citation and heading per line")
@@ -174,6 +181,7 @@ def main(argv: list[str] | None = None) -> int:
     hd.add_argument("--layout", default=None, help="BNS only: read this `pdftotext -layout` text file instead of the PDF")
     cc = sub.add_parser("concordance").add_subparsers(dest="conc_cmd", required=True).add_parser(
         "from-table", help="candidate entries from a published BNS to IPC correspondence table (pdftotext -layout text)")
+    cc.add_argument("--acts", choices=("ipc-bns", "crpc-bnss"), default="ipc-bns")
     cc.add_argument("--table", required=True)
     cc.add_argument("--index", default="data/index/ibid.sqlite")
     cc.add_argument("--out", required=True)
@@ -227,6 +235,20 @@ def main(argv: list[str] | None = None) -> int:
     ae.add_argument("--labels", default=None, help="ILSI label vocabulary: also report micro-F1 over this (v1's) label space")
     ae.add_argument("--rescore-test", action="store_true")
     ae.add_argument("--out", default=None)
+    il = sub.add_parser("ilsic").add_subparsers(dest="ilsic_cmd", required=True).add_parser(
+        "eval", help="score the frozen rule on an ILSIC split, paper's label space and vocabulary readings")
+    il.add_argument("--split", required=True)
+    il.add_argument("--train", required=True, help="the Lay train file, used only to fix the label space")
+    il.add_argument("--index", default="data/index/ibid.sqlite")
+    il.add_argument("--frozen-rule", default="results/frozen-rule.json")
+    il.add_argument("--model", help="an assoc-nb or linear-lr model file, scored in place of the frozen rule")
+    il.add_argument("--layer", help="with --model: the layer the file must be")
+    il.add_argument("--layer-version", help="with --model: the version the file must be")
+    il.add_argument("--out", required=True)
+    il.add_argument("--ledger", default="results/test-ledger-ilsic.json")
+    il.add_argument("--rescore-test", action="store_true")
+    il.add_argument("--space-from", help="a split whose answers join the train answers in the label space (default: the scored split)")
+    il.add_argument("--benchmark", choices=("lay", "multi"), default="lay", help="which published numbers to print beside ours")
     chq = chs.add_parser("subquery", help="route C: retrieve per recorded sub-query with the frozen rule and union")
     chq.add_argument("--set", required=True)
     chq.add_argument("--subqueries", required=True)
@@ -294,7 +316,10 @@ def main(argv: list[str] | None = None) -> int:
         return 1
     if a.cmd == "mcp":
         from ibid import mcp
-        return mcp.serve(a.bns, a.ipc, a.concordance, a.assoc_model)
+        return mcp.serve(a.bns, a.ipc, a.concordance, a.assoc_model, a.procedure_index, a.procedure_concordance)
+    if a.cmd == "procedure":
+        from ibid import crpc
+        return crpc.build(a.crpc, a.index, a.bnss)
     if a.cmd == "headings":
         from ibid import headings
         pairs = (headings.ipc_headings(a.ipc) if a.act == "ipc" else headings.parse_layout(Path(a.layout).read_text())
@@ -303,7 +328,7 @@ def main(argv: list[str] | None = None) -> int:
         return 0
     if a.cmd == "concordance":
         from ibid import table
-        return table.from_table(a.table, a.index, a.out)
+        return table.from_table(a.table, a.index, a.out, a.acts)
     if a.cmd == "cited":
         from ibid import cited
         return cited.extract(a.set, a.index, a.concordance, a.out)
@@ -323,6 +348,12 @@ def main(argv: list[str] | None = None) -> int:
         if a.charges_cmd == "intake":
             return charges.intake(a.queries, a.author_type, a.author, a.out)
         return charges.validate(a.set, a.index)
+    if a.cmd == "ilsic":
+        from ibid import ilsic
+        if a.model and not (a.layer and a.layer_version):
+            print("error: --layer and --layer-version are required with --model", file=sys.stderr)
+            return 1
+        return ilsic.evaluate(a.split, a.train, a.index, a.frozen_rule, a.out, a.model, (a.layer, a.layer_version), a.ledger, a.rescore_test, a.benchmark, a.space_from)
     if a.cmd == "assoc":
         from ibid import assoc
         if a.assoc_cmd == "fit" and a.source == "union":

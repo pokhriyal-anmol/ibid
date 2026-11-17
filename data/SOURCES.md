@@ -45,3 +45,16 @@ The 30 posts are public forum text under CC BY-NC-SA 4.0 (non-commercial, share-
 ### ILSIC layperson train split (2026-10-16, slice 6)
 
 `ilsic/FT-Layman-train.jsonl.xz`: ILSIC (Law-AI/ilsic), Google Drive folder `Layman-new-dataset`. 6,465 posts, fields `instruction` and `answer`. 1,749,944 bytes. SHA-256 `6f998e08b0488c94f096db85395fac1a2f21331f1c2348aaee93d27c7a55a0d8`. CC BY-NC-SA 4.0, non-commercial. Gitignored under `data/raw/`. It names 118 distinct IPC sections (98 with at least 5 posts, 46 with at least 20), 63 of them in the 98-section ILSI label vocabulary. All 30 sections cited in `gold/multicharge/v2.json` appear in it, against 19 in the ILSI vocabulary. Approved by the owner for download on 2026-10-16; the dev split was not downloaded.
+
+## Slice 15 sources (2026-10-22), under `data/raw/`, none committed
+
+Downloaded 2026-10-22 with the owner's approval (D-007). Each was fetched into a fresh scratch directory, checked there (size against the server's `Content-Length`, first page read), then copied into place.
+
+| File | Source | Bytes | SHA-256 | Notes |
+|---|---|---|---|---|
+| `bnss-prs.pdf` | https://prsindia.org/files/bills_acts/bills_parliament/2023/The%20Bharatiya%20Nagarik%20Suraksha%20Sanhita,%202023.pdf | 2,033,181 | `5e60e2afe30d0fe7eca4f8126301146b76c86a444e690581f81eb564843517fe` | Gazette extraordinary of 25 Dec 2023, CG-DL-E-25122023-250884, Part II Section 1, an Act of Parliament, 249 pages with the Hindi text. The BNS is …250883 |
+| `capt/comparison_summary_BNSS_to_CrPC.pdf` | https://keralaprisons.gov.in/userfiles/act-and-rules/comparison_summary_BNSS_to_CrPC.pdf | 674,648 | `aa3e49147cf88141a8471a614246270ab4730cd3a4099e06de7a69792d80d33b` | 38 pages, author field "capt", created 21 Jun 2024. The BNSS is the first column. Every page carries "© Anil Kishore Yadav, IPS, Director, CAPT Bhopal" and no licence; the file stays out of git and Ibid keeps only section numbers and row references, as for the BNS table. A personal compilation, not an MHA publication |
+
+| `crpc-indiacode.pdf` | Internet Archive capture of 2025-12-06 of the official India Code file: https://web.archive.org/web/20251206113418id_/https://www.indiacode.nic.in/bitstream/123456789/13624/1/the_code_of_criminal_procedure%2C_1973.pdf | 1,660,268 | `2f28d487c18d33f65195d7ab99cb5dc8fd4dcf232c7deb18dee7f8fa289891b9` | The Code of Criminal Procedure, 1973 (Act 2 of 1974), 228 pages, an Arrangement of Sections that lists 532 entries (1 to 484 with lettered sections) followed by the body and the Schedules. The PDF was produced by India Code in November 2019: the amendment footnotes cite Acts up to 2018 and 2019 and none from 2020 to 2023, so later amendments, if any, are not in it (not checked). Fetched from the Archive because India Code answers every request from this machine, from the owner's browser and from the built-in browser with an Akamai error page (2026-10-22). The Archive serves the bytes as captured; that they equal what India Code served on that date is not verified |
+
+The first India Code URL tried (`.../15381/1/ccp1973.pdf`) has no Archive capture. The WIPO Lex copy is consolidated only to 1991 and is not used.
