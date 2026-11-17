@@ -140,6 +140,20 @@ class ServerTest(unittest.TestCase):
         self.assertEqual(res["structuredContent"]["searched_as"], '"murder" "AND"')
         self.assertTrue(res["structuredContent"]["results"])
 
+    def test_a_bad_argument_does_not_end_the_session_and_is_logged_to_stderr(self):
+        c = Client()
+        try:
+            self.assertEqual(c.call("search", {"query": "murder", "act": []})["error"]["code"], -32602)
+            self.assertEqual(c.request("ping")["result"], {})  # still serving
+            c.send_raw("not json")
+        finally:
+            c.proc.stdin.close()
+            c.proc.wait(timeout=30)
+            logged = [json.loads(line) for line in c.proc.stderr.read().splitlines()]
+            c.proc.stdout.close()
+            c.proc.stderr.close()
+        self.assertEqual([(r["event"], r["code"]) for r in logged], [("rejected", -32602), ("rejected", -32700)])
+
     def test_search_bad_arguments_are_rpc_errors(self):
         for args in ({}, {"query": "murder", "limit": 0}, {"query": "murder", "limit": "3"}, {"query": "murder", "limit": True}):
             self.assertEqual(self.c.call("search", args)["error"]["code"], -32602, args)
