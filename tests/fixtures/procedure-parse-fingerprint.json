@@ -1,0 +1,20 @@
+{
+ "bnss": {
+  "arrangement_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "headings_sha256": "0dbdeeb991d4c0023ef5f48a4f6835b777651ca6824e060c2c6e9a2e7a2d0ad5",
+  "parse_sha256": "7901c5e8c8ec73de23b18d5c97547e82b5e8ff53813e0b85fae0f13c3c6bc67a",
+  "parser_version": "1",
+  "provisions": 2436
+ },
+ "crpc": {
+  "arrangement_sha256": "8dee3dcc38ce519bd304ddc421334fee776e821ad89859d7a8c0f0c9db1e8251",
+  "parse_sha256": "c18861291697a012254969518892c0280bbc2b18ecdbee438ba374996f272415",
+  "parser_version": "1",
+  "provisions": 2397
+ },
+ "xref": {
+  "chains_sha256": "45f27880677d361f3e13be9737fe15e356d3cf6e0435f17679300ffa70904f4c",
+  "edges": 2386,
+  "edges_sha256": "828b7d30a7ac0a3785d8c5ad2a6ac50dda381d03534aaa97444faa9f55ec18e9"
+ }
+}
