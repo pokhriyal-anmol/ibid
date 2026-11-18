@@ -259,6 +259,8 @@ class PinTest(Base):
         self.assertIsNone(cli.pin_error(*self.pinned("ok", digest + "\n")))
         self.assertIn("does not match", cli.pin_error(*self.pinned("short", digest[:8])))
         self.assertIn("does not match", cli.pin_error(*self.pinned("tail", digest[:8] + "0" * 56)))  # right first 8 characters, wrong rest
+        last = "0" if digest[-1] != "0" else "1"
+        self.assertIn("does not match", cli.pin_error(*self.pinned("last", digest[:-1] + last)))  # only the final character differs
         self.assertIn("no pin file", cli.pin_error(*self.pinned("none", None)))
 
 
