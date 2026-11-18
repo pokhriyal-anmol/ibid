@@ -4,6 +4,7 @@ import hashlib
 import json
 import os
 import sqlite3
+import subprocess
 import sys
 from collections import defaultdict
 from pathlib import Path
@@ -133,6 +134,19 @@ def missing_pdf(a: argparse.Namespace) -> bool:
 
 
 def main(argv: list[str] | None = None) -> int:
+    """Run a command. Bad input (a malformed file, a truncated or wrong PDF) is an `error:` line and exit 1, not a traceback;
+    set IBID_DEBUG=1 to get the traceback while debugging."""
+    try:
+        return _run(argv)
+    except (ValueError, OSError, subprocess.CalledProcessError, StopIteration) as e:
+        if os.environ.get("IBID_DEBUG"):
+            raise
+        detail = str(e) or "the input is not the document this command expects"
+        print(f"error: {type(e).__name__}: {detail}", file=sys.stderr)
+        return 1
+
+
+def _run(argv: list[str] | None) -> int:
     ap = argparse.ArgumentParser(prog="ibid")
     sub = ap.add_subparsers(dest="cmd", required=True)
     su = sub.add_parser("setup", help="check poppler tools and source PDFs, offline")
