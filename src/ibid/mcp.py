@@ -85,9 +85,13 @@ def _learned(db, entries: list[dict], heads: dict, lazy: LazyModel, args: dict) 
         notes.append(f"limit clamped to {assoc.TOP_K}")
     if args.get("adjacent"):
         notes.append("adjacent is not supported in learned mode and was ignored")
+    predicted = model.predict(args["query"])[:limit]
+    missing = [c for c in predicted if index.lookup(db, c) is None]
+    if missing:
+        return _tool_result(f"The learned model names {missing[0]}, which is not in the index; refit it with `ibid assoc fit --source union`.", True)
     results = [{"citation": c, "heading": heads.get(c), "text": index.lookup(db, c)[0], "rank": r,
                 "bns": list(dict.fromkeys(b for h in entries if h["verified"] and c in h["ipc"] for b in h["bns"]))}
-               for r, c in enumerate(model.predict(args["query"])[:limit], 1)]
+               for r, c in enumerate(predicted, 1)]
     out = {"results": results, "layer": assoc.LAYER, "layer_version": model.header["layer_version"],
            "model_sha256": model.sha256, "caveat": CAVEAT}
     return _tool_result({**out, "notes": notes} if notes else out)
@@ -105,6 +109,8 @@ def call_tool(db, entries: list[dict], name: str, args: object, heads: dict[str,
     if name == "search":
         if args.get("mode", "keyword") not in MODES:
             return _tool_result("mode must be " + " or ".join(MODES), True)
+        if len(args["query"]) > MAX_QUERY_CHARS:  # words alone undercount: FTS5 splits at characters Python treats as letters
+            raise RpcError(-32602, f"query is too long: search takes at most {MAX_QUERY_CHARS} characters")
         if args.get("mode") == "learned":
             if args.get("act", "ipc") != "ipc":
                 return _tool_result("learned mode covers IPC sections only; leave act out or pass ipc", True)
@@ -123,8 +129,6 @@ def call_tool(db, entries: list[dict], name: str, args: object, heads: dict[str,
             if not procedure:
                 return _tool_result("The second index is not built, so CrPC and BNSS are not searchable.", True)
             db, heads = procedure[:2]
-        if len(args["query"]) > MAX_QUERY_CHARS:  # words alone undercount: FTS5 splits at characters Python treats as letters
-            raise RpcError(-32602, f"query is too long: keyword search takes at most {MAX_QUERY_CHARS} characters")
         if len(index.WORD.findall(args["query"])) > MAX_QUERY_WORDS:
             raise RpcError(-32602, f"query is too long: keyword search takes at most {MAX_QUERY_WORDS} words")
         hits, extra = index.search_explained(db, args["query"], limit, ACTS.get(act))
@@ -143,8 +147,13 @@ def call_tool(db, entries: list[dict], name: str, args: object, heads: dict[str,
         if inferred and direction != inferred:
             return _tool_result(f"direction {direction} contradicts the Citation prefix {prefix.upper()} (expects {inferred})", True)
         src, dst = direction.split("_to_")
+        cdb = db
         if src in ("crpc", "bnss"):
-            entries = procedure[2] if procedure else []
+            if not procedure:
+                return _tool_result("The second index is not built, so CrPC and BNSS concordance is not available.", True)
+            cdb, entries = procedure[0], procedure[2]
+        if index.lookup(cdb, args["citation"]) is None:  # a silent "no concordance" for a citation that does not exist would hide a typo
+            return _tool_result(f"Citation not in the index: {args['citation']}. Covered Acts: IPC, BNS, CrPC, BNSS.", True)
         got = concordance.lookup(entries, args["citation"], src, dst)
         section = args["citation"].split("(")[0].strip()
         if isinstance(got, str) and section != args["citation"]:  # sub-provision: retry its section

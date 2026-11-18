@@ -18,7 +18,8 @@ from ibid.xref import Edge  # noqa: E402
 
 ROOT = Path(__file__).parent.parent
 PROVS = [Provision("IPC 100", "100. Definitions of terms.", None, ()),
-         Provision("IPC 302", "302. Whoever commits murder shall be punished with death.", None, ()),
+         Provision("IPC 302", "302. Whoever commits murder shall be punished with death.", None, ("IPC 302(1)",)),
+         Provision("IPC 302(1)", "(1) Murder is punished.", "IPC 302", ()),
          Provision("IPC 379", "379. Whoever commits theft shall be punished.", None, ()),
          Provision("IPC 500", "500. Whoever defames another shall be punished.", None, ()),
          Provision("BNS 103", "103. Whoever commits murder shall be punished.", None, ())]
