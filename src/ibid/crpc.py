@@ -22,7 +22,7 @@ from ibid.xref import extract
 CRPC_PARSER_VERSION = "1"
 HEADING_MATCH_FLOOR = 0.98  # both lists come from one document, so stricter than D-004's 80%
 CENTRED = 20  # leading spaces: chapter and part headings
-CLAUSE_INDENT = 7  # leading spaces: a clause, as against a sub-section
+CLAUSE_INDENT = 6  # leading spaces: a clause, as against a sub-section
 _ARR = re.compile(r"\s+(\d+)-?([A-Z]{0,2})\.\s+(\S.*)")  # the Arrangement prints 265-I, the body 265-I too: the key is 265I
 _START = re.compile(r"(\d+)-?([A-Z]{0,2})\.\s")
 
