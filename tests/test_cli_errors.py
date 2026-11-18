@@ -37,6 +37,7 @@ class CliErrorsTest(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             table = Path(tmp) / "table.txt"
             table.write_bytes(b"\xff\xfe\xff")
+            Path(f"{tmp}/i.sqlite").touch()  # the index must exist; the table is read first
             self.refused("UnicodeDecodeError", "concordance", "from-table", "--table", str(table), "--out", f"{tmp}/o.json", "--index", f"{tmp}/i.sqlite")
 
     def test_a_truncated_pdf(self):

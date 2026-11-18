@@ -36,6 +36,8 @@ def score_gold(db: sqlite3.Connection, entries: list[dict], items: list[dict]) -
     """Every gold item scored: the outcome records and the per-category pass counts."""
     outcomes, cats = [], defaultdict(lambda: {"passed": 0, "total": 0})
     for item in items:
+        if "id" not in item or "category" not in item:
+            raise ValueError(f"gold item {item.get('id', item)!r} has no id or category")
         outcome = score_item(db, entries, item)
         outcomes.append(outcome)
         cats[item["category"]]["total"] += 1
@@ -138,7 +140,7 @@ def main(argv: list[str] | None = None) -> int:
     set IBID_DEBUG=1 to get the traceback while debugging."""
     try:
         return _run(argv)
-    except (ValueError, OSError, subprocess.CalledProcessError, StopIteration) as e:
+    except (ValueError, OSError, sqlite3.Error, subprocess.CalledProcessError, StopIteration) as e:
         if os.environ.get("IBID_DEBUG"):
             raise
         detail = str(e) or "the input is not the document this command expects"

@@ -162,6 +162,8 @@ def tripwire(rows: list[dict], db: sqlite3.Connection) -> tuple[float, list[str]
             subjects.setdefault(f"BNSS {r['bns']}", []).append(r["subject"])
     bad = [f"{c}\t{heads.get(c)}\t{' / '.join(s)}" for c, s in subjects.items()
            if _norm(heads.get(c) or "") not in map(_norm, s)]
+    if not subjects:
+        raise ValueError("the table has no BNSS rows to check, so it is not the CrPC to BNSS table")
     return (len(subjects) - len(bad)) / len(subjects), bad
 
 
@@ -189,6 +191,8 @@ def procedure(rows: list[dict], db: sqlite3.Connection, out: str) -> int:
 
 
 def from_table(table: str, index_path: str, out: str, acts: str = "ipc-bns") -> int:
+    if not Path(index_path).is_file():  # sqlite3.connect would create an empty file here
+        raise ValueError(f"no such index: {index_path}")
     if acts == "crpc-bnss":
         return procedure(parse_rows(Path(table).read_text()), sqlite3.connect(index_path), out)
     rows = parse_rows(Path(table).read_text())
