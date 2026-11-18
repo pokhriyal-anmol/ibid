@@ -13,6 +13,8 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent.parent / "src"))
 from ibid.bnss import BNSS_PARSER_VERSION, parse_bnss  # noqa: E402
 from ibid.crpc import CRPC_PARSER_VERSION, parse_crpc  # noqa: E402
+from ibid import bnss, crpc  # noqa: E402
+from ibid.parse import Provision  # noqa: E402
 from ibid.xref import chains, extract  # noqa: E402
 from pdfs import BNSS_PDF, CRPC_PDF  # noqa: E402
 
@@ -50,6 +52,31 @@ class ProcedureParseFingerprintTest(unittest.TestCase):
         want, got = json.loads(PIN.read_text()), fingerprint()
         moved = _moved(want, got)
         self.assertEqual(moved, [], f"CrPC or BNSS parse changed in {moved}. If intended, bump the parser version and run --write")
+
+
+class HeadingFloorTest(unittest.TestCase):
+    """The Arrangement check passes at 98 percent heading agreement and fails below it (HEADING_MATCH_FLOOR)."""
+    N = 100
+
+    def arrangement(self) -> list[tuple[str, str]]:
+        return [(str(i), f"Heading number {i}") for i in range(1, self.N + 1)]
+
+    def test_the_crpc_check_passes_at_98_percent_and_fails_at_97(self):
+        arr = self.arrangement()
+        for wrong, expect in ((0, True), (2, True), (3, False)):
+            provisions = [Provision(f"CrPC {k}", f"{k} {'Wrong' if int(k) <= wrong else h}.\u2014 body", None, ()) for k, h in arr]
+            self.assertIs(crpc.check(provisions, arr)[0], expect, wrong)
+
+    def test_the_bnss_check_passes_at_98_percent_and_fails_at_97(self):
+        arr = self.arrangement()
+        for wrong, expect in ((0, True), (2, True), (3, False)):
+            heads = [(f"BNSS {k}", "Wrong" if int(k) <= wrong else h) for k, h in arr]
+            self.assertIs(bnss.check(heads, arr)[0], expect, wrong)
+
+    def test_a_missing_section_fails_the_check_whatever_the_headings(self):
+        arr = self.arrangement()
+        heads = [(f"BNSS {k}", h) for k, h in arr[:-1]]
+        self.assertFalse(bnss.check(heads, arr)[0])
 
 
 if __name__ == "__main__":
