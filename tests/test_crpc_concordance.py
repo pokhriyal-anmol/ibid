@@ -12,7 +12,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from ibid import index
+from ibid import bnss, crpc, index
 from ibid.cli import main
 from ibid.parse import Provision
 from mcp_harness import ROOT, Client, command
@@ -54,6 +54,8 @@ def make_index(path: str) -> None:
     db = index.build(path, [Provision(c, t, None, ()) for c, _, t in SECTIONS], [])
     db.execute("CREATE TABLE heading (citation TEXT PRIMARY KEY, heading TEXT)")
     db.executemany("INSERT INTO heading VALUES (?, ?)", [(c, h) for c, h, _ in SECTIONS])
+    db.execute("CREATE TABLE meta (key TEXT PRIMARY KEY, value TEXT)")  # what `ibid procedure build` records, which serve checks
+    db.executemany("INSERT INTO meta VALUES (?, ?)", [("crpc_parser_version", crpc.CRPC_PARSER_VERSION), ("bnss_parser_version", bnss.BNSS_PARSER_VERSION)])
     db.commit()
     db.close()
 

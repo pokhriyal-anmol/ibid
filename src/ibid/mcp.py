@@ -80,6 +80,8 @@ def _learned(db, entries: list[dict], heads: dict, lazy: LazyModel, args: dict) 
         model = lazy.get()
     except ValueError as e:
         return _tool_result(str(e), True)
+    if not index.WORD.findall(args["query"]):
+        return _tool_result({"results": [], "notice": "The query has no words to search for."})
     notes = []
     if limit > assoc.TOP_K:
         notes.append(f"limit clamped to {assoc.TOP_K}")
@@ -111,6 +113,10 @@ def call_tool(db, entries: list[dict], name: str, args: object, heads: dict[str,
             return _tool_result("mode must be " + " or ".join(MODES), True)
         if len(args["query"]) > MAX_QUERY_CHARS:  # words alone undercount: FTS5 splits at characters Python treats as letters
             raise RpcError(-32602, f"query is too long: search takes at most {MAX_QUERY_CHARS} characters")
+        if "\x00" in args["query"]:  # SQLite would cut the query at the NUL and answer for the part before it
+            raise RpcError(-32602, "query must not contain a NUL character")
+        if not isinstance(args.get("adjacent", False), bool):
+            raise RpcError(-32602, "adjacent must be a boolean")
         if args.get("mode") == "learned":
             if args.get("act", "ipc") != "ipc":
                 return _tool_result("learned mode covers IPC sections only; leave act out or pass ipc", True)
@@ -120,8 +126,6 @@ def call_tool(db, entries: list[dict], name: str, args: object, heads: dict[str,
             raise RpcError(-32602, "limit must be an integer of at least 1")
         if limit > MAX_LIMIT:
             raise RpcError(-32602, f"limit must be at most {MAX_LIMIT}")
-        if not isinstance(args.get("adjacent", False), bool):
-            raise RpcError(-32602, "adjacent must be a boolean")
         act = args.get("act")
         if "act" in args and (not isinstance(act, str) or act not in ACTS):
             raise RpcError(-32602, "act must be one of " + ", ".join(ACTS))
@@ -245,6 +249,19 @@ def _emit(obj: dict) -> None:
     sys.stdout.flush()
 
 
+def _stale_procedure(pdb: sqlite3.Connection) -> str | None:
+    """Why the second index was built by a different parser than this one, or None when it matches."""
+    from ibid import bnss, crpc
+    try:
+        have = dict(pdb.execute("SELECT key, value FROM meta"))
+    except sqlite3.DatabaseError:
+        return "no parser versions recorded"
+    for key, now in (("crpc_parser_version", crpc.CRPC_PARSER_VERSION), ("bnss_parser_version", bnss.BNSS_PARSER_VERSION)):
+        if (key in have or key == "crpc_parser_version") and have.get(key) != now:  # an index built without the BNSS has no BNSS key
+            return f"{key} is {have.get(key)!r}, this build parses with {now!r}"
+    return None
+
+
 def serve(bns_pdf: str, ipc_pdf: str, concordance_path: str, assoc_model: str, procedure_index: str | None = None, procedure_concordance: str | None = None) -> int:
     for path in (bns_pdf, ipc_pdf, concordance_path):
         if not Path(path).is_file():
@@ -269,6 +286,9 @@ def serve(bns_pdf: str, ipc_pdf: str, concordance_path: str, assoc_model: str, p
         procedure = None
         if procedure_index and Path(procedure_index).is_file():
             pdb = sqlite3.connect(f"file:{procedure_index}?mode=ro", uri=True)
+            if stale := _stale_procedure(pdb):
+                print(f"error: the second index {procedure_index} is stale ({stale}); rebuild it with `ibid procedure build`", file=sys.stderr)
+                return 1
             try:
                 pentries = concordance.load(procedure_concordance, pdb, "crpc", "bnss") if procedure_concordance and Path(procedure_concordance).is_file() else []
             except ValueError as e:

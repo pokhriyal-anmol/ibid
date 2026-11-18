@@ -92,8 +92,21 @@ def fetch(manifest: dict, raw_dir: str, name: str, url: str | None) -> int:
     return 0
 
 
+def _manifest(path: str) -> dict:
+    """The sources file, checked to be a name-to-source object so a malformed one is an error line, not a traceback."""
+    manifest = json.loads(Path(path).read_text())
+    if not isinstance(manifest, dict) or not all(isinstance(s, dict) and _well_formed(s) for s in manifest.values()):
+        raise ValueError(f"{path} must map each source name to an object with string url and sha256, and integer bytes and sections")
+    return manifest
+
+
+def _well_formed(src: dict) -> bool:
+    ints = all(isinstance(src[k], int) and not isinstance(src[k], bool) for k in ("bytes", "sections") if k in src)
+    return ints and all(isinstance(src.get(k), str) for k in ("url", "sha256"))
+
+
 def run(sources: str, raw_dir: str, fetch_name: str | None = None, url: str | None = None) -> int:
-    manifest = json.loads(Path(sources).read_text())
+    manifest = _manifest(sources)
     if fetch_name:
         if fetch(manifest, raw_dir, fetch_name, url):
             return 1
